@@ -413,6 +413,26 @@
       backdrop-filter: blur(2px);
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .hero-proof {
+      margin-top: 1.15rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .55rem;
+      list-style: none;
+      padding: 0;
+      max-width: 760px;
+    }
+    .hero-proof li {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.26);
+      color: rgba(255,255,255,.96);
+      border-radius: 999px;
+      padding: .35rem .78rem;
+      font-size: .8rem;
+      line-height: 1.35;
+      font-weight: 600;
+    }
     .btn-primary {
       background: var(--primary); color: #fff;
       padding: .85rem 2rem; border-radius: 50px;
@@ -580,6 +600,52 @@
     .policy-footnote a {
       color: var(--primary);
       border-bottom: 1px solid rgba(45,106,79,.3);
+    }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+      margin-top: 1rem;
+      margin-bottom: 1.35rem;
+    }
+    .plan-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: .95rem;
+      box-shadow: 0 3px 14px rgba(0,0,0,.06);
+    }
+    .plan-card h4 {
+      font-size: .93rem;
+      color: #1f2937;
+      margin-bottom: .28rem;
+    }
+    .plan-card p {
+      font-size: .83rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .plan-card strong {
+      color: var(--primary);
+      font-size: .86rem;
+    }
+    .about-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: .35rem;
+      background: var(--primary);
+      color: #fff;
+      padding: .72rem 1.2rem;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(45,106,79,.24);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .about-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(45,106,79,.3);
     }
 
     /* ── Testimonials ── */
@@ -974,8 +1040,13 @@
       transform: translateY(0);
     }
 
+    .mobile-sticky-cta {
+      display: none;
+    }
+
     /* ── Mobile ── */
     @media (max-width: 640px) {
+      body { padding-bottom: 78px; }
       nav { padding: .9rem 1rem; }
       .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
       .nav-cta { display: none; }
@@ -998,6 +1069,8 @@
       .nav-links a { font-size: .95rem; padding-bottom: .12rem; }
       #home { min-height: 80vh; }
       .hero-btns { flex-direction: column; align-items: center; }
+      .hero-proof { gap: .45rem; }
+      .hero-proof li { font-size: .77rem; }
       .space-hero img,
       .about-photo img { height: 260px; min-height: 260px; }
       .gallery-grid { grid-template-columns: 1fr; }
@@ -1005,12 +1078,36 @@
       .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .contact-form-row { grid-template-columns: 1fr; }
       .contact-form .submit-btn { width: 100%; }
+      .to-top {
+        right: 1rem;
+        bottom: 5.35rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed;
+        left: .8rem;
+        right: .8rem;
+        bottom: .75rem;
+        z-index: 260;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .4rem;
+        padding: .82rem 1rem;
+        border-radius: 999px;
+        background: var(--primary);
+        color: #fff;
+        font-size: .94rem;
+        font-weight: 800;
+        letter-spacing: -.1px;
+        box-shadow: 0 12px 26px rgba(22,56,43,.32);
+      }
     }
     @media (max-width: 960px) {
       .about-layout { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gallery-item.wide { grid-column: span 2; }
       .policy-grid { grid-template-columns: 1fr; }
+      .plan-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1038,12 +1135,12 @@
 
   <!-- ── Hero ── -->
   <section id="home">
-    <span class="badge">당신만의 조용한 몰입, 지금 바로 시작해 보세요</span>
-    <h1 class="hero-title">바른자리 공간대여</h1>
-    <p class="hero-subtitle">조용하고 단정한, 나만의 프라이빗 스페이스</p>
+    <span class="badge">오픈 특가 7월 20일까지 · 2시간 10,000원</span>
+    <h1 class="hero-title">신중동역 1분, 1~6인 프라이빗 공간대여</h1>
+    <p class="hero-subtitle">면접 · 시험 · 회의 · 소모임 · 촬영까지, 예약 즉시 단독 이용</p>
     <p class="hero-desc">
-      예약 시간 동안 <strong>공간 전체를 단독으로 이용</strong>하는 프라이빗 공간입니다.<br />
-      <strong>일상보다 차분</strong>하고 <strong>업무보다 편안한</strong> 공간에서 오롯이 나에게 집중해 보세요.
+      예약 시간 동안 <strong>공간 전체를 단독으로 이용</strong>하는 100% 예약제 프라이빗룸입니다.<br />
+      오늘 가능한 시간부터 빠르게 확인하고, 중요한 일정에 맞춰 바로 예약하세요.
     </p>
     <ul class="hero-points" aria-label="공간 핵심 포인트">
       <li>신중동역 도보 1분</li>
@@ -1051,9 +1148,14 @@
       <li>화상면접 · 시험 · 업무 · 소모임 · 촬영</li>
     </ul>
     <div class="hero-btns">
-      <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" class="btn-primary">네이버플레이스 예약</a>
-      <a href="#about" class="btn-outline">요금 안내 보기</a>
+      <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="hero_primary">오늘 가능한 시간 예약하기</a>
+      <a href="#about" class="btn-outline">2시간 1만원 요금 보기</a>
     </div>
+    <ul class="hero-proof" aria-label="예약 신뢰 포인트">
+      <li>네이버 예약 선결제</li>
+      <li>입실 비밀번호 사전 안내</li>
+      <li>운영 07:00~23:00</li>
+    </ul>
   </section>
 
   <!-- ── Space ── -->
@@ -1116,12 +1218,12 @@
           <div class="price-card featured">
             <span class="price-badge">특가</span>
             <p class="price-label">기간한정 오픈 특가 <strong>7월 20일까지</strong></p>
-            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7711746?startDate=2026-06-26" target="_blank">10,000<span class="price-unit">원</span></a></p>
+            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7711746?startDate=2026-06-26" target="_blank" rel="noopener noreferrer" data-cta="price_2hour">10,000<span class="price-unit">원</span></a></p>
             <p class="price-desc">2시간 이용 · 1~6인 가능</p>
           </div>
           <div class="price-card">
             <p class="price-label">종일 대관</p>
-            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7764732" target="_blank">120,000<span class="price-unit">원</span></a></p>
+            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7764732" target="_blank" rel="noopener noreferrer" data-cta="price_fullday">120,000<span class="price-unit">원</span></a></p>
             <p class="price-desc">팝업 · 전시 · 쇼룸 대관</p>
           </div>
         </div>
@@ -1129,6 +1231,21 @@
           <img src="images/02.jpeg" alt="바른자리 감성 테이블과 조명" loading="lazy" width="2252" height="3362" />
         </figure>
       </div>
+      <div class="plan-grid" aria-label="이용 목적별 추천 요금">
+        <article class="plan-card">
+          <h4>면접 · 온라인 시험</h4>
+          <p><strong>2시간 10,000원 추천</strong><br />입실 직후 바로 집중할 수 있는 조용한 환경</p>
+        </article>
+        <article class="plan-card">
+          <h4>소모임 · 스터디</h4>
+          <p><strong>3~4시간 이용 추천</strong><br />1~6인 단독 이용으로 대화와 발표에 적합</p>
+        </article>
+        <article class="plan-card">
+          <h4>촬영 · 팝업 · 전시</h4>
+          <p><strong>종일 대관 120,000원</strong><br />세팅부터 촬영/운영까지 여유 있게 진행</p>
+        </article>
+      </div>
+      <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="about_primary">요금 확인 후 바로 예약하기</a>
       <div class="policy-summary">
         <h3 class="policy-title">이용 안내 핵심 요약</h3>
         <div class="policy-grid">
@@ -1287,11 +1404,11 @@
       <div class="contact-grid">
         <div class="contact-item">
           <p class="ci-label">📅 예약</p>
-          <p class="ci-value"><a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank">네이버플레이스</a></p>
+            <p class="ci-value"><a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" data-cta="contact_booking">네이버플레이스</a></p>
         </div>
         <div class="contact-item">
           <p class="ci-label">💬 상담</p>
-          <p class="ci-value"><a href="https://talk.naver.com/profile/w1pp89m" target="_blank">네이버톡톡</a></p>
+            <p class="ci-value"><a href="https://talk.naver.com/profile/w1pp89m" target="_blank" rel="noopener noreferrer" data-cta="contact_talk">네이버톡톡</a></p>
         </div>
         <div class="contact-item">
           <p class="ci-label">📝 공식 블로그</p>
@@ -1333,6 +1450,7 @@
 
           <button type="submit" class="submit-btn">문의 보내기</button>
         </form>
+        <p class="contact-rate-note" id="contactRateNote" aria-live="polite"></p>
         <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>
       </div>
     </div>
@@ -1355,6 +1473,7 @@
   </div>
 
   <button type="button" class="to-top" id="toTop" aria-label="맨 위로 이동">↑</button>
+  <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="mobile-sticky-cta" data-cta="mobile_sticky">지금 예약하기 · 2시간 1만원</a>
 
   <script>
     const toTopButton = document.getElementById('toTop');
@@ -1382,6 +1501,12 @@
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
       toTopButton.classList.toggle('show', shouldShow);
+    };
+
+    const trackEvent = (eventName, params = {}) => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
     };
 
     const openLightbox = (src, alt) => {
@@ -1434,6 +1559,27 @@
 
     navSectionLinks.forEach((link) => {
       link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.querySelectorAll('a[href*="booking.naver.com/booking/10/bizes/1663159"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const section = link.closest('section')?.id || (link.closest('header') ? 'header' : 'global');
+        const ctaLabel = link.dataset.cta || (link.textContent || '').trim();
+        trackEvent('click_booking_cta', {
+          cta_label: ctaLabel,
+          placement: section,
+          destination: 'naver_booking'
+        });
+      });
+    });
+
+    document.querySelectorAll('a[href*="talk.naver.com/profile/"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        trackEvent('click_talk_cta', {
+          cta_label: link.dataset.cta || (link.textContent || '').trim(),
+          placement: link.closest('section')?.id || 'global'
+        });
+      });
     });
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
@@ -1787,6 +1933,7 @@
         }
 
         localStorage.setItem(CONTACT_LAST_SUBMIT_KEY, String(now));
+        trackEvent('submit_contact_form', { form_name: 'contact_form' });
         if (contactRateNote) {
           contactRateNote.textContent = '문의를 전송 중입니다.';
         }
