@@ -446,9 +446,12 @@
     #contact .section-desc { color: rgba(255,255,255,.75); max-width: 100%; }
     .contact-grid {
       display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
-      margin-top: 2.5rem;
+      margin: 2.5rem auto 0;
+      width: 100%;
+      max-width: 760px;
     }
     .contact-item {
+      flex: 1 1 220px;
       background: rgba(255,255,255,.1);
       border-radius: var(--radius);
       padding: 1.4rem 1.8rem;
@@ -461,6 +464,7 @@
     .contact-item a { color: #fff; border-bottom: 1px solid rgba(255,255,255,.4); }
     .contact-form-wrap {
       margin: 2rem auto 0;
+      width: 100%;
       max-width: 760px;
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.18);
@@ -524,6 +528,19 @@
       margin-top: .65rem;
       font-size: .76rem;
       color: rgba(255,255,255,.72);
+      line-height: 1.6;
+    }
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .contact-rate-note {
+      margin-top: .55rem;
+      font-size: .76rem;
+      color: rgba(255,255,255,.8);
       line-height: 1.6;
     }
 
@@ -848,11 +865,12 @@
         </div>
       </div>
       <div class="contact-form-wrap">
-        <form class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="[바른자리] 웹 문의가 도착했습니다" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/#contact" />
+          <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="contact-form-row">
             <div>
@@ -878,6 +896,7 @@
           <button type="submit" class="submit-btn">문의 보내기</button>
         </form>
         <p class="contact-form-note">처음 1회는 FormSubmit 인증 메일 확인 후 웹 문의 수신이 활성화됩니다.</p>
+        <p class="contact-rate-note" id="contactRateNote">스팸 방지를 위해 문의는 90초 간격으로 접수됩니다.</p>
       </div>
     </div>
   </section>
@@ -912,6 +931,8 @@
     const useCasePrev = document.getElementById('useCasePrev');
     const useCaseNext = document.getElementById('useCaseNext');
     const useCasePageInfo = document.getElementById('useCasePageInfo');
+    const contactForm = document.getElementById('contactForm');
+    const contactRateNote = document.getElementById('contactRateNote');
     let scrollLockTop = 0;
     let useCaseItems = [];
     let useCasePage = 0;
@@ -1274,6 +1295,31 @@
         }
       });
     };
+
+    if (contactForm) {
+      const CONTACT_LIMIT_MS = 90 * 1000;
+      const CONTACT_LAST_SUBMIT_KEY = 'bareunjari-contact-last-submit';
+
+      contactForm.addEventListener('submit', (event) => {
+        const lastSubmit = Number(localStorage.getItem(CONTACT_LAST_SUBMIT_KEY) || 0);
+        const now = Date.now();
+        const remaining = CONTACT_LIMIT_MS - (now - lastSubmit);
+
+        if (remaining > 0) {
+          event.preventDefault();
+          const seconds = Math.ceil(remaining / 1000);
+          if (contactRateNote) {
+            contactRateNote.textContent = `잠시 후 다시 시도해 주세요. 약 ${seconds}초 후 제출 가능합니다.`;
+          }
+          return;
+        }
+
+        localStorage.setItem(CONTACT_LAST_SUBMIT_KEY, String(now));
+        if (contactRateNote) {
+          contactRateNote.textContent = '문의를 전송 중입니다.';
+        }
+      });
+    }
 
     window.addEventListener('scroll', toggleToTopButton, { passive: true });
     window.addEventListener('scroll', updateActiveNavLink, { passive: true });
