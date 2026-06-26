@@ -514,7 +514,26 @@
       transition: transform var(--transition);
     }
     .feature-card:hover { transform: translateY(-4px); }
-    .feature-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-alt);
+      border: 1px solid #dfe7e2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: .8rem;
+    }
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--primary);
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
     .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
     .feature-card p { font-size: .9rem; color: var(--muted); }
 
@@ -713,7 +732,19 @@
       background: #fff; border-radius: var(--radius);
       padding: 1.8rem; box-shadow: var(--shadow);
     }
-    .testimonial-card .stars { color: var(--accent); font-size: 1.1rem; margin-bottom: .8rem; }
+    .testimonial-card .stars {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: .22rem .55rem;
+      color: #374151;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      margin-bottom: .8rem;
+      background: #f8fafc;
+    }
     .testimonial-card .testimonial-title {
       font-size: 1rem;
       font-weight: 700;
@@ -956,7 +987,24 @@
       border: 1px solid rgba(255,255,255,.15);
       backdrop-filter: blur(4px);
     }
-    .contact-item .ci-label { font-size: .74rem; opacity: .72; margin-bottom: .22rem; }
+    .contact-item .ci-label {
+      font-size: .74rem;
+      opacity: .72;
+      margin-bottom: .22rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem;
+    }
+    .ci-icon {
+      width: 14px;
+      height: 14px;
+      stroke: rgba(255,255,255,.92);
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
     .contact-item .ci-value { font-weight: 600; font-size: .9rem; }
     .contact-item a { color: #fff; border-bottom: 1px solid rgba(255,255,255,.4); }
     .contact-form-wrap {
@@ -1094,6 +1142,20 @@
       color: #fff;
       border-bottom: 1px solid rgba(255,255,255,.35);
     }
+    .inline-icon {
+      width: 14px;
+      height: 14px;
+      vertical-align: -2px;
+      margin-right: .2rem;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .inline-icon-muted {
+      color: var(--muted);
+    }
 
     /* ── Scroll To Top ── */
     .to-top {
@@ -1216,6 +1278,21 @@
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;left:-9999px;overflow:hidden">
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M3 12h18"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 4.5h6v3H9z"/><path d="M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="10" r="2.5"/><path d="M4.5 18a4.5 4.5 0 0 1 9 0"/><path d="M13.5 18a3.5 3.5 0 0 1 7 0"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 8.4a4.7 4.7 0 0 0-8.1-3.2L12 5.6l-.4-.4A4.7 4.7 0 1 0 5 11.8L12 18l7-6.2a4.7 4.7 0 0 0 1.5-3.4z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h4l1.4-2h5.2L16 8h4v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 11H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M5 9h10v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M15 10h2a2 2 0 0 1 0 4h-2"/><path d="M8 4v2M11 4v2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 4v4M16 4v4M4 10h16"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M6 7h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H10l-4 3v-3H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M7 4h8l4 4v12H7z"/><path d="M15 4v4h4"/><path d="M10 13h6M10 17h6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s6-5.3 6-10a6 6 0 1 0-12 0c0 4.7 6 10 6 10z"/><circle cx="12" cy="11" r="2.2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="m4 8 8 6 8-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.8 4h3l1.2 4-2 1.6a14 14 0 0 0 5.4 5.4l1.6-2 4 1.2v3a1.8 1.8 0 0 1-1.9 1.8A16.3 16.3 0 0 1 5 5.9 1.8 1.8 0 0 1 6.8 4z"/></symbol>
+  </svg>
 
   <!-- ── Header ── -->
   <header>
@@ -1272,37 +1349,37 @@
       </div>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">💼</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
           <h3>화상면접 · 회의</h3>
           <p>초고속 와이파이와 조용한 독립 공간에서 중요한 면접과 회의를 집중해서 준비하세요.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📝</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-clipboard"></use></svg></div>
           <h3>온라인 시험 · 자격증</h3>
           <p>TOEFL Home Edition, 자격증 시험 등 집중 환경이 필요한 온라인 시험에 최적입니다.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">👥</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-users"></use></svg></div>
           <h3>소모임 · 스터디</h3>
           <p>독서 모임, 종교 모임, 스터디 등 소규모 그룹 활동을 위한 독립 공간을 제공합니다.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">💗</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></div>
           <h3>데이트 · 기념일</h3>
           <p>조용하고 프라이빗한 공간에서 대화와 취향을 나누며 둘만의 시간을 편안하게 보내보세요.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🎬</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-camera"></use></svg></div>
           <h3>콘텐츠 촬영</h3>
           <p>유튜브, 인터뷰, 제품 촬영 등 방해 없는 환경에서 콘텐츠를 제작하세요.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🛍️</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-bag"></use></svg></div>
           <h3>팝업 · 전시</h3>
           <p>팝업 스토어, 쇼룸, 전시를 위한 종일 대관도 가능합니다.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">☕</div>
+          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-coffee"></use></svg></div>
           <h3>편의시설</h3>
           <p>대형 테이블, 초고속 와이파이, 캡슐 커피머신이 기본 제공됩니다.</p>
         </div>
@@ -1385,7 +1462,8 @@
       </div>
       <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="about_primary">핵심 확인 후 바로 예약하기</a>
       <p style="margin-top:1.5rem; font-size:.88rem; color:var(--muted);">
-        📍 경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티)
+      <p style="margin-top:1.5rem; font-size:.88rem; color:var(--muted);">
+        <span class="inline-icon-muted"><svg class="inline-icon" aria-hidden="true"><use href="#i-map"></use></svg></span>경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티)
       </p>
     </div>
   </section>
@@ -1445,17 +1523,17 @@
       <p class="rss-status" id="rssStatus" hidden>네이버 블로그에서 최신 이용사례를 불러오고 있습니다.</p>
       <div class="testimonials-grid" id="useCasesGrid">
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">Case</div>
           <p>"화상면접 준비하러 왔는데 완전 조용하고 집중도 잘 됐어요. 역에서도 가깝고 다음에도 또 이용할게요!"</p>
           <span class="author">— 이용사례: 화상면접 준비</span>
         </div>
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">Case</div>
           <p>"소모임 장소 찾다가 예약했는데 딱 필요한 사이즈의 독립 공간이라 너무 좋았습니다. 분위기도 깔끔해요."</p>
           <span class="author">— 이용사례: 소모임 · 스터디</span>
         </div>
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">Case</div>
           <p>"유튜브 촬영 공간 찾고 있었는데 배경도 깔끔하고 조용해서 좋았어요. 커피도 마실 수 있어서 더 좋고요!"</p>
           <span class="author">— 이용사례: 콘텐츠 촬영</span>
         </div>
@@ -1528,19 +1606,19 @@
           <p class="ci-value"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">네이버 블로그</a></p>
         </div>
         <div class="contact-item">
-          <p class="ci-label">🗺️ 지도</p>
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-calendar"></use></svg>예약</p>
           <p class="ci-value"><a href="https://map.naver.com/p/entry/place/2041312316" target="_blank" rel="noopener noreferrer">네이버지도</a></p>
         </div>
       </div>
-      <div class="contact-form-wrap">
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-chat"></use></svg>상담</p>
         <form id="contactForm" class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="[바른자리] 웹 문의가 도착했습니다" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-note"></use></svg>공식 블로그</p>
           <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/?contact=sent#contact" />
           <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <div class="contact-form-row">
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-map"></use></svg>지도</p>
             <div>
               <label for="contactName">이름</label>
               <input id="contactName" name="이름" type="text" required />
