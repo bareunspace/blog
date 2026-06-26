@@ -284,6 +284,50 @@
     }
     .price-unit { font-size: .9rem; font-weight: 400; }
     .price-desc { font-size: .88rem; color: var(--muted); margin-top: .5rem; }
+    .policy-summary {
+      margin-top: 1.2rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .policy-title {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: .85rem;
+    }
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+    }
+    .policy-card {
+      background: var(--bg-alt);
+      border-radius: 12px;
+      padding: .8rem .9rem;
+      border: 1px solid #e5e7eb;
+    }
+    .policy-card h4 {
+      font-size: .88rem;
+      margin-bottom: .35rem;
+      color: #1f2937;
+    }
+    .policy-card p {
+      font-size: .82rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    .policy-footnote {
+      margin-top: .75rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .policy-footnote a {
+      color: var(--primary);
+      border-bottom: 1px solid rgba(45,106,79,.3);
+    }
 
     /* ── Testimonials ── */
     #testimonials { background: var(--bg-alt); }
@@ -679,6 +723,7 @@
       .about-layout { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gallery-item.wide { grid-column: span 2; }
+      .policy-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -799,6 +844,36 @@
         <figure class="about-photo">
           <img src="images/02.jpeg" alt="바른자리 감성 테이블과 조명" loading="lazy" />
         </figure>
+      </div>
+      <div class="policy-summary">
+        <h3 class="policy-title">이용 안내 핵심 요약</h3>
+        <div class="policy-grid">
+          <article class="policy-card">
+            <h4>예약 및 결제</h4>
+            <p>네이버 예약(기본 2시간), 예약 시 선결제입니다. 방문자가 다를 경우 실제 방문자 이름·연락처를 기재해 주세요.</p>
+          </article>
+          <article class="policy-card">
+            <h4>환불 기준</h4>
+            <p>이용 2일 전 100%, 전날 50%, 당일 환불 불가입니다.</p>
+          </article>
+          <article class="policy-card">
+            <h4>이용 시간</h4>
+            <p>운영 시간은 오전 7시~오후 11시, 마지막 예약은 오후 9시입니다.</p>
+          </article>
+          <article class="policy-card">
+            <h4>시설 및 비품</h4>
+            <p>테이블/의자, Wi-Fi, 커피포트, 캡슐커피머신, 블루투스 스피커, 멀티탭, 거울 등을 제공합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h4>출입 및 보안</h4>
+            <p>이용 전 비밀번호가 문자로 발송되며, CCTV는 24시간 녹화됩니다.</p>
+          </article>
+          <article class="policy-card">
+            <h4>이용 규칙</h4>
+            <p>쓰레기 분리배출/반려동물 불가/퇴실 전 잠금 및 에어컨 전원 확인이 필요합니다.</p>
+          </article>
+        </div>
+        <p class="policy-footnote">상세 규정은 <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer">네이버 예약 페이지</a>에서 최신 기준으로 확인해 주세요.</p>
       </div>
       <p style="margin-top:1.5rem; font-size:.88rem; color:var(--muted);">
         📍 경기도 부천시 원미구 신흥로 223, 114호 · 신중동역 5번 출구 77m
