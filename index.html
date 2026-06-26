@@ -996,6 +996,14 @@
       padding: 1rem .75rem;
       border: 1px solid rgba(255,255,255,.15);
       backdrop-filter: blur(4px);
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+    .contact-item:hover,
+    .contact-item:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.2);
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.32);
     }
     .contact-item .ci-label {
       font-size: .74rem;
