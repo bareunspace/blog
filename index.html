@@ -1440,7 +1440,7 @@
   <section id="testimonials">
     <div class="section-inner">
       <p class="section-label">Use Cases</p>
-      <h2 class="section-title">이용사례 · 이용방법</h2>
+      <h2 class="section-title">이용사례 · 이용안내</h2>
       <p class="section-desc">실제 이용자들의 순간과 활용 아이디어를 따뜻하게 담아 소개합니다.</p>
       <p class="rss-status" id="rssStatus" hidden>네이버 블로그에서 최신 이용사례를 불러오고 있습니다.</p>
       <div class="testimonials-grid" id="useCasesGrid">
@@ -1838,19 +1838,39 @@
         .replaceAll("'", '&#39;');
     };
 
+    const classifyUseCaseType = (item) => {
+      const title = item.title || '';
+      const desc = stripHtml(item.description);
+
+      const isGuide = /이용\s*안내|이용\s*방법|사용\s*방법|활용\s*방법|가이드/i.test(title)
+        || /이용\s*안내|이용\s*방법|사용\s*방법|가이드/i.test(desc);
+      const isCase = /이용\s*사례|공간\s*이용\s*사례/i.test(title)
+        || /이용\s*사례/i.test(desc);
+
+      if (isGuide && !isCase) {
+        return '이용안내';
+      }
+      if (isCase) {
+        return '이용사례';
+      }
+      return '이용정보';
+    };
+
     const renderUseCases = (items) => {
       const cardsHtml = items.map((item) => {
         const title = item.title || '제목 없음';
         const summary = truncate(stripHtml(item.description), 150) || '내용 요약이 없습니다.';
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
+        const contentType = item.contentType || classifyUseCaseType(item);
+        const badgeLabel = contentType === '이용안내' ? '📘 안내' : '⭐ 사례';
 
         return `
           <article class="testimonial-card">
-            <div class="stars">⭐ 사례</div>
+            <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
             <p>${escapeHtml(summary)}</p>
-            <span class="author">— 네이버 블로그 이용사례 · 이용방법</span>
+            <span class="author">— 네이버 블로그 ${escapeHtml(contentType)}</span>
             <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>
         `;
@@ -1992,12 +2012,15 @@
       const titlePatterns = [
         /이용\s*사례/i,
         /공간\s*이용\s*사례/i,
+        /이용\s*안내/i,
         /이용\s*방법/i,
         /사용\s*방법/i,
-        /활용\s*방법/i
+        /활용\s*방법/i,
+        /가이드/i
       ];
       const bodyPatterns = [
         /이용\s*사례/i,
+        /이용\s*안내/i,
         /이용\s*방법/i,
         /공간\s*활용/i,
         /준비\s*방법/i,
@@ -2020,7 +2043,11 @@
             const cleanDesc = stripHtml(item.description);
             const titleScore = titlePatterns.some((pattern) => pattern.test(item.title)) ? 2 : 0;
             const bodyScore = bodyPatterns.some((pattern) => pattern.test(cleanDesc)) ? 1 : 0;
-            return { ...item, score: titleScore + bodyScore };
+            return {
+              ...item,
+              contentType: classifyUseCaseType(item),
+              score: titleScore + bodyScore
+            };
           })
           .filter((item) => item.score > 0)
           .sort((a, b) => {
@@ -2038,7 +2065,7 @@
           useCasePage = 0;
           renderUseCasePage();
         } else if (rssStatus) {
-          rssStatus.textContent = '이용사례 · 이용방법 글을 준비 중입니다.';
+          rssStatus.textContent = '이용사례 · 이용안내 글을 준비 중입니다.';
           rssStatus.hidden = false;
           if (useCaseControls) {
             useCaseControls.hidden = true;
