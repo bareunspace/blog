@@ -459,6 +459,73 @@
     .contact-item .ci-label { font-size: .78rem; opacity: .7; margin-bottom: .3rem; }
     .contact-item .ci-value { font-weight: 600; font-size: 1rem; }
     .contact-item a { color: #fff; border-bottom: 1px solid rgba(255,255,255,.4); }
+    .contact-form-wrap {
+      margin: 2rem auto 0;
+      max-width: 760px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      backdrop-filter: blur(4px);
+      text-align: left;
+    }
+    .contact-form {
+      display: grid;
+      gap: .9rem;
+    }
+    .contact-form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+    }
+    .contact-form label {
+      display: block;
+      font-size: .82rem;
+      color: rgba(255,255,255,.86);
+      margin-bottom: .35rem;
+      font-weight: 600;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 12px;
+      background: rgba(255,255,255,.96);
+      color: #1f2937;
+      padding: .72rem .8rem;
+      font: inherit;
+    }
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid rgba(244,162,97,.9);
+      border-color: rgba(244,162,97,.9);
+    }
+    .contact-form .submit-btn {
+      justify-self: start;
+      border: 0;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--primary);
+      font-weight: 700;
+      padding: .72rem 1.3rem;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    }
+    .contact-form .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    }
+    .contact-form-note {
+      margin-top: .65rem;
+      font-size: .76rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.6;
+    }
 
     /* ── Footer ── */
     footer {
@@ -517,6 +584,8 @@
       .about-photo img { height: 260px; min-height: 260px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item.wide { grid-column: auto; }
+      .contact-form-row { grid-template-columns: 1fr; }
+      .contact-form .submit-btn { width: 100%; }
     }
     @media (max-width: 960px) {
       .about-layout { grid-template-columns: 1fr; }
@@ -777,6 +846,38 @@
           <p class="ci-label">📝 공식 블로그</p>
           <p class="ci-value"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">네이버 블로그</a></p>
         </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="[바른자리] 웹 문의가 도착했습니다" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/#contact" />
+
+          <div class="contact-form-row">
+            <div>
+              <label for="contactName">이름</label>
+              <input id="contactName" name="이름" type="text" required />
+            </div>
+            <div>
+              <label for="contactPhone">연락처</label>
+              <input id="contactPhone" name="연락처" type="text" placeholder="예: 010-1234-5678" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="contactEmail">이메일(선택)</label>
+            <input id="contactEmail" name="이메일" type="email" placeholder="답변 받을 이메일" />
+          </div>
+
+          <div>
+            <label for="contactMessage">문의 내용</label>
+            <textarea id="contactMessage" name="문의내용" placeholder="원하시는 날짜/시간, 이용 목적 등을 남겨주세요." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">문의 보내기</button>
+        </form>
+        <p class="contact-form-note">처음 1회는 FormSubmit 인증 메일 확인 후 웹 문의 수신이 활성화됩니다.</p>
       </div>
     </div>
   </section>
