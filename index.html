@@ -73,15 +73,16 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 4rem 1.5rem;
-      background: linear-gradient(160deg, #e9f5ee 0%, #fafaf8 60%);
+      background: linear-gradient(rgba(12, 31, 23, .52), rgba(12, 31, 23, .52)), url('images/01.jpeg') center/cover no-repeat;
       position: relative; overflow: hidden;
     }
     #home::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(82,183,136,.15) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,.16) 0%, transparent 70%);
       pointer-events: none;
     }
+    #home > * { position: relative; z-index: 1; }
     .badge {
       display: inline-block;
       background: var(--accent); color: #fff;
@@ -97,17 +98,19 @@
     .hero-title {
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700; line-height: 1.2;
-      color: var(--primary);
+      color: #fff;
       margin-bottom: .6rem;
+      text-shadow: 0 10px 28px rgba(0,0,0,.2);
     }
     .hero-subtitle {
       font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--muted); margin-bottom: 1.6rem;
+      color: rgba(255,255,255,.9); margin-bottom: 1.6rem;
       font-weight: 300;
     }
     .hero-desc {
       max-width: 640px; font-size: 1rem;
-      color: #374151; margin-bottom: 2.4rem; line-height: 1.8;
+      color: rgba(255,255,255,.95); margin-bottom: 2.4rem; line-height: 1.8;
+      text-shadow: 0 4px 14px rgba(0,0,0,.2);
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .btn-primary {
@@ -125,6 +128,15 @@
       transition: background var(--transition), color var(--transition);
     }
     .btn-outline:hover { background: var(--primary); color: #fff; }
+    #home .btn-outline {
+      border-color: rgba(255,255,255,.9);
+      color: #fff;
+      background: rgba(255,255,255,.06);
+    }
+    #home .btn-outline:hover {
+      background: #fff;
+      color: var(--primary);
+    }
 
     /* ── Section Common ── */
     section { padding: 5rem 1.5rem; }
@@ -143,6 +155,17 @@
 
     /* ── Space Features ── */
     #space { background: var(--bg-alt); }
+    .space-hero {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    .space-hero img {
+      width: 100%;
+      height: min(48vw, 400px);
+      object-fit: cover;
+    }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -161,7 +184,25 @@
     /* ── Pricing ── */
     #about .pricing-cards {
       display: flex; gap: 1.5rem; flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 0;
+    }
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .about-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 100%;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
     }
     .price-card {
       flex: 1 1 220px;
@@ -202,6 +243,31 @@
     .testimonial-card .stars { color: var(--accent); font-size: 1.1rem; margin-bottom: .8rem; }
     .testimonial-card p { font-size: .93rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
     .testimonial-card .author { font-size: .85rem; font-weight: 600; color: var(--primary); }
+
+    /* ── Gallery ── */
+    #gallery { background: var(--bg); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform var(--transition);
+    }
+    .gallery-item.wide img { aspect-ratio: 16 / 9; }
+    .gallery-item.portrait img { aspect-ratio: 3 / 4; }
+    .gallery-item:hover img { transform: scale(1.03); }
 
     /* ── Tags ── */
     #tags { padding: 3rem 1.5rem; }
@@ -281,6 +347,15 @@
       .nav-links { display: none; }
       #home { min-height: 80vh; }
       .hero-btns { flex-direction: column; align-items: center; }
+      .space-hero img,
+      .about-photo img { height: 260px; min-height: 260px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.wide { grid-column: auto; }
+    }
+    @media (max-width: 960px) {
+      .about-layout { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-item.wide { grid-column: span 2; }
     }
   </style>
 </head>
@@ -294,6 +369,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#space">Space</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -331,6 +407,9 @@
       <p class="section-label">Space</p>
       <h2 class="section-title">이런 분들께 딱 맞습니다</h2>
       <p class="section-desc">1인에서 6인까지, 주변 시선 없이 오롯이 나만의 시간에 집중할 수 있는 공간입니다.</p>
+      <div class="space-hero">
+        <img src="images/06.jpeg" alt="바른자리 내부 전경" loading="lazy" />
+      </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">💼</div>
@@ -372,22 +451,53 @@
       <p class="section-label">About</p>
       <h2 class="section-title">이용 안내 및 요금</h2>
       <p class="section-desc">카페보다 조용하고 사무실보다 편안한 공간. 합리적인 가격으로 경험해 보세요.</p>
-      <div class="pricing-cards">
-        <div class="price-card featured">
-          <span class="price-badge">특가</span>
-          <p class="price-label">기간한정 오픈 특가</p>
-          <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7711746?startDate=2026-06-26" target="_blank">10,000<span class="price-unit">원</span></a></p>
-          <p class="price-desc">2시간 이용 · 1~6인 가능</p>
+      <div class="about-layout">
+        <div class="pricing-cards">
+          <div class="price-card featured">
+            <span class="price-badge">특가</span>
+            <p class="price-label">기간한정 오픈 특가</p>
+            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7711746?startDate=2026-06-26" target="_blank">10,000<span class="price-unit">원</span></a></p>
+            <p class="price-desc">2시간 이용 · 1~6인 가능</p>
+          </div>
+          <div class="price-card">
+            <p class="price-label">종일 대관</p>
+            <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7764732" target="_blank">120,000<span class="price-unit">원</span></a></p>
+            <p class="price-desc">팝업 · 전시 · 쇼룸 대관</p>
+          </div>
         </div>
-        <div class="price-card">
-          <p class="price-label">종일 대관</p>
-          <p class="price-amount"><a href="https://booking.naver.com/booking/10/bizes/1663159/items/7764732" target="_blank">120,000<span class="price-unit">원</span></a></p>
-          <p class="price-desc">팝업 · 전시 · 쇼룸 대관</p>
-        </div>
+        <figure class="about-photo">
+          <img src="images/02.jpeg" alt="바른자리 감성 테이블과 조명" loading="lazy" />
+        </figure>
       </div>
       <p style="margin-top:1.5rem; font-size:.88rem; color:var(--muted);">
         📍 경기도 부천시 원미구 신흥로 223, 114호 · 신중동역 5번 출구 77m
       </p>
+    </div>
+  </section>
+
+  <!-- ── Gallery ── -->
+  <section id="gallery">
+    <div class="section-inner">
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">공간 미리보기</h2>
+      <p class="section-desc">실제 공간의 분위기와 디테일을 사진으로 먼저 확인해 보세요.</p>
+      <div class="gallery-grid">
+        <figure class="gallery-item wide">
+          <img src="images/09.jpeg" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" />
+        </figure>
+        <figure class="gallery-item portrait">
+          <img src="images/03.jpeg" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" />
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/11.jpeg" alt="바른자리 소파 라운지 공간" loading="lazy" />
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/12.jpeg" alt="바른자리 아트월과 스탠드 조명" loading="lazy" />
+        </figure>
+        <figure class="gallery-item wide">
+          <img src="images/14.jpeg" alt="바른자리 테이블과 미러 포인트 공간" loading="lazy" />
+        </figure>
+      </div>
     </div>
   </section>
 
