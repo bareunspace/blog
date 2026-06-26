@@ -269,6 +269,82 @@
     .gallery-item.portrait img { aspect-ratio: 3 / 4; }
     .gallery-item:hover img { transform: scale(1.03); }
 
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 16, 12, .84);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition), visibility var(--transition);
+      z-index: 500;
+    }
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-out;
+    }
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      width: min(96vw, 1180px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+    }
+    .lightbox-content img {
+      width: 100%;
+      max-height: calc(90vh - 48px);
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      background: #fff;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: .35rem;
+      right: .35rem;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,.28);
+      transform: scale(1.04);
+    }
+    .lightbox-close:focus-visible {
+      outline: 3px solid rgba(244,162,97,.95);
+      outline-offset: 2px;
+    }
+    .gallery-item button {
+      border: 0;
+      width: 100%;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+      display: block;
+    }
+
     /* ── Tags ── */
     #tags { padding: 3rem 1.5rem; }
     .tag-group { margin-bottom: 1.2rem; }
@@ -370,7 +446,7 @@
         <li><a href="#space">Space</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#testimonials">이용사례</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" class="btn-primary nav-cta">지금 예약</a>
@@ -483,19 +559,29 @@
       <p class="section-desc">실제 공간의 분위기와 디테일을 사진으로 먼저 확인해 보세요.</p>
       <div class="gallery-grid">
         <figure class="gallery-item wide">
-          <img src="images/09.jpeg" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" />
+          <button type="button" class="gallery-open" data-src="images/09.jpeg" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="이미지 확대 보기">
+            <img src="images/09.jpeg" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" />
+          </button>
         </figure>
         <figure class="gallery-item portrait">
-          <img src="images/03.jpeg" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" />
+          <button type="button" class="gallery-open" data-src="images/03.jpeg" data-alt="바른자리 테이블과 책, 아늑한 조명" aria-label="이미지 확대 보기">
+            <img src="images/03.jpeg" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" />
+          </button>
         </figure>
         <figure class="gallery-item">
-          <img src="images/11.jpeg" alt="바른자리 소파 라운지 공간" loading="lazy" />
+          <button type="button" class="gallery-open" data-src="images/11.jpeg" data-alt="바른자리 소파 라운지 공간" aria-label="이미지 확대 보기">
+            <img src="images/11.jpeg" alt="바른자리 소파 라운지 공간" loading="lazy" />
+          </button>
         </figure>
         <figure class="gallery-item">
-          <img src="images/12.jpeg" alt="바른자리 아트월과 스탠드 조명" loading="lazy" />
+          <button type="button" class="gallery-open" data-src="images/12.jpeg" data-alt="바른자리 아트월과 스탠드 조명" aria-label="이미지 확대 보기">
+            <img src="images/12.jpeg" alt="바른자리 아트월과 스탠드 조명" loading="lazy" />
+          </button>
         </figure>
         <figure class="gallery-item wide">
-          <img src="images/14.jpeg" alt="바른자리 테이블과 미러 포인트 공간" loading="lazy" />
+          <button type="button" class="gallery-open" data-src="images/14.jpeg" data-alt="바른자리 테이블과 미러 포인트 공간" aria-label="이미지 확대 보기">
+            <img src="images/14.jpeg" alt="바른자리 테이블과 미러 포인트 공간" loading="lazy" />
+          </button>
         </figure>
       </div>
     </div>
@@ -504,24 +590,24 @@
   <!-- ── Testimonials ── -->
   <section id="testimonials">
     <div class="section-inner">
-      <p class="section-label">Testimonials</p>
-      <h2 class="section-title">이용 후기</h2>
-      <p class="section-desc">바른자리를 다녀간 분들의 이야기입니다.</p>
+      <p class="section-label">Use Cases</p>
+      <h2 class="section-title">이용사례 · 이용방법</h2>
+      <p class="section-desc">실제 이용 상황과 활용 방법을 중심으로 정리한 콘텐츠입니다.</p>
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
           <p>"화상면접 준비하러 왔는데 완전 조용하고 집중도 잘 됐어요. 역에서도 가깝고 다음에도 또 이용할게요!"</p>
-          <span class="author">— 화상면접 이용 고객</span>
+          <span class="author">— 이용사례: 화상면접 준비</span>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
           <p>"소모임 장소 찾다가 예약했는데 딱 필요한 사이즈의 독립 공간이라 너무 좋았습니다. 분위기도 깔끔해요."</p>
-          <span class="author">— 독서 모임 이용 고객</span>
+          <span class="author">— 이용사례: 소모임 · 스터디</span>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
           <p>"유튜브 촬영 공간 찾고 있었는데 배경도 깔끔하고 조용해서 좋았어요. 커피도 마실 수 있어서 더 좋고요!"</p>
-          <span class="author">— 콘텐츠 제작자</span>
+          <span class="author">— 이용사례: 콘텐츠 촬영</span>
         </div>
       </div>
     </div>
@@ -612,15 +698,68 @@
     <p style="margin-top:.45rem;"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">공식 블로그 바로가기</a></p>
   </footer>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="갤러리 이미지 확대">
+    <button type="button" class="lightbox-backdrop" id="lightboxBackdrop" aria-label="이미지 확대 닫기"></button>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="닫기">✕</button>
+      <img id="lightboxImage" src="" alt="" />
+    </div>
+  </div>
+
   <button type="button" class="to-top" id="toTop" aria-label="맨 위로 이동">↑</button>
 
   <script>
     const toTopButton = document.getElementById('toTop');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const galleryOpenButtons = document.querySelectorAll('.gallery-open');
+    let scrollLockTop = 0;
 
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
       toTopButton.classList.toggle('show', shouldShow);
     };
+
+    const openLightbox = (src, alt) => {
+      scrollLockTop = window.scrollY;
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.top = `-${scrollLockTop}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      lightboxClose.focus();
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox.classList.contains('open')) {
+        return;
+      }
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockTop);
+    };
+
+    galleryOpenButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        openLightbox(button.dataset.src, button.dataset.alt);
+      });
+    });
+
+    lightboxBackdrop.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    });
 
     window.addEventListener('scroll', toggleToTopButton, { passive: true });
     toTopButton.addEventListener('click', () => {
