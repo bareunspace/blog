@@ -263,6 +263,42 @@
       font-size: .8rem;
       color: var(--muted);
     }
+    .usecase-controls {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+    }
+    .usecase-btn {
+      border: 1px solid #d1d5db;
+      background: #fff;
+      color: #1f2937;
+      border-radius: 999px;
+      padding: .48rem 1rem;
+      font-size: .86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .usecase-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .usecase-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      background: #f3f4f6;
+      color: #6b7280;
+      border-color: #e5e7eb;
+    }
+    .usecase-page {
+      min-width: 64px;
+      text-align: center;
+      font-size: .84rem;
+      color: var(--muted);
+    }
     .rss-status {
       margin-bottom: 1rem;
       font-size: .85rem;
@@ -636,6 +672,11 @@
           <span class="author">— 이용사례: 콘텐츠 촬영</span>
         </div>
       </div>
+      <div class="usecase-controls" id="useCaseControls" hidden>
+        <button type="button" class="usecase-btn" id="useCasePrev">← 이전</button>
+        <p class="usecase-page" id="useCasePageInfo" aria-live="polite">1 / 1</p>
+        <button type="button" class="usecase-btn" id="useCaseNext">다음 →</button>
+      </div>
     </div>
   </section>
 
@@ -743,7 +784,13 @@
     const galleryOpenButtons = document.querySelectorAll('.gallery-open');
     const useCasesGrid = document.getElementById('useCasesGrid');
     const rssStatus = document.getElementById('rssStatus');
+    const useCaseControls = document.getElementById('useCaseControls');
+    const useCasePrev = document.getElementById('useCasePrev');
+    const useCaseNext = document.getElementById('useCaseNext');
+    const useCasePageInfo = document.getElementById('useCasePageInfo');
     let scrollLockTop = 0;
+    let useCaseItems = [];
+    let useCasePage = 0;
 
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
@@ -843,6 +890,52 @@
       if (rssStatus) {
         rssStatus.hidden = true;
       }
+    };
+
+    const getUseCasePageSize = () => {
+      if (window.innerWidth < 760) {
+        return 1;
+      }
+      if (window.innerWidth < 1040) {
+        return 2;
+      }
+      return 3;
+    };
+
+    const updateUseCaseControls = () => {
+      if (!useCaseControls || !useCasePrev || !useCaseNext || !useCasePageInfo) {
+        return;
+      }
+
+      const pageSize = getUseCasePageSize();
+      const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+
+      if (useCaseItems.length <= pageSize) {
+        useCaseControls.hidden = true;
+        return;
+      }
+
+      useCaseControls.hidden = false;
+      useCasePrev.disabled = useCasePage <= 0;
+      useCaseNext.disabled = useCasePage >= totalPages - 1;
+      useCasePageInfo.textContent = `${useCasePage + 1} / ${totalPages}`;
+    };
+
+    const renderUseCasePage = () => {
+      if (!useCaseItems.length) {
+        return;
+      }
+
+      const pageSize = getUseCasePageSize();
+      const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+      if (useCasePage >= totalPages) {
+        useCasePage = totalPages - 1;
+      }
+
+      const start = useCasePage * pageSize;
+      const end = start + pageSize;
+      renderUseCases(useCaseItems.slice(start, end));
+      updateUseCaseControls();
     };
 
     const fetchWithTimeout = async (url, timeoutMs = 5500) => {
@@ -984,21 +1077,51 @@
 
         const selected = filtered.slice(0, 3);
         if (selected.length > 0) {
-          renderUseCases(selected);
-          if (rssStatus) {
-            rssStatus.hidden = true;
-          }
+          useCaseItems = filtered.slice(0, 18);
+          useCasePage = 0;
+          renderUseCasePage();
         } else if (rssStatus) {
           rssStatus.textContent = '이용사례 · 이용방법 글을 준비 중입니다.';
           rssStatus.hidden = false;
+          if (useCaseControls) {
+            useCaseControls.hidden = true;
+          }
         }
       } catch (error) {
         if (rssStatus) {
           rssStatus.textContent = '최신 이용사례를 준비 중입니다.';
           rssStatus.hidden = false;
         }
+        if (useCaseControls) {
+          useCaseControls.hidden = true;
+        }
       }
     };
+
+    if (useCasePrev && useCaseNext) {
+      useCasePrev.addEventListener('click', () => {
+        if (useCasePage > 0) {
+          useCasePage -= 1;
+          renderUseCasePage();
+        }
+      });
+
+      useCaseNext.addEventListener('click', () => {
+        const pageSize = getUseCasePageSize();
+        const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+        if (useCasePage < totalPages - 1) {
+          useCasePage += 1;
+          renderUseCasePage();
+        }
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      if (useCaseItems.length > 0) {
+        useCasePage = 0;
+        renderUseCasePage();
+      }
+    });
 
     window.addEventListener('scroll', toggleToTopButton, { passive: true });
     toTopButton.addEventListener('click', () => {
