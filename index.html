@@ -843,6 +843,7 @@
       flex-direction: column;
       align-items: center;
       gap: .75rem;
+      padding: 0 3.2rem;
     }
     .lightbox-content img {
       width: 100%;
@@ -852,22 +853,58 @@
       box-shadow: 0 18px 50px rgba(0,0,0,.35);
       background: #fff;
     }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 999px;
+      background: rgba(15,23,42,.72);
+      box-shadow: 0 10px 24px rgba(0,0,0,.45);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+      z-index: 2;
+    }
+    .lightbox-nav:hover {
+      background: rgba(15,23,42,.9);
+      border-color: rgba(255,255,255,.6);
+      transform: translateY(-50%) scale(1.04);
+    }
+    .lightbox-nav:focus-visible {
+      outline: 3px solid rgba(244,162,97,.95);
+      outline-offset: 2px;
+    }
+    .lightbox-prev { left: 0; }
+    .lightbox-next { right: 0; }
     .lightbox-close {
       position: absolute;
       top: .35rem;
       right: .35rem;
-      width: 40px;
-      height: 40px;
-      border: 0;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.42);
       border-radius: 999px;
-      background: rgba(255,255,255,.18);
+      background: rgba(15,23,42,.72);
+      box-shadow: 0 10px 24px rgba(0,0,0,.45);
+      backdrop-filter: blur(4px);
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.28rem;
+      font-weight: 700;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
       cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+      z-index: 3;
     }
     .lightbox-close:hover {
-      background: rgba(255,255,255,.28);
+      background: rgba(15,23,42,.9);
+      border-color: rgba(255,255,255,.6);
       transform: scale(1.04);
     }
     .lightbox-close:focus-visible {
@@ -1150,6 +1187,22 @@
         font-weight: 800;
         letter-spacing: -.1px;
         box-shadow: 0 12px 26px rgba(22,56,43,.32);
+      }
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.15rem;
+      }
+      .lightbox-content {
+        padding: 0 2.5rem;
+      }
+      .lightbox-prev { left: .2rem; }
+      .lightbox-next { right: .2rem; }
+      .lightbox-close {
+        width: 42px;
+        height: 42px;
+        top: .2rem;
+        right: .2rem;
       }
     }
     @media (max-width: 960px) {
@@ -1528,8 +1581,10 @@
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="갤러리 이미지 확대">
     <button type="button" class="lightbox-backdrop" id="lightboxBackdrop" aria-label="이미지 확대 닫기"></button>
     <div class="lightbox-content">
+      <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="이전 이미지">‹</button>
       <button type="button" class="lightbox-close" id="lightboxClose" aria-label="닫기">✕</button>
       <img id="lightboxImage" src="" alt="" />
+      <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="다음 이미지">›</button>
     </div>
   </div>
 
@@ -1542,7 +1597,10 @@
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxBackdrop = document.getElementById('lightboxBackdrop');
     const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
     const galleryOpenButtons = document.querySelectorAll('.gallery-open');
+    const galleryItems = Array.from(galleryOpenButtons);
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
     const navSectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -1560,6 +1618,7 @@
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
     let scrollLockTop = 0;
+    let currentGalleryIndex = -1;
     let useCaseItems = [];
     let useCasePage = 0;
 
@@ -1618,15 +1677,41 @@
     };
 
     const openLightbox = (src, alt) => {
-      scrollLockTop = window.scrollY;
+      if (!lightbox.classList.contains('open')) {
+        scrollLockTop = window.scrollY;
+        document.body.style.top = `-${scrollLockTop}px`;
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      }
       lightboxImage.src = src;
       lightboxImage.alt = alt || '';
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.top = `-${scrollLockTop}px`;
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
       lightboxClose.focus();
+    };
+
+    const openLightboxByIndex = (index) => {
+      if (!galleryItems.length) {
+        return;
+      }
+      const normalizedIndex = (index + galleryItems.length) % galleryItems.length;
+      currentGalleryIndex = normalizedIndex;
+      const button = galleryItems[normalizedIndex];
+      openLightbox(button.dataset.src, button.dataset.alt);
+    };
+
+    const showPrevImage = () => {
+      if (!galleryItems.length || !lightbox.classList.contains('open')) {
+        return;
+      }
+      openLightboxByIndex(currentGalleryIndex - 1);
+    };
+
+    const showNextImage = () => {
+      if (!galleryItems.length || !lightbox.classList.contains('open')) {
+        return;
+      }
+      openLightboxByIndex(currentGalleryIndex + 1);
     };
 
     const closeLightbox = () => {
@@ -1642,9 +1727,9 @@
       window.scrollTo(0, scrollLockTop);
     };
 
-    galleryOpenButtons.forEach((button) => {
+    galleryOpenButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        openLightbox(button.dataset.src, button.dataset.alt);
+        openLightboxByIndex(index);
       });
     });
 
@@ -1702,9 +1787,23 @@
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrevImage);
+    lightboxNext.addEventListener('click', showNextImage);
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         closeLightbox();
+        return;
+      }
+      if (!lightbox.classList.contains('open')) {
+        return;
+      }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showPrevImage();
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        showNextImage();
       }
     });
 
