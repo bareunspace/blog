@@ -605,6 +605,26 @@
       color: rgba(255,255,255,.78);
       line-height: 1.8;
     }
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: -.2px;
+      margin-bottom: .45rem;
+    }
+    .footer-logo .logo-mark {
+      width: 18px;
+      height: 18px;
+      border-color: rgba(255,255,255,.92);
+      background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
+    }
+    .footer-logo .logo-mark::before,
+    .footer-logo .logo-mark::after {
+      background: rgba(255,255,255,.88);
+    }
     .footer-contact a {
       color: #fff;
       border-bottom: 1px solid rgba(255,255,255,.35);
@@ -958,6 +978,7 @@
 
   <!-- ── Footer ── -->
   <footer>
+    <p class="footer-logo"><span class="logo-mark" aria-hidden="true"></span><span>바른자리</span></p>
     <p>© 2026 바른자리 · 부천 신중동역 도보 1분 · 100% 예약제 프라이빗 독립 공간</p>
     <p class="footer-contact">📍 경기도 부천시 원미구 신흥로 223, 114호 · 📧 <a href="mailto:bareunjari@gmail.com">bareunjari@gmail.com</a> · 📞 <a href="tel:05071358-2768">0507-1358-2768</a></p>
   </footer>
