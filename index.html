@@ -842,13 +842,100 @@
       useCasesGrid.innerHTML = cardsHtml;
     };
 
+    const fetchWithTimeout = async (url, timeoutMs = 5500) => {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const response = await fetch(url, { cache: 'no-store', signal: controller.signal });
+        return response;
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    };
+
+    const parseXmlItems = (xmlText) => {
+      const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+      const nodeList = Array.from(xml.querySelectorAll('item'));
+      return nodeList.map((item) => ({
+        title: item.querySelector('title')?.textContent?.trim() || '',
+        description: item.querySelector('description')?.textContent || '',
+        link: item.querySelector('link')?.textContent?.trim() || '',
+        pubDate: item.querySelector('pubDate')?.textContent?.trim() || ''
+      }));
+    };
+
+    const fetchRssItems = async (rssUrl) => {
+      const sources = [
+        {
+          type: 'xml',
+          url: `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`
+        },
+        {
+          type: 'json-xml',
+          url: `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`
+        },
+        {
+          type: 'rss2json',
+          url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
+        }
+      ];
+
+      for (const source of sources) {
+        try {
+          const response = await fetchWithTimeout(source.url);
+          if (!response.ok) {
+            continue;
+          }
+
+          if (source.type === 'xml') {
+            const xmlText = await response.text();
+            const items = parseXmlItems(xmlText);
+            if (items.length > 0) {
+              return items;
+            }
+            continue;
+          }
+
+          if (source.type === 'json-xml') {
+            const payload = await response.json();
+            const xmlText = payload?.contents || '';
+            if (!xmlText) {
+              continue;
+            }
+            const items = parseXmlItems(xmlText);
+            if (items.length > 0) {
+              return items;
+            }
+            continue;
+          }
+
+          const payload = await response.json();
+          const items = Array.isArray(payload?.items)
+            ? payload.items.map((item) => ({
+                title: item?.title || '',
+                description: item?.description || '',
+                link: item?.link || '',
+                pubDate: item?.pubDate || ''
+              }))
+            : [];
+
+          if (items.length > 0) {
+            return items;
+          }
+        } catch (error) {
+          // Try the next source.
+        }
+      }
+
+      return [];
+    };
+
     const loadUseCasesFromRss = async () => {
       if (!useCasesGrid) {
         return;
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`;
       const titlePatterns = [
         /이용\s*사례/i,
         /공간\s*이용\s*사례/i,
@@ -866,27 +953,14 @@
 
       try {
         if (rssStatus) {
+          rssStatus.textContent = '최신 이용사례를 불러오는 중입니다.';
           rssStatus.hidden = false;
         }
 
-        const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 4500);
-        const response = await fetch(proxyUrl, { cache: 'no-store', signal: controller.signal });
-        window.clearTimeout(timeoutId);
-        if (!response.ok) {
-          throw new Error('RSS 응답 실패');
+        const parsed = await fetchRssItems(rssUrl);
+        if (parsed.length === 0) {
+          throw new Error('RSS 데이터 없음');
         }
-
-        const xmlText = await response.text();
-        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
-        const nodeList = Array.from(xml.querySelectorAll('item'));
-
-        const parsed = nodeList.map((item) => ({
-          title: item.querySelector('title')?.textContent?.trim() || '',
-          description: item.querySelector('description')?.textContent || '',
-          link: item.querySelector('link')?.textContent?.trim() || '',
-          pubDate: item.querySelector('pubDate')?.textContent?.trim() || ''
-        }));
 
         const filtered = parsed
           .map((item) => {
@@ -909,16 +983,15 @@
         if (selected.length > 0) {
           renderUseCases(selected);
           if (rssStatus) {
-            rssStatus.textContent = '네이버 블로그 최신 글 기준으로 업데이트되었습니다.';
-            rssStatus.hidden = false;
+            rssStatus.hidden = true;
           }
         } else if (rssStatus) {
-          rssStatus.textContent = '이용사례 · 이용방법으로 분류된 글이 없어 기본 사례를 표시합니다.';
+          rssStatus.textContent = '이용사례 · 이용방법 글을 준비 중입니다.';
           rssStatus.hidden = false;
         }
       } catch (error) {
         if (rssStatus) {
-          rssStatus.textContent = 'RSS 연결이 일시적으로 지연되어 기본 사례를 표시합니다.';
+          rssStatus.textContent = '최신 이용사례를 준비 중입니다.';
           rssStatus.hidden = false;
         }
       }
