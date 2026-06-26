@@ -568,6 +568,12 @@
       background: #fff; border-radius: var(--radius);
       padding: 2rem 1.6rem; box-shadow: var(--shadow);
       position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .price-card:hover,
+    .price-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.14);
     }
     .price-card.featured {
       background: var(--primary); color: #fff;
@@ -729,6 +735,12 @@
     .testimonial-card {
       background: #fff; border-radius: var(--radius);
       padding: 1.8rem; box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover,
+    .testimonial-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.14);
     }
     .testimonial-card .stars {
       display: inline-flex;
