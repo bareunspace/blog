@@ -241,8 +241,33 @@
       padding: 1.8rem; box-shadow: var(--shadow);
     }
     .testimonial-card .stars { color: var(--accent); font-size: 1.1rem; margin-bottom: .8rem; }
+    .testimonial-card .testimonial-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .65rem;
+      line-height: 1.45;
+    }
+    .testimonial-card .testimonial-title a {
+      color: var(--text);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .testimonial-card .testimonial-title a:hover {
+      color: var(--primary);
+      border-color: rgba(45,106,79,.35);
+    }
     .testimonial-card p { font-size: .93rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
     .testimonial-card .author { font-size: .85rem; font-weight: 600; color: var(--primary); }
+    .testimonial-meta {
+      margin-top: .35rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .rss-status {
+      margin-bottom: 1rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
 
     /* ── Gallery ── */
     #gallery { background: var(--bg); }
@@ -593,7 +618,8 @@
       <p class="section-label">Use Cases</p>
       <h2 class="section-title">이용사례 · 이용방법</h2>
       <p class="section-desc">실제 이용 상황과 활용 방법을 중심으로 정리한 콘텐츠입니다.</p>
-      <div class="testimonials-grid">
+      <p class="rss-status" id="rssStatus" hidden>네이버 블로그에서 최신 이용사례를 불러오고 있습니다.</p>
+      <div class="testimonials-grid" id="useCasesGrid">
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
           <p>"화상면접 준비하러 왔는데 완전 조용하고 집중도 잘 됐어요. 역에서도 가깝고 다음에도 또 이용할게요!"</p>
@@ -715,6 +741,8 @@
     const lightboxBackdrop = document.getElementById('lightboxBackdrop');
     const lightboxClose = document.getElementById('lightboxClose');
     const galleryOpenButtons = document.querySelectorAll('.gallery-open');
+    const useCasesGrid = document.getElementById('useCasesGrid');
+    const rssStatus = document.getElementById('rssStatus');
     let scrollLockTop = 0;
 
     const toggleToTopButton = () => {
@@ -761,11 +789,147 @@
       }
     });
 
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      if (Number.isNaN(date.getTime())) {
+        return '발행일 정보 없음';
+      }
+      return new Intl.DateTimeFormat('ko-KR', {
+        year: 'numeric', month: '2-digit', day: '2-digit'
+      }).format(date);
+    };
+
+    const stripHtml = (html) => {
+      const temp = document.createElement('div');
+      temp.innerHTML = html || '';
+      return (temp.textContent || temp.innerText || '').replace(/\s+/g, ' ').trim();
+    };
+
+    const truncate = (text, maxLength) => {
+      if (!text || text.length <= maxLength) {
+        return text;
+      }
+      return `${text.slice(0, maxLength).trim()}...`;
+    };
+
+    const escapeHtml = (text) => {
+      return (text || '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    };
+
+    const renderUseCases = (items) => {
+      const cardsHtml = items.map((item) => {
+        const title = item.title || '제목 없음';
+        const summary = truncate(stripHtml(item.description), 150) || '내용 요약이 없습니다.';
+        const date = formatDate(item.pubDate);
+        const link = item.link || '#';
+
+        return `
+          <article class="testimonial-card">
+            <div class="stars">⭐ 사례</div>
+            <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
+            <p>${escapeHtml(summary)}</p>
+            <span class="author">— 네이버 블로그 이용사례 · 이용방법</span>
+            <p class="testimonial-meta">${escapeHtml(date)}</p>
+          </article>
+        `;
+      }).join('');
+
+      useCasesGrid.innerHTML = cardsHtml;
+    };
+
+    const loadUseCasesFromRss = async () => {
+      if (!useCasesGrid) {
+        return;
+      }
+
+      const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`;
+      const titlePatterns = [
+        /이용\s*사례/i,
+        /공간\s*이용\s*사례/i,
+        /이용\s*방법/i,
+        /사용\s*방법/i,
+        /활용\s*방법/i
+      ];
+      const bodyPatterns = [
+        /이용\s*사례/i,
+        /이용\s*방법/i,
+        /공간\s*활용/i,
+        /준비\s*방법/i,
+        /가이드/i
+      ];
+
+      try {
+        if (rssStatus) {
+          rssStatus.hidden = false;
+        }
+
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 4500);
+        const response = await fetch(proxyUrl, { cache: 'no-store', signal: controller.signal });
+        window.clearTimeout(timeoutId);
+        if (!response.ok) {
+          throw new Error('RSS 응답 실패');
+        }
+
+        const xmlText = await response.text();
+        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const nodeList = Array.from(xml.querySelectorAll('item'));
+
+        const parsed = nodeList.map((item) => ({
+          title: item.querySelector('title')?.textContent?.trim() || '',
+          description: item.querySelector('description')?.textContent || '',
+          link: item.querySelector('link')?.textContent?.trim() || '',
+          pubDate: item.querySelector('pubDate')?.textContent?.trim() || ''
+        }));
+
+        const filtered = parsed
+          .map((item) => {
+            const cleanDesc = stripHtml(item.description);
+            const titleScore = titlePatterns.some((pattern) => pattern.test(item.title)) ? 2 : 0;
+            const bodyScore = bodyPatterns.some((pattern) => pattern.test(cleanDesc)) ? 1 : 0;
+            return { ...item, score: titleScore + bodyScore };
+          })
+          .filter((item) => item.score > 0)
+          .sort((a, b) => {
+            const aTime = new Date(a.pubDate).getTime() || 0;
+            const bTime = new Date(b.pubDate).getTime() || 0;
+            if (bTime !== aTime) {
+              return bTime - aTime;
+            }
+            return b.score - a.score;
+          });
+
+        const selected = filtered.slice(0, 3);
+        if (selected.length > 0) {
+          renderUseCases(selected);
+          if (rssStatus) {
+            rssStatus.textContent = '네이버 블로그 최신 글 기준으로 업데이트되었습니다.';
+            rssStatus.hidden = false;
+          }
+        } else if (rssStatus) {
+          rssStatus.textContent = '이용사례 · 이용방법으로 분류된 글이 없어 기본 사례를 표시합니다.';
+          rssStatus.hidden = false;
+        }
+      } catch (error) {
+        if (rssStatus) {
+          rssStatus.textContent = 'RSS 연결이 일시적으로 지연되어 기본 사례를 표시합니다.';
+          rssStatus.hidden = false;
+        }
+      }
+    };
+
     window.addEventListener('scroll', toggleToTopButton, { passive: true });
     toTopButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     toggleToTopButton();
+    loadUseCasesFromRss();
   </script>
 
 </body>
