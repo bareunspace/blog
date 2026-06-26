@@ -1594,31 +1594,31 @@
       <p class="section-desc">원하는 시간에 편하게 예약하고, 필요한 안내는 언제든 가볍게 문의해 주세요.</p>
       <div class="contact-grid">
         <div class="contact-item">
-          <p class="ci-label">📅 예약</p>
-            <p class="ci-value"><a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" data-cta="contact_booking">네이버플레이스</a></p>
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-calendar"></use></svg>예약</p>
+          <p class="ci-value"><a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" data-cta="contact_booking">네이버플레이스</a></p>
         </div>
         <div class="contact-item">
-          <p class="ci-label">💬 상담</p>
-            <p class="ci-value"><a href="https://talk.naver.com/profile/w1pp89m" target="_blank" rel="noopener noreferrer" data-cta="contact_talk">네이버톡톡</a></p>
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-chat"></use></svg>상담</p>
+          <p class="ci-value"><a href="https://talk.naver.com/profile/w1pp89m" target="_blank" rel="noopener noreferrer" data-cta="contact_talk">네이버톡톡</a></p>
         </div>
         <div class="contact-item">
-          <p class="ci-label">📝 공식 블로그</p>
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-note"></use></svg>공식 블로그</p>
           <p class="ci-value"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">네이버 블로그</a></p>
         </div>
         <div class="contact-item">
-          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-calendar"></use></svg>예약</p>
+          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-map"></use></svg>지도</p>
           <p class="ci-value"><a href="https://map.naver.com/p/entry/place/2041312316" target="_blank" rel="noopener noreferrer">네이버지도</a></p>
         </div>
       </div>
-          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-chat"></use></svg>상담</p>
+      <div class="contact-form-wrap">
         <form id="contactForm" class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="[바른자리] 웹 문의가 도착했습니다" />
           <input type="hidden" name="_captcha" value="false" />
-          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-note"></use></svg>공식 블로그</p>
+          <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/?contact=sent#contact" />
           <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-map"></use></svg>지도</p>
+          <div class="contact-form-row">
             <div>
               <label for="contactName">이름</label>
               <input id="contactName" name="이름" type="text" required />
@@ -1652,7 +1652,7 @@
     <p class="footer-logo"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">바른자리</span></p>
     <p class="footer-logo-note">조용한 하루, 온전히 나에게 집중하는 공간</p>
     <p>© 2026 바른자리 · 부천 신중동역 도보 1분 · 100% 예약제 프라이빗 독립 공간</p>
-    <p class="footer-contact">📍 경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티) 114호 · 📧 <a href="mailto:bareunjari@gmail.com">bareunjari@gmail.com</a> · 📞 <a href="tel:05071358-2768">0507-1358-2768</a></p>
+    <p class="footer-contact"><svg class="inline-icon" aria-hidden="true"><use href="#i-map"></use></svg>경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티) 114호 · <svg class="inline-icon" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:bareunjari@gmail.com">bareunjari@gmail.com</a> · <svg class="inline-icon" aria-hidden="true"><use href="#i-phone"></use></svg><a href="tel:05071358-2768">0507-1358-2768</a></p>
   </footer>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="갤러리 이미지 확대">
@@ -1941,7 +1941,7 @@
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
         const contentType = item.contentType || classifyUseCaseType(item);
-        const badgeLabel = contentType === '이용안내' ? '📘 안내' : '⭐ 사례';
+        const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
 
         return `
           <article class="testimonial-card">
