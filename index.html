@@ -543,6 +543,20 @@
       color: rgba(255,255,255,.8);
       line-height: 1.6;
     }
+    .contact-submit-status {
+      margin-top: .75rem;
+      padding: .7rem .9rem;
+      border-radius: 10px;
+      font-size: .84rem;
+      line-height: 1.5;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.92);
+    }
+    .contact-submit-status.success {
+      background: rgba(16, 185, 129, .2);
+      border-color: rgba(16, 185, 129, .45);
+    }
 
     /* ── Footer ── */
     footer {
@@ -869,7 +883,7 @@
           <input type="hidden" name="_subject" value="[바른자리] 웹 문의가 도착했습니다" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/#contact" />
+          <input type="hidden" name="_next" value="https://bareunspace.github.io/blog/?contact=sent#contact" />
           <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="contact-form-row">
@@ -897,6 +911,7 @@
         </form>
         <p class="contact-form-note">처음 1회는 FormSubmit 인증 메일 확인 후 웹 문의 수신이 활성화됩니다.</p>
         <p class="contact-rate-note" id="contactRateNote">스팸 방지를 위해 문의는 90초 간격으로 접수됩니다.</p>
+        <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>
       </div>
     </div>
   </section>
@@ -933,6 +948,7 @@
     const useCasePageInfo = document.getElementById('useCasePageInfo');
     const contactForm = document.getElementById('contactForm');
     const contactRateNote = document.getElementById('contactRateNote');
+    const contactSubmitStatus = document.getElementById('contactSubmitStatus');
     let scrollLockTop = 0;
     let useCaseItems = [];
     let useCasePage = 0;
@@ -1299,11 +1315,26 @@
     if (contactForm) {
       const CONTACT_LIMIT_MS = 90 * 1000;
       const CONTACT_LAST_SUBMIT_KEY = 'bareunjari-contact-last-submit';
+      const contactParams = new URLSearchParams(window.location.search);
+
+      if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
+        contactSubmitStatus.hidden = false;
+        contactSubmitStatus.classList.add('success');
+        contactSubmitStatus.textContent = '문의가 정상 접수되었습니다. 확인 후 빠르게 연락드릴게요.';
+        contactForm.reset();
+        window.history.replaceState({}, '', `${window.location.pathname}${window.location.hash || '#contact'}`);
+      }
 
       contactForm.addEventListener('submit', (event) => {
         const lastSubmit = Number(localStorage.getItem(CONTACT_LAST_SUBMIT_KEY) || 0);
         const now = Date.now();
         const remaining = CONTACT_LIMIT_MS - (now - lastSubmit);
+
+        if (contactSubmitStatus) {
+          contactSubmitStatus.hidden = true;
+          contactSubmitStatus.classList.remove('success');
+          contactSubmitStatus.textContent = '';
+        }
 
         if (remaining > 0) {
           event.preventDefault();
@@ -1311,12 +1342,20 @@
           if (contactRateNote) {
             contactRateNote.textContent = `잠시 후 다시 시도해 주세요. 약 ${seconds}초 후 제출 가능합니다.`;
           }
+          if (contactSubmitStatus) {
+            contactSubmitStatus.hidden = false;
+            contactSubmitStatus.textContent = '연속 전송을 방지하고 있어요. 잠시 후 다시 시도해 주세요.';
+          }
           return;
         }
 
         localStorage.setItem(CONTACT_LAST_SUBMIT_KEY, String(now));
         if (contactRateNote) {
           contactRateNote.textContent = '문의를 전송 중입니다.';
+        }
+        if (contactSubmitStatus) {
+          contactSubmitStatus.hidden = false;
+          contactSubmitStatus.textContent = '전송 중입니다. 완료 후 이 영역에 접수 결과가 표시됩니다.';
         }
       });
     }
