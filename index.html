@@ -1546,7 +1546,7 @@
       updateUseCaseControls();
     };
 
-    const fetchWithTimeout = async (url, timeoutMs = 5500) => {
+    const fetchWithTimeout = async (url, timeoutMs = 12000) => {
       const controller = new AbortController();
       const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
       try {
@@ -1571,16 +1571,12 @@
     const fetchRssItems = async (rssUrl) => {
       const sources = [
         {
-          type: 'xml',
-          url: `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`
+          type: 'rss2json',
+          url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
         },
         {
           type: 'json-xml',
           url: `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`
-        },
-        {
-          type: 'rss2json',
-          url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
         }
       ];
 
@@ -1588,15 +1584,6 @@
         try {
           const response = await fetchWithTimeout(source.url);
           if (!response.ok) {
-            continue;
-          }
-
-          if (source.type === 'xml') {
-            const xmlText = await response.text();
-            const items = parseXmlItems(xmlText);
-            if (items.length > 0) {
-              return items;
-            }
             continue;
           }
 
