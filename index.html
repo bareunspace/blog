@@ -1550,6 +1550,7 @@
     const contactForm = document.getElementById('contactForm');
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
+    const policyDisclosure = document.querySelector('.policy-disclosure');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -1684,6 +1685,15 @@
         });
       });
     });
+
+    if (policyDisclosure) {
+      policyDisclosure.addEventListener('toggle', () => {
+        trackEvent('toggle_policy_disclosure', {
+          placement: 'about',
+          state: policyDisclosure.open ? 'open' : 'close'
+        });
+      });
+    }
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
