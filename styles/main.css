@@ -132,7 +132,7 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 4rem 1.5rem;
-      background: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), url('images/main.jpeg') center 72% / cover no-repeat;
+      background: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), url('../images/main.jpeg') center 72% / cover no-repeat;
       position: relative; overflow: hidden;
     }
     #home::before {
