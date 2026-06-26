@@ -840,6 +840,9 @@
       }).join('');
 
       useCasesGrid.innerHTML = cardsHtml;
+      if (rssStatus) {
+        rssStatus.hidden = true;
+      }
     };
 
     const fetchWithTimeout = async (url, timeoutMs = 5500) => {
