@@ -347,12 +347,12 @@
 
     /* ── Hero ── */
     #home {
-      min-height: 92vh;
+      min-height: clamp(520px, 74vh, 760px);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
       padding: 4rem 1.5rem;
-      background: linear-gradient(rgba(12, 31, 23, .34), rgba(12, 31, 23, .34)), url('images/main.jpeg') center 72% / cover no-repeat;
+      background: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), url('images/main.jpeg') center 72% / cover no-repeat;
       position: relative; overflow: hidden;
     }
     #home::before {
@@ -1251,7 +1251,11 @@
       }
       .nav-links.open { display: flex; }
       .nav-links a { font-size: .95rem; padding-bottom: .12rem; }
-      #home { min-height: 80vh; }
+      #home {
+        min-height: clamp(480px, 68vh, 640px);
+        padding-top: 3.5rem;
+        padding-bottom: 3.25rem;
+      }
       .hero-btns { flex-direction: column; align-items: center; }
       .hero-proof { gap: .45rem; }
       .hero-proof li { font-size: .77rem; }
