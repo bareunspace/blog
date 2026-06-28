@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bareunspace.github.io/blog/sitemap.xml
+Sitemap: https://bareunjari.com/sitemap.xml
