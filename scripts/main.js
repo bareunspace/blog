@@ -597,8 +597,6 @@
       const contactParams = new URLSearchParams(window.location.search);
       const contactNameInput = document.getElementById('contactName');
       const contactPhoneInput = document.getElementById('contactPhone');
-      const contactEmailInput = document.getElementById('contactEmail');
-      const contactCcInput = document.getElementById('contactCc');
       const contactSubjectInput = document.getElementById('contactSubject');
 
       if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
@@ -627,13 +625,6 @@
           contactSubjectInput.value = subjectParts.length
             ? `[바른자리 문의접수] ${subjectParts.join(' | ')}`
             : '[바른자리 문의접수] 신규 문의';
-        }
-
-        if (contactCcInput) {
-          const emailValue = (contactEmailInput && typeof contactEmailInput.value === 'string')
-            ? contactEmailInput.value.trim()
-            : '';
-          contactCcInput.value = emailValue;
         }
 
         const lastSubmit = Number(localStorage.getItem(CONTACT_LAST_SUBMIT_KEY) || 0);
