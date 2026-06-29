@@ -132,7 +132,15 @@ nav {
   align-items: center; justify-content: center;
   text-align: center;
   padding: 4rem 1.5rem;
-  background: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), url('../images/main.webp') center 72% / cover no-repeat;
+  background-color: #1f3f31;
+  background-image: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), url('../images/main.jpeg');
+  background-image: linear-gradient(rgba(12, 31, 23, .44), rgba(12, 31, 23, .44)), image-set(
+    url('../images/main.webp') type('image/webp') 1x,
+    url('../images/main.jpeg') type('image/jpeg') 1x
+  );
+  background-position: center 72%;
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative; overflow: hidden;
 }
 #home::before {
@@ -1095,6 +1103,24 @@ footer {
   font-size: .8rem;
   line-height: 1.6;
 }
+.footer-story-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: .5rem;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.55);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.footer-story-link:hover {
+  background: #fff;
+  color: #16382b;
+  transform: translateY(-1px);
+}
 .footer-logo .logo-mark {
   border-color: rgba(255,255,255,.92);
   background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
@@ -1156,6 +1182,161 @@ footer {
 
 .mobile-sticky-cta {
   display: none;
+}
+
+/* ── About Page ── */
+main.about-page {
+  background:
+    radial-gradient(1200px 420px at 50% -120px, rgba(82,183,136,.12), transparent 62%),
+    var(--bg);
+}
+main.about-page section {
+  padding-top: 4.4rem;
+  padding-bottom: 4.4rem;
+}
+main.about-page #home {
+  min-height: clamp(360px, 56vh, 520px);
+  background-position: center 58%;
+}
+main.about-page #home .section-inner {
+  max-width: 760px;
+}
+main.about-page #home .section-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .34rem .72rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,.34);
+  color: #f9d57a;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+main.about-page #home .section-title {
+  color: #fff;
+  text-shadow: 0 10px 24px rgba(0,0,0,.32);
+}
+main.about-page .hero-subtitle {
+  color: rgba(255,255,255,.96);
+  font-weight: 500;
+  text-shadow: 0 6px 20px rgba(0,0,0,.35);
+  margin-bottom: 0;
+}
+main.about-page section:not(#home) {
+  background: transparent;
+}
+main.about-page section:nth-of-type(even):not(#home):not(#contact) {
+  background: rgba(255,255,255,.7);
+}
+main.about-page .section-inner {
+  max-width: 860px;
+}
+main.about-page .section-title {
+  letter-spacing: -0.2px;
+  margin-bottom: .85rem;
+}
+main.about-page .logo-story-visual {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  margin: .1rem 0 .5rem;
+  padding: .62rem .88rem;
+  border-radius: 14px;
+  border: 1px solid #d4e0d9;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(17,24,39,.07);
+}
+main.about-page .logo-story-visual .logo-mark {
+  width: 28px;
+  height: 28px;
+}
+main.about-page .logo-story-visual .logo-text {
+  color: var(--primary);
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+main.about-page .logo-story-caption {
+  margin: 0 0 .95rem;
+  color: #4b5563;
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+main.about-page .section-desc,
+main.about-page .section-inner > p {
+  max-width: 72ch;
+  color: #374151;
+  line-height: 1.88;
+  margin-bottom: 0;
+}
+main.about-page .section-inner > p + p {
+  margin-top: 1rem;
+}
+main.about-page .hero-btns {
+  margin-top: 1.7rem;
+}
+main.about-page #contact .section-title {
+  color: #fff;
+  text-shadow: 0 8px 22px rgba(0,0,0,.28);
+}
+main.about-page #contact {
+  background-color: #1f3f31;
+  background-image: linear-gradient(rgba(12, 31, 23, .62), rgba(12, 31, 23, .62)), url('../images/main.jpeg');
+  background-image: linear-gradient(rgba(12, 31, 23, .62), rgba(12, 31, 23, .62)), image-set(
+    url('../images/main.webp') type('image/webp') 1x,
+    url('../images/main.jpeg') type('image/jpeg') 1x
+  );
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+main.about-page #contact .section-desc {
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 4px 16px rgba(0,0,0,.24);
+}
+main.about-page #contact .section-inner > p {
+  color: rgba(255,255,255,.95);
+  text-shadow: 0 4px 16px rgba(0,0,0,.26);
+}
+
+@media (max-width: 760px) {
+  main.about-page section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+  main.about-page #home {
+    min-height: clamp(300px, 45vh, 420px);
+    padding-top: 3.2rem;
+    padding-bottom: 2.4rem;
+  }
+  main.about-page .section-inner {
+    max-width: 100%;
+  }
+  main.about-page .section-title {
+    font-size: clamp(1.34rem, 6.3vw, 1.86rem);
+    line-height: 1.35;
+  }
+  main.about-page .logo-story-visual {
+    margin-top: 0;
+  }
+  main.about-page .logo-story-caption {
+    font-size: .79rem;
+    letter-spacing: .18px;
+  }
+  main.about-page .section-desc,
+  main.about-page .section-inner > p {
+    font-size: .98rem;
+    line-height: 1.82;
+  }
+  main.about-page .hero-btns {
+    gap: .75rem;
+  }
+  main.about-page .hero-btns .btn-primary,
+  main.about-page .hero-btns .btn-outline {
+    width: min(100%, 320px);
+    text-align: center;
+  }
 }
 
 /* ── Mobile ── */
@@ -1272,6 +1453,10 @@ footer {
     height: 42px;
     top: .2rem;
     right: .2rem;
+  }
+  .footer-story-link {
+    margin-top: .35rem;
+    margin-left: 0;
   }
 }
 @media (max-width: 960px) {
