@@ -1266,9 +1266,14 @@ main.about-page .logo-story-caption {
 }
 main.about-page .section-desc,
 main.about-page .section-inner > p {
-  max-width: 72ch;
+  max-width: 100%;
   color: #374151;
   line-height: 1.88;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   margin-bottom: 0;
 }
 main.about-page .section-inner > p + p {
