@@ -403,7 +403,12 @@ section { padding: 5rem 1.5rem; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
+.feature-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: .4rem;
+}
 .feature-card p { font-size: .9rem; color: var(--muted); }
 .feature-card-primary {
   border: 1px solid rgba(45,106,79,.28);
