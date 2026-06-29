@@ -595,6 +595,8 @@
       const CONTACT_LIMIT_MS = 90 * 1000;
       const CONTACT_LAST_SUBMIT_KEY = 'bareunjari-contact-last-submit';
       const contactParams = new URLSearchParams(window.location.search);
+      const contactEmailInput = document.getElementById('contactEmail');
+      const contactCcInput = document.getElementById('contactCc');
 
       if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
         contactSubmitStatus.hidden = false;
@@ -605,6 +607,13 @@
       }
 
       contactForm.addEventListener('submit', (event) => {
+        if (contactCcInput) {
+          const emailValue = (contactEmailInput && typeof contactEmailInput.value === 'string')
+            ? contactEmailInput.value.trim()
+            : '';
+          contactCcInput.value = emailValue;
+        }
+
         const lastSubmit = Number(localStorage.getItem(CONTACT_LAST_SUBMIT_KEY) || 0);
         const now = Date.now();
         const remaining = CONTACT_LIMIT_MS - (now - lastSubmit);
