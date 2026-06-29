@@ -1307,7 +1307,7 @@ main.about-page #contact .section-inner > p {
 }
 main.about-page #contact .contact-closing-line {
   max-width: none;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 @media (max-width: 760px) {
@@ -1338,9 +1338,6 @@ main.about-page #contact .contact-closing-line {
   main.about-page .section-inner > p {
     font-size: .98rem;
     line-height: 1.82;
-  }
-  main.about-page #contact .contact-closing-line {
-    white-space: normal;
   }
   main.about-page .hero-btns {
     gap: .75rem;
