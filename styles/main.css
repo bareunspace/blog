@@ -1304,12 +1304,12 @@ main.about-page #contact {
   background-repeat: no-repeat;
 }
 main.about-page #contact .section-desc {
-  color: rgba(255,255,255,.96);
-  text-shadow: 0 4px 16px rgba(0,0,0,.24);
+  color: #ffffff;
+  text-shadow: 0 4px 16px rgba(0,0,0,.3);
 }
 main.about-page #contact .section-inner > p {
-  color: rgba(255,255,255,.95);
-  text-shadow: 0 4px 16px rgba(0,0,0,.26);
+  color: #ffffff;
+  text-shadow: 0 4px 16px rgba(0,0,0,.32);
 }
 main.about-page #contact .btn-outline {
   border-color: rgba(255,255,255,.9);
@@ -1323,6 +1323,7 @@ main.about-page #contact .btn-outline:hover {
 main.about-page #contact .contact-closing-line {
   max-width: none;
   white-space: normal;
+  color: #ffffff;
 }
 
 @media (max-width: 760px) {
