@@ -1266,7 +1266,7 @@ main.about-page .logo-story-caption {
 }
 main.about-page .section-desc,
 main.about-page .section-inner > p {
-  max-width: 100%;
+  max-width: min(100%, 74ch);
   color: #374151;
   line-height: 1.88;
   white-space: normal;
@@ -1336,6 +1336,7 @@ main.about-page #contact .contact-closing-line {
   }
   main.about-page .section-desc,
   main.about-page .section-inner > p {
+    max-width: 100%;
     font-size: .98rem;
     line-height: 1.82;
   }
