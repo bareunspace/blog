@@ -51,10 +51,10 @@ nav {
   border-radius: 8px;
 }
 .logo-mark {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border: 2px solid var(--primary);
-  border-radius: 6px;
+  border-radius: 7px;
   position: relative;
   background: linear-gradient(145deg, rgba(82,183,136,.18), rgba(82,183,136,.03));
   flex-shrink: 0;
@@ -69,11 +69,12 @@ nav {
   background: rgba(45,106,79,.75);
   border-radius: 2px;
 }
-.logo-mark::before { left: 6px; }
-.logo-mark::after { right: 6px; }
+.logo-mark::before { left: 7px; }
+.logo-mark::after { right: 7px; }
 .logo-text {
   display: inline-block;
   transform: translateY(-.5px);
+  font-weight: 800;
 }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
@@ -1221,7 +1222,7 @@ main.about-page .hero-subtitle {
   text-shadow: 0 6px 20px rgba(0,0,0,.35);
   margin-bottom: 0;
 }
-main.about-page section:not(#home) {
+main.about-page section:not(#home):not(#contact) {
   background: transparent;
 }
 main.about-page section:nth-of-type(even):not(#home):not(#contact) {
@@ -1282,10 +1283,10 @@ main.about-page #contact .section-title {
 }
 main.about-page #contact {
   background-color: #1f3f31;
-  background-image: linear-gradient(rgba(12, 31, 23, .62), rgba(12, 31, 23, .62)), url('../images/main.jpeg');
+  background-image: linear-gradient(rgba(12, 31, 23, .62), rgba(12, 31, 23, .62)), url('../images/14.jpeg');
   background-image: linear-gradient(rgba(12, 31, 23, .62), rgba(12, 31, 23, .62)), image-set(
-    url('../images/main.webp') type('image/webp') 1x,
-    url('../images/main.jpeg') type('image/jpeg') 1x
+    url('../images/14.webp') type('image/webp') 1x,
+    url('../images/14.jpeg') type('image/jpeg') 1x
   );
   background-position: center;
   background-size: cover;
@@ -1298,6 +1299,10 @@ main.about-page #contact .section-desc {
 main.about-page #contact .section-inner > p {
   color: rgba(255,255,255,.95);
   text-shadow: 0 4px 16px rgba(0,0,0,.26);
+}
+main.about-page #contact .contact-closing-line {
+  max-width: none;
+  white-space: nowrap;
 }
 
 @media (max-width: 760px) {
@@ -1328,6 +1333,9 @@ main.about-page #contact .section-inner > p {
   main.about-page .section-inner > p {
     font-size: .98rem;
     line-height: 1.82;
+  }
+  main.about-page #contact .contact-closing-line {
+    white-space: normal;
   }
   main.about-page .hero-btns {
     gap: .75rem;
