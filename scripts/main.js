@@ -28,6 +28,8 @@
     const privateOfficePanel = document.getElementById('privateOfficePanel');
     const popupExhibitToggle = document.getElementById('popupExhibitToggle');
     const popupExhibitPanel = document.getElementById('popupExhibitPanel');
+    const soloRestToggle = document.getElementById('soloRestToggle');
+    const soloRestPanel = document.getElementById('soloRestPanel');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -233,6 +235,7 @@
     setupFeatureToggle(onlineExamToggle, onlineExamPanel, 'toggle_online_exam_panel');
     setupFeatureToggle(privateOfficeToggle, privateOfficePanel, 'toggle_private_office_panel');
     setupFeatureToggle(popupExhibitToggle, popupExhibitPanel, 'toggle_popup_exhibit_panel');
+    setupFeatureToggle(soloRestToggle, soloRestPanel, 'toggle_solo_rest_panel');
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
