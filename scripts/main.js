@@ -22,6 +22,8 @@
     const policyDisclosure = document.querySelector('.policy-disclosure');
     const videoInterviewToggle = document.getElementById('videoInterviewToggle');
     const videoInterviewPanel = document.getElementById('videoInterviewPanel');
+    const onlineExamToggle = document.getElementById('onlineExamToggle');
+    const onlineExamPanel = document.getElementById('onlineExamPanel');
     const privateOfficeToggle = document.getElementById('privateOfficeToggle');
     const privateOfficePanel = document.getElementById('privateOfficePanel');
     const popupExhibitToggle = document.getElementById('popupExhibitToggle');
@@ -228,6 +230,7 @@
     };
 
     setupFeatureToggle(videoInterviewToggle, videoInterviewPanel, 'toggle_video_interview_panel');
+    setupFeatureToggle(onlineExamToggle, onlineExamPanel, 'toggle_online_exam_panel');
     setupFeatureToggle(privateOfficeToggle, privateOfficePanel, 'toggle_private_office_panel');
     setupFeatureToggle(popupExhibitToggle, popupExhibitPanel, 'toggle_popup_exhibit_panel');
 
