@@ -595,8 +595,11 @@
       const CONTACT_LIMIT_MS = 90 * 1000;
       const CONTACT_LAST_SUBMIT_KEY = 'bareunjari-contact-last-submit';
       const contactParams = new URLSearchParams(window.location.search);
+      const contactNameInput = document.getElementById('contactName');
+      const contactPhoneInput = document.getElementById('contactPhone');
       const contactEmailInput = document.getElementById('contactEmail');
       const contactCcInput = document.getElementById('contactCc');
+      const contactSubjectInput = document.getElementById('contactSubject');
 
       if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
         contactSubmitStatus.hidden = false;
@@ -607,6 +610,25 @@
       }
 
       contactForm.addEventListener('submit', (event) => {
+        if (contactSubjectInput) {
+          const nameValue = (contactNameInput && typeof contactNameInput.value === 'string')
+            ? contactNameInput.value.trim()
+            : '';
+          const phoneValue = (contactPhoneInput && typeof contactPhoneInput.value === 'string')
+            ? contactPhoneInput.value.trim()
+            : '';
+          const subjectParts = [];
+          if (nameValue) {
+            subjectParts.push(nameValue);
+          }
+          if (phoneValue) {
+            subjectParts.push(phoneValue);
+          }
+          contactSubjectInput.value = subjectParts.length
+            ? `[바른자리 문의접수] ${subjectParts.join(' | ')}`
+            : '[바른자리 문의접수] 신규 문의';
+        }
+
         if (contactCcInput) {
           const emailValue = (contactEmailInput && typeof contactEmailInput.value === 'string')
             ? contactEmailInput.value.trim()
