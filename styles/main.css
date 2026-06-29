@@ -315,6 +315,10 @@ section { padding: 5rem 1.5rem; }
   width: 100%;
   cursor: pointer;
   position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: start;
+  column-gap: .75rem;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
 }
 .feature-toggle:hover {
@@ -330,17 +334,45 @@ section { padding: 5rem 1.5rem; }
   background: #f9fcfa;
 }
 .feature-toggle-hint {
-  display: inline-block;
-  margin-top: .7rem;
-  font-size: .8rem;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  align-self: start;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin-right: -.2rem;
+  margin-top: -.1rem;
+  font-size: .95rem;
   color: var(--primary);
   font-weight: 700;
+  line-height: 1;
+}
+.feature-toggle .feature-icon {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 0;
+}
+.feature-toggle h3 {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: .75rem;
+}
+.feature-toggle p {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+.feature-toggle .feature-toggle-hint {
+  grid-column: 3;
+  grid-row: 1;
 }
 .feature-toggle[aria-expanded="true"] .feature-toggle-hint::after {
-  content: '닫기';
+  content: '➖';
 }
 .feature-toggle[aria-expanded="false"] .feature-toggle-hint::after {
-  content: '열기';
+  content: '➕';
 }
 .feature-icon {
   width: 44px;
@@ -1183,6 +1215,9 @@ footer {
   .hero-btns { flex-direction: column; align-items: center; }
   .hero-proof { gap: .45rem; }
   .hero-proof li { font-size: .77rem; }
+  .feature-toggle-hint {
+    font-size: .82rem;
+  }
   .private-office-grid { grid-template-columns: 1fr; }
   .space-hero img,
   .about-photo img { height: 260px; min-height: 260px; }
