@@ -1311,6 +1311,12 @@ main.about-page #contact .section-inner > p {
   color: #ffffff;
   text-shadow: 0 4px 16px rgba(0,0,0,.32);
 }
+main.about-page #contact .contact-lead-line,
+main.about-page #contact .contact-closing-line {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1;
+}
 main.about-page #contact .btn-outline {
   border-color: rgba(255,255,255,.9);
   color: #fff;
