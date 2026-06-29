@@ -317,6 +317,7 @@ section { padding: 5rem 1.5rem; }
 .feature-card {
   background: #fff; border-radius: var(--radius);
   padding: 1.8rem; box-shadow: var(--shadow);
+  min-height: 238px;
 }
 .feature-toggle {
   text-align: left;
@@ -1492,4 +1493,5 @@ main.about-page #contact .contact-closing-line {
   .policy-hidden-grid { grid-template-columns: 1fr; }
   .plan-grid { grid-template-columns: 1fr; }
   .private-office-grid { grid-template-columns: 1fr; }
+  .feature-card { min-height: auto; }
 }
