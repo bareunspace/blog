@@ -1270,8 +1270,8 @@ main.about-page .logo-story-caption {
   letter-spacing: .3px;
   text-transform: uppercase;
 }
-main.about-page .section-desc,
-main.about-page .section-inner > p {
+main.about-page section:not(#home) .section-desc,
+main.about-page section:not(#home) .section-inner > p {
   max-width: min(100%, 74ch);
   color: #374151;
   line-height: 1.88;
