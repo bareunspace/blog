@@ -365,6 +365,7 @@ section { padding: 5rem 1.5rem; }
 .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
 .feature-card p { font-size: .9rem; color: var(--muted); }
 .private-office-panel {
+  grid-column: 1 / -1;
   margin-top: 1.1rem;
   background: linear-gradient(160deg, #f7fbf8 0%, #eef6f1 100%);
   border: 1px solid #d7e6dd;
