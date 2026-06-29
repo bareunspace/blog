@@ -20,6 +20,8 @@
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
     const policyDisclosure = document.querySelector('.policy-disclosure');
+    const videoInterviewToggle = document.getElementById('videoInterviewToggle');
+    const videoInterviewPanel = document.getElementById('videoInterviewPanel');
     const privateOfficeToggle = document.getElementById('privateOfficeToggle');
     const privateOfficePanel = document.getElementById('privateOfficePanel');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
@@ -193,31 +195,38 @@
       });
     }
 
-    if (privateOfficeToggle && privateOfficePanel) {
-      const togglePrivateOfficePanel = () => {
-        const isOpen = privateOfficeToggle.getAttribute('aria-expanded') === 'true';
+    const setupFeatureToggle = (toggleEl, panelEl, eventName) => {
+      if (!toggleEl || !panelEl) {
+        return;
+      }
+
+      const togglePanel = () => {
+        const isOpen = toggleEl.getAttribute('aria-expanded') === 'true';
         const nextState = !isOpen;
-        privateOfficeToggle.setAttribute('aria-expanded', String(nextState));
-        privateOfficePanel.hidden = !nextState;
+        toggleEl.setAttribute('aria-expanded', String(nextState));
+        panelEl.hidden = !nextState;
 
         if (nextState) {
-          privateOfficePanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panelEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        trackEvent('toggle_private_office_panel', {
+        trackEvent(eventName, {
           placement: 'space',
           state: nextState ? 'open' : 'close'
         });
       };
 
-      privateOfficeToggle.addEventListener('click', togglePrivateOfficePanel);
-      privateOfficeToggle.addEventListener('keydown', (event) => {
+      toggleEl.addEventListener('click', togglePanel);
+      toggleEl.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          togglePrivateOfficePanel();
+          togglePanel();
         }
       });
-    }
+    };
+
+    setupFeatureToggle(videoInterviewToggle, videoInterviewPanel, 'toggle_video_interview_panel');
+    setupFeatureToggle(privateOfficeToggle, privateOfficePanel, 'toggle_private_office_panel');
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
