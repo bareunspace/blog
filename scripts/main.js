@@ -20,6 +20,8 @@
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
     const policyDisclosure = document.querySelector('.policy-disclosure');
+    const privateOfficeToggle = document.getElementById('privateOfficeToggle');
+    const privateOfficePanel = document.getElementById('privateOfficePanel');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -188,6 +190,32 @@
           placement: 'about',
           state: policyDisclosure.open ? 'open' : 'close'
         });
+      });
+    }
+
+    if (privateOfficeToggle && privateOfficePanel) {
+      const togglePrivateOfficePanel = () => {
+        const isOpen = privateOfficeToggle.getAttribute('aria-expanded') === 'true';
+        const nextState = !isOpen;
+        privateOfficeToggle.setAttribute('aria-expanded', String(nextState));
+        privateOfficePanel.hidden = !nextState;
+
+        if (nextState) {
+          privateOfficePanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        trackEvent('toggle_private_office_panel', {
+          placement: 'space',
+          state: nextState ? 'open' : 'close'
+        });
+      };
+
+      privateOfficeToggle.addEventListener('click', togglePrivateOfficePanel);
+      privateOfficeToggle.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          togglePrivateOfficePanel();
+        }
       });
     }
 

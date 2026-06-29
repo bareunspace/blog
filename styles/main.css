@@ -309,6 +309,39 @@ section { padding: 5rem 1.5rem; }
   background: #fff; border-radius: var(--radius);
   padding: 1.8rem; box-shadow: var(--shadow);
 }
+.feature-toggle {
+  text-align: left;
+  border: 1px solid #d9e3dd;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+}
+.feature-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+.feature-toggle:focus-visible {
+  outline: 2px solid rgba(45,106,79,.45);
+  outline-offset: 3px;
+}
+.feature-toggle[aria-expanded="true"] {
+  border-color: rgba(45,106,79,.45);
+  background: #f9fcfa;
+}
+.feature-toggle-hint {
+  display: inline-block;
+  margin-top: .7rem;
+  font-size: .8rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+.feature-toggle[aria-expanded="true"] .feature-toggle-hint::after {
+  content: ' 닫기';
+}
+.feature-toggle[aria-expanded="false"] .feature-toggle-hint::after {
+  content: ' 열기';
+}
 .feature-icon {
   width: 44px;
   height: 44px;
@@ -331,6 +364,46 @@ section { padding: 5rem 1.5rem; }
 }
 .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
 .feature-card p { font-size: .9rem; color: var(--muted); }
+.private-office-panel {
+  margin-top: 1.1rem;
+  background: linear-gradient(160deg, #f7fbf8 0%, #eef6f1 100%);
+  border: 1px solid #d7e6dd;
+  border-radius: var(--radius);
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+}
+.private-office-lead {
+  font-size: .92rem;
+  color: #2f3b35;
+  margin-bottom: .9rem;
+}
+.private-office-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+.private-office-card {
+  background: #fff;
+  border: 1px solid #dfe7e2;
+  border-radius: 12px;
+  padding: .85rem .9rem;
+}
+.private-office-card h3 {
+  font-size: .88rem;
+  color: #1f2937;
+  margin-bottom: .35rem;
+}
+.private-office-card p {
+  font-size: .82rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+.private-office-card strong {
+  color: var(--primary);
+}
+.private-office-panel .about-cta {
+  margin-top: .95rem;
+}
 
 /* ── Pricing ── */
 #about {
@@ -1088,6 +1161,7 @@ footer {
   .hero-btns { flex-direction: column; align-items: center; }
   .hero-proof { gap: .45rem; }
   .hero-proof li { font-size: .77rem; }
+  .private-office-grid { grid-template-columns: 1fr; }
   .space-hero img,
   .about-photo img { height: 260px; min-height: 260px; }
   .gallery-grid { grid-template-columns: 1fr; }
@@ -1150,4 +1224,5 @@ footer {
   .policy-grid { grid-template-columns: 1fr; }
   .policy-hidden-grid { grid-template-columns: 1fr; }
   .plan-grid { grid-template-columns: 1fr; }
+  .private-office-grid { grid-template-columns: 1fr; }
 }
