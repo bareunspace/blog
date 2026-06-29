@@ -364,6 +364,27 @@ section { padding: 5rem 1.5rem; }
 }
 .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
 .feature-card p { font-size: .9rem; color: var(--muted); }
+.feature-card-primary {
+  border: 1px solid rgba(45,106,79,.28);
+  background: linear-gradient(160deg, #ffffff 0%, #f4faf6 100%);
+}
+.feature-card-primary .feature-icon {
+  background: rgba(82,183,136,.14);
+  border-color: rgba(45,106,79,.25);
+}
+.feature-priority {
+  display: inline-flex;
+  align-items: center;
+  margin-left: .35rem;
+  padding: .1rem .42rem;
+  border-radius: 999px;
+  background: rgba(45,106,79,.12);
+  color: var(--primary);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  vertical-align: middle;
+}
 .private-office-panel {
   grid-column: 1 / -1;
   margin-top: 1.1rem;
