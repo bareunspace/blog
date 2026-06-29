@@ -24,6 +24,8 @@
     const videoInterviewPanel = document.getElementById('videoInterviewPanel');
     const privateOfficeToggle = document.getElementById('privateOfficeToggle');
     const privateOfficePanel = document.getElementById('privateOfficePanel');
+    const popupExhibitToggle = document.getElementById('popupExhibitToggle');
+    const popupExhibitPanel = document.getElementById('popupExhibitPanel');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -227,6 +229,7 @@
 
     setupFeatureToggle(videoInterviewToggle, videoInterviewPanel, 'toggle_video_interview_panel');
     setupFeatureToggle(privateOfficeToggle, privateOfficePanel, 'toggle_private_office_panel');
+    setupFeatureToggle(popupExhibitToggle, popupExhibitPanel, 'toggle_popup_exhibit_panel');
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
