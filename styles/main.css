@@ -1305,6 +1305,15 @@ main.about-page #contact .section-inner > p {
   color: rgba(255,255,255,.95);
   text-shadow: 0 4px 16px rgba(0,0,0,.26);
 }
+main.about-page #contact .btn-outline {
+  border-color: rgba(255,255,255,.9);
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+main.about-page #contact .btn-outline:hover {
+  background: #fff;
+  color: var(--primary);
+}
 main.about-page #contact .contact-closing-line {
   max-width: none;
   white-space: normal;
