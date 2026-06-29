@@ -731,8 +731,9 @@
         </div>
       </div>
       <div class="contact-form-wrap">
-        <form id="contactForm" class="contact-form" action="https://formsubmit.co/bareunjari@gmail.com" method="POST">
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/f7ed0ce03c8dd0b9b5b294cf0002adfa" method="POST">
           <input type="hidden" name="_subject" id="contactSubject" value="[바른자리] 신규 문의 접수" />
+          <input type="hidden" name="_replyto" id="contactReplyTo" value="" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_autoresponse" value="바른자리에 문의해 주셔서 감사합니다. 접수하신 내용을 확인 중이며, 순차적으로 답변드리겠습니다." />
           <input type="hidden" name="_next" value="https://bareunjari.com/?contact=sent#contact" />
@@ -750,8 +751,8 @@
           </div>
 
           <div>
-            <label for="contactEmail">이메일(선택)</label>
-            <input id="contactEmail" name="email" type="email" placeholder="답변 받을 이메일" />
+            <label for="contactEmail">이메일</label>
+            <input id="contactEmail" name="email" type="email" placeholder="답변 받을 이메일" required />
           </div>
 
           <div>
@@ -760,7 +761,7 @@
           </div>
 
           <button type="submit" class="submit-btn">문의 보내기</button>
-          <p class="contact-help-note">이메일을 남기시면 접수 확인 메일이 발송됩니다. 네이버 이용이 어려우신 경우, 이메일이나 전화로 연락해 주세요.</p>
+          <p class="contact-help-note">접수 후 입력하신 이메일로 확인 메일이 발송됩니다. 메일이 보이지 않으면 스팸함도 확인해 주세요.</p>
         </form>
         <p class="contact-rate-note" id="contactRateNote" aria-live="polite"></p>
         <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>

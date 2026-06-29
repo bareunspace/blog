@@ -597,6 +597,8 @@
       const contactParams = new URLSearchParams(window.location.search);
       const contactNameInput = document.getElementById('contactName');
       const contactPhoneInput = document.getElementById('contactPhone');
+      const contactEmailInput = document.getElementById('contactEmail');
+      const contactReplyToInput = document.getElementById('contactReplyTo');
       const contactSubjectInput = document.getElementById('contactSubject');
 
       if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
@@ -608,6 +610,12 @@
       }
 
       contactForm.addEventListener('submit', (event) => {
+        if (contactReplyToInput) {
+          contactReplyToInput.value = (contactEmailInput && typeof contactEmailInput.value === 'string')
+            ? contactEmailInput.value.trim()
+            : '';
+        }
+
         if (contactSubjectInput) {
           const nameValue = (contactNameInput && typeof contactNameInput.value === 'string')
             ? contactNameInput.value.trim()
