@@ -337,10 +337,10 @@ section { padding: 5rem 1.5rem; }
   font-weight: 700;
 }
 .feature-toggle[aria-expanded="true"] .feature-toggle-hint::after {
-  content: ' 닫기';
+  content: '닫기';
 }
 .feature-toggle[aria-expanded="false"] .feature-toggle-hint::after {
-  content: ' 열기';
+  content: '열기';
 }
 .feature-icon {
   width: 44px;
