@@ -711,10 +711,12 @@ section { padding: 5rem 1.5rem; }
   border-radius: 12px;
   overflow: hidden;
   background: #f3f4f6;
+  aspect-ratio: 4 / 3;
 }
 .testimonial-thumb {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
+  display: block;
   object-fit: cover;
 }
 .testimonial-card:hover,
