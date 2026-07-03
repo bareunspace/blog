@@ -330,7 +330,7 @@
           }
           img.dataset.fallbackApplied = 'true';
           img.src = 'images/main.webp';
-        }, { once: true });
+        });
       });
     };
 
@@ -346,7 +346,7 @@
       if (isGuide && !isCase) {
         return '이용안내';
       }
-      if (isCase) {
+              ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" data-original-src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
         return '이용사례';
       }
       return '이용정보';
@@ -367,8 +367,19 @@
             ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
-            <p class="testimonial-summary">${escapeHtml(summary)}</p>
+            if (img.dataset.proxyAttempted !== 'true') {
+              const originalSrc = img.dataset.originalSrc || img.currentSrc || img.src;
+              if (originalSrc) {
+                img.dataset.proxyAttempted = 'true';
+                img.src = `https://images.weserv.nl/?url=${encodeURIComponent(originalSrc)}&w=960&output=webp`;
+                return;
+              }
             <span class="author">— 네이버 블로그 ${escapeHtml(contentType)}</span>
+
+            if (img.dataset.fallbackApplied === 'true') {
+              return;
+            }
+
             <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>
         `;
