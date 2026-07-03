@@ -790,7 +790,8 @@
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v1';
+      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v2';
+      const LEGACY_USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v1';
       const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
       const titlePatterns = [
         /이용\s*사례/i,
@@ -809,6 +810,12 @@
         /준비\s*방법/i,
         /가이드/i
       ];
+
+      try {
+        localStorage.removeItem(LEGACY_USECASE_CACHE_KEY);
+      } catch (error) {
+        // Ignore cache cleanup errors.
+      }
 
       const readUseCaseCache = () => {
         try {
