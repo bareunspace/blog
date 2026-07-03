@@ -455,6 +455,17 @@ section { padding: 5rem 1.5rem; }
 .feature-detail-stack .private-office-panel {
   margin-top: 0;
   pointer-events: auto;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+.feature-detail-stack .private-office-panel.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+.feature-detail-stack .private-office-panel.is-closing {
+  opacity: 0;
+  transform: translateY(8px);
 }
 .private-office-lead {
   font-size: .92rem;
@@ -1469,7 +1480,27 @@ main.about-page #contact .contact-closing-line {
   .feature-toggle-hint {
     font-size: .82rem;
   }
+  .private-office-panel {
+    padding: .95rem;
+  }
+  .private-office-lead {
+    font-size: .88rem;
+    line-height: 1.65;
+    margin-bottom: .72rem;
+  }
   .private-office-grid { grid-template-columns: 1fr; }
+  .private-office-card {
+    padding: .78rem .8rem;
+  }
+  .private-office-card h3 {
+    font-size: .84rem;
+    line-height: 1.45;
+    margin-bottom: .28rem;
+  }
+  .private-office-card p {
+    font-size: .8rem;
+    line-height: 1.55;
+  }
   .space-hero img,
   .about-photo img { height: 260px; min-height: 260px; }
   .gallery-grid { grid-template-columns: 1fr; }

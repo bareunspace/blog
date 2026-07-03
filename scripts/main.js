@@ -36,10 +36,12 @@
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
+    const FEATURE_PANEL_ANIM_MS = 150;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
     let useCasePage = 0;
+    let featurePanelCleanupTimer = 0;
 
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
@@ -204,12 +206,39 @@
       });
     }
 
-    const setFeaturePanelState = (toggleEl, panelEl, isOpen) => {
+    const setFeaturePanelState = (toggleEl, panelEl, isOpen, options = {}) => {
       if (!toggleEl || !panelEl) {
         return;
       }
+
+      const { immediate = false } = options;
       toggleEl.setAttribute('aria-expanded', String(isOpen));
-      panelEl.hidden = !isOpen;
+
+      if (isOpen) {
+        panelEl.hidden = false;
+        panelEl.classList.remove('is-closing');
+        requestAnimationFrame(() => {
+          panelEl.classList.add('is-open');
+        });
+        return;
+      }
+
+      panelEl.classList.remove('is-open');
+      panelEl.classList.add('is-closing');
+
+      if (immediate) {
+        panelEl.hidden = true;
+        panelEl.classList.remove('is-closing');
+        return;
+      }
+
+      window.setTimeout(() => {
+        if (toggleEl.getAttribute('aria-expanded') === 'true') {
+          return;
+        }
+        panelEl.hidden = true;
+        panelEl.classList.remove('is-closing');
+      }, FEATURE_PANEL_ANIM_MS);
     };
 
     const featurePanelPairs = [
@@ -234,6 +263,7 @@
 
       featurePanelPairs.forEach(({ panel }) => {
         if (panel) {
+          panel.classList.remove('is-open', 'is-closing');
           featureDetailStack.appendChild(panel);
         }
       });
@@ -283,15 +313,48 @@
       });
     };
 
-    const closeFeaturePanels = () => {
+    const closeFeaturePanels = (options = {}) => {
+      const { immediate = false } = options;
+
+      window.clearTimeout(featurePanelCleanupTimer);
+
       featurePanelPairs.forEach(({ toggle, panel }) => {
-        setFeaturePanelState(toggle, panel, false);
+        setFeaturePanelState(toggle, panel, false, { immediate });
       });
 
-      if (featureDetailStack) {
-        featureDetailStack.style.display = 'none';
+      const finalizeClose = () => {
+        if (isAnyFeaturePanelOpen()) {
+          return;
+        }
+        if (featureDetailStack) {
+          featureDetailStack.style.display = 'none';
+        }
+        resetFeaturePanelSpace();
+      };
+
+      if (immediate) {
+        finalizeClose();
+        return;
       }
-      resetFeaturePanelSpace();
+
+      featurePanelCleanupTimer = window.setTimeout(finalizeClose, FEATURE_PANEL_ANIM_MS);
+    };
+
+    const focusFeaturePanelHeading = (panelEl) => {
+      if (!panelEl) {
+        return;
+      }
+
+      const firstHeading = panelEl.querySelector('h3');
+      if (!firstHeading) {
+        return;
+      }
+
+      if (!firstHeading.hasAttribute('tabindex')) {
+        firstHeading.setAttribute('tabindex', '-1');
+      }
+
+      firstHeading.focus({ preventScroll: true });
     };
 
     const scrollFeaturePanelIntoView = (toggleEl) => {
@@ -309,6 +372,18 @@
       });
     };
 
+    const openFeaturePanel = (toggleEl, panelEl) => {
+      closeFeaturePanels({ immediate: true });
+
+      setFeaturePanelState(toggleEl, panelEl, true);
+      positionFeaturePanel(toggleEl, panelEl);
+      focusFeaturePanelHeading(panelEl);
+
+      requestAnimationFrame(() => {
+        scrollFeaturePanelIntoView(toggleEl);
+      });
+    };
+
     const setupFeatureToggle = (toggleEl, panelEl, eventName, allPairs) => {
       if (!toggleEl || !panelEl) {
         return;
@@ -318,17 +393,10 @@
         const isOpen = toggleEl.getAttribute('aria-expanded') === 'true';
         const nextState = !isOpen;
 
-        closeFeaturePanels();
-
         if (nextState) {
-          setFeaturePanelState(toggleEl, panelEl, true);
-        }
-
-        if (nextState) {
-          positionFeaturePanel(toggleEl, panelEl);
-          requestAnimationFrame(() => {
-            scrollFeaturePanelIntoView(toggleEl);
-          });
+          openFeaturePanel(toggleEl, panelEl);
+        } else {
+          closeFeaturePanels();
         }
 
         trackEvent(eventName, {
