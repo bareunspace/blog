@@ -31,6 +31,8 @@
     const soloRestToggle = document.getElementById('soloRestToggle');
     const soloRestPanel = document.getElementById('soloRestPanel');
     const featureDetailStack = document.getElementById('featureDetailStack');
+    const spaceSectionInner = document.querySelector('#space .section-inner');
+    const featureCardsGrid = document.querySelector('#space .features-grid');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -223,6 +225,13 @@
         return;
       }
 
+      if (spaceSectionInner && !spaceSectionInner.dataset.basePaddingBottom) {
+        const currentPadding = window.getComputedStyle(spaceSectionInner).paddingBottom || '0';
+        spaceSectionInner.dataset.basePaddingBottom = String(parseFloat(currentPadding) || 0);
+      }
+
+      featureDetailStack.style.display = 'none';
+
       featurePanelPairs.forEach(({ panel }) => {
         if (panel) {
           featureDetailStack.appendChild(panel);
@@ -230,13 +239,51 @@
       });
     };
 
-    const scrollFeaturePanelIntoView = (panelEl) => {
-      if (!panelEl) {
+    const reserveFeaturePanelSpace = (panelTop, panelEl) => {
+      if (!spaceSectionInner || !featureCardsGrid || !panelEl) {
+        return;
+      }
+
+      const basePadding = Number(spaceSectionInner.dataset.basePaddingBottom || 0);
+      const gridBottom = featureCardsGrid.offsetTop + featureCardsGrid.offsetHeight;
+      const panelBottom = panelTop + panelEl.offsetHeight;
+      const extra = Math.max(0, panelBottom - gridBottom + 16);
+      spaceSectionInner.style.paddingBottom = `${basePadding + extra}px`;
+    };
+
+    const resetFeaturePanelSpace = () => {
+      if (!spaceSectionInner) {
+        return;
+      }
+
+      const basePadding = Number(spaceSectionInner.dataset.basePaddingBottom || 0);
+      spaceSectionInner.style.paddingBottom = `${basePadding}px`;
+    };
+
+    const positionFeaturePanel = (toggleEl, panelEl) => {
+      if (!featureDetailStack || !spaceSectionInner || !toggleEl || !panelEl) {
+        return;
+      }
+
+      const innerRect = spaceSectionInner.getBoundingClientRect();
+      const toggleRect = toggleEl.getBoundingClientRect();
+      const panelTop = Math.max(0, toggleRect.bottom - innerRect.top + 10);
+
+      featureDetailStack.style.top = `${panelTop}px`;
+      featureDetailStack.style.display = 'block';
+
+      requestAnimationFrame(() => {
+        reserveFeaturePanelSpace(panelTop, panelEl);
+      });
+    };
+
+    const scrollFeaturePanelIntoView = (toggleEl) => {
+      if (!toggleEl) {
         return;
       }
 
       const headerOffset = 76;
-      const top = window.scrollY + panelEl.getBoundingClientRect().top - headerOffset;
+      const top = window.scrollY + toggleEl.getBoundingClientRect().top - headerOffset;
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       window.scrollTo({
@@ -263,9 +310,13 @@
         setFeaturePanelState(toggleEl, panelEl, nextState);
 
         if (nextState) {
+          positionFeaturePanel(toggleEl, panelEl);
           requestAnimationFrame(() => {
-            scrollFeaturePanelIntoView(panelEl);
+            scrollFeaturePanelIntoView(toggleEl);
           });
+        } else if (featureDetailStack) {
+          featureDetailStack.style.display = 'none';
+          resetFeaturePanelSpace();
         }
 
         trackEvent(eventName, {

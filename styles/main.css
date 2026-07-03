@@ -298,6 +298,9 @@ section { padding: 5rem 1.5rem; }
   padding-top: 5.5rem;
   padding-bottom: 5rem;
 }
+#space .section-inner {
+  position: relative;
+}
 .space-hero {
   border-radius: var(--radius);
   overflow: hidden;
@@ -442,10 +445,16 @@ section { padding: 5rem 1.5rem; }
   box-shadow: var(--shadow);
 }
 .feature-detail-stack {
-  margin-bottom: 1.1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  pointer-events: none;
 }
 .feature-detail-stack .private-office-panel {
   margin-top: 0;
+  pointer-events: auto;
 }
 .private-office-lead {
   font-size: .92rem;
