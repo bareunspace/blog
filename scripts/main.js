@@ -291,6 +291,33 @@
         .replaceAll("'", '&#39;');
     };
 
+    const extractImageFromHtml = (html) => {
+      if (!html) {
+        return '';
+      }
+
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      const image = temp.querySelector('img');
+      return image?.getAttribute('src')?.trim() || '';
+    };
+
+    const sanitizeImageUrl = (rawUrl) => {
+      if (!rawUrl) {
+        return '';
+      }
+
+      try {
+        const url = new URL(rawUrl, window.location.origin);
+        if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+          return '';
+        }
+        return url.href;
+      } catch (error) {
+        return '';
+      }
+    };
+
     const classifyUseCaseType = (item) => {
       const title = item.title || '';
       const desc = stripHtml(item.description);
@@ -315,11 +342,13 @@
         const summary = truncate(stripHtml(item.description), 150) || '내용 요약이 없습니다.';
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
+        const imageUrl = sanitizeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
         const contentType = item.contentType || classifyUseCaseType(item);
         const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
 
         return `
           <article class="testimonial-card">
+            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
             <p>${escapeHtml(summary)}</p>
@@ -399,7 +428,11 @@
         title: item.querySelector('title')?.textContent?.trim() || '',
         description: item.querySelector('description')?.textContent || '',
         link: item.querySelector('link')?.textContent?.trim() || '',
-        pubDate: item.querySelector('pubDate')?.textContent?.trim() || ''
+        pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
+        imageUrl: item.querySelector('enclosure')?.getAttribute('url')?.trim()
+          || item.querySelector('media\\:thumbnail')?.getAttribute('url')?.trim()
+          || item.querySelector('media\\:content')?.getAttribute('url')?.trim()
+          || extractImageFromHtml(item.querySelector('description')?.textContent || '')
       }));
     };
 
@@ -441,7 +474,8 @@
                 title: item?.title || '',
                 description: item?.description || '',
                 link: item?.link || '',
-                pubDate: item?.pubDate || ''
+                pubDate: item?.pubDate || '',
+                imageUrl: item?.thumbnail || item?.enclosure?.link || extractImageFromHtml(item?.description || '')
               }))
             : [];
 
