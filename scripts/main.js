@@ -339,7 +339,7 @@
     const renderUseCases = (items) => {
       const cardsHtml = items.map((item) => {
         const title = item.title || '제목 없음';
-        const summary = truncate(stripHtml(item.description), 150) || '내용 요약이 없습니다.';
+        const summary = truncate(stripHtml(item.description), 130) || '내용 요약이 없습니다.';
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
         const imageUrl = sanitizeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
@@ -351,7 +351,7 @@
             ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
-            <p>${escapeHtml(summary)}</p>
+            <p class="testimonial-summary">${escapeHtml(summary)}</p>
             <span class="author">— 네이버 블로그 ${escapeHtml(contentType)}</span>
             <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>

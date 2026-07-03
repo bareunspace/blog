@@ -714,6 +714,10 @@ section { padding: 5rem 1.5rem; }
   font-weight: 700;
   margin-bottom: .65rem;
   line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .testimonial-card .testimonial-title a {
   color: var(--text);
@@ -725,6 +729,12 @@ section { padding: 5rem 1.5rem; }
   border-color: rgba(45,106,79,.35);
 }
 .testimonial-card p { font-size: .93rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+.testimonial-card .testimonial-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .testimonial-card .author { font-size: .85rem; font-weight: 600; color: var(--primary); }
 .testimonial-meta {
   margin-top: .35rem;
