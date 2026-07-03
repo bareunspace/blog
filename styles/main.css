@@ -441,6 +441,12 @@ section { padding: 5rem 1.5rem; }
   padding: 1.15rem;
   box-shadow: var(--shadow);
 }
+.feature-detail-stack {
+  margin-top: 1.1rem;
+}
+.feature-detail-stack .private-office-panel {
+  margin-top: 0;
+}
 .private-office-lead {
   font-size: .92rem;
   color: #2f3b35;

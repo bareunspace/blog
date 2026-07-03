@@ -30,6 +30,7 @@
     const popupExhibitPanel = document.getElementById('popupExhibitPanel');
     const soloRestToggle = document.getElementById('soloRestToggle');
     const soloRestPanel = document.getElementById('soloRestPanel');
+    const featureDetailStack = document.getElementById('featureDetailStack');
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
@@ -201,7 +202,35 @@
       });
     }
 
-    const setupFeatureToggle = (toggleEl, panelEl, eventName) => {
+    const setFeaturePanelState = (toggleEl, panelEl, isOpen) => {
+      if (!toggleEl || !panelEl) {
+        return;
+      }
+      toggleEl.setAttribute('aria-expanded', String(isOpen));
+      panelEl.hidden = !isOpen;
+    };
+
+    const featurePanelPairs = [
+      { toggle: videoInterviewToggle, panel: videoInterviewPanel, eventName: 'toggle_video_interview_panel' },
+      { toggle: onlineExamToggle, panel: onlineExamPanel, eventName: 'toggle_online_exam_panel' },
+      { toggle: privateOfficeToggle, panel: privateOfficePanel, eventName: 'toggle_private_office_panel' },
+      { toggle: popupExhibitToggle, panel: popupExhibitPanel, eventName: 'toggle_popup_exhibit_panel' },
+      { toggle: soloRestToggle, panel: soloRestPanel, eventName: 'toggle_solo_rest_panel' }
+    ];
+
+    const mountFeaturePanels = () => {
+      if (!featureDetailStack) {
+        return;
+      }
+
+      featurePanelPairs.forEach(({ panel }) => {
+        if (panel) {
+          featureDetailStack.appendChild(panel);
+        }
+      });
+    };
+
+    const setupFeatureToggle = (toggleEl, panelEl, eventName, allPairs) => {
       if (!toggleEl || !panelEl) {
         return;
       }
@@ -209,8 +238,14 @@
       const togglePanel = () => {
         const isOpen = toggleEl.getAttribute('aria-expanded') === 'true';
         const nextState = !isOpen;
-        toggleEl.setAttribute('aria-expanded', String(nextState));
-        panelEl.hidden = !nextState;
+
+        allPairs.forEach(({ toggle, panel }) => {
+          if (toggle !== toggleEl || panel !== panelEl) {
+            setFeaturePanelState(toggle, panel, false);
+          }
+        });
+
+        setFeaturePanelState(toggleEl, panelEl, nextState);
 
         if (nextState) {
           panelEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -231,11 +266,10 @@
       });
     };
 
-    setupFeatureToggle(videoInterviewToggle, videoInterviewPanel, 'toggle_video_interview_panel');
-    setupFeatureToggle(onlineExamToggle, onlineExamPanel, 'toggle_online_exam_panel');
-    setupFeatureToggle(privateOfficeToggle, privateOfficePanel, 'toggle_private_office_panel');
-    setupFeatureToggle(popupExhibitToggle, popupExhibitPanel, 'toggle_popup_exhibit_panel');
-    setupFeatureToggle(soloRestToggle, soloRestPanel, 'toggle_solo_rest_panel');
+    mountFeaturePanels();
+    featurePanelPairs.forEach(({ toggle, panel, eventName }) => {
+      setupFeatureToggle(toggle, panel, eventName, featurePanelPairs);
+    });
 
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
