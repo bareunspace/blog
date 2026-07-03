@@ -230,6 +230,21 @@
       });
     };
 
+    const scrollFeaturePanelIntoView = (panelEl) => {
+      if (!panelEl) {
+        return;
+      }
+
+      const headerOffset = 76;
+      const top = window.scrollY + panelEl.getBoundingClientRect().top - headerOffset;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    };
+
     const setupFeatureToggle = (toggleEl, panelEl, eventName, allPairs) => {
       if (!toggleEl || !panelEl) {
         return;
@@ -248,7 +263,9 @@
         setFeaturePanelState(toggleEl, panelEl, nextState);
 
         if (nextState) {
-          panelEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          requestAnimationFrame(() => {
+            scrollFeaturePanelIntoView(panelEl);
+          });
         }
 
         trackEvent(eventName, {
