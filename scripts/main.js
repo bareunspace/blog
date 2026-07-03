@@ -308,7 +308,10 @@
       }
 
       try {
-        const url = new URL(rawUrl, window.location.origin);
+        const normalizedUrl = rawUrl
+          .replaceAll('&amp;', '&')
+          .replace(/\s+/g, '');
+        const url = new URL(normalizedUrl, window.location.origin);
         if (url.protocol !== 'http:' && url.protocol !== 'https:') {
           return '';
         }
@@ -316,6 +319,19 @@
       } catch (error) {
         return '';
       }
+    };
+
+    const attachUseCaseImageFallback = () => {
+      const thumbs = document.querySelectorAll('.testimonial-thumb');
+      thumbs.forEach((img) => {
+        img.addEventListener('error', () => {
+          if (img.dataset.fallbackApplied === 'true') {
+            return;
+          }
+          img.dataset.fallbackApplied = 'true';
+          img.src = 'images/main.webp';
+        }, { once: true });
+      });
     };
 
     const classifyUseCaseType = (item) => {
@@ -359,6 +375,7 @@
       }).join('');
 
       useCasesGrid.innerHTML = cardsHtml;
+      attachUseCaseImageFallback();
       if (rssStatus) {
         rssStatus.hidden = true;
       }
