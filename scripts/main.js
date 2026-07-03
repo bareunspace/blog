@@ -503,8 +503,18 @@
 
       const temp = document.createElement('div');
       temp.innerHTML = html;
-      const image = temp.querySelector('img');
-      return image?.getAttribute('src')?.trim() || '';
+      const images = Array.from(temp.querySelectorAll('img'));
+      for (let i = images.length - 1; i >= 0; i -= 1) {
+        const image = images[i];
+        const candidate = image.getAttribute('src')
+          || image.getAttribute('data-src')
+          || image.getAttribute('data-lazy-src')
+          || image.getAttribute('data-original');
+        if (candidate && candidate.trim()) {
+          return candidate.trim();
+        }
+      }
+      return '';
     };
 
     const sanitizeImageUrl = (rawUrl) => {
@@ -700,16 +710,20 @@
     const parseXmlItems = (xmlText) => {
       const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
       const nodeList = Array.from(xml.querySelectorAll('item'));
-      return nodeList.map((item) => ({
-        title: item.querySelector('title')?.textContent?.trim() || '',
-        description: item.querySelector('description')?.textContent || '',
-        link: item.querySelector('link')?.textContent?.trim() || '',
-        pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
-        imageUrl: item.querySelector('enclosure')?.getAttribute('url')?.trim()
-          || item.querySelector('media\\:thumbnail')?.getAttribute('url')?.trim()
-          || item.querySelector('media\\:content')?.getAttribute('url')?.trim()
-          || extractImageFromHtml(item.querySelector('description')?.textContent || '')
-      }));
+      return nodeList.map((item) => {
+        const description = item.querySelector('description')?.textContent || '';
+        const contentImage = extractImageFromHtml(description);
+        return {
+          title: item.querySelector('title')?.textContent?.trim() || '',
+          description,
+          link: item.querySelector('link')?.textContent?.trim() || '',
+          pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
+          imageUrl: contentImage
+            || item.querySelector('enclosure')?.getAttribute('url')?.trim()
+            || item.querySelector('media\\:thumbnail')?.getAttribute('url')?.trim()
+            || item.querySelector('media\\:content')?.getAttribute('url')?.trim()
+        };
+      });
     };
 
     const fetchRssItems = async (rssUrl) => {
@@ -746,13 +760,17 @@
 
           const payload = await response.json();
           const items = Array.isArray(payload?.items)
-            ? payload.items.map((item) => ({
-                title: item?.title || '',
-                description: item?.description || '',
-                link: item?.link || '',
-                pubDate: item?.pubDate || '',
-                imageUrl: item?.thumbnail || item?.enclosure?.link || extractImageFromHtml(item?.description || '')
-              }))
+            ? payload.items.map((item) => {
+                const description = item?.description || '';
+                const contentImage = extractImageFromHtml(description);
+                return {
+                  title: item?.title || '',
+                  description,
+                  link: item?.link || '',
+                  pubDate: item?.pubDate || '',
+                  imageUrl: contentImage || item?.thumbnail || item?.enclosure?.link || ''
+                };
+              })
             : [];
 
           if (items.length > 0) {
