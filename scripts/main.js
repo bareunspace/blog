@@ -321,13 +321,29 @@
       }
     };
 
+    const toProxyImageUrl = (rawUrl) => {
+      const safeUrl = sanitizeImageUrl(rawUrl);
+      if (!safeUrl) {
+        return '';
+      }
+      return `https://images.weserv.nl/?url=${encodeURIComponent(safeUrl)}&w=960&output=webp`;
+    };
+
     const attachUseCaseImageFallback = () => {
       const thumbs = document.querySelectorAll('.testimonial-thumb');
       thumbs.forEach((img) => {
         img.addEventListener('error', () => {
+          const originalSrc = img.dataset.originalSrc || '';
+          if (img.dataset.originalAttempted !== 'true' && originalSrc && img.src !== originalSrc) {
+            img.dataset.originalAttempted = 'true';
+            img.src = originalSrc;
+            return;
+          }
+
           if (img.dataset.fallbackApplied === 'true') {
             return;
           }
+
           img.dataset.fallbackApplied = 'true';
           img.src = 'images/main.webp';
         });
@@ -346,7 +362,7 @@
       if (isGuide && !isCase) {
         return '이용안내';
       }
-              ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" data-original-src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
+      if (isCase) {
         return '이용사례';
       }
       return '이용정보';
@@ -359,27 +375,17 @@
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
         const imageUrl = sanitizeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
+        const proxyImageUrl = toProxyImageUrl(imageUrl);
         const contentType = item.contentType || classifyUseCaseType(item);
         const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
 
         return `
           <article class="testimonial-card">
-            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
+            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(proxyImageUrl || imageUrl)}" data-original-src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
-            if (img.dataset.proxyAttempted !== 'true') {
-              const originalSrc = img.dataset.originalSrc || img.currentSrc || img.src;
-              if (originalSrc) {
-                img.dataset.proxyAttempted = 'true';
-                img.src = `https://images.weserv.nl/?url=${encodeURIComponent(originalSrc)}&w=960&output=webp`;
-                return;
-              }
+            <p class="testimonial-summary">${escapeHtml(summary)}</p>
             <span class="author">— 네이버 블로그 ${escapeHtml(contentType)}</span>
-
-            if (img.dataset.fallbackApplied === 'true') {
-              return;
-            }
-
             <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>
         `;
