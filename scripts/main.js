@@ -329,6 +329,41 @@
       return `https://images.weserv.nl/?url=${encodeURIComponent(safeUrl)}&w=960&output=webp`;
     };
 
+    const toProxyImageSrcSet = (rawUrl) => {
+      const safeUrl = sanitizeImageUrl(rawUrl);
+      if (!safeUrl) {
+        return '';
+      }
+
+      const encoded = encodeURIComponent(safeUrl);
+      return [480, 960, 1280]
+        .map((width) => `https://images.weserv.nl/?url=${encoded}&w=${width}&output=webp ${width}w`)
+        .join(', ');
+    };
+
+    const USECASE_FALLBACK_IMAGES = [
+      'images/01.webp',
+      'images/03.webp',
+      'images/06.webp',
+      'images/10.webp',
+      'images/12.webp'
+    ];
+
+    const getSeedHash = (seedText) => {
+      return Array.from(seedText || '').reduce((acc, char) => {
+        return ((acc << 5) - acc + char.charCodeAt(0)) | 0;
+      }, 0);
+    };
+
+    const getFallbackImageBySeed = (seedText) => {
+      if (!USECASE_FALLBACK_IMAGES.length) {
+        return 'images/main.webp';
+      }
+      const hash = getSeedHash(seedText);
+      const index = Math.abs(hash) % USECASE_FALLBACK_IMAGES.length;
+      return USECASE_FALLBACK_IMAGES[index];
+    };
+
     const attachUseCaseImageFallback = () => {
       const thumbs = document.querySelectorAll('.testimonial-thumb');
       thumbs.forEach((img) => {
@@ -345,7 +380,7 @@
           }
 
           img.dataset.fallbackApplied = 'true';
-          img.src = 'images/main.webp';
+          img.src = getFallbackImageBySeed(img.dataset.fallbackSeed || 'main');
         });
       });
     };
@@ -376,12 +411,14 @@
         const link = item.link || '#';
         const imageUrl = sanitizeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
         const proxyImageUrl = toProxyImageUrl(imageUrl);
+        const proxyImageSrcSet = toProxyImageSrcSet(imageUrl);
         const contentType = item.contentType || classifyUseCaseType(item);
         const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
+        const fallbackSeed = `${title}::${link}`;
 
         return `
           <article class="testimonial-card">
-            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(proxyImageUrl || imageUrl)}" data-original-src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
+            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(proxyImageUrl || imageUrl)}" srcset="${escapeHtml(proxyImageSrcSet)}" sizes="(max-width: 760px) 100vw, (max-width: 1040px) 50vw, 33vw" width="960" height="540" data-original-src="${escapeHtml(imageUrl)}" data-fallback-seed="${escapeHtml(fallbackSeed)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
             <p class="testimonial-summary">${escapeHtml(summary)}</p>
@@ -530,6 +567,8 @@
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
+      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v1';
+      const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
       const titlePatterns = [
         /이용\s*사례/i,
         /공간\s*이용\s*사례/i,
@@ -547,6 +586,41 @@
         /준비\s*방법/i,
         /가이드/i
       ];
+
+      const readUseCaseCache = () => {
+        try {
+          const raw = localStorage.getItem(USECASE_CACHE_KEY);
+          if (!raw) {
+            return [];
+          }
+          const parsed = JSON.parse(raw);
+          const ts = Number(parsed?.ts || 0);
+          const items = Array.isArray(parsed?.items) ? parsed.items : [];
+          if (!ts || !items.length) {
+            return [];
+          }
+          if (Date.now() - ts > USECASE_CACHE_TTL) {
+            return [];
+          }
+          return items;
+        } catch (error) {
+          return [];
+        }
+      };
+
+      const writeUseCaseCache = (items) => {
+        try {
+          if (!Array.isArray(items) || !items.length) {
+            return;
+          }
+          localStorage.setItem(USECASE_CACHE_KEY, JSON.stringify({
+            ts: Date.now(),
+            items
+          }));
+        } catch (error) {
+          // Ignore cache write errors.
+        }
+      };
 
       try {
         if (rssStatus) {
@@ -582,6 +656,7 @@
 
         const selected = filtered.slice(0, 3);
         if (selected.length > 0) {
+          writeUseCaseCache(filtered);
           useCaseItems = filtered.slice(0, 18);
           useCasePage = 0;
           renderUseCasePage();
@@ -593,6 +668,18 @@
           }
         }
       } catch (error) {
+        const cachedItems = readUseCaseCache();
+        if (cachedItems.length > 0) {
+          useCaseItems = cachedItems.slice(0, 18);
+          useCasePage = 0;
+          renderUseCasePage();
+          if (rssStatus) {
+            rssStatus.textContent = '최신 데이터를 불러오지 못해 최근 캐시 데이터를 표시합니다.';
+            rssStatus.hidden = false;
+          }
+          return;
+        }
+
         if (rssStatus) {
           rssStatus.textContent = '최신 이용사례를 준비 중입니다.';
           rssStatus.hidden = false;
