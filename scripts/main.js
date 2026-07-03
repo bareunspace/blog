@@ -277,6 +277,23 @@
       });
     };
 
+    const isAnyFeaturePanelOpen = () => {
+      return featurePanelPairs.some(({ toggle, panel }) => {
+        return Boolean(toggle && panel && toggle.getAttribute('aria-expanded') === 'true' && !panel.hidden);
+      });
+    };
+
+    const closeFeaturePanels = () => {
+      featurePanelPairs.forEach(({ toggle, panel }) => {
+        setFeaturePanelState(toggle, panel, false);
+      });
+
+      if (featureDetailStack) {
+        featureDetailStack.style.display = 'none';
+      }
+      resetFeaturePanelSpace();
+    };
+
     const scrollFeaturePanelIntoView = (toggleEl) => {
       if (!toggleEl) {
         return;
@@ -301,22 +318,17 @@
         const isOpen = toggleEl.getAttribute('aria-expanded') === 'true';
         const nextState = !isOpen;
 
-        allPairs.forEach(({ toggle, panel }) => {
-          if (toggle !== toggleEl || panel !== panelEl) {
-            setFeaturePanelState(toggle, panel, false);
-          }
-        });
+        closeFeaturePanels();
 
-        setFeaturePanelState(toggleEl, panelEl, nextState);
+        if (nextState) {
+          setFeaturePanelState(toggleEl, panelEl, true);
+        }
 
         if (nextState) {
           positionFeaturePanel(toggleEl, panelEl);
           requestAnimationFrame(() => {
             scrollFeaturePanelIntoView(toggleEl);
           });
-        } else if (featureDetailStack) {
-          featureDetailStack.style.display = 'none';
-          resetFeaturePanelSpace();
         }
 
         trackEvent(eventName, {
@@ -339,13 +351,36 @@
       setupFeatureToggle(toggle, panel, eventName, featurePanelPairs);
     });
 
+    document.addEventListener('click', (event) => {
+      if (!isAnyFeaturePanelOpen()) {
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest('.feature-toggle') || target.closest('.private-office-panel')) {
+        return;
+      }
+
+      closeFeaturePanels();
+    });
+
     lightboxBackdrop.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxPrev.addEventListener('click', showPrevImage);
     lightboxNext.addEventListener('click', showNextImage);
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        closeLightbox();
+        if (lightbox.classList.contains('open')) {
+          closeLightbox();
+          return;
+        }
+        if (isAnyFeaturePanelOpen()) {
+          closeFeaturePanels();
+        }
         return;
       }
       if (!lightbox.classList.contains('open')) {
