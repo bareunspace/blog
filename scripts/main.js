@@ -26,6 +26,8 @@
     const onlineExamPanel = document.getElementById('onlineExamPanel');
     const privateOfficeToggle = document.getElementById('privateOfficeToggle');
     const privateOfficePanel = document.getElementById('privateOfficePanel');
+    const consultingMeetupToggle = document.getElementById('consultingMeetupToggle');
+    const consultingMeetupPanel = document.getElementById('consultingMeetupPanel');
     const popupExhibitToggle = document.getElementById('popupExhibitToggle');
     const popupExhibitPanel = document.getElementById('popupExhibitPanel');
     const soloRestToggle = document.getElementById('soloRestToggle');
@@ -245,6 +247,7 @@
       { toggle: videoInterviewToggle, panel: videoInterviewPanel, eventName: 'toggle_video_interview_panel' },
       { toggle: onlineExamToggle, panel: onlineExamPanel, eventName: 'toggle_online_exam_panel' },
       { toggle: privateOfficeToggle, panel: privateOfficePanel, eventName: 'toggle_private_office_panel' },
+      { toggle: consultingMeetupToggle, panel: consultingMeetupPanel, eventName: 'toggle_consulting_meetup_panel' },
       { toggle: popupExhibitToggle, panel: popupExhibitPanel, eventName: 'toggle_popup_exhibit_panel' },
       { toggle: soloRestToggle, panel: soloRestPanel, eventName: 'toggle_solo_rest_panel' }
     ];
