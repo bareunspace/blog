@@ -876,7 +876,7 @@ section { padding: 5rem 1.5rem; }
   flex-direction: column;
   align-items: center;
   gap: .75rem;
-  padding: 0 3.2rem;
+  padding: 2.2rem 4.2rem 0;
 }
 .lightbox-content img {
   width: 100%;
@@ -914,12 +914,12 @@ section { padding: 5rem 1.5rem; }
   outline: 3px solid rgba(244,162,97,.95);
   outline-offset: 2px;
 }
-.lightbox-prev { left: 0; }
-.lightbox-next { right: 0; }
+.lightbox-prev { left: .35rem; }
+.lightbox-next { right: .35rem; }
 .lightbox-close {
   position: absolute;
-  top: .35rem;
-  right: .35rem;
+  top: .25rem;
+  right: .7rem;
   width: 44px;
   height: 44px;
   border: 1px solid rgba(255,255,255,.42);
@@ -1547,15 +1547,15 @@ main.about-page #contact .contact-closing-line {
     font-size: 1.15rem;
   }
   .lightbox-content {
-    padding: 0 2.5rem;
+    padding: 2rem 3.2rem 0;
   }
-  .lightbox-prev { left: .2rem; }
-  .lightbox-next { right: .2rem; }
+  .lightbox-prev { left: .35rem; }
+  .lightbox-next { right: .35rem; }
   .lightbox-close {
     width: 42px;
     height: 42px;
-    top: .2rem;
-    right: .2rem;
+    top: .15rem;
+    right: .5rem;
   }
   .footer-story-link {
     margin-top: .35rem;
