@@ -76,21 +76,6 @@ nav {
   transform: translateY(-.5px);
   font-weight: 800;
 }
-.logo-hq-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: .18rem .46rem;
-  border-radius: 999px;
-  border: 1px solid rgba(45,106,79,.34);
-  background: rgba(82,183,136,.12);
-  color: var(--primary);
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  line-height: 1;
-  transform: translateY(-.5px);
-}
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   position: relative;
@@ -1448,11 +1433,6 @@ main.about-page #contact .contact-closing-line {
 @media (max-width: 640px) {
   body { padding-bottom: 78px; }
   nav { padding: .9rem 1rem; }
-  .nav-logo { gap: .42rem; }
-  .logo-hq-badge {
-    font-size: .61rem;
-    padding: .16rem .42rem;
-  }
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .nav-cta { display: none; }
   .nav-links {
