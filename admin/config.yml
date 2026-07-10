@@ -1,0 +1,33 @@
+backend:
+  name: github
+  repo: bareunspace/blog
+  branch: main
+  # Required for GitHub Pages hosting.
+  # Replace with your OAuth bridge endpoint path.
+  auth_endpoint: /oauth/authorize
+
+local_backend: true
+publish_mode: editorial_workflow
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: notices
+    label: Notices
+    label_singular: Notice
+    folder: content/notices
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: frontmatter
+    extension: md
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Body
+        name: body
+        widget: markdown
