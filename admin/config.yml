@@ -3,10 +3,8 @@ backend:
   repo: bareunspace/blog
   branch: main
   # GitHub Pages needs an external OAuth bridge.
-  # Example:
-  # base_url: https://your-oauth-bridge.example.com
-  # auth_endpoint: auth
-  base_url: https://YOUR-OAUTH-BRIDGE.example.com
+  # Deploy a Cloudflare Worker and use its public domain here.
+  base_url: https://oauth.bareunjari.com
   auth_endpoint: auth
 
 local_backend: true
