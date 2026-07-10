@@ -20,6 +20,7 @@
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
     const policyDisclosure = document.querySelector('.policy-disclosure');
+    const contactFaqItems = document.querySelectorAll('.contact-faq details');
     const videoInterviewToggle = document.getElementById('videoInterviewToggle');
     const videoInterviewPanel = document.getElementById('videoInterviewPanel');
     const onlineExamToggle = document.getElementById('onlineExamToggle');
@@ -207,6 +208,17 @@
         });
       });
     }
+
+    contactFaqItems.forEach((faqItem) => {
+      faqItem.addEventListener('toggle', () => {
+        const question = faqItem.querySelector('summary')?.textContent?.trim() || 'faq';
+        trackEvent('toggle_contact_faq', {
+          placement: 'contact',
+          question,
+          state: faqItem.open ? 'open' : 'close'
+        });
+      });
+    });
 
     const setFeaturePanelState = (toggleEl, panelEl, isOpen, options = {}) => {
       if (!toggleEl || !panelEl) {

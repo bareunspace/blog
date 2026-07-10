@@ -1132,6 +1132,55 @@ section { padding: 5rem 1.5rem; }
   background: rgba(16, 185, 129, .2);
   border-color: rgba(16, 185, 129, .45);
 }
+.contact-faq {
+  margin: 1.2rem auto 0;
+  width: 100%;
+  max-width: 760px;
+  text-align: left;
+}
+.contact-faq-title {
+  margin-bottom: .6rem;
+  font-size: .92rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.95);
+}
+.contact-faq details {
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 12px;
+  background: rgba(255,255,255,.1);
+  margin-bottom: .5rem;
+  overflow: hidden;
+}
+.contact-faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: .75rem .85rem;
+  font-size: .86rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+}
+.contact-faq summary::-webkit-details-marker {
+  display: none;
+}
+.contact-faq summary::after {
+  content: '+';
+  font-size: 1rem;
+  line-height: 1;
+  color: rgba(255,255,255,.82);
+}
+.contact-faq details[open] summary::after {
+  content: '-';
+}
+.contact-faq details p {
+  padding: 0 .85rem .82rem;
+  font-size: .82rem;
+  line-height: 1.62;
+  color: rgba(255,255,255,.87);
+}
 
 /* ── Footer ── */
 footer {
@@ -1525,6 +1574,14 @@ main.about-page #contact .contact-closing-line {
   .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-form-row { grid-template-columns: 1fr; }
   .contact-form .submit-btn { width: 100%; }
+  .contact-faq summary {
+    font-size: .83rem;
+    padding: .7rem .78rem;
+  }
+  .contact-faq details p {
+    font-size: .8rem;
+    padding: 0 .78rem .78rem;
+  }
   .to-top {
     right: 1rem;
     bottom: 5.35rem;
