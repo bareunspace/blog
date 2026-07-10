@@ -50,7 +50,7 @@
     let featurePanelCleanupTimer = 0;
 
     const readBranchContext = () => {
-      const fallback = { slug: 'bucheon-sinjungdong', name: '바른자리 신중동' };
+      const fallback = { slug: 'bucheon-sinjungdong', name: '바른자리 신중동점' };
       const configNode = document.getElementById('branchSiteConfig');
       if (!configNode) {
         return fallback;
