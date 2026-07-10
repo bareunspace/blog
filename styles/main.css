@@ -1044,11 +1044,11 @@ section { padding: 5rem 1.5rem; }
   margin: 0;
   width: 100%;
   max-width: none;
-  background: linear-gradient(180deg, #fcf6ed 0%, #f6eddf 100%);
-  border: 1px solid rgba(184, 151, 95, .34);
+  background: linear-gradient(180deg, #ffffff 0%, #f3faf6 100%);
+  border: 1px solid rgba(45, 106, 79, .22);
   border-radius: var(--radius);
   padding: 1.4rem;
-  box-shadow: 0 14px 32px rgba(13, 35, 26, .2);
+  box-shadow: 0 14px 32px rgba(13, 35, 26, .18);
   text-align: left;
 }
 .contact-form {
@@ -1063,17 +1063,17 @@ section { padding: 5rem 1.5rem; }
 .contact-form label {
   display: block;
   font-size: .82rem;
-  color: #4f3f29;
+  color: #1f3f31;
   margin-bottom: .35rem;
   font-weight: 700;
 }
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid #dfcfb8;
+  border: 1px solid #c8ddd1;
   border-radius: 12px;
-  background: #fffdf8;
-  color: #2f2a22;
+  background: #ffffff;
+  color: #1f2937;
   padding: .72rem .8rem;
   font: inherit;
 }
@@ -1083,8 +1083,8 @@ section { padding: 5rem 1.5rem; }
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 2px solid rgba(196, 144, 64, .48);
-  border-color: rgba(196, 144, 64, .68);
+  outline: 2px solid rgba(45, 106, 79, .32);
+  border-color: rgba(45, 106, 79, .58);
 }
 .contact-form .submit-btn {
   justify-self: stretch;
@@ -1120,7 +1120,7 @@ section { padding: 5rem 1.5rem; }
 .contact-help-note {
   margin-top: .6rem;
   font-size: .8rem;
-  color: rgba(73,58,35,.82);
+  color: rgba(32, 69, 54, .78);
   line-height: 1.6;
 }
 .hp-field {
@@ -1133,7 +1133,7 @@ section { padding: 5rem 1.5rem; }
 .contact-rate-note {
   margin-top: .55rem;
   font-size: .76rem;
-  color: rgba(73,58,35,.78);
+  color: rgba(32, 69, 54, .75);
   line-height: 1.6;
 }
 .contact-submit-status {
@@ -1142,9 +1142,9 @@ section { padding: 5rem 1.5rem; }
   border-radius: 10px;
   font-size: .84rem;
   line-height: 1.5;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(115, 89, 50, .2);
-  color: #2f2a22;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(45, 106, 79, .2);
+  color: #1f2937;
 }
 .contact-submit-status.success {
   background: rgba(164, 230, 203, .45);
