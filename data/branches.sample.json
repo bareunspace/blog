@@ -1,0 +1,53 @@
+{
+  "brand": {
+    "name": "바른자리",
+    "website": "https://bareunjari.com"
+  },
+  "branches": [
+    {
+      "id": "branch-001",
+      "slug": "bucheon-sinjungdong",
+      "name": "바른자리 신중동",
+      "status": "open",
+      "address": {
+        "street": "신흥로 223 114호",
+        "city": "부천시 원미구",
+        "region": "경기도",
+        "country": "KR"
+      },
+      "contact": {
+        "phone": "0507-1358-2768",
+        "email": "bareunjari@gmail.com"
+      },
+      "hours": {
+        "open": "07:00",
+        "close": "23:00",
+        "lastBooking": "21:00"
+      },
+      "links": {
+        "booking": "https://booking.naver.com/booking/10/bizes/1663159",
+        "map": "https://map.naver.com/p/entry/place/2041312316",
+        "talk": "https://talk.naver.com/profile/w1pp89m"
+      },
+      "pricing": [
+        {
+          "name": "2시간 이용",
+          "price": 10000,
+          "currency": "KRW",
+          "url": "https://booking.naver.com/booking/10/bizes/1663159/items/7711746"
+        },
+        {
+          "name": "종일 대관",
+          "price": 120000,
+          "currency": "KRW",
+          "url": "https://booking.naver.com/booking/10/bizes/1663159/items/7764732"
+        }
+      ],
+      "seo": {
+        "title": "부천 신중동역 공간대여 | 면접·회의·시험 프라이빗룸 | 바른자리",
+        "description": "부천 신중동역 도보 1분, 다양한 사용 목적에 맞춰 필요한 시간만큼 단독 이용하는 프라이빗 공간",
+        "ogImage": "https://bareunjari.com/images/main.jpeg"
+      }
+    }
+  ]
+}
