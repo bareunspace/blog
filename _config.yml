@@ -1,0 +1,11 @@
+title: 바른자리
+url: "https://bareunjari.com"
+baseurl: ""
+language: ko-KR
+permalink: pretty
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+exclude:
+  - docs/
+  - data/

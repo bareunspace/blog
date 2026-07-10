@@ -1,0 +1,74 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ page.title }}</title>
+<meta name="description" content="{{ page.description }}" />
+{% if page.keywords %}
+<meta name="keywords" content="{{ page.keywords }}" />
+{% endif %}
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="googlebot" content="index,follow,max-image-preview:large" />
+{% if page.theme_color %}
+<meta name="theme-color" content="{{ page.theme_color }}" />
+{% endif %}
+<link rel="canonical" href="{{ page.canonical }}" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+{% if page.preload_image %}
+<link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp" fetchpriority="high" />
+{% endif %}
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="바른자리" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+<meta property="og:description" content="{{ page.og_description | default: page.description }}" />
+<meta property="og:url" content="{{ page.canonical }}" />
+<meta property="og:image" content="{{ page.og_image }}" />
+<meta property="og:image:secure_url" content="{{ page.og_image }}" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{ page.og_image_alt }}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page.twitter_title | default: page.title }}" />
+<meta name="twitter:description" content="{{ page.twitter_description | default: page.description }}" />
+<meta name="twitter:url" content="{{ page.canonical }}" />
+<meta name="twitter:image" content="{{ page.og_image }}" />
+<meta name="twitter:image:alt" content="{{ page.og_image_alt }}" />
+
+{% if page.naver_site_verification %}
+<meta name="naver-site-verification" content="{{ page.naver_site_verification }}" />
+{% endif %}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECYS2XKQ4H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ECYS2XKQ4H');
+</script>
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "xfmtyp5w3b");
+</script>
+
+{% if page.page_id == "home" %}
+  {% include jsonld-home.html %}
+{% elsif page.page_id == "about" %}
+  {% include jsonld-about.html %}
+{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles/main.css?v={{ page.css_version | default: '20260710-3' }}" />

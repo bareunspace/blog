@@ -77,7 +77,7 @@ exclude:
 
 ### Local run commands
 ```bash
-bundle install
+bundle install --path vendor/bundle
 bundle exec jekyll serve --livereload
 ```
 

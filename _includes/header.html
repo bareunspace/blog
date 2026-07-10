@@ -1,0 +1,30 @@
+<header>
+  <nav>
+    {% if page.page_id == "about" %}
+      <a href="index.html#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
+    {% else %}
+      <a href="#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
+    {% endif %}
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">바른자리</span>
+    </a>
+
+    <ul class="nav-links" id="primaryNav">
+      {% if page.page_id == "about" %}
+        <li><a href="#about-story" aria-current="page">브랜드 스토리</a></li>
+        <li><a href="index.html#space">공간 소개</a></li>
+        <li><a href="index.html#about">이용 안내</a></li>
+        <li><a href="index.html#contact">문의</a></li>
+      {% else %}
+        <li><a href="#space">공간 소개</a></li>
+        <li><a href="#about">이용 안내</a></li>
+        <li><a href="#gallery">갤러리</a></li>
+        <li><a href="#testimonials">이용사례</a></li>
+        <li><a href="#contact">문의</a></li>
+      {% endif %}
+    </ul>
+
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primaryNav">☰</button>
+    <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">지금 예약</a>
+  </nav>
+</header>
