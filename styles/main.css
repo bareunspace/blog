@@ -1418,7 +1418,7 @@ main.about-page section:nth-of-type(even):not(#home):not(#contact) {
   background: rgba(255,255,255,.7);
 }
 main.about-page .section-inner {
-  max-width: 860px;
+  max-width: 940px;
 }
 main.about-page .section-title {
   letter-spacing: -0.2px;
@@ -1455,7 +1455,7 @@ main.about-page .logo-story-caption {
 }
 main.about-page section:not(#home) .section-desc,
 main.about-page section:not(#home) .section-inner > p {
-  max-width: min(100%, 74ch);
+  max-width: min(100%, 84ch);
   color: #374151;
   line-height: 1.88;
   white-space: normal;
