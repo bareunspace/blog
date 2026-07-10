@@ -1,0 +1,8 @@
+name = "bareunjari-decap-oauth"
+main = "src/index.js"
+compatibility_date = "2026-07-11"
+
+# Set your production route/domain in Cloudflare Dashboard or via CLI.
+# routes = [
+#   { pattern = "oauth.bareunjari.com/*", zone_name = "bareunjari.com" }
+# ]
