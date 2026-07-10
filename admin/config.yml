@@ -2,9 +2,12 @@ backend:
   name: github
   repo: bareunspace/blog
   branch: main
-  # Required for GitHub Pages hosting.
-  # Replace with your OAuth bridge endpoint path.
-  auth_endpoint: /oauth/authorize
+  # GitHub Pages needs an external OAuth bridge.
+  # Example:
+  # base_url: https://your-oauth-bridge.example.com
+  # auth_endpoint: auth
+  base_url: https://YOUR-OAUTH-BRIDGE.example.com
+  auth_endpoint: auth
 
 local_backend: true
 publish_mode: editorial_workflow
