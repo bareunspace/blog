@@ -305,7 +305,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles/main.css?v=20260710-2" />
+  <link rel="stylesheet" href="styles/main.css?v=20260710-3" />
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" width="0" height="0" class="icon-sprite">
@@ -810,6 +810,22 @@
               </div>
             </div>
 
+            <div class="contact-form-row">
+              <div>
+                <label for="contactInquiryType">문의 유형</label>
+                <select id="contactInquiryType" name="문의유형" required>
+                  <option value="일반 문의" selected>일반 문의</option>
+                  <option value="예약/이용 문의">예약/이용 문의</option>
+                  <option value="운영 파트너 제안">운영 파트너 제안</option>
+                </select>
+              </div>
+              <div>
+                <label for="contactBranch">문의 지점</label>
+                <input id="contactBranch" name="문의지점" type="text" value="바른자리 신중동" readonly />
+                <input id="contactBranchSlug" name="지점코드" type="hidden" value="bucheon-sinjungdong" />
+              </div>
+            </div>
+
             <div>
               <label for="contactEmail">이메일</label>
               <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="답변 받을 이메일" required />
@@ -852,7 +868,22 @@
   <button type="button" class="to-top" id="toTop" aria-label="맨 위로 이동">↑</button>
   <a href="https://booking.naver.com/booking/10/bizes/1663159" target="_blank" rel="noopener noreferrer" class="mobile-sticky-cta" id="mobileStickyCta" data-cta="mobile_sticky">지금 예약하기 · 2시간 1만원</a>
 
-  <script src="scripts/main.js?v=20260710-2"></script>
+  <script id="branchSiteConfig" type="application/json">
+    {
+      "activeBranch": {
+        "slug": "bucheon-sinjungdong",
+        "name": "바른자리 신중동"
+      },
+      "availableBranches": [
+        {
+          "slug": "bucheon-sinjungdong",
+          "name": "바른자리 신중동"
+        }
+      ]
+    }
+  </script>
+
+  <script src="scripts/main.js?v=20260710-3"></script>
 
 </body>
 </html>

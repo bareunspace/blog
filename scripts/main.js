@@ -19,6 +19,9 @@
     const contactForm = document.getElementById('contactForm');
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
+    const contactInquiryType = document.getElementById('contactInquiryType');
+    const contactBranchInput = document.getElementById('contactBranch');
+    const contactBranchSlugInput = document.getElementById('contactBranchSlug');
     const policyDisclosure = document.querySelector('.policy-disclosure');
     const contactFaqItems = document.querySelectorAll('.contact-faq details');
     const videoInterviewToggle = document.getElementById('videoInterviewToggle');
@@ -45,6 +48,40 @@
     let useCaseItems = [];
     let useCasePage = 0;
     let featurePanelCleanupTimer = 0;
+
+    const readBranchContext = () => {
+      const fallback = { slug: 'bucheon-sinjungdong', name: '바른자리 신중동' };
+      const configNode = document.getElementById('branchSiteConfig');
+      if (!configNode) {
+        return fallback;
+      }
+
+      try {
+        const parsed = JSON.parse(configNode.textContent || '{}');
+        const active = parsed?.activeBranch || {};
+        return {
+          slug: active.slug || fallback.slug,
+          name: active.name || fallback.name
+        };
+      } catch (error) {
+        return fallback;
+      }
+    };
+
+    const branchContext = readBranchContext();
+    const withBranchContext = (params = {}) => {
+      return {
+        ...params,
+        branch_slug: branchContext.slug
+      };
+    };
+
+    if (contactBranchInput) {
+      contactBranchInput.value = branchContext.name;
+    }
+    if (contactBranchSlugInput) {
+      contactBranchSlugInput.value = branchContext.slug;
+    }
 
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
@@ -97,7 +134,7 @@
 
       mobileStickyCta.textContent = variants[variant];
       mobileStickyCta.dataset.ctaVariant = variant;
-      trackEvent('assign_mobile_cta_variant', { variant });
+      trackEvent('assign_mobile_cta_variant', withBranchContext({ variant }));
     };
 
     const openLightbox = (src, alt) => {
@@ -182,41 +219,41 @@
       link.addEventListener('click', () => {
         const section = link.closest('section')?.id || (link.closest('header') ? 'header' : 'global');
         const ctaLabel = link.dataset.cta || (link.textContent || '').trim();
-        trackEvent('click_booking_cta', {
+        trackEvent('click_booking_cta', withBranchContext({
           cta_label: ctaLabel,
           cta_variant: link.dataset.ctaVariant || 'default',
           placement: section,
           destination: 'naver_booking'
-        });
+        }));
       });
     });
 
     document.querySelectorAll('a[href*="talk.naver.com/profile/"]').forEach((link) => {
       link.addEventListener('click', () => {
-        trackEvent('click_talk_cta', {
+        trackEvent('click_talk_cta', withBranchContext({
           cta_label: link.dataset.cta || (link.textContent || '').trim(),
           placement: link.closest('section')?.id || 'global'
-        });
+        }));
       });
     });
 
     if (policyDisclosure) {
       policyDisclosure.addEventListener('toggle', () => {
-        trackEvent('toggle_policy_disclosure', {
+        trackEvent('toggle_policy_disclosure', withBranchContext({
           placement: 'about',
           state: policyDisclosure.open ? 'open' : 'close'
-        });
+        }));
       });
     }
 
     contactFaqItems.forEach((faqItem) => {
       faqItem.addEventListener('toggle', () => {
         const question = faqItem.querySelector('summary')?.textContent?.trim() || 'faq';
-        trackEvent('toggle_contact_faq', {
+        trackEvent('toggle_contact_faq', withBranchContext({
           placement: 'contact',
           question,
           state: faqItem.open ? 'open' : 'close'
-        });
+        }));
       });
     });
 
@@ -1000,6 +1037,13 @@
       const contactSubjectInput = document.getElementById('contactSubject');
       const contactReplyToInput = document.getElementById('contactReplyTo');
 
+      if (contactBranchInput) {
+        contactBranchInput.value = branchContext.name;
+      }
+      if (contactBranchSlugInput) {
+        contactBranchSlugInput.value = branchContext.slug;
+      }
+
       if (contactParams.get('contact') === 'sent' && contactSubmitStatus) {
         contactSubmitStatus.hidden = false;
         contactSubmitStatus.classList.add('success');
@@ -1013,9 +1057,13 @@
           const nameValue = (contactNameInput && typeof contactNameInput.value === 'string')
             ? contactNameInput.value.trim()
             : '';
+          const inquiryTypeValue = (contactInquiryType && typeof contactInquiryType.value === 'string')
+            ? contactInquiryType.value.trim()
+            : '일반 문의';
+          const subjectBase = `[${branchContext.name}] ${inquiryTypeValue} 문의 접수`;
           contactSubjectInput.value = nameValue
-            ? `[바른자리] 문의 접수 | ${nameValue}`
-            : '[바른자리] 문의 접수';
+            ? `${subjectBase} | ${nameValue}`
+            : subjectBase;
         }
 
         if (contactReplyToInput) {
@@ -1048,7 +1096,12 @@
         }
 
         localStorage.setItem(CONTACT_LAST_SUBMIT_KEY, String(now));
-        trackEvent('submit_contact_form', { form_name: 'contact_form' });
+        trackEvent('submit_contact_form', withBranchContext({
+          form_name: 'contact_form',
+          inquiry_type: (contactInquiryType && typeof contactInquiryType.value === 'string')
+            ? contactInquiryType.value.trim()
+            : '일반 문의'
+        }));
         if (contactRateNote) {
           contactRateNote.textContent = '문의를 전송 중입니다.';
         }
