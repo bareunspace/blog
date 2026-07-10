@@ -762,63 +762,65 @@
           <p class="ci-value"><a href="https://map.naver.com/p/entry/place/2041312316" target="_blank" rel="noopener noreferrer">네이버지도</a></p>
         </div>
       </div>
-      <div class="contact-form-wrap">
-        <form id="contactForm" class="contact-form" action="https://formsubmit.co/f7ed0ce03c8dd0b9b5b294cf0002adfa" method="POST">
-          <input type="hidden" name="_subject" id="contactSubject" value="[바른자리] 문의 접수" />
-          <input type="hidden" name="_replyto" id="contactReplyTo" value="" />
-          <input type="hidden" name="_autoresponse" value="바른자리에 문의해 주셔서 감사합니다. 접수하신 내용을 확인 중이며, 순차적으로 답변드리겠습니다." />
-          <input type="hidden" name="_next" value="https://bareunjari.com/?contact=sent#contact" />
-          <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="contact-support-layout">
+        <div class="contact-faq" aria-label="문의 자주 묻는 질문">
+          <h3 class="contact-faq-title">문의 FAQ</h3>
+          <details>
+            <summary>예약은 어떻게 진행되나요?</summary>
+            <p>네이버 예약에서 원하는 날짜와 시간을 선택해 예약하며, 기본 이용은 2시간부터 가능합니다. 예약 완료 후 이용 안내를 보내드립니다.</p>
+          </details>
+          <details>
+            <summary>당일 예약도 가능한가요?</summary>
+            <p>가능합니다. 다만 시간대별 마감이 빠를 수 있어 이용 예정 시간보다 여유 있게 확인해 주세요.</p>
+          </details>
+          <details>
+            <summary>환불/일정 변경 기준은 어떻게 되나요?</summary>
+            <p>환불은 이용 2일 전 100%, 전날 50%, 당일은 환불이 어렵습니다. 일정 변경은 가능 여부를 먼저 문의해 주세요.</p>
+          </details>
+          <details>
+            <summary>시설과 비품은 어떤 것들이 있나요?</summary>
+            <p>테이블/의자, Wi-Fi, 커피포트, 캡슐커피머신, 블루투스 스피커, 멀티탭, 거울 등을 제공합니다. 현장 운영에 따라 일부 구성은 달라질 수 있습니다.</p>
+          </details>
+          <details>
+            <summary>운영 파트너(프랜차이즈/지점 제안) 문의도 가능한가요?</summary>
+            <p>가능합니다. 문의 내용에 운영 제안 목적, 희망 지역, 운영 형태를 남겨주시면 확인 후 순차적으로 안내드립니다.</p>
+          </details>
+        </div>
+        <div class="contact-form-wrap">
+          <form id="contactForm" class="contact-form" action="https://formsubmit.co/f7ed0ce03c8dd0b9b5b294cf0002adfa" method="POST">
+            <input type="hidden" name="_subject" id="contactSubject" value="[바른자리] 문의 접수" />
+            <input type="hidden" name="_replyto" id="contactReplyTo" value="" />
+            <input type="hidden" name="_autoresponse" value="바른자리에 문의해 주셔서 감사합니다. 접수하신 내용을 확인 중이며, 순차적으로 답변드리겠습니다." />
+            <input type="hidden" name="_next" value="https://bareunjari.com/?contact=sent#contact" />
+            <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <div class="contact-form-row">
-            <div>
-              <label for="contactName">이름</label>
-              <input id="contactName" name="이름" type="text" autocomplete="name" required />
+            <div class="contact-form-row">
+              <div>
+                <label for="contactName">이름</label>
+                <input id="contactName" name="이름" type="text" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="contactPhone">연락처</label>
+                <input id="contactPhone" name="연락처" type="tel" inputmode="tel" autocomplete="tel" placeholder="예: 010-1234-5678" required />
+              </div>
             </div>
+
             <div>
-              <label for="contactPhone">연락처</label>
-              <input id="contactPhone" name="연락처" type="tel" inputmode="tel" autocomplete="tel" placeholder="예: 010-1234-5678" required />
+              <label for="contactEmail">이메일</label>
+              <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="답변 받을 이메일" required />
             </div>
-          </div>
 
-          <div>
-            <label for="contactEmail">이메일</label>
-            <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="답변 받을 이메일" required />
-          </div>
+            <div>
+              <label for="contactMessage">문의 내용</label>
+              <textarea id="contactMessage" name="문의내용" placeholder="문의내용을 남겨주세요." required></textarea>
+            </div>
 
-          <div>
-            <label for="contactMessage">문의 내용</label>
-            <textarea id="contactMessage" name="문의내용" placeholder="문의내용을 남겨주세요." required></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">문의 보내기</button>
-          <p class="contact-help-note">접수 후 입력하신 이메일로 확인 메일이 발송됩니다. 메일이 보이지 않으면 스팸함도 확인해 주세요.</p>
-        </form>
-        <p class="contact-rate-note" id="contactRateNote" aria-live="polite"></p>
-        <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>
-      </div>
-      <div class="contact-faq" aria-label="문의 자주 묻는 질문">
-        <h3 class="contact-faq-title">문의 FAQ</h3>
-        <details>
-          <summary>예약은 어떻게 진행되나요?</summary>
-          <p>네이버 예약에서 원하는 날짜와 시간을 선택해 예약하며, 기본 이용은 2시간부터 가능합니다. 예약 완료 후 이용 안내를 보내드립니다.</p>
-        </details>
-        <details>
-          <summary>당일 예약도 가능한가요?</summary>
-          <p>가능합니다. 다만 시간대별 마감이 빠를 수 있어 이용 예정 시간보다 여유 있게 확인해 주세요.</p>
-        </details>
-        <details>
-          <summary>환불/일정 변경 기준은 어떻게 되나요?</summary>
-          <p>환불은 이용 2일 전 100%, 전날 50%, 당일은 환불이 어렵습니다. 일정 변경은 가능 여부를 먼저 문의해 주세요.</p>
-        </details>
-        <details>
-          <summary>시설과 비품은 어떤 것들이 있나요?</summary>
-          <p>테이블/의자, Wi-Fi, 커피포트, 캡슐커피머신, 블루투스 스피커, 멀티탭, 거울 등을 제공합니다. 현장 운영에 따라 일부 구성은 달라질 수 있습니다.</p>
-        </details>
-        <details>
-          <summary>운영 파트너(프랜차이즈/지점 제안) 문의도 가능한가요?</summary>
-          <p>가능합니다. 문의 내용에 운영 제안 목적, 희망 지역, 운영 형태를 남겨주시면 확인 후 순차적으로 안내드립니다.</p>
-        </details>
+            <button type="submit" class="submit-btn">문의 보내기</button>
+            <p class="contact-help-note">접수 후 입력하신 이메일로 확인 메일이 발송됩니다. 메일이 보이지 않으면 스팸함도 확인해 주세요.</p>
+          </form>
+          <p class="contact-rate-note" id="contactRateNote" aria-live="polite"></p>
+          <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>
+        </div>
       </div>
     </div>
   </section>
