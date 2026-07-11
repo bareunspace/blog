@@ -1,0 +1,41 @@
+name: Naver Blog RSS Sync
+
+on:
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync Naver blog RSS
+        run: bash scripts/sync-naver-blog.sh
+
+      - name: Commit changes if needed
+        run: |
+          if git diff --quiet -- _data/naver_blog.yml; then
+            echo "No changes in _data/naver_blog.yml"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add _data/naver_blog.yml
+          git commit -m "chore: sync naver blog RSS"
+          git push

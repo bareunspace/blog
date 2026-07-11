@@ -1,0 +1,68 @@
+---
+layout: default
+page_id: blog
+permalink: /blog.html
+title: 바른자리 네이버 블로그 모아보기 | 공간 이용 팁과 소식
+description: 바른자리 네이버 블로그 최신 글을 모아 보고, 공간 이용 팁과 공지사항을 빠르게 확인하세요.
+canonical: https://bareunjari.com/blog.html
+og_image: https://bareunjari.com/images/14.jpeg
+og_image_alt: 바른자리 네이버 블로그 모아보기 대표 이미지
+preload_image: images/14.webp
+css_version: 20260710-3
+script_version: 20260711-3
+---
+<main class="about-page">
+  <section id="home">
+    <div class="section-inner">
+      <p class="section-label">Naver Blog</p>
+      <h1 class="section-title">바른자리 네이버 블로그 모아보기</h1>
+      <p class="hero-subtitle">공간 이용 팁, 운영 소식, 공지를 한 번에 확인하세요</p>
+      <p class="about-hero-lead">검색에서 글을 발견한 뒤 바로 예약과 문의로 이어질 수 있도록, 네이버 블로그 글을 이 페이지에 모아 제공합니다.</p>
+      <div class="hero-btns">
+        <a href="{{ site.data.naver_blog.blog_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="blog_naver_primary">네이버 블로그 바로가기</a>
+        <a href="index.html#contact" class="btn-outline">문의하기</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog-latest">
+    <div class="section-inner">
+      <h2 class="section-title">최근 글</h2>
+      <p class="section-desc">아래 글 카드를 눌러 네이버 블로그 원문으로 이동하세요. 글 목록은 RSS 동기화 스크립트로 자동 갱신됩니다.</p>
+      <div class="about-highlight-grid" aria-label="네이버 블로그 최신 글 목록">
+        {% for post in site.data.naver_blog.posts %}
+          <article class="about-highlight-card">
+            <h3><a href="{{ post.url }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a></h3>
+            <p>{{ post.summary }}</p>
+            <p><strong>{{ post.category }}</strong> · {{ post.date }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="blog-guide">
+    <div class="section-inner">
+      <h2 class="section-title">검색 유입 최적화 운영 가이드</h2>
+      <p class="section-desc">네이버 블로그와 사이트를 함께 운영할 때 효과가 큰 최소 기준입니다.</p>
+      <div class="about-principle-grid" aria-label="블로그 운영 가이드">
+        <article class="about-principle-item" data-step="01">
+          <h3>글 첫 문단에 핵심 키워드</h3>
+          <p>지점명, 위치, 사용 목적(예: 화상면접, 온라인시험)을 첫 문단과 제목에 자연스럽게 포함하세요.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>글 말미에 예약 링크 고정</h3>
+          <p>모든 글 하단에 예약 링크와 문의 링크를 같은 형식으로 넣어 클릭 동선을 일관되게 유지하세요.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>주 1회 이상 발행 주기</h3>
+          <p>짧은 공지형 글이라도 정기 발행하면 검색엔진이 최신성을 더 자주 반영합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="04">
+          <h3>사이트와 상호 링크</h3>
+          <p>사이트에서 블로그를, 블로그에서 사이트를 연결해 브랜드 신호와 체류 동선을 동시에 강화하세요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>

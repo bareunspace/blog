@@ -1,6 +1,6 @@
 <header>
   <nav>
-    {% if page.page_id == "about" %}
+    {% if page.page_id == "about" or page.page_id == "blog" %}
       <a href="index.html#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
     {% else %}
       <a href="#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
@@ -11,13 +11,15 @@
 
     {% if page.page_id == "about" %}
       {% assign nav_items = site.data.navigation.about %}
+    {% elsif page.page_id == "blog" %}
+      {% assign nav_items = site.data.navigation.blog %}
     {% else %}
       {% assign nav_items = site.data.navigation.home %}
     {% endif %}
     <ul class="nav-links" id="primaryNav">
       {% for item in nav_items %}
         <li>
-          <a href="{{ item.href }}" {% if page.page_id == "about" and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          <a href="{{ item.href }}" {% if (page.page_id == "about" or page.page_id == "blog") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
         </li>
       {% endfor %}
     </ul>

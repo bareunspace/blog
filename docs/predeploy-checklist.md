@@ -15,8 +15,18 @@
 - 기대 결과: `Pre-deploy check passed.`
 - 실패 시: 실패 항목 우선 수정 후 재실행
 
+RSS 동기화(수동 실행 필요 시):
+- 실행: `bash scripts/sync-naver-blog.sh`
+- 동작: 네이버 블로그 RSS 전체 글을 `_data/naver_blog.yml`에 자동 반영
+
+GitHub 자동 동기화:
+- 워크플로: `.github/workflows/naver-blog-rss-sync.yml`
+- 주기: 매일 00:15 UTC (한국시간 09:15)
+- 수동 실행: GitHub Actions 탭에서 `Naver Blog RSS Sync` > `Run workflow`
+
 자동 점검 항목:
 - [ ] Jekyll 의존성 설치 및 빌드 성공
+- [ ] 네이버 블로그 RSS 동기화 성공
 - [ ] 필수 산출물 파일 존재(`index/about/robots/sitemap/인증 파일`)
 - [ ] SEO/분석 태그(canonical, GA, Clarity, JSON-LD) 포함
 - [ ] 렌더 결과 HTML에 미처리 Liquid 태그 없음

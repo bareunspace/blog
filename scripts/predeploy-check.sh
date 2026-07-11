@@ -39,11 +39,18 @@ check_contains() {
 
 echo "== Pre-deploy Check =="
 
-echo "Step 1/5: bundle install (local path)"
+echo "Step 1/6: bundle install (local path)"
 bundle install --path vendor/bundle >/dev/null
 pass "Bundle install completed"
 
-echo "Step 2/5: jekyll build"
+echo "Step 2/6: sync Naver blog RSS"
+if bash scripts/sync-naver-blog.sh >/dev/null; then
+  pass "Naver blog RSS sync completed"
+else
+  fail "Naver blog RSS sync failed"
+fi
+
+echo "Step 3/6: jekyll build"
 bundle exec jekyll build >/dev/null
 pass "Jekyll build completed"
 
@@ -54,7 +61,7 @@ elif [[ -f "_site/about/index.html" ]]; then
   ABOUT_OUTPUT="_site/about/index.html"
 fi
 
-echo "Step 3/5: required output files"
+echo "Step 4/6: required output files"
 check_file_exists "_site/index.html"
 if [[ -n "$ABOUT_OUTPUT" ]]; then
   pass "File exists: $ABOUT_OUTPUT"
@@ -66,7 +73,7 @@ check_file_exists "_site/sitemap.xml"
 check_file_exists "_site/googlebf2d4abd9a14843f.html"
 check_file_exists "_site/naver5fe3663045eafa19ecaa866c5476b7a2.html"
 
-echo "Step 4/5: SEO and tracking checks"
+echo "Step 5/6: SEO and tracking checks"
 check_contains "_site/index.html" 'rel="canonical" href="https://bareunjari.com/"' "Home canonical"
 check_contains "_site/index.html" 'G-ECYS2XKQ4H' "Home GA tag"
 check_contains "_site/index.html" 'xfmtyp5w3b' "Home Clarity tag"
@@ -79,7 +86,13 @@ if [[ -n "$ABOUT_OUTPUT" ]]; then
   check_contains "$ABOUT_OUTPUT" '"@type": "AboutPage"' "About AboutPage JSON-LD"
 fi
 
-echo "Step 5/5: rendered HTML sanity"
+if grep -Eq '^[[:space:]]*-[[:space:]]title:' _data/naver_blog.yml; then
+  pass "Naver blog data has at least one post"
+else
+  fail "Naver blog data is empty"
+fi
+
+echo "Step 6/6: rendered HTML sanity"
 if grep -R -n '{{\|{%' _site/*.html >/dev/null 2>&1; then
   fail "Found unresolved Liquid tags in _site HTML"
 else

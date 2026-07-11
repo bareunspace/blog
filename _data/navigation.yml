@@ -1,6 +1,8 @@
 home:
   - label: 공간 소개
     href: "#space"
+  - label: 블로그
+    href: "blog.html"
   - label: 이용 안내
     href: "#about"
   - label: 갤러리
@@ -13,8 +15,20 @@ about:
   - label: 브랜드 스토리
     href: "#about-story"
     current: true
+  - label: 블로그
+    href: "blog.html"
   - label: 공간 소개
     href: "index.html#space"
+  - label: 이용 안내
+    href: "index.html#about"
+  - label: 문의
+    href: "index.html#contact"
+blog:
+  - label: 최근 글
+    href: "#blog-latest"
+    current: true
+  - label: 브랜드 스토리
+    href: "about.html"
   - label: 이용 안내
     href: "index.html#about"
   - label: 문의
