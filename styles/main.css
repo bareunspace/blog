@@ -235,6 +235,39 @@ nav {
   line-height: 1.35;
   font-weight: 600;
 }
+.hero-fast-track {
+  margin-top: .9rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .55rem;
+  width: min(840px, 100%);
+}
+.hero-fast-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: .58rem .7rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+.hero-fast-item strong {
+  margin-left: .3rem;
+  color: #ffddb6;
+  font-size: .83rem;
+}
+.hero-fast-item:hover,
+.hero-fast-item:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.5);
+}
 .btn-primary {
   background: var(--primary); color: #fff;
   padding: .85rem 2rem; border-radius: 50px;
@@ -1716,6 +1749,16 @@ main.about-page #contact .contact-closing-line {
   .hero-btns { flex-direction: column; align-items: center; }
   .hero-proof { gap: .45rem; }
   .hero-proof li { font-size: .77rem; }
+  .hero-fast-track {
+    grid-template-columns: 1fr;
+    gap: .42rem;
+    margin-top: .75rem;
+    width: min(360px, 100%);
+  }
+  .hero-fast-item {
+    min-height: 44px;
+    font-size: .81rem;
+  }
   .feature-toggle-hint {
     font-size: .82rem;
   }
