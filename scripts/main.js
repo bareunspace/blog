@@ -224,7 +224,44 @@
       });
     };
 
+    const attachGalleryImageFallback = (scope) => {
+      const root = scope || document;
+      const images = Array.from(root.querySelectorAll('.gallery-item img'));
+
+      images.forEach((img) => {
+        if (img.dataset.galleryFallbackBound === 'true') {
+          return;
+        }
+
+        img.dataset.galleryFallbackBound = 'true';
+        img.addEventListener('error', () => {
+          const originalSrc = img.dataset.originalSrc || '';
+          const proxySrc = img.dataset.proxySrc || '';
+
+          if (img.dataset.proxyAttempted !== 'true' && proxySrc && img.src !== proxySrc) {
+            img.dataset.proxyAttempted = 'true';
+            img.src = proxySrc;
+            return;
+          }
+
+          if (img.dataset.originalAttempted !== 'true' && originalSrc && img.src !== originalSrc) {
+            img.dataset.originalAttempted = 'true';
+            img.src = originalSrc;
+            return;
+          }
+
+          if (img.dataset.fallbackApplied === 'true') {
+            return;
+          }
+
+          img.dataset.fallbackApplied = 'true';
+          img.src = 'images/main.webp';
+        });
+      });
+    };
+
     bindGalleryOpenButtons();
+    attachGalleryImageFallback();
 
     const setupGalleryLoadMore = () => {
       if (!galleryTrack || !galleryLoadMore) {
@@ -273,147 +310,6 @@
 
       renderGalleryItems();
     };
-
-    const appendGalleryItems = (items) => {
-      if (!galleryTrack || !Array.isArray(items) || !items.length) {
-        return 0;
-      }
-
-      const existingSources = new Set(Array.from(galleryTrack.querySelectorAll('.gallery-open')).map((button) => {
-        return sanitizeImageUrl(button.dataset.src || '');
-      }).filter(Boolean));
-
-      const fragment = document.createDocumentFragment();
-      let appended = 0;
-
-      items.forEach((item) => {
-        const imageUrl = sanitizeImageUrl(item.imageUrl || item.src || '');
-        const title = stripHtml(item.title || item.alt || '').trim() || '바른자리 공간 이미지';
-        const sourceLink = sanitizeImageUrl(item.link || item.url || '');
-
-        if (!imageUrl || existingSources.has(imageUrl)) {
-          return;
-        }
-
-        existingSources.add(imageUrl);
-        const figure = document.createElement('figure');
-        figure.className = 'gallery-item';
-
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'gallery-open';
-        button.dataset.src = imageUrl;
-        button.dataset.alt = title;
-        button.setAttribute('aria-label', '이미지 확대 보기');
-
-        const image = document.createElement('img');
-        image.src = imageUrl;
-        image.alt = title;
-        image.loading = 'lazy';
-        image.decoding = 'async';
-
-        button.appendChild(image);
-        figure.appendChild(button);
-
-        if (sourceLink) {
-          const caption = document.createElement('figcaption');
-          caption.className = 'gallery-item-caption';
-
-          const titleLink = document.createElement('a');
-          titleLink.className = 'gallery-item-title';
-          titleLink.href = sourceLink;
-          titleLink.target = '_blank';
-          titleLink.rel = 'noopener noreferrer';
-          titleLink.textContent = title;
-
-          caption.appendChild(titleLink);
-          figure.appendChild(caption);
-        }
-
-        fragment.appendChild(figure);
-        appended += 1;
-      });
-
-      if (!appended) {
-        return 0;
-      }
-
-      galleryTrack.appendChild(fragment);
-      bindGalleryOpenButtons(galleryTrack);
-      refreshGalleryItemsVisibility();
-      return appended;
-    };
-
-    const loadGalleryPhotosFromAutoFeed = async () => {
-      if (!galleryTrack) {
-        return false;
-      }
-
-      try {
-        const response = await fetchWithTimeout(`data/gallery.auto.json?ts=${Date.now()}`, 8000);
-        if (!response.ok) {
-          return false;
-        }
-
-        const payload = await response.json();
-        const items = Array.isArray(payload?.items) ? payload.items.slice(0, 30) : [];
-        const appended = appendGalleryItems(items);
-        return appended > 0;
-      } catch (error) {
-        return false;
-      }
-    };
-
-    const loadGalleryPhotosFromBlog = async () => {
-      if (!galleryTrack) {
-        return;
-      }
-
-      const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const GALLERY_RSS_LIMIT = 12;
-
-      try {
-        const rssItems = await fetchRssItems(rssUrl);
-        if (!Array.isArray(rssItems) || !rssItems.length) {
-          return;
-        }
-
-        const candidates = rssItems
-          .map((item) => {
-            const imageUrl = toPreferredNaverRepresentativeImageUrl(item.imageUrl || extractImageFromHtml(item.description || ''));
-            const safeUrl = sanitizeImageUrl(imageUrl);
-            const title = stripHtml(item.title || '').trim();
-            return {
-              imageUrl: safeUrl,
-              title: title || '네이버 블로그 이용 후기 이미지',
-              link: sanitizeImageUrl(item.link || '')
-            };
-          })
-          .filter((item) => item.imageUrl);
-
-        const unique = [];
-        const seen = new Set();
-        for (const item of candidates) {
-          if (seen.has(item.imageUrl)) {
-            continue;
-          }
-          seen.add(item.imageUrl);
-          unique.push(item);
-          if (unique.length >= GALLERY_RSS_LIMIT) {
-            break;
-          }
-        }
-
-        if (!unique.length) {
-          return;
-        }
-
-        appendGalleryItems(unique);
-      } catch (error) {
-        // Ignore external feed failures and keep local gallery only.
-      }
-    };
-
 
     const closeMobileMenu = () => {
       if (!navLinks || !navToggle) {
@@ -1519,9 +1415,4 @@
     updatePromoCountdown();
     setupMobileCtaVariant();
     setupGalleryLoadMore();
-    loadGalleryPhotosFromAutoFeed().then((loadedFromAutoFeed) => {
-      if (!loadedFromAutoFeed) {
-        loadGalleryPhotosFromBlog();
-      }
-    });
     loadUseCasesFromRss();

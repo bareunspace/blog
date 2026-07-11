@@ -929,25 +929,6 @@ section { padding: 5rem 1.5rem; }
   width: 100%;
   height: auto;
 }
-.gallery-item-caption {
-  padding: .58rem .65rem .7rem;
-  border-top: 1px solid #edf0ee;
-  background: #fff;
-}
-.gallery-item-title {
-  display: inline-block;
-  font-size: .82rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: #1f2937;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color var(--transition), border-color var(--transition);
-}
-.gallery-item-title:hover {
-  color: var(--primary);
-  border-color: rgba(45,106,79,.35);
-}
 .gallery-item.is-hidden {
   display: none;
 }
