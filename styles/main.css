@@ -554,9 +554,27 @@ section { padding: 5rem 1.5rem; }
   padding: .85rem .9rem;
 }
 .private-office-card h3 {
+  display: flex;
+  align-items: center;
+  gap: .42rem;
+  flex-wrap: wrap;
   font-size: .88rem;
   color: #1f2937;
   margin-bottom: .35rem;
+}
+.use-time-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .15rem .45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(45,106,79,.25);
+  background: rgba(45,106,79,.08);
+  color: var(--primary);
+  font-size: .68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .02em;
 }
 .private-office-card p {
   font-size: .82rem;

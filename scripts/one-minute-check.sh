@@ -12,10 +12,7 @@ bundle exec jekyll build
 
 echo "Step 2/2: start preview server"
 echo "Preview URL: $PREVIEW_URL"
+echo "Open the URL in your browser and check manually"
 echo "Stop server with Ctrl+C"
-
-if command -v open >/dev/null 2>&1; then
-  open "$PREVIEW_URL" >/dev/null 2>&1 || true
-fi
 
 exec bundle exec jekyll serve --livereload --host 127.0.0.1 --port 4000
