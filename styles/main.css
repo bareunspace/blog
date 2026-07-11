@@ -336,8 +336,25 @@ section { padding: 5rem 1.5rem; }
   padding-top: 5.5rem;
   padding-bottom: 5rem;
 }
+#space .section-desc {
+  margin-bottom: .9rem;
+}
 #space .section-inner {
   position: relative;
+}
+.space-story-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-size: .92rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.space-story-link:hover {
+  color: var(--primary-light);
 }
 .space-hero {
   border-radius: var(--radius);
