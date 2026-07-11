@@ -1098,6 +1098,17 @@
       });
     };
 
+    const getUseCaseSourceSignature = (items) => {
+      if (!Array.isArray(items) || !items.length) {
+        return 'empty';
+      }
+
+      return items
+        .slice(0, 5)
+        .map((item) => `${item.link || ''}::${item.pubDate || item.date || ''}::${item.title || ''}`)
+        .join('|');
+    };
+
     const extractOgImageFromHtml = (htmlText) => {
       if (!htmlText) {
         return '';
@@ -1226,6 +1237,7 @@
         /가이드/i
       ];
       const embeddedItems = readEmbeddedUseCaseItems();
+      const embeddedSignature = getUseCaseSourceSignature(embeddedItems);
 
       if (embeddedItems.length > 0) {
         useCaseItems = embeddedItems.slice(0, 18);
@@ -1250,7 +1262,11 @@
           const parsed = JSON.parse(raw);
           const ts = Number(parsed?.ts || 0);
           const items = Array.isArray(parsed?.items) ? parsed.items : [];
+          const sourceSignature = parsed?.sourceSignature || '';
           if (!ts || !items.length) {
+            return [];
+          }
+          if (embeddedSignature && sourceSignature && embeddedSignature !== sourceSignature) {
             return [];
           }
           if (Date.now() - ts > USECASE_CACHE_TTL) {
@@ -1269,6 +1285,7 @@
           }
           localStorage.setItem(USECASE_CACHE_KEY, JSON.stringify({
             ts: Date.now(),
+            sourceSignature: embeddedSignature,
             items
           }));
         } catch (error) {
