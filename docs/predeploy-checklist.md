@@ -15,6 +15,12 @@
 - 기대 결과: `Pre-deploy check passed.`
 - 실패 시: 실패 항목 우선 수정 후 재실행
 
+자동 점검 항목:
+- [ ] Jekyll 의존성 설치 및 빌드 성공
+- [ ] 필수 산출물 파일 존재(`index/about/robots/sitemap/인증 파일`)
+- [ ] SEO/분석 태그(canonical, GA, Clarity, JSON-LD) 포함
+- [ ] 렌더 결과 HTML에 미처리 Liquid 태그 없음
+
 ## 2) 수동 점검 (필수)
 - [ ] 홈 `/` 접속 확인
 - [ ] 소개 `/about.html` 접속 확인
@@ -38,3 +44,7 @@
 2. 미리보기 배포
 3. 수동 점검
 4. 운영 배포
+
+## 새 페이지 생성(쉬운 방법)
+- 가이드: `docs/new-page-quickstart.md`
+- 생성 명령: `bash scripts/new-page.sh <slug> "<title>" "<description>" ["<keywords>"]`
