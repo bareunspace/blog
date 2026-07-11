@@ -1040,6 +1040,11 @@ section { padding: 5rem 1.5rem; }
   gap: 1.2rem;
   align-items: stretch;
 }
+.contact-form-block {
+  margin: 1.2rem auto 0;
+  width: 100%;
+  max-width: 1040px;
+}
 .contact-form-wrap {
   margin: 0;
   width: 100%;
@@ -1169,9 +1174,9 @@ section { padding: 5rem 1.5rem; }
   border-color: rgba(28, 109, 79, .48);
 }
 .contact-faq {
-  margin: 0;
+  margin: 1.6rem auto 0;
   width: 100%;
-  max-width: none;
+  max-width: 1040px;
   text-align: left;
   padding: 1.1rem;
   border-radius: var(--radius);
