@@ -11,6 +11,7 @@
     const navLinks = document.querySelector('.nav-links');
     const navSectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     const useCasesGrid = document.getElementById('useCasesGrid');
+    const naverBlogFallbackData = document.getElementById('naverBlogFallbackData');
     const rssStatus = document.getElementById('rssStatus');
     const useCaseControls = document.getElementById('useCaseControls');
     const useCasePrev = document.getElementById('useCasePrev');
@@ -1024,6 +1025,33 @@
       return [];
     };
 
+    const readEmbeddedUseCaseItems = () => {
+      if (!naverBlogFallbackData) {
+        return [];
+      }
+
+      try {
+        const parsed = JSON.parse(naverBlogFallbackData.textContent || '[]');
+        if (!Array.isArray(parsed)) {
+          return [];
+        }
+
+        return parsed.map((item) => ({
+          title: typeof item?.title === 'string' ? item.title : '',
+          description: typeof item?.summary === 'string' ? item.summary : '',
+          link: typeof item?.url === 'string' ? item.url : '',
+          pubDate: typeof item?.date === 'string' ? item.date : '',
+          imageUrl: typeof item?.image_url === 'string' ? item.image_url : '',
+          contentType: classifyUseCaseType({
+            title: typeof item?.title === 'string' ? item.title : '',
+            description: typeof item?.summary === 'string' ? item.summary : ''
+          })
+        })).filter((item) => item.title && item.link);
+      } catch (error) {
+        return [];
+      }
+    };
+
     const extractOgImageFromHtml = (htmlText) => {
       if (!htmlText) {
         return '';
@@ -1151,6 +1179,13 @@
         /준비\s*방법/i,
         /가이드/i
       ];
+      const embeddedItems = readEmbeddedUseCaseItems();
+
+      if (embeddedItems.length > 0) {
+        useCaseItems = embeddedItems.slice(0, 18);
+        useCasePage = 0;
+        renderUseCasePage();
+      }
 
       try {
         LEGACY_USECASE_CACHE_KEYS.forEach((legacyKey) => {
@@ -1196,7 +1231,7 @@
       };
 
       try {
-        if (rssStatus) {
+        if (rssStatus && embeddedItems.length === 0) {
           rssStatus.textContent = '최신 이용사례를 불러오는 중입니다.';
           rssStatus.hidden = false;
         }
@@ -1241,6 +1276,13 @@
           }
         }
       } catch (error) {
+        if (embeddedItems.length > 0) {
+          useCaseItems = embeddedItems.slice(0, 18);
+          useCasePage = 0;
+          renderUseCasePage();
+          return;
+        }
+
         const cachedItems = readUseCaseCache();
         if (cachedItems.length > 0) {
           useCaseItems = cachedItems.slice(0, 18);

@@ -17,6 +17,15 @@ def strip_html(value: str) -> str:
     return text
 
 
+def extract_image_url(value: str) -> str:
+    matches = re.findall(r'<img[^>]+src=["\']([^"\']+)["\']', value or "", flags=re.IGNORECASE)
+    if not matches:
+        return ""
+
+    preferred = next((url for url in matches if "pstatic.net" in url.lower()), matches[0])
+    return html.unescape(preferred).strip()
+
+
 def yaml_quote(value: str) -> str:
     return json.dumps(value or "", ensure_ascii=False)
 
@@ -81,6 +90,7 @@ def parse_items(xml_bytes: bytes) -> list[dict[str, str]]:
         summary = summary_raw[:180].rstrip()
         if len(summary_raw) > 180:
             summary += "..."
+        image_url = extract_image_url(desc)
 
         posts.append(
             {
@@ -89,6 +99,7 @@ def parse_items(xml_bytes: bytes) -> list[dict[str, str]]:
                 "date": date_value,
                 "category": category or "블로그",
                 "summary": summary or "네이버 블로그 글 원문을 확인해 주세요.",
+                "image_url": image_url,
             }
         )
 
@@ -122,6 +133,7 @@ def render_yaml(blog_name: str, blog_url: str, posts: list[dict[str, str]]) -> s
                 f"    date: {post['date']}",
                 f"    category: {post['category']}",
                 f"    summary: {yaml_quote(post['summary'])}",
+                f"    image_url: {yaml_quote(post.get('image_url', ''))}",
             ]
         )
 
