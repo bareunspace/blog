@@ -558,25 +558,69 @@
         .replaceAll("'", '&#39;');
     };
 
-    const extractImageFromHtml = (html) => {
+    const extractImageCandidatesFromHtml = (html) => {
       if (!html) {
-        return '';
+        return [];
       }
+
+      const getImageCanonicalKey = (rawUrl) => {
+        if (!rawUrl) {
+          return '';
+        }
+
+        try {
+          const url = new URL(rawUrl, window.location.origin);
+          const host = url.hostname.toLowerCase();
+          const path = url.pathname.replace(/\/+$/, '');
+          const isNaverPstatic = /(^|\.)pstatic\.net$/.test(host);
+
+          if (!isNaverPstatic) {
+            return `${host}${path}${url.search}`;
+          }
+
+          // Naver image CDN variants (postfiles/blogthumb/blogfiles) often point to the same image.
+          // Treat them as one candidate by host-agnostic path key and ignoring resize params.
+          return path.toLowerCase();
+        } catch (error) {
+          return rawUrl.trim();
+        }
+      };
 
       const temp = document.createElement('div');
       temp.innerHTML = html;
       const images = Array.from(temp.querySelectorAll('img'));
-      for (let i = images.length - 1; i >= 0; i -= 1) {
-        const image = images[i];
+      const candidates = [];
+      const seenKeys = new Set();
+
+      images.forEach((image) => {
         const candidate = image.getAttribute('src')
           || image.getAttribute('data-src')
           || image.getAttribute('data-lazy-src')
           || image.getAttribute('data-original');
         if (candidate && candidate.trim()) {
-          return candidate.trim();
+          const normalized = candidate.trim();
+          const canonicalKey = getImageCanonicalKey(normalized);
+          if (!seenKeys.has(canonicalKey)) {
+            seenKeys.add(canonicalKey);
+            candidates.push(normalized);
+          }
         }
+      });
+
+      return candidates;
+    };
+
+    const extractImageFromHtml = (html) => {
+      const candidates = extractImageCandidatesFromHtml(html);
+      if (!candidates.length) {
+        return '';
       }
-      return '';
+
+      const preferred = candidates.find((url) => {
+        return /blogthumb\.pstatic\.net|postfiles\.pstatic\.net|blogfiles\.pstatic\.net/i.test(url);
+      });
+
+      return preferred || candidates[0];
     };
 
     const sanitizeImageUrl = (rawUrl) => {
