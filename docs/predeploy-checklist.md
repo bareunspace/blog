@@ -1,5 +1,15 @@
 # 배포 전 점검 체크리스트 (Jekyll 1차 전환용)
 
+## 0) 1분 점검 (복붙용)
+- 명령 1: `bundle exec jekyll build`
+- 명령 2: `bundle exec jekyll serve --livereload`
+- 명령 3: 브라우저에서 `http://127.0.0.1:4000` 열기
+
+빠른 확인 항목:
+- [ ] 이용사례 섹션 문구 노출 확인
+- [ ] 콘솔 에러 없음
+- [ ] 모바일 화면에서 문장 줄바꿈 자연스러움
+
 ## 1) 자동 점검 실행
 - 실행: `bash scripts/predeploy-check.sh`
 - 기대 결과: `Pre-deploy check passed.`
