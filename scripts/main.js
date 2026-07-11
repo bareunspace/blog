@@ -890,14 +890,115 @@
       return [];
     };
 
+    const extractOgImageFromHtml = (htmlText) => {
+      if (!htmlText) {
+        return '';
+      }
+
+      try {
+        const html = new DOMParser().parseFromString(htmlText, 'text/html');
+        const ogImage = html.querySelector('meta[property="og:image"], meta[name="og:image"], meta[property="twitter:image"], meta[name="twitter:image"]')
+          ?.getAttribute('content')
+          ?.trim();
+        if (ogImage) {
+          return ogImage;
+        }
+
+        const thumbnailMatch = htmlText.match(/var\s+thumbnail\s*=\s*["']([^"']+)["']/i);
+        if (thumbnailMatch?.[1]) {
+          return thumbnailMatch[1].trim();
+        }
+      } catch (error) {
+        return '';
+      }
+
+      return '';
+    };
+
+    const resolveRepresentativeImageFromPost = async (postLink) => {
+      if (!postLink) {
+        return '';
+      }
+
+      const fetchViaProxy = async (targetUrl) => {
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+        const response = await fetchWithTimeout(proxyUrl, 8000);
+        if (!response.ok) {
+          return '';
+        }
+        const payload = await response.json();
+        return payload?.contents || '';
+      };
+
+      try {
+        const firstHtml = await fetchViaProxy(postLink);
+        if (!firstHtml) {
+          return '';
+        }
+
+        const directOgImage = extractOgImageFromHtml(firstHtml);
+        if (directOgImage) {
+          return directOgImage;
+        }
+
+        const firstDoc = new DOMParser().parseFromString(firstHtml, 'text/html');
+        const mainFrameSrc = firstDoc.querySelector('#mainFrame')?.getAttribute('src')?.trim() || '';
+        if (!mainFrameSrc) {
+          return '';
+        }
+
+        const absoluteMainFrameUrl = new URL(mainFrameSrc, postLink).href;
+        const postHtml = await fetchViaProxy(absoluteMainFrameUrl);
+        if (!postHtml) {
+          return '';
+        }
+
+        return extractOgImageFromHtml(postHtml);
+      } catch (error) {
+        return '';
+      }
+    };
+
+    const enrichItemsWithRepresentativeImage = async (items, limit = 6) => {
+      if (!Array.isArray(items) || !items.length) {
+        return [];
+      }
+
+      const boundedLimit = Math.max(0, Math.min(limit, items.length));
+      if (boundedLimit === 0) {
+        return items;
+      }
+
+      const head = items.slice(0, boundedLimit);
+      const representativeImages = await Promise.all(head.map(async (item) => {
+        return resolveRepresentativeImageFromPost(item.link || '');
+      }));
+
+      return items.map((item, index) => {
+        if (index >= boundedLimit) {
+          return item;
+        }
+
+        const representativeImage = sanitizeImageUrl(representativeImages[index]);
+        if (!representativeImage) {
+          return item;
+        }
+
+        return {
+          ...item,
+          imageUrl: representativeImage
+        };
+      });
+    };
+
     const loadUseCasesFromRss = async () => {
       if (!useCasesGrid) {
         return;
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v3';
-      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2'];
+      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v4';
+      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3'];
       const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
       const titlePatterns = [
         /이용\s*사례/i,
@@ -992,10 +1093,12 @@
             return b.score - a.score;
           });
 
-        const selected = filtered.slice(0, 3);
+        const enriched = await enrichItemsWithRepresentativeImage(filtered, 6);
+
+        const selected = enriched.slice(0, 3);
         if (selected.length > 0) {
-          writeUseCaseCache(filtered);
-          useCaseItems = filtered.slice(0, 18);
+          writeUseCaseCache(enriched);
+          useCaseItems = enriched.slice(0, 18);
           useCasePage = 0;
           renderUseCasePage();
         } else if (rssStatus) {
