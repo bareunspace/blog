@@ -713,10 +713,10 @@
       const thumbs = document.querySelectorAll('.testimonial-thumb');
       thumbs.forEach((img) => {
         img.addEventListener('error', () => {
-          const originalSrc = img.dataset.originalSrc || '';
-          if (img.dataset.originalAttempted !== 'true' && originalSrc && img.src !== originalSrc) {
-            img.dataset.originalAttempted = 'true';
-            img.src = originalSrc;
+          const proxySrc = img.dataset.proxySrc || '';
+          if (img.dataset.proxyAttempted !== 'true' && proxySrc && img.src !== proxySrc) {
+            img.dataset.proxyAttempted = 'true';
+            img.src = proxySrc;
             return;
           }
 
@@ -756,14 +756,13 @@
         const link = item.link || '#';
         const imageUrl = toPreferredNaverRepresentativeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
         const proxyImageUrl = toProxyImageUrl(imageUrl);
-        const proxyImageSrcSet = toProxyImageSrcSet(imageUrl);
         const contentType = item.contentType || classifyUseCaseType(item);
         const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
         const fallbackSeed = `${title}::${link}`;
 
         return `
           <article class="testimonial-card">
-            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(proxyImageUrl || imageUrl)}" srcset="${escapeHtml(proxyImageSrcSet)}" sizes="(max-width: 760px) 100vw, (max-width: 1040px) 50vw, 33vw" width="960" height="540" data-original-src="${escapeHtml(imageUrl)}" data-fallback-seed="${escapeHtml(fallbackSeed)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
+            ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" width="960" height="540" data-original-src="${escapeHtml(imageUrl)}" data-proxy-src="${escapeHtml(proxyImageUrl)}" data-fallback-seed="${escapeHtml(fallbackSeed)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
             <p class="testimonial-summary">${escapeHtml(summary)}</p>
@@ -1021,8 +1020,8 @@
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v5';
-      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3', 'bareunjari-usecases-cache-v4'];
+      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v6';
+      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3', 'bareunjari-usecases-cache-v4', 'bareunjari-usecases-cache-v5'];
       const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
       const titlePatterns = [
         /이용\s*사례/i,
@@ -1117,12 +1116,10 @@
             return b.score - a.score;
           });
 
-        const enriched = await enrichItemsWithRepresentativeImage(filtered, 6);
-
-        const selected = enriched.slice(0, 3);
+        const selected = filtered.slice(0, 3);
         if (selected.length > 0) {
-          writeUseCaseCache(enriched);
-          useCaseItems = enriched.slice(0, 18);
+          writeUseCaseCache(filtered);
+          useCaseItems = filtered.slice(0, 18);
           useCasePage = 0;
           renderUseCasePage();
         } else if (rssStatus) {
