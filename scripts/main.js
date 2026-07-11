@@ -5,8 +5,8 @@
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
-    const galleryOpenButtons = document.querySelectorAll('.gallery-open');
-    const galleryItems = Array.from(galleryOpenButtons);
+    const galleryTrack = document.getElementById('galleryTrack');
+    const galleryLoadMore = document.getElementById('galleryLoadMore');
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
     const navSectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -43,11 +43,19 @@
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
     const FEATURE_PANEL_ANIM_MS = 150;
+    const GALLERY_INITIAL_VISIBLE = 6;
+    const GALLERY_LOAD_STEP = 6;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
     let useCasePage = 0;
     let featurePanelCleanupTimer = 0;
+    let galleryVisibleCount = GALLERY_INITIAL_VISIBLE;
+    let refreshGalleryItemsVisibility = () => {};
+
+    const getGalleryItems = () => {
+      return Array.from(document.querySelectorAll('.gallery-open'));
+    };
 
     const readBranchContext = () => {
       const fallback = { slug: 'bucheon-sinjungdong', name: '바른자리 신중동점' };
@@ -158,6 +166,7 @@
     };
 
     const openLightboxByIndex = (index) => {
+      const galleryItems = getGalleryItems();
       if (!galleryItems.length) {
         return;
       }
@@ -168,6 +177,7 @@
     };
 
     const showPrevImage = () => {
+      const galleryItems = getGalleryItems();
       if (!galleryItems.length || !lightbox.classList.contains('open')) {
         return;
       }
@@ -175,6 +185,7 @@
     };
 
     const showNextImage = () => {
+      const galleryItems = getGalleryItems();
       if (!galleryItems.length || !lightbox.classList.contains('open')) {
         return;
       }
@@ -194,11 +205,215 @@
       window.scrollTo(0, scrollLockTop);
     };
 
-    galleryOpenButtons.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        openLightboxByIndex(index);
+    const bindGalleryOpenButtons = (scope) => {
+      const root = scope || document;
+      const buttons = Array.from(root.querySelectorAll('.gallery-open'));
+      buttons.forEach((button) => {
+        if (button.dataset.galleryBound === 'true') {
+          return;
+        }
+
+        button.dataset.galleryBound = 'true';
+        button.addEventListener('click', () => {
+          const galleryItems = getGalleryItems();
+          const index = galleryItems.indexOf(button);
+          if (index >= 0) {
+            openLightboxByIndex(index);
+          }
+        });
       });
-    });
+    };
+
+    bindGalleryOpenButtons();
+
+    const setupGalleryLoadMore = () => {
+      if (!galleryTrack || !galleryLoadMore) {
+        return;
+      }
+
+      const initialItems = Array.from(galleryTrack.querySelectorAll('.gallery-item'));
+      if (!initialItems.length) {
+        galleryLoadMore.hidden = true;
+        return;
+      }
+
+      galleryVisibleCount = Math.min(GALLERY_INITIAL_VISIBLE, initialItems.length);
+
+      const renderGalleryItems = () => {
+        const items = Array.from(galleryTrack.querySelectorAll('.gallery-item'));
+        if (!items.length) {
+          galleryLoadMore.hidden = true;
+          galleryLoadMore.disabled = true;
+          return;
+        }
+
+        galleryVisibleCount = Math.min(galleryVisibleCount, items.length);
+
+        items.forEach((item, index) => {
+          item.classList.toggle('is-hidden', index >= galleryVisibleCount);
+        });
+
+        const isDone = galleryVisibleCount >= items.length;
+        galleryLoadMore.hidden = isDone;
+        galleryLoadMore.disabled = isDone;
+      };
+
+      refreshGalleryItemsVisibility = renderGalleryItems;
+
+      galleryLoadMore.addEventListener('click', () => {
+        const totalItems = galleryTrack.querySelectorAll('.gallery-item').length;
+        galleryVisibleCount = Math.min(totalItems, galleryVisibleCount + GALLERY_LOAD_STEP);
+        renderGalleryItems();
+        trackEvent('click_gallery_load_more', withBranchContext({
+          placement: 'gallery',
+          visible_count: galleryVisibleCount,
+          total_count: totalItems
+        }));
+      });
+
+      renderGalleryItems();
+    };
+
+    const appendGalleryItems = (items) => {
+      if (!galleryTrack || !Array.isArray(items) || !items.length) {
+        return 0;
+      }
+
+      const existingSources = new Set(Array.from(galleryTrack.querySelectorAll('.gallery-open')).map((button) => {
+        return sanitizeImageUrl(button.dataset.src || '');
+      }).filter(Boolean));
+
+      const fragment = document.createDocumentFragment();
+      let appended = 0;
+
+      items.forEach((item) => {
+        const imageUrl = sanitizeImageUrl(item.imageUrl || item.src || '');
+        const title = stripHtml(item.title || item.alt || '').trim() || '바른자리 공간 이미지';
+        const sourceLink = sanitizeImageUrl(item.link || item.url || '');
+
+        if (!imageUrl || existingSources.has(imageUrl)) {
+          return;
+        }
+
+        existingSources.add(imageUrl);
+        const figure = document.createElement('figure');
+        figure.className = 'gallery-item';
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'gallery-open';
+        button.dataset.src = imageUrl;
+        button.dataset.alt = title;
+        button.setAttribute('aria-label', '이미지 확대 보기');
+
+        const image = document.createElement('img');
+        image.src = imageUrl;
+        image.alt = title;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+
+        button.appendChild(image);
+        figure.appendChild(button);
+
+        if (sourceLink) {
+          const caption = document.createElement('figcaption');
+          caption.className = 'gallery-item-caption';
+
+          const titleLink = document.createElement('a');
+          titleLink.className = 'gallery-item-title';
+          titleLink.href = sourceLink;
+          titleLink.target = '_blank';
+          titleLink.rel = 'noopener noreferrer';
+          titleLink.textContent = title;
+
+          caption.appendChild(titleLink);
+          figure.appendChild(caption);
+        }
+
+        fragment.appendChild(figure);
+        appended += 1;
+      });
+
+      if (!appended) {
+        return 0;
+      }
+
+      galleryTrack.appendChild(fragment);
+      bindGalleryOpenButtons(galleryTrack);
+      refreshGalleryItemsVisibility();
+      return appended;
+    };
+
+    const loadGalleryPhotosFromAutoFeed = async () => {
+      if (!galleryTrack) {
+        return false;
+      }
+
+      try {
+        const response = await fetchWithTimeout(`data/gallery.auto.json?ts=${Date.now()}`, 8000);
+        if (!response.ok) {
+          return false;
+        }
+
+        const payload = await response.json();
+        const items = Array.isArray(payload?.items) ? payload.items.slice(0, 30) : [];
+        const appended = appendGalleryItems(items);
+        return appended > 0;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    const loadGalleryPhotosFromBlog = async () => {
+      if (!galleryTrack) {
+        return;
+      }
+
+      const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
+      const GALLERY_RSS_LIMIT = 12;
+
+      try {
+        const rssItems = await fetchRssItems(rssUrl);
+        if (!Array.isArray(rssItems) || !rssItems.length) {
+          return;
+        }
+
+        const candidates = rssItems
+          .map((item) => {
+            const imageUrl = toPreferredNaverRepresentativeImageUrl(item.imageUrl || extractImageFromHtml(item.description || ''));
+            const safeUrl = sanitizeImageUrl(imageUrl);
+            const title = stripHtml(item.title || '').trim();
+            return {
+              imageUrl: safeUrl,
+              title: title || '네이버 블로그 이용 후기 이미지',
+              link: sanitizeImageUrl(item.link || '')
+            };
+          })
+          .filter((item) => item.imageUrl);
+
+        const unique = [];
+        const seen = new Set();
+        for (const item of candidates) {
+          if (seen.has(item.imageUrl)) {
+            continue;
+          }
+          seen.add(item.imageUrl);
+          unique.push(item);
+          if (unique.length >= GALLERY_RSS_LIMIT) {
+            break;
+          }
+        }
+
+        if (!unique.length) {
+          return;
+        }
+
+        appendGalleryItems(unique);
+      } catch (error) {
+        // Ignore external feed failures and keep local gallery only.
+      }
+    };
+
 
     const closeMobileMenu = () => {
       if (!navLinks || !navToggle) {
@@ -1303,4 +1518,10 @@
     updateActiveNavLink();
     updatePromoCountdown();
     setupMobileCtaVariant();
+    setupGalleryLoadMore();
+    loadGalleryPhotosFromAutoFeed().then((loadedFromAutoFeed) => {
+      if (!loadedFromAutoFeed) {
+        loadGalleryPhotosFromBlog();
+      }
+    });
     loadUseCasesFromRss();
