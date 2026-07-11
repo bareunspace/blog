@@ -648,6 +648,12 @@
       }).format(date);
     };
 
+    const getItemTimestamp = (item) => {
+      const dateValue = item?.pubDate || item?.date || '';
+      const time = new Date(dateValue).getTime();
+      return Number.isNaN(time) ? 0 : time;
+    };
+
     const stripHtml = (html) => {
       const temp = document.createElement('div');
       temp.innerHTML = html || '';
@@ -1052,6 +1058,46 @@
       }
     };
 
+    const mergeUseCaseItems = (...groups) => {
+      const merged = new Map();
+
+      groups.flat().forEach((item) => {
+        if (!item || !item.link) {
+          return;
+        }
+
+        const existing = merged.get(item.link);
+        if (!existing) {
+          merged.set(item.link, item);
+          return;
+        }
+
+        const candidateTime = getItemTimestamp(item);
+        const existingTime = getItemTimestamp(existing);
+
+        if (candidateTime > existingTime) {
+          merged.set(item.link, {
+            ...existing,
+            ...item
+          });
+          return;
+        }
+
+        merged.set(item.link, {
+          ...item,
+          ...existing
+        });
+      });
+
+      return Array.from(merged.values()).sort((a, b) => {
+        const timeGap = getItemTimestamp(b) - getItemTimestamp(a);
+        if (timeGap !== 0) {
+          return timeGap;
+        }
+        return (b.score || 0) - (a.score || 0);
+      });
+    };
+
     const extractOgImageFromHtml = (htmlText) => {
       if (!htmlText) {
         return '';
@@ -1262,10 +1308,12 @@
             return b.score - a.score;
           });
 
-        const selected = filtered.slice(0, 3);
+        const resolvedItems = mergeUseCaseItems(embeddedItems, filtered);
+
+        const selected = resolvedItems.slice(0, 3);
         if (selected.length > 0) {
-          writeUseCaseCache(filtered);
-          useCaseItems = filtered.slice(0, 18);
+          writeUseCaseCache(resolvedItems);
+          useCaseItems = resolvedItems.slice(0, 18);
           useCasePage = 0;
           renderUseCasePage();
         } else if (rssStatus) {
