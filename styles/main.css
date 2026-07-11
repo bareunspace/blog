@@ -154,8 +154,8 @@ nav {
 .badge {
   display: inline-block;
   background: var(--accent); color: #fff;
-  font-size: .78rem; font-weight: 700;
-  padding: .3rem .85rem; border-radius: 50px;
+  font-size: .92rem; font-weight: 800;
+  padding: .5rem 1.15rem; border-radius: 999px;
   margin-bottom: 1.2rem; letter-spacing: .5px;
   animation: pulse 2s infinite;
 }
@@ -287,6 +287,11 @@ nav {
   border-color: rgba(255,255,255,.9);
   color: #fff;
   background: rgba(255,255,255,.06);
+}
+#home .btn-primary,
+#home .btn-outline {
+  padding: 1.05rem 2.35rem;
+  font-size: 1.06rem;
 }
 #home .btn-outline:hover {
   background: #fff;
@@ -1747,6 +1752,10 @@ main.about-page #contact .contact-closing-line {
     padding: .36rem .72rem;
   }
   .hero-btns { flex-direction: column; align-items: center; }
+  #home .btn-primary,
+  #home .btn-outline {
+    min-width: min(100%, 320px);
+  }
   .hero-proof { gap: .45rem; }
   .hero-proof li { font-size: .77rem; }
   .hero-fast-track {

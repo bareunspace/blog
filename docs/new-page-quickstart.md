@@ -58,3 +58,30 @@ bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 �
 
 - slug는 소문자 영문/숫자/하이픈만 허용
 - 이미 같은 파일이 있으면 생성하지 않음
+
+## 6) 이미지 추가를 더 쉽게 하려면
+
+이미지 추가는 아래 스크립트로 한 번에 처리할 수 있습니다.
+
+```bash
+bash scripts/add-image.sh <원본파일경로> --name "파일명" --alt "대체텍스트"
+```
+
+예시:
+
+```bash
+bash scripts/add-image.sh ~/Desktop/room.jpg --name room-01 --alt "바른자리 프라이빗룸 내부"
+```
+
+자동으로 처리되는 것:
+
+- `images/room-01.jpg` 생성
+- `cwebp`가 설치되어 있으면 `images/room-01.webp`도 생성
+- HTML `<picture>` 코드 자동 출력
+- macOS에서는 HTML 코드가 클립보드에 자동 복사
+
+설치 팁(WebP 생성까지 쓰려면):
+
+```bash
+brew install webp
+```
