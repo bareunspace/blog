@@ -94,6 +94,12 @@
       }
     };
 
+    const trackMetaEvent = (eventName, params = {}) => {
+      if (typeof window.fbq === 'function') {
+        window.fbq('trackCustom', eventName, params);
+      }
+    };
+
     const updatePromoCountdown = () => {
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -219,21 +225,25 @@
       link.addEventListener('click', () => {
         const section = link.closest('section')?.id || (link.closest('header') ? 'header' : 'global');
         const ctaLabel = link.dataset.cta || (link.textContent || '').trim();
-        trackEvent('click_booking_cta', withBranchContext({
+        const payload = withBranchContext({
           cta_label: ctaLabel,
           cta_variant: link.dataset.ctaVariant || 'default',
           placement: section,
           destination: 'naver_booking'
-        }));
+        });
+        trackEvent('click_booking_cta', payload);
+        trackMetaEvent('click_booking_cta', payload);
       });
     });
 
     document.querySelectorAll('a[href*="talk.naver.com/profile/"]').forEach((link) => {
       link.addEventListener('click', () => {
-        trackEvent('click_talk_cta', withBranchContext({
+        const payload = withBranchContext({
           cta_label: link.dataset.cta || (link.textContent || '').trim(),
           placement: link.closest('section')?.id || 'global'
-        }));
+        });
+        trackEvent('click_talk_cta', payload);
+        trackMetaEvent('click_talk_cta', payload);
       });
     });
 
@@ -1096,12 +1106,14 @@
         }
 
         localStorage.setItem(CONTACT_LAST_SUBMIT_KEY, String(now));
-        trackEvent('submit_contact_form', withBranchContext({
+        const payload = withBranchContext({
           form_name: 'contact_form',
           inquiry_type: (contactInquiryType && typeof contactInquiryType.value === 'string')
             ? contactInquiryType.value.trim()
             : '일반 문의'
-        }));
+        });
+        trackEvent('submit_contact_form', payload);
+        trackMetaEvent('submit_contact_form', payload);
         if (contactRateNote) {
           contactRateNote.textContent = '문의를 전송 중입니다.';
         }
