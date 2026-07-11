@@ -642,6 +642,30 @@
       }
     };
 
+    const toPreferredNaverRepresentativeImageUrl = (rawUrl) => {
+      const safeUrl = sanitizeImageUrl(rawUrl);
+      if (!safeUrl) {
+        return '';
+      }
+
+      try {
+        const url = new URL(safeUrl);
+        const host = url.hostname.toLowerCase();
+        const isNaverPstatic = /(^|\.)pstatic\.net$/.test(host);
+        const isNaverImageHost = /(^|\.)(blogthumb|blogfiles|postfiles)\.pstatic\.net$/.test(host);
+
+        if (!isNaverPstatic || !isNaverImageHost) {
+          return safeUrl;
+        }
+
+        url.hostname = 'postfiles.pstatic.net';
+        url.search = '?type=w773';
+        return url.href;
+      } catch (error) {
+        return safeUrl;
+      }
+    };
+
     const toProxyImageUrl = (rawUrl) => {
       const safeUrl = sanitizeImageUrl(rawUrl);
       if (!safeUrl) {
@@ -730,7 +754,7 @@
         const summary = truncate(stripHtml(item.description), 130) || '내용 요약이 없습니다.';
         const date = formatDate(item.pubDate);
         const link = item.link || '#';
-        const imageUrl = sanitizeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
+        const imageUrl = toPreferredNaverRepresentativeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
         const proxyImageUrl = toProxyImageUrl(imageUrl);
         const proxyImageSrcSet = toProxyImageSrcSet(imageUrl);
         const contentType = item.contentType || classifyUseCaseType(item);
@@ -997,8 +1021,8 @@
       }
 
       const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
-      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v4';
-      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3'];
+      const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v5';
+      const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3', 'bareunjari-usecases-cache-v4'];
       const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
       const titlePatterns = [
         /이용\s*사례/i,

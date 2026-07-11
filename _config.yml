@@ -20,7 +20,7 @@ defaults:
       og_image_alt: 바른자리 대표 이미지
       preload_image: images/main.webp
       css_version: 20260710-3
-      script_version: 20260711-1
+      script_version: 20260711-2
 exclude:
   - docs/
   - data/
