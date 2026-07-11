@@ -11,7 +11,13 @@ bash scripts/new-page.sh <slug> "<title>" "<description>" [options]
 예시:
 
 ```bash
-bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 자주 묻는 질문을 확인하세요." --keywords "부천공간대여,바른자리,FAQ" --add-sitemap --add-nav --nav-label "자주 묻는 질문"
+bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 자주 묻는 질문을 확인하세요." --keywords "부천공간대여,바른자리,FAQ" --add-sitemap --add-nav --nav-label "자주 묻는 질문" --nav-target both
+```
+
+사전 확인만 하고 실제 파일을 건드리지 않으려면:
+
+```bash
+bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 자주 묻는 질문을 확인하세요." --add-nav --add-sitemap --dry-run
 ```
 
 ## 2) 생성 결과
@@ -37,6 +43,7 @@ bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 �
 --label "페이지 라벨"
 --add-nav
 --nav-label "메뉴명"
+--nav-target "home|about|both"
 --og-image "https://..."
 --og-image-alt "이미지 설명"
 --preload-image "images/..webp"
@@ -44,6 +51,7 @@ bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 �
 --changefreq "monthly"
 --priority "0.6"
 --run-check
+--dry-run
 ```
 
 ## 5) 제한
