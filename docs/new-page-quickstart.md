@@ -21,12 +21,12 @@ bash scripts/new-page.sh faq "자주 묻는 질문 | 바른자리" "이용 전 �
 - canonical, OG image, preload 이미지 기본값 입력
 - `index.html`의 css/script 버전을 자동 상속
 - 옵션으로 `sitemap.xml` 자동 반영 가능
-- 옵션으로 `_includes/header.html` 네비게이션 자동 반영 가능
+- 옵션으로 `_data/navigation.yml` 네비게이션 자동 반영 가능
 
 ## 3) 생성 후 꼭 할 일
 
 1. 본문 섹션 내용 수정
-2. 필요 시 네비게이션 링크 추가: `_includes/header.html`
+2. 필요 시 네비게이션 링크 추가: `_data/navigation.yml`
 3. `--add-sitemap`을 안 썼다면 `sitemap.xml`에 URL 추가
 4. 배포 전 점검: `bash scripts/predeploy-check.sh` 또는 `--run-check` 옵션 사용
 

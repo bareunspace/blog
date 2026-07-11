@@ -2,10 +2,24 @@ title: 바른자리
 url: "https://bareunjari.com"
 baseurl: ""
 language: ko-KR
+og_locale: ko_KR
 permalink: pretty
 markdown: kramdown
+ga_measurement_id: G-ECYS2XKQ4H
+clarity_id: xfmtyp5w3b
 plugins:
   - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+      og_image: https://bareunjari.com/images/main.jpeg
+      og_image_alt: 바른자리 대표 이미지
+      preload_image: images/main.webp
+      css_version: 20260710-3
+      script_version: 20260710-3
 exclude:
   - docs/
   - data/

@@ -22,8 +22,8 @@
 {% endif %}
 
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="바른자리" />
-<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="{{ site.title }}" />
+<meta property="og:locale" content="{{ site.og_locale | default: 'ko_KR' }}" />
 <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
 <meta property="og:description" content="{{ page.og_description | default: page.description }}" />
 <meta property="og:url" content="{{ page.canonical }}" />
@@ -45,20 +45,20 @@
 <meta name="naver-site-verification" content="{{ page.naver_site_verification }}" />
 {% endif %}
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECYS2XKQ4H"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-ECYS2XKQ4H');
+  gtag('config', '{{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}');
 </script>
 <script>
   (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "xfmtyp5w3b");
+  })(window, document, "clarity", "script", "{{ site.clarity_id | default: 'xfmtyp5w3b' }}");
 </script>
 
 {% if page.page_id == "home" %}

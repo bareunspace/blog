@@ -60,6 +60,12 @@ sitemap_changefreq="monthly"
 sitemap_priority="0.6"
 run_check="false"
 
+# Backward compatibility: allow 4th positional keywords argument.
+if [[ $# -gt 0 && "${1:-}" != --* ]]; then
+  keywords="$1"
+  shift
+fi
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --keywords)
@@ -211,42 +217,38 @@ append_sitemap_entry() {
 }
 
 append_nav_entry() {
-  local header_path="$ROOT_DIR/_includes/header.html"
+  local nav_data_path="$ROOT_DIR/_data/navigation.yml"
   local nav_href="${slug}.html"
 
-  if [[ ! -f "$header_path" ]]; then
-    echo "[WARN] _includes/header.html not found. Skip nav update."
+  if [[ ! -f "$nav_data_path" ]]; then
+    echo "[WARN] _data/navigation.yml not found. Skip nav update."
     return
   fi
 
-  if grep -q "href=\"${nav_href}\"" "$header_path"; then
+  if grep -q "href: \"${nav_href}\"" "$nav_data_path"; then
     echo "[INFO] Navigation already contains: ${nav_href}"
     return
   fi
 
-  local tmp_file
-  tmp_file="$(mktemp)"
+  ruby -ryaml -e '
+    path, href, label = ARGV
+    data = YAML.load_file(path)
+    data["home"] ||= []
+    data["about"] ||= []
 
-  awk -v href="${nav_href}" -v label="${nav_label}" '
-    BEGIN {
-      inserted_about = 0
-      inserted_home = 0
-    }
-    {
-      if ($0 ~ /<li><a href="index.html#contact">문의<\/a><\/li>/ && inserted_about == 0) {
-        print "        <li><a href=\"" href "\">" label "</a></li>"
-        inserted_about = 1
-      }
-      if ($0 ~ /<li><a href="#contact">문의<\/a><\/li>/ && inserted_home == 0) {
-        print "        <li><a href=\"" href "\">" label "</a></li>"
-        inserted_home = 1
-      }
-      print
-    }
-  ' "$header_path" > "$tmp_file"
+    home_entry = { "label" => label, "href" => href }
+    about_entry = { "label" => label, "href" => href }
 
-  mv "$tmp_file" "$header_path"
-  echo "[OK] Updated header nav with: ${nav_href} (${nav_label})"
+    home_exists = data["home"].any? { |item| item["href"] == href }
+    about_exists = data["about"].any? { |item| item["href"] == href }
+
+    data["home"] << home_entry unless home_exists
+    data["about"] << about_entry unless about_exists
+
+    File.write(path, YAML.dump(data))
+  ' "$nav_data_path" "$nav_href" "$nav_label"
+
+  echo "[OK] Updated navigation data with: ${nav_href} (${nav_label})"
 }
 
 if [[ "$add_sitemap" == "true" ]]; then
@@ -260,9 +262,9 @@ fi
 echo "[OK] Created: ${slug}.html"
 echo "[NEXT] 1) Edit ${slug}.html content"
 if [[ "$add_nav" == "true" ]]; then
-  echo "[NEXT] 2) header nav updated automatically"
+  echo "[NEXT] 2) navigation data updated automatically (_data/navigation.yml)"
 else
-  echo "[NEXT] 2) Add navigation link in _includes/header.html or use --add-nav"
+  echo "[NEXT] 2) Add navigation item in _data/navigation.yml or use --add-nav"
 fi
 if [[ "$add_sitemap" == "true" ]]; then
   echo "[NEXT] 3) sitemap.xml updated automatically"

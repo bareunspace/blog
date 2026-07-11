@@ -1,0 +1,21 @@
+home:
+  - label: 공간 소개
+    href: "#space"
+  - label: 이용 안내
+    href: "#about"
+  - label: 갤러리
+    href: "#gallery"
+  - label: 이용사례
+    href: "#testimonials"
+  - label: 문의
+    href: "#contact"
+about:
+  - label: 브랜드 스토리
+    href: "#about-story"
+    current: true
+  - label: 공간 소개
+    href: "index.html#space"
+  - label: 이용 안내
+    href: "index.html#about"
+  - label: 문의
+    href: "index.html#contact"
