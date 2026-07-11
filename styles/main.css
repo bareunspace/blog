@@ -38,11 +38,11 @@ nav {
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: .55rem;
-  font-size: 1.2rem;
+  gap: .65rem;
+  font-size: clamp(1.3rem, 1.15rem + .55vw, 1.55rem);
   font-weight: 800;
   color: var(--primary);
-  letter-spacing: -0.4px;
+  letter-spacing: -0.55px;
   line-height: 1;
 }
 .nav-logo:focus-visible {
@@ -51,10 +51,10 @@ nav {
   border-radius: 8px;
 }
 .logo-mark {
-  width: 24px;
-  height: 24px;
+  width: 29px;
+  height: 29px;
   border: 2px solid var(--primary);
-  border-radius: 7px;
+  border-radius: 8px;
   position: relative;
   background: linear-gradient(145deg, rgba(82,183,136,.18), rgba(82,183,136,.03));
   flex-shrink: 0;
@@ -63,14 +63,14 @@ nav {
 .logo-mark::after {
   content: '';
   position: absolute;
-  top: 3px;
-  bottom: 3px;
+  top: 4px;
+  bottom: 4px;
   width: 2px;
   background: rgba(45,106,79,.75);
   border-radius: 2px;
 }
-.logo-mark::before { left: 7px; }
-.logo-mark::after { right: 7px; }
+.logo-mark::before { left: 8px; }
+.logo-mark::after { right: 8px; }
 .logo-text {
   display: inline-block;
   transform: translateY(-.5px);
