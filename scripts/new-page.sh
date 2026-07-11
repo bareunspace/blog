@@ -21,6 +21,7 @@ Options:
   --label "..."           Section label text (default: New Page)
   --add-nav                Automatically add link in _includes/header.html
   --nav-label "..."       Navigation label text (default: slug)
+  --nav-target "..."      Navigation target: home|about|both (default: both)
   --og-image "..."        Absolute image URL for OG (default: main image)
   --og-image-alt "..."    OG image alt text
   --preload-image "..."   Relative preload image path (default: images/main.webp)
@@ -28,6 +29,7 @@ Options:
   --changefreq "..."      Sitemap changefreq (default: monthly)
   --priority "..."        Sitemap priority (default: 0.6)
   --run-check              Run predeploy check after generation
+  --dry-run                Print planned changes only (no file writes)
   -h, --help               Show help
 EOF
 }
@@ -52,6 +54,7 @@ keywords=""
 section_label="New Page"
 add_nav="false"
 nav_label=""
+nav_target="both"
 og_image="https://bareunjari.com/images/main.jpeg"
 og_image_alt="바른자리 대표 이미지"
 preload_image="images/main.webp"
@@ -59,6 +62,7 @@ add_sitemap="false"
 sitemap_changefreq="monthly"
 sitemap_priority="0.6"
 run_check="false"
+dry_run="false"
 
 # Backward compatibility: allow 4th positional keywords argument.
 if [[ $# -gt 0 && "${1:-}" != --* ]]; then
@@ -82,6 +86,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --nav-label)
       nav_label="${2:-}"
+      shift 2
+      ;;
+    --nav-target)
+      nav_target="${2:-}"
       shift 2
       ;;
     --og-image)
@@ -112,6 +120,10 @@ while [[ $# -gt 0 ]]; do
       run_check="true"
       shift
       ;;
+    --dry-run)
+      dry_run="true"
+      shift
+      ;;
     -h|--help)
       usage
       exit 0
@@ -128,6 +140,30 @@ if [[ ! "$slug" =~ ^[a-z0-9-]+$ ]]; then
   echo "[ERROR] Invalid slug: $slug"
   echo "        Use lowercase letters, numbers, hyphen only."
   exit 1
+fi
+
+if [[ ! "$nav_target" =~ ^(home|about|both)$ ]]; then
+  echo "[ERROR] Invalid --nav-target: $nav_target"
+  echo "        Allowed values: home, about, both"
+  exit 1
+fi
+
+if [[ ! "$sitemap_priority" =~ ^(0(\.[0-9]+)?|1(\.0+)?)$ ]]; then
+  echo "[ERROR] Invalid --priority: $sitemap_priority"
+  echo "        Allowed range: 0.0 ~ 1.0"
+  exit 1
+fi
+
+if [[ ! "$og_image" =~ ^https:// ]]; then
+  echo "[WARN] og-image is not https URL: $og_image"
+fi
+
+if [[ ${#title} -gt 70 ]]; then
+  echo "[WARN] title is long (${#title} chars). Recommended under 60-70 chars."
+fi
+
+if [[ ${#description} -gt 170 ]]; then
+  echo "[WARN] description is long (${#description} chars). Recommended under 150-170 chars."
 fi
 
 file_path="$ROOT_DIR/${slug}.html"
@@ -156,6 +192,9 @@ if [[ -z "$script_version" ]]; then
   script_version="20260710-3"
 fi
 
+if [[ "$dry_run" == "true" ]]; then
+  echo "[DRY-RUN] Would create: ${slug}.html"
+else
 cat > "$file_path" <<EOF
 ---
 layout: default
@@ -181,6 +220,7 @@ script_version: ${script_version}
   </section>
 </main>
 EOF
+fi
 
 append_sitemap_entry() {
   local sitemap_path="$ROOT_DIR/sitemap.xml"
@@ -212,8 +252,13 @@ append_sitemap_entry() {
     { print }
   ' "$sitemap_path" > "$tmp_file"
 
-  mv "$tmp_file" "$sitemap_path"
-  echo "[OK] Updated sitemap.xml with: ${canonical_url}"
+  if [[ "$dry_run" == "true" ]]; then
+    rm -f "$tmp_file"
+    echo "[DRY-RUN] Would update sitemap.xml with: ${canonical_url}"
+  else
+    mv "$tmp_file" "$sitemap_path"
+    echo "[OK] Updated sitemap.xml with: ${canonical_url}"
+  fi
 }
 
 append_nav_entry() {
@@ -231,7 +276,7 @@ append_nav_entry() {
   fi
 
   ruby -ryaml -e '
-    path, href, label = ARGV
+    path, href, label, target, dry = ARGV
     data = YAML.load_file(path)
     data["home"] ||= []
     data["about"] ||= []
@@ -242,13 +287,23 @@ append_nav_entry() {
     home_exists = data["home"].any? { |item| item["href"] == href }
     about_exists = data["about"].any? { |item| item["href"] == href }
 
-    data["home"] << home_entry unless home_exists
-    data["about"] << about_entry unless about_exists
+    if target == "home" || target == "both"
+      data["home"] << home_entry unless home_exists
+    end
+    if target == "about" || target == "both"
+      data["about"] << about_entry unless about_exists
+    end
 
-    File.write(path, YAML.dump(data))
-  ' "$nav_data_path" "$nav_href" "$nav_label"
+    unless dry == "true"
+      File.write(path, YAML.dump(data))
+    end
+  ' "$nav_data_path" "$nav_href" "$nav_label" "$nav_target" "$dry_run"
 
-  echo "[OK] Updated navigation data with: ${nav_href} (${nav_label})"
+  if [[ "$dry_run" == "true" ]]; then
+    echo "[DRY-RUN] Would update navigation data with: ${nav_href} (${nav_label}) target=${nav_target}"
+  else
+    echo "[OK] Updated navigation data with: ${nav_href} (${nav_label}) target=${nav_target}"
+  fi
 }
 
 if [[ "$add_sitemap" == "true" ]]; then
@@ -259,7 +314,11 @@ if [[ "$add_nav" == "true" ]]; then
   append_nav_entry
 fi
 
-echo "[OK] Created: ${slug}.html"
+if [[ "$dry_run" == "true" ]]; then
+  echo "[DRY-RUN] Generation preview complete"
+else
+  echo "[OK] Created: ${slug}.html"
+fi
 echo "[NEXT] 1) Edit ${slug}.html content"
 if [[ "$add_nav" == "true" ]]; then
   echo "[NEXT] 2) navigation data updated automatically (_data/navigation.yml)"
@@ -273,6 +332,10 @@ else
 fi
 
 if [[ "$run_check" == "true" ]]; then
-  echo "[RUN] bash scripts/predeploy-check.sh"
-  bash scripts/predeploy-check.sh
+  if [[ "$dry_run" == "true" ]]; then
+    echo "[DRY-RUN] Would run: bash scripts/predeploy-check.sh"
+  else
+    echo "[RUN] bash scripts/predeploy-check.sh"
+    bash scripts/predeploy-check.sh
+  fi
 fi
