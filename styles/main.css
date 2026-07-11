@@ -734,7 +734,7 @@ section { padding: 5rem 1.5rem; }
   padding-bottom: 5.5rem;
 }
 #testimonials .section-desc {
-  max-width: 880px;
+  max-width: 100%;
 }
 .testimonials-grid {
   display: grid;
