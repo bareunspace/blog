@@ -39,6 +39,13 @@
 - [ ] 실제 도메인에서 이벤트 수집(GA/Clarity) 확인
 - [ ] robots.txt, sitemap.xml 실서비스 경로 확인
 
+## 5) 버전 관리(릴리즈 시)
+- [ ] `VERSION` 갱신
+- [ ] `CHANGELOG.md`에 변경 내역 기록
+- [ ] 릴리즈 태그 생성: `git tag -a v$(cat VERSION) -m "Release v$(cat VERSION)"`
+- [ ] 태그 푸시: `git push origin v$(cat VERSION)`
+- [ ] 상세 가이드 확인: `docs/release-versioning.md`
+
 ## 권장 실행 순서
 1. 로컬 자동 점검
 2. 미리보기 배포
