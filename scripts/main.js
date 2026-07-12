@@ -333,7 +333,7 @@
       link.addEventListener('click', closeMobileMenu);
     });
 
-    document.querySelectorAll('a[href*="booking.naver.com/booking/10/bizes/1663159"]').forEach((link) => {
+    document.querySelectorAll('a[href*="booking.naver.com/booking/10/bizes/1663159"], a[href*="pcmap.place.naver.com/place/2041312316"]').forEach((link) => {
       link.addEventListener('click', () => {
         const section = link.closest('section')?.id || (link.closest('header') ? 'header' : 'global');
         const ctaLabel = link.dataset.cta || (link.textContent || '').trim();
