@@ -11,7 +11,7 @@ home:
   - label: 이용사례
     href: "#testimonials"
     children:
-      - label: 블로그 리스트 보기
+      - label: 블로그
         href: "blog.html#blog-onsite"
   - label: 문의
     href: "#contact"
