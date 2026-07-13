@@ -25,6 +25,7 @@
         {% assign href_value = item.href %}
         {% assign first_char = href_value | slice: 0, 1 %}
         <li class="nav-item{% if item.children %} nav-item-has-children{% endif %}">
+          <div class="nav-primary-row">
           {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}
             <a href="{{ href_value }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% elsif first_char == '/' %}
@@ -33,7 +34,13 @@
             <a href="{{ '/' | append: href_value | relative_url }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% endif %}
           {% if item.children %}
-            <ul class="nav-submenu">
+            <button type="button" class="nav-submenu-toggle" data-menu-label="{{ item.label }}" aria-expanded="false" aria-controls="navSubmenu{{ forloop.index }}" aria-label="{{ item.label }} 하위 메뉴 열기">
+              <span aria-hidden="true">⌄</span>
+            </button>
+          {% endif %}
+          </div>
+          {% if item.children %}
+            <ul class="nav-submenu" id="navSubmenu{{ forloop.index }}">
               {% for child in item.children %}
                 {% assign child_href = child.href %}
                 {% assign child_first_char = child_href | slice: 0, 1 %}

@@ -10,6 +10,7 @@
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
     const navSectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const navSubmenuToggles = document.querySelectorAll('.nav-submenu-toggle');
     const useCasesGrid = document.getElementById('useCasesGrid');
     const naverBlogFallbackData = document.getElementById('naverBlogFallbackData');
     const rssStatus = document.getElementById('rssStatus');
@@ -319,6 +320,11 @@
       navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.setAttribute('aria-label', '메뉴 열기');
+      navSubmenuToggles.forEach((toggle) => {
+        toggle.closest('.nav-item-has-children')?.classList.remove('submenu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 열기`);
+      });
     };
 
     if (navToggle && navLinks) {
@@ -328,6 +334,26 @@
         navToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
       });
     }
+
+    navSubmenuToggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const parentItem = toggle.closest('.nav-item-has-children');
+        const willOpen = !parentItem?.classList.contains('submenu-open');
+
+        navSubmenuToggles.forEach((otherToggle) => {
+          const otherItem = otherToggle.closest('.nav-item-has-children');
+          otherItem?.classList.remove('submenu-open');
+          otherToggle.setAttribute('aria-expanded', 'false');
+          otherToggle.setAttribute('aria-label', `${otherToggle.dataset.menuLabel || '하위'} 하위 메뉴 열기`);
+        });
+
+        if (willOpen && parentItem) {
+          parentItem.classList.add('submenu-open');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 닫기`);
+        }
+      });
+    });
 
     navSectionLinks.forEach((link) => {
       link.addEventListener('click', closeMobileMenu);
