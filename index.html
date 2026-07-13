@@ -169,7 +169,7 @@ script_version: 20260713-2
                     {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
                     {% for post in mapped_naver_posts %}
                       <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title }}</a>
+                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
                         <span class="related-post-date">네이버 블로그 · {{ post.date }}</span>
                       </li>
                     {% endfor %}
@@ -209,7 +209,7 @@ script_version: 20260713-2
                     {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
                     {% for post in mapped_naver_posts %}
                       <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title }}</a>
+                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
                         <span class="related-post-date">네이버 블로그 · {{ post.date }}</span>
                       </li>
                     {% endfor %}
@@ -259,7 +259,7 @@ script_version: 20260713-2
                     {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
                     {% for post in mapped_naver_posts %}
                       <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title }}</a>
+                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
                         <span class="related-post-date">네이버 블로그 · {{ post.date }}</span>
                       </li>
                     {% endfor %}
