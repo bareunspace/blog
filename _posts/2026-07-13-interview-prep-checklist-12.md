@@ -6,9 +6,11 @@ category: 면접 준비
 keywords: 면접준비,화상면접,대면면접,면접체크리스트
 canonical: https://bareunjari.com/posts/interview-prep-checklist/
 permalink: /posts/interview-prep-checklist/
-og_image: https://bareunjari.com/images/main.jpeg
-og_image_alt: 면접 전날 체크리스트 안내 이미지
-preload_image: images/main.webp
+og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
+og_image_alt: 노트북과 체크리스트, 시계가 놓인 면접 전날 준비 장면
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/interview-prep-checklist-cover.jpg
 css_version: 20260713-1
 script_version: 20260711-4
 ---

@@ -6,9 +6,11 @@ category: 면접 준비
 keywords: 부천화상면접장소,화상면접공간,신중동공간대여,온라인면접장소
 canonical: https://bareunjari.com/posts/bucheon-video-interview-place-guide/
 permalink: /posts/bucheon-video-interview-place-guide/
-og_image: https://bareunjari.com/images/main.jpeg
-og_image_alt: 부천 신중동 화상면접 장소 선택 안내
-preload_image: images/main.webp
+og_image: https://bareunjari.com/images/video-interview-place-guide-cover.jpg
+og_image_alt: 노트북과 마이크가 준비된 조용한 화상면접 공간
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/video-interview-place-guide-cover.jpg
 css_version: 20260713-1
 script_version: 20260711-4
 ---
