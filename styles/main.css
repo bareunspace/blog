@@ -963,7 +963,7 @@ section { padding: 5rem 1.5rem; }
 .private-office-grid.private-office-grid-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-@media (max-width: 1200px) {
+@media (max-width: 960px) {
   .private-office-grid.private-office-grid-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
