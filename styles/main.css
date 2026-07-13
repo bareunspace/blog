@@ -1582,6 +1582,11 @@ section { padding: 5rem 1.5rem; }
   letter-spacing: .04em;
 }
 
+main.about-page .post-tags {
+  background: rgba(255,255,255,.78);
+  padding: 1.25rem 1.5rem;
+}
+
 /* ── Contact ── */
 #contact { background: var(--primary); color: #fff; text-align: center; }
 #contact .section-title { color: #fff; }
@@ -2009,10 +2014,10 @@ main.about-page .about-hero-lead {
   font-size: 1rem;
   text-shadow: 0 6px 20px rgba(0,0,0,.32);
 }
-main.about-page section:not(#home):not(#contact) {
+main.about-page section:not(#home):not(#contact):not(.post-tags) {
   background: transparent;
 }
-main.about-page section:nth-of-type(even):not(#home):not(#contact) {
+main.about-page section:nth-of-type(even):not(#home):not(#contact):not(.post-tags) {
   background: rgba(255,255,255,.7);
 }
 main.about-page .section-inner {

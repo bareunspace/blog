@@ -16,7 +16,7 @@ og_image_alt: 노트북과 체크리스트, 시계가 놓인 면접 전날 준�
 og_image_width: 1536
 og_image_height: 1024
 preload_image: images/interview-prep-checklist-cover.jpg
-css_version: 20260713-2
+css_version: 20260713-3
 script_version: 20260711-4
 ---
 
@@ -290,4 +290,5 @@ script_version: 20260711-4
       </div>
     </div>
   </section>
+  {% include post-tags.html %}
 </main>
