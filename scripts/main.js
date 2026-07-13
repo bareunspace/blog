@@ -45,8 +45,8 @@
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
     const FEATURE_PANEL_ANIM_MS = 150;
-    const GALLERY_INITIAL_VISIBLE = 6;
-    const GALLERY_LOAD_STEP = 6;
+    const GALLERY_INITIAL_VISIBLE = 4;
+    const GALLERY_LOAD_STEP = 3;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
