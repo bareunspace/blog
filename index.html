@@ -73,7 +73,10 @@ script_version: 20260711-4
             </article>
             <article class="private-office-card" aria-label="화상면접 관련 블로그 글">
               <h3>화상면접 관련 블로그 글</h3>
-              {% assign interview_posts = site.posts | where_exp: "item", "item.title contains '면접' or item.description contains '면접' or item.keywords contains '면접'" %}
+              {% assign interview_title_posts = site.posts | where_exp: "item", "item.title contains '면접'" %}
+              {% assign interview_description_posts = site.posts | where_exp: "item", "item.description contains '면접'" %}
+              {% assign interview_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '면접'" %}
+              {% assign interview_posts = interview_title_posts | concat: interview_description_posts | concat: interview_keyword_posts | uniq %}
               {% if interview_posts.size > 0 %}
                 <ul class="related-post-list">
                   {% for post in interview_posts limit: 2 %}
