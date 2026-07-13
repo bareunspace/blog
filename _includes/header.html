@@ -24,13 +24,30 @@
       {% for item in nav_items %}
         {% assign href_value = item.href %}
         {% assign first_char = href_value | slice: 0, 1 %}
-        <li>
+        <li class="nav-item{% if item.children %} nav-item-has-children{% endif %}">
           {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}
-            <a href="{{ href_value }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+            <a href="{{ href_value }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% elsif first_char == '/' %}
-            <a href="{{ href_value | relative_url }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+            <a href="{{ href_value | relative_url }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% else %}
-            <a href="{{ '/' | append: href_value | relative_url }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+            <a href="{{ '/' | append: href_value | relative_url }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+          {% endif %}
+          {% if item.children %}
+            <ul class="nav-submenu">
+              {% for child in item.children %}
+                {% assign child_href = child.href %}
+                {% assign child_first_char = child_href | slice: 0, 1 %}
+                <li>
+                  {% if child_first_char == '#' or child_href contains '://' or child_href contains 'mailto:' or child_href contains 'tel:' %}
+                    <a href="{{ child_href }}">{{ child.label }}</a>
+                  {% elsif child_first_char == '/' %}
+                    <a href="{{ child_href | relative_url }}">{{ child.label }}</a>
+                  {% else %}
+                    <a href="{{ '/' | append: child_href | relative_url }}">{{ child.label }}</a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
           {% endif %}
         </li>
       {% endfor %}

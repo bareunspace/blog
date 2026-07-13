@@ -1,12 +1,18 @@
 home:
   - label: 공간 소개
     href: "#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
   - label: 이용 안내
     href: "#about"
   - label: 갤러리
     href: "#gallery"
   - label: 이용사례
     href: "#testimonials"
+    children:
+      - label: 블로그 리스트 보기
+        href: "blog.html#blog-onsite"
   - label: 문의
     href: "#contact"
 about:
