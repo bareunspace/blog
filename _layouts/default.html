@@ -9,6 +9,10 @@
 
   {{ content }}
 
+  {% if page.tags %}
+    {% include post-tags.html %}
+  {% endif %}
+
   {% if page.category %}
     {% include related-posts.html %}
   {% endif %}

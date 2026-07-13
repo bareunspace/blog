@@ -4,6 +4,11 @@ title: 면접 전날 체크리스트 12가지
 description: 화상면접과 대면면접 전날 꼭 확인해야 할 준비 항목과 당일 타임라인을 정리했습니다.
 category: 면접 준비
 keywords: 면접준비,화상면접,대면면접,면접체크리스트
+tags:
+  - 면접준비
+  - 면접체크리스트
+  - 화상면접
+  - 대면면접
 canonical: https://bareunjari.com/posts/interview-prep-checklist/
 permalink: /posts/interview-prep-checklist/
 og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
@@ -11,7 +16,7 @@ og_image_alt: 노트북과 체크리스트, 시계가 놓인 면접 전날 준�
 og_image_width: 1536
 og_image_height: 1024
 preload_image: images/interview-prep-checklist-cover.jpg
-css_version: 20260713-1
+css_version: 20260713-2
 script_version: 20260711-4
 ---
 

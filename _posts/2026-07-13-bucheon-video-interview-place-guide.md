@@ -4,6 +4,11 @@ title: 부천 화상면접 장소 고르는 기준 7가지
 description: 집, 카페, 스터디카페, 공간대여 중 화상면접에 적합한 장소를 비교하고 소음·배경·조명·인터넷을 점검하는 방법을 안내합니다.
 category: 면접 준비
 keywords: 부천화상면접장소,화상면접공간,신중동공간대여,온라인면접장소
+tags:
+  - 화상면접
+  - 면접준비
+  - 부천공간대여
+  - 온라인면접장소
 canonical: https://bareunjari.com/posts/bucheon-video-interview-place-guide/
 permalink: /posts/bucheon-video-interview-place-guide/
 og_image: https://bareunjari.com/images/posts/bucheon-video-interview-place-guide/hero.jpg
@@ -11,7 +16,7 @@ og_image_alt: 노트북과 조명이 준비된 조용한 화상면접 프라이�
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/posts/bucheon-video-interview-place-guide/hero.jpg
-css_version: 20260713-5
+css_version: 20260713-6
 script_version: 20260711-4
 ---
 

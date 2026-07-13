@@ -1562,6 +1562,26 @@ section { padding: 5rem 1.5rem; }
 }
 .tag:hover { background: #d1fae5; }
 
+.post-tags {
+  background: rgba(255,255,255,.78);
+  border-top: 1px solid #e5eee8;
+  padding: 1.25rem 1.5rem;
+}
+.post-tags-inner {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .8rem 1rem;
+  flex-wrap: wrap;
+}
+.post-tags-label {
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
 /* ── Contact ── */
 #contact { background: var(--primary); color: #fff; text-align: center; }
 #contact .section-title { color: #fff; }

@@ -1,0 +1,12 @@
+{% if page.tags %}
+  <section class="post-tags" aria-label="글 태그">
+    <div class="post-tags-inner">
+      <p class="post-tags-label">관련 주제</p>
+      <div class="tags">
+        {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
