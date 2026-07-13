@@ -973,6 +973,7 @@ section { padding: 5rem 1.5rem; }
   border: 1px solid #dfe7e2;
   border-radius: 12px;
   padding: .85rem .9rem;
+  min-width: 0;
 }
 .private-office-card h3 {
   display: flex;
@@ -1011,6 +1012,7 @@ section { padding: 5rem 1.5rem; }
   padding: 0;
   display: grid;
   gap: .18rem;
+  min-width: 0;
 }
 .private-office-card .related-post-item {
   display: flex;
@@ -1019,8 +1021,13 @@ section { padding: 5rem 1.5rem; }
   gap: .5rem;
   padding: .24rem 0;
   border-bottom: 1px dashed #e5e7eb;
+  min-width: 0;
 }
 .private-office-card .related-post-item a {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
   color: #1f2937;
   font-size: .76rem;
   line-height: 1.4;
@@ -1029,6 +1036,7 @@ section { padding: 5rem 1.5rem; }
   text-overflow: ellipsis;
 }
 .private-office-card .related-post-date {
+  flex: 0 0 auto;
   font-size: .68rem;
   color: #6b7280;
   white-space: nowrap;
