@@ -1,0 +1,23 @@
+naver_posts:
+  - url: https://blog.naver.com/bareunjari114/224320336456
+    tags:
+      - 이용사례
+      - 집중업무
+      - 원격근무
+    featured_space:
+      - private-office
+  - url: https://blog.naver.com/bareunjari114/224326194502
+    tags:
+      - 이용사례
+      - 소모임
+      - 축가연습
+    featured_space:
+      - meetup
+  - url: https://blog.naver.com/bareunjari114/224315569339
+    tags:
+      - 이용사례
+      - 팝업
+      - 촬영
+      - 전시
+    featured_space:
+      - popup
