@@ -2252,6 +2252,372 @@ main.about-page #contact .contact-closing-line {
   color: #ffffff;
 }
 
+/* ── Tutoring Guide ── */
+main.tutoring-guide {
+  --guide-deep: #173d2e;
+  --guide-green: #2d6a4f;
+  --guide-soft: #edf6f0;
+  --guide-warm: #f7efe4;
+  --guide-line: #d8e5dc;
+  background:
+    radial-gradient(820px 340px at 8% 38%, rgba(82,183,136,.09), transparent 70%),
+    radial-gradient(760px 320px at 92% 70%, rgba(244,162,97,.08), transparent 72%),
+    #fafbf9;
+}
+main.tutoring-guide #home {
+  min-height: clamp(500px, 66vh, 650px);
+  background-color: #214638;
+  background-image: linear-gradient(110deg, rgba(12,35,26,.88) 0%, rgba(21,62,46,.72) 48%, rgba(12,35,26,.54) 100%), url('../images/14.jpeg');
+  background-image: linear-gradient(110deg, rgba(12,35,26,.88) 0%, rgba(21,62,46,.72) 48%, rgba(12,35,26,.54) 100%), image-set(
+    url('../images/14.webp') type('image/webp') 1x,
+    url('../images/14.jpeg') type('image/jpeg') 1x
+  );
+  background-position: center 58%;
+}
+main.tutoring-guide #home .section-inner {
+  max-width: 860px;
+}
+main.tutoring-guide #home .section-title {
+  margin-top: .8rem;
+  font-size: clamp(2.15rem, 4.8vw, 3.65rem);
+  line-height: 1.23;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+main.tutoring-guide #home .section-desc {
+  max-width: 700px;
+  margin: 1.15rem auto 0;
+  color: rgba(255,255,255,.94);
+  font-size: clamp(.98rem, 1.8vw, 1.13rem);
+  line-height: 1.8;
+  text-shadow: 0 4px 16px rgba(0,0,0,.28);
+  word-break: keep-all;
+}
+.guide-hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: .55rem;
+  flex-wrap: wrap;
+  margin-top: 1.3rem;
+}
+.guide-hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: .34rem .78rem;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.92);
+  font-size: .78rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+.guide-toc {
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--guide-line);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 30px rgba(23,61,46,.05);
+}
+.guide-toc-inner {
+  max-width: 940px;
+  min-height: 64px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.guide-toc-inner::-webkit-scrollbar { display: none; }
+.guide-toc-label {
+  margin-right: auto;
+  color: #526158;
+  font-size: .78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.guide-toc a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: .38rem .72rem;
+  border: 1px solid #dce7e0;
+  border-radius: 999px;
+  color: #355848;
+  background: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.guide-toc a:hover,
+.guide-toc a:focus-visible {
+  border-color: rgba(45,106,79,.38);
+  background: var(--guide-soft);
+  color: var(--guide-green);
+}
+main.tutoring-guide section:not(#home):not(.post-tags) {
+  position: relative;
+}
+main.tutoring-guide .guide-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: .7rem !important;
+  color: var(--guide-green) !important;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+main.tutoring-guide .guide-kicker::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--guide-green);
+}
+main.tutoring-guide #who-needs-space .article-intro-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(330px, .9fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+main.tutoring-guide #who-needs-space .article-intro-copy > p:not(.section-desc) {
+  margin-top: 1rem;
+  color: #3e4d45;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+main.tutoring-guide .article-hero-visual {
+  border-radius: 24px;
+  border-color: rgba(45,106,79,.17);
+  box-shadow: 0 26px 60px rgba(23,61,46,.14);
+}
+main.tutoring-guide .article-hero-visual img {
+  height: clamp(280px, 34vw, 390px);
+}
+main.tutoring-guide .article-hero-visual figcaption {
+  padding: .9rem 1rem 1rem;
+  background: #fff;
+  color: #526158;
+}
+main.tutoring-guide #place-comparison {
+  background: linear-gradient(180deg, rgba(237,246,240,.72), rgba(255,255,255,.75));
+}
+main.tutoring-guide #place-comparison .about-principle-grid {
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+main.tutoring-guide #place-comparison .about-principle-item {
+  min-height: 210px;
+  padding: 1.4rem 1.35rem 1.35rem;
+  border-color: rgba(45,106,79,.14);
+  border-radius: 20px;
+  box-shadow: 0 15px 38px rgba(23,61,46,.08);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+main.tutoring-guide #place-comparison .about-principle-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(45,106,79,.3);
+  box-shadow: 0 22px 44px rgba(23,61,46,.12);
+}
+main.tutoring-guide #place-comparison .about-principle-item::before {
+  position: static;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+  background: var(--guide-soft);
+  font-size: .72rem;
+}
+main.tutoring-guide #place-comparison .about-principle-item::after {
+  content: '';
+  position: absolute;
+  right: -36px;
+  bottom: -42px;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: rgba(82,183,136,.07);
+}
+main.tutoring-guide #place-comparison .about-principle-item h3 {
+  margin-bottom: .55rem;
+  color: var(--guide-deep);
+  font-size: 1.08rem;
+}
+main.tutoring-guide #place-comparison .about-principle-item p {
+  position: relative;
+  z-index: 1;
+  font-size: .9rem;
+  line-height: 1.78;
+}
+main.tutoring-guide .guide-prose {
+  max-width: 760px;
+  margin: 2rem auto 0;
+}
+main.tutoring-guide .guide-prose > p {
+  color: #3e4d45;
+  font-size: .98rem;
+  line-height: 1.95;
+  word-break: keep-all;
+}
+main.tutoring-guide .guide-prose > p + p {
+  margin-top: 1.15rem;
+}
+main.tutoring-guide .guide-checklist {
+  counter-reset: guide-check;
+}
+main.tutoring-guide .guide-checklist h3 {
+  position: relative;
+  counter-increment: guide-check;
+  margin: 2.2rem 0 .65rem;
+  padding: .75rem 1rem .75rem 3.5rem;
+  border: 1px solid #dce7e0;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--guide-deep);
+  font-size: 1.03rem;
+  box-shadow: 0 8px 24px rgba(23,61,46,.05);
+}
+main.tutoring-guide .guide-checklist h3:first-child {
+  margin-top: 0;
+}
+main.tutoring-guide .guide-checklist h3::before {
+  content: counter(guide-check, decimal-leading-zero);
+  position: absolute;
+  left: .85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: var(--guide-soft);
+  color: var(--guide-green);
+  font-size: .72rem;
+  font-weight: 900;
+}
+main.tutoring-guide #first-class {
+  background: linear-gradient(135deg, #f8f2e9 0%, #fbfaf7 72%);
+}
+main.tutoring-guide #first-class .guide-prose {
+  padding: clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid #eadfce;
+  border-radius: 20px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 18px 42px rgba(85,64,39,.08);
+}
+main.tutoring-guide .message-template {
+  position: relative;
+  margin: 1.5rem 0 !important;
+  padding: 1.25rem 1.35rem 1.25rem 1.5rem;
+  border-left: 4px solid var(--guide-green);
+  border-radius: 0 16px 16px 0;
+  background: var(--guide-soft);
+  color: #294c3c !important;
+  box-shadow: 0 12px 28px rgba(23,61,46,.07);
+}
+main.tutoring-guide .message-template strong {
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--guide-deep);
+  font-size: .82rem;
+  letter-spacing: .04em;
+}
+main.tutoring-guide #booking-guide {
+  padding: 1.5rem;
+  background: transparent;
+}
+main.tutoring-guide .guide-booking-panel {
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: 28px;
+  background:
+    linear-gradient(120deg, rgba(18,55,41,.96), rgba(45,106,79,.9)),
+    url('../images/14.jpeg') center / cover;
+  color: #fff;
+  box-shadow: 0 26px 65px rgba(23,61,46,.24);
+}
+main.tutoring-guide .guide-booking-panel .guide-kicker,
+main.tutoring-guide .guide-booking-panel .section-title,
+main.tutoring-guide .guide-booking-panel .section-desc {
+  color: #fff !important;
+}
+main.tutoring-guide .guide-booking-panel .guide-kicker::before {
+  background: #f4c987;
+}
+main.tutoring-guide .guide-booking-panel .section-desc {
+  color: rgba(255,255,255,.86) !important;
+}
+main.tutoring-guide .guide-booking-panel .btn-outline {
+  border-color: rgba(255,255,255,.68);
+  color: #fff;
+  background: rgba(255,255,255,.06);
+}
+main.tutoring-guide .guide-booking-panel .btn-outline:hover {
+  background: #fff;
+  color: var(--guide-green);
+}
+
+@media (max-width: 760px) {
+  main.tutoring-guide #home {
+    min-height: 510px;
+    background-position: 58% center;
+  }
+  main.tutoring-guide #home .section-title {
+    font-size: clamp(1.85rem, 8.6vw, 2.55rem);
+    line-height: 1.28;
+  }
+  .guide-hero-meta {
+    gap: .4rem;
+  }
+  .guide-hero-meta span {
+    min-height: 30px;
+    padding: .28rem .6rem;
+    font-size: .7rem;
+  }
+  .guide-toc {
+    padding: 0 1rem;
+  }
+  .guide-toc-inner {
+    min-height: 58px;
+  }
+  .guide-toc-label {
+    display: none;
+  }
+  main.tutoring-guide #who-needs-space .article-intro-layout {
+    grid-template-columns: 1fr;
+  }
+  main.tutoring-guide #who-needs-space .article-intro-copy > p:not(.section-desc) {
+    font-size: .95rem;
+  }
+  main.tutoring-guide .article-hero-visual img {
+    height: min(70vw, 320px);
+  }
+  main.tutoring-guide #place-comparison .about-principle-item {
+    min-height: 0;
+  }
+  main.tutoring-guide .guide-prose {
+    margin-top: 1.4rem;
+  }
+  main.tutoring-guide .guide-prose > p {
+    font-size: .95rem;
+    line-height: 1.88;
+  }
+  main.tutoring-guide .guide-checklist h3 {
+    margin-top: 1.6rem;
+    font-size: .96rem;
+  }
+  main.tutoring-guide #booking-guide {
+    padding: .85rem;
+  }
+  main.tutoring-guide .guide-booking-panel {
+    border-radius: 22px;
+  }
+}
+
 @media (max-width: 760px) {
   main.about-page section {
     padding-top: 3.25rem;
