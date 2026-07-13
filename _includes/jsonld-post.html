@@ -1,0 +1,27 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "image": {{ page.og_image | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ page.canonical | jsonify }}
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "바른자리"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "바른자리",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/images/favicon-512.png"
+    }
+  }
+}
+</script>

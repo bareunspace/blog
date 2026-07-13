@@ -20,6 +20,11 @@ This project follows Semantic Versioning.
 - `index.html` video interview panel now auto-renders related interview posts from `_posts` and links to the onsite blog list.
 - Added a global breadcrumb component (`Home > ...`) via `_includes/breadcrumb.html`, rendered from `_layouts/default.html` for non-home pages.
 - Breadcrumb placement moved from global header area to directly below each page hero section on key pages (`about`, `blog`, `interview`, and current `_posts` article).
+- Enhanced `_posts/2026-07-13-interview-prep-checklist-12.md` with practical interview prep content including answer frameworks, common mistakes, final check routine, and 1-minute self-introduction examples.
+- Expanded `_posts/2026-07-13-interview-prep-checklist-12.md` with a dedicated AI interview practice guide (practice routine, delivery tips, and self-scoring criteria).
+- Improved post SEO in `_includes/head.html` with dynamic `robots`, `og:type=article` for posts, and post-specific JSON-LD include.
+- Added `_includes/jsonld-post.html` for `BlogPosting` structured data on `_posts` content.
+- Canonicalized `interview-prep-checklist.html` to `/posts/interview-prep-checklist/` and marked it `noindex` to reduce duplicate indexing risk.
 
 ## [1.0.0] - 2026-07-11
 ### Added

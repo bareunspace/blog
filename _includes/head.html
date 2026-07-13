@@ -5,8 +5,8 @@
 {% if page.keywords %}
 <meta name="keywords" content="{{ page.keywords }}" />
 {% endif %}
-<meta name="robots" content="index,follow,max-image-preview:large" />
-<meta name="googlebot" content="index,follow,max-image-preview:large" />
+<meta name="robots" content="{{ page.robots | default: 'index,follow,max-image-preview:large' }}" />
+<meta name="googlebot" content="{{ page.robots | default: 'index,follow,max-image-preview:large' }}" />
 {% if page.theme_color %}
 <meta name="theme-color" content="{{ page.theme_color }}" />
 {% endif %}
@@ -25,7 +25,11 @@
   {% endif %}
 {% endif %}
 
+{% if page.collection == "posts" %}
+<meta property="og:type" content="article" />
+{% else %}
 <meta property="og:type" content="website" />
+{% endif %}
 <meta property="og:site_name" content="{{ site.title }}" />
 <meta property="og:locale" content="{{ site.og_locale | default: 'ko_KR' }}" />
 <meta property="og:title" content="{{ page.og_title | default: page.title }}" />
@@ -86,6 +90,8 @@
   {% include jsonld-home.html %}
 {% elsif page.page_id == "about" %}
   {% include jsonld-about.html %}
+{% elsif page.collection == "posts" %}
+  {% include jsonld-post.html %}
 {% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
