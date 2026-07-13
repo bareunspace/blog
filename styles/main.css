@@ -2046,8 +2046,19 @@ main.about-page section:not(#home) .section-inner > p {
 main.about-page .section-inner > p + p {
   margin-top: 1rem;
 }
+main.about-page .article-intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+main.about-page .article-intro-copy .section-title,
+main.about-page .article-intro-copy .section-desc {
+  text-align: left;
+}
 main.about-page .article-hero-visual {
-  margin: 0 0 1.7rem;
+  margin: 0;
   overflow: hidden;
   border: 1px solid #dce8e1;
   border-radius: 16px;
@@ -2060,9 +2071,9 @@ main.about-page .article-hero-visual img {
   object-fit: cover;
 }
 main.about-page .article-hero-visual figcaption {
-  padding: .72rem .9rem .82rem;
+  padding: .62rem .78rem .7rem;
   color: #4b5563;
-  font-size: .84rem;
+  font-size: .8rem;
   line-height: 1.65;
   word-break: keep-all;
 }
@@ -2235,6 +2246,15 @@ main.about-page #contact .contact-closing-line {
   main.about-page .about-principle-grid {
     grid-template-columns: 1fr;
     gap: .72rem;
+  }
+  main.about-page .article-intro-layout {
+    grid-template-columns: 1fr;
+    gap: .9rem;
+    margin-bottom: 1rem;
+  }
+  main.about-page .article-intro-copy .section-title,
+  main.about-page .article-intro-copy .section-desc {
+    text-align: center;
   }
   main.about-page .partner-growth-panel {
     padding: 1rem;
