@@ -9,7 +9,7 @@ permalink: /posts/interview-prep-checklist/
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 면접 전날 체크리스트 안내 이미지
 preload_image: images/main.webp
-css_version: 20260710-3
+css_version: 20260713-1
 script_version: 20260711-4
 ---
 

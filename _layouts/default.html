@@ -9,6 +9,10 @@
 
   {{ content }}
 
+  {% if page.category %}
+    {% include related-posts.html %}
+  {% endif %}
+
   {% include footer.html %}
 </body>
 </html>

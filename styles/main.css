@@ -376,6 +376,57 @@ section { padding: 5rem 1.5rem; }
   color: rgba(255,255,255,.6);
 }
 .section-desc { color: var(--muted); max-width: 560px; margin-bottom: 3rem; }
+.post-related {
+  padding: 4.5rem 1.5rem;
+  background: #f4f8f5;
+}
+.post-related .section-desc {
+  margin-bottom: 2rem;
+}
+.post-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.post-related-card {
+  padding: 1.5rem;
+  border: 1px solid #dfe9e2;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.post-related-card h3 {
+  margin-bottom: .75rem;
+  color: var(--primary);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+.post-related-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.post-related-card h3 a:hover,
+.post-related-card h3 a:focus-visible,
+.post-related-more a:hover,
+.post-related-more a:focus-visible {
+  text-decoration: underline;
+}
+.post-related-card p {
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.7;
+}
+.post-related-card .post-related-meta {
+  margin-top: 1rem;
+  font-size: .82rem;
+}
+.post-related-more {
+  margin-top: 1.5rem;
+}
+.post-related-more a {
+  color: var(--primary);
+  font-weight: 700;
+}
 .location-note {
   margin-top: 1.5rem;
   font-size: .88rem;
