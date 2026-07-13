@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.2.2"
-gem "jekyll-sitemap", "~> 1.4"
+gem "github-pages", "~> 232", group: :jekyll_plugins
+gem "jekyll-sitemap", group: :jekyll_plugins
 gem "ffi", "~> 1.16.3"
