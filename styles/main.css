@@ -2067,7 +2067,7 @@ main.about-page .article-hero-visual {
 }
 main.about-page .article-hero-visual img {
   width: 100%;
-  height: clamp(180px, 18vw, 230px);
+  height: clamp(145px, 14vw, 180px);
   object-fit: cover;
 }
 main.about-page .article-hero-visual figcaption {
@@ -2253,7 +2253,7 @@ main.about-page #contact .contact-closing-line {
     margin-bottom: 1rem;
   }
   main.about-page .article-hero-visual img {
-    height: clamp(180px, 52vw, 240px);
+    height: clamp(145px, 42vw, 190px);
   }
   main.about-page .article-intro-copy .section-title,
   main.about-page .article-intro-copy .section-desc {

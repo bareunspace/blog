@@ -11,7 +11,7 @@ og_image_alt: 노트북과 조명이 준비된 조용한 화상면접 프라이�
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/posts/bucheon-video-interview-place-guide/hero.jpg
-css_version: 20260713-4
+css_version: 20260713-5
 script_version: 20260711-4
 ---
 
