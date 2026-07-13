@@ -1,0 +1,27 @@
+{% unless page.page_id == "home" %}
+  <nav class="breadcrumb-wrap" aria-label="페이지 경로">
+    <div class="breadcrumb-inner">
+      <a href="{{ '/index.html' | relative_url }}">Home</a>
+      {% if page.page_id == "blog" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">Blog</span>
+      {% elsif page.collection == "posts" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">{{ page.title }}</span>
+      {% elsif page.page_id == "about" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">브랜드 스토리</span>
+      {% elsif page.page_id == "interview" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">{{ page.title }}</span>
+      {% else %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">{{ page.title }}</span>
+      {% endif %}
+    </div>
+  </nav>
+{% endunless %}

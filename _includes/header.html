@@ -1,7 +1,7 @@
 <header>
   <nav>
-    {% if page.page_id == "about" or page.page_id == "blog" %}
-      <a href="index.html#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
+    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts" %}
+      <a href="{{ '/index.html' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
     {% else %}
       <a href="#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
     {% endif %}
@@ -13,13 +13,25 @@
       {% assign nav_items = site.data.navigation.about %}
     {% elsif page.page_id == "blog" %}
       {% assign nav_items = site.data.navigation.blog %}
+    {% elsif page.page_id == "interview" %}
+      {% assign nav_items = site.data.navigation.interview %}
+    {% elsif page.collection == "posts" %}
+      {% assign nav_items = site.data.navigation.post %}
     {% else %}
       {% assign nav_items = site.data.navigation.home %}
     {% endif %}
     <ul class="nav-links" id="primaryNav">
       {% for item in nav_items %}
+        {% assign href_value = item.href %}
+        {% assign first_char = href_value | slice: 0, 1 %}
         <li>
-          <a href="{{ item.href }}" {% if (page.page_id == "about" or page.page_id == "blog") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}
+            <a href="{{ href_value }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% elsif first_char == '/' %}
+            <a href="{{ href_value | relative_url }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% else %}
+            <a href="{{ '/' | append: href_value | relative_url }}" {% if (page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts") and item.current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

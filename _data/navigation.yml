@@ -23,8 +23,30 @@ blog:
   - label: 최근 글
     href: "#blog-latest"
     current: true
+  - label: 사이트 발행 글
+    href: "#blog-onsite"
   - label: 브랜드 스토리
     href: "about.html"
+  - label: 이용 안내
+    href: "index.html#about"
+  - label: 문의
+    href: "index.html#contact"
+interview:
+  - label: 체크리스트
+    href: "#interview-checklist"
+    current: true
+  - label: 당일 타임라인
+    href: "#interview-timeline"
+  - label: 자주 묻는 질문
+    href: "#interview-faq"
+  - label: 문의
+    href: "index.html#contact"
+post:
+  - label: 블로그 홈
+    href: "blog.html"
+    current: true
+  - label: 공간 소개
+    href: "index.html#space"
   - label: 이용 안내
     href: "index.html#about"
   - label: 문의

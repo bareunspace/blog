@@ -18,7 +18,11 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
 {% if page.preload_image %}
+  {% if page.preload_image contains '://' %}
 <link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp" fetchpriority="high" />
+  {% else %}
+<link rel="preload" as="image" href="{{ '/' | append: page.preload_image | relative_url }}" type="image/webp" fetchpriority="high" />
+  {% endif %}
 {% endif %}
 
 <meta property="og:type" content="website" />
@@ -88,4 +92,4 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles/main.css?v={{ page.css_version | default: '20260710-3' }}" />
+<link rel="stylesheet" href="{{ '/styles/main.css' | relative_url }}?v={{ page.css_version | default: '20260710-3' }}" />

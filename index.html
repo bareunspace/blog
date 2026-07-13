@@ -72,6 +72,21 @@ script_version: 20260711-4
               <p>면접 시작 30분 전 입실을 권장합니다. 카메라 각도, 시선 높이, 마이크 볼륨, 화면 공유 동작까지 미리 확인하면 실전에서 훨씬 안정적으로 진행할 수 있습니다.</p>
             </article>
           </div>
+          <article class="private-office-card" aria-label="화상면접 관련 블로그 글">
+            <h3>화상면접 관련 블로그 글</h3>
+            {% assign interview_posts = site.posts | where_exp: "item", "item.title contains '면접' or item.description contains '면접' or item.keywords contains '면접'" %}
+            {% if interview_posts.size > 0 %}
+              <ul class="related-post-list">
+                {% for post in interview_posts limit: 3 %}
+                  <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="use-time-badge">{{ post.date | date: "%Y-%m-%d" }}</span></li>
+                {% endfor %}
+              </ul>
+              <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">면접 관련 글 더 보기</a></p>
+            {% else %}
+              <p>아직 등록된 면접 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
+              <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">사이트 발행 글 확인하기</a></p>
+            {% endif %}
+          </article>
           <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="video_interview_panel_booking">화상면접 · 회의 예약하기</a>
         </div>
         <div class="feature-card feature-toggle" id="onlineExamToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="onlineExamPanel">
