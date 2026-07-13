@@ -34,3 +34,4 @@ defaults:
 exclude:
   - docs/
   - data/
+  - vendor/

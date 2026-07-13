@@ -4,6 +4,11 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+PROJECT_RUBY_BIN="$ROOT_DIR/vendor/ruby-3.3.11/bin"
+if [[ -x "$PROJECT_RUBY_BIN/ruby" ]]; then
+  export PATH="$PROJECT_RUBY_BIN:$PATH"
+fi
+
 pass_count=0
 fail_count=0
 
@@ -40,7 +45,8 @@ check_contains() {
 echo "== Pre-deploy Check =="
 
 echo "Step 1/6: bundle install (local path)"
-bundle install --path vendor/bundle >/dev/null
+bundle config set --local path vendor/bundle
+bundle install >/dev/null
 pass "Bundle install completed"
 
 echo "Step 2/6: sync Naver blog RSS"

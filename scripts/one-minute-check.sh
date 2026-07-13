@@ -4,6 +4,11 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+PROJECT_RUBY_BIN="$ROOT_DIR/vendor/ruby-3.3.11/bin"
+if [[ -x "$PROJECT_RUBY_BIN/ruby" ]]; then
+  export PATH="$PROJECT_RUBY_BIN:$PATH"
+fi
+
 PREVIEW_URL="http://127.0.0.1:4000"
 
 echo "== 1-minute check with preview =="
