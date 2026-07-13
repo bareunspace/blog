@@ -6,12 +6,12 @@ category: 면접 준비
 keywords: 부천화상면접장소,화상면접공간,신중동공간대여,온라인면접장소
 canonical: https://bareunjari.com/posts/bucheon-video-interview-place-guide/
 permalink: /posts/bucheon-video-interview-place-guide/
-og_image: https://bareunjari.com/images/video-interview-place-guide-cover.jpg
-og_image_alt: 노트북과 마이크가 준비된 조용한 화상면접 공간
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/video-interview-place-guide-cover.jpg
-css_version: 20260713-1
+og_image: https://bareunjari.com/images/posts/bucheon-video-interview-place-guide/hero.jpg
+og_image_alt: 노트북과 조명이 준비된 조용한 화상면접 프라이빗룸
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/posts/bucheon-video-interview-place-guide/hero.jpg
+css_version: 20260713-2
 script_version: 20260711-4
 ---
 
@@ -31,6 +31,10 @@ script_version: 20260711-4
 
   <section id="place-problem">
     <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img src="/images/posts/bucheon-video-interview-place-guide/hero.jpg" alt="노트북과 조명이 준비된 조용한 화상면접 프라이빗룸" loading="eager" width="1672" height="941" />
+        <figcaption>화상면접은 답변 준비만큼 소음, 조명, 배경, 인터넷을 통제할 수 있는 장소 선택이 중요합니다.</figcaption>
+      </figure>
       <h2 class="section-title">화상면접은 답변만큼 장소가 중요합니다</h2>
       <p class="section-desc">준비한 답변이 좋아도 생활 소음, 어두운 얼굴, 불안정한 인터넷처럼 통제하기 어려운 변수가 생기면 집중력과 전달력이 함께 흔들릴 수 있습니다.</p>
       <div class="about-highlight-grid" aria-label="화상면접 장소에서 자주 생기는 문제">
