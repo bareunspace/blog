@@ -37,7 +37,8 @@ echo "- 게시글 제목: ${post_title}"
 BLOG_URL="https://bareunjari.com/blog.html"
 echo "- 확인 대상 URL: ${BLOG_URL}"
 
-site_content=$(curl -s -L "$BLOG_URL")
+# 캐시를 무시하고 항상 최신 버전을 가져오기 위해 curl 옵션 추가
+site_content=$(curl -s -L -H "Cache-Control: no-cache" -H "Pragma: no-cache" "$BLOG_URL")
 
 # 4. 다운로드한 내용에 게시글 제목이 포함되어 있는지 확인
 if echo "$site_content" | grep -q -F "$post_title"; then
@@ -46,6 +47,14 @@ if echo "$site_content" | grep -q -F "$post_title"; then
   echo -e "\n--- 감지된 내용 ---"
   echo "$site_content" | grep -F -C 2 "$post_title"
   echo "--------------------"
+
+  # 삭제된 글이 여전히 남아있는지 추가로 확인
+  DELETED_POST_TITLE="면접관은 정답을 기대하지 않습니다"
+  if echo "$site_content" | grep -q -F "$DELETED_POST_TITLE"; then
+    echo -e "\n${COLOR_RED}[경고] 삭제된 게시글이 아직 사이트에 남아있습니다.${COLOR_NC}"
+    echo "      브라우저에서 강력 새로고침(Ctrl+Shift+R 또는 Cmd+Shift+R)을 해보세요."
+  fi
+
   exit 0
 else
   echo -e "\n${COLOR_RED}[실패] 아직 사이트에 최신 게시글이 반영되지 않았습니다.${COLOR_NC}"
