@@ -11,6 +11,11 @@ tags:
   - 면접준비
   - 채용
 ---
+<main class="sub-page">
+  <section class="post-content">
+    <div class="section-inner">
+
+{% include breadcrumb.html %}
 
 ### 면접관은 정답을 기대하지 않습니다
 
@@ -75,3 +80,7 @@ tags:
 - [ ] 지원하는 회사의 블로그, 최신 뉴스, CEO 인터뷰를 읽고 나만의 질문 만들기
 - [ ] 나의 실패/성공 경험을 STAR 기법으로 1개 이상 정리하기
 - [ ] 회사의 인재상을 보고 나의 어떤 점이 부합하는지 생각해보기
+
+    </div>
+  </section>
+</main>
