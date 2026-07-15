@@ -1,9 +1,34 @@
+# 운영체제 생성 파일
 .DS_Store
+docs/
+
+# 사용자 정의 백업 폴더
 images/_backup-*/
 
 # Jekyll/Bundler artifacts
 .bundle/
 .jekyll-cache/
 .jekyll-metadata
+.sass-cache/
 _site/
 vendor/
+
+# 로그 파일
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 환경 변수 파일 (API 키 등 민감 정보 포함)
+.env
+.env.local
+.env.*.local
+
+# IDE 및 에디터 설정
+.vscode/
+.idea/
+.history/
+
+# 임시 파일
+*.tmp
