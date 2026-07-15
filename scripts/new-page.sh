@@ -28,6 +28,7 @@ Options:
   --add-sitemap            Automatically add URL to sitemap.xml
   --changefreq "..."      Sitemap changefreq (default: monthly)
   --priority "..."        Sitemap priority (default: 0.6)
+  --generate-draft         Generate content draft using AI agent
   --run-check              Run predeploy check after generation
   --dry-run                Print planned changes only (no file writes)
   -h, --help               Show help
@@ -62,6 +63,7 @@ add_sitemap="false"
 sitemap_changefreq="monthly"
 sitemap_priority="0.6"
 run_check="false"
+generate_draft="false"
 dry_run="false"
 
 # Backward compatibility: allow 4th positional keywords argument.
@@ -115,6 +117,10 @@ while [[ $# -gt 0 ]]; do
     --priority)
       sitemap_priority="${2:-}"
       shift 2
+      ;;
+    --generate-draft)
+      generate_draft="true"
+      shift
       ;;
     --run-check)
       run_check="true"
@@ -192,6 +198,30 @@ if [[ -z "$script_version" ]]; then
   script_version="20260710-3"
 fi
 
+generate_content_draft() {
+  local draft_content
+  # Placeholder for AI agent call.
+  # This could be a call to a Python script or a curl command to an API endpoint.
+  # The prompt would include the title, description, and the structure from '본문 템플릿'.
+  echo "[INFO] Generating draft for '${title}'..."
+  draft_content=$(cat <<'DRAFT_EOF'
+# [문제 상황 한 줄]
+
+도입 2~3문장: 누가, 어떤 상황에서, 왜 이 글을 읽어야 하는지.
+
+## 문제 정의
+- 현재 겪는 불편 1 (AI 생성)
+- 현재 겪는 불편 2 (AI 생성)
+
+## 해결 방법
+### 1. 첫 번째 방법
+핵심 설명 + 바로 실행할 수 있는 액션 1개 (AI 생성)
+...
+DRAFT_EOF
+  )
+  echo "$draft_content"
+}
+
 if [[ "$dry_run" == "true" ]]; then
   echo "[DRY-RUN] Would create: ${slug}.html"
 else
@@ -216,10 +246,21 @@ script_version: ${script_version}
       <p class="section-label">${section_label}</p>
       <h1 class="section-title">${title}</h1>
       <p class="section-desc">${description}</p>
+
+      <!-- Content Body Start -->
+      <!-- AI Draft will be inserted here by human -->
+      <!-- Content Body End -->
+
     </div>
   </section>
 </main>
 EOF
+fi
+
+if [[ "$generate_draft" == "true" ]]; then
+  draft_file="${ROOT_DIR}/_drafts/${slug}-draft.md"
+  generate_content_draft > "$draft_file"
+  echo "[OK] Generated draft at: ${draft_file}"
 fi
 
 append_sitemap_entry() {

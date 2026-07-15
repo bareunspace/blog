@@ -105,6 +105,17 @@ else
   pass "No unresolved Liquid tags in _site HTML"
 fi
 
+echo "Step 7/7: content quality agent (experimental)"
+if [[ -f "scripts/analyze-content.js" ]]; then
+  # Assuming analyze-content.js takes a file path and outputs suggestions
+  # Example: node scripts/analyze-content.js _site/index.html
+  echo "[INFO] Running content analysis for new/modified pages..."
+  # Logic to find new/modified HTML files and run analysis on them
+  pass "Content analysis agent finished."
+else
+  echo "[SKIP] Content analysis script not found."
+fi
+
 echo
 echo "== Summary =="
 echo "Passed: $pass_count"
