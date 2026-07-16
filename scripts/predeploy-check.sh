@@ -42,6 +42,39 @@ check_contains() {
   fi
 }
 
+check_posts_have_category() {
+  local missing_count=0
+  local post_file
+
+  shopt -s nullglob
+  for post_file in _posts/*.md; do
+    if ! awk '
+      BEGIN { in_frontmatter = 0; delimiter_count = 0; found = 0 }
+      /^---[[:space:]]*$/ {
+        delimiter_count++
+        if (delimiter_count == 1) {
+          in_frontmatter = 1
+          next
+        }
+        if (delimiter_count == 2) {
+          exit
+        }
+      }
+      in_frontmatter && $0 ~ /^category:[[:space:]]*[^[:space:]].*/ {
+        found = 1
+      }
+      END { if (!found) exit 1 }
+    ' "$post_file"; then
+      fail "Missing category in post front matter: $post_file"
+      missing_count=$((missing_count + 1))
+    fi
+  done
+
+  if [[ "$missing_count" -eq 0 ]]; then
+    pass "All _posts have non-empty category (breadcrumb category enabled)"
+  fi
+}
+
 echo "== Pre-deploy Check =="
 
 echo "Step 1/6: bundle install (local path)"
@@ -97,6 +130,8 @@ if grep -Eq '^[[:space:]]*-[[:space:]]title:' _data/naver_blog.yml; then
 else
   fail "Naver blog data is empty"
 fi
+
+check_posts_have_category
 
 echo "Step 6/6: rendered HTML sanity"
 if grep -R -n '{{\|{%' _site/*.html >/dev/null 2>&1; then

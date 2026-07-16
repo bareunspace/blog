@@ -2,7 +2,7 @@
 layout: default
 title: 면접 전날 체크리스트 12가지
 description: 화상면접과 대면면접 전날 꼭 확인해야 할 준비 항목과 당일 타임라인을 정리했습니다.
-category: 면접 준비
+category: 면접준비
 keywords: 면접준비,화상면접,대면면접,면접체크리스트
 tags:
   - 면접준비

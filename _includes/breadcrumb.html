@@ -8,6 +8,10 @@
       {% elsif page.collection == "posts" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        {% if page.category %}
+          <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+          <span>{{ page.category }}</span>
+        {% endif %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">{{ page.title }}</span>
       {% elsif page.page_id == "about" %}

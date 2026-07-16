@@ -2,7 +2,7 @@
 layout: default
 title: 채용 담당자가 말해주는 면접의 좋은 신호 9가지
 description: 채용 담당자 관점에서 면접 때 더 좋아 보이는 포인트와 아쉬운 포인트를 부드럽게 정리했습니다.
-category: 면접
+category: 면접준비
 keywords: 채용담당자면접관점,면접평가기준,면접합격신호,면접감점요소
 tags:
   - 면접준비

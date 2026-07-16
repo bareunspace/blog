@@ -40,6 +40,7 @@ bash scripts/new-page.sh <slug> "<title>" "<description>" --add-sitemap --run-ch
 
 2. 본문 작성
 - 아래 "본문 템플릿"을 복붙해서 작성
+- `_posts` 글이라면 front matter에 `category`를 반드시 입력 (브레드크럼 카테고리 표시용)
 
 3. 빠른 점검
 
