@@ -653,6 +653,32 @@ section { padding: 5rem 1.5rem; }
 .blog-guides-section {
   background: #fff !important;
 }
+.blog-guide-filters {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+.blog-guide-filter {
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #fff;
+  color: #1f2937;
+  padding: .42rem .9rem;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+.blog-guide-filter:hover {
+  background: #f3f6f4;
+  transform: translateY(-1px);
+}
+.blog-guide-filter.is-active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
 .blog-guide-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
