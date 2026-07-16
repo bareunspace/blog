@@ -79,7 +79,7 @@ script_version: 20260713-3
               {% assign interview_posts = interview_title_posts | concat: interview_description_posts | concat: interview_keyword_posts | uniq %}
               {% if interview_posts.size > 0 %}
                 <ul class="related-post-list">
-                  {% for post in interview_posts limit: 2 %}
+                  {% for post in interview_posts limit: 5 %}
                     <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
                   {% endfor %}
                 </ul>

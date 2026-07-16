@@ -2023,6 +2023,10 @@ main.about-page #home .section-title {
   color: #fff;
   text-shadow: 0 10px 24px rgba(0,0,0,.32);
 }
+main.about-page #home .section-desc {
+  color: rgba(255,255,255,.94);
+  text-shadow: 0 8px 22px rgba(0,0,0,.3);
+}
 main.about-page .hero-subtitle {
   color: rgba(255,255,255,.96);
   font-weight: 500;
