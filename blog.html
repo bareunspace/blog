@@ -8,7 +8,7 @@ canonical: https://bareunjari.com/blog.html
 og_image: https://bareunjari.com/images/14.jpeg
 og_image_alt: 바른자리 블로그 대표 이미지
 css_version: 20260713-2
-script_version: 20260711-4
+script_version: 20260716-2
 ---
 <main class="about-page blog-hub">
   <section id="home">
@@ -139,16 +139,25 @@ script_version: 20260711-4
         </div>
         <p>공간 이용 사례와 예약·주차·시설 안내처럼 현장에서 필요한 최신 소식을 전합니다.</p>
       </div>
+      <div class="blog-guide-filters" id="blogFieldFilters" aria-label="현장 소식 카테고리 필터">
+        <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
+        <button type="button" class="blog-guide-filter" data-category="이용사례" aria-pressed="false">이용사례</button>
+        <button type="button" class="blog-guide-filter" data-category="이용안내" aria-pressed="false">이용안내</button>
+      </div>
       <div class="blog-field-grid" aria-label="네이버 블로그 최신 글 목록">
-        {% for post in site.data.naver_blog.posts limit: 6 %}
-          <article class="blog-field-card">
+        {% for post in site.data.naver_blog.posts %}
+          {% assign field_category = "이용안내" %}
+          {% if post.title contains "공간 이용 사례" %}
+            {% assign field_category = "이용사례" %}
+          {% endif %}
+          <article class="blog-field-card" data-category="{{ field_category }}">
             {% if post.image_url %}
               <a class="blog-field-image" href="{{ post.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
                 <img src="{{ post.image_url }}" alt="" loading="lazy" referrerpolicy="no-referrer" />
               </a>
             {% endif %}
             <div class="blog-field-content">
-              <p class="blog-card-eyebrow">네이버 블로그 · {{ post.category }}</p>
+              <p class="blog-card-eyebrow">네이버 블로그 · {{ field_category }}</p>
               <h3><a href="{{ post.url }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a></h3>
               <p>{{ post.summary | strip_html | truncate: 105 }}</p>
               <div class="blog-card-footer">
@@ -158,6 +167,9 @@ script_version: 20260711-4
             </div>
           </article>
         {% endfor %}
+      </div>
+      <div class="blog-guide-more-wrap">
+        <button type="button" class="blog-guide-load-more" id="blogFieldLoadMore">현장 소식 더 보기</button>
       </div>
       <p class="blog-external-more"><a href="{{ site.data.naver_blog.blog_url }}" target="_blank" rel="noopener noreferrer" data-cta="blog_naver_primary">네이버 블로그 전체 글 보기 <span aria-hidden="true">↗</span></a></p>
     </div>

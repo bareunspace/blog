@@ -49,11 +49,16 @@
     const blogGuideFilters = document.getElementById('blogGuideFilters');
     const blogGuideGrid = document.querySelector('#blog-onsite .blog-guide-grid');
     const blogGuideLoadMore = document.getElementById('blogGuideLoadMore');
+    const blogFieldFilters = document.getElementById('blogFieldFilters');
+    const blogFieldGrid = document.querySelector('#blog-latest .blog-field-grid');
+    const blogFieldLoadMore = document.getElementById('blogFieldLoadMore');
     const FEATURE_PANEL_ANIM_MS = 150;
     const GALLERY_INITIAL_VISIBLE = 6;
     const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 4;
     const BLOG_GUIDE_LOAD_STEP = 4;
+    const BLOG_FIELD_INITIAL_VISIBLE = 6;
+    const BLOG_FIELD_LOAD_STEP = 3;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
@@ -391,6 +396,82 @@
       });
 
       setActiveFilter(activeCategory);
+    };
+
+    const setupBlogFieldFilters = () => {
+      if (!blogFieldGrid || !blogFieldFilters) {
+        return;
+      }
+
+      const fieldItems = Array.from(blogFieldGrid.querySelectorAll('.blog-field-card'));
+      const filterButtons = Array.from(blogFieldFilters.querySelectorAll('.blog-guide-filter'));
+
+      if (!fieldItems.length || !filterButtons.length) {
+        if (blogFieldLoadMore) {
+          blogFieldLoadMore.hidden = true;
+          blogFieldLoadMore.disabled = true;
+        }
+        return;
+      }
+
+      let activeCategory = 'all';
+      let visibleCount = Math.min(BLOG_FIELD_INITIAL_VISIBLE, fieldItems.length);
+
+      const renderFieldItems = () => {
+        const filteredItems = fieldItems.filter((item) => {
+          return activeCategory === 'all' || item.dataset.category === activeCategory;
+        });
+
+        fieldItems.forEach((item) => {
+          const inFilter = filteredItems.includes(item);
+          item.hidden = !inFilter;
+        });
+
+        filteredItems.forEach((item, index) => {
+          item.hidden = index >= visibleCount;
+        });
+
+        if (blogFieldLoadMore) {
+          const isDone = visibleCount >= filteredItems.length;
+          blogFieldLoadMore.hidden = isDone;
+          blogFieldLoadMore.disabled = isDone;
+        }
+      };
+
+      const setActiveFilter = (nextCategory) => {
+        activeCategory = nextCategory;
+
+        const filteredCount = fieldItems.filter((item) => {
+          return activeCategory === 'all' || item.dataset.category === activeCategory;
+        }).length;
+        visibleCount = Math.min(BLOG_FIELD_INITIAL_VISIBLE, filteredCount);
+
+        filterButtons.forEach((button) => {
+          const isActive = button.dataset.category === nextCategory;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        renderFieldItems();
+      };
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          setActiveFilter(button.dataset.category || 'all');
+        });
+      });
+
+      if (blogFieldLoadMore) {
+        blogFieldLoadMore.addEventListener('click', () => {
+          const filteredCount = fieldItems.filter((item) => {
+            return activeCategory === 'all' || item.dataset.category === activeCategory;
+          }).length;
+          visibleCount = Math.min(filteredCount, visibleCount + BLOG_FIELD_LOAD_STEP);
+          renderFieldItems();
+        });
+      }
+
+      setActiveFilter('all');
     };
 
     const closeMobileMenu = () => {
@@ -1653,4 +1734,5 @@
     setupMobileCtaVariant();
     setupGalleryLoadMore();
     setupBlogGuideLoadMore();
+    setupBlogFieldFilters();
     loadUseCasesFromRss();
