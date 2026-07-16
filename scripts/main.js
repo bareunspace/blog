@@ -910,7 +910,7 @@
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
             <p class="testimonial-summary">${escapeHtml(summary)}</p>
-            <span class="author">— 네이버 블로그 ${escapeHtml(contentType)}</span>
+            <span class="author">— ${escapeHtml(contentType)}</span>
             <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>
         `;
