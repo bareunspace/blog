@@ -27,11 +27,6 @@ script_version: 20260711-4
 
   {% assign onsite_posts = site.posts | where_exp: "item", "item.draft != true" %}
   {% assign featured_post = onsite_posts.first %}
-  {% assign date_category_posts = site.posts | where: "category", "데이트" %}
-  {% assign date_title_posts = site.posts | where_exp: "item", "item.title contains '데이트'" %}
-  {% assign date_description_posts = site.posts | where_exp: "item", "item.description contains '데이트'" %}
-  {% assign date_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '데이트'" %}
-  {% assign date_posts = date_category_posts | concat: date_title_posts | concat: date_description_posts | concat: date_keyword_posts | uniq %}
 
   <section id="featured-guide" class="blog-featured-section">
     <div class="section-inner">
@@ -74,10 +69,10 @@ script_version: 20260711-4
           <strong>면접 준비</strong>
           <span>화상면접·AI 면접·장소 선택</span>
         </a>
-        <a class="blog-topic-card" href="/index.html#space">
+        <a class="blog-topic-card" href="#blog-onsite">
           <span class="blog-topic-number">02</span>
-          <strong>온라인 시험</strong>
-          <span>시험 환경·장비·집중 공간</span>
+          <strong>데이트</strong>
+          <span>실내 피서·기념일·둘만의 시간</span>
         </a>
         <a class="blog-topic-card" href="#blog-latest">
           <span class="blog-topic-number">03</span>
@@ -89,46 +84,7 @@ script_version: 20260711-4
           <strong>이용 사례</strong>
           <span>실제 공간 활용 이야기</span>
         </a>
-        <a class="blog-topic-card" href="#blog-date-guides">
-          <span class="blog-topic-number">05</span>
-          <strong>데이트</strong>
-          <span>실내 피서·기념일·둘만의 시간</span>
-        </a>
       </nav>
-    </div>
-  </section>
-
-  <section id="blog-date-guides" class="blog-guides-section">
-    <div class="section-inner">
-      <div class="blog-section-heading">
-        <div>
-          <p class="section-label">Date Guides</p>
-          <h2 class="section-title">데이트 추천 글</h2>
-        </div>
-        <p>더운 날에도 편하게 시간을 보낼 수 있는 실내 데이트 중심 콘텐츠를 모았습니다.</p>
-      </div>
-      {% if date_posts.size > 0 %}
-        <div class="blog-guide-grid" aria-label="데이트 가이드 목록">
-          {% for post in date_posts limit: 6 %}
-            <article class="blog-guide-card">
-              <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-                <img src="{{ post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
-              </a>
-              <div class="blog-guide-content">
-                <p class="blog-card-eyebrow">{{ post.category | default: "데이트" }}</p>
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-                <div class="blog-card-footer">
-                  <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                  <a href="{{ post.url | relative_url }}" aria-label="{{ post.title }} 자세히 보기">자세히 보기 <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="blog-empty-state">데이트 추천 글을 준비하고 있습니다.</div>
-      {% endif %}
     </div>
   </section>
 
@@ -159,6 +115,9 @@ script_version: 20260711-4
               </div>
             </article>
           {% endfor %}
+        </div>
+        <div class="blog-guide-more-wrap">
+          <button type="button" class="blog-guide-load-more" id="blogGuideLoadMore">가이드 더 보기</button>
         </div>
       {% else %}
         <div class="blog-empty-state">첫 번째 실전 가이드를 준비하고 있습니다.</div>

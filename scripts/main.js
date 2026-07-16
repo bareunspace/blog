@@ -46,9 +46,13 @@
     const mobileStickyCta = document.getElementById('mobileStickyCta');
     const promoCountdown = document.getElementById('promoCountdown');
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
+    const blogGuideGrid = document.querySelector('#blog-onsite .blog-guide-grid');
+    const blogGuideLoadMore = document.getElementById('blogGuideLoadMore');
     const FEATURE_PANEL_ANIM_MS = 150;
     const GALLERY_INITIAL_VISIBLE = 6;
     const GALLERY_LOAD_STEP = 3;
+    const BLOG_GUIDE_INITIAL_VISIBLE = 4;
+    const BLOG_GUIDE_LOAD_STEP = 4;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
@@ -313,6 +317,37 @@
       });
 
       renderGalleryItems();
+    };
+
+    const setupBlogGuideLoadMore = () => {
+      if (!blogGuideGrid || !blogGuideLoadMore) {
+        return;
+      }
+
+      const guideItems = Array.from(blogGuideGrid.querySelectorAll('.blog-guide-card'));
+      if (!guideItems.length) {
+        blogGuideLoadMore.hidden = true;
+        return;
+      }
+
+      let visibleCount = Math.min(BLOG_GUIDE_INITIAL_VISIBLE, guideItems.length);
+
+      const renderGuideItems = () => {
+        guideItems.forEach((item, index) => {
+          item.classList.toggle('is-hidden', index >= visibleCount);
+        });
+
+        const isDone = visibleCount >= guideItems.length;
+        blogGuideLoadMore.hidden = isDone;
+        blogGuideLoadMore.disabled = isDone;
+      };
+
+      blogGuideLoadMore.addEventListener('click', () => {
+        visibleCount = Math.min(guideItems.length, visibleCount + BLOG_GUIDE_LOAD_STEP);
+        renderGuideItems();
+      });
+
+      renderGuideItems();
     };
 
     const closeMobileMenu = () => {
@@ -1574,4 +1609,5 @@
     updatePromoCountdown();
     setupMobileCtaVariant();
     setupGalleryLoadMore();
+    setupBlogGuideLoadMore();
     loadUseCasesFromRss();

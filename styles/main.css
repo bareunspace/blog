@@ -658,6 +658,31 @@ section { padding: 5rem 1.5rem; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.4rem;
 }
+.blog-guide-card.is-hidden {
+  display: none;
+}
+.blog-guide-more-wrap {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.blog-guide-load-more {
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #fff;
+  color: #1f2937;
+  padding: .58rem 1.15rem;
+  font-size: .86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+.blog-guide-load-more:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
 .blog-guide-card,
 .blog-field-card {
   display: grid;
