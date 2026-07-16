@@ -18,6 +18,7 @@
     const useCasePrev = document.getElementById('useCasePrev');
     const useCaseNext = document.getElementById('useCaseNext');
     const useCasePageInfo = document.getElementById('useCasePageInfo');
+    const useCaseFilters = document.getElementById('useCaseFilters');
     const contactForm = document.getElementById('contactForm');
     const contactRateNote = document.getElementById('contactRateNote');
     const contactSubmitStatus = document.getElementById('contactSubmitStatus');
@@ -64,6 +65,7 @@
     let currentGalleryIndex = -1;
     let useCaseItems = [];
     let useCasePage = 0;
+    let useCaseActiveCategory = 'all';
     let featurePanelCleanupTimer = 0;
     let galleryVisibleCount = GALLERY_INITIAL_VISIBLE;
     let refreshGalleryItemsVisibility = () => {};
@@ -1093,7 +1095,14 @@
       if (isCase) {
         return '이용사례';
       }
-      return '이용정보';
+      return '이용안내';
+    };
+
+    const getFilteredUseCaseItems = () => {
+      return useCaseItems.filter((item) => {
+        const contentType = item.contentType || classifyUseCaseType(item);
+        return useCaseActiveCategory === 'all' || contentType === useCaseActiveCategory;
+      });
     };
 
     const renderUseCases = (items) => {
@@ -1142,10 +1151,11 @@
         return;
       }
 
+      const filteredItems = getFilteredUseCaseItems();
       const pageSize = getUseCasePageSize();
-      const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+      const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
 
-      if (useCaseItems.length <= pageSize) {
+      if (filteredItems.length <= pageSize) {
         useCaseControls.hidden = true;
         return;
       }
@@ -1161,16 +1171,57 @@
         return;
       }
 
+      const filteredItems = getFilteredUseCaseItems();
+      if (!filteredItems.length) {
+        useCasesGrid.innerHTML = '';
+        if (rssStatus) {
+          rssStatus.textContent = '선택한 카테고리의 글이 없습니다.';
+          rssStatus.hidden = false;
+        }
+        updateUseCaseControls();
+        return;
+      }
+
       const pageSize = getUseCasePageSize();
-      const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+      const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
       if (useCasePage >= totalPages) {
         useCasePage = totalPages - 1;
       }
 
       const start = useCasePage * pageSize;
       const end = start + pageSize;
-      renderUseCases(useCaseItems.slice(start, end));
+      renderUseCases(filteredItems.slice(start, end));
       updateUseCaseControls();
+    };
+
+    const setupUseCaseFilters = () => {
+      if (!useCaseFilters) {
+        return;
+      }
+
+      const filterButtons = Array.from(useCaseFilters.querySelectorAll('.blog-guide-filter'));
+      if (!filterButtons.length) {
+        return;
+      }
+
+      const setActiveFilter = (nextCategory) => {
+        useCaseActiveCategory = nextCategory;
+        useCasePage = 0;
+
+        filterButtons.forEach((button) => {
+          const isActive = button.dataset.category === nextCategory;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        renderUseCasePage();
+      };
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          setActiveFilter(button.dataset.category || 'all');
+        });
+      });
     };
 
     const fetchWithTimeout = async (url, timeoutMs = 12000) => {
@@ -1632,8 +1683,9 @@
       });
 
       useCaseNext.addEventListener('click', () => {
+        const filteredItems = getFilteredUseCaseItems();
         const pageSize = getUseCasePageSize();
-        const totalPages = Math.max(1, Math.ceil(useCaseItems.length / pageSize));
+        const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
         if (useCasePage < totalPages - 1) {
           useCasePage += 1;
           renderUseCasePage();
@@ -1778,4 +1830,5 @@
     setupBlogGuideLoadMore();
     setupBlogFieldFilters();
     setupBlogTopicCards();
+    setupUseCaseFilters();
     loadUseCasesFromRss();
