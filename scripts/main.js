@@ -52,12 +52,13 @@
     const blogFieldFilters = document.getElementById('blogFieldFilters');
     const blogFieldGrid = document.querySelector('#blog-latest .blog-field-grid');
     const blogFieldLoadMore = document.getElementById('blogFieldLoadMore');
+    const blogTopicCards = Array.from(document.querySelectorAll('.blog-topic-card'));
     const FEATURE_PANEL_ANIM_MS = 150;
     const GALLERY_INITIAL_VISIBLE = 6;
     const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 4;
     const BLOG_GUIDE_LOAD_STEP = 4;
-    const BLOG_FIELD_INITIAL_VISIBLE = 6;
+    const BLOG_FIELD_INITIAL_VISIBLE = 3;
     const BLOG_FIELD_LOAD_STEP = 3;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
@@ -424,11 +425,11 @@
 
         fieldItems.forEach((item) => {
           const inFilter = filteredItems.includes(item);
-          item.hidden = !inFilter;
+          item.classList.toggle('is-hidden', !inFilter);
         });
 
         filteredItems.forEach((item, index) => {
-          item.hidden = index >= visibleCount;
+          item.classList.toggle('is-hidden', index >= visibleCount);
         });
 
         if (blogFieldLoadMore) {
@@ -472,6 +473,47 @@
       }
 
       setActiveFilter('all');
+    };
+
+    const setupBlogTopicCards = () => {
+      if (!blogTopicCards.length) {
+        return;
+      }
+
+      blogTopicCards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+          const href = card.getAttribute('href') || '';
+          if (!href.startsWith('#')) {
+            return;
+          }
+
+          const targetSection = document.querySelector(href);
+          if (!targetSection) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const filterGroup = card.dataset.filterGroup;
+          const filterTarget = card.dataset.filterTarget;
+
+          if (filterGroup === 'guide' && filterTarget && blogGuideFilters) {
+            const button = blogGuideFilters.querySelector(`.blog-guide-filter[data-category="${filterTarget}"]`);
+            button?.click();
+          }
+
+          if (filterGroup === 'field' && filterTarget && blogFieldFilters) {
+            const button = blogFieldFilters.querySelector(`.blog-guide-filter[data-category="${filterTarget}"]`);
+            button?.click();
+          }
+
+          blogTopicCards.forEach((topicCard) => {
+            topicCard.classList.toggle('is-active', topicCard === card);
+          });
+
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     };
 
     const closeMobileMenu = () => {
@@ -1735,4 +1777,5 @@
     setupGalleryLoadMore();
     setupBlogGuideLoadMore();
     setupBlogFieldFilters();
+    setupBlogTopicCards();
     loadUseCasesFromRss();
