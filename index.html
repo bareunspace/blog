@@ -227,10 +227,48 @@ script_version: 20260713-3
           </div>
           <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="consulting_meetup_panel_booking">상담 · 컨설팅 · 소모임 · 스터디 예약하기</a>
         </div>
-        <div class="feature-card">
+        <div class="feature-card feature-toggle" id="dateAnniversaryToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="dateAnniversaryPanel">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></div>
           <h3>데이트 · 기념일</h3>
           <p>조용하고 프라이빗한 공간에서 대화와 취향을 나누며 둘만의 시간을 편안하게 보내보세요.</p>
+          <span class="feature-toggle-hint" aria-hidden="true"></span>
+        </div>
+        <div class="private-office-panel" id="dateAnniversaryPanel" hidden>
+          <p class="private-office-lead">더운 여름에도 시원하고 편안하게, 둘만의 리듬으로 대화와 휴식을 즐길 수 있는 데이트 공간입니다.</p>
+          <div class="private-office-grid private-office-grid-4">
+            <article class="private-office-card">
+              <h3>이런 데이트에 추천해요 <span class="use-time-badge">2시간</span></h3>
+              <p>폭염 피서 데이트 · 기념일 대화 · 조용한 실내 휴식처럼, 서로에게 집중하고 싶은 일정에 잘 맞습니다.</p>
+            </article>
+            <article class="private-office-card">
+              <h3>여름 데이트 포인트 <span class="use-time-badge">쾌적</span></h3>
+              <p>에어컨으로 시원한 온도를 유지한 실내에서 외부 소음과 더위를 줄이고, 긴 대화도 편하게 이어갈 수 있습니다.</p>
+            </article>
+            <article class="private-office-card">
+              <h3>이용 팁 <span class="use-time-badge">사전 준비</span></h3>
+              <p>얇은 겉옷과 음료를 준비해 오시면 더 쾌적합니다. 원하는 분위기의 콘텐츠를 미리 정해오면 시간이 더 알차집니다.</p>
+            </article>
+            <article class="private-office-card" aria-label="데이트 관련 블로그 글">
+              <h3>데이트 관련 블로그 글</h3>
+              {% assign date_category_posts = site.posts | where: "category", "데이트" %}
+              {% assign date_title_posts = site.posts | where_exp: "item", "item.title contains '데이트'" %}
+              {% assign date_description_posts = site.posts | where_exp: "item", "item.description contains '데이트'" %}
+              {% assign date_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '데이트'" %}
+              {% assign date_posts = date_category_posts | concat: date_title_posts | concat: date_description_posts | concat: date_keyword_posts | uniq %}
+              {% if date_posts.size > 0 %}
+                <ul class="related-post-list">
+                  {% for post in date_posts limit: 5 %}
+                    <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
+                  {% endfor %}
+                </ul>
+                <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">데이트 관련 글 더 보기</a></p>
+              {% else %}
+                <p>아직 등록된 데이트 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
+                <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">사이트 발행 글 확인하기</a></p>
+              {% endif %}
+            </article>
+          </div>
+          <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="date_anniversary_panel_booking">데이트 · 기념일 예약하기</a>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-camera"></use></svg></div>
