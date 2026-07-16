@@ -11,7 +11,7 @@ tags:
   - 바른자리
 canonical: https://bareunjari.com/posts/summer-hotday-date-at-bareunjari/
 permalink: /posts/summer-hotday-date-at-bareunjari/
-date: 2026-07-16 12:10:00 +0000
+date: 2026-07-16 09:10:00 +0000
 og_image: https://bareunjari.com/images/poster_hotday.webp
 og_image_alt: 시원한 에어컨이 나오는 바른자리 여름 피서 이벤트 포스터
 og_image_width: 1200
