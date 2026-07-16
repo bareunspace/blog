@@ -44,7 +44,9 @@ script_version: 20260711-4
           <p>특히 대화 많이 하고 싶은 커플, 영화나 콘텐츠 같이 보며 쉬고 싶은 커플, 더위에 약해서 한낮 야외 데이트가 부담스러운 분들에게 잘 맞습니다.</p>
         </div>
         <figure class="article-hero-visual">
-          <img src="/images/poster_hotday.webp" alt="시원한 에어컨이 나오는 바른자리 여름 피서 이벤트 포스터" loading="eager" width="1200" height="1810" />
+          <button type="button" class="gallery-open" data-src="/images/poster_hotday.webp" data-alt="시원한 에어컨이 나오는 바른자리 여름 피서 이벤트 포스터" aria-label="poster_hotday 이미지 크게 보기">
+            <img class="article-hero-poster" src="/images/poster_hotday.webp" alt="시원한 에어컨이 나오는 바른자리 여름 피서 이벤트 포스터" loading="eager" width="1200" height="1810" />
+          </button>
           <figcaption>poster_hotday 콘셉트 그대로, 한여름 실내 피서 데이트.</figcaption>
         </figure>
       </div>

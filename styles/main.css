@@ -2122,6 +2122,20 @@ main.about-page .article-hero-visual img {
   height: clamp(145px, 14vw, 180px);
   object-fit: cover;
 }
+main.about-page .article-hero-visual .gallery-open {
+  border: 0;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+  display: block;
+}
+main.about-page .article-hero-visual img.article-hero-poster {
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  background: #fff;
+}
 main.about-page .article-hero-visual figcaption {
   padding: .62rem .78rem .7rem;
   color: #4b5563;
