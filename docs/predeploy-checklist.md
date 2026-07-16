@@ -28,6 +28,7 @@ GitHub 자동 동기화:
 - [ ] Jekyll 의존성 설치 및 빌드 성공
 - [ ] 네이버 블로그 RSS 동기화 성공
 - [ ] `_posts` 글 front matter에 `category` 필수 입력 (브레드크럼 `Home > Blog > Category > 제목` 노출용)
+- [ ] `_posts` category 값이 `_data/post_categories.yml` 허용 목록과 일치
 - [ ] 필수 산출물 파일 존재(`index/about/robots/sitemap/인증 파일`)
 - [ ] SEO/분석 태그(canonical, GA, Clarity, JSON-LD) 포함
 - [ ] 렌더 결과 HTML에 미처리 Liquid 태그 없음

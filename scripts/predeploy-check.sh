@@ -75,6 +75,72 @@ check_posts_have_category() {
   fi
 }
 
+check_post_categories_allowlist() {
+  local category_file="_data/post_categories.yml"
+  local invalid_count=0
+  local post_file
+  local post_category
+  local is_allowed
+  local allowed
+
+  if [[ ! -f "$category_file" ]]; then
+    fail "Missing category allowlist file: $category_file"
+    return
+  fi
+
+  ALLOWED_POST_CATEGORIES=()
+  while IFS= read -r allowed_category; do
+    ALLOWED_POST_CATEGORIES+=("$allowed_category")
+  done < <(
+    awk '/^[[:space:]]*-[[:space:]]+/ { sub(/^[[:space:]]*-[[:space:]]*/, ""); print }' "$category_file"
+  )
+
+  if [[ "${#ALLOWED_POST_CATEGORIES[@]}" -eq 0 ]]; then
+    fail "Category allowlist is empty: $category_file"
+    return
+  fi
+
+  shopt -s nullglob
+  for post_file in _posts/*.md; do
+    post_category="$(awk '
+      BEGIN { in_frontmatter = 0; delimiter_count = 0 }
+      /^---[[:space:]]*$/ {
+        delimiter_count++
+        if (delimiter_count == 1) {
+          in_frontmatter = 1
+          next
+        }
+        if (delimiter_count == 2) {
+          exit
+        }
+      }
+      in_frontmatter && $0 ~ /^category:[[:space:]]*/ {
+        line = $0
+        sub(/^category:[[:space:]]*/, "", line)
+        print line
+        exit
+      }
+    ' "$post_file")"
+
+    is_allowed=0
+    for allowed in "${ALLOWED_POST_CATEGORIES[@]}"; do
+      if [[ "$post_category" == "$allowed" ]]; then
+        is_allowed=1
+        break
+      fi
+    done
+
+    if [[ "$is_allowed" -ne 1 ]]; then
+      fail "Category not in allowlist ($category_file): $post_file -> $post_category"
+      invalid_count=$((invalid_count + 1))
+    fi
+  done
+
+  if [[ "$invalid_count" -eq 0 ]]; then
+    pass "All _posts categories follow allowlist in $category_file"
+  fi
+}
+
 echo "== Pre-deploy Check =="
 
 echo "Step 1/6: bundle install (local path)"
@@ -132,6 +198,7 @@ else
 fi
 
 check_posts_have_category
+check_post_categories_allowlist
 
 echo "Step 6/6: rendered HTML sanity"
 if grep -R -n '{{\|{%' _site/*.html >/dev/null 2>&1; then
