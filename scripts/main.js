@@ -54,6 +54,7 @@
     const blogFieldGrid = document.querySelector('#blog-latest .blog-field-grid');
     const blogFieldLoadMore = document.getElementById('blogFieldLoadMore');
     const blogTopicCards = Array.from(document.querySelectorAll('.blog-topic-card'));
+    const postReactionsRoot = document.querySelector('[data-post-reaction]');
     const FEATURE_PANEL_ANIM_MS = 150;
     const GALLERY_INITIAL_VISIBLE = 6;
     const GALLERY_LOAD_STEP = 3;
@@ -123,6 +124,82 @@
       if (typeof window.fbq === 'function') {
         window.fbq('trackCustom', eventName, params);
       }
+    };
+
+    const setupPostReactions = () => {
+      if (!postReactionsRoot) {
+        return;
+      }
+
+      const buttons = Array.from(postReactionsRoot.querySelectorAll('[data-reaction-value]'));
+      const feedback = postReactionsRoot.querySelector('[data-reaction-feedback]');
+      const postKey = postReactionsRoot.dataset.postKey || window.location.pathname;
+      const storageKey = `bareunjari-post-reaction:${postKey}`;
+
+      const readSelectedReaction = () => {
+        try {
+          return localStorage.getItem(storageKey) || '';
+        } catch (error) {
+          return '';
+        }
+      };
+
+      const saveSelectedReaction = (reactionValue) => {
+        try {
+          if (!reactionValue) {
+            localStorage.removeItem(storageKey);
+            return;
+          }
+          localStorage.setItem(storageKey, reactionValue);
+        } catch (error) {
+          // localStorage may be blocked in private mode; fail silently.
+        }
+      };
+
+      const getReactionLabel = (reactionValue) => {
+        const target = buttons.find((button) => button.dataset.reactionValue === reactionValue);
+        return target ? (target.dataset.reactionLabel || '').trim() : '';
+      };
+
+      const renderSelectedReaction = (reactionValue) => {
+        buttons.forEach((button) => {
+          const isActive = button.dataset.reactionValue === reactionValue;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        if (!feedback) {
+          return;
+        }
+
+        const label = getReactionLabel(reactionValue);
+        feedback.textContent = label ? `${label} 반응이 저장됐어요.` : '';
+      };
+
+      let selectedReaction = readSelectedReaction();
+      renderSelectedReaction(selectedReaction);
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const nextReaction = button.dataset.reactionValue || '';
+          const isCancelAction = selectedReaction === nextReaction;
+
+          selectedReaction = isCancelAction ? '' : nextReaction;
+          saveSelectedReaction(selectedReaction);
+          renderSelectedReaction(selectedReaction);
+
+          trackEvent('select_post_reaction', withBranchContext({
+            page_path: window.location.pathname,
+            reaction: nextReaction,
+            action: isCancelAction ? 'remove' : 'select'
+          }));
+          trackMetaEvent('select_post_reaction', withBranchContext({
+            page_path: window.location.pathname,
+            reaction: nextReaction,
+            action: isCancelAction ? 'remove' : 'select'
+          }));
+        });
+      });
     };
 
     const updatePromoCountdown = () => {
@@ -1831,4 +1908,5 @@
     setupBlogFieldFilters();
     setupBlogTopicCards();
     setupUseCaseFilters();
+    setupPostReactions();
     loadUseCasesFromRss();

@@ -10,3 +10,26 @@
     </div>
   </section>
 {% endif %}
+
+{% if page.collection == "posts" %}
+  <section class="post-reactions" aria-label="게시글 반응 남기기" data-post-reaction data-post-key="{{ page.url | default: page.permalink | default: page.slug }}">
+    <div class="post-reactions-inner">
+      <p class="post-reactions-title">이 글이 어떠셨나요?</p>
+      <div class="post-reaction-buttons" role="group" aria-label="게시글 반응 선택">
+        <button type="button" class="post-reaction-btn" data-reaction-value="helpful" data-reaction-label="도움됐어요" aria-pressed="false">
+          <span class="post-reaction-emoji" aria-hidden="true">👍</span>
+          <span class="post-reaction-text">도움됐어요</span>
+        </button>
+        <button type="button" class="post-reaction-btn" data-reaction-value="like" data-reaction-label="좋아요" aria-pressed="false">
+          <span class="post-reaction-emoji" aria-hidden="true">❤️</span>
+          <span class="post-reaction-text">좋아요</span>
+        </button>
+        <button type="button" class="post-reaction-btn" data-reaction-value="new" data-reaction-label="새로 알았어요" aria-pressed="false">
+          <span class="post-reaction-emoji" aria-hidden="true">💡</span>
+          <span class="post-reaction-text">새로 알았어요</span>
+        </button>
+      </div>
+      <p class="post-reactions-feedback" data-reaction-feedback aria-live="polite"></p>
+    </div>
+  </section>
+{% endif %}
