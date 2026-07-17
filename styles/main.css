@@ -3155,3 +3155,152 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: center;
   }
 }
+
+/* ── Admin Auth ── */
+.admin-shell {
+  min-height: calc(100dvh - 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 1.5rem;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(82, 183, 136, .14) 0%, transparent 40%),
+    radial-gradient(circle at 88% 0%, rgba(244, 162, 97, .14) 0%, transparent 34%),
+    linear-gradient(180deg, #f8faf7 0%, #eef4ef 100%);
+}
+.admin-card {
+  width: min(100%, 520px);
+  padding: 1.85rem;
+  border: 1px solid #dbe5de;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 20px 34px rgba(30, 60, 45, .1);
+}
+.admin-label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: .36rem .75rem;
+  margin-bottom: .85rem;
+  font-size: .79rem;
+  font-weight: 700;
+  color: #1f4f3a;
+  background: #deefe6;
+}
+.admin-title {
+  font-size: clamp(1.35rem, 1.2rem + .6vw, 1.72rem);
+  line-height: 1.35;
+  margin-bottom: .4rem;
+  color: #173726;
+}
+.admin-desc {
+  color: #4b5e54;
+  font-size: .95rem;
+  margin-bottom: 1.25rem;
+}
+.admin-form {
+  display: grid;
+  gap: .9rem;
+}
+.admin-form-row {
+  display: grid;
+  gap: .42rem;
+}
+.admin-form-row label {
+  font-size: .88rem;
+  font-weight: 700;
+  color: #2a3d33;
+}
+.admin-form-row input {
+  width: 100%;
+  border: 1px solid #ced7d1;
+  border-radius: 11px;
+  background: #fff;
+  padding: .72rem .84rem;
+  font-size: .94rem;
+  color: var(--text);
+}
+.admin-form-row input:focus-visible {
+  outline: 2px solid rgba(45, 106, 79, .3);
+  border-color: #2d6a4f;
+}
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-top: .2rem;
+}
+.admin-btn {
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  padding: .62rem 1.2rem;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.admin-btn:hover,
+.admin-btn:focus-visible {
+  background: var(--primary-light);
+}
+.admin-btn.admin-btn-outline {
+  border: 1px solid #becbc2;
+  background: #fff;
+  color: #214936;
+}
+.admin-note {
+  font-size: .82rem;
+  color: #5e6f65;
+}
+.admin-status {
+  border-radius: 12px;
+  padding: .65rem .76rem;
+  font-size: .88rem;
+}
+.admin-status[hidden] {
+  display: none;
+}
+.admin-status.is-error {
+  border: 1px solid #efb2b2;
+  background: #fff4f4;
+  color: #9f2f2f;
+}
+.admin-status.is-success {
+  border: 1px solid #b8dfc4;
+  background: #effcf3;
+  color: #1f6f3f;
+}
+.admin-summary {
+  list-style: none;
+  display: grid;
+  gap: .52rem;
+  margin-top: 1rem;
+}
+.admin-summary li {
+  border: 1px solid #dbe4de;
+  border-radius: 10px;
+  padding: .6rem .7rem;
+  background: #f8fbf9;
+  color: #274435;
+  font-size: .9rem;
+}
+
+@media (max-width: 640px) {
+  .admin-shell {
+    padding: 3.2rem 1rem;
+  }
+  .admin-card {
+    padding: 1.15rem;
+    border-radius: 16px;
+  }
+  .admin-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

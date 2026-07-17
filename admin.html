@@ -1,0 +1,48 @@
+---
+layout: default
+page_id: admin_dashboard
+permalink: /admin.html
+title: 바른자리 관리자 페이지
+description: 바른자리 관리자 전용 대시보드입니다.
+canonical: https://bareunjari.com/admin.html
+robots: noindex,nofollow
+theme_color: "#2d6a4f"
+og_image: https://bareunjari.com/images/main.jpeg
+og_image_alt: 바른자리 관리자 페이지
+css_version: 20260717-1
+script_version: 20260717-1
+---
+<main class="admin-shell" id="adminDashboardRoot">
+  <section class="admin-card" aria-labelledby="adminDashboardTitle">
+    <p class="admin-label">Admin Dashboard</p>
+    <h1 class="admin-title" id="adminDashboardTitle">관리자 인증 완료</h1>
+    <p class="admin-desc">이 페이지는 관리자 계정으로 로그인한 경우에만 열립니다.</p>
+
+    <p class="admin-status is-success" id="adminUserInfo" hidden></p>
+
+    <ul class="admin-summary" aria-label="관리 작업 안내">
+      <li>문의/예약 데이터 화면을 붙일 때 이 페이지에 관리자 기능을 추가하면 됩니다.</li>
+      <li>관리자 권한 체크는 이메일 허용 목록과 로그인 세션을 동시에 검증합니다.</li>
+      <li>실제 운영 기능은 Vercel 서버 함수에서 한번 더 권한 검증하는 것이 안전합니다.</li>
+    </ul>
+
+    <div class="admin-actions" style="margin-top:1rem;">
+      <button class="admin-btn admin-btn-outline" type="button" id="adminSignOutBtn">로그아웃</button>
+      <a class="admin-btn admin-btn-outline" href="{{ '/index.html' | relative_url }}">홈으로</a>
+    </div>
+
+    <p class="admin-status" id="adminAuthStatus" hidden></p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="adminAuthConfig" type="application/json">
+{
+  "supabaseUrl": {{ site.supabase_url | jsonify }},
+  "supabaseAnonKey": {{ site.supabase_anon_key | jsonify }},
+  "allowedAdmins": {{ site.admin_allowed_emails | jsonify }},
+  "loginPath": {{ '/admin-login.html' | relative_url | jsonify }},
+  "dashboardPath": {{ '/admin.html' | relative_url | jsonify }}
+}
+</script>
+<script src="{{ '/scripts/admin-auth.js' | relative_url }}?v={{ page.script_version }}"></script>
