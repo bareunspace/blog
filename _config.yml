@@ -8,9 +8,9 @@ markdown: kramdown
 ga_measurement_id: G-ECYS2XKQ4H
 clarity_id: xfmtyp5w3b
 meta_pixel_id: ""
-supabase_url: ""
-supabase_anon_key: ""
-admin_allowed_emails: []
+supabase_url: "https://nhiyxgcrjdzdiquutxml.supabase.co"
+supabase_anon_key: "sb_publishable_kqB-Q3vuJwrd8cvEzbcp7g_a6QBxf_u"
+admin_allowed_emails: [keunyong@gmail.com]
 plugins:
   - jekyll-sitemap
 defaults:

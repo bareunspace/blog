@@ -90,14 +90,12 @@
     syncLoginReason();
 
     const { data, error } = await client.auth.getUser();
-    if (error) {
-      if (isDashboardPage) {
-        await signOutAndGoLogin('로그인 세션을 확인할 수 없어 다시 로그인해 주세요.');
-      }
+    if (error && isDashboardPage) {
+      await signOutAndGoLogin('로그인 세션을 확인할 수 없어 다시 로그인해 주세요.');
       return;
     }
 
-    const currentUser = data?.user || null;
+    const currentUser = error ? null : (data?.user || null);
     const email = (currentUser?.email || '').toLowerCase();
     const authorized = currentUser && isAllowedAdmin(email);
 
