@@ -7,7 +7,7 @@ description: 바른자리 사이트 직접 발행 글과 네이버 블로그 최
 canonical: https://bareunjari.com/blog.html
 og_image: https://bareunjari.com/images/14.jpeg
 og_image_alt: 바른자리 블로그 대표 이미지
-css_version: 20260716-2
+css_version: 20260718-4
 script_version: 20260716-4
 ---
 <main class="about-page blog-hub">
@@ -38,7 +38,7 @@ script_version: 20260716-4
       </div>
       {% if featured_post %}
         <article class="blog-featured-card">
-          <a class="blog-featured-image" href="{{ featured_post.url | relative_url }}" aria-label="{{ featured_post.title }} 읽기">
+          <a class="blog-featured-image{% if featured_post.url == '/posts/interview-questions-to-ask/' %} blog-image-contain{% endif %}" href="{{ featured_post.url | relative_url }}" aria-label="{{ featured_post.title }} 읽기">
             <img src="{{ featured_post.og_image | default: '/images/main.jpeg' }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
           </a>
           <div class="blog-featured-content">
@@ -111,7 +111,7 @@ script_version: 20260716-4
         <div class="blog-guide-grid" aria-label="바른자리 실전 가이드 목록">
           {% for post in onsite_posts limit: 12 %}
             <article class="blog-guide-card" data-category="{{ post.category | default: '공간 이용 가이드' }}">
-              <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
                 <img src="{{ post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
               </a>
               <div class="blog-guide-content">

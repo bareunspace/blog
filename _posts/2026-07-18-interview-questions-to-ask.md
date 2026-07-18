@@ -17,7 +17,7 @@ og_image_alt: 면접 마지막 질문과 역질문을 준비하는 노트북 화
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/interview-questions-to-ask.webp
-css_version: 20260713-7
+css_version: 20260718-4
 script_version: 20260711-4
 ---
 
@@ -38,7 +38,7 @@ script_version: 20260711-4
   <section id="question-guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img src="/images/interview-questions-to-ask.webp" alt="면접 마지막 질문과 역질문을 준비하는 노트북 화면" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/interview-questions-to-ask.webp" alt="면접 마지막 질문과 역질문을 준비하는 노트북 화면" loading="eager" width="1672" height="941" />
         <figcaption>면접 마지막에는 직무, 팀, 성과 기준을 확인하는 질문이 가장 자연스럽습니다.</figcaption>
       </figure>
     </div>
