@@ -1,5 +1,5 @@
 home:
-  - label: 시간 안내
+  - label: 공간 안내
     href: "#space"
     children:
       - label: 브랜드 스토리
@@ -19,7 +19,7 @@ about:
   - label: 브랜드 스토리
     href: "#about-story"
     current: true
-  - label: 시간 안내
+  - label: 공간 안내
     href: "index.html#space"
   - label: 이용 안내
     href: "index.html#about"
@@ -47,13 +47,13 @@ interview:
     href: "#upcoming-series"
   - label: 화상면접
     href: "#video-interview"
-  - label: 시간 예약
+  - label: 공간 예약
     href: "#booking"
 post:
   - label: 블로그 홈
     href: "blog.html"
     current: true
-  - label: 시간 안내
+  - label: 공간 안내
     href: "index.html#space"
   - label: 이용 안내
     href: "index.html#about"
