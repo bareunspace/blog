@@ -325,7 +325,7 @@ script_version: 20260711-4
         <a href="/interview/" class="btn-primary">면접준비 시리즈 보기</a>
         <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트 보기</a>
         <a href="/posts/hiring-manager-interview-red-flags-and-good-signals/" class="btn-outline">면접관 관점 가이드</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">면접용 공간 예약하기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">면접 시간 예약하기</a>
       </div>
     </div>
   </section>

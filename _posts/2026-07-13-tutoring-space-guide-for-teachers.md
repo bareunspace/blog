@@ -183,10 +183,10 @@ script_version: 20260711-4
     <div class="section-inner guide-booking-panel">
       <p class="guide-kicker">Bareunjari · Sinjung-dong</p>
       <h2 class="section-title">부천 신중동에서 스터디 공간을 찾는다면</h2>
-      <p class="section-desc">바른자리는 신중동역에서 도보 1분 거리에 있으며, 예약 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간입니다. 테이블과 의자, 와이파이와 콘센트가 준비되어 있어 책과 노트북을 이용한 집중 학습이나 그룹 스터디 공간으로 이용할 수 있습니다.</p>
+      <p class="section-desc">바른자리는 신중동역에서 도보 1분 거리에 있으며, 예약 시간 동안 한 팀이 단독으로 이용하는 프라이빗 개인시간 플랫폼입니다. 테이블과 의자, 와이파이와 콘센트가 준비되어 있어 책과 노트북을 이용한 집중 학습이나 그룹 스터디 시간으로 활용할 수 있습니다.</p>
       <p class="section-desc">먼저 한 번 예약해 이동 동선과 실제 이용 환경을 확인해 보세요. 반복 이용을 원한다면 희망하는 요일과 시간의 이용 가능 여부를 문의할 수 있습니다. 이용 가격과 규정은 네이버 예약 페이지의 최신 안내를 기준으로 확인해 주세요.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="study_post_booking">스터디 공간 예약 가능 시간 보기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="study_post_booking">스터디 시간 예약 가능 시간 보기</a>
         <a href="/index.html#gallery" class="btn-outline">공간 사진 확인하기</a>
         <a href="/index.html#contact" class="btn-outline">반복 이용 문의하기</a>
       </div>
