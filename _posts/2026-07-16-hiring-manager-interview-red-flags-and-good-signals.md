@@ -151,7 +151,7 @@ script_version: 20260711-4
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/posts/interview-prep-checklist/" class="btn-primary">체크리스트 바로 보기</a>
         <a href="/posts/interview-questions-to-ask/" class="btn-outline">역질문 추천 보기</a>
-        <a href="/index.html#space" class="btn-outline">면접 공간 둘러보기</a>
+        <a href="/index.html#gallery" class="btn-outline">면접 공간 둘러보기</a>
       </div>
     </div>
   </section>
