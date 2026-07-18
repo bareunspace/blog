@@ -5,6 +5,11 @@
       {% if page.page_id == "blog" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">Blog</span>
+      {% elsif page.page_id == "interview-prep" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">면접준비</span>
       {% elsif page.collection == "posts" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>

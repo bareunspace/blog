@@ -37,6 +37,16 @@ blog:
     href: "index.html#about"
   - label: 문의
     href: "index.html#contact"
+interview_prep:
+  - label: 준비 흐름
+    href: "#prep-flow"
+    current: true
+  - label: 시리즈 글
+    href: "#interview-series"
+  - label: 화상면접
+    href: "#video-interview"
+  - label: 공간 예약
+    href: "#booking"
 interview:
   - label: 체크리스트
     href: "#interview-checklist"
