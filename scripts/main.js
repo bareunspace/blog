@@ -37,8 +37,6 @@
     const dateAnniversaryPanel = document.getElementById('dateAnniversaryPanel');
     const popupExhibitToggle = document.getElementById('popupExhibitToggle');
     const popupExhibitPanel = document.getElementById('popupExhibitPanel');
-    const soloRestToggle = document.getElementById('soloRestToggle');
-    const soloRestPanel = document.getElementById('soloRestPanel');
     const featureDetailStack = document.getElementById('featureDetailStack');
     const spaceSectionInner = document.querySelector('#space .section-inner');
     const featureCardsGrid = document.querySelector('#space .features-grid');
@@ -806,8 +804,7 @@
       { toggle: privateOfficeToggle, panel: privateOfficePanel, eventName: 'toggle_private_office_panel' },
       { toggle: consultingMeetupToggle, panel: consultingMeetupPanel, eventName: 'toggle_consulting_meetup_panel' },
       { toggle: dateAnniversaryToggle, panel: dateAnniversaryPanel, eventName: 'toggle_date_anniversary_panel' },
-      { toggle: popupExhibitToggle, panel: popupExhibitPanel, eventName: 'toggle_popup_exhibit_panel' },
-      { toggle: soloRestToggle, panel: soloRestPanel, eventName: 'toggle_solo_rest_panel' }
+      { toggle: popupExhibitToggle, panel: popupExhibitPanel, eventName: 'toggle_popup_exhibit_panel' }
     ];
 
     const mountFeaturePanels = () => {
