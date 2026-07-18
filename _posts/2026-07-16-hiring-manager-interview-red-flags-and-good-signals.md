@@ -149,7 +149,8 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="/posts/interview-prep-checklist/" class="btn-primary">체크리스트 바로 보기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">면접 시간 예약하기</a>
+        <a href="/posts/interview-prep-checklist/" class="btn-outline">체크리스트 바로 보기</a>
         <a href="/posts/interview-questions-to-ask/" class="btn-outline">역질문 추천 보기</a>
         <a href="/index.html#gallery" class="btn-outline">면접 공간 둘러보기</a>
       </div>
