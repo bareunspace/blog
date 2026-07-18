@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 면접 역질문 추천 20개 | 면접 마지막 질문 예시
-description: 면접 마지막에 무엇을 물어봐야 할지 고민하는 지원자를 위해 직무, 팀, 성과, 온보딩 관점의 역질문 20개와 면접관별 선택법, 피해야 할 질문을 정리했습니다.
+description: 면접 마지막에 무엇을 물어봐야 할지 고민하는 지원자를 위해 직무, 팀, 성과, 온보딩 관점의 역질문 20개와 면접관별 선택법, 바로 쓰는 질문 멘트, 피해야 할 질문을 정리했습니다.
 category: 면접준비
 keywords: 면접역질문,면접질문추천,면접마지막질문,면접준비,면접팁
 tags:
@@ -29,7 +29,7 @@ script_version: 20260711-4
       <p class="section-desc">면접 마지막 질문은 단순한 예의가 아니라, 지원자가 이 일을 얼마나 현실적으로 이해하고 있는지 보여주는 시간입니다. 질문은 많이 준비하되, 실제 면접장에서는 상황에 맞는 1~2개만 고르면 충분합니다.</p>
       <div class="hero-btns">
         <a href="#question-list" class="btn-primary">역질문 20개 보기</a>
-        <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 체크리스트</a>
+        <a href="/interview/" class="btn-outline">면접준비 전체 가이드</a>
       </div>
     </div>
   </section>
@@ -49,8 +49,10 @@ script_version: 20260711-4
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
       <a href="#why-questions-matter">왜 중요한가</a>
       <a href="#how-to-choose">고르는 법</a>
+      <a href="#starter-lines">시작 문장</a>
       <a href="#question-list">추천 질문</a>
       <a href="#avoid-questions">피할 질문</a>
+      <a href="#question-faq">FAQ</a>
       <a href="#final-routine">마무리 루틴</a>
     </div>
   </nav>
@@ -112,6 +114,27 @@ script_version: 20260711-4
         <article class="about-highlight-card">
           <h3>임원 면접</h3>
           <p>조직의 방향, 팀의 우선순위, 이 역할에 기대하는 변화처럼 조금 더 큰 관점의 질문이 잘 맞습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="starter-lines">
+    <div class="section-inner">
+      <h2 class="section-title">역질문을 꺼낼 때 쓰기 좋은 시작 문장</h2>
+      <p class="section-desc">질문 내용만큼 중요한 것이 질문을 꺼내는 방식입니다. 바로 질문부터 던지기보다, 오늘 대화와 연결해 한 문장 덧붙이면 훨씬 자연스럽습니다.</p>
+      <div class="about-highlight-grid" aria-label="면접 역질문 시작 문장 예시">
+        <article class="about-highlight-card">
+          <h3>직무 질문을 할 때</h3>
+          <p>"오늘 말씀을 들으면서 이 역할의 초기 과제가 중요하다고 느꼈습니다. 입사 후 가장 먼저 집중해야 할 과제는 무엇일까요?"</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>팀 문화 질문을 할 때</h3>
+          <p>"협업 방식에 대해 조금 더 이해하고 싶습니다. 팀에서는 의견이 다를 때 보통 어떤 방식으로 의사결정을 하나요?"</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>마지막 보완 질문을 할 때</h3>
+          <p>"마지막으로, 오늘 제 답변 중 더 구체적으로 설명드리면 좋을 부분이 있을까요?"</p>
         </article>
       </div>
     </div>
@@ -245,6 +268,27 @@ script_version: 20260711-4
     </div>
   </section>
 
+  <section id="question-faq">
+    <div class="section-inner">
+      <h2 class="section-title">면접 역질문 FAQ</h2>
+      <p class="section-desc">면접 마지막 질문을 준비할 때 가장 자주 헷갈리는 부분만 따로 정리했습니다.</p>
+      <div class="about-highlight-grid" aria-label="면접 역질문 FAQ">
+        <article class="about-highlight-card">
+          <h3>Q. 역질문은 꼭 해야 하나요?</h3>
+          <p>A. 반드시 해야 하는 것은 아니지만, 1개 정도는 준비하는 편이 좋습니다. 직무나 팀에 대한 현실적인 질문은 준비된 인상을 남깁니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>Q. 몇 개까지 물어봐도 괜찮나요?</h3>
+          <p>A. 보통 1~2개가 적당합니다. 면접 시간이 부족해 보이면 가장 중요한 질문 1개만 묻고, 이미 답이 나온 질문은 반복하지 마세요.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>Q. 연봉이나 재택근무 질문은 하면 안 되나요?</h3>
+          <p>A. 중요한 질문이지만 타이밍이 중요합니다. 첫 면접에서는 직무 대화를 먼저 충분히 나누고, 후속 전형이나 처우 협의 단계에서 구체적으로 확인하는 편이 자연스럽습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="final-routine">
     <div class="section-inner">
       <h2 class="section-title">면접 전날에는 질문 2개만 고르세요</h2>
@@ -278,7 +322,8 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="/posts/interview-prep-checklist/" class="btn-primary">면접 전날 체크리스트 보기</a>
+        <a href="/interview/" class="btn-primary">면접준비 시리즈 보기</a>
+        <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트 보기</a>
         <a href="/posts/hiring-manager-interview-red-flags-and-good-signals/" class="btn-outline">면접관 관점 가이드</a>
         <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">면접용 공간 예약하기</a>
       </div>
