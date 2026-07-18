@@ -286,6 +286,7 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">면접용 공간 예약하기</a>
+        <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 역질문 추천 보기</a>
         <a href="/index.html#contact" class="btn-outline">상담 문의하기</a>
       </div>
     </div>
