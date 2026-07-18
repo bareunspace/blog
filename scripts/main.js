@@ -63,8 +63,8 @@
     const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 4;
     const BLOG_GUIDE_LOAD_STEP = 4;
-    const HOME_GUIDE_INITIAL_VISIBLE = 4;
-    const HOME_GUIDE_LOAD_STEP = 4;
+    const HOME_GUIDE_INITIAL_VISIBLE = 3;
+    const HOME_GUIDE_LOAD_STEP = 3;
     const BLOG_FIELD_INITIAL_VISIBLE = 3;
     const BLOG_FIELD_LOAD_STEP = 3;
     let scrollLockTop = 0;
