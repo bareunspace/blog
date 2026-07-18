@@ -15,9 +15,7 @@
     const naverBlogFallbackData = document.getElementById('naverBlogFallbackData');
     const rssStatus = document.getElementById('rssStatus');
     const useCaseControls = document.getElementById('useCaseControls');
-    const useCasePrev = document.getElementById('useCasePrev');
-    const useCaseNext = document.getElementById('useCaseNext');
-    const useCasePageInfo = document.getElementById('useCasePageInfo');
+    const useCaseLoadMore = document.getElementById('useCaseLoadMore');
     const useCaseFilters = document.getElementById('useCaseFilters');
     const contactForm = document.getElementById('contactForm');
     const contactRateNote = document.getElementById('contactRateNote');
@@ -67,10 +65,12 @@
     const HOME_GUIDE_LOAD_STEP = 3;
     const BLOG_FIELD_INITIAL_VISIBLE = 3;
     const BLOG_FIELD_LOAD_STEP = 3;
+    const USECASE_INITIAL_VISIBLE = 3;
+    const USECASE_LOAD_STEP = 3;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
     let useCaseItems = [];
-    let useCasePage = 0;
+    let useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
     let useCaseActiveCategory = 'all';
     let featurePanelCleanupTimer = 0;
     let galleryVisibleCount = GALLERY_INITIAL_VISIBLE;
@@ -1291,34 +1291,15 @@
       }
     };
 
-    const getUseCasePageSize = () => {
-      if (window.innerWidth < 760) {
-        return 1;
-      }
-      if (window.innerWidth < 1040) {
-        return 2;
-      }
-      return 3;
-    };
-
-    const updateUseCaseControls = () => {
-      if (!useCaseControls || !useCasePrev || !useCaseNext || !useCasePageInfo) {
+    const updateUseCaseControls = (filteredItems = getFilteredUseCaseItems()) => {
+      if (!useCaseControls || !useCaseLoadMore) {
         return;
       }
 
-      const filteredItems = getFilteredUseCaseItems();
-      const pageSize = getUseCasePageSize();
-      const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
-
-      if (filteredItems.length <= pageSize) {
-        useCaseControls.hidden = true;
-        return;
-      }
-
-      useCaseControls.hidden = false;
-      useCasePrev.disabled = useCasePage <= 0;
-      useCaseNext.disabled = useCasePage >= totalPages - 1;
-      useCasePageInfo.textContent = `${useCasePage + 1} / ${totalPages}`;
+      const isDone = useCaseVisibleCount >= filteredItems.length;
+      useCaseControls.hidden = isDone;
+      useCaseLoadMore.hidden = isDone;
+      useCaseLoadMore.disabled = isDone;
     };
 
     const renderUseCasePage = () => {
@@ -1333,20 +1314,13 @@
           rssStatus.textContent = '선택한 카테고리의 글이 없습니다.';
           rssStatus.hidden = false;
         }
-        updateUseCaseControls();
+        updateUseCaseControls(filteredItems);
         return;
       }
 
-      const pageSize = getUseCasePageSize();
-      const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
-      if (useCasePage >= totalPages) {
-        useCasePage = totalPages - 1;
-      }
-
-      const start = useCasePage * pageSize;
-      const end = start + pageSize;
-      renderUseCases(filteredItems.slice(start, end));
-      updateUseCaseControls();
+      const visibleItems = filteredItems.slice(0, Math.min(useCaseVisibleCount, filteredItems.length));
+      renderUseCases(visibleItems);
+      updateUseCaseControls(filteredItems);
     };
 
     const setupUseCaseFilters = () => {
@@ -1361,7 +1335,7 @@
 
       const setActiveFilter = (nextCategory) => {
         useCaseActiveCategory = nextCategory;
-        useCasePage = 0;
+        useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
 
         filterButtons.forEach((button) => {
           const isActive = button.dataset.category === nextCategory;
@@ -1700,7 +1674,7 @@
 
       if (embeddedItems.length > 0) {
         useCaseItems = embeddedItems.slice(0, 18);
-        useCasePage = 0;
+        useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
         renderUseCasePage();
       }
 
@@ -1790,7 +1764,7 @@
         if (selected.length > 0) {
           writeUseCaseCache(resolvedItems);
           useCaseItems = resolvedItems.slice(0, 18);
-          useCasePage = 0;
+          useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
           renderUseCasePage();
         } else if (rssStatus) {
           rssStatus.textContent = '이용사례 · 이용안내 글을 준비 중입니다.';
@@ -1802,7 +1776,7 @@
       } catch (error) {
         if (embeddedItems.length > 0) {
           useCaseItems = embeddedItems.slice(0, 18);
-          useCasePage = 0;
+          useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
           renderUseCasePage();
           return;
         }
@@ -1810,7 +1784,7 @@
         const cachedItems = readUseCaseCache();
         if (cachedItems.length > 0) {
           useCaseItems = cachedItems.slice(0, 18);
-          useCasePage = 0;
+          useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
           renderUseCasePage();
           if (rssStatus) {
             rssStatus.textContent = '최신 데이터를 불러오지 못해 최근 캐시 데이터를 표시합니다.';
@@ -1829,22 +1803,11 @@
       }
     };
 
-    if (useCasePrev && useCaseNext) {
-      useCasePrev.addEventListener('click', () => {
-        if (useCasePage > 0) {
-          useCasePage -= 1;
-          renderUseCasePage();
-        }
-      });
-
-      useCaseNext.addEventListener('click', () => {
+    if (useCaseLoadMore) {
+      useCaseLoadMore.addEventListener('click', () => {
         const filteredItems = getFilteredUseCaseItems();
-        const pageSize = getUseCasePageSize();
-        const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
-        if (useCasePage < totalPages - 1) {
-          useCasePage += 1;
-          renderUseCasePage();
-        }
+        useCaseVisibleCount = Math.min(filteredItems.length, useCaseVisibleCount + USECASE_LOAD_STEP);
+        renderUseCasePage();
       });
     }
 
@@ -1853,7 +1816,6 @@
         closeMobileMenu();
       }
       if (useCaseItems.length > 0) {
-        useCasePage = 0;
         renderUseCasePage();
       }
     });
