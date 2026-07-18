@@ -16,7 +16,7 @@
         {% if page.category %}
           <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
           {% if page.category == "면접준비" %}
-            <a href="{{ '/interview-prep.html' | relative_url }}">{{ page.category }}</a>
+            <a href="{{ '/interview/' | relative_url }}">{{ page.category }}</a>
           {% else %}
             <span>{{ page.category }}</span>
           {% endif %}
@@ -30,7 +30,7 @@
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <span aria-current="page">{{ page.title }}</span>
+        <span aria-current="page">면접준비</span>
       {% else %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">{{ page.title }}</span>

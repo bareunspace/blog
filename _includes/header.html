@@ -1,7 +1,7 @@
 <header>
   <nav>
     {% assign show_current_nav = false %}
-    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview-prep" or page.page_id == "interview" or page.collection == "posts" %}
+    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.collection == "posts" %}
       {% assign show_current_nav = true %}
       <a href="{{ '/index.html' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
     {% else %}
@@ -15,8 +15,6 @@
       {% assign nav_items = site.data.navigation.about %}
     {% elsif page.page_id == "blog" %}
       {% assign nav_items = site.data.navigation.blog %}
-    {% elsif page.page_id == "interview-prep" %}
-      {% assign nav_items = site.data.navigation.interview_prep %}
     {% elsif page.page_id == "interview" %}
       {% assign nav_items = site.data.navigation.interview %}
     {% elsif page.collection == "posts" %}
