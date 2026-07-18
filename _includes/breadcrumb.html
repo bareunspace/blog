@@ -15,7 +15,11 @@
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>
         {% if page.category %}
           <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-          <span>{{ page.category }}</span>
+          {% if page.category == "면접준비" %}
+            <a href="{{ '/interview-prep.html' | relative_url }}">{{ page.category }}</a>
+          {% else %}
+            <span>{{ page.category }}</span>
+          {% endif %}
         {% endif %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">{{ page.title }}</span>
