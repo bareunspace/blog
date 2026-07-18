@@ -23,7 +23,7 @@ script_version: 20260717-1
     <ul class="admin-summary" aria-label="관리 작업 안내">
       <li>문의/예약 데이터 화면을 붙일 때 이 페이지에 관리자 기능을 추가하면 됩니다.</li>
       <li>관리자 권한 체크는 이메일 허용 목록과 로그인 세션을 동시에 검증합니다.</li>
-      <li>실제 운영 기능은 Vercel 서버 함수에서 한번 더 권한 검증하는 것이 안전합니다.</li>
+      <li>운영 기능을 추가할 때는 Supabase RLS 정책과 관리자 권한을 함께 검증합니다.</li>
     </ul>
 
     <div class="admin-actions" style="margin-top:1rem;">

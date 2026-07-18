@@ -13,6 +13,9 @@ images/_backup-*/
 _site/
 vendor/
 
+# Supabase local project state
+supabase/.temp/
+
 # 로그 파일
 *.log
 npm-debug.log*
