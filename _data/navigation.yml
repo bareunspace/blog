@@ -43,6 +43,8 @@ interview:
     current: true
   - label: 시리즈 글
     href: "#interview-series"
+  - label: 준비 중
+    href: "#upcoming-series"
   - label: 화상면접
     href: "#video-interview"
   - label: 공간 예약
