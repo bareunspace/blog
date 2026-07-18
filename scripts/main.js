@@ -205,14 +205,14 @@
     const updatePromoCountdown = () => {
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const promoEnd = new Date(2026, 6, 20);
-      const diffDays = Math.floor((promoEnd - today) / (1000 * 60 * 60 * 24));
+      const promoStart = new Date(2026, 6, 27);
+      const diffDays = Math.floor((promoStart - today) / (1000 * 60 * 60 * 24));
 
-      let ddayText = '특가 종료';
+      let ddayText = '적용중';
       if (diffDays > 0) {
-        ddayText = `D-${diffDays}`;
+        ddayText = `7월 27일부터 적용 · D-${diffDays}`;
       } else if (diffDays === 0) {
-        ddayText = 'D-Day';
+        ddayText = '오늘부터 적용';
       }
 
       if (promoCountdown) {
