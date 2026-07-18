@@ -50,6 +50,7 @@
     const blogGuideFilters = document.getElementById('blogGuideFilters');
     const blogGuideGrid = document.querySelector('#blog-onsite .blog-guide-grid');
     const blogGuideLoadMore = document.getElementById('blogGuideLoadMore');
+    const homeGuideFilters = document.getElementById('homeGuideFilters');
     const homeGuideGrid = document.getElementById('homeGuideGrid');
     const homeGuideLoadMore = document.getElementById('homeGuideLoadMore');
     const blogFieldFilters = document.getElementById('blogFieldFilters');
@@ -62,8 +63,8 @@
     const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 4;
     const BLOG_GUIDE_LOAD_STEP = 4;
-    const HOME_GUIDE_INITIAL_VISIBLE = 3;
-    const HOME_GUIDE_LOAD_STEP = 3;
+    const HOME_GUIDE_INITIAL_VISIBLE = 4;
+    const HOME_GUIDE_LOAD_STEP = 4;
     const BLOG_FIELD_INITIAL_VISIBLE = 3;
     const BLOG_FIELD_LOAD_STEP = 3;
     let scrollLockTop = 0;
@@ -493,24 +494,66 @@
         return;
       }
 
+      const filterButtons = homeGuideFilters
+        ? Array.from(homeGuideFilters.querySelectorAll('.blog-guide-filter'))
+        : [];
+
+      let activeCategory = 'all';
       let visibleCount = Math.min(HOME_GUIDE_INITIAL_VISIBLE, guideItems.length);
 
       const renderHomeGuideItems = () => {
-        guideItems.forEach((item, index) => {
+        const filteredItems = guideItems.filter((item) => {
+          if (activeCategory === 'all') {
+            return true;
+          }
+          return item.dataset.category === activeCategory;
+        });
+
+        guideItems.forEach((item) => {
+          const inFilter = filteredItems.includes(item);
+          item.classList.toggle('is-hidden', !inFilter);
+        });
+
+        filteredItems.forEach((item, index) => {
           item.classList.toggle('is-hidden', index >= visibleCount);
         });
 
-        const isDone = visibleCount >= guideItems.length;
+        const isDone = visibleCount >= filteredItems.length;
         homeGuideLoadMore.hidden = isDone;
         homeGuideLoadMore.disabled = isDone;
       };
 
+      const setActiveFilter = (nextCategory) => {
+        activeCategory = nextCategory;
+        const filteredCount = guideItems.filter((item) => {
+          return activeCategory === 'all' || item.dataset.category === activeCategory;
+        }).length;
+        visibleCount = Math.min(HOME_GUIDE_INITIAL_VISIBLE, filteredCount);
+
+        filterButtons.forEach((button) => {
+          const isActive = button.dataset.category === activeCategory;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        renderHomeGuideItems();
+      };
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          setActiveFilter(button.dataset.category || 'all');
+        });
+      });
+
       homeGuideLoadMore.addEventListener('click', () => {
-        visibleCount = Math.min(guideItems.length, visibleCount + HOME_GUIDE_LOAD_STEP);
+        const filteredCount = guideItems.filter((item) => {
+          return activeCategory === 'all' || item.dataset.category === activeCategory;
+        }).length;
+        visibleCount = Math.min(filteredCount, visibleCount + HOME_GUIDE_LOAD_STEP);
         renderHomeGuideItems();
       });
 
-      renderHomeGuideItems();
+      setActiveFilter(activeCategory);
     };
 
     const setupBlogFieldFilters = () => {
