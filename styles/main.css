@@ -747,6 +747,24 @@ section { padding: 5rem 1.5rem; }
 #practical-guides .blog-guide-image {
   aspect-ratio: 16 / 9;
 }
+.home-guide-hub-card {
+  border-color: #b9d2c2;
+  background: #fbfdfb;
+  box-shadow: 0 16px 38px rgba(26,67,47,.12);
+}
+.home-guide-hub-card .blog-card-eyebrow {
+  color: #1f5f43;
+}
+.hub-card-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #e8f3ec;
+  color: var(--primary);
+  padding: .28rem .62rem;
+  font-size: .76rem;
+  font-weight: 800;
+}
 .blog-guide-content,
 .blog-field-content {
   display: flex;
