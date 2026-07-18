@@ -454,6 +454,72 @@ script_version: 20260718-1
     </div>
   </section>
 
+  <!-- ── Practical Guides ── -->
+  <section id="practical-guides" class="blog-guides-section">
+    <div class="section-inner">
+      <div class="blog-section-heading">
+        <div>
+          <p class="section-label">Practical Guides · <a class="section-label-link" href="{{ '/blog.html#blog-onsite' | relative_url }}">블로그</a></p>
+          <h2 class="section-title">목적별 준비 가이드</h2>
+        </div>
+        <p>면접, 스터디, 데이트처럼 공간을 찾는 이유가 분명할 때 먼저 읽어볼 자체 발행 가이드입니다.</p>
+      </div>
+      {% assign study_posts = site.posts | where: "category", "스터디 공간" %}
+      {% assign date_posts = site.posts | where: "category", "데이트" %}
+      {% assign study_post = study_posts.first %}
+      {% assign date_post = date_posts.first %}
+      <div class="blog-guide-grid" aria-label="목적별 준비 가이드">
+        <article class="blog-guide-card">
+          <a class="blog-guide-image" href="{{ '/interview/' | relative_url }}" tabindex="-1" aria-hidden="true">
+            <img src="/images/interview-prep-checklist-cover.jpg" alt="" loading="lazy" />
+          </a>
+          <div class="blog-guide-content">
+            <p class="blog-card-eyebrow">면접준비</p>
+            <h3><a href="{{ '/interview/' | relative_url }}">면접준비 가이드</a></h3>
+            <p>면접 전날 체크리스트, 면접관 관점, 역질문, 화상면접 장소 선택까지 한곳에서 확인하세요.</p>
+            <div class="blog-card-footer">
+              <span>시리즈 허브</span>
+              <a href="{{ '/interview/' | relative_url }}">가이드 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+        {% if study_post %}
+          <article class="blog-guide-card">
+            <a class="blog-guide-image" href="{{ study_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ study_post.og_image | default: '/images/14.jpeg' }}" alt="" loading="lazy" />
+            </a>
+            <div class="blog-guide-content">
+              <p class="blog-card-eyebrow">{{ study_post.category }}</p>
+              <h3><a href="{{ study_post.url | relative_url }}">{{ study_post.title }}</a></h3>
+              <p>{{ study_post.description | default: study_post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="blog-card-footer">
+                <span>{{ study_post.date | date: "%Y-%m-%d" }}</span>
+                <a href="{{ study_post.url | relative_url }}">가이드 보기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endif %}
+        {% if date_post %}
+          <article class="blog-guide-card">
+            <a class="blog-guide-image" href="{{ date_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ date_post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
+            </a>
+            <div class="blog-guide-content">
+              <p class="blog-card-eyebrow">{{ date_post.category }}</p>
+              <h3><a href="{{ date_post.url | relative_url }}">{{ date_post.title }}</a></h3>
+              <p>{{ date_post.description | default: date_post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="blog-card-footer">
+                <span>{{ date_post.date | date: "%Y-%m-%d" }}</span>
+                <a href="{{ date_post.url | relative_url }}">가이드 보기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endif %}
+      </div>
+      <p class="blog-external-more"><a href="{{ '/blog.html#blog-onsite' | relative_url }}">실전 가이드 전체 보기 <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
   <!-- ── Testimonials ── -->
   <section id="testimonials">
     <div class="section-inner">
