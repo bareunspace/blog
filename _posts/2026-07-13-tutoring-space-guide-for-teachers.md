@@ -34,7 +34,7 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns">
         <a href="#place-comparison" class="btn-primary">장소 유형 비교하기</a>
-        <a href="/index.html#space" class="btn-outline">실제 공간 사진 보기</a>
+        <a href="/index.html#gallery" class="btn-outline">실제 공간 사진 보기</a>
       </div>
     </div>
   </section>
@@ -187,7 +187,7 @@ script_version: 20260711-4
       <p class="section-desc">먼저 한 번 예약해 이동 동선과 실제 이용 환경을 확인해 보세요. 반복 이용을 원한다면 희망하는 요일과 시간의 이용 가능 여부를 문의할 수 있습니다. 이용 가격과 규정은 네이버 예약 페이지의 최신 안내를 기준으로 확인해 주세요.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="study_post_booking">스터디 공간 예약 가능 시간 보기</a>
-        <a href="/index.html#space" class="btn-outline">공간 사진 확인하기</a>
+        <a href="/index.html#gallery" class="btn-outline">공간 사진 확인하기</a>
         <a href="/index.html#contact" class="btn-outline">반복 이용 문의하기</a>
       </div>
     </div>
