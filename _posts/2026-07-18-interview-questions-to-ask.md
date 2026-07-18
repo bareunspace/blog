@@ -12,11 +12,11 @@ tags:
 canonical: https://bareunjari.com/posts/interview-questions-to-ask/
 permalink: /posts/interview-questions-to-ask/
 date: 2026-07-18 09:00:00 +0900
-og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
-og_image_alt: 노트북과 체크리스트가 놓인 면접 역질문 준비 장면
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/interview-prep-checklist-cover.jpg
+og_image: https://bareunjari.com/images/interview-questions-to-ask.webp
+og_image_alt: 면접 마지막 질문과 역질문을 준비하는 노트북 화면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/interview-questions-to-ask.webp
 css_version: 20260713-7
 script_version: 20260711-4
 ---
@@ -34,6 +34,15 @@ script_version: 20260711-4
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="question-guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img src="/images/interview-questions-to-ask.webp" alt="면접 마지막 질문과 역질문을 준비하는 노트북 화면" loading="eager" width="1672" height="941" />
+        <figcaption>면접 마지막에는 직무, 팀, 성과 기준을 확인하는 질문이 가장 자연스럽습니다.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <nav class="guide-toc" aria-label="면접 역질문 가이드 목차">
     <div class="guide-toc-inner">
