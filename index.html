@@ -10,8 +10,8 @@ og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 부천 신중동 바른자리 프라이빗룸 메인 공간 이미지
 preload_image: images/main.webp
 naver_site_verification: 46b51cdf33b64778f7ae6e7dd0dabcb6890be955
-css_version: 20260713-6
-script_version: 20260718-1
+css_version: 20260718-2
+script_version: 20260718-2
 ---
   <main id="mainContent">
   <!-- ── Hero ── -->
@@ -466,6 +466,7 @@ script_version: 20260718-1
       </div>
       {% assign study_posts = site.posts | where: "category", "스터디 공간" %}
       {% assign date_posts = site.posts | where: "category", "데이트" %}
+      {% assign interview_posts = site.posts | where: "category", "면접준비" %}
       {% assign study_post = study_posts.first %}
       {% assign date_post = date_posts.first %}
       <div class="blog-guide-filters" aria-label="목적별 준비 가이드 바로가기">
@@ -482,8 +483,8 @@ script_version: 20260718-1
           <a class="blog-guide-filter" href="{{ '/blog.html#blog-onsite' | relative_url }}">데이트</a>
         {% endif %}
       </div>
-      <div class="blog-guide-grid" aria-label="목적별 준비 가이드">
-        <article class="blog-guide-card">
+      <div class="blog-guide-grid home-guide-grid" id="homeGuideGrid" aria-label="목적별 준비 가이드">
+        <article class="blog-guide-card" data-home-guide-item>
           <a class="blog-guide-image" href="{{ '/interview/' | relative_url }}" tabindex="-1" aria-hidden="true">
             <img src="/images/interview-prep-checklist-cover.jpg" alt="" loading="lazy" />
           </a>
@@ -498,7 +499,7 @@ script_version: 20260718-1
           </div>
         </article>
         {% if study_post %}
-          <article class="blog-guide-card">
+          <article class="blog-guide-card" data-home-guide-item>
             <a class="blog-guide-image" href="{{ study_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
               <img src="{{ study_post.og_image | default: '/images/14.jpeg' }}" alt="" loading="lazy" />
             </a>
@@ -514,7 +515,7 @@ script_version: 20260718-1
           </article>
         {% endif %}
         {% if date_post %}
-          <article class="blog-guide-card">
+          <article class="blog-guide-card" data-home-guide-item>
             <a class="blog-guide-image" href="{{ date_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
               <img src="{{ date_post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
             </a>
@@ -529,6 +530,25 @@ script_version: 20260718-1
             </div>
           </article>
         {% endif %}
+        {% for post in interview_posts limit: 4 %}
+          <article class="blog-guide-card" data-home-guide-item>
+            <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ post.og_image | default: '/images/interview-prep-checklist-cover.jpg' }}" alt="" loading="lazy" />
+            </a>
+            <div class="blog-guide-content">
+              <p class="blog-card-eyebrow">{{ post.category }}</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="blog-card-footer">
+                <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                <a href="{{ post.url | relative_url }}">가이드 보기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+      <div class="blog-guide-more-wrap">
+        <button type="button" class="blog-guide-load-more" id="homeGuideLoadMore">가이드 더 보기</button>
       </div>
       <p class="blog-external-more"><a href="{{ '/blog.html#blog-onsite' | relative_url }}">실전 가이드 전체 보기 <span aria-hidden="true">→</span></a></p>
     </div>

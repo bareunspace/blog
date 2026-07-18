@@ -659,6 +659,11 @@ section { padding: 5rem 1.5rem; }
 .blog-guides-section {
   background: #fff !important;
 }
+#practical-guides.blog-guides-section {
+  border-top: 1px solid #e0e8e2;
+  border-bottom: 1px solid #e0e8e2;
+  background: #f4f7f4 !important;
+}
 .blog-guide-filters {
   margin-bottom: 1rem;
   display: flex;
@@ -690,6 +695,9 @@ section { padding: 5rem 1.5rem; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.4rem;
+}
+.home-guide-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .blog-guide-card.is-hidden {
   display: none;
@@ -731,6 +739,13 @@ section { padding: 5rem 1.5rem; }
 .blog-guide-card {
   grid-template-columns: 190px minmax(0, 1fr);
   min-height: 250px;
+}
+#practical-guides .blog-guide-card {
+  grid-template-columns: 1fr;
+  min-height: 100%;
+}
+#practical-guides .blog-guide-image {
+  aspect-ratio: 16 / 9;
 }
 .blog-guide-content,
 .blog-field-content {

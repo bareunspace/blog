@@ -50,6 +50,8 @@
     const blogGuideFilters = document.getElementById('blogGuideFilters');
     const blogGuideGrid = document.querySelector('#blog-onsite .blog-guide-grid');
     const blogGuideLoadMore = document.getElementById('blogGuideLoadMore');
+    const homeGuideGrid = document.getElementById('homeGuideGrid');
+    const homeGuideLoadMore = document.getElementById('homeGuideLoadMore');
     const blogFieldFilters = document.getElementById('blogFieldFilters');
     const blogFieldGrid = document.querySelector('#blog-latest .blog-field-grid');
     const blogFieldLoadMore = document.getElementById('blogFieldLoadMore');
@@ -60,6 +62,8 @@
     const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 4;
     const BLOG_GUIDE_LOAD_STEP = 4;
+    const HOME_GUIDE_INITIAL_VISIBLE = 3;
+    const HOME_GUIDE_LOAD_STEP = 3;
     const BLOG_FIELD_INITIAL_VISIBLE = 3;
     const BLOG_FIELD_LOAD_STEP = 3;
     let scrollLockTop = 0;
@@ -476,6 +480,37 @@
       });
 
       setActiveFilter(activeCategory);
+    };
+
+    const setupHomeGuideLoadMore = () => {
+      if (!homeGuideGrid || !homeGuideLoadMore) {
+        return;
+      }
+
+      const guideItems = Array.from(homeGuideGrid.querySelectorAll('[data-home-guide-item]'));
+      if (!guideItems.length) {
+        homeGuideLoadMore.hidden = true;
+        return;
+      }
+
+      let visibleCount = Math.min(HOME_GUIDE_INITIAL_VISIBLE, guideItems.length);
+
+      const renderHomeGuideItems = () => {
+        guideItems.forEach((item, index) => {
+          item.classList.toggle('is-hidden', index >= visibleCount);
+        });
+
+        const isDone = visibleCount >= guideItems.length;
+        homeGuideLoadMore.hidden = isDone;
+        homeGuideLoadMore.disabled = isDone;
+      };
+
+      homeGuideLoadMore.addEventListener('click', () => {
+        visibleCount = Math.min(guideItems.length, visibleCount + HOME_GUIDE_LOAD_STEP);
+        renderHomeGuideItems();
+      });
+
+      renderHomeGuideItems();
     };
 
     const setupBlogFieldFilters = () => {
@@ -1905,6 +1940,7 @@
     setupMobileCtaVariant();
     setupGalleryLoadMore();
     setupBlogGuideLoadMore();
+    setupHomeGuideLoadMore();
     setupBlogFieldFilters();
     setupBlogTopicCards();
     setupUseCaseFilters();
