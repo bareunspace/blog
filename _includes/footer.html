@@ -1,10 +1,15 @@
 <footer>
-	<div class="section-inner">
-		<p class="footer-logo"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">바른자리</span></p>
-		<p class="footer-logo-note">필요할 때 온전히 나에게 집중하는 개인시간 플랫폼 <a href="about.html" class="footer-story-link">브랜드 스토리</a></p>
-		<p>© 2026 바른자리 · 부천 신중동역 도보 1분 · 100% 예약제 프라이빗 개인시간 플랫폼</p>
-		<p class="footer-contact"><svg class="inline-icon" aria-hidden="true"><use href="#i-map"></use></svg>경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티) 114호 · <svg class="inline-icon" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:bareunjari@gmail.com">bareunjari@gmail.com</a> · <svg class="inline-icon" aria-hidden="true"><use href="#i-phone"></use></svg><a href="tel:05071358-2768">0507-1358-2768</a></p>
-	</div>
+  <p class="footer-logo"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">바른자리</span></p>
+  <p class="footer-logo-note">
+    필요할 때 온전히 나에게 집중하는 개인시간 플랫폼
+    {% if page.page_id == "about" %}
+      <span class="footer-story-link" aria-current="page">브랜드 스토리</span>
+    {% else %}
+      <a href="{{ '/about.html' | relative_url }}" class="footer-story-link">브랜드 스토리</a>
+    {% endif %}
+  </p>
+  <p>© 2026 바른자리 · 부천 신중동역 도보 1분 · 100% 예약제 프라이빗 개인시간 플랫폼</p>
+  <p class="footer-contact"><svg class="inline-icon" aria-hidden="true"><use href="#i-map"></use></svg>경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티) 114호 · <svg class="inline-icon" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:bareunjari@gmail.com">bareunjari@gmail.com</a> · <svg class="inline-icon" aria-hidden="true"><use href="#i-phone"></use></svg><a href="tel:05071358-2768">0507-1358-2768</a></p>
 </footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="갤러리 이미지 확대">
@@ -18,8 +23,24 @@
   </div>
 </div>
 
-<button type="button" id="toTop" aria-label="맨 위로 스크롤"></button>
-<a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-fab" aria-label="예약 페이지로 이동">예약</a>
-<a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="mobile-sticky-cta" id="mobileStickyCta" data-cta="mobile_sticky">지금 예약하기 · 1시간 1만원</a>
-{% include branch_site_config.html %}
-<script src="scripts/main.js?v={{ page.script_version | default: site.data.versions.script_version }}" defer></script>
+<button type="button" class="to-top" id="toTop" aria-label="맨 위로 이동">↑</button>
+<a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="mobile-sticky-cta" id="mobileStickyCta" data-cta="mobile_sticky">지금 예약하기 · 2시간 1만원</a>
+
+{% if page.page_id == "home" %}
+<script id="branchSiteConfig" type="application/json">
+  {
+    "activeBranch": {
+      "slug": "bucheon-sinjungdong",
+      "name": "바른자리 신중동점"
+    },
+    "availableBranches": [
+      {
+        "slug": "bucheon-sinjungdong",
+        "name": "바른자리 신중동점"
+      }
+    ]
+  }
+</script>
+{% endif %}
+
+<script src="{{ '/scripts/main.js' | relative_url }}?v={{ page.script_version | default: '20260710-3' }}"></script>
