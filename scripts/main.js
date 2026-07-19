@@ -234,7 +234,7 @@
 
       const STORAGE_KEY = 'bareunjari-mobile-cta-variant';
       const variants = {
-        A: '지금 예약하기 · 2시간 1만원',
+        A: '지금 예약하기 · 1시간 1만원',
         B: '오늘 가능한 시간 바로 예약'
       };
 
