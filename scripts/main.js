@@ -116,9 +116,6 @@
     const toggleToTopButton = () => {
       const shouldShow = window.scrollY > 260;
       toTopButton.classList.toggle('show', shouldShow);
-      if (fabButton) {
-        fabButton.classList.toggle('show', shouldShow);
-      }
     };
 
     const trackEvent = (eventName, params = {}) => {
