@@ -6,8 +6,6 @@ home:
         href: "about.html"
   - label: 이용 안내
     href: "#about"
-  - label: 갤러리
-    href: "#gallery"
   - label: 이용사례
     href: "#testimonials"
     children:
