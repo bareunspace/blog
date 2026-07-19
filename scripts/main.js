@@ -751,9 +751,11 @@
         }
         const isOpen = parentItem.classList.toggle('submenu-open');
         if (isOpen) {
+          toggle.classList.add('is-open');
           toggle.setAttribute('aria-expanded', 'true');
           toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 닫기`);
         } else {
+          toggle.classList.remove('is-open');
           toggle.setAttribute('aria-expanded', 'false');
           toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 열기`);
         }
