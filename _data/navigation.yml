@@ -14,11 +14,11 @@ about:
   - label: 브랜드 스토리
     href: "#about-story"
     current: true
-  - label: 공간 안내
+  - label: 공간
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 문의
+  - label: 오시는 길
     href: "index.html#contact"
 blog:
   - label: 최근 글
@@ -30,7 +30,7 @@ blog:
     href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 문의
+  - label: 오시는 길
     href: "index.html#contact"
 interview:
   - label: 준비 흐름
@@ -48,9 +48,9 @@ post:
   - label: 블로그 홈
     href: "blog.html"
     current: true
-  - label: 공간 안내
+  - label: 공간
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 문의
+  - label: 오시는 길
     href: "index.html#contact"
