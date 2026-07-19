@@ -1,5 +1,5 @@
 home:
-  - label: 공간 안내
+  - label: 공간
     href: "#space"
     children:
       - label: 브랜드 스토리
