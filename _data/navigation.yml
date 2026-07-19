@@ -6,11 +6,8 @@ home:
         href: "about.html"
   - label: 요금·예약
     href: "#about"
-  - label: 이용사례
-    href: "#testimonials"
-    children:
-      - label: 블로그
-        href: "blog.html#blog-onsite"
+  - label: 블로그
+    href: "blog.html"
   - label: 문의
     href: "#contact"
 about:
