@@ -27,3 +27,7 @@
 3. Open PR.
 4. Squash and merge.
 5. Run release steps from `docs/release-versioning.md`.
+
+## Content Guidelines
+
+- When creating content, aim for a sensibility that appeals to individuals in their 20s and 30s.
