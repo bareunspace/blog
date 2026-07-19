@@ -5,8 +5,11 @@
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
+    const lightboxCounter = document.getElementById('lightboxCounter');
     const galleryTrack = document.getElementById('galleryTrack');
-    const galleryLoadMore = document.getElementById('galleryLoadMore');
+    const spaceGalleryCount = document.getElementById('spaceGalleryCount');
+    const spaceGalleryDots = document.getElementById('spaceGalleryDots');
+    const spaceGalleryOverlay = document.getElementById('spaceGalleryOverlay');
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
     const navSectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -55,8 +58,6 @@
     const blogTopicCards = Array.from(document.querySelectorAll('.blog-topic-card'));
     const postReactionsRoot = document.querySelector('[data-post-reaction]');
     const FEATURE_PANEL_ANIM_MS = 150;
-    const GALLERY_INITIAL_VISIBLE = 6;
-    const GALLERY_LOAD_STEP = 3;
     const BLOG_GUIDE_INITIAL_VISIBLE = 3;
     const BLOG_GUIDE_LOAD_STEP = 3;
     const HOME_GUIDE_INITIAL_VISIBLE = 3;
@@ -67,12 +68,12 @@
     const USECASE_LOAD_STEP = 3;
     let scrollLockTop = 0;
     let currentGalleryIndex = -1;
+    let lightboxTouchStartX = 0;
+    let lightboxTouchStartY = 0;
     let useCaseItems = [];
     let useCaseVisibleCount = USECASE_INITIAL_VISIBLE;
     let useCaseActiveCategory = 'all';
     let featurePanelCleanupTimer = 0;
-    let galleryVisibleCount = GALLERY_INITIAL_VISIBLE;
-    let refreshGalleryItemsVisibility = () => {};
 
     const getGalleryItems = () => {
       return Array.from(document.querySelectorAll('.gallery-open'));
@@ -271,6 +272,9 @@
       currentGalleryIndex = normalizedIndex;
       const button = galleryItems[normalizedIndex];
       openLightbox(button.dataset.src, button.dataset.alt);
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${normalizedIndex + 1} / ${galleryItems.length}`;
+      }
     };
 
     const showPrevImage = () => {
@@ -296,6 +300,9 @@
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImage.src = '';
+      if (lightboxCounter) {
+        lightboxCounter.textContent = '1 / 1';
+      }
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
@@ -360,52 +367,95 @@
     bindGalleryOpenButtons();
     attachGalleryImageFallback();
 
-    const setupGalleryLoadMore = () => {
-      if (!galleryTrack || !galleryLoadMore) {
+    const setupSpaceGalleryCarousel = () => {
+      if (!galleryTrack || !spaceGalleryCount || !spaceGalleryDots) {
         return;
       }
 
-      const initialItems = Array.from(galleryTrack.querySelectorAll('.gallery-item'));
-      if (!initialItems.length) {
-        galleryLoadMore.hidden = true;
+      const items = Array.from(galleryTrack.querySelectorAll('.space-gallery-item'));
+      if (!items.length) {
         return;
       }
 
-      galleryVisibleCount = Math.min(GALLERY_INITIAL_VISIBLE, initialItems.length);
+      if (spaceGalleryOverlay) {
+        spaceGalleryOverlay.textContent = `사진 ${items.length}장 모두 보기`;
+      }
+      spaceGalleryDots.innerHTML = '';
+      const dots = items.map((_, index) => {
+        const dot = document.createElement('span');
+        dot.className = 'space-gallery-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        spaceGalleryDots.appendChild(dot);
+        dot.addEventListener('click', () => {
+          items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+        return dot;
+      });
 
-      const renderGalleryItems = () => {
-        const items = Array.from(galleryTrack.querySelectorAll('.gallery-item'));
-        if (!items.length) {
-          galleryLoadMore.hidden = true;
-          galleryLoadMore.disabled = true;
+      const setActiveIndex = (index) => {
+        const normalizedIndex = Math.max(0, Math.min(index, items.length - 1));
+        spaceGalleryCount.textContent = `${normalizedIndex + 1} / ${items.length}`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('is-active', dotIndex === normalizedIndex);
+        });
+      };
+
+      const updateFromScroll = () => {
+        const trackRect = galleryTrack.getBoundingClientRect();
+        const trackCenter = trackRect.left + trackRect.width / 2;
+        let activeIndex = 0;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        items.forEach((item, index) => {
+          const itemRect = item.getBoundingClientRect();
+          const itemCenter = itemRect.left + itemRect.width / 2;
+          const distance = Math.abs(trackCenter - itemCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            activeIndex = index;
+          }
+        });
+
+        setActiveIndex(activeIndex);
+      };
+
+      galleryTrack.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateFromScroll);
+      }, { passive: true });
+      window.addEventListener('resize', updateFromScroll);
+      setActiveIndex(0);
+    };
+
+    const setupLightboxSwipe = () => {
+      if (!lightboxImage) {
+        return;
+      }
+
+      lightboxImage.addEventListener('touchstart', (event) => {
+        const touch = event.changedTouches[0];
+        lightboxTouchStartX = touch.clientX;
+        lightboxTouchStartY = touch.clientY;
+      }, { passive: true });
+
+      lightboxImage.addEventListener('touchend', (event) => {
+        if (!lightbox.classList.contains('open')) {
           return;
         }
 
-        galleryVisibleCount = Math.min(galleryVisibleCount, items.length);
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - lightboxTouchStartX;
+        const deltaY = touch.clientY - lightboxTouchStartY;
 
-        items.forEach((item, index) => {
-          item.classList.toggle('is-hidden', index >= galleryVisibleCount);
-        });
+        if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) {
+          return;
+        }
 
-        const isDone = galleryVisibleCount >= items.length;
-        galleryLoadMore.hidden = isDone;
-        galleryLoadMore.disabled = isDone;
-      };
-
-      refreshGalleryItemsVisibility = renderGalleryItems;
-
-      galleryLoadMore.addEventListener('click', () => {
-        const totalItems = galleryTrack.querySelectorAll('.gallery-item').length;
-        galleryVisibleCount = Math.min(totalItems, galleryVisibleCount + GALLERY_LOAD_STEP);
-        renderGalleryItems();
-        trackEvent('click_gallery_load_more', withBranchContext({
-          placement: 'gallery',
-          visible_count: galleryVisibleCount,
-          total_count: totalItems
-        }));
-      });
-
-      renderGalleryItems();
+        if (deltaX > 0) {
+          showPrevImage();
+        } else {
+          showNextImage();
+        }
+      }, { passive: true });
     };
 
     const setupBlogGuideLoadMore = () => {
@@ -1940,7 +1990,8 @@
     updateActiveNavLink();
     updatePromoCountdown();
     setupMobileCtaVariant();
-    setupGalleryLoadMore();
+    setupSpaceGalleryCarousel();
+    setupLightboxSwipe();
     setupBlogGuideLoadMore();
     setupHomeGuideLoadMore();
     setupBlogFieldFilters();

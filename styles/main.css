@@ -876,16 +876,81 @@ section { padding: 5rem 1.5rem; }
 #space .section-inner {
   position: relative;
 }
-.space-hero {
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  margin-bottom: 2rem;
+.space-gallery {
+  scroll-margin-top: 92px;
+  margin: 1.8rem 0 2rem;
 }
-.space-hero img {
+.space-gallery-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: .5rem;
+  aspect-ratio: 2 / .82;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #e7eee9;
+}
+.space-gallery-item {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+  overflow: hidden;
+}
+.space-gallery-item:hover {
+  transform: none;
+  box-shadow: none;
+}
+.space-gallery-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.space-gallery-item:nth-child(n + 6) {
+  display: none;
+}
+.space-gallery-item button,
+.gallery-item button {
+  border: 0;
   width: 100%;
-  height: min(48vw, 400px);
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+  display: block;
+  position: relative;
+}
+.space-gallery-item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform .28s ease;
+}
+.space-gallery-item button:hover img {
+  transform: scale(1.025);
+}
+.space-gallery-overlay {
+  position: absolute;
+  inset: auto .8rem .8rem auto;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.76);
+  background: rgba(17,24,39,.78);
+  color: #fff;
+  padding: .48rem .82rem;
+  font-size: .84rem;
+  font-weight: 800;
+  line-height: 1.2;
+  backdrop-filter: blur(5px);
+}
+.space-gallery-mobile-ui {
+  display: none;
 }
 .features-grid {
   display: grid;
@@ -1444,16 +1509,7 @@ section { padding: 5rem 1.5rem; }
   color: var(--muted);
 }
 
-/* ── Gallery ── */
-#gallery {
-  background: #fffdf8;
-  padding-top: 5.5rem;
-  padding-bottom: 5rem;
-}
-.gallery-masonry {
-  column-count: 3;
-  column-gap: 1rem;
-}
+/* ── Gallery / Lightbox ── */
 .gallery-item {
   break-inside: avoid;
   margin: 0 0 1rem;
@@ -1471,32 +1527,22 @@ section { padding: 5rem 1.5rem; }
   width: 100%;
   height: auto;
 }
+.space-gallery .space-gallery-item {
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+}
+.space-gallery .space-gallery-item:hover {
+  transform: none;
+  box-shadow: none;
+}
+.space-gallery .space-gallery-item img {
+  height: 100%;
+}
 .gallery-item.is-hidden {
   display: none;
 }
-.gallery-load-more-wrap {
-  margin-top: .4rem;
-  display: flex;
-  justify-content: center;
-}
-.gallery-load-more {
-  border: 1px solid #d1d5db;
-  border-radius: 999px;
-  background: #fff;
-  color: #1f2937;
-  padding: .58rem 1.15rem;
-  font-size: .86rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-}
-.gallery-load-more:hover {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-  transform: translateY(-1px);
-}
-
 /* ── Lightbox ── */
 .lightbox {
   position: fixed;
@@ -1537,7 +1583,7 @@ section { padding: 5rem 1.5rem; }
 }
 .lightbox-content img {
   width: 100%;
-  max-height: calc(90vh - 48px);
+  max-height: calc(90vh - 84px);
   object-fit: contain;
   border-radius: var(--radius);
   box-shadow: 0 18px 50px rgba(0,0,0,.35);
@@ -1601,13 +1647,17 @@ section { padding: 5rem 1.5rem; }
   outline: 3px solid rgba(244,162,97,.95);
   outline-offset: 2px;
 }
-.gallery-item button {
-  border: 0;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  cursor: zoom-in;
-  display: block;
+.lightbox-counter {
+  min-height: 28px;
+  border-radius: 999px;
+  background: rgba(15,23,42,.72);
+  color: #fff;
+  padding: .26rem .72rem;
+  font-size: .84rem;
+  font-weight: 800;
+  line-height: 1.4;
+  box-shadow: 0 8px 20px rgba(0,0,0,.28);
+  backdrop-filter: blur(4px);
 }
 
 /* ── Tags ── */
@@ -2987,11 +3037,85 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     font-size: .8rem;
     line-height: 1.55;
   }
-  .space-hero img,
-  .about-photo img { height: 260px; min-height: 260px; }
-  .gallery-masonry {
-    column-count: 2;
+  .space-gallery {
+    margin: 1.25rem -1rem 1.6rem;
+    scroll-margin-top: 82px;
+    overflow: hidden;
   }
+  .space-gallery-track {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    gap: .75rem;
+    aspect-ratio: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 1rem .25rem;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .space-gallery-track::-webkit-scrollbar {
+    display: none;
+  }
+  .space-gallery .space-gallery-item,
+  .space-gallery .space-gallery-item:nth-child(n + 6) {
+    display: block;
+    flex: 0 0 calc(100vw - 2rem);
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    background: #eef3ef;
+  }
+  .space-gallery-featured {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .space-gallery-overlay {
+    display: none;
+  }
+  .space-gallery-mobile-ui {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    margin-top: .55rem;
+    padding: 0 1rem;
+  }
+  .space-gallery-count {
+    min-width: 48px;
+    border-radius: 999px;
+    background: rgba(17,24,39,.78);
+    color: #fff;
+    padding: .18rem .55rem;
+    font-size: .75rem;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .space-gallery-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .32rem;
+  }
+  .space-gallery-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #c8d4cd;
+    transition: width var(--transition), background var(--transition);
+  }
+  .space-gallery-dot.is-active {
+    width: 18px;
+    background: var(--primary);
+  }
+  .about-photo img { height: 260px; min-height: 260px; }
   .tag-group {
     grid-template-columns: 1fr;
     gap: .45rem;
@@ -3063,9 +3187,6 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .footer-story-link {
     margin-top: .35rem;
     margin-left: 0;
-  }
-  .gallery-masonry {
-    column-count: 1;
   }
 }
 @media (max-width: 960px) {

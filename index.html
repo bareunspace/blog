@@ -10,8 +10,8 @@ og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 부천 신중동 바른자리 프라이빗룸 메인 공간 이미지
 preload_image: images/main.webp
 naver_site_verification: 46b51cdf33b64778f7ae6e7dd0dabcb6890be955
-css_version: 20260718-6
-script_version: 20260718-4
+css_version: 20260719-1
+script_version: 20260719-1
 ---
   <main id="mainContent">
   <!-- ── Hero ── -->
@@ -47,8 +47,49 @@ script_version: 20260718-4
       <h2 class="section-title">면접·스터디·상담·회의, 이런 순간에 필요한 프라이빗 공간</h2>
       <p class="section-desc">검색어로는 공간대여, 스터디룸, 회의실일 수 있습니다. 하지만 바른자리가 실제로 제공하는 것은 방해받지 않는 나만의 시간입니다.</p>
       <p class="section-desc">부천 신중동에서 공간대여, 스터디룸, 화상면접 장소, 소규모 회의실을 찾는 분들이 목적에 맞게 이용할 수 있습니다.</p>
-      <div class="space-hero">
-        <img src="images/06.webp" alt="바른자리 내부 전경" loading="lazy" width="4000" height="3000" />
+      <div class="space-gallery" id="gallery" aria-label="바른자리 공간 사진">
+        <div class="space-gallery-track" id="galleryTrack">
+          <figure class="gallery-item space-gallery-item space-gallery-featured">
+            <button type="button" class="gallery-open" data-src="images/09.webp" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="바른자리 전체 공간 와이드 뷰 확대 보기">
+              <img src="images/09.webp" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" width="4000" height="3000" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/03.webp" data-alt="바른자리 테이블과 책, 아늑한 조명" aria-label="바른자리 테이블과 책, 아늑한 조명 확대 보기">
+              <img src="images/03.webp" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" width="2252" height="4000" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/04.webp" data-alt="바른자리 창가 테이블 포인트" aria-label="바른자리 창가 테이블 포인트 확대 보기">
+              <img src="images/04.webp" alt="바른자리 창가 테이블 포인트" loading="lazy" width="2252" height="3362" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/10.webp" data-alt="바른자리 소파 라운지 공간" aria-label="바른자리 소파 라운지 공간 확대 보기">
+              <img src="images/10.webp" alt="바른자리 소파 라운지 공간" loading="lazy" width="4000" height="3000" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/12.webp" data-alt="바른자리 아트월과 스탠드 조명" aria-label="바른자리 아트월과 스탠드 조명 확대 보기">
+              <img src="images/12.webp" alt="바른자리 아트월과 스탠드 조명" loading="lazy" width="4000" height="3000" />
+              <span class="space-gallery-overlay" id="spaceGalleryOverlay">사진 전체보기</span>
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/14.webp" data-alt="바른자리 테이블과 미러 포인트 공간" aria-label="바른자리 테이블과 미러 포인트 공간 확대 보기">
+              <img src="images/14.webp" alt="바른자리 테이블과 미러 포인트 공간" loading="lazy" width="4000" height="3000" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/15.webp" data-alt="바른자리 공간 디테일 컷" aria-label="바른자리 공간 디테일 컷 확대 보기">
+              <img src="images/15.webp" alt="바른자리 공간 디테일 컷" loading="lazy" width="1052" height="2052" />
+            </button>
+          </figure>
+        </div>
+        <div class="space-gallery-mobile-ui" aria-hidden="true">
+          <span class="space-gallery-count" id="spaceGalleryCount">1 / 1</span>
+          <div class="space-gallery-dots" id="spaceGalleryDots"></div>
+        </div>
       </div>
       <div class="features-grid">
         <div class="feature-card feature-toggle feature-card-primary" id="videoInterviewToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="videoInterviewPanel">
@@ -349,60 +390,6 @@ script_version: 20260718-4
       <p class="location-note">
         <span class="inline-icon-muted"><svg class="inline-icon" aria-hidden="true"><use href="#i-map"></use></svg></span>경기도 부천시 원미구 신흥로 223(랜드마크 푸르지오시티) 114호
       </p>
-    </div>
-  </section>
-
-  <!-- ── Gallery ── -->
-  <section id="gallery">
-    <div class="section-inner">
-      <p class="section-label">Gallery</p>
-      <h2 class="section-title">공간 사진</h2>
-      <p class="section-desc">예약 전 실제 분위기와 좌석, 조명, 동선을 확인해 보세요.</p>
-      <div class="gallery-masonry" id="galleryTrack" aria-label="갤러리 탐색">
-          <figure class="gallery-item wide">
-            <button type="button" class="gallery-open" data-src="images/09.webp" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="이미지 확대 보기">
-              <img src="images/09.webp" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" width="4000" height="3000" />
-            </button>
-          </figure>
-          <figure class="gallery-item portrait">
-            <button type="button" class="gallery-open" data-src="images/03.webp" data-alt="바른자리 테이블과 책, 아늑한 조명" aria-label="이미지 확대 보기">
-              <img src="images/03.webp" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" width="2252" height="4000" />
-            </button>
-          </figure>
-          <figure class="gallery-item portrait">
-            <button type="button" class="gallery-open" data-src="images/04.webp" data-alt="바른자리 창가 테이블 포인트" aria-label="이미지 확대 보기">
-              <img src="images/04.webp" alt="바른자리 창가 테이블 포인트" loading="lazy" width="2252" height="3362" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button type="button" class="gallery-open" data-src="images/10.webp" data-alt="바른자리 소파 라운지 공간" aria-label="이미지 확대 보기">
-              <img src="images/10.webp" alt="바른자리 소파 라운지 공간" loading="lazy" width="4000" height="3000" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button type="button" class="gallery-open" data-src="images/12.webp" data-alt="바른자리 아트월과 스탠드 조명" aria-label="이미지 확대 보기">
-              <img src="images/12.webp" alt="바른자리 아트월과 스탠드 조명" loading="lazy" width="4000" height="3000" />
-            </button>
-          </figure>
-          <figure class="gallery-item wide">
-            <button type="button" class="gallery-open" data-src="images/14.webp" data-alt="바른자리 테이블과 미러 포인트 공간" aria-label="이미지 확대 보기">
-              <img src="images/14.webp" alt="바른자리 테이블과 미러 포인트 공간" loading="lazy" width="4000" height="3000" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button type="button" class="gallery-open" data-src="images/15.webp" data-alt="바른자리 공간 디테일 컷" aria-label="이미지 확대 보기">
-              <img src="images/15.webp" alt="바른자리 공간 디테일 컷" loading="lazy" width="1052" height="2052" />
-            </button>
-          </figure>
-          <figure class="gallery-item portrait">
-            <button type="button" class="gallery-open" data-src="images/poster_hotday.webp" data-alt="바른자리 여름 이벤트: 에어컨 빵빵하게 켜고 시원하게 놀 수 있는 곳" aria-label="이미지 확대 보기">
-              <img src="images/poster_hotday.webp" alt="바른자리 여름 이벤트: 에어컨 빵빵하게 켜고 시원하게 놀 수 있는 곳" loading="lazy" width="1200" height="1810" />
-            </button>
-          </figure>
-      </div>
-      <div class="gallery-load-more-wrap">
-        <button type="button" class="gallery-load-more" id="galleryLoadMore">사진 더 보기</button>
-      </div>
     </div>
   </section>
 
