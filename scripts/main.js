@@ -746,19 +746,16 @@
     navSubmenuToggles.forEach((toggle) => {
       toggle.addEventListener('click', () => {
         const parentItem = toggle.closest('.nav-item-has-children');
-        const willOpen = !parentItem?.classList.contains('submenu-open');
-
-        navSubmenuToggles.forEach((otherToggle) => {
-          const otherItem = otherToggle.closest('.nav-item-has-children');
-          otherItem?.classList.remove('submenu-open');
-          otherToggle.setAttribute('aria-expanded', 'false');
-          otherToggle.setAttribute('aria-label', `${otherToggle.dataset.menuLabel || '하위'} 하위 메뉴 열기`);
-        });
-
-        if (willOpen && parentItem) {
-          parentItem.classList.add('submenu-open');
+        if (!parentItem) {
+          return;
+        }
+        const isOpen = parentItem.classList.toggle('submenu-open');
+        if (isOpen) {
           toggle.setAttribute('aria-expanded', 'true');
           toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 닫기`);
+        } else {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', `${toggle.dataset.menuLabel || '하위'} 하위 메뉴 열기`);
         }
       });
     });
