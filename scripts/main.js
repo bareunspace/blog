@@ -405,10 +405,20 @@
       }
 
       const shareButton = postShareRoot.querySelector('[data-share-trigger]');
-      const feedback = postShareRoot.querySelector('[data-share-feedback]');
+      const feedback = postShareRoot.querySelector('[data-share-feedback]')
+        || postShareRoot.closest('.post-reactions')?.querySelector('[data-share-feedback]');
+      const countNode = postShareRoot.querySelector('[data-share-count]');
+      const postKey = postShareRoot.dataset.postKey || window.location.pathname;
       const shareUrl = (postShareRoot.dataset.shareUrl || window.location.href || '').trim();
       const shareTitle = (postShareRoot.dataset.shareTitle || document.title || '').trim();
       const shareText = (postShareRoot.dataset.shareText || shareTitle || '').trim();
+      const reactionConfig = parsePostReactionConfig();
+      const supabaseUrl = (reactionConfig.supabaseUrl || '').trim();
+      const supabaseAnonKey = (reactionConfig.supabaseAnonKey || '').trim();
+      const hasSupabaseClient = Boolean(window.supabase && typeof window.supabase.createClient === 'function');
+      const canUseSupabase = hasSupabaseClient && Boolean(supabaseUrl) && Boolean(supabaseAnonKey);
+      const shareClient = canUseSupabase ? window.supabase.createClient(supabaseUrl, supabaseAnonKey) : null;
+      const visitorToken = createVisitorToken();
 
       if (!shareButton || !shareUrl) {
         return;
@@ -446,6 +456,56 @@
         }
       };
 
+      const renderShareCount = (summary = {}) => {
+        if (!countNode) {
+          return;
+        }
+
+        countNode.textContent = String(Number(summary.share_count || 0));
+      };
+
+      const syncShareState = async () => {
+        if (!shareClient) {
+          return;
+        }
+
+        const { data, error } = await shareClient.rpc('get_post_share_state', {
+          p_post_key: postKey
+        });
+
+        if (error) {
+          return;
+        }
+
+        const summary = Array.isArray(data) ? data[0] : data;
+        renderShareCount(summary || {});
+      };
+
+      const submitShareCount = async (shareMethod) => {
+        if (!shareClient) {
+          return;
+        }
+
+        const { data, error } = await shareClient.rpc('submit_post_share', {
+          p_post_key: postKey,
+          p_share_method: shareMethod,
+          p_visitor_token: visitorToken,
+          p_page_path: window.location.pathname,
+          p_page_title: shareTitle,
+          p_branch_slug: branchContext.slug
+        });
+
+        if (error) {
+          return;
+        }
+
+        const summary = Array.isArray(data) ? data[0] : data;
+        renderShareCount(summary || {});
+      };
+
+      renderShareCount();
+      syncShareState().catch(() => {});
+
       shareButton.addEventListener('click', async () => {
         shareButton.disabled = true;
         setShareFeedback('');
@@ -459,6 +519,7 @@
             });
 
             setShareFeedback('공유 메뉴를 통해 글을 보냈어요.');
+            submitShareCount('native_share').catch(() => {});
             trackEvent('share_post', withBranchContext({
               page_path: window.location.pathname,
               method: 'native_share'
@@ -472,6 +533,7 @@
 
           await copyShareUrl();
           setShareFeedback('이 글 링크를 복사했어요.');
+          submitShareCount('copy_link').catch(() => {});
           trackEvent('share_post', withBranchContext({
             page_path: window.location.pathname,
             method: 'copy_link'
@@ -489,6 +551,7 @@
           try {
             await copyShareUrl();
             setShareFeedback('공유 창을 열지 못해 링크를 복사했어요.');
+            submitShareCount('fallback_copy').catch(() => {});
             trackEvent('share_post', withBranchContext({
               page_path: window.location.pathname,
               method: 'fallback_copy'

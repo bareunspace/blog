@@ -37,6 +37,7 @@
         <div
           class="post-share-inline"
           data-post-share
+          data-post-key="{{ page.url | default: page.permalink | default: page.slug }}"
           data-share-url="{{ page.canonical | default: page.url | absolute_url }}"
           data-share-title="{{ page.title | escape }}"
           data-share-text="{{ page.description | default: page.title | escape }}"
@@ -44,6 +45,7 @@
           <button type="button" class="post-share-btn" data-share-trigger>
             <span class="post-share-emoji" aria-hidden="true">🔗</span>
             <span class="post-share-text">공유하기</span>
+            <span class="post-share-count" data-share-count>0</span>
           </button>
         </div>
       </div>
