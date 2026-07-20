@@ -574,7 +574,7 @@ section { padding: 5rem 1.5rem; }
 }
 #practical-guides .blog-guide-image.blog-guide-image-contain img,
 .practical-guides-layout .blog-guide-image.blog-guide-image-contain img {
-  object-fit: cover;
+  object-fit: contain;
   padding: 0;
 }
 .blog-featured-content {
@@ -3278,6 +3278,18 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .blog-guide-image {
     height: 210px;
+  }
+  #practical-guides .blog-guide-image,
+  .practical-guides-layout .blog-guide-image {
+    aspect-ratio: auto;
+    height: auto;
+  }
+  #practical-guides .blog-guide-image img,
+  .practical-guides-layout .blog-guide-image img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    padding: 0;
   }
   .blog-field-card {
     grid-template-rows: 210px 1fr;
