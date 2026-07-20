@@ -2924,14 +2924,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .post-share-inline {
     margin-left: 0;
-    width: 100%;
     justify-content: flex-start;
   }
   .post-reaction-toolbar {
     align-items: stretch;
   }
   .post-share-btn {
-    width: min(100%, 320px);
+    width: auto;
   }
   main.tutoring-guide #home .section-title {
     max-width: 12.5em;
