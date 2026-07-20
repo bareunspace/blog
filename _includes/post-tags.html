@@ -41,7 +41,10 @@
           data-share-title="{{ page.title | escape }}"
           data-share-text="{{ page.description | default: page.title | escape }}"
         >
-          <button type="button" class="post-share-btn" data-share-trigger>공유하기</button>
+          <button type="button" class="post-share-btn" data-share-trigger>
+            <span class="post-share-emoji" aria-hidden="true">🔗</span>
+            <span class="post-share-text">공유하기</span>
+          </button>
         </div>
       </div>
       <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>

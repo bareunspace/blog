@@ -1731,6 +1731,7 @@ main.about-page .post-tags {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: .38rem;
   min-height: 42px;
   border: 1px solid rgba(45,106,79,.3);
   border-radius: 999px;
@@ -1755,6 +1756,10 @@ main.about-page .post-tags {
 .post-share-btn[disabled] {
   cursor: wait;
   opacity: .72;
+}
+.post-share-emoji {
+  font-size: .92rem;
+  line-height: 1;
 }
 .post-share-feedback {
   flex-basis: 100%;
