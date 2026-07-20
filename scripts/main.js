@@ -56,6 +56,7 @@
     const blogFieldGrid = document.querySelector('#blog-latest .blog-field-grid');
     const blogFieldLoadMore = document.getElementById('blogFieldLoadMore');
     const blogTopicCards = Array.from(document.querySelectorAll('.blog-topic-card'));
+    const postShareRoot = document.querySelector('[data-post-share]');
     const postReactionsRoot = document.querySelector('[data-post-reaction]');
     const FEATURE_PANEL_ANIM_MS = 150;
     const BLOG_GUIDE_INITIAL_VISIBLE = 3;
@@ -395,6 +396,113 @@
             setSubmitting(false);
           }
         });
+      });
+    };
+
+    const setupPostShare = () => {
+      if (!postShareRoot) {
+        return;
+      }
+
+      const shareButton = postShareRoot.querySelector('[data-share-trigger]');
+      const feedback = postShareRoot.querySelector('[data-share-feedback]');
+      const shareUrl = (postShareRoot.dataset.shareUrl || window.location.href || '').trim();
+      const shareTitle = (postShareRoot.dataset.shareTitle || document.title || '').trim();
+      const shareText = (postShareRoot.dataset.shareText || shareTitle || '').trim();
+
+      if (!shareButton || !shareUrl) {
+        return;
+      }
+
+      const setShareFeedback = (message, kind = 'success') => {
+        if (!feedback) {
+          return;
+        }
+
+        feedback.textContent = message || '';
+        feedback.classList.toggle('is-error', kind === 'error');
+      };
+
+      const copyShareUrl = async () => {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+          await navigator.clipboard.writeText(shareUrl);
+          return;
+        }
+
+        const helper = document.createElement('textarea');
+        helper.value = shareUrl;
+        helper.setAttribute('readonly', '');
+        helper.style.position = 'absolute';
+        helper.style.left = '-9999px';
+        document.body.appendChild(helper);
+        helper.select();
+        helper.setSelectionRange(0, helper.value.length);
+
+        const copied = document.execCommand('copy');
+        document.body.removeChild(helper);
+
+        if (!copied) {
+          throw new Error('copy_failed');
+        }
+      };
+
+      shareButton.addEventListener('click', async () => {
+        shareButton.disabled = true;
+        setShareFeedback('');
+
+        try {
+          if (typeof navigator.share === 'function') {
+            await navigator.share({
+              title: shareTitle,
+              text: shareText,
+              url: shareUrl
+            });
+
+            setShareFeedback('공유 메뉴를 통해 글을 보냈어요.');
+            trackEvent('share_post', withBranchContext({
+              page_path: window.location.pathname,
+              method: 'native_share'
+            }));
+            trackMetaEvent('share_post', withBranchContext({
+              page_path: window.location.pathname,
+              method: 'native_share'
+            }));
+            return;
+          }
+
+          await copyShareUrl();
+          setShareFeedback('이 글 링크를 복사했어요.');
+          trackEvent('share_post', withBranchContext({
+            page_path: window.location.pathname,
+            method: 'copy_link'
+          }));
+          trackMetaEvent('share_post', withBranchContext({
+            page_path: window.location.pathname,
+            method: 'copy_link'
+          }));
+        } catch (error) {
+          if (error && error.name === 'AbortError') {
+            setShareFeedback('');
+            return;
+          }
+
+          try {
+            await copyShareUrl();
+            setShareFeedback('공유 창을 열지 못해 링크를 복사했어요.');
+            trackEvent('share_post', withBranchContext({
+              page_path: window.location.pathname,
+              method: 'fallback_copy'
+            }));
+            trackMetaEvent('share_post', withBranchContext({
+              page_path: window.location.pathname,
+              method: 'fallback_copy'
+            }));
+          } catch (copyError) {
+            setShareFeedback('공유 링크를 복사하지 못했어요. 잠시 후 다시 시도해 주세요.', 'error');
+          }
+        } finally {
+          shareButton.disabled = false;
+        }
       });
     };
 
@@ -2188,5 +2296,6 @@
     setupBlogFieldFilters();
     setupBlogTopicCards();
     setupUseCaseFilters();
+    setupPostShare();
     setupPostReactions();
     loadUseCasesFromRss();

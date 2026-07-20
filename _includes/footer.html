@@ -53,4 +53,4 @@
 </script>
 {% endif %}
 
-<script src="{{ '/scripts/main.js' | relative_url }}?v={{ page.script_version | default: '20260720-1' }}"></script>
+<script src="{{ '/scripts/main.js' | relative_url }}?v={{ site.asset_version | default: page.script_version | default: '20260720-1' }}"></script>

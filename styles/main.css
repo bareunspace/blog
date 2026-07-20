@@ -1727,6 +1727,82 @@ main.about-page .post-tags {
   padding: 1.25rem 1.5rem;
 }
 
+.post-share {
+  background: rgba(255,255,255,.82);
+  border-top: 1px solid #e5eee8;
+  padding: 1.25rem 1.5rem;
+}
+.post-share-inner {
+  max-width: 940px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .7rem 1rem;
+  align-items: center;
+}
+.post-share-copy {
+  min-width: 0;
+}
+.post-share-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1.4;
+}
+.post-share-desc {
+  margin-top: .3rem;
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+.post-share-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.post-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid rgba(45,106,79,.3);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--primary);
+  padding: .72rem 1.15rem;
+  font-size: .86rem;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+}
+.post-share-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(45,106,79,.48);
+  box-shadow: 0 10px 18px rgba(45,106,79,.12);
+}
+.post-share-btn:focus-visible {
+  outline: 2px solid rgba(45,106,79,.55);
+  outline-offset: 2px;
+}
+.post-share-btn[disabled] {
+  cursor: wait;
+  opacity: .72;
+}
+.post-share-feedback {
+  grid-column: 1 / -1;
+  min-height: 1.35em;
+  color: #245f44;
+  font-size: .82rem;
+  font-weight: 700;
+}
+.post-share-feedback.is-error {
+  color: #9f1239;
+}
+main.about-page .post-share {
+  background: rgba(255,255,255,.82);
+}
+
 .post-reactions {
   background: rgba(255,255,255,.88);
   border-top: 1px solid #e5eee8;
@@ -2255,10 +2331,10 @@ main.about-page .about-hero-lead {
   font-size: 1rem;
   text-shadow: 0 6px 20px rgba(0,0,0,.32);
 }
-main.about-page section:not(#home):not(#contact):not(.post-tags) {
+main.about-page section:not(#home):not(#contact):not(.post-tags):not(.post-share):not(.post-reactions) {
   background: transparent;
 }
-main.about-page section:nth-of-type(even):not(#home):not(#contact):not(.post-tags) {
+main.about-page section:nth-of-type(even):not(#home):not(#contact):not(.post-tags):not(.post-share):not(.post-reactions) {
   background: rgba(255,255,255,.7);
 }
 main.about-page .section-inner {
@@ -2837,6 +2913,16 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   main.about-page .hero-btns .btn-outline {
     width: min(100%, 320px);
     text-align: center;
+  }
+  .post-share-inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .post-share-actions {
+    justify-content: flex-start;
+  }
+  .post-share-btn {
+    width: min(100%, 320px);
   }
   main.tutoring-guide #home .section-title {
     max-width: 12.5em;

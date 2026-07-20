@@ -12,6 +12,25 @@
 {% endif %}
 
 {% if page.collection == "posts" %}
+  <section class="post-share" aria-label="글 공유">
+    <div
+      class="post-share-inner"
+      data-post-share
+      data-share-url="{{ page.canonical | default: page.url | absolute_url }}"
+      data-share-title="{{ page.title | escape }}"
+      data-share-text="{{ page.description | default: page.title | escape }}"
+    >
+      <div class="post-share-copy">
+        <p class="post-share-title">이 글이 도움이 됐다면 공유해 보세요</p>
+        <p class="post-share-desc">모바일에서는 공유 메뉴를 열고, 그 외 환경에서는 링크를 바로 복사해 드려요.</p>
+      </div>
+      <div class="post-share-actions">
+        <button type="button" class="post-share-btn" data-share-trigger>공유하기</button>
+      </div>
+      <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>
+    </div>
+  </section>
+
   <section class="post-reactions" aria-label="게시글 반응 남기기" data-post-reaction data-post-key="{{ page.url | default: page.permalink | default: page.slug }}" data-post-title="{{ page.title | escape }}">
     <div class="post-reactions-inner">
       <p class="post-reactions-title">이 글이 어떠셨나요?</p>
