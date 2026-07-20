@@ -1774,9 +1774,22 @@ main.about-page .post-tags {
   font-weight: 800;
 }
 .post-share-feedback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.post-share-feedback.is-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   flex-basis: 100%;
-  min-height: 1.35em;
-  margin-top: -.15rem;
+  margin-top: .1rem;
   color: #245f44;
   font-size: .82rem;
   font-weight: 700;
@@ -1799,12 +1812,6 @@ main.about-page .post-tags {
   font-weight: 800;
   color: #1f2937;
   line-height: 1.4;
-}
-.post-reactions-desc {
-  margin-top: .3rem;
-  color: #4b5563;
-  font-size: .84rem;
-  line-height: 1.55;
 }
 .post-reaction-toolbar {
   margin-top: .85rem;
@@ -1874,7 +1881,20 @@ main.about-page .post-tags {
   font-weight: 800;
 }
 .post-reactions-feedback {
-  min-height: 1.35em;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.post-reactions-feedback.is-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   margin-top: .62rem;
   color: #245f44;
   font-size: .82rem;
@@ -1882,11 +1902,6 @@ main.about-page .post-tags {
 }
 .post-reactions-feedback.is-error {
   color: #9f1239;
-}
-.post-reactions-note {
-  margin-top: .22rem;
-  color: #6b7280;
-  font-size: .76rem;
 }
 
 main.about-page .post-reactions {

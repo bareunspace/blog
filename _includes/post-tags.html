@@ -14,8 +14,7 @@
 {% if page.collection == "posts" %}
   <section class="post-reactions" aria-label="게시글 반응 남기기" data-post-reaction data-post-key="{{ page.url | default: page.permalink | default: page.slug }}" data-post-title="{{ page.title | escape }}">
     <div class="post-reactions-inner">
-      <p class="post-reactions-title">이 글이 어떠셨나요?</p>
-      <p class="post-reactions-desc">한 번만 선택할 수 있고, 다시 누르면 반응을 취소할 수 있어요.</p>
+      <p class="post-reactions-title">이 글 반응 남기기</p>
       <div class="post-reaction-toolbar">
         <div class="post-reaction-buttons" role="group" aria-label="게시글 반응 선택">
           <button type="button" class="post-reaction-btn" data-reaction-value="helpful" data-reaction-label="도움됐어요" aria-pressed="false">
@@ -51,7 +50,6 @@
       </div>
       <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>
       <p class="post-reactions-feedback" data-reaction-feedback aria-live="polite"></p>
-      <p class="post-reactions-note" data-reaction-note>반응 수를 불러오는 중이에요.</p>
     </div>
   </section>
 {% endif %}

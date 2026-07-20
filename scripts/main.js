@@ -181,7 +181,6 @@
 
       const buttons = Array.from(postReactionsRoot.querySelectorAll('[data-reaction-value]'));
       const feedback = postReactionsRoot.querySelector('[data-reaction-feedback]');
-      const note = postReactionsRoot.querySelector('[data-reaction-note]');
       const countNodes = Array.from(postReactionsRoot.querySelectorAll('[data-reaction-count]'));
       const postKey = postReactionsRoot.dataset.postKey || window.location.pathname;
       const postTitle = (postReactionsRoot.dataset.postTitle || document.title || '').trim();
@@ -240,14 +239,7 @@
 
         feedback.textContent = message || '';
         feedback.classList.toggle('is-error', kind === 'error');
-      };
-
-      const setNote = (message) => {
-        if (!note) {
-          return;
-        }
-
-        note.textContent = message || '';
+        feedback.classList.toggle('is-visible', Boolean(message) && kind === 'error');
       };
 
       const renderSelectedReaction = (reactionValue, message = '') => {
@@ -278,8 +270,6 @@
           node.textContent = String(countsByValue[reactionValue] || 0);
         });
 
-        const totalCount = Number(summary.total_count || 0);
-        setNote(totalCount > 0 ? `지금까지 ${totalCount}명이 반응을 남겼어요.` : '첫 반응을 남겨보세요.');
       };
 
       const setSubmitting = (isSubmitting) => {
@@ -297,7 +287,6 @@
 
       const syncReactionState = async () => {
         if (!fallbackClient) {
-          setNote('현재 브라우저에만 반응이 저장되고 있어요.');
           return;
         }
 
@@ -307,7 +296,6 @@
         });
 
         if (error) {
-          setNote('반응 수를 불러오지 못해 브라우저에만 저장할게요.');
           return;
         }
 
@@ -319,7 +307,6 @@
       };
 
       syncReactionState().catch(() => {
-        setNote('반응 수를 불러오지 못해 브라우저에만 저장할게요.');
       });
 
       buttons.forEach((button) => {
@@ -431,6 +418,7 @@
 
         feedback.textContent = message || '';
         feedback.classList.toggle('is-error', kind === 'error');
+        feedback.classList.toggle('is-visible', Boolean(message) && kind === 'error');
       };
 
       const copyShareUrl = async () => {
