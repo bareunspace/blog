@@ -1798,6 +1798,49 @@ main.about-page .post-tags {
   color: #9f1239;
 }
 
+.post-share-menu {
+  position: absolute;
+  top: calc(100% + .55rem);
+  right: 0;
+  z-index: 24;
+  display: grid;
+  gap: .36rem;
+  min-width: 12rem;
+  padding: .5rem;
+  border: 1px solid rgba(45,106,79,.14);
+  border-radius: 1rem;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 20px 44px rgba(24,45,35,.16);
+}
+
+.post-share-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 42px;
+  border: 0;
+  border-radius: .8rem;
+  background: rgba(240,246,242,.95);
+  color: #1f2937;
+  padding: .72rem .9rem;
+  font-size: .84rem;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.post-share-option:hover {
+  background: rgba(214,228,220,.78);
+  color: #144531;
+  transform: translateY(-1px);
+}
+
+.post-share-option:focus-visible {
+  outline: 2px solid rgba(45,106,79,.55);
+  outline-offset: 2px;
+}
+
 .post-reactions {
   background: rgba(255,255,255,.88);
   border-top: 1px solid #e5eee8;
@@ -1829,6 +1872,7 @@ main.about-page .post-tags {
   margin-left: auto;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .post-reaction-btn {
   display: inline-flex;
@@ -2931,6 +2975,11 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     align-items: stretch;
   }
   .post-share-btn {
+    width: min(100%, 320px);
+  }
+  .post-share-menu {
+    left: 0;
+    right: auto;
     width: min(100%, 320px);
   }
   main.tutoring-guide #home .section-title {
