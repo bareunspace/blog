@@ -6,8 +6,8 @@ home:
         href: "about.html"
   - label: 요금·예약
     href: "#about"
-  - label: 블로그
-    href: "#testimonials"
+  - label: Practical Guides
+    href: "#practical-guides"
   - label: 오시는 길
     href: "#contact"
 about:
