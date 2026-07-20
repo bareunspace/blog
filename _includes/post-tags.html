@@ -41,16 +41,11 @@
           data-share-title="{{ page.title | escape }}"
           data-share-text="{{ page.description | default: page.title | escape }}"
         >
-          <button type="button" class="post-share-btn" data-share-trigger aria-haspopup="menu" aria-expanded="false">
+          <button type="button" class="post-share-btn" data-share-trigger>
             <span class="post-share-emoji" aria-hidden="true">🔗</span>
             <span class="post-share-text">공유하기</span>
             <span class="post-share-count" data-share-count>0</span>
           </button>
-          <div class="post-share-menu" data-share-panel hidden>
-            <button type="button" class="post-share-option" data-share-action="copy">링크 복사</button>
-            <button type="button" class="post-share-option" data-share-action="sms" data-share-mobile-only>문자로 보내기</button>
-            <button type="button" class="post-share-option" data-share-action="email">이메일로 보내기</button>
-          </div>
         </div>
       </div>
       <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>

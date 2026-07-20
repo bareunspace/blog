@@ -392,9 +392,6 @@
       }
 
       const shareButton = postShareRoot.querySelector('[data-share-trigger]');
-      const sharePanel = postShareRoot.querySelector('[data-share-panel]');
-      const shareActionButtons = Array.from(postShareRoot.querySelectorAll('[data-share-action]'));
-      const mobileOnlyShareActions = Array.from(postShareRoot.querySelectorAll('[data-share-mobile-only]'));
       const feedback = postShareRoot.querySelector('[data-share-feedback]')
         || postShareRoot.closest('.post-reactions')?.querySelector('[data-share-feedback]');
       const countNode = postShareRoot.querySelector('[data-share-count]');
@@ -402,9 +399,6 @@
       const shareUrl = (postShareRoot.dataset.shareUrl || window.location.href || '').trim();
       const shareTitle = (postShareRoot.dataset.shareTitle || document.title || '').trim();
       const shareText = (postShareRoot.dataset.shareText || shareTitle || '').trim();
-      const shareMessage = [shareTitle, shareText !== shareTitle ? shareText : '', shareUrl]
-        .filter(Boolean)
-        .join('\n\n');
       const reactionConfig = parsePostReactionConfig();
       const supabaseUrl = (reactionConfig.supabaseUrl || '').trim();
       const supabaseAnonKey = (reactionConfig.supabaseAnonKey || '').trim();
@@ -412,18 +406,10 @@
       const canUseSupabase = hasSupabaseClient && Boolean(supabaseUrl) && Boolean(supabaseAnonKey);
       const shareClient = canUseSupabase ? window.supabase.createClient(supabaseUrl, supabaseAnonKey) : null;
       const visitorToken = createVisitorToken();
-      const coarsePointer = window.matchMedia && typeof window.matchMedia === 'function'
-        ? window.matchMedia('(pointer: coarse)').matches
-        : false;
-      const isLikelyMobile = coarsePointer || /Android|iPhone|iPad|iPod/i.test(window.navigator.userAgent || '');
 
       if (!shareButton || !shareUrl) {
         return;
       }
-
-      mobileOnlyShareActions.forEach((button) => {
-        button.hidden = !isLikelyMobile;
-      });
 
       const setShareFeedback = (message, kind = 'success') => {
         if (!feedback) {
@@ -434,19 +420,6 @@
         feedback.classList.toggle('is-error', kind === 'error');
         feedback.classList.toggle('is-visible', Boolean(message));
       };
-
-      const setSharePanelOpen = (isOpen) => {
-        if (!sharePanel) {
-          return false;
-        }
-
-        sharePanel.hidden = !isOpen;
-        shareButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        return isOpen;
-      };
-
-      const openSharePanel = () => setSharePanelOpen(true);
-      const closeSharePanel = () => setSharePanelOpen(false);
 
       const copyShareUrl = async () => {
         if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
@@ -530,23 +503,11 @@
         }));
       };
 
-      const openSmsComposer = () => {
-        const separator = /iPhone|iPad|iPod/i.test(window.navigator.userAgent || '') ? '&' : '?';
-        window.location.href = `sms:${separator}body=${encodeURIComponent(shareMessage)}`;
-      };
-
-      const openEmailComposer = () => {
-        const subject = encodeURIComponent(shareTitle || document.title || '바른자리 글 공유');
-        const body = encodeURIComponent(shareMessage);
-        window.location.href = `mailto:?subject=${subject}&body=${body}`;
-      };
-
       const getNativeShareVariants = () => {
         const candidates = [
           { title: shareTitle, text: shareText, url: shareUrl },
           { text: shareText, url: shareUrl },
           { title: shareTitle, url: shareUrl },
-          { text: shareMessage },
           { url: shareUrl }
         ];
 
@@ -626,56 +587,14 @@
       renderShareCount();
       syncShareState().catch(() => {});
 
-      shareActionButtons.forEach((button) => {
-        button.addEventListener('click', async () => {
-          const action = button.dataset.shareAction || '';
-          closeSharePanel();
-
-          try {
-            if (action === 'copy') {
-              await copyShareUrl();
-              setShareFeedback('이 글 링크를 복사했어요.');
-              trackShare('copy_link');
-              return;
-            }
-
-            if (action === 'sms') {
-              openSmsComposer();
-              setShareFeedback('문자 공유 화면을 열었어요.');
-              trackShare('sms_share');
-              return;
-            }
-
-            if (action === 'email') {
-              openEmailComposer();
-              setShareFeedback('이메일 공유 화면을 열었어요.');
-              trackShare('email_share');
-            }
-          } catch (error) {
-            setShareFeedback('공유 동작을 열지 못했어요. 잠시 후 다시 시도해 주세요.', 'error');
-          }
-        });
-      });
-
       shareButton.addEventListener('click', async () => {
-        if (sharePanel && !sharePanel.hidden) {
-          closeSharePanel();
-          return;
-        }
-
         shareButton.disabled = true;
         setShareFeedback('');
 
         try {
           if (await tryNativeShare()) {
-            closeSharePanel();
             setShareFeedback('공유 메뉴를 통해 글을 보냈어요.');
             trackShare('native_share');
-            return;
-          }
-
-          if (openSharePanel()) {
-            setShareFeedback('이 브라우저에서는 공유 옵션을 보여드렸어요.');
             return;
           }
 
@@ -684,13 +603,7 @@
           trackShare('copy_link');
         } catch (error) {
           if (error && error.name === 'AbortError') {
-            closeSharePanel();
             setShareFeedback('');
-            return;
-          }
-
-          if (openSharePanel()) {
-            setShareFeedback('공유 창 대신 사용할 수 있는 옵션을 열었어요.');
             return;
           }
 
@@ -704,26 +617,6 @@
         } finally {
           shareButton.disabled = false;
         }
-      });
-
-      document.addEventListener('click', (event) => {
-        if (!sharePanel || sharePanel.hidden) {
-          return;
-        }
-
-        if (postShareRoot.contains(event.target)) {
-          return;
-        }
-
-        closeSharePanel();
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key !== 'Escape' || !sharePanel || sharePanel.hidden) {
-          return;
-        }
-
-        closeSharePanel();
       });
     };
 
