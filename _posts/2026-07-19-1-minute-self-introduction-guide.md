@@ -273,25 +273,6 @@ script_version: 20260719-1
     </div>
   </section>
 
-  <section id="related-posts">
-    <div class="section-inner">
-      <h2 class="section-title">함께 읽어보면 좋은 글</h2>
-      <div class="related-posts-grid">
-        {% assign related_urls = "/posts/interview-prep-checklist/|/posts/interview-questions-to-ask/|/posts/hiring-manager-interview-red-flags-and-good-signals/" | split: "|" %}
-        {% for post in site.posts %}
-          {% if related_urls contains post.url %}
-            <article class="related-post-card">
-              <a href="{{ post.url | relative_url }}">
-                <p class="related-post-category">{{ post.category }}</p>
-                <h3 class="related-post-title">{{ post.title }}</h3>
-                <p class="related-post-desc">{{ post.description | truncate: 80 }}</p>
-              </a>
-            </article>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-  </section>
   {% include post-tags.html %}
 </main>
 
