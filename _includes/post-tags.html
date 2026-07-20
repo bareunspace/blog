@@ -1,27 +1,12 @@
-{% if page.tags or page.collection == "posts" %}
+{% if page.tags %}
   <section class="post-tags" aria-label="글 태그">
     <div class="post-tags-inner">
-      {% if page.tags %}
-        <p class="post-tags-label">관련 주제</p>
-        <div class="tags">
-          {% for tag in page.tags %}
-            <span class="tag">#{{ tag }}</span>
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {% if page.collection == "posts" %}
-        <div
-          class="post-share-inline"
-          data-post-share
-          data-share-url="{{ page.canonical | default: page.url | absolute_url }}"
-          data-share-title="{{ page.title | escape }}"
-          data-share-text="{{ page.description | default: page.title | escape }}"
-        >
-          <button type="button" class="post-share-btn" data-share-trigger>공유하기</button>
-        </div>
-        <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>
-      {% endif %}
+      <p class="post-tags-label">관련 주제</p>
+      <div class="tags">
+        {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+      </div>
     </div>
   </section>
 {% endif %}
@@ -31,23 +16,35 @@
     <div class="post-reactions-inner">
       <p class="post-reactions-title">이 글이 어떠셨나요?</p>
       <p class="post-reactions-desc">한 번만 선택할 수 있고, 다시 누르면 반응을 취소할 수 있어요.</p>
-      <div class="post-reaction-buttons" role="group" aria-label="게시글 반응 선택">
-        <button type="button" class="post-reaction-btn" data-reaction-value="helpful" data-reaction-label="도움됐어요" aria-pressed="false">
-          <span class="post-reaction-emoji" aria-hidden="true">👍</span>
-          <span class="post-reaction-text">도움됐어요</span>
-          <span class="post-reaction-count" data-reaction-count="helpful">0</span>
-        </button>
-        <button type="button" class="post-reaction-btn" data-reaction-value="like" data-reaction-label="좋아요" aria-pressed="false">
-          <span class="post-reaction-emoji" aria-hidden="true">❤️</span>
-          <span class="post-reaction-text">좋아요</span>
-          <span class="post-reaction-count" data-reaction-count="like">0</span>
-        </button>
-        <button type="button" class="post-reaction-btn" data-reaction-value="new" data-reaction-label="새로 알았어요" aria-pressed="false">
-          <span class="post-reaction-emoji" aria-hidden="true">💡</span>
-          <span class="post-reaction-text">새로 알았어요</span>
-          <span class="post-reaction-count" data-reaction-count="new">0</span>
-        </button>
+      <div class="post-reaction-toolbar">
+        <div class="post-reaction-buttons" role="group" aria-label="게시글 반응 선택">
+          <button type="button" class="post-reaction-btn" data-reaction-value="helpful" data-reaction-label="도움됐어요" aria-pressed="false">
+            <span class="post-reaction-emoji" aria-hidden="true">👍</span>
+            <span class="post-reaction-text">도움됐어요</span>
+            <span class="post-reaction-count" data-reaction-count="helpful">0</span>
+          </button>
+          <button type="button" class="post-reaction-btn" data-reaction-value="like" data-reaction-label="좋아요" aria-pressed="false">
+            <span class="post-reaction-emoji" aria-hidden="true">❤️</span>
+            <span class="post-reaction-text">좋아요</span>
+            <span class="post-reaction-count" data-reaction-count="like">0</span>
+          </button>
+          <button type="button" class="post-reaction-btn" data-reaction-value="new" data-reaction-label="새로 알았어요" aria-pressed="false">
+            <span class="post-reaction-emoji" aria-hidden="true">💡</span>
+            <span class="post-reaction-text">새로 알았어요</span>
+            <span class="post-reaction-count" data-reaction-count="new">0</span>
+          </button>
+        </div>
+        <div
+          class="post-share-inline"
+          data-post-share
+          data-share-url="{{ page.canonical | default: page.url | absolute_url }}"
+          data-share-title="{{ page.title | escape }}"
+          data-share-text="{{ page.description | default: page.title | escape }}"
+        >
+          <button type="button" class="post-share-btn" data-share-trigger>공유하기</button>
+        </div>
       </div>
+      <p class="post-share-feedback" data-share-feedback aria-live="polite"></p>
       <p class="post-reactions-feedback" data-reaction-feedback aria-live="polite"></p>
       <p class="post-reactions-note" data-reaction-note>반응 수를 불러오는 중이에요.</p>
     </div>

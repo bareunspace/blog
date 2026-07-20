@@ -1727,11 +1727,6 @@ main.about-page .post-tags {
   padding: 1.25rem 1.5rem;
 }
 
-.post-share-inline {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
 .post-share-btn {
   display: inline-flex;
   align-items: center;
@@ -1794,11 +1789,22 @@ main.about-page .post-tags {
   font-size: .84rem;
   line-height: 1.55;
 }
-.post-reaction-buttons {
+.post-reaction-toolbar {
   margin-top: .85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem 1rem;
+  flex-wrap: wrap;
+}
+.post-reaction-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: .62rem;
+}
+.post-share-inline {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 .post-reaction-btn {
   display: inline-flex;
@@ -2888,6 +2894,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     margin-left: 0;
     width: 100%;
     justify-content: flex-start;
+  }
+  .post-reaction-toolbar {
+    align-items: stretch;
   }
   .post-share-btn {
     width: min(100%, 320px);
