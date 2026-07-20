@@ -130,6 +130,49 @@
       }
     };
 
+    const parsePostReactionConfig = () => {
+      const configNode = document.getElementById('postReactionConfig');
+      if (!configNode) {
+        return {};
+      }
+
+      try {
+        return JSON.parse(configNode.textContent || '{}');
+      } catch (error) {
+        return {};
+      }
+    };
+
+    const createVisitorToken = () => {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+
+      if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+        const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+        bytes[6] = (bytes[6] & 0x0f) | 0x40;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+        const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0'));
+        return [
+          hex.slice(0, 4).join(''),
+          hex.slice(4, 6).join(''),
+          hex.slice(6, 8).join(''),
+          hex.slice(8, 10).join(''),
+          hex.slice(10, 16).join('')
+        ].join('-');
+      }
+
+      const seed = `${Date.now()}-${Math.random().toString(16).slice(2).padEnd(16, '0')}`;
+      const compact = seed.replace(/[^a-f0-9]/gi, '').toLowerCase().padEnd(32, '0').slice(0, 32);
+      return [
+        compact.slice(0, 8),
+        compact.slice(8, 12),
+        `4${compact.slice(13, 16)}`,
+        `8${compact.slice(17, 20)}`,
+        compact.slice(20, 32)
+      ].join('-');
+    };
+
     const setupPostReactions = () => {
       if (!postReactionsRoot) {
         return;
@@ -137,8 +180,17 @@
 
       const buttons = Array.from(postReactionsRoot.querySelectorAll('[data-reaction-value]'));
       const feedback = postReactionsRoot.querySelector('[data-reaction-feedback]');
+      const note = postReactionsRoot.querySelector('[data-reaction-note]');
+      const countNodes = Array.from(postReactionsRoot.querySelectorAll('[data-reaction-count]'));
       const postKey = postReactionsRoot.dataset.postKey || window.location.pathname;
+      const postTitle = (postReactionsRoot.dataset.postTitle || document.title || '').trim();
       const storageKey = `bareunjari-post-reaction:${postKey}`;
+      const visitorTokenStorageKey = 'bareunjari-post-reaction-visitor-token';
+      const reactionConfig = parsePostReactionConfig();
+      const supabaseUrl = (reactionConfig.supabaseUrl || '').trim();
+      const supabaseAnonKey = (reactionConfig.supabaseAnonKey || '').trim();
+      const hasSupabaseClient = Boolean(window.supabase && typeof window.supabase.createClient === 'function');
+      const canUseSupabase = hasSupabaseClient && Boolean(supabaseUrl) && Boolean(supabaseAnonKey);
 
       const readSelectedReaction = () => {
         try {
@@ -160,48 +212,188 @@
         }
       };
 
+      const readVisitorToken = () => {
+        try {
+          const savedToken = localStorage.getItem(visitorTokenStorageKey);
+          if (savedToken) {
+            return savedToken;
+          }
+
+          const nextToken = createVisitorToken();
+          localStorage.setItem(visitorTokenStorageKey, nextToken);
+          return nextToken;
+        } catch (error) {
+          return createVisitorToken();
+        }
+      };
+
       const getReactionLabel = (reactionValue) => {
         const target = buttons.find((button) => button.dataset.reactionValue === reactionValue);
         return target ? (target.dataset.reactionLabel || '').trim() : '';
       };
 
-      const renderSelectedReaction = (reactionValue) => {
+      const setFeedback = (message, kind = 'success') => {
+        if (!feedback) {
+          return;
+        }
+
+        feedback.textContent = message || '';
+        feedback.classList.toggle('is-error', kind === 'error');
+      };
+
+      const setNote = (message) => {
+        if (!note) {
+          return;
+        }
+
+        note.textContent = message || '';
+      };
+
+      const renderSelectedReaction = (reactionValue, message = '') => {
         buttons.forEach((button) => {
           const isActive = button.dataset.reactionValue === reactionValue;
           button.classList.toggle('is-active', isActive);
           button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
 
-        if (!feedback) {
+        if (message) {
+          setFeedback(message);
           return;
         }
 
         const label = getReactionLabel(reactionValue);
-        feedback.textContent = label ? `${label} 반응이 저장됐어요.` : '';
+        setFeedback(label ? `${label} 반응이 저장됐어요.` : '');
+      };
+
+      const renderCounts = (summary = {}) => {
+        const countsByValue = {
+          helpful: Number(summary.helpful_count || 0),
+          like: Number(summary.like_count || 0),
+          new: Number(summary.new_count || 0)
+        };
+
+        countNodes.forEach((node) => {
+          const reactionValue = node.dataset.reactionCount || '';
+          node.textContent = String(countsByValue[reactionValue] || 0);
+        });
+
+        const totalCount = Number(summary.total_count || 0);
+        setNote(totalCount > 0 ? `지금까지 ${totalCount}명이 반응을 남겼어요.` : '첫 반응을 남겨보세요.');
+      };
+
+      const setSubmitting = (isSubmitting) => {
+        postReactionsRoot.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+        buttons.forEach((button) => {
+          button.disabled = isSubmitting;
+        });
       };
 
       let selectedReaction = readSelectedReaction();
+      const visitorToken = readVisitorToken();
+      const fallbackClient = canUseSupabase ? window.supabase.createClient(supabaseUrl, supabaseAnonKey) : null;
       renderSelectedReaction(selectedReaction);
+      renderCounts();
+
+      const syncReactionState = async () => {
+        if (!fallbackClient) {
+          setNote('현재 브라우저에만 반응이 저장되고 있어요.');
+          return;
+        }
+
+        const { data, error } = await fallbackClient.rpc('get_post_reaction_state', {
+          p_post_key: postKey,
+          p_visitor_token: visitorToken
+        });
+
+        if (error) {
+          setNote('반응 수를 불러오지 못해 브라우저에만 저장할게요.');
+          return;
+        }
+
+        const summary = Array.isArray(data) ? data[0] : data;
+        selectedReaction = (summary?.selected_reaction || '').trim();
+        saveSelectedReaction(selectedReaction);
+        renderSelectedReaction(selectedReaction);
+        renderCounts(summary || {});
+      };
+
+      syncReactionState().catch(() => {
+        setNote('반응 수를 불러오지 못해 브라우저에만 저장할게요.');
+      });
 
       buttons.forEach((button) => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
           const nextReaction = button.dataset.reactionValue || '';
           const isCancelAction = selectedReaction === nextReaction;
+          const targetReaction = isCancelAction ? '' : nextReaction;
 
-          selectedReaction = isCancelAction ? '' : nextReaction;
+          if (!fallbackClient) {
+            selectedReaction = targetReaction;
+            saveSelectedReaction(selectedReaction);
+            renderSelectedReaction(selectedReaction);
+
+            trackEvent('select_post_reaction', withBranchContext({
+              page_path: window.location.pathname,
+              reaction: nextReaction,
+              action: isCancelAction ? 'remove' : 'select'
+            }));
+            trackMetaEvent('select_post_reaction', withBranchContext({
+              page_path: window.location.pathname,
+              reaction: nextReaction,
+              action: isCancelAction ? 'remove' : 'select'
+            }));
+            return;
+          }
+
+          const previousReaction = selectedReaction;
+          const pendingLabel = isCancelAction ? '반응을 취소하는 중이에요.' : `${getReactionLabel(targetReaction)} 반응을 저장하는 중이에요.`;
+
+          selectedReaction = targetReaction;
+          renderSelectedReaction(selectedReaction, pendingLabel);
           saveSelectedReaction(selectedReaction);
-          renderSelectedReaction(selectedReaction);
+          setSubmitting(true);
 
-          trackEvent('select_post_reaction', withBranchContext({
-            page_path: window.location.pathname,
-            reaction: nextReaction,
-            action: isCancelAction ? 'remove' : 'select'
-          }));
-          trackMetaEvent('select_post_reaction', withBranchContext({
-            page_path: window.location.pathname,
-            reaction: nextReaction,
-            action: isCancelAction ? 'remove' : 'select'
-          }));
+          try {
+            const { data, error } = await fallbackClient.rpc('submit_post_reaction', {
+              p_post_key: postKey,
+              p_reaction_value: targetReaction || null,
+              p_visitor_token: visitorToken,
+              p_page_path: window.location.pathname,
+              p_page_title: postTitle,
+              p_branch_slug: branchContext.slug
+            });
+
+            if (error) {
+              throw error;
+            }
+
+            const summary = Array.isArray(data) ? data[0] : data;
+            selectedReaction = (summary?.selected_reaction || '').trim();
+            saveSelectedReaction(selectedReaction);
+            renderSelectedReaction(
+              selectedReaction,
+              selectedReaction ? `${getReactionLabel(selectedReaction)} 반응이 저장됐어요.` : '반응이 취소됐어요.'
+            );
+            renderCounts(summary || {});
+
+            trackEvent('select_post_reaction', withBranchContext({
+              page_path: window.location.pathname,
+              reaction: nextReaction,
+              action: isCancelAction ? 'remove' : 'select'
+            }));
+            trackMetaEvent('select_post_reaction', withBranchContext({
+              page_path: window.location.pathname,
+              reaction: nextReaction,
+              action: isCancelAction ? 'remove' : 'select'
+            }));
+          } catch (error) {
+            selectedReaction = previousReaction;
+            saveSelectedReaction(selectedReaction);
+            renderSelectedReaction(selectedReaction);
+            setFeedback('반응 저장에 실패했어요. 잠시 후 다시 시도해 주세요.', 'error');
+          } finally {
+            setSubmitting(false);
+          }
         });
       });
     };
