@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 부천 미팅룸 추천 | 신중동역 1분, 소규모 회의·고객 미팅 공간
-description: 부천에서 조용한 미팅룸을 찾고 계신가요? 신중동역 도보 1분, 소규모 회의, 고객 미팅, 화상회의, 협업에 적합한 프라이빗 공간 바른자리를 소개합니다.
+title: 부천 조용한 미팅룸 예약 | 신중동역 1분 바른자리
+description: 고객 미팅, 소규모 회의, 화상회의를 위한 조용한 공간이 필요하신가요? 신중동역 1분 프라이빗 미팅룸 바른자리를 예약해 보세요.
 category: 미팅·상담
 keywords: 부천미팅룸,신중동미팅룸,부천회의실,부천소규모회의실,부천고객미팅,부천화상회의,부천공간대여
 tags:
@@ -24,12 +24,12 @@ script_version: 20260711-4
 <main class="about-page">
   <section id="home">
     <div class="section-inner">
-      <p class="section-label">Meeting Room Guide</p>
-      <h1 class="section-title">부천 미팅룸 추천<br />중요한 미팅일수록 공간이 중요합니다</h1>
-      <p class="section-desc">카페는 다소 시끄럽고, 대형 회의실은 조금 부담스럽게 느껴질 때가 있습니다. 신중동역 도보 1분 바른자리는 고객 미팅, 소규모 회의, 상담, 화상회의를 조금 더 차분한 분위기에서 진행하고 싶은 분들에게 잘 맞는 프라이빗 공간입니다.</p>
+      <p class="section-label">Private Meeting Room</p>
+      <h1 class="section-title">부천에서 조용한 미팅룸이 필요하다면<br />신중동역 1분 바른자리</h1>
+      <p class="section-desc">카페는 다소 시끄럽고, 대형 회의실은 조금 부담스럽게 느껴질 때가 있습니다. 바른자리는 고객 미팅, 소규모 회의, 상담, 화상회의를 조금 더 차분한 분위기에서 진행하고 싶은 분들을 위한 프라이빗 공간입니다.</p>
       <div class="hero-btns">
-        <a href="#why-meeting-room" class="btn-primary">미팅룸이 필요한 이유 보기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">예약 페이지 바로가기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
+        <a href="#why-meeting-room" class="btn-outline">공간이 잘 맞는지 보기</a>
       </div>
     </div>
   </section>
@@ -46,7 +46,7 @@ script_version: 20260711-4
 
   <nav class="guide-toc" aria-label="부천 미팅룸 가이드 목차">
     <div class="guide-toc-inner">
-      <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      <span class="guide-toc-label">예약 전에 확인해 보세요</span>
       <a href="#why-meeting-room">왜 미팅룸이 필요한가</a>
       <a href="#who-uses-it">어떤 분께 잘 맞는가</a>
       <a href="#why-bareunjari">바른자리 차별점</a>

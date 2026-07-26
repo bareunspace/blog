@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 집 밖에서 집중해서 공부할 공간이 필요할 때, 스터디 공간 선택 가이드
-description: 집에서 집중하기 어려울 때 이용할 수 있는 카페, 스터디카페와 독립 공간의 차이 및 스터디 공간 선택 기준을 정리했습니다.
+title: 집중해서 공부할 조용한 스터디 공간 | 신중동역 1분 바른자리
+description: 집이나 카페 대신, 혼자 공부하거나 그룹 스터디하기 좋은 조용한 공간이 필요하신가요? 신중동역 1분 바른자리를 예약해 보세요.
 category: 스터디 공간
 keywords: 부천스터디룸,신중동스터디룸,스터디공간대여,그룹스터디룸,개인스터디룸
 tags:
@@ -13,7 +13,7 @@ canonical: https://bareunjari.com/posts/study-space-guide/
 permalink: /posts/study-space-guide/
 date: 2026-07-13 00:01:00 +0000
 og_image: https://bareunjari.com/images/14.jpeg
-og_image_alt: 집중해서 공부하거나 그룹 스터디에 적합한 테이블이 놓인 바른자리 공간
+og_image_alt: 집중 공부와 그룹 스터디에 어울리는 조용한 예약 공간
 og_image_width: 2200
 og_image_height: 1650
 preload_image: images/14.webp
@@ -24,16 +24,16 @@ script_version: 20260711-4
 <main class="about-page tutoring-guide">
   <section id="home">
     <div class="section-inner">
-      <p class="section-label">Study Space Guide</p>
-      <h1 class="section-title">집 밖에서 집중해서 공부할 공간이 필요할 때,<br />스터디 공간 선택 가이드</h1>
-      <p class="section-desc">집에서 집중하기 어려운 경우, 어떤 장소를 선택하면 좋을지 현실적인 기준으로 정리했습니다.</p>
+      <p class="section-label">Private Study Space</p>
+      <h1 class="section-title">집 말고 집중해서 공부할 공간이 필요하다면<br />신중동역 1분 바른자리</h1>
+      <p class="section-desc">집에서는 쉽게 흐트러지고 카페는 소음이 신경 쓰인다면, 공부와 그룹 스터디에 맞는 조용한 공간이 필요할 수 있습니다. 필요한 시간만 예약해서 더 안정적으로 집중해 보세요.</p>
       <div class="guide-hero-meta" aria-label="가이드 핵심 내용">
         <span>장소 6종 비교</span>
         <span>선택 기준 6가지</span>
         <span>첫 이용 체크</span>
       </div>
       <div class="hero-btns">
-        <a href="#place-comparison" class="btn-primary">장소 유형 비교하기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">스터디 공간 예약하기</a>
         <a href="/index.html#gallery" class="btn-outline">실제 공간 사진 보기</a>
       </div>
     </div>
@@ -42,7 +42,7 @@ script_version: 20260711-4
 
   <nav class="guide-toc" aria-label="스터디 공간 가이드 목차">
     <div class="guide-toc-inner">
-      <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      <span class="guide-toc-label">예약 전에 확인해 보세요</span>
       <a href="#place-comparison">장소 비교</a>
       <a href="#selection-criteria">선택 기준</a>
       <a href="#first-class">첫 이용</a>

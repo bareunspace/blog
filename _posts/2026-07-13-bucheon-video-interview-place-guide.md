@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 부천 화상면접 장소 고르는 기준 7가지
-description: 집, 카페, 스터디카페, 공간대여 중 화상면접에 적합한 장소를 비교하고 소음·배경·조명·인터넷을 점검하는 방법을 안내합니다.
+title: 부천 화상면접 보기 좋은 조용한 공간 | 신중동역 1분 바른자리
+description: 집과 카페 대신, 화상면접에 집중할 수 있는 조용한 공간이 필요하신가요? 신중동역 1분 프라이빗 공간 바른자리를 예약해 보세요.
 category: 면접준비
 keywords: 부천화상면접장소,화상면접공간,신중동공간대여,온라인면접장소
 tags:
@@ -12,7 +12,7 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-video-interview-place-guide/
 permalink: /posts/bucheon-video-interview-place-guide/
 og_image: https://bareunjari.com/images/posts/bucheon-video-interview-place-guide/hero.jpg
-og_image_alt: 노트북과 조명이 준비된 조용한 화상면접 프라이빗룸
+og_image_alt: 화상면접에 집중하기 좋은 조용한 프라이빗 예약 공간
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/posts/bucheon-video-interview-place-guide/hero.jpg
@@ -23,12 +23,12 @@ script_version: 20260711-4
 <main class="about-page">
   <section id="home">
     <div class="section-inner">
-      <p class="section-label">Video Interview Guide</p>
-      <h1 class="section-title">부천 화상면접 장소 고르는 기준 7가지</h1>
-      <p class="section-desc">집, 카페, 스터디카페, 공간대여 중 어디에서 화상면접을 봐야 할지 고민된다면 소음·배경·조명·인터넷부터 비교해 보세요.</p>
+      <p class="section-label">Private Video Interview Room</p>
+      <h1 class="section-title">부천에서 화상면접 볼 조용한 공간<br />찾고 계신가요?</h1>
+      <p class="section-desc">집은 생활 소음이 걱정되고, 카페는 배경과 시선이 부담스럽다면 화상면접에 맞는 프라이빗 공간이 필요할 수 있습니다. 신중동역 도보 1분 바른자리에서 조금 더 차분하게 면접에 집중해 보세요.</p>
       <div class="hero-btns">
-        <a href="/index.html#space" class="btn-primary">화상면접 공간 사진 보기</a>
-        <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">화상면접 공간 예약하기</a>
+        <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
       </div>
     </div>
   </section>
