@@ -117,10 +117,10 @@ script_version: 20260719-1
             <article class="private-office-card" aria-label="화상면접 관련 블로그 글">
               <h3><a href="{{ '/interview/' | relative_url }}">면접준비 블로그</a></h3>
               {% assign interview_category_posts = site.posts | where: "category", "면접준비" %}
-              {% assign video_meeting_title_posts = site.posts | where_exp: "item", "item.title contains '화상면접' or item.title contains '온라인회의' or item.title contains 'AI 면접' or item.title contains 'PT'" %}
-              {% assign video_meeting_description_posts = site.posts | where_exp: "item", "item.description contains '화상면접' or item.description contains '온라인회의' or item.description contains 'AI 면접' or item.description contains 'PT'" %}
-              {% assign video_meeting_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '화상면접' or item.keywords contains '온라인회의' or item.keywords contains 'AI면접' or item.keywords contains 'PT'" %}
-              {% assign interview_posts = interview_category_posts | concat: video_meeting_title_posts | concat: video_meeting_description_posts | concat: video_meeting_keyword_posts | uniq | where_exp: "item", "item.url != '/posts/practice-speaking-space/'" %}
+              {% assign video_meeting_title_posts = site.posts | where_exp: "item", "item.title contains '화상면접' or item.title contains '온라인회의' or item.title contains 'AI 면접' or item.title contains '온라인 PT' or item.title contains 'PT 면접'" %}
+              {% assign video_meeting_description_posts = site.posts | where_exp: "item", "item.description contains '화상면접' or item.description contains '온라인회의' or item.description contains 'AI 면접' or item.description contains '온라인 PT' or item.description contains 'PT 면접'" %}
+              {% assign video_meeting_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '화상면접' or item.keywords contains '온라인회의' or item.keywords contains 'AI면접' or item.keywords contains '온라인PT' or item.keywords contains 'PT면접'" %}
+              {% assign interview_posts = interview_category_posts | concat: video_meeting_title_posts | concat: video_meeting_description_posts | concat: video_meeting_keyword_posts | uniq %}
               {% if interview_posts.size > 0 %}
                 <ul class="related-post-list">
                   {% for post in interview_posts limit: 5 %}
