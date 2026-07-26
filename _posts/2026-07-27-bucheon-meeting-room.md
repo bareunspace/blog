@@ -21,204 +21,193 @@ css_version: 20260726-1
 script_version: 20260711-4
 ---
 
-# 중요한 미팅은 '공간'으로 결정된다
-
-![부천 신중동역 인근 소규모 회의와 고객 미팅에 어울리는 프라이빗 미팅룸](/images/bucheon-meeting-room.webp)
-
-카페에서 고객을 만날 때, 옆 테이블 소음 때문에 계약 내용을 반복 설명한 경험이 있나요?
-
-회의실을 예약하려니 최소 계약 기간이 길고 비용이 부담스러웠던 적은요?
-
-**회의는 내용도 중요하지만, 어디서 하는지가 생각보다 중요합니다.**
-
-신뢰감 있는 공간은 고객의 신뢰를 높이고, 조용한 환경은 회의 집중도를 배 이상으로 높입니다. 특히 처음 만나는 고객과의 미팅이라면 더욱 그렇습니다.
-
-**바른자리는 이런 고민을 해결하기 위해 만들어진 공간입니다.**
-
----
-
-## 바른자리가 해결해주는 문제들
-
-### 카페 미팅의 현실
-
-- 시끄러운 음악과 주변 소음으로 중요한 대화를 놓침
-- 자료를 넓게 펼치기 어려운 테이블 크기
-- 민감한 정보를 나누기 불편한 개방 공간
-- 고객에게 전문성 있는 첫인상 주기 어려움
-
-### 대형 회의실의 문제점
-
-- 높은 임차료와 긴 최소 계약 기간
-- 2-3명 미팅에는 과도한 공간
-- 고정 비용 부담으로 인한 경제성 악화
-
-### 바른자리의 해결책
-
-- **프라이빗하고 조용한 독립 공간**: 중요한 대화에 집중
-- **필요한 시간만 예약**: 고정 비용 없이 필요할 때만 사용
-- **전문적인 환경**: 고객에게 좋은 첫인상
-- **신중동역 도보 1분**: 접근성 최고
-
----
-
-## 어떤 분들이 바른자리를 사용할까요?
-
-### 팀 리더 & 스타트업 대표
-
-**회의 집중도가 결과를 결정합니다**
-
-카페는 방해 요소가 많아서 중요한 의사결정이 번번이 연기됩니다. 바른자리에서는 방해 없이 팀과 집중된 논의를 할 수 있습니다. 정기적으로 이용하는 팀의 경우 예약 할인을 받을 수 있습니다.
-
-- 팀 회의, 기획 미팅, 분기별 전략 회의
-
-### 거래처 및 고객 상담
-
-**공간이 신뢰감을 만듭니다**
-
-처음 만나는 클라이언트와의 미팅에서 공간은 당신의 전문성을 보여주는 첫번째 신호입니다. 정돈된 미팅룸에서 진행하는 상담은 카페 미팅과는 다른 신뢰감을 줍니다. 특히 높은 금액의 계약이나 중요한 협의가 필요할 때 더욱 그렇습니다.
-
-- 계약 상담, 제안 미팅, 거래처 미팅, 신규 고객 면담
-
-### 프리랜서 & 1인 사업자
-
-**고객 신뢰도 = 재계약율**
-
-홈오피스에서는 고객을 초대하기 어렵고, 카페는 전문성이 떨어집니다. 바른자리를 고객 미팅 장소로 사용하는 프리랜서들은 재계약율이 높다고 합니다. 시간 단위 예약으로 비용 부담도 적습니다.
-
-- 클라이언트 미팅, 협업 회의, 프로젝트 킥오프
-
-### 상담사 & 코치
-
-**정기 고객과의 신뢰 관계**
-
-상담, 코칭, 컨설팅은 환경이 결과를 크게 좌우합니다. 고객이 편안하고 안전하다고 느끼는 공간에서 진행하는 상담은 효과가 훨씬 높습니다. 정기 예약으로 고객과 지속적인 관계를 형성할 수 있습니다.
-
-- 진로/취업 상담, 유학 상담, 진학 지도, 코칭 세션
-
-### 원격 근무자 & 화상회의
-
-**가정용 배경과는 다른 전문성**
-
-화상회의 때 배경이 중요하다는 것을 아실 겁니다. 정돈된 미팅룸 배경은 전문적인 인상을 주고, 안정적인 인터넷으로 끊김 없는 회의를 진행할 수 있습니다.
-
-- 온라인 면접, 중요한 원격 회의, 국제 화상 미팅
-
-### 준비가 필요한 분들
-
-**실전과 같은 환경에서 연습**
-
-발표나 면접을 성공시키려면 실제 환경과 비슷한 곳에서 연습하는 것이 중요합니다. 집이나 학교 교실과는 다른 미팅룸 환경에서 리허설하면 본 무대에서의 긴장감을 크게 줄일 수 있습니다.
-
-- 발표 연습, 면접 준비, 프레젠테이션 리허설
-
----
-
-## 바른자리의 차별점
-
-### 접근성: 신중동역 도보 1분
-
-부천역이나 송내역보다 한 역 가깝습니다. 서울에서도 자동차로 20분대(신중동역 경유)로 접근 가능하며, 지역 고객들은 도보로 5분 이내 이동할 수 있습니다.
-
-### 프라이빗: 독립된 미팅룸
-
-공유 오피스 같은 외부인 왕래가 많지 않은 독립된 공간입니다. 민감한 정보 논의나 중요한 고객 상담에 집중할 수 있습니다.
-
-### 기술 환경: Wi-Fi + 유선 인터넷
-
-두 가지 인터넷을 동시에 지원하므로 화상회의나 자료 공유 시 끊김이 거의 없습니다. 멀티탭도 충분히 준비되어 있습니다.
-
-### 편의시설: 미팅에만 집중하도록
-
-- 넓은 회의 테이블 (자료 펼치기 최적)
-- 편안한 회의용 의자
-- 소파 (휴식 및 편의용)
-- 커피머신 (제공)
-- 프린터 (필요시)
-
-### 가격: 고정비 없이 필요한 만큼
-
-2시간 단위로 예약할 수 있으며, 정기 이용 고객에게는 할인을 제공합니다. 대형 회의실처럼 최소 계약 기간이 없습니다.
-
----
-
-## 실제 사용 사례
-
-### Case 1. 초기 투자 유치 미팅
-
-*스타트업 대표 A님*
-
-"처음엔 카페에서 투자자 미팅을 했는데, 너무 소음이 많아서 자료를 크게 설명하느라 고민했어요. 바른자리에서 만났을 때는 차이가 확실했습니다. 투자자가 편안한 분위기에서 제 제안에 집중해줬거든요."
-
-### Case 2. 정기 코칭 세션
-
-*커리어 코치 B님*
-
-"카페는 코칭 클라이언트들이 편해하지 않았어요. 바른자리로 바꾼 후로 고객들이 더 편하게 자신의 고민을 나눠주는 것 같습니다. 정기 예약 할인도 있어서 비용 효율적입니다."
-
-### Case 3. 중요한 고객 계약
-
-*IT 프리랜서 C님*
-
-"처음 만나는 대형 고객사와의 미팅을 바른자리에서 진행했어요. 홈오피스보다 훨씬 전문적으로 보였고, 고객도 만족했습니다. 재계약 확률이 훨씬 높아졌습니다."
-
----
-
-## 최대 6명, 2시간 단위로 예약
-
-| 항목 | 설명 |
-|------|------|
-| 수용 인원 | 최대 6명 |
-| 예약 단위 | 2시간 |
-| 위치 | 신중동역 도보 1분 |
-| 인터넷 | Wi-Fi + 유선 (병행 가능) |
-| 편의시설 | 커피머신, 넓은 테이블, 소파, 멀티탭 |
-| 정기 이용 | 할인 가능 |
-
----
-
-## 자주 묻는 질문
-
-**Q. 실제 가격은 얼마인가요?**
-
-예약 페이지에서 시간과 날짜를 선택하면 정확한 가격을 확인할 수 있습니다. 2시간 단위로 예약 가능하며, 정기 이용 시 10% 할인이 적용됩니다.
-
-**Q. 당일 예약도 가능한가요?**
-
-가능합니다. 예약 페이지에서 빈 시간을 확인 후 바로 예약할 수 있습니다. 다만 성수기에는 미리 예약하시는 것을 추천합니다.
-
-**Q. 7명 이상도 가능한가요?**
-
-기본 수용 인원은 6명이며, 특별한 경우 별도 문의 후 가능할 수 있습니다. 연락 주시기 바랍니다.
-
-**Q. 화상회의 중 카메라 각도나 배경은 괜찮을까요?**
-
-네. 회의 테이블을 배경으로 화상회의를 진행하면 전문적인 인상을 줍니다. 밝기와 카메라 위치도 회의에 최적화되어 있습니다.
-
-**Q. 취소나 변경은 어떻게 하나요?**
-
-예약 페이지에서 직접 변경/취소 가능하며, 문의가 있으면 연락주시면 됩니다.
-
----
-
-## 이제 카페에서 중요한 미팅을 하지 마세요
-
-**고객과의 첫 미팅, 중요한 계약, 전략적 회의.**
-
-이런 순간에는 공간이 정말 중요합니다.
-
-카페의 소음, 개방감, 불안정성은 당신의 메시지를 제대로 전달하지 못하게 합니다. 반대로 정돈된 프라이빗 공간에서의 미팅은 고객에게 신뢰감을 주고, 당신의 전문성을 보여줍니다.
-
-바른자리는 **신중동역 도보 1분**이라는 최고의 접근성 속에서 이런 모든 것을 가능하게 합니다.
-
-**이번 달 새로운 고객과의 첫 미팅, 바른자리에서 하면 어떨까요?**
-
----
-
-## 예약하기
-
-👉 **[바른자리 예약 페이지](https://bareunjari.com/)**
-
-**바른자리**  
-*나만의 시간을 예약하세요.*
-
-신중동역 도보 1분 | 프라이빗 미팅룸 | 필요한 시간만 예약
+<main class="about-page">
+  <section id="home">
+    <div class="section-inner">
+      <p class="section-label">Meeting Room Guide</p>
+      <h1 class="section-title">부천 미팅룸 추천<br />중요한 미팅일수록 공간이 중요합니다</h1>
+      <p class="section-desc">카페는 시끄럽고, 대형 회의실은 부담스러울 때가 있습니다. 신중동역 도보 1분 바른자리는 고객 미팅, 소규모 회의, 상담, 화상회의를 조금 더 집중도 있게 진행하고 싶은 분들에게 잘 맞는 프라이빗 공간입니다.</p>
+      <div class="hero-btns">
+        <a href="#why-meeting-room" class="btn-primary">미팅룸이 필요한 이유 보기</a>
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">예약 페이지 바로가기</a>
+      </div>
+    </div>
+  </section>
+  {% include breadcrumb.html %}
+
+  <section id="guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/bucheon-meeting-room.webp" alt="부천 신중동역 인근 소규모 회의와 고객 미팅에 어울리는 프라이빗 미팅룸" loading="eager" width="1672" height="941" />
+        <figcaption>조용한 독립 공간은 중요한 대화의 집중도와 첫인상을 함께 바꿉니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <nav class="guide-toc" aria-label="부천 미팅룸 가이드 목차">
+    <div class="guide-toc-inner">
+      <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      <a href="#why-meeting-room">왜 미팅룸이 필요한가</a>
+      <a href="#who-uses-it">어떤 분께 잘 맞는가</a>
+      <a href="#why-bareunjari">바른자리 차별점</a>
+      <a href="#use-cases">실제 사용 예시</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <section class="guide-summary-section" aria-label="미팅룸 핵심 요약">
+    <div class="section-inner guide-summary-grid">
+      <article class="guide-summary-card">
+        <span>01</span>
+        <h2>카페보다 조용하게</h2>
+        <p>주변 소음과 시선 부담을 줄여 중요한 설명과 의사결정에 더 집중할 수 있습니다.</p>
+      </article>
+      <article class="guide-summary-card">
+        <span>02</span>
+        <h2>필요한 시간만 예약</h2>
+        <p>대형 회의실처럼 긴 계약 없이, 필요한 시간대에만 예약해 비용 부담을 줄일 수 있습니다.</p>
+      </article>
+      <article class="guide-summary-card">
+        <span>03</span>
+        <h2>첫인상까지 정돈되게</h2>
+        <p>고객 상담, 제안 미팅, 화상회의에서 더 차분하고 전문적인 분위기를 만들기 좋습니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="why-meeting-room">
+    <div class="section-inner">
+      <h2 class="section-title">중요한 미팅은 내용만큼 공간도 중요합니다</h2>
+      <p class="section-desc">카페에서 고객을 만날 때 옆 테이블 소음 때문에 계약 내용을 반복 설명한 경험이 있거나, 회의실을 알아보니 너무 크고 비용이 부담스러웠던 적이 있다면 소규모 미팅룸이 더 잘 맞을 수 있습니다.</p>
+      <div class="about-highlight-grid" aria-label="미팅 장소 선택에서 자주 생기는 문제">
+        <article class="about-highlight-card">
+          <h3>카페 미팅의 한계</h3>
+          <p>시끄러운 음악, 주변 대화, 좁은 테이블 때문에 자료를 펼치거나 민감한 이야기를 나누기 어렵습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>대형 회의실의 부담</h3>
+          <p>2~3명 미팅에는 과한 규모일 수 있고, 긴 최소 계약 기간이나 비용 부담이 생기기 쉽습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>프라이빗 미팅룸의 장점</h3>
+          <p>독립된 공간에서 대화 집중도와 신뢰감을 함께 챙길 수 있어 중요한 미팅일수록 만족도가 높습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="who-uses-it">
+    <div class="section-inner">
+      <h2 class="section-title">이런 분들에게 특히 잘 맞습니다</h2>
+      <p class="section-desc">공간이 단순한 배경이 아니라 대화의 밀도와 상대방의 신뢰에 영향을 주는 일정일수록 더 체감이 큽니다.</p>
+      <div class="about-principle-grid" aria-label="미팅룸 추천 대상">
+        <article class="about-principle-item" data-step="01">
+          <h3>팀 리더 · 스타트업 대표</h3>
+          <p>기획 미팅, 팀 회의, 전략 논의처럼 집중도가 결과에 직접 연결되는 일정에 적합합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>거래처 및 고객 상담</h3>
+          <p>계약 상담, 제안 미팅, 신규 고객 면담처럼 첫인상과 전문성이 중요한 미팅에 잘 맞습니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>프리랜서 · 1인 사업자</h3>
+          <p>홈오피스보다 더 안정적이고 카페보다 더 신뢰감 있는 환경에서 클라이언트 미팅을 진행할 수 있습니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="04">
+          <h3>상담사 · 코치</h3>
+          <p>진로 상담, 코칭 세션, 컨설팅처럼 고객이 편안하게 대화할 수 있는 분위기가 중요한 일정에 잘 맞습니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="05">
+          <h3>원격 근무자 · 화상회의 이용자</h3>
+          <p>정돈된 배경과 안정적인 인터넷이 필요한 중요한 온라인 회의나 화상 미팅에도 유리합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="06">
+          <h3>발표 · 리허설 준비</h3>
+          <p>실전과 비슷한 미팅룸 환경에서 발표와 프레젠테이션을 연습하면 긴장감을 줄이기 좋습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-bareunjari">
+    <div class="section-inner">
+      <h2 class="section-title">부천 신중동에서 바른자리가 잘 맞는 이유</h2>
+      <p class="section-desc">바른자리는 신중동역 도보 1분 위치에 있어 접근성이 좋고, 소규모 회의와 상담에 맞는 프라이빗 환경을 제공합니다. Wi-Fi와 유선 인터넷, 넓은 테이블, 소파, 멀티탭 같은 요소도 함께 갖추고 있어 활용 폭이 넓습니다.</p>
+      <div class="about-highlight-grid" aria-label="바른자리 미팅룸 차별점">
+        <article class="about-highlight-card">
+          <h3>접근성</h3>
+          <p>신중동역에서 가까워 부천 고객은 물론 외부에서 오는 미팅 일정도 비교적 편하게 잡을 수 있습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>프라이빗 환경</h3>
+          <p>공유 오피스처럼 외부인 왕래가 잦지 않아 민감한 대화와 집중이 필요한 미팅에 적합합니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>비용 효율</h3>
+          <p>2시간 단위 예약과 정기 이용 할인으로 고정비 없이 필요한 순간에만 사용할 수 있습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="use-cases">
+    <div class="section-inner">
+      <h2 class="section-title">실제 사용 예시는 이런 장면에 가깝습니다</h2>
+      <p class="section-desc">같은 미팅룸이라도 어떤 목적으로 쓰느냐에 따라 체감 가치는 달라집니다. 바른자리는 아래와 같은 일정에 특히 잘 어울립니다.</p>
+      <div class="about-principle-grid" aria-label="미팅룸 활용 예시">
+        <article class="about-principle-item" data-step="01">
+          <h3>초기 투자 유치 미팅</h3>
+          <p>카페보다 차분한 환경에서 자료 설명과 질의응답을 진행할 수 있어 제안 전달력이 더 안정적입니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>정기 코칭 세션</h3>
+          <p>고객이 편안하게 자신의 이야기를 꺼낼 수 있는 환경이 중요할 때 예약형 프라이빗 공간이 장점이 됩니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>중요한 고객 계약</h3>
+          <p>처음 만나는 고객과의 미팅에서 더 정돈된 분위기를 만들고 싶을 때 공간이 주는 신뢰감 차이가 큽니다.</p>
+        </article>
+      </div>
+      <div class="hero-btns" style="margin-top: 2rem;">
+        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
+        <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
+        <a href="/blog.html" class="btn-outline">다른 가이드 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-inner">
+      <h2 class="section-title">부천 미팅룸 FAQ</h2>
+      <p class="section-desc">처음 미팅룸을 찾는 분들이 자주 궁금해하는 내용만 간단히 정리했습니다.</p>
+      <div class="contact-faq" itemscope itemtype="https://schema.org/FAQPage">
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">실제 가격은 어떻게 확인하나요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">예약 페이지에서 날짜와 시간을 선택하면 정확한 가격을 확인할 수 있습니다. 2시간 단위 예약 기준이며 정기 이용은 별도 문의가 가능합니다.</p>
+          </div>
+        </details>
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">당일 예약도 가능한가요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">가능합니다. 다만 중요한 미팅이라면 원하는 시간 확보를 위해 미리 예약하는 편이 더 안전합니다.</p>
+          </div>
+        </details>
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">몇 명까지 이용할 수 있나요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">기본 기준은 최대 6명입니다. 소규모 회의, 고객 상담, 코칭, 화상회의에 적합한 규모입니다.</p>
+          </div>
+        </details>
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">화상회의에도 적합한가요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">네. 정돈된 배경과 안정적인 인터넷 환경 덕분에 중요한 온라인 회의나 화상 미팅에도 활용하기 좋습니다.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  {% include post-tags.html %}
+</main>
