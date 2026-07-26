@@ -11,7 +11,7 @@ tags:
   - 부천
 canonical: https://bareunjari.com/posts/bucheon-meeting-room/
 permalink: /posts/bucheon-meeting-room/
-date: 2026-07-27 09:00:00 +0900
+date: 2026-07-26 09:00:00 +0900
 og_image: https://bareunjari.com/images/bucheon-meeting-room.webp
 og_image_alt: 부천 신중동역 인근 소규모 회의와 고객 미팅에 어울리는 프라이빗 미팅룸
 og_image_width: 1672
