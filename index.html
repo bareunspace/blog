@@ -213,8 +213,15 @@ script_version: 20260719-1
               <p>참석 인원과 진행 목적을 기준으로 2~4시간 이용을 추천합니다. 사전 아젠다와 자료를 준비하고 같은 요일·시간대로 반복 예약하면 운영 효율이 크게 높아집니다.</p>
             </article>
             <article class="private-office-card" aria-label="상담 컨설팅 소모임 관련 블로그 글">
-              <h3>소모임 · 스터디 관련 글</h3>
+              <h3>상담 · 소모임 관련 글</h3>
               <ul class="related-post-list">
+                {% assign counselor_space_posts = site.posts | where: "url", "/posts/freelance-counselor-office/" %}
+                {% for post in counselor_space_posts %}
+                  <li class="related-post-item">
+                    <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 34 }}</a>
+                    <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                  </li>
+                {% endfor %}
                 {% assign study_space_posts = site.posts | where: "url", "/posts/study-space-guide/" %}
                 {% for post in study_space_posts %}
                   <li class="related-post-item">
