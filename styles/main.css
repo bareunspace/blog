@@ -498,6 +498,12 @@ section { padding: 5rem 1.5rem; }
 }
 
 /* ── Blog Hub ── */
+main.about-page.blog-hub .section-inner {
+  max-width: 1080px;
+}
+main.about-page.blog-hub #home .section-inner {
+  max-width: 1080px;
+}
 .blog-hub #home .hero-subtitle {
   max-width: 660px;
 }
