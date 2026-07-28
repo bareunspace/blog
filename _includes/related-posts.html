@@ -17,10 +17,21 @@
         <div class="post-related-grid" data-related-track tabindex="0" aria-label="{{ page.category }} 관련 글 목록">
           {% for related_post in related_posts limit: 8 %}
             {% unless related_post.url == page.url %}
+              {% assign related_image = related_post.preload_image | default: related_post.og_image | default: 'images/main.webp' %}
               <article class="post-related-card">
-                <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
-                <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 120 }}</p>
-                <p class="post-related-meta"><strong>{{ related_post.category }}</strong> · {{ related_post.date | date: "%Y-%m-%d" }}</p>
+                <a class="post-related-image-link" href="{{ related_post.url | relative_url }}" aria-label="{{ related_post.title }}">
+                  {% if related_image contains '://' %}
+                    <img src="{{ related_image }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
+                  {% else %}
+                    <img src="{{ '/' | append: related_image | relative_url }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
+                  {% endif %}
+                  <span class="post-related-badge">{{ related_post.category }}</span>
+                </a>
+                <div class="post-related-body">
+                  <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
+                  <p class="post-related-date">{{ related_post.date | date: "%Y-%m-%d" }}</p>
+                  <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 82 }}</p>
+                </div>
               </article>
             {% endunless %}
           {% endfor %}
