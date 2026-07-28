@@ -5,16 +5,20 @@
       <p class="section-label">Related Articles</p>
       <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
       <p class="section-desc">같은 주제의 준비 가이드를 옆으로 넘기며 이어서 확인해 보세요.</p>
-      <div class="post-related-grid">
-        {% for related_post in related_posts limit: 8 %}
-          {% unless related_post.url == page.url %}
-            <article class="post-related-card">
-              <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
-              <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 120 }}</p>
-              <p class="post-related-meta"><strong>{{ related_post.category }}</strong> · {{ related_post.date | date: "%Y-%m-%d" }}</p>
-            </article>
-          {% endunless %}
-        {% endfor %}
+      <div class="post-related-carousel" data-related-carousel>
+        <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 관련 글 보기">‹</button>
+        <div class="post-related-grid" data-related-track tabindex="0" aria-label="{{ page.category }} 관련 글 목록">
+          {% for related_post in related_posts limit: 8 %}
+            {% unless related_post.url == page.url %}
+              <article class="post-related-card">
+                <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
+                <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 120 }}</p>
+                <p class="post-related-meta"><strong>{{ related_post.category }}</strong> · {{ related_post.date | date: "%Y-%m-%d" }}</p>
+              </article>
+            {% endunless %}
+          {% endfor %}
+        </div>
+        <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 관련 글 보기">›</button>
       </div>
       {% if page.category == "면접준비" %}
         <p class="post-related-more"><a href="{{ '/interview/' | relative_url }}">면접준비 시리즈 전체 보기</a></p>

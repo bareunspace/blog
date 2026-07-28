@@ -58,6 +58,7 @@
     const blogTopicCards = Array.from(document.querySelectorAll('.blog-topic-card'));
     const postShareRoot = document.querySelector('[data-post-share]');
     const postReactionsRoot = document.querySelector('[data-post-reaction]');
+    const relatedCarousels = Array.from(document.querySelectorAll('[data-related-carousel]'));
     const FEATURE_PANEL_ANIM_MS = 150;
     const BLOG_GUIDE_INITIAL_VISIBLE = 3;
     const BLOG_GUIDE_LOAD_STEP = 3;
@@ -617,6 +618,47 @@
         } finally {
           shareButton.disabled = false;
         }
+      });
+    };
+
+    const setupRelatedCarousels = () => {
+      if (!relatedCarousels.length) {
+        return;
+      }
+
+      relatedCarousels.forEach((carousel) => {
+        const track = carousel.querySelector('[data-related-track]');
+        const prevButton = carousel.querySelector('[data-related-prev]');
+        const nextButton = carousel.querySelector('[data-related-next]');
+        if (!track || !prevButton || !nextButton) {
+          return;
+        }
+
+        const getScrollAmount = () => {
+          const firstCard = track.querySelector('.post-related-card');
+          if (!firstCard) {
+            return Math.max(280, track.clientWidth * 0.8);
+          }
+          const styles = window.getComputedStyle(track);
+          const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        const updateButtons = () => {
+          const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth - 2);
+          prevButton.disabled = track.scrollLeft <= 2;
+          nextButton.disabled = track.scrollLeft >= maxScrollLeft;
+        };
+
+        prevButton.addEventListener('click', () => {
+          track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+        nextButton.addEventListener('click', () => {
+          track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+        track.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
       });
     };
 
@@ -2412,4 +2454,5 @@
     setupUseCaseFilters();
     setupPostShare();
     setupPostReactions();
+    setupRelatedCarousels();
     loadUseCasesFromRss();

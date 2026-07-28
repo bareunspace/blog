@@ -452,6 +452,9 @@ section { padding: 5rem 1.5rem; }
 .post-related .section-desc {
   margin-bottom: 1.25rem;
 }
+.post-related-carousel {
+  position: relative;
+}
 .post-related-grid {
   display: grid;
   grid-auto-flow: column;
@@ -465,16 +468,58 @@ section { padding: 5rem 1.5rem; }
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
+.post-related-grid:focus-visible {
+  outline: 2px solid rgba(45,106,79,.42);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
 .post-related-grid::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
-.post-related-grid::-webkit-scrollbar-track {
-  background: #e7efe9;
-  border-radius: 999px;
+.post-related-grid {
+  scrollbar-width: none;
 }
-.post-related-grid::-webkit-scrollbar-thumb {
-  background: #b8d2c4;
+.post-related-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(31,41,55,.12);
   border-radius: 999px;
+  background: #fff;
+  color: var(--primary);
+  box-shadow: 0 12px 28px rgba(17,24,39,.16);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.post-related-nav:hover,
+.post-related-nav:focus-visible {
+  border-color: rgba(45,106,79,.28);
+  box-shadow: 0 16px 34px rgba(17,24,39,.2);
+  transform: translateY(-50%) scale(1.04);
+}
+.post-related-nav:focus-visible {
+  outline: 2px solid rgba(45,106,79,.45);
+  outline-offset: 3px;
+}
+.post-related-nav[disabled] {
+  opacity: .34;
+  cursor: default;
+  pointer-events: none;
+}
+.post-related-prev {
+  left: -1.1rem;
+}
+.post-related-next {
+  right: -1.1rem;
 }
 .post-related-card {
   min-height: 260px;
@@ -3708,6 +3753,17 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .post-related-card {
     min-height: 250px;
+  }
+  .post-related-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.35rem;
+  }
+  .post-related-prev {
+    left: -.65rem;
+  }
+  .post-related-next {
+    right: -.65rem;
   }
   .blog-featured-image {
     height: 230px;
