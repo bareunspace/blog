@@ -353,24 +353,4 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="related-interview-guides">
-    <div class="section-inner">
-      <h2 class="section-title">함께 보면 좋은 면접 준비 글</h2>
-      <p class="section-desc">답변 연습만큼 중요한 것은 자기소개, 전날 점검, 화상면접 환경 준비입니다. 아래 글까지 함께 보면 실전 준비 흐름을 더 단단하게 잡을 수 있습니다.</p>
-      <div class="about-principle-grid" aria-label="관련 면접 가이드">
-        <article class="about-principle-item" data-step="01">
-          <h3><a href="/posts/1-minute-self-introduction-guide/">1분 자기소개 예시와 작성법</a></h3>
-          <p>첫 1분을 어떻게 구성해야 할지 막막하다면, 자기소개 구조와 예시부터 먼저 정리해 보세요.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3><a href="/posts/interview-prep-checklist/">면접 전날 체크리스트 12가지</a></h3>
-          <p>답변 준비가 끝났다면, 당일 변수 줄이기와 최종 리허설 항목까지 함께 확인하는 것이 좋습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3><a href="/posts/bucheon-video-interview-place-guide/">부천 화상면접 보기 좋은 조용한 공간</a></h3>
-          <p>실제 화상면접 장소가 고민된다면, 집과 카페 대신 어떤 환경이 더 안정적인지 비교해 볼 수 있습니다.</p>
-        </article>
-      </div>
-    </div>
-  </section>
 </main>
