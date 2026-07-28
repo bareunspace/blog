@@ -1,12 +1,19 @@
 {% assign related_posts = site.posts | where: "category", page.category %}
 {% if related_posts.size > 1 %}
+  {% if page.category == "면접준비" %}
+    {% assign related_more_url = '/interview/' %}
+  {% else %}
+    {% assign related_more_url = '/blog.html#blog-onsite' %}
+  {% endif %}
   <aside class="post-related" aria-labelledby="post-related-title">
     <div class="section-inner">
       <div class="post-related-carousel" data-related-carousel>
         <div class="post-related-head">
           <div>
-            <p class="section-label">Related Articles</p>
-            <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
+            <div class="post-related-title-row">
+              <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
+              <a class="post-related-title-link" href="{{ related_more_url | relative_url }}" aria-label="{{ page.category }} 글 전체 보기">→</a>
+            </div>
             <p class="section-desc">같은 주제의 준비 가이드를 옆으로 넘기며 이어서 확인해 보세요.</p>
           </div>
         </div>
@@ -37,11 +44,6 @@
           {% endfor %}
         </div>
       </div>
-      {% if page.category == "면접준비" %}
-        <p class="post-related-more"><a href="{{ '/interview/' | relative_url }}">면접준비 시리즈 전체 보기</a></p>
-      {% else %}
-        <p class="post-related-more"><a href="{{ '/blog.html#blog-onsite' | relative_url }}">사이트 발행 글 전체 보기</a></p>
-      {% endif %}
     </div>
   </aside>
 {% endif %}

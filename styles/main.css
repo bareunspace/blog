@@ -455,6 +455,40 @@ section { padding: 5rem 1.5rem; }
 .post-related-head {
   margin-bottom: .85rem;
 }
+.post-related-title-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.post-related-title-row .section-title {
+  margin-bottom: .65rem;
+}
+.post-related-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-top: -.6rem;
+  border-radius: 999px;
+  background: #edf0ee;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+.post-related-title-link:hover,
+.post-related-title-link:focus-visible {
+  background: var(--primary);
+  color: #fff;
+  transform: translateX(2px);
+}
+.post-related-title-link:focus-visible {
+  outline: 2px solid rgba(45,106,79,.45);
+  outline-offset: 3px;
+}
 .post-related-head .section-desc {
   margin-bottom: 0;
 }
@@ -582,9 +616,7 @@ section { padding: 5rem 1.5rem; }
   text-decoration: none;
 }
 .post-related-card h3 a:hover,
-.post-related-card h3 a:focus-visible,
-.post-related-more a:hover,
-.post-related-more a:focus-visible {
+.post-related-card h3 a:focus-visible {
   text-decoration: underline;
 }
 .post-related-card p {
@@ -598,14 +630,6 @@ section { padding: 5rem 1.5rem; }
   font-size: .84rem;
   font-weight: 700;
 }
-.post-related-more {
-  margin-top: 1.5rem;
-}
-.post-related-more a {
-  color: var(--primary);
-  font-weight: 700;
-}
-
 /* ── Blog Hub ── */
 main.about-page.blog-hub .section-inner {
   max-width: 1080px;
@@ -3779,6 +3803,15 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .post-related {
     padding: 3.5rem 1rem;
+  }
+  .post-related-title-row {
+    gap: .55rem;
+  }
+  .post-related-title-link {
+    width: 38px;
+    height: 38px;
+    margin-top: -.45rem;
+    font-size: 1.32rem;
   }
   .post-related-controls {
     margin-bottom: .7rem;
