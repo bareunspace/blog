@@ -450,19 +450,46 @@ section { padding: 5rem 1.5rem; }
   background: #f4f8f5;
 }
 .post-related .section-desc {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 .post-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 34%);
+  gap: 1rem;
+  margin: 0 -1.5rem;
+  padding: .35rem 1.5rem 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-left: 1.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.post-related-grid::-webkit-scrollbar {
+  height: 8px;
+}
+.post-related-grid::-webkit-scrollbar-track {
+  background: #e7efe9;
+  border-radius: 999px;
+}
+.post-related-grid::-webkit-scrollbar-thumb {
+  background: #b8d2c4;
+  border-radius: 999px;
 }
 .post-related-card {
+  min-height: 260px;
   padding: 1.5rem;
   border: 1px solid #dfe9e2;
   border-radius: var(--radius);
   background: #fff;
   box-shadow: var(--shadow);
+  scroll-snap-align: start;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.post-related-card:hover {
+  border-color: rgba(45,106,79,.26);
+  box-shadow: 0 16px 36px rgba(26,67,47,.12);
+  transform: translateY(-2px);
 }
 .post-related-card h3 {
   margin-bottom: .75rem;
@@ -3667,6 +3694,20 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .blog-featured-card {
     min-height: 0;
     border-radius: 18px;
+  }
+  .post-related {
+    padding: 3.5rem 1rem;
+  }
+  .post-related-grid {
+    grid-auto-columns: minmax(260px, 86%);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    scroll-padding-left: 1rem;
+  }
+  .post-related-card {
+    min-height: 250px;
   }
   .blog-featured-image {
     height: 230px;
