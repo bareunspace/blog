@@ -28,7 +28,7 @@ script_version: 20260711-4
       <h1 class="section-title">영어, 면접, 발표 연습<br />혼자 마음껏 말할 공간이 필요하다면</h1>
       <p class="section-desc">집에서는 눈치 보이고, 카페에서는 시선이 신경 쓰이셨나요? 신중동역 도보 1분 바른자리는 혼자서도 편하게 큰 소리로 연습할 수 있는 프라이빗 공간입니다. 필요한 시간만 예약해서 영어 말하기, 면접, 발표, 화상 수업까지 집중해 보세요.</p>
       <div class="hero-btns">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하기</a>
         <a href="#why-bareunjari" class="btn-outline">공간이 잘 맞는지 보기</a>
       </div>
     </div>
@@ -183,7 +183,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 페이지 바로가기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 페이지 바로가기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
         <a href="/blog.html" class="btn-outline">다른 가이드 보기</a>
       </div>
@@ -221,7 +221,7 @@ script_version: 20260711-4
         </details>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하러 가기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하러 가기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
       </div>
     </div>

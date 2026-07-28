@@ -25,7 +25,7 @@
         "lastBooking": "21:00"
       },
       "links": {
-        "booking": "https://pcmap.place.naver.com/place/2041312316/ticket",
+        "booking": "https://m.place.naver.com/place/2041312316/ticket",
         "map": "https://map.naver.com/p/entry/place/2041312316",
         "talk": "https://talk.naver.com/profile/w1pp89m"
       },
@@ -34,13 +34,13 @@
           "name": "2시간 이용",
           "price": 10000,
           "currency": "KRW",
-          "url": "https://pcmap.place.naver.com/place/2041312316/ticket"
+          "url": "https://m.place.naver.com/place/2041312316/ticket"
         },
         {
           "name": "종일 대관",
           "price": 120000,
           "currency": "KRW",
-          "url": "https://pcmap.place.naver.com/place/2041312316/ticket"
+          "url": "https://m.place.naver.com/place/2041312316/ticket"
         }
       ],
       "seo": {

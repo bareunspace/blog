@@ -27,7 +27,7 @@ script_version: 20260711-4
       <h1 class="section-title">부천에서 화상면접 볼 조용한 공간<br />찾고 계신가요?</h1>
       <p class="section-desc">집은 생활 소음이 걱정되고, 카페는 배경과 시선이 부담스럽다면 화상면접에 맞는 프라이빗 공간이 필요할 수 있습니다. 신중동역 도보 1분 바른자리에서 조금 더 차분하게 면접에 집중해 보세요.</p>
       <div class="hero-btns">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">화상면접 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">화상면접 공간 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
       </div>
     </div>
@@ -165,7 +165,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 화상면접 시간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 화상면접 시간 예약하기</a>
         <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트 보기</a>
         <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 역질문 추천 보기</a>
         <a href="/index.html#contact" class="btn-outline">상담 문의하기</a>

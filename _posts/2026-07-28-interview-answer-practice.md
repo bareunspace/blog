@@ -31,7 +31,7 @@ script_version: 20260711-4
       <p class="section-desc">준비한 답변을 노트에 정리해 두었는데도 실제 면접에서 첫 문장부터 막히는 경우가 있습니다. 많은 경우 문제는 답변 내용이 아니라, 그 답변을 실제로 말해 본 시간이 부족하다는 점에 있습니다. 혼자서도 실전처럼 말하고 녹화해 보면 답변 흐름, 시선, 말속도, 목소리를 훨씬 구체적으로 점검할 수 있습니다.</p>
       <div class="hero-btns">
         <a href="#practice-method" class="btn-primary">면접 답변 연습 루틴 보기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">부천 면접 연습 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">부천 면접 연습 공간 예약하기</a>
       </div>
     </div>
   </section>
@@ -268,7 +268,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 연습 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 연습 공간 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
         <a href="/blog.html" class="btn-outline">다른 면접 글 보기</a>
       </div>
@@ -347,7 +347,7 @@ script_version: 20260711-4
         <p><strong>바른자리</strong><br />나만의 시간을 예약하세요.<br />부천 신중동역 도보 1분<br />1시간 10,000원</p>
       </blockquote>
       <div class="hero-btns" style="margin-top: 1.5rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
       </div>
     </div>

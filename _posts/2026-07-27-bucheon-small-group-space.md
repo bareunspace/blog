@@ -28,7 +28,7 @@ script_version: 20260711-4
       <p class="section-desc">스터디, 독서모임, 프로젝트 회의, 취미모임까지. 카페보다 편안하고 회의실보다 부담 없는 공간을 찾고 있다면, 신중동역 도보 1분 바른자리가 좋은 선택이 될 수 있습니다.</p>
       <div class="hero-btns">
         <a href="#why-private-space" class="btn-primary">왜 소모임 공간이 필요한지 보기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">예약 페이지 바로가기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">예약 페이지 바로가기</a>
       </div>
     </div>
   </section>
@@ -180,7 +180,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">소모임 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">소모임 공간 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
         <a href="/blog.html" class="btn-outline">다른 가이드 보기</a>
       </div>

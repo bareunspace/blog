@@ -31,7 +31,7 @@ script_version: 20260719-1
       <p class="section-desc">면접 첫 1분은 단순한 인사가 아니라, 남은 면접 전체의 분위기를 만드는 시간입니다. 면접관이 알고 싶어 하는 것을 정확히 담고, 구체적인 근거로 역량을 증명하는 자기소개 만드는 법을 단계별로 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#intro-structure" class="btn-primary">1분 자기소개 만드는 법 보기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">화상면접 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">화상면접 공간 예약하기</a>
       </div>
     </div>
   </section>
@@ -281,7 +281,7 @@ script_version: 20260719-1
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/posts/interview-prep-checklist/" class="btn-primary">면접 전날 체크리스트 보기</a>
         <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 역질문 추천 보기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">화상면접 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">화상면접 공간 예약하기</a>
       </div>
     </div>
   </section>

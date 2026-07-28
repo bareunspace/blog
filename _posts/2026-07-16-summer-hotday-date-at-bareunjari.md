@@ -28,7 +28,7 @@ script_version: 20260711-4
       <h1 class="section-title">더운 날엔 밖보다 안이 더 좋다<br />에어컨 빵빵한 실내 피서 데이트</h1>
       <p class="section-desc">한여름에 땀 흘리며 이동하기보다, 시원한 공간에서 편하게 대화하고 쉬는 시간이 더 소중할 때가 있습니다. 바른자리에서 보내는 여름 데이트 동선을 정리해봤어요.</p>
       <div class="hero-btns">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바로 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바로 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 더 보기</a>
       </div>
     </div>
@@ -121,7 +121,7 @@ script_version: 20260711-4
       <h2 class="section-title">올여름, 더위 피해서 편하게 쉬고 싶다면</h2>
       <p class="section-desc">바른자리에서 시원하고 조용한 여름 데이트를 경험해 보세요. 밖은 뜨거워도, 안에서는 여유롭게 둘만의 시간을 보낼 수 있습니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">여름 데이트 시간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">여름 데이트 시간 예약하기</a>
         <a href="/index.html#contact" class="btn-outline">문의하기</a>
       </div>
     </div>

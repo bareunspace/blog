@@ -28,7 +28,7 @@ script_version: 20260711-4
       <h1 class="section-title">부천에서 조용한 미팅룸이 필요하다면<br />신중동역 1분 바른자리</h1>
       <p class="section-desc">카페는 다소 시끄럽고, 대형 회의실은 조금 부담스럽게 느껴질 때가 있습니다. 바른자리는 고객 미팅, 소규모 회의, 상담, 화상회의를 조금 더 차분한 분위기에서 진행하고 싶은 분들을 위한 프라이빗 공간입니다.</p>
       <div class="hero-btns">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
         <a href="#why-meeting-room" class="btn-outline">공간이 잘 맞는지 보기</a>
       </div>
     </div>
@@ -169,7 +169,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
         <a href="/blog.html" class="btn-outline">다른 가이드 보기</a>
       </div>

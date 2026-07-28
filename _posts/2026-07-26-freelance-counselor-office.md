@@ -29,7 +29,7 @@ script_version: 20260711-4
       <p class="section-desc">상담 건수는 아직 많지 않은데 매달 고정 임대료가 부담스럽다면, 공간 운영 방식부터 다시 볼 필요가 있습니다. 시간제 상담 공간을 활용해 비용 부담은 낮추고 고객 경험은 지키는 방법을 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#cost-structure" class="btn-primary">운영 방식 비교하기</a>
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">상담 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">상담 공간 예약하기</a>
       </div>
     </div>
   </section>
@@ -231,7 +231,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">상담 시간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">상담 시간 예약하기</a>
         <a href="/index.html#contact" class="btn-outline">정기 이용 문의하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 더 보기</a>
       </div>
@@ -290,7 +290,7 @@ script_version: 20260711-4
         </article>
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://pcmap.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약하기</a>
         <a href="/blog.html" class="btn-outline">다른 공간 활용 글 보기</a>
       </div>
     </div>
