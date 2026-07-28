@@ -449,11 +449,25 @@ section { padding: 5rem 1.5rem; }
   padding: 4.5rem 1.5rem;
   background: #f4f8f5;
 }
-.post-related .section-desc {
-  margin-bottom: 1.25rem;
-}
 .post-related-carousel {
   position: relative;
+}
+.post-related-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.post-related-head .section-desc {
+  margin-bottom: 0;
+}
+.post-related-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  flex: 0 0 auto;
+  padding-top: .35rem;
 }
 .post-related-grid {
   display: grid;
@@ -480,9 +494,6 @@ section { padding: 5rem 1.5rem; }
   scrollbar-width: none;
 }
 .post-related-nav {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -497,14 +508,13 @@ section { padding: 5rem 1.5rem; }
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
-  transform: translateY(-50%);
   transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 .post-related-nav:hover,
 .post-related-nav:focus-visible {
   border-color: rgba(45,106,79,.28);
   box-shadow: 0 16px 34px rgba(17,24,39,.2);
-  transform: translateY(-50%) scale(1.04);
+  transform: translateY(-1px);
 }
 .post-related-nav:focus-visible {
   outline: 2px solid rgba(45,106,79,.45);
@@ -514,12 +524,6 @@ section { padding: 5rem 1.5rem; }
   opacity: .34;
   cursor: default;
   pointer-events: none;
-}
-.post-related-prev {
-  left: -1.1rem;
-}
-.post-related-next {
-  right: -1.1rem;
 }
 .post-related-card {
   min-height: 260px;
@@ -3743,6 +3747,14 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .post-related {
     padding: 3.5rem 1rem;
   }
+  .post-related-head {
+    flex-direction: column;
+    gap: .95rem;
+  }
+  .post-related-controls {
+    align-self: flex-end;
+    padding-top: 0;
+  }
   .post-related-grid {
     grid-auto-columns: minmax(260px, 86%);
     margin-left: -1rem;
@@ -3758,12 +3770,6 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     width: 40px;
     height: 40px;
     font-size: 1.35rem;
-  }
-  .post-related-prev {
-    left: -.65rem;
-  }
-  .post-related-next {
-    right: -.65rem;
   }
   .blog-featured-image {
     height: 230px;
