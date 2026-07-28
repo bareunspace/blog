@@ -3072,6 +3072,108 @@ main.about-page .guide-summary-grid {
   font-size: .84rem;
   line-height: 1.55;
 }
+.intro-structure-panel {
+  margin-top: 1.35rem;
+  padding: clamp(1rem, 2.6vw, 1.6rem);
+  border: 1px solid #d6e6dd;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top left, rgba(255,244,232,.95), transparent 34%),
+    linear-gradient(135deg, rgba(45,106,79,.09), rgba(255,255,255,.94));
+  box-shadow: 0 16px 36px rgba(17,24,39,.09);
+}
+.intro-structure-timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.intro-structure-timer span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  background: #2d6a4f;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 900;
+}
+.intro-structure-timer p {
+  margin: 0;
+  color: #374151;
+  font-size: .9rem;
+  line-height: 1.65;
+  text-align: right;
+}
+.intro-structure-flow {
+  display: grid;
+  grid-template-columns: .9fr 1.25fr .9fr;
+  gap: .85rem;
+}
+.intro-structure-card {
+  position: relative;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid rgba(45,106,79,.16);
+  border-radius: 18px;
+  background: rgba(255,255,255,.88);
+}
+.intro-structure-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -.62rem;
+  width: .78rem;
+  height: .78rem;
+  border-top: 2px solid rgba(45,106,79,.55);
+  border-right: 2px solid rgba(45,106,79,.55);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+}
+.intro-structure-card.featured {
+  border-color: rgba(154,79,18,.28);
+  background: #fffaf3;
+  box-shadow: 0 14px 28px rgba(154,79,18,.11);
+}
+.intro-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: .65rem;
+  border-radius: 10px;
+  background: #edf6f1;
+  color: #2d6a4f;
+  font-size: .76rem;
+  font-weight: 900;
+}
+.intro-step-time {
+  float: right;
+  color: #9a4f12;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+.intro-structure-card h3 {
+  clear: both;
+  margin-bottom: .3rem;
+  color: #1f2937;
+  font-size: 1.18rem;
+}
+.intro-structure-card p {
+  margin: 0 0 .65rem;
+  color: #374151;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.intro-structure-card small {
+  display: block;
+  color: #6b7280;
+  font-size: .8rem;
+  line-height: 1.5;
+}
 .answer-keyword-example {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -3348,6 +3450,23 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .answer-structure-step:not(:last-child)::after {
     display: none;
+  }
+  .intro-structure-timer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .intro-structure-timer p {
+    text-align: left;
+  }
+  .intro-structure-flow {
+    grid-template-columns: 1fr;
+  }
+  .intro-structure-card:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    bottom: -.58rem;
+    left: 1.35rem;
+    transform: rotate(135deg);
   }
   .guide-summary-section {
     padding-top: 1rem !important;

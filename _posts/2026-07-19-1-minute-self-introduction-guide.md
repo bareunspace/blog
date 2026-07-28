@@ -86,20 +86,33 @@ script_version: 20260719-1
     <div class="section-inner">
       <h2 class="section-title">모든 면접관이 듣기 편한 1분 자기소개 구조</h2>
       <p class="section-desc">60초 안에 많은 내용을 넣으려 하면 오히려 흐려집니다. 핵심은 Hook, Body, Closing 세 단계로 정리하는 것입니다.</p>
-      <div class="infographic-flow" aria-label="1분 자기소개 3단계 구성 인포그래픽">
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">1단계: Hook (15초)</span>
-          <p>나를 한 문장으로 정의하기</p>
+      <div class="intro-structure-panel" aria-label="1분 자기소개 3단계 구성 인포그래픽">
+        <div class="intro-structure-timer">
+          <span>60초 구성</span>
+          <p>첫 문장으로 방향을 잡고, 경험 하나로 증명한 뒤, 기여로 닫습니다.</p>
         </div>
-        <div class="infographic-flow-arrow" aria-hidden="true">↓</div>
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">2단계: Body (35초)</span>
-          <p>가장 강한 경험 1개와 구체적 결과</p>
-        </div>
-        <div class="infographic-flow-arrow" aria-hidden="true">↓</div>
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">3단계: Closing (10초)</span>
-          <p>이 경험을 어디에 기여할 것인지 연결</p>
+        <div class="intro-structure-flow">
+          <article class="intro-structure-card">
+            <span class="intro-step-number">01</span>
+            <strong class="intro-step-time">15초</strong>
+            <h3>Hook</h3>
+            <p>나를 한 문장으로 정의하기</p>
+            <small>"저는 [역량]으로 [결과]를 만든 사람입니다."</small>
+          </article>
+          <article class="intro-structure-card featured">
+            <span class="intro-step-number">02</span>
+            <strong class="intro-step-time">35초</strong>
+            <h3>Body</h3>
+            <p>가장 강한 경험 1개와 구체적 결과</p>
+            <small>상황보다 행동과 수치를 더 또렷하게 말합니다.</small>
+          </article>
+          <article class="intro-structure-card">
+            <span class="intro-step-number">03</span>
+            <strong class="intro-step-time">10초</strong>
+            <h3>Closing</h3>
+            <p>이 경험을 어디에 기여할 것인지 연결</p>
+            <small>마지막 문장은 회사와 직무 쪽으로 닫습니다.</small>
+          </article>
         </div>
       </div>
     </div>
