@@ -172,31 +172,45 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">답변을 외우기보다 구조를 기억하세요</h2>
       <p class="section-desc">면접 답변을 문장 전체로 외우면 한 단어가 떠오르지 않는 순간 전체 흐름이 흔들리기 쉽습니다. 반대로 구조를 기억하면 질문 표현이 조금 달라져도 자신의 말로 다시 조립해 답할 수 있습니다.</p>
-      <div class="infographic-flow" aria-label="경험 질문 답변 구조">
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">1단계</span>
-          <p>어떤 상황이었는지</p>
+      <div class="answer-structure-panel" aria-label="면접 경험 질문 답변 구조">
+        <div class="answer-structure-note">
+          <span>암기 대신 구조</span>
+          <p>문장을 통째로 외우기보다, 아래 네 칸만 기억해도 답변을 다시 조립하기 쉬워집니다.</p>
         </div>
-        <div class="infographic-flow-arrow" aria-hidden="true">↓</div>
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">2단계</span>
-          <p>내 역할이 무엇이었는지</p>
+        <div class="answer-structure-steps">
+          <article class="answer-structure-step">
+            <span class="answer-step-number">01</span>
+            <h3>상황</h3>
+            <p>무슨 일이 있었는지</p>
+          </article>
+          <article class="answer-structure-step">
+            <span class="answer-step-number">02</span>
+            <h3>역할</h3>
+            <p>내가 맡은 책임은 무엇이었는지</p>
+          </article>
+          <article class="answer-structure-step">
+            <span class="answer-step-number">03</span>
+            <h3>행동</h3>
+            <p>문제를 해결하기 위해 무엇을 했는지</p>
+          </article>
+          <article class="answer-structure-step">
+            <span class="answer-step-number">04</span>
+            <h3>결과</h3>
+            <p>결과와 배운 점이 무엇인지</p>
+          </article>
         </div>
-        <div class="infographic-flow-arrow" aria-hidden="true">↓</div>
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">3단계</span>
-          <p>어떤 행동을 했는지</p>
-        </div>
-        <div class="infographic-flow-arrow" aria-hidden="true">↓</div>
-        <div class="infographic-flow-item">
-          <span class="infographic-flow-label">4단계</span>
-          <p>결과와 배운 점이 무엇인지</p>
+        <div class="answer-keyword-example" aria-label="키워드 중심 답변 예시">
+          <span class="answer-keyword-label">예시 키워드</span>
+          <div class="answer-keyword-chain">
+            <span>일정 지연</span>
+            <span>원인 확인</span>
+            <span>업무 재분배</span>
+            <span>기한 내 완료</span>
+            <span>협업의 중요성</span>
+          </div>
         </div>
       </div>
-      <blockquote class="example-quote">
-        <p>일정 지연 → 원인 확인 → 업무 재분배 → 기한 내 완료 → 협업의 중요성</p>
-      </blockquote>
-      <p style="font-size: 0.95em; color: #666; margin-top: 1rem;">이처럼 키워드 중심으로 기억하면, 면접장에서 조금 다른 표현으로 질문을 받아도 훨씬 유연하게 대답할 수 있습니다.</p>
+      <p class="answer-structure-closing">이처럼 키워드 중심으로 기억하면, 면접장에서 조금 다른 표현으로 질문을 받아도 훨씬 유연하게 대답할 수 있습니다.</p>
     </div>
   </section>
 

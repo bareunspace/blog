@@ -2731,6 +2731,133 @@ main.about-page .guide-summary-grid {
   line-height: 1.7;
   word-break: keep-all;
 }
+.answer-structure-panel {
+  margin-top: 1.25rem;
+  padding: clamp(1rem, 2.6vw, 1.6rem);
+  border: 1px solid #d6e6dd;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(45,106,79,.08), rgba(255,244,232,.72)),
+    #fff;
+  box-shadow: 0 14px 32px rgba(17,24,39,.08);
+}
+.answer-structure-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.answer-structure-note span {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .28rem .72rem;
+  border-radius: 999px;
+  background: #2d6a4f;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 900;
+}
+.answer-structure-note p {
+  margin: 0;
+  color: #374151;
+  font-size: .9rem;
+  line-height: 1.65;
+  text-align: right;
+}
+.answer-structure-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .72rem;
+}
+.answer-structure-step {
+  position: relative;
+  min-width: 0;
+  padding: .95rem .9rem 1rem;
+  border: 1px solid rgba(45,106,79,.18);
+  border-radius: 14px;
+  background: rgba(255,255,255,.86);
+}
+.answer-structure-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2.05rem;
+  right: -.55rem;
+  width: .72rem;
+  height: .72rem;
+  border-top: 2px solid rgba(45,106,79,.52);
+  border-right: 2px solid rgba(45,106,79,.52);
+  transform: rotate(45deg);
+  background: transparent;
+  z-index: 1;
+}
+.answer-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: .68rem;
+  border-radius: 10px;
+  background: #fff4e8;
+  color: #9a4f12;
+  font-size: .76rem;
+  font-weight: 900;
+}
+.answer-structure-step h3 {
+  margin-bottom: .28rem;
+  color: #1f2937;
+  font-size: 1.05rem;
+}
+.answer-structure-step p {
+  margin: 0;
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+.answer-keyword-example {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(45,106,79,.28);
+}
+.answer-keyword-label {
+  display: block;
+  margin-bottom: .58rem;
+  color: var(--primary);
+  font-size: .8rem;
+  font-weight: 900;
+}
+.answer-keyword-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem .62rem;
+}
+.answer-keyword-chain span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .32rem .72rem;
+  border: 1px solid rgba(45,106,79,.18);
+  border-radius: 999px;
+  background: #fff;
+  color: #1f2937;
+  font-size: .86rem;
+  font-weight: 800;
+}
+.answer-keyword-chain span:not(:last-child)::after {
+  content: ">";
+  margin-left: .62rem;
+  color: rgba(45,106,79,.6);
+  font-weight: 900;
+}
+main.about-page section:not(#home) .section-inner > .answer-structure-closing {
+  margin-top: 1rem;
+  color: #374151;
+  font-size: .95rem;
+}
 main.tutoring-guide .guide-kicker {
   display: inline-flex;
   align-items: center;
@@ -2953,6 +3080,19 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   main.tutoring-guide .about-principle-grid,
   .guide-checklist {
     grid-template-columns: 1fr;
+  }
+  .answer-structure-note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .answer-structure-note p {
+    text-align: left;
+  }
+  .answer-structure-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .answer-structure-step:not(:last-child)::after {
+    display: none;
   }
   .guide-summary-section {
     padding-top: 1rem !important;
@@ -3358,6 +3498,26 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .private-office-grid.private-office-grid-4 { grid-template-columns: 1fr; }
   .feature-card { min-height: auto; }
   .contact-support-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .answer-structure-panel {
+    padding: 1rem;
+  }
+  .answer-structure-steps {
+    grid-template-columns: 1fr;
+  }
+  .answer-keyword-chain {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .answer-keyword-chain span {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .answer-keyword-chain span:not(:last-child)::after {
+    content: "↓";
+  }
 }
 
 @media (max-width: 640px) {
