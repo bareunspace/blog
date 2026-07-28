@@ -861,6 +861,128 @@ main.about-page.blog-hub #home .section-inner {
   color: var(--muted);
   text-align: center;
 }
+.interview-hub #home {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(15,47,34,.9), rgba(45,106,79,.72)),
+    url('/images/interview-answer-practice.webp') center / cover no-repeat;
+}
+.interview-hub #home::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(250,250,248,0), var(--bg));
+  pointer-events: none;
+}
+.interview-hub #home .section-inner {
+  position: relative;
+  z-index: 1;
+}
+.interview-hub #home .section-label,
+.interview-hub #home .section-title,
+.interview-hub #home .hero-subtitle {
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0,0,0,.22);
+}
+.interview-hub #home .section-label {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  color: #fff;
+}
+.interview-hub #home .hero-subtitle {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.interview-hub #home .btn-outline {
+  border-color: rgba(255,255,255,.62);
+  color: #fff;
+}
+.interview-hub #home .btn-outline:hover,
+.interview-hub #home .btn-outline:focus-visible {
+  background: #fff;
+  color: var(--primary);
+}
+.interview-flow-heading {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(280px, .72fr);
+  gap: 1.25rem 2rem;
+  align-items: end;
+  margin-bottom: 1.15rem;
+}
+.interview-flow-heading .section-label,
+.interview-flow-heading .section-title {
+  grid-column: 1;
+  margin-bottom: 0;
+}
+.interview-flow-heading .section-title {
+  max-width: 620px;
+}
+.interview-flow-heading > p:not(.section-label) {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin: 0;
+  color: #374151;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+.interview-flow-grid .guide-summary-card {
+  position: relative;
+  padding: 1.25rem 1.1rem;
+  background: linear-gradient(145deg, #fff, #f6fbf8);
+}
+.interview-flow-grid .guide-summary-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -.58rem;
+  width: .82rem;
+  height: .82rem;
+  border-top: 2px solid rgba(45,106,79,.42);
+  border-right: 2px solid rgba(45,106,79,.42);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 2;
+}
+.interview-series-grid {
+  align-items: stretch;
+}
+.interview-series-grid .blog-guide-card {
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.interview-series-grid .blog-guide-card:hover {
+  border-color: rgba(45,106,79,.26);
+  box-shadow: 0 16px 36px rgba(26,67,47,.12);
+  transform: translateY(-2px);
+}
+.interview-series-grid .interview-feature-card {
+  grid-template-columns: minmax(230px, .9fr) minmax(0, 1fr);
+  min-height: 300px;
+  border-color: rgba(45,106,79,.28);
+  background: linear-gradient(145deg, #fff, #f4faf6);
+}
+.interview-series-grid .interview-feature-card .blog-guide-content {
+  justify-content: center;
+}
+.interview-series-grid .interview-feature-card h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+}
+.interview-series-grid .blog-card-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 1.8rem;
+  padding: .2rem .58rem;
+  border-radius: 999px;
+  background: #edf6f1;
+}
+.interview-hub #upcoming-series {
+  background: #f7f7f3 !important;
+}
+.interview-hub #video-interview {
+  background: #fff !important;
+}
 .location-note {
   margin-top: 1.5rem;
   font-size: .88rem;
@@ -3475,6 +3597,22 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .blog-guide-grid {
     grid-template-columns: 1fr;
   }
+  .interview-flow-heading {
+    grid-template-columns: 1fr;
+    gap: .65rem;
+  }
+  .interview-flow-heading .section-label,
+  .interview-flow-heading .section-title,
+  .interview-flow-heading > p:not(.section-label) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .interview-flow-grid .guide-summary-card:not(:last-child)::after {
+    display: none;
+  }
+  .interview-series-grid .interview-feature-card {
+    grid-template-columns: 1fr;
+  }
   #practical-guides .blog-guide-grid,
   .practical-guides-layout .blog-guide-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3550,6 +3688,12 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .blog-guide-card {
     grid-template-columns: 1fr;
+  }
+  .interview-hub #home {
+    background-position: 58% center;
+  }
+  .interview-series-grid .interview-feature-card {
+    min-height: 0;
   }
   #practical-guides .blog-guide-grid,
   .practical-guides-layout .blog-guide-grid {
