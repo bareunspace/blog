@@ -37,9 +37,14 @@ script_version: 20260716-4
         <p>예약 전 고민을 줄이고 중요한 일정의 변수를 미리 점검할 수 있는 콘텐츠입니다.</p>
       </div>
       {% if featured_post %}
+        {% assign featured_image = featured_post.preload_image | default: featured_post.og_image | default: '/images/main.jpeg' %}
         <article class="blog-featured-card">
           <a class="blog-featured-image{% if featured_post.url == '/posts/interview-questions-to-ask/' %} blog-image-contain{% endif %}" href="{{ featured_post.url | relative_url }}" aria-label="{{ featured_post.title }} 읽기">
-            <img src="{{ featured_post.og_image | default: '/images/main.jpeg' }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
+            {% if featured_image contains '://' %}
+              <img src="{{ featured_image }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
+            {% else %}
+              <img src="{{ '/' | append: featured_image | relative_url }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
+            {% endif %}
           </a>
           <div class="blog-featured-content">
             <p class="blog-card-eyebrow">추천 · {{ featured_post.category | default: "시간 활용 가이드" }}</p>
@@ -116,9 +121,14 @@ script_version: 20260716-4
         </div>
         <div class="blog-guide-grid" aria-label="바른자리 실전 가이드 목록">
           {% for post in onsite_posts limit: 12 %}
+            {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
             <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
               <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-                <img src="{{ post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
+                {% if post_card_image contains '://' %}
+                  <img src="{{ post_card_image }}" alt="" loading="lazy" />
+                {% else %}
+                  <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                {% endif %}
               </a>
               <div class="blog-guide-content">
                 <p class="blog-card-eyebrow">{{ post.category | default: "시간 활용 가이드" }}</p>
