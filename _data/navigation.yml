@@ -44,6 +44,18 @@ interview:
     href: "#video-interview"
   - label: 공간 예약
     href: "#booking"
+meeting:
+  - label: 준비 흐름
+    href: "#meeting-flow"
+    current: true
+  - label: 시리즈 글
+    href: "#meeting-series"
+  - label: 준비 중
+    href: "#upcoming-series"
+  - label: 상담 환경
+    href: "#space-fit"
+  - label: 공간 예약
+    href: "#booking"
 study:
   - label: 준비 흐름
     href: "#study-flow"
