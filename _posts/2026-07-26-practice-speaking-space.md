@@ -204,7 +204,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">영어를 큰 소리로 연습해도 되나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">일상적인 말하기 연습은 가능합니다. 영어 답변 연습, 면접 리허설, 발표 연습처럼 또렷하게 말하는 용도로 많이 이용하십니다. 다만 다른 이용객에게 영향을 줄 정도의 큰 소음은 자제해 주세요.</p>
+            <p itemprop="text">네. 영어 답변 연습, 면접 리허설, 발표 연습처럼 큰 소리로 또렷하게 말하는 용도로도 많이 이용하십니다. 실제로 말하면서 반복 연습해야 하는 일정에 잘 맞는 공간입니다.</p>
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
