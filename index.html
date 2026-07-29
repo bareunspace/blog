@@ -176,10 +176,10 @@ script_version: 20260719-1
               <h3>정기 예약 상품 <span class="use-time-badge">정기 이용</span></h3>
               <p>매주 같은 요일/시간대로 예약해 꾸준히 이용하는 방식입니다.<br />예: 매주 화요일 09:00~12:00 (주 1회 3시간)<br />업무 패턴에 맞게 주 1~3회로 설계 가능하며, 희망 일정 상담 후 예약을 확정해 드립니다.</p>
             </article>
-            <article class="private-office-card" aria-label="집중업무와 스터디 공간 관련 글">
-              <h3>집중업무 · 스터디 공간 관련 글</h3>
+            <article class="private-office-card" aria-label="집중업무와 스터디룸 관련 글">
+              <h3>집중업무 · 스터디룸 관련 글</h3>
               <ul class="related-post-list">
-                {% assign study_space_posts = site.posts | where: "category", "스터디 공간" %}
+                {% assign study_space_posts = site.posts | where: "category", "스터디룸" %}
                 {% for post in study_space_posts limit: 3 %}
                   <li class="related-post-item">
                     <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 34 }}</a>
@@ -420,7 +420,7 @@ script_version: 20260719-1
       <div class="blog-guide-filters" id="homeGuideFilters" aria-label="실전 가이드 카테고리 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
         <button type="button" class="blog-guide-filter" data-category="면접준비" aria-pressed="false">면접준비</button>
-        <button type="button" class="blog-guide-filter" data-category="스터디 공간" aria-pressed="false">스터디 공간</button>
+        <button type="button" class="blog-guide-filter" data-category="스터디룸" aria-pressed="false">스터디룸</button>
         <button type="button" class="blog-guide-filter" data-category="미팅·상담" aria-pressed="false">미팅·상담</button>
         <button type="button" class="blog-guide-filter" data-category="데이트" aria-pressed="false">데이트</button>
       </div>

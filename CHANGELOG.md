@@ -4,11 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
-## [Unreleased]
+## [1.0.1] - 2026-07-29
 ### Added
 - `docs/weekly-publishing-workflow.md` with weekly cadence, publishing SOP, copy-paste article template, and weekly KPI retrospective template.
 - `interview-prep-checklist.html` added as an onsite Jekyll article for interview preparation (non-Naver content).
 - `_posts/2026-07-13-interview-prep-checklist-12.md` added as the first `_posts`-based onsite article.
+- `study.html` added as a dedicated study-room hub page connected from the main blog guide.
 
 ### Changed
 - `_includes/header.html` now supports dedicated navigation for `page_id: interview` pages.
@@ -25,6 +26,8 @@ This project follows Semantic Versioning.
 - Improved post SEO in `_includes/head.html` with dynamic `robots`, `og:type=article` for posts, and post-specific JSON-LD include.
 - Added `_includes/jsonld-post.html` for `BlogPosting` structured data on `_posts` content.
 - Canonicalized `interview-prep-checklist.html` to `/posts/interview-prep-checklist/` and marked it `noindex` to reduce duplicate indexing risk.
+- Study-related navigation, breadcrumbs, related-post routing, filters, and homepage cards now use `스터디룸` consistently.
+- Study posts and hub copy were updated to align visible labels, category names, and SEO keywords with the `스터디룸` positioning.
 
 ## [1.0.0] - 2026-07-11
 ### Added

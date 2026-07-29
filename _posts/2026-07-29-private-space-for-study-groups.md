@@ -2,10 +2,10 @@
 layout: default
 title: 2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간
 description: 카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞습니다. 부천 신중동에서 2~6명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 소개합니다.
-category: 스터디 공간
-keywords: 부천스터디룸,부천소모임,신중동스터디룸,부천공간대여,소모임공간,스터디공간,부천미팅룸,신중동소모임
+category: 스터디룸
+keywords: 부천스터디룸,부천소모임,신중동스터디룸,부천공간대여,소모임공간,스터디룸대여,부천미팅룸,신중동소모임
 tags:
-  - 스터디
+  - 스터디룸
   - 소모임
   - 공간대여
   - 부천
@@ -30,7 +30,7 @@ script_version: 20260711-4
       <p class="section-desc">카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞을 수 있습니다. 부천 신중동에서 2~6명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#seven-moments" class="btn-primary">7가지 순간 보기</a>
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디 공간 예약하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a>
       </div>
     </div>
   </section>
