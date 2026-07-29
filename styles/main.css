@@ -1110,6 +1110,139 @@ main.about-page.blog-hub #home .section-inner {
   border-radius: 999px;
   background: #edf6f1;
 }
+.interview-series-editorial-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+.interview-series-editorial-grid .interview-series-card {
+  position: relative;
+  grid-column: span 6;
+  grid-template-columns: 1fr;
+  min-height: 100%;
+  border: 1px solid rgba(198, 208, 219, .9);
+  background:
+    radial-gradient(circle at top right, rgba(234, 240, 247, .78), transparent 34%),
+    linear-gradient(160deg, #fff 0%, #fafbfc 100%);
+}
+.interview-series-editorial-grid .interview-series-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #294a6d 0%, #7ba0c8 100%);
+  opacity: .95;
+}
+.interview-series-editorial-grid .interview-series-card .blog-guide-image {
+  position: relative;
+  overflow: hidden;
+}
+.interview-series-editorial-grid .interview-series-card .blog-guide-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, .18) 100%);
+  pointer-events: none;
+}
+.interview-series-editorial-grid .interview-series-card .blog-guide-content {
+  gap: .82rem;
+  padding: 1.35rem;
+}
+.interview-series-headline-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .8rem;
+}
+.interview-series-index {
+  flex: 0 0 auto;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: .9;
+  letter-spacing: -.06em;
+  color: rgba(41, 74, 109, .14);
+}
+.interview-series-kicker {
+  margin: -.15rem 0 0;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #667a90;
+}
+.interview-series-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.interview-series-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: .22rem .62rem;
+  border: 1px solid rgba(200, 211, 224, .95);
+  border-radius: 999px;
+  background: rgba(249, 251, 254, .98);
+  color: #55687c;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.interview-series-footer {
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid rgba(221, 229, 238, .92);
+}
+.interview-series-editorial-grid .interview-series-card .blog-card-eyebrow {
+  background: rgba(236, 242, 249, .98);
+  color: #1e4569;
+}
+.interview-series-editorial-grid .interview-series-card-hero {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(300px, 1.04fr) minmax(0, 1fr);
+  min-height: 360px;
+  border-color: rgba(74, 110, 146, .2);
+  background:
+    radial-gradient(circle at top right, rgba(220, 231, 242, .92), transparent 34%),
+    linear-gradient(135deg, #f8fbff 0%, #edf4fa 100%);
+  box-shadow: 0 20px 46px rgba(37, 64, 94, .12);
+}
+.interview-series-editorial-grid .interview-series-card-hero .blog-guide-image {
+  min-height: 360px;
+}
+.interview-series-editorial-grid .interview-series-card-hero .blog-guide-content {
+  padding: 1.7rem 1.7rem 1.6rem;
+}
+.interview-series-editorial-grid .interview-series-card-hero .interview-series-index {
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  color: rgba(41, 74, 109, .12);
+}
+.interview-series-editorial-grid .interview-series-card-hero h3 {
+  font-size: clamp(1.45rem, 2.7vw, 1.95rem);
+  line-height: 1.28;
+}
+.interview-series-editorial-grid .interview-series-card-hero .interview-series-kicker {
+  color: #4d637b;
+}
+.interview-series-editorial-grid .interview-series-card-hero .interview-series-meta span {
+  background: rgba(244, 248, 253, .98);
+}
+.interview-series-editorial-grid .interview-series-card-support .blog-guide-image {
+  aspect-ratio: 16 / 9;
+}
+.interview-series-editorial-grid .interview-series-card-support h3 {
+  font-size: 1.22rem;
+  line-height: 1.38;
+}
+.interview-series-editorial-grid .interview-series-card-archive {
+  grid-column: span 4;
+}
+.interview-series-editorial-grid .interview-series-card-archive .blog-guide-image {
+  aspect-ratio: 16 / 10;
+}
+.interview-series-editorial-grid .interview-series-card-archive h3 {
+  font-size: 1.06rem;
+}
 .meeting-series-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.35rem;
@@ -1319,6 +1452,12 @@ main.about-page.blog-hub #home .section-inner {
   top: .55rem;
 }
 @media (max-width: 1024px) {
+  .interview-series-editorial-grid .interview-series-card-archive {
+    grid-column: span 6;
+  }
+  .interview-series-editorial-grid .interview-series-card-hero {
+    grid-template-columns: minmax(240px, .95fr) minmax(0, 1fr);
+  }
   .meeting-series-grid .meeting-series-card-archive {
     grid-column: span 6;
   }
