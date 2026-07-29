@@ -207,7 +207,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">음식 반입이 가능한가요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">가능합니다. 다만 다른 이용 환경을 위해 냄새가 강한 음식은 가급적 피하는 편이 좋습니다.</p>
+            <p itemprop="text">네. 음식 반입도 가능하고 배달음식도 이용하실 수 있습니다. 다만 다음 손님이 바로 이용하실 수 있도록 정리와 뒷정리를 잘 부탁드립니다.</p>
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
