@@ -126,41 +126,31 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">카페와 프라이빗 공간, 어떤 모임에 더 잘 맞을까요?</h2>
       <p class="section-desc">카페와 프라이빗 공간 중 어느 한쪽이 항상 더 좋은 것은 아닙니다. 모임의 목적에 따라 선택하면 됩니다.</p>
-      <div class="guide-table-wrap">
-        <table class="guide-table" aria-label="카페와 프라이빗 공간 비교">
-          <thead>
-            <tr>
-              <th scope="col">카페가 잘 맞는 모임</th>
-              <th scope="col">프라이빗 공간이 잘 맞는 모임</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>가볍게 근황을 나누는 만남</td>
-              <td>정해진 목표가 있는 스터디</td>
-            </tr>
-            <tr>
-              <td>짧은 독서와 대화</td>
-              <td>발표와 모의면접 연습</td>
-            </tr>
-            <tr>
-              <td>각자 조용히 공부하는 모임</td>
-              <td>서로 질문하고 설명하는 공부</td>
-            </tr>
-            <tr>
-              <td>한 시간 이내의 간단한 미팅</td>
-              <td>두 시간 이상 이어지는 프로젝트</td>
-            </tr>
-            <tr>
-              <td>주변에 들려도 괜찮은 대화</td>
-              <td>개인적인 피드백이 필요한 대화</td>
-            </tr>
-            <tr>
-              <td>준비물이 많지 않은 모임</td>
-              <td>노트북과 자료를 함께 사용하는 모임</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="guide-compare-grid" aria-label="카페와 프라이빗 공간 비교">
+        <article class="guide-compare-card">
+          <p class="guide-compare-label">Cafe</p>
+          <h3>카페가 잘 맞는 모임</h3>
+          <ul class="guide-compare-list">
+            <li>가볍게 근황을 나누는 만남</li>
+            <li>짧은 독서와 대화</li>
+            <li>각자 조용히 공부하는 모임</li>
+            <li>한 시간 이내의 간단한 미팅</li>
+            <li>주변에 들려도 괜찮은 대화</li>
+            <li>준비물이 많지 않은 모임</li>
+          </ul>
+        </article>
+        <article class="guide-compare-card guide-compare-card-featured">
+          <p class="guide-compare-label">Private Space</p>
+          <h3>프라이빗 공간이 잘 맞는 모임</h3>
+          <ul class="guide-compare-list">
+            <li>정해진 목표가 있는 스터디</li>
+            <li>발표와 모의면접 연습</li>
+            <li>서로 질문하고 설명하는 공부</li>
+            <li>두 시간 이상 이어지는 프로젝트</li>
+            <li>개인적인 피드백이 필요한 대화</li>
+            <li>노트북과 자료를 함께 사용하는 모임</li>
+          </ul>
+        </article>
       </div>
       <p class="section-desc">모임 중 말하는 시간이 많고, 서로 의견을 주고받으며, 끝날 때 결과물을 만들어야 한다면 프라이빗 공간을 고려해볼 수 있습니다.</p>
     </div>
