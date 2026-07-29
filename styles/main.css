@@ -1110,6 +1110,102 @@ main.about-page.blog-hub #home .section-inner {
   border-radius: 999px;
   background: #edf6f1;
 }
+.meeting-series-grid {
+  gap: 1.35rem;
+}
+.meeting-series-grid .meeting-series-card {
+  position: relative;
+  border: 1px solid rgba(189, 210, 197, .92);
+  background:
+    radial-gradient(circle at top right, rgba(227, 239, 231, .72), transparent 34%),
+    linear-gradient(160deg, #fff 0%, #fbfcfa 100%);
+}
+.meeting-series-grid .meeting-series-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1f5c43 0%, #88b29b 100%);
+  opacity: .9;
+}
+.meeting-series-grid .meeting-series-card .blog-guide-image {
+  position: relative;
+  overflow: hidden;
+}
+.meeting-series-grid .meeting-series-card .blog-guide-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent 0%, rgba(17, 24, 39, .18) 100%);
+  pointer-events: none;
+}
+.meeting-series-grid .meeting-series-card .blog-guide-content {
+  gap: .82rem;
+}
+.meeting-series-grid .meeting-series-card .blog-guide-content h3 {
+  margin-bottom: 0;
+}
+.meeting-series-grid .meeting-series-card .blog-guide-content > p:not(.blog-card-eyebrow):not(.meeting-series-kicker) {
+  margin-top: 0;
+}
+.meeting-series-grid .meeting-series-card .blog-card-eyebrow {
+  background: rgba(235, 244, 238, .96);
+  color: #194734;
+}
+.meeting-series-kicker {
+  margin: -.15rem 0 0;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #6c8578;
+}
+.meeting-series-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.meeting-series-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: .22rem .62rem;
+  border: 1px solid rgba(191, 208, 197, .92);
+  border-radius: 999px;
+  background: rgba(248, 251, 249, .95);
+  color: #506556;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.meeting-series-footer {
+  margin-top: auto;
+  padding-top: .2rem;
+  border-top: 1px solid rgba(214, 224, 218, .88);
+}
+.meeting-series-grid .interview-feature-card {
+  border-color: rgba(56, 103, 78, .24);
+  background:
+    radial-gradient(circle at top right, rgba(214, 231, 220, .9), transparent 38%),
+    linear-gradient(145deg, #fff 0%, #f1f7f3 100%);
+  box-shadow: 0 18px 42px rgba(28, 73, 52, .12);
+}
+.meeting-series-grid .interview-feature-card .meeting-series-kicker {
+  color: #4b6d5b;
+}
+.meeting-series-grid .interview-feature-card .meeting-series-meta span {
+  background: rgba(240, 247, 242, .98);
+}
+.meeting-series-grid .interview-feature-card:first-child {
+  grid-template-columns: minmax(250px, .95fr) minmax(0, 1fr);
+}
+.meeting-series-grid .interview-feature-card:first-child .blog-guide-content {
+  padding: 1.7rem 1.65rem;
+}
+.meeting-series-grid .interview-feature-card:first-child h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+}
 .interview-hub #upcoming-series {
   background: #f7f7f3 !important;
 }

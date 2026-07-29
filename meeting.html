@@ -10,7 +10,7 @@ og_image_alt: 고객 미팅과 상담, 소규모 회의에 어울리는 프라�
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/bucheon-meeting-room.webp
-css_version: 20260729-1
+css_version: 20260729-2
 script_version: 20260711-4
 ---
 
@@ -75,7 +75,7 @@ script_version: 20260711-4
         </div>
         <p>상담 공간 운영을 중심으로, 고객 미팅과 화상 진행까지 실제로 자주 고민하는 상황부터 순서대로 읽어보세요.</p>
       </div>
-      <div class="blog-guide-grid interview-series-grid" aria-label="미팅 상담 시리즈 글 목록">
+      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="미팅 상담 시리즈 글 목록">
         {% assign counselor_post = site.posts | where: "url", "/posts/freelance-counselor-office/" | first %}
         {% assign meeting_room_post = site.posts | where: "url", "/posts/bucheon-meeting-room/" | first %}
         {% assign small_group_post = site.posts | where: "url", "/posts/bucheon-small-group-space/" | first %}
@@ -91,7 +91,7 @@ script_version: 20260711-4
         {% endfor %}
         {% for post in ordered_meeting_posts limit: 6 %}
           {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
-          <article class="blog-guide-card{% if forloop.first or forloop.index == 2 %} interview-feature-card{% endif %}">
+          <article class="blog-guide-card meeting-series-card{% if forloop.first or forloop.index == 2 %} interview-feature-card{% endif %}">
             <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
               {% if post_card_image contains '://' %}
                 <img src="{{ post_card_image }}" alt="" loading="lazy" />
@@ -102,33 +102,55 @@ script_version: 20260711-4
             <div class="blog-guide-content">
               {% if post.url == "/posts/freelance-counselor-office/" %}
                 <p class="blog-card-eyebrow">01 · 대표 가이드</p>
+                <p class="meeting-series-kicker">상담 운영의 기준을 먼저 잡는 글</p>
                 <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사가 고정 사무실 없이 운영하는 법</a></h3>
                 <p>월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.</p>
-                <div class="blog-card-footer">
+                <div class="meeting-series-meta">
+                  <span>상담사</span>
+                  <span>코치</span>
+                  <span>1인 운영</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
                   <span>상담 공간 운영 핵심</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
               {% elsif post.url == "/posts/bucheon-meeting-room/" %}
                 <p class="blog-card-eyebrow">02 · 고객 미팅</p>
+                <p class="meeting-series-kicker">조용한 미팅룸이 필요한 순간 정리</p>
                 <h3><a href="{{ post.url | relative_url }}">부천에서 조용한 미팅룸이 필요하다면</a></h3>
                 <p>고객 미팅, 제안 미팅, 상담 일정에 왜 조용한 프라이빗 미팅룸이 잘 맞는지 선택 기준 중심으로 정리했습니다.</p>
-                <div class="blog-card-footer">
+                <div class="meeting-series-meta">
+                  <span>고객 미팅</span>
+                  <span>제안 미팅</span>
+                  <span>상담 일정</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
                   <span>미팅룸 선택</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
               {% elsif post.url == "/posts/bucheon-small-group-space/" %}
                 <p class="blog-card-eyebrow">03 · 보조 활용</p>
+                <p class="meeting-series-kicker">스터디와 목적형 소모임까지 확장</p>
                 <h3><a href="{{ post.url | relative_url }}">2~6명이 편하게 모이기 좋은 프라이빗 공간</a></h3>
                 <p>소규모 프로젝트 회의나 대화 중심 모임처럼 상담·미팅 외에도 조용한 공간이 필요한 보조 활용 사례를 정리했습니다.</p>
-                <div class="blog-card-footer">
+                <div class="meeting-series-meta">
+                  <span>스터디룸</span>
+                  <span>프로젝트 회의</span>
+                  <span>독서모임</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
                   <span>보조 활용 사례</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
               {% else %}
                 <p class="blog-card-eyebrow">0{{ forloop.index }} · {{ post.category }}</p>
+                <p class="meeting-series-kicker">관련 활용 가이드</p>
                 <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
                 <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-                <div class="blog-card-footer">
+                <div class="meeting-series-meta">
+                  <span>{{ post.category }}</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
                   <span>{{ post.date | date: "%Y-%m-%d" }}</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
