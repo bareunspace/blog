@@ -219,7 +219,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">스터디룸처럼 말하면서 이용해도 되나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">일상적인 스터디와 발표 연습, 회의, 영어 말하기처럼 대화가 필요한 이용은 가능합니다. 다만 과도하게 큰 소음은 자제해 주시는 편이 좋습니다.</p>
+            <p itemprop="text">네. 스터디, 발표 연습, 회의, 영어 말하기처럼 말하면서 진행하는 이용도 가능합니다. 서로 설명하고 질문하거나 모의면접처럼 실제로 소리 내어 연습하는 목적에도 잘 맞습니다.</p>
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
