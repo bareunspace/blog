@@ -2,6 +2,8 @@
 {% if related_posts.size > 1 %}
   {% if page.category == "면접준비" %}
     {% assign related_more_url = '/interview/' %}
+  {% elsif page.category == "미팅·상담" %}
+    {% assign related_more_url = '/meeting/' %}
   {% else %}
     {% assign related_more_url = '/blog.html#blog-onsite' %}
   {% endif %}

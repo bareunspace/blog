@@ -17,6 +17,8 @@
           <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
           {% if page.category == "면접준비" %}
             <a href="{{ '/interview/' | relative_url }}">{{ page.category }}</a>
+          {% elsif page.category == "미팅·상담" %}
+            <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
           {% else %}
             <span>{{ page.category }}</span>
           {% endif %}
@@ -31,6 +33,11 @@
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">면접준비</span>
+      {% elsif page.page_id == "meeting" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">미팅·상담</span>
       {% else %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">{{ page.title }}</span>
