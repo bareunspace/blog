@@ -536,7 +536,7 @@ script_version: 20260719-1
         <button type="button" class="blog-guide-filter" data-category="데이트" aria-pressed="false">데이트</button>
       </div>
       <div class="blog-guide-grid" id="homeGuideGrid" aria-label="바른자리 실전 가이드 목록">
-        {% for post in onsite_posts limit: 12 %}
+        {% for post in onsite_posts %}
           <article class="blog-guide-card" data-home-guide-item data-category="{{ post.category | default: '시간 활용 가이드' }}">
             <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
               <img src="{{ post.og_image | default: '/images/main.jpeg' }}" alt="" loading="lazy" />
