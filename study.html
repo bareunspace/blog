@@ -78,14 +78,16 @@ script_version: 20260711-4
       <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="스터디룸 시리즈 글 목록">
         {% assign study_intro_post = site.posts | where: "url", "/posts/study-space-guide/" | first %}
         {% assign speaking_post = site.posts | where: "url", "/posts/practice-speaking-space/" | first %}
+        {% assign presentation_project_post = site.posts | where: "url", "/posts/study-space-for-presentation-discussion-project/" | first %}
         {% assign study_group_post = site.posts | where: "url", "/posts/private-space-for-study-groups/" | first %}
         {% assign ordered_study_posts = "" | split: "" %}
         {% if study_intro_post %}{% assign ordered_study_posts = ordered_study_posts | push: study_intro_post %}{% endif %}
         {% if speaking_post %}{% assign ordered_study_posts = ordered_study_posts | push: speaking_post %}{% endif %}
+        {% if presentation_project_post %}{% assign ordered_study_posts = ordered_study_posts | push: presentation_project_post %}{% endif %}
         {% if study_group_post %}{% assign ordered_study_posts = ordered_study_posts | push: study_group_post %}{% endif %}
         {% assign other_study_posts = site.posts | where: "category", "스터디룸" %}
         {% for post in other_study_posts %}
-          {% unless post.url == "/posts/study-space-guide/" or post.url == "/posts/practice-speaking-space/" or post.url == "/posts/private-space-for-study-groups/" %}
+          {% unless post.url == "/posts/study-space-guide/" or post.url == "/posts/practice-speaking-space/" or post.url == "/posts/study-space-for-presentation-discussion-project/" or post.url == "/posts/private-space-for-study-groups/" %}
             {% assign ordered_study_posts = ordered_study_posts | push: post %}
           {% endunless %}
         {% endfor %}
@@ -102,7 +104,7 @@ script_version: 20260711-4
             </a>
             <div class="blog-guide-content">
               <div class="meeting-series-headline-row">
-                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/study-space-guide/" %}기본 선택 기준{% elsif post.url == "/posts/practice-speaking-space/" %}말하기 연습{% elsif post.url == "/posts/private-space-for-study-groups/" %}그룹 스터디{% else %}{{ post.category }}{% endif %}</p>
+                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/study-space-guide/" %}기본 선택 기준{% elsif post.url == "/posts/practice-speaking-space/" %}말하기 연습{% elsif post.url == "/posts/study-space-for-presentation-discussion-project/" %}발표 · 토론 · 팀플{% elsif post.url == "/posts/private-space-for-study-groups/" %}그룹 스터디{% else %}{{ post.category }}{% endif %}</p>
                 <span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span>
               </div>
               {% if post.url == "/posts/study-space-guide/" %}
@@ -129,6 +131,19 @@ script_version: 20260711-4
                 </div>
                 <div class="blog-card-footer meeting-series-footer">
                   <span>말하기 연습 공간</span>
+                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
+                </div>
+              {% elsif post.url == "/posts/study-space-for-presentation-discussion-project/" %}
+                <p class="meeting-series-kicker">발표와 토론, 팀 프로젝트형 공부에 맞는 글</p>
+                <h3><a href="{{ post.url | relative_url }}">발표·토론·팀 프로젝트가 늘어나는 시대, 공부하는 공간도 달라져야 합니다</a></h3>
+                <p>수행평가 발표, 영어 토론, AP·IB형 프로젝트 학습처럼 실제로 말하고 협업해야 하는 공부에 왜 프라이빗 스터디룸이 잘 맞는지 정리했습니다.</p>
+                <div class="meeting-series-meta">
+                  <span>발표 연습</span>
+                  <span>토론 준비</span>
+                  <span>팀 프로젝트</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
+                  <span>프로젝트형 학습 공간</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
               {% elsif post.url == "/posts/private-space-for-study-groups/" %}
