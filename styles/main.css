@@ -1971,13 +1971,24 @@ main.about-page.blog-hub #home .section-inner {
   min-width: 0;
 }
 .private-office-card .related-post-item {
+  position: relative;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: .5rem;
-  padding: .24rem 0;
+  padding: .24rem 0 .24rem .72rem;
   border-bottom: 1px dashed #e5e7eb;
   min-width: 0;
+}
+.private-office-card .related-post-item::before {
+  content: "";
+  position: absolute;
+  left: .12rem;
+  top: .72rem;
+  width: .26rem;
+  height: .26rem;
+  border-radius: 999px;
+  background: rgba(45,106,79,.72);
 }
 .private-office-card .related-post-item a {
   display: block;
