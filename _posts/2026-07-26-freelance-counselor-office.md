@@ -244,7 +244,7 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">상담 시간 예약하기</a>
-        <a href="/index.html#contact" class="btn-outline">정기 이용 문의하기</a>
+        <a href="/posts/recurring-space-booking-for-freelance-counselors/" class="btn-outline">다음 글: 반복 예약 운영 보기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 더 보기</a>
       </div>
     </div>
@@ -303,7 +303,8 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약하기</a>
-        <a href="/blog.html" class="btn-outline">다른 공간 활용 글 보기</a>
+        <a href="/posts/recurring-space-booking-for-freelance-counselors/" class="btn-outline">다음 글: 정기 상담 리듬 만들기</a>
+        <a href="/meeting/" class="btn-outline">미팅·상담 시리즈 보기</a>
       </div>
     </div>
   </section>

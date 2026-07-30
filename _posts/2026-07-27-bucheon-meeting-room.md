@@ -182,8 +182,8 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">미팅룸 예약하기</a>
-        <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
-        <a href="/blog.html" class="btn-outline">다른 가이드 보기</a>
+        <a href="/posts/recurring-space-booking-for-freelance-counselors/" class="btn-outline">이전 글: 반복 예약 운영 보기</a>
+        <a href="/meeting/" class="btn-outline">미팅·상담 시리즈 보기</a>
       </div>
     </div>
   </section>

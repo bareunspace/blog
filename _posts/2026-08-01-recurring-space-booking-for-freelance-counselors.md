@@ -219,8 +219,8 @@ script_version: 20260711-4
       <p>급하게 이용해야 하는 경우에는 전화 또는 네이버 톡톡으로 문의해 주세요. 빈 시간이라면 바로 이용할 수 있도록 안내해 드립니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/" class="btn-primary">예약 가능 시간 확인하기</a>
-        <a href="/posts/freelance-counselor-office/" class="btn-outline">상담 공간 운영 가이드 보기</a>
-        <a href="/meeting/" class="btn-outline">미팅·상담 글 더 보기</a>
+        <a href="/posts/bucheon-meeting-room/" class="btn-outline">다음 글: 고객 미팅 공간 보기</a>
+        <a href="/posts/freelance-counselor-office/" class="btn-outline">이전 글: 상담 운영 기본 보기</a>
       </div>
     </div>
   </section>
