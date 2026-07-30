@@ -1,0 +1,142 @@
+{% unless page.page_id == "home" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    }
+    {% if page.collection == "posts" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site.url }}/blog.html"
+    }
+    {% if page.category == "면접준비" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "면접준비",
+      "item": "{{ site.url }}/interview/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.canonical | jsonify }}
+    }
+    {% elsif page.category == "스터디룸" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "스터디룸",
+      "item": "{{ site.url }}/study/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.canonical | jsonify }}
+    }
+    {% elsif page.category == "미팅·상담" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "미팅·상담",
+      "item": "{{ site.url }}/meeting/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.canonical | jsonify }}
+    }
+    {% else %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.canonical | jsonify }}
+    }
+    {% endif %}
+    {% elsif page.page_id == "blog" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site.url }}/blog.html"
+    }
+    {% elsif page.page_id == "interview" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site.url }}/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "면접준비",
+      "item": "{{ site.url }}/interview/"
+    }
+    {% elsif page.page_id == "study" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site.url }}/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "스터디룸",
+      "item": "{{ site.url }}/study/"
+    }
+    {% elsif page.page_id == "meeting" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site.url }}/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "미팅·상담",
+      "item": "{{ site.url }}/meeting/"
+    }
+    {% elsif page.page_id == "about" %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "브랜드 스토리",
+      "item": "{{ site.url }}/about.html"
+    }
+    {% else %}
+    ,
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.canonical | default: site.url | jsonify }}
+    }
+    {% endif %}
+  ]
+}
+</script>
+{% endunless %}

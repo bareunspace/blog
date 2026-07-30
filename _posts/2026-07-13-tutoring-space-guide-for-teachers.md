@@ -3,6 +3,18 @@ layout: default
 title: 집중해서 공부할 조용한 스터디룸 | 신중동역 1분 바른자리
 description: 집이나 카페 대신, 혼자 공부하거나 그룹 스터디하기 좋은 조용한 스터디룸이 필요하신가요? 신중동역 1분 바른자리를 예약해 보세요.
 category: 스터디룸
+hub_series: study
+hub_section: core
+hub_order: 1
+hub_label: 기본 선택 기준
+hub_kicker: 스터디룸을 처음 고를 때 먼저 읽을 글
+hub_title: 집 말고 집중해서 공부할 공간이 필요하다면
+hub_description: 집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 스터디룸 선택 기준과 첫 이용 체크포인트를 정리했습니다.
+hub_tags:
+  - 집중 학습
+  - 장소 비교
+  - 첫 이용
+hub_footer: 스터디룸 기본 가이드
 keywords: 부천스터디룸,신중동스터디룸,스터디룸대여,그룹스터디룸,개인스터디룸
 tags:
   - 스터디룸

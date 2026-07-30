@@ -71,27 +71,13 @@ script_version: 20260711-4
       <div class="blog-section-heading">
         <div>
           <p class="section-label">Series Guide</p>
-          <h2 class="section-title">스터디룸 시리즈</h2>
+          <h2 class="section-title">핵심 스터디룸 시리즈</h2>
         </div>
-        <p>혼자 집중하는 공부, 말하기 연습, 2인 이상 스터디 운영까지 실제 예약 전 가장 많이 고민하는 흐름부터 정리했습니다.</p>
+        <p>혼자 집중하는 공부, 말하기 연습, 발표와 프로젝트형 학습까지 실제 예약 전 가장 많이 고민하는 흐름부터 정리했습니다.</p>
       </div>
-      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="스터디룸 시리즈 글 목록">
-        {% assign study_intro_post = site.posts | where: "url", "/posts/study-space-guide/" | first %}
-        {% assign speaking_post = site.posts | where: "url", "/posts/practice-speaking-space/" | first %}
-        {% assign presentation_project_post = site.posts | where: "url", "/posts/study-space-for-presentation-discussion-project/" | first %}
-        {% assign study_group_post = site.posts | where: "url", "/posts/private-space-for-study-groups/" | first %}
-        {% assign ordered_study_posts = "" | split: "" %}
-        {% if study_intro_post %}{% assign ordered_study_posts = ordered_study_posts | push: study_intro_post %}{% endif %}
-        {% if speaking_post %}{% assign ordered_study_posts = ordered_study_posts | push: speaking_post %}{% endif %}
-        {% if presentation_project_post %}{% assign ordered_study_posts = ordered_study_posts | push: presentation_project_post %}{% endif %}
-        {% if study_group_post %}{% assign ordered_study_posts = ordered_study_posts | push: study_group_post %}{% endif %}
-        {% assign other_study_posts = site.posts | where: "category", "스터디룸" %}
-        {% for post in other_study_posts %}
-          {% unless post.url == "/posts/study-space-guide/" or post.url == "/posts/practice-speaking-space/" or post.url == "/posts/study-space-for-presentation-discussion-project/" or post.url == "/posts/private-space-for-study-groups/" %}
-            {% assign ordered_study_posts = ordered_study_posts | push: post %}
-          {% endunless %}
-        {% endfor %}
-        {% for post in ordered_study_posts limit: 6 %}
+      {% assign study_core_posts = site.posts | where: "hub_series", "study" | where: "hub_section", "core" | sort: "hub_order" %}
+      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="핵심 스터디룸 시리즈 글 목록">
+        {% for post in study_core_posts %}
           {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
           {% assign card_index = forloop.index | prepend: '0' %}
           <article class="blog-guide-card meeting-series-card{% if forloop.first %} meeting-series-card-hero{% elsif forloop.index <= 3 %} meeting-series-card-support{% else %} meeting-series-card-archive{% endif %}">
@@ -104,73 +90,58 @@ script_version: 20260711-4
             </a>
             <div class="blog-guide-content">
               <div class="meeting-series-headline-row">
-                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/study-space-guide/" %}기본 선택 기준{% elsif post.url == "/posts/practice-speaking-space/" %}말하기 연습{% elsif post.url == "/posts/study-space-for-presentation-discussion-project/" %}발표 · 토론 · 팀플{% elsif post.url == "/posts/private-space-for-study-groups/" %}그룹 스터디{% else %}{{ post.category }}{% endif %}</p>
+                <p class="blog-card-eyebrow">{{ card_index }} · {{ post.hub_label | default: post.category }}</p>
                 <span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span>
               </div>
-              {% if post.url == "/posts/study-space-guide/" %}
-                <p class="meeting-series-kicker">스터디룸을 처음 고를 때 먼저 읽을 글</p>
-                <h3><a href="{{ post.url | relative_url }}">집 말고 집중해서 공부할 공간이 필요하다면</a></h3>
-                <p>집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 스터디룸 선택 기준과 첫 이용 체크포인트를 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>집중 학습</span>
-                  <span>장소 비교</span>
-                  <span>첫 이용</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>스터디룸 기본 가이드</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/practice-speaking-space/" %}
-                <p class="meeting-series-kicker">영어·면접·발표 연습에 맞는 활용</p>
-                <h3><a href="{{ post.url | relative_url }}">영어, 면접, 발표 연습 혼자 마음껏 말할 공간이 필요하다면</a></h3>
-                <p>혼자 큰 소리로 연습해야 하는 일정에서 왜 프라이빗 스터디룸이 더 편한지, 어떤 예약에 특히 잘 맞는지 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>영어회화</span>
-                  <span>면접 연습</span>
-                  <span>발표 리허설</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>말하기 연습 공간</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/study-space-for-presentation-discussion-project/" %}
-                <p class="meeting-series-kicker">발표와 토론, 팀 프로젝트형 공부에 맞는 글</p>
-                <h3><a href="{{ post.url | relative_url }}">발표·토론·팀 프로젝트가 늘어나는 시대, 공부하는 공간도 달라져야 합니다</a></h3>
-                <p>수행평가 발표, 영어 토론, AP·IB형 프로젝트 학습처럼 실제로 말하고 협업해야 하는 공부에 왜 프라이빗 스터디룸이 잘 맞는지 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>발표 연습</span>
-                  <span>토론 준비</span>
-                  <span>팀 프로젝트</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>프로젝트형 학습 공간</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/private-space-for-study-groups/" %}
-                <p class="meeting-series-kicker">2명 이상이 모일 때 더 체감되는 장점</p>
-                <h3><a href="{{ post.url | relative_url }}">2인 이상 스터디 · 소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간</a></h3>
-                <p>질문, 설명, 피드백, 발표처럼 함께 말하고 결과를 만들어야 하는 그룹 스터디에 왜 스터디룸이 잘 맞는지 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>그룹 스터디</span>
-                  <span>소모임</span>
-                  <span>자료 펼치기</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>2인 이상 활용</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
+              <p class="meeting-series-kicker">{{ post.hub_kicker | default: "관련 활용 가이드" }}</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.hub_title | default: post.title }}</a></h3>
+              <p>{{ post.hub_description | default: post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="meeting-series-meta">
+                {% assign hub_tags = post.hub_tags | default: post.tags %}
+                {% for tag in hub_tags limit: 3 %}
+                  <span>{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="blog-card-footer meeting-series-footer">
+                <span>{{ post.hub_footer | default: post.category }}</span>
+                <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="related-series" class="blog-guides-section">
+    <div class="section-inner">
+      <div class="blog-section-heading">
+        <div>
+          <p class="section-label">Related Guides</p>
+          <h2 class="section-title">관련 활용 가이드</h2>
+        </div>
+        <p>핵심 스터디룸 시리즈 외에도, 2인 이상 그룹 스터디와 소모임처럼 비슷한 환경이 필요한 활용 글을 함께 볼 수 있습니다.</p>
+      </div>
+      {% assign study_related_posts = site.posts | where: "hub_series", "study" | where: "hub_section", "related" | sort: "hub_order" %}
+      <div class="blog-guide-grid" aria-label="스터디룸 관련 활용 글 목록">
+        {% for post in study_related_posts %}
+          {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
+          <article class="blog-guide-card" data-category="{{ post.category | default: '스터디룸' }}">
+            <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              {% if post_card_image contains '://' %}
+                <img src="{{ post_card_image }}" alt="" loading="lazy" />
               {% else %}
-                <p class="meeting-series-kicker">관련 활용 가이드</p>
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-                <div class="meeting-series-meta">
-                  <span>{{ post.category }}</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
+                <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
               {% endif %}
+            </a>
+            <div class="blog-guide-content">
+              <p class="blog-card-eyebrow">{{ post.hub_label | default: post.category }}</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.hub_title | default: post.title }}</a></h3>
+              <p>{{ post.hub_description | default: post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="blog-card-footer">
+                <span>{{ post.hub_footer | default: post.category }}</span>
+                <a href="{{ post.url | relative_url }}">자세히 보기 <span aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
         {% endfor %}

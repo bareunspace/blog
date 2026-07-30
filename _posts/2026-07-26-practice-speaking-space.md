@@ -3,6 +3,18 @@ layout: default
 title: 영어·면접·발표 연습할 조용한 공간 | 신중동역 1분 바른자리
 description: 혼자 큰 소리로 영어, 면접, 발표를 연습할 공간이 필요하신가요? 신중동역 1분 프라이빗 공간 바른자리를 예약해 보세요.
 category: 스터디룸
+hub_series: study
+hub_section: core
+hub_order: 2
+hub_label: 말하기 연습
+hub_kicker: 영어·면접·발표 연습에 맞는 활용
+hub_title: 영어, 면접, 발표 연습 혼자 마음껏 말할 공간이 필요하다면
+hub_description: 혼자 큰 소리로 연습해야 하는 일정에서 왜 프라이빗 스터디룸이 더 편한지, 어떤 예약에 특히 잘 맞는지 정리했습니다.
+hub_tags:
+  - 영어회화
+  - 면접 연습
+  - 발표 리허설
+hub_footer: 말하기 연습 공간
 keywords: 영어말하기연습,OPIc연습,토익스피킹,발표연습,면접연습,스터디룸,부천공간대여,신중동공간대여
 tags:
   - 영어말하기
