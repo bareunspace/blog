@@ -52,11 +52,11 @@
                 {% assign child_first_char = child_href | slice: 0, 1 %}
                 <li>
                   {% if child_first_char == '#' or child_href contains '://' or child_href contains 'mailto:' or child_href contains 'tel:' %}
-                    <a href="{{ child_href }}">{{ child.label }}</a>
+                    <a href="{{ child_href }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
                   {% elsif child_first_char == '/' %}
-                    <a href="{{ child_href | relative_url }}">{{ child.label }}</a>
+                    <a href="{{ child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
                   {% else %}
-                    <a href="{{ '/' | append: child_href | relative_url }}">{{ child.label }}</a>
+                    <a href="{{ '/' | append: child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
                   {% endif %}
                 </li>
               {% endfor %}

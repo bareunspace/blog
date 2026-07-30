@@ -27,12 +27,35 @@ about:
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 블로그
+    href: "blog.html"
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
   - label: 오시는 길
     href: "index.html#contact"
 blog:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+        current: true
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
   - label: 최근 글
     href: "#blog-latest"
-    current: true
   - label: 사이트 발행 글
     href: "#blog-onsite"
   - label: 브랜드 스토리
@@ -42,9 +65,21 @@ blog:
   - label: 오시는 길
     href: "index.html#contact"
 interview:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+        current: true
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
   - label: 준비 흐름
     href: "#prep-flow"
-    current: true
   - label: 시리즈 글
     href: "#interview-series"
   - label: 준비 중
@@ -54,9 +89,21 @@ interview:
   - label: 공간 예약
     href: "#booking"
 meeting:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+        current: true
+      - label: 스터디
+        href: "study/"
   - label: 준비 흐름
     href: "#meeting-flow"
-    current: true
   - label: 시리즈 글
     href: "#meeting-series"
   - label: 준비 중
@@ -66,9 +113,21 @@ meeting:
   - label: 공간 예약
     href: "#booking"
 study:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
+        current: true
   - label: 준비 흐름
     href: "#study-flow"
-    current: true
   - label: 시리즈 글
     href: "#study-series"
   - label: 준비 중
@@ -78,9 +137,19 @@ study:
   - label: 공간 예약
     href: "#booking"
 post:
-  - label: 블로그 홈
+  - label: 블로그
     href: "blog.html"
     current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+        current: true
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
   - label: 공간
     href: "index.html#space"
   - label: 요금·예약
