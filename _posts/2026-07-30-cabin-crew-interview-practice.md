@@ -253,5 +253,26 @@ script_version: 20260711-4
     </div>
   </section>
 
+  <section id="next-cabin-crew-guides">
+    <div class="section-inner">
+      <h2 class="section-title">이어서 준비하면 좋은 승무원 면접 주제</h2>
+      <p class="section-desc">이 글이 승무원 면접 준비의 시작이라면, 다음에는 혼자 연습하는 방식과 영어 답변, 친구와 하는 모의면접까지 차례로 점검해보면 좋습니다.</p>
+      <div class="about-highlight-grid" aria-label="승무원 면접 이어 읽기 주제">
+        <article class="about-highlight-card">
+          <h3>혼자 연습하는 방법</h3>
+          <p>자기소개부터 전신 촬영, 거울 점검, 입실과 인사, 착석 흐름까지 혼자서 실전처럼 연습하는 방법을 이어서 다룰 예정입니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>영어 면접 연습법</h3>
+          <p>외운 답변이 막히지 않도록 짧고 분명하게 말하는 연습, 영어 질문에 자연스럽게 반응하는 방법을 따로 정리할 예정입니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>친구와 모의면접 준비</h3>
+          <p>2~4인이 함께 질문과 답변을 주고받으며 그룹 면접까지 연습하는 방식도 이어서 연결할 계획입니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   {% include post-tags.html %}
 </main>
