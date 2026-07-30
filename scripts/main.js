@@ -1468,8 +1468,18 @@
         });
       };
 
-      toggleEl.addEventListener('click', togglePanel);
+      toggleEl.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest('.feature-card-link')) {
+          return;
+        }
+        togglePanel();
+      });
       toggleEl.addEventListener('keydown', (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest('.feature-card-link')) {
+          return;
+        }
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           togglePanel();
