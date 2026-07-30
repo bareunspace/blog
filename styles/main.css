@@ -1727,14 +1727,9 @@ main.about-page.blog-hub #home .section-inner {
   grid-row: 5;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: .75rem;
   margin-top: .15rem;
-}
-.feature-card-detail {
-  color: #4b5563;
-  font-size: .8rem;
-  font-weight: 700;
 }
 .feature-card-link {
   position: relative;
@@ -4193,7 +4188,6 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     flex-direction: column;
     gap: .45rem;
   }
-  .feature-card-detail,
   .feature-card-link {
     width: 100%;
     justify-content: center;
