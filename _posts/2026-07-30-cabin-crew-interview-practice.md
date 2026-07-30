@@ -12,7 +12,7 @@ tags:
   - 취업준비
 canonical: https://bareunjari.com/posts/cabin-crew-interview-practice/
 permalink: /posts/cabin-crew-interview-practice/
-date: 2026-07-30 23:59:00 +0900
+date: 2026-07-30 08:59:00 +0900
 og_image: https://bareunjari.com/images/cabin-crew-interview-practice.webp
 og_image_alt: 승무원 면접에서 표정과 말하기를 연습하는 장면
 og_image_width: 1672
