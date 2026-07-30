@@ -33,11 +33,11 @@
         <li class="nav-item{% if item.children %} nav-item-has-children{% endif %}">
           <div class="nav-primary-row">
           {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}
-            <a href="{{ href_value }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+            <a href="{{ href_value }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% elsif first_char == '/' %}
-            <a href="{{ href_value | relative_url }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+            <a href="{{ href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% else %}
-            <a href="{{ '/' | append: href_value | relative_url }}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+            <a href="{{ '/' | append: href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
           {% endif %}
           {% if item.children %}
             <button type="button" class="nav-submenu-toggle" data-menu-label="{{ item.label }}" aria-expanded="false" aria-controls="navSubmenu{{ forloop.index }}" aria-label="{{ item.label }} 하위 메뉴 열기">

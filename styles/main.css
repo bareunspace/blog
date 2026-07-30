@@ -93,6 +93,9 @@ nav {
   font-size: .97rem; font-weight: 600; color: #4b5563;
   transition: color var(--transition);
 }
+.nav-link-with-menu {
+  gap: .3rem;
+}
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -158,11 +161,11 @@ nav {
 }
 .nav-links .nav-submenu a {
   display: block;
-  padding: .62rem .75rem;
+  padding: .7rem .8rem;
   border-radius: 8px;
   white-space: nowrap;
-  font-size: .86rem;
-  font-weight: 600;
+  font-size: .87rem;
+  font-weight: 700;
 }
 .nav-links .nav-submenu a::after {
   display: none;
@@ -170,6 +173,10 @@ nav {
 .nav-links .nav-submenu a:hover,
 .nav-links .nav-submenu a:focus-visible {
   background: #edf5f0;
+}
+.nav-links .nav-submenu li:first-child a {
+  background: #f4faf6;
+  color: var(--primary);
 }
 .nav-toggle {
   display: none;
@@ -4012,6 +4019,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .nav-primary-row > a {
     display: flex;
     align-items: center;
+    gap: .35rem;
     width: 100%;
     min-height: 48px;
     padding: .7rem .75rem;
@@ -4085,9 +4093,12 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .nav-links .nav-submenu a {
     min-height: 42px;
-    padding: .6rem .75rem;
+    padding: .68rem .78rem;
     color: #526158;
     font-size: .87rem;
+  }
+  .nav-links .nav-submenu li:first-child a {
+    background: #edf6f0;
   }
   #home {
     min-height: clamp(430px, 61vh, 580px);

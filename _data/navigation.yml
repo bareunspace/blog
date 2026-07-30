@@ -8,6 +8,15 @@ home:
     href: "#about"
   - label: 블로그
     href: "#practical-guides"
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
   - label: 오시는 길
     href: "#contact"
 about:
