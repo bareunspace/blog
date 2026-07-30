@@ -17,9 +17,10 @@ script_version: 20260716-4
       <h1 class="section-title">중요한 순간을 위한<br />나만의 시간 가이드</h1>
       <p class="hero-subtitle">면접과 시험 준비부터 조용한 쉼과 만남까지, 필요한 정보를 목적별로 찾아보세요.</p>
       <div class="hero-btns">
-        <a href="#featured-guide" class="btn-primary">추천 가이드 보기</a>
-        <a href="#blog-latest" class="btn-outline">현장 소식 보기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="blog_hero_booking">오늘 가능한 시간 예약하기</a>
+        <a href="#blog-topics" class="btn-outline" data-cta="blog_hero_topics">목적별 빠른 선택</a>
       </div>
+      <p class="section-desc" style="margin-top: 1.25rem;">바로 예약해도 좋고, 아래에서 면접준비 · 스터디룸 · 미팅·상담 · 데이트 중 내 일정과 가장 가까운 주제를 먼저 고를 수도 있습니다.</p>
     </div>
   </section>
   {% include breadcrumb.html %}
@@ -35,6 +36,17 @@ script_version: 20260716-4
           <h2 class="section-title">지금 읽어볼 추천 가이드</h2>
         </div>
         <p>예약 전 고민을 줄이고 중요한 일정의 변수를 미리 점검할 수 있는 콘텐츠입니다.</p>
+      </div>
+      <div class="blog-conversion-panel" style="margin-bottom: 2rem;">
+        <div>
+          <p class="section-label soft">Fast Track</p>
+          <h2>글을 읽기 전에<br />바로 예약부터 하셔도 됩니다</h2>
+          <p>이미 목적이 분명하다면, 가이드를 더 읽기 전에 바로 가능한 시간부터 확인해 보세요.</p>
+        </div>
+        <div class="blog-conversion-actions">
+          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="blog_fast_track_booking">네이버 예약 열기</a>
+          <a href="/index.html#space" class="btn-outline" data-cta="blog_fast_track_space">공간 먼저 보기</a>
+        </div>
       </div>
       {% if featured_post %}
         {% assign featured_image = featured_post.preload_image | default: featured_post.og_image | default: '/images/main.jpeg' %}
