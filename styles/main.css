@@ -957,6 +957,15 @@ main.about-page.blog-hub #home .section-inner {
   background: linear-gradient(135deg, #193b2c 0%, #2d6a4f 100%);
   color: #fff;
 }
+.blog-conversion-panel-soft {
+  gap: 2rem;
+  padding: 1.2rem 1.35rem;
+  border: 1px solid #d8e4dc;
+  border-radius: 18px;
+  background: #f7faf8;
+  color: #1f2937;
+  box-shadow: none;
+}
 .blog-conversion-panel h2 {
   margin-bottom: 1rem;
   font-size: clamp(1.7rem, 3vw, 2.5rem);
@@ -966,6 +975,17 @@ main.about-page.blog-hub #home .section-inner {
   max-width: 580px;
   color: rgba(255,255,255,.78);
   line-height: 1.75;
+}
+.blog-conversion-panel-soft h2 {
+  margin-bottom: .45rem;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.45;
+}
+.blog-conversion-panel-soft p:not(.section-label) {
+  max-width: 700px;
+  color: #5a655e;
+  font-size: .92rem;
+  line-height: 1.65;
 }
 .blog-conversion-actions {
   display: flex;
@@ -981,6 +1001,26 @@ main.about-page.blog-hub #home .section-inner {
 .blog-conversion-actions .btn-outline {
   border-color: rgba(255,255,255,.55);
   color: #fff;
+}
+.blog-conversion-panel-soft .blog-conversion-actions {
+  min-width: 220px;
+  align-items: flex-end;
+}
+.blog-conversion-panel-soft .blog-conversion-actions .btn-outline {
+  border-color: #cfdcd3;
+  color: var(--primary);
+  background: #fff;
+}
+.blog-conversion-text-link {
+  color: #4c5d52;
+  font-size: .84rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-conversion-text-link:hover,
+.blog-conversion-text-link:focus-visible {
+  color: var(--primary);
 }
 .blog-empty-state {
   padding: 2rem;
@@ -4465,8 +4505,16 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     align-items: start;
     flex-direction: column;
   }
+  .blog-conversion-panel-soft {
+    gap: 1rem;
+    padding: 1rem;
+  }
   .blog-conversion-actions {
     width: min(100%, 360px);
+  }
+  .blog-conversion-panel-soft .blog-conversion-actions {
+    width: 100%;
+    align-items: stretch;
   }
   .about-layout { grid-template-columns: 1fr; }
   .policy-grid { grid-template-columns: 1fr; }
@@ -4593,8 +4641,18 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     gap: 1.5rem;
     border-radius: 18px;
   }
+  .blog-conversion-panel-soft h2 {
+    font-size: 1.02rem;
+  }
+  .blog-conversion-panel-soft p:not(.section-label) {
+    font-size: .84rem;
+    line-height: 1.58;
+  }
   .blog-conversion-actions {
     min-width: 0;
+  }
+  .blog-conversion-text-link {
+    text-align: center;
   }
   .post-reaction-buttons {
     gap: .5rem;
