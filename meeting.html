@@ -77,15 +77,17 @@ script_version: 20260711-4
       </div>
       <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="미팅 상담 시리즈 글 목록">
         {% assign counselor_post = site.posts | where: "url", "/posts/freelance-counselor-office/" | first %}
+        {% assign recurring_booking_post = site.posts | where: "url", "/posts/recurring-space-booking-for-freelance-counselors/" | first %}
         {% assign meeting_room_post = site.posts | where: "url", "/posts/bucheon-meeting-room/" | first %}
         {% assign small_group_post = site.posts | where: "url", "/posts/bucheon-small-group-space/" | first %}
         {% assign ordered_meeting_posts = "" | split: "" %}
         {% if counselor_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: counselor_post %}{% endif %}
+        {% if recurring_booking_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: recurring_booking_post %}{% endif %}
         {% if meeting_room_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: meeting_room_post %}{% endif %}
         {% if small_group_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: small_group_post %}{% endif %}
         {% assign other_meeting_posts = site.posts | where: "category", "미팅·상담" %}
         {% for post in other_meeting_posts %}
-          {% unless post.url == "/posts/freelance-counselor-office/" or post.url == "/posts/bucheon-meeting-room/" or post.url == "/posts/bucheon-small-group-space/" %}
+          {% unless post.url == "/posts/freelance-counselor-office/" or post.url == "/posts/recurring-space-booking-for-freelance-counselors/" or post.url == "/posts/bucheon-meeting-room/" or post.url == "/posts/bucheon-small-group-space/" %}
             {% assign ordered_meeting_posts = ordered_meeting_posts | push: post %}
           {% endunless %}
         {% endfor %}
@@ -102,12 +104,12 @@ script_version: 20260711-4
             </a>
             <div class="blog-guide-content">
               <div class="meeting-series-headline-row">
-                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/freelance-counselor-office/" %}대표 가이드{% elsif post.url == "/posts/bucheon-meeting-room/" %}고객 미팅{% elsif post.url == "/posts/bucheon-small-group-space/" %}보조 활용{% else %}{{ post.category }}{% endif %}</p>
+                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/freelance-counselor-office/" %}대표 가이드{% elsif post.url == "/posts/recurring-space-booking-for-freelance-counselors/" %}정기 운영{% elsif post.url == "/posts/bucheon-meeting-room/" %}고객 미팅{% elsif post.url == "/posts/bucheon-small-group-space/" %}보조 활용{% else %}{{ post.category }}{% endif %}</p>
                 <span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span>
               </div>
               {% if post.url == "/posts/freelance-counselor-office/" %}
                 <p class="meeting-series-kicker">상담 운영의 기준을 먼저 잡는 글</p>
-                <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사가 고정 사무실 없이 운영하는 법</a></h3>
+                <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법</a></h3>
                 <p>월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.</p>
                 <div class="meeting-series-meta">
                   <span>상담사</span>
@@ -118,9 +120,22 @@ script_version: 20260711-4
                   <span>상담 공간 운영 핵심</span>
                   <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
                 </div>
+              {% elsif post.url == "/posts/recurring-space-booking-for-freelance-counselors/" %}
+                <p class="meeting-series-kicker">정기 상담 리듬을 만드는 운영 글</p>
+                <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법</a></h3>
+                <p>같은 요일과 시간대에 공간을 반복 예약해 내담자 안내와 상담 운영 흐름을 안정적으로 만드는 실전 방법을 정리했습니다.</p>
+                <div class="meeting-series-meta">
+                  <span>반복 예약</span>
+                  <span>정기 상담</span>
+                  <span>운영 루틴</span>
+                </div>
+                <div class="blog-card-footer meeting-series-footer">
+                  <span>상담 일정 운영</span>
+                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
+                </div>
               {% elsif post.url == "/posts/bucheon-meeting-room/" %}
                 <p class="meeting-series-kicker">조용한 미팅룸이 필요한 순간 정리</p>
-                <h3><a href="{{ post.url | relative_url }}">부천에서 조용한 미팅룸이 필요하다면</a></h3>
+                <h3><a href="{{ post.url | relative_url }}">부천 조용한 미팅룸 예약, 신중동역 1분 바른자리</a></h3>
                 <p>고객 미팅, 제안 미팅, 상담 일정에 왜 조용한 프라이빗 미팅룸이 잘 맞는지 선택 기준 중심으로 정리했습니다.</p>
                 <div class="meeting-series-meta">
                   <span>고객 미팅</span>
@@ -174,24 +189,24 @@ script_version: 20260711-4
       </div>
       <div class="about-principle-grid" aria-label="앞으로 발행 예정인 미팅 상담 글">
         <article class="about-principle-item" data-step="01">
-          <h3>상담 공간 고를 때 꼭 봐야 할 7가지</h3>
+          <h3>상담 공간을 고를 때 꼭 확인할 7가지</h3>
           <p>소음, 프라이버시, 의자 착석감, 대기 동선, 화상 연결 환경처럼 상담 만족도와 재방문 경험을 크게 바꾸는 기준을 정리합니다.</p>
         </article>
         <article class="about-principle-item" data-step="02">
-          <h3>프리랜서 상담사가 시간제 공간을 반복 예약하는 방법</h3>
-          <p>고정 사무실 없이도 같은 요일과 시간대로 안정적인 상담 리듬을 만드는 운영 방식을 실제 사용 흐름에 맞춰 설명합니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
           <h3>화상 상담과 대면 상담을 함께 운영하는 루틴</h3>
           <p>같은 공간에서 대면 일정과 화상 일정을 함께 운영할 때 준비 순서, 전환 포인트, 장비 점검 흐름을 정리합니다.</p>
         </article>
-        <article class="about-principle-item" data-step="04">
+        <article class="about-principle-item" data-step="03">
           <h3>고객이 편안함을 느끼는 상담 공간 세팅법</h3>
           <p>자리 배치, 조명, 시선 방향, 테이블 간격, 첫 안내 동선처럼 상담 시작 5분의 인상을 좌우하는 요소를 정리합니다.</p>
         </article>
+        <article class="about-principle-item" data-step="04">
+          <h3>첫 상담 전, 내담자 안내 메시지는 어떻게 보내야 할까</h3>
+          <p>장소 안내, 입실 시간, 준비물, 주차 및 교통 정보처럼 내담자가 처음 방문할 때 불안하지 않도록 정리하는 안내 문구 흐름을 다룹니다.</p>
+        </article>
         <article class="about-principle-item" data-step="05">
-          <h3>2인 이상 스터디 · 소모임에 프라이빗 공간이 더 잘 맞는 순간들</h3>
-          <p>스터디룸 이용, 프로젝트 회의, 독서모임처럼 2명 이상이 특정 활동 목적으로 모일 때 카페보다 조용한 공간이 더 잘 맞는 상황을 구체적으로 정리합니다.</p>
+          <h3>고객 미팅 공간은 카페보다 미팅룸이 나은 순간이 있다</h3>
+          <p>제안 미팅, 계약 상담, 첫 고객 면담처럼 조용한 분위기와 신뢰감 있는 첫인상이 특히 중요한 상황을 중심으로 비교합니다.</p>
         </article>
       </div>
     </div>
