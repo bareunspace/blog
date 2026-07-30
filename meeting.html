@@ -71,27 +71,13 @@ script_version: 20260711-4
       <div class="blog-section-heading">
         <div>
           <p class="section-label">Series Guide</p>
-          <h2 class="section-title">조용한 상담 · 미팅 시리즈</h2>
+          <h2 class="section-title">핵심 상담 · 미팅 시리즈</h2>
         </div>
-        <p>상담 공간 운영을 중심으로, 고객 미팅과 화상 진행까지 실제로 자주 고민하는 상황부터 순서대로 읽어보세요.</p>
+        <p>상담 공간 운영을 중심으로, 반복 예약과 고객 미팅까지 실제 운영 흐름에 맞게 순서대로 읽어보세요.</p>
       </div>
-      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="미팅 상담 시리즈 글 목록">
-        {% assign counselor_post = site.posts | where: "url", "/posts/freelance-counselor-office/" | first %}
-        {% assign recurring_booking_post = site.posts | where: "url", "/posts/recurring-space-booking-for-freelance-counselors/" | first %}
-        {% assign meeting_room_post = site.posts | where: "url", "/posts/bucheon-meeting-room/" | first %}
-        {% assign small_group_post = site.posts | where: "url", "/posts/bucheon-small-group-space/" | first %}
-        {% assign ordered_meeting_posts = "" | split: "" %}
-        {% if counselor_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: counselor_post %}{% endif %}
-        {% if recurring_booking_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: recurring_booking_post %}{% endif %}
-        {% if meeting_room_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: meeting_room_post %}{% endif %}
-        {% if small_group_post %}{% assign ordered_meeting_posts = ordered_meeting_posts | push: small_group_post %}{% endif %}
-        {% assign other_meeting_posts = site.posts | where: "category", "미팅·상담" %}
-        {% for post in other_meeting_posts %}
-          {% unless post.url == "/posts/freelance-counselor-office/" or post.url == "/posts/recurring-space-booking-for-freelance-counselors/" or post.url == "/posts/bucheon-meeting-room/" or post.url == "/posts/bucheon-small-group-space/" %}
-            {% assign ordered_meeting_posts = ordered_meeting_posts | push: post %}
-          {% endunless %}
-        {% endfor %}
-        {% for post in ordered_meeting_posts limit: 6 %}
+      {% assign meeting_core_posts = site.posts | where: "hub_series", "meeting" | where: "hub_section", "core" | sort: "hub_order" %}
+      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="핵심 미팅 상담 시리즈 글 목록">
+        {% for post in meeting_core_posts %}
           {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
           {% assign card_index = forloop.index | prepend: '0' %}
           <article class="blog-guide-card meeting-series-card{% if forloop.first %} meeting-series-card-hero{% elsif forloop.index <= 3 %} meeting-series-card-support{% else %} meeting-series-card-archive{% endif %}">
@@ -104,73 +90,58 @@ script_version: 20260711-4
             </a>
             <div class="blog-guide-content">
               <div class="meeting-series-headline-row">
-                <p class="blog-card-eyebrow">{{ card_index }} · {% if post.url == "/posts/freelance-counselor-office/" %}대표 가이드{% elsif post.url == "/posts/recurring-space-booking-for-freelance-counselors/" %}정기 운영{% elsif post.url == "/posts/bucheon-meeting-room/" %}고객 미팅{% elsif post.url == "/posts/bucheon-small-group-space/" %}보조 활용{% else %}{{ post.category }}{% endif %}</p>
+                <p class="blog-card-eyebrow">{{ card_index }} · {{ post.hub_label | default: post.category }}</p>
                 <span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span>
               </div>
-              {% if post.url == "/posts/freelance-counselor-office/" %}
-                <p class="meeting-series-kicker">상담 운영의 기준을 먼저 잡는 글</p>
-                <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법</a></h3>
-                <p>월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.</p>
-                <div class="meeting-series-meta">
-                  <span>상담사</span>
-                  <span>코치</span>
-                  <span>1인 운영</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>상담 공간 운영 핵심</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/recurring-space-booking-for-freelance-counselors/" %}
-                <p class="meeting-series-kicker">정기 상담 리듬을 만드는 운영 글</p>
-                <h3><a href="{{ post.url | relative_url }}">프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법</a></h3>
-                <p>같은 요일과 시간대에 공간을 반복 예약해 내담자 안내와 상담 운영 흐름을 안정적으로 만드는 실전 방법을 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>반복 예약</span>
-                  <span>정기 상담</span>
-                  <span>운영 루틴</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>상담 일정 운영</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/bucheon-meeting-room/" %}
-                <p class="meeting-series-kicker">조용한 미팅룸이 필요한 순간 정리</p>
-                <h3><a href="{{ post.url | relative_url }}">부천 조용한 미팅룸 예약, 신중동역 1분 바른자리</a></h3>
-                <p>고객 미팅, 제안 미팅, 상담 일정에 왜 조용한 프라이빗 미팅룸이 잘 맞는지 선택 기준 중심으로 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>고객 미팅</span>
-                  <span>제안 미팅</span>
-                  <span>상담 일정</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>미팅룸 선택</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
-              {% elsif post.url == "/posts/bucheon-small-group-space/" %}
-                <p class="meeting-series-kicker">스터디와 목적형 소모임까지 확장</p>
-                <h3><a href="{{ post.url | relative_url }}">2~6명이 편하게 모이기 좋은 프라이빗 공간</a></h3>
-                <p>소규모 프로젝트 회의나 대화 중심 모임처럼 상담·미팅 외에도 조용한 공간이 필요한 보조 활용 사례를 정리했습니다.</p>
-                <div class="meeting-series-meta">
-                  <span>스터디룸</span>
-                  <span>프로젝트 회의</span>
-                  <span>독서모임</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>보조 활용 사례</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
+              <p class="meeting-series-kicker">{{ post.hub_kicker | default: "관련 활용 가이드" }}</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.hub_title | default: post.title }}</a></h3>
+              <p>{{ post.hub_description | default: post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="meeting-series-meta">
+                {% assign hub_tags = post.hub_tags | default: post.tags %}
+                {% for tag in hub_tags limit: 3 %}
+                  <span>{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="blog-card-footer meeting-series-footer">
+                <span>{{ post.hub_footer | default: post.category }}</span>
+                <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="related-series" class="blog-guides-section">
+    <div class="section-inner">
+      <div class="blog-section-heading">
+        <div>
+          <p class="section-label">Related Guides</p>
+          <h2 class="section-title">관련 활용 가이드</h2>
+        </div>
+        <p>상담과 고객 미팅 외에도, 비슷한 환경이 필요한 소규모 모임과 보조 활용 사례를 함께 볼 수 있습니다.</p>
+      </div>
+      {% assign meeting_related_posts = site.posts | where: "hub_series", "meeting" | where: "hub_section", "related" | sort: "hub_order" %}
+      <div class="blog-guide-grid" aria-label="미팅 상담 관련 활용 글 목록">
+        {% for post in meeting_related_posts %}
+          {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
+          <article class="blog-guide-card" data-category="{{ post.category | default: '미팅·상담' }}">
+            <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              {% if post_card_image contains '://' %}
+                <img src="{{ post_card_image }}" alt="" loading="lazy" />
               {% else %}
-                <p class="meeting-series-kicker">관련 활용 가이드</p>
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-                <div class="meeting-series-meta">
-                  <span>{{ post.category }}</span>
-                </div>
-                <div class="blog-card-footer meeting-series-footer">
-                  <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                  <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
-                </div>
+                <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
               {% endif %}
+            </a>
+            <div class="blog-guide-content">
+              <p class="blog-card-eyebrow">{{ post.hub_label | default: post.category }}</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.hub_title | default: post.title }}</a></h3>
+              <p>{{ post.hub_description | default: post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="blog-card-footer">
+                <span>{{ post.hub_footer | default: post.category }}</span>
+                <a href="{{ post.url | relative_url }}">자세히 보기 <span aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
         {% endfor %}

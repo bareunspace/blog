@@ -3,6 +3,18 @@ layout: default
 title: 부천 조용한 미팅룸 예약 | 신중동역 1분 바른자리
 description: 고객 미팅, 소규모 회의, 화상회의를 위한 조용한 공간이 필요하신가요? 신중동역 1분 프라이빗 미팅룸 바른자리를 예약해 보세요.
 category: 미팅·상담
+hub_series: meeting
+hub_section: core
+hub_order: 3
+hub_label: 고객 미팅
+hub_kicker: 조용한 미팅룸이 필요한 순간 정리
+hub_title: 부천 조용한 미팅룸 예약, 신중동역 1분 바른자리
+hub_description: 고객 미팅, 제안 미팅, 상담 일정에 왜 조용한 프라이빗 미팅룸이 잘 맞는지 선택 기준 중심으로 정리했습니다.
+hub_tags:
+  - 고객 미팅
+  - 제안 미팅
+  - 상담 일정
+hub_footer: 미팅룸 선택
 keywords: 부천미팅룸,신중동미팅룸,부천회의실,부천소규모회의실,부천고객미팅,부천화상회의,부천공간대여
 tags:
   - 미팅룸

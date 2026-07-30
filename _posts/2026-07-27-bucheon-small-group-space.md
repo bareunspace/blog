@@ -3,6 +3,18 @@ layout: default
 title: 부천 소모임 장소 추천 | 2~6명이 조용히 모이기 좋은 프라이빗 공간
 description: 부천에서 2~6명이 편하게 모일 수 있는 소모임 장소를 찾고 계신가요? 스터디, 독서모임, 프로젝트 회의, 취미모임까지 활용 가능한 프라이빗 공간 바른자리를 소개합니다.
 category: 미팅·상담
+hub_series: meeting
+hub_section: related
+hub_order: 1
+hub_label: 보조 활용
+hub_kicker: 스터디와 목적형 소모임까지 확장
+hub_title: 2~6명이 편하게 모이기 좋은 프라이빗 공간
+hub_description: 소규모 프로젝트 회의나 대화 중심 모임처럼 상담·미팅 외에도 조용한 공간이 필요한 보조 활용 사례를 정리했습니다.
+hub_tags:
+  - 스터디룸
+  - 프로젝트 회의
+  - 독서모임
+hub_footer: 보조 활용 사례
 keywords: 부천소모임,부천모임장소,부천공간대여,신중동소모임,부천스터디공간,부천독서모임
 tags:
   - 소모임

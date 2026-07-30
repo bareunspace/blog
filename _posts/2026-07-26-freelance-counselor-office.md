@@ -3,6 +3,18 @@ layout: default
 title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
 description: 월세 부담 없이 시간제 상담실을 활용해 고객 신뢰를 높이고 비용을 효율적으로 관리하는 방법을 정리했습니다. 부천 신중동역 프리랜서 상담사 맞춤 공간 가이드.
 category: 미팅·상담
+hub_series: meeting
+hub_section: core
+hub_order: 1
+hub_label: 대표 가이드
+hub_kicker: 상담 운영의 기준을 먼저 잡는 글
+hub_title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
+hub_description: 월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.
+hub_tags:
+  - 상담사
+  - 코치
+  - 1인 운영
+hub_footer: 상담 공간 운영 핵심
 keywords: 상담실대여,프리랜서상담사,상담공간,시간제상담실,부천상담실,신중동상담실,상담실임대,상담장소,코칭공간
 tags:
   - 상담사

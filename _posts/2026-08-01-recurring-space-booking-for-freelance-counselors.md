@@ -3,6 +3,18 @@ layout: default
 title: 프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법
 description: 같은 요일과 시간대에 공간을 반복 예약해 안정적인 상담 일정을 운영하는 방법을 실제 이용 흐름에 맞춰 설명합니다.
 category: 미팅·상담
+hub_series: meeting
+hub_section: core
+hub_order: 2
+hub_label: 정기 운영
+hub_kicker: 정기 상담 리듬을 만드는 운영 글
+hub_title: 프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법
+hub_description: 같은 요일과 시간대에 공간을 반복 예약해 내담자 안내와 상담 운영 흐름을 안정적으로 만드는 실전 방법을 정리했습니다.
+hub_tags:
+  - 반복 예약
+  - 정기 상담
+  - 운영 루틴
+hub_footer: 상담 일정 운영
 keywords: 프리랜서상담사,상담공간대여,상담실대여,시간제상담실,부천상담공간,신중동상담실,정기상담공간,반복예약,상담사무실
 tags:
   - 프리랜서상담사
