@@ -260,7 +260,7 @@ script_version: 20260711-4
         </article>
         <article class="about-highlight-card">
           <h3>노트북과 촬영 준비가 쉬운 환경</h3>
-          <p>테이블, 의자, 전원, Wi-Fi, 유선 인터넷이 있어 면접 리허설과 온라인 일정에 편리합니다.</p>
+          <p>테이블, 의자, 전원, Wi-Fi, 유선 인터넷, 링라이트가 있어 면접 리허설과 온라인 일정에 편리합니다.</p>
         </article>
         <article class="about-highlight-card">
           <h3>신중동역 도보 1분, 1시간 10,000원</h3>
