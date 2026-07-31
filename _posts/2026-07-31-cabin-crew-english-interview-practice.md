@@ -120,7 +120,6 @@ script_version: 20260711-4
         </article>
       </div>
       <p class="section-desc">영어 답변을 준비할 때는 문장 전체보다 먼저 세 가지를 정리해보세요. 답변의 핵심 결론, 그 결론을 보여주는 자신의 경험, 그리고 그 경험이 승무원 직무와 연결되는 이유입니다.</p>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/g7UWM-FYNoU?si=wkhYXdjwb1zY8jfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -321,6 +320,7 @@ script_version: 20260711-4
   <section id="why-bareunjari">
     <div class="section-inner">
       <h2 class="section-title">바른자리에서 승무원 영어 면접 연습하기</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/g7UWM-FYNoU?si=wkhYXdjwb1zY8jfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <p class="section-desc">바른자리는 신중동역 도보 1분 거리에 있는 프라이빗 공간입니다. 다른 이용자와 공간을 공유하지 않아 영어 자기소개와 예상 질문을 반복해서 말하거나, 친구와 영어 모의면접을 진행하기에 잘 맞습니다.</p>
       <div class="about-principle-grid" aria-label="바른자리 활용 예시">
         <article class="about-principle-item" data-step="01">
