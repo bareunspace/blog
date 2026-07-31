@@ -120,6 +120,7 @@ script_version: 20260711-4
         </article>
       </div>
       <p class="section-desc">영어 답변을 준비할 때는 문장 전체보다 먼저 세 가지를 정리해보세요. 답변의 핵심 결론, 그 결론을 보여주는 자신의 경험, 그리고 그 경험이 승무원 직무와 연결되는 이유입니다.</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/g7UWM-FYNoU?si=wkhYXdjwb1zY8jfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
 
