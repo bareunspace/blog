@@ -3132,6 +3132,63 @@ main.about-page .hero-subtitle {
   text-shadow: 0 6px 20px rgba(0,0,0,.35);
   margin-bottom: .8rem;
 }
+main.cabin-crew-english-page .english-hero-sample {
+  max-width: 860px;
+  margin: 1.15rem auto 0;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.08));
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+  backdrop-filter: blur(10px);
+}
+main.cabin-crew-english-page .english-hero-sample-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  margin-bottom: .8rem;
+  padding: .26rem .72rem;
+  border-radius: 999px;
+  background: rgba(249,213,122,.18);
+  color: #ffe3a0;
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+main.cabin-crew-english-page .english-hero-sample-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+main.cabin-crew-english-page .english-hero-sample-card {
+  padding: .95rem 1rem;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  background: rgba(14,30,23,.28);
+  text-align: left;
+}
+main.cabin-crew-english-page .english-hero-sample-kicker {
+  margin: 0 0 .35rem;
+  color: rgba(255,234,188,.88);
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+main.cabin-crew-english-page .english-hero-sample-card strong {
+  display: block;
+  color: #fff;
+  font-size: .98rem;
+  line-height: 1.55;
+}
+main.cabin-crew-english-page .english-hero-sample-card span {
+  display: block;
+  margin-top: .5rem;
+  color: rgba(255,255,255,.82);
+  font-size: .83rem;
+  line-height: 1.65;
+}
 main.about-page .about-hero-lead {
   max-width: min(100%, 60ch);
   margin: 0 auto;
@@ -3621,6 +3678,111 @@ main.about-page .guide-summary-grid {
   line-height: 1.7;
   word-break: keep-all;
 }
+main.cabin-crew-english-page .english-response-panel {
+  margin-top: 1.1rem;
+  padding: clamp(1rem, 2.6vw, 1.45rem);
+  border: 1px solid #d5e1f0;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, rgba(206,226,255,.72), transparent 34%),
+    linear-gradient(145deg, #f7fbff 0%, #eef5ff 48%, #ffffff 100%);
+  box-shadow: 0 16px 34px rgba(17,24,39,.08);
+}
+main.cabin-crew-english-page .english-response-panel-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+main.cabin-crew-english-page .english-response-panel-head span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .28rem .74rem;
+  border-radius: 999px;
+  background: #1f4f78;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+main.cabin-crew-english-page .english-response-panel-head p {
+  margin: 0;
+  max-width: 34rem;
+  color: #46627f;
+  font-size: .88rem;
+  line-height: 1.7;
+  text-align: right;
+}
+main.cabin-crew-english-page .english-response-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .85rem;
+}
+main.cabin-crew-english-page .english-response-card {
+  padding: 1rem;
+  border: 1px solid #d9e6f6;
+  border-radius: 16px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 22px rgba(17,24,39,.06);
+}
+main.cabin-crew-english-page .english-response-label {
+  margin: 0 0 .45rem;
+  color: #56708a;
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+main.cabin-crew-english-page .english-response-card h3 {
+  margin-bottom: .5rem;
+  color: #12344f;
+  font-size: .98rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+main.cabin-crew-english-page .english-response-card p:last-child {
+  color: #374151;
+  font-size: .84rem;
+  line-height: 1.68;
+}
+main.cabin-crew-english-page .camera-practice-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+  margin-top: 1rem;
+}
+main.cabin-crew-english-page .camera-practice-step {
+  position: relative;
+  padding: 1rem 1rem 1rem 1.05rem;
+  border: 1px solid #dce8e1;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,248,245,.94));
+  box-shadow: 0 12px 26px rgba(17,24,39,.07);
+}
+main.cabin-crew-english-page .camera-practice-step span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  margin-bottom: .75rem;
+  padding: .24rem .7rem;
+  border-radius: 999px;
+  background: rgba(45,106,79,.12);
+  color: var(--primary);
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+main.cabin-crew-english-page .camera-practice-step h3 {
+  margin-bottom: .42rem;
+  color: #1f2937;
+  font-size: .98rem;
+}
+main.cabin-crew-english-page .camera-practice-step p {
+  color: #374151;
+  font-size: .85rem;
+  line-height: 1.7;
+}
 .answer-structure-panel {
   margin-top: 1.25rem;
   padding: clamp(1rem, 2.6vw, 1.6rem);
@@ -4069,6 +4231,18 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     width: min(100%, 320px);
     text-align: center;
   }
+  main.cabin-crew-english-page .english-hero-sample-grid,
+  main.cabin-crew-english-page .english-response-grid,
+  main.cabin-crew-english-page .camera-practice-board {
+    grid-template-columns: 1fr;
+  }
+  main.cabin-crew-english-page .english-response-panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  main.cabin-crew-english-page .english-response-panel-head p {
+    text-align: left;
+  }
   .post-share-inline {
     margin-left: 0;
     justify-content: flex-start;
@@ -4300,6 +4474,12 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     padding: .3rem .6rem;
   }
   .hero-btns { flex-direction: column; align-items: center; }
+  main.cabin-crew-english-page .english-hero-sample {
+    padding: .9rem;
+  }
+  main.cabin-crew-english-page .english-hero-sample-card strong {
+    font-size: .92rem;
+  }
   #home .btn-primary,
   #home .btn-outline {
     min-width: min(100%, 300px);

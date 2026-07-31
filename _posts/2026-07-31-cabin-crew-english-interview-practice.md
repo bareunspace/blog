@@ -28,13 +28,28 @@ css_version: 20260731-1
 script_version: 20260711-4
 ---
 
-<main class="about-page">
+<main class="about-page cabin-crew-english-page">
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Cabin Crew English Interview Guide</p>
       <h1 class="section-title">승무원 영어 면접 연습법</h1>
       <p class="hero-subtitle">외운 답변이 막히지 않게 말하는 방법</p>
       <p class="section-desc">승무원 영어 면접을 준비할 때 많은 지원자가 예상 질문과 답변부터 작성합니다. 하지만 실제 면접에서는 완벽하게 외운 긴 답변보다, 질문의 핵심을 이해하고 자신의 영어로 짧고 분명하게 답하는 능력이 더 중요합니다.</p>
+      <div class="english-hero-sample" aria-label="바로 써보는 승무원 영어 면접 예문">
+        <div class="english-hero-sample-label">바로 써보는 한 문장</div>
+        <div class="english-hero-sample-grid">
+          <article class="english-hero-sample-card">
+            <p class="english-hero-sample-kicker">Self-introduction opener</p>
+            <strong>I am someone who stays calm and attentive in unfamiliar situations.</strong>
+            <span>낯선 상황에서도 침착하고 세심하게 반응하는 사람이라는 인상을 짧게 보여주는 시작 문장입니다.</span>
+          </article>
+          <article class="english-hero-sample-card">
+            <p class="english-hero-sample-kicker">When you need a second</p>
+            <strong>May I have a moment to think about that?</strong>
+            <span>질문을 바로 정리하기 어려울 때, 당황한 침묵 대신 차분하게 시간을 요청할 수 있습니다.</span>
+          </article>
+        </div>
+      </div>
       <div class="hero-btns">
         <a href="#why-you-freeze" class="btn-primary">막히는 이유부터 보기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">영어 면접 연습 공간 예약하기</a>
@@ -189,23 +204,33 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">질문을 알아듣지 못했을 때 사용할 표현</h2>
       <p class="section-desc">실제 영어 면접에서는 면접관의 발음과 속도가 연습 때와 다를 수 있습니다. 정확히 듣지 못한 상태에서 억지로 답변을 시작하는 것보다, 정중하게 다시 요청하거나 질문의 핵심을 확인하는 편이 훨씬 낫습니다.</p>
-      <div class="about-principle-grid" aria-label="영어 면접 대응 표현">
-        <article class="about-principle-item" data-step="01">
-          <h3>Could you please repeat the question?</h3>
-          <p>질문을 한 번 더 말해달라고 요청할 때 사용할 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3>Could you please say that a little more slowly?</h3>
-          <p>말이 빨라 알아듣기 어려웠을 때 자연스럽게 속도 조절을 요청할 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3>If I understood correctly, you are asking about ... right?</h3>
-          <p>질문의 핵심을 맞게 이해했는지 확인하며 답변 방향을 정리할 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="04">
-          <h3>May I have a moment to think about that?</h3>
-          <p>바로 답하기 어려운 질문을 받았을 때 짧게 생각할 시간을 요청할 수 있습니다.</p>
-        </article>
+      <div class="english-response-panel" aria-label="영어 면접 대응 표현">
+        <div class="english-response-panel-head">
+          <span>Interview rescue lines</span>
+          <p>외워두기보다 큰 소리로 여러 번 말해보고, 질문을 못 들은 장면을 가정해 바로 꺼내는 연습을 해보세요.</p>
+        </div>
+        <div class="english-response-grid">
+          <article class="english-response-card">
+            <p class="english-response-label">다시 말해달라고 요청</p>
+            <h3>Could you please repeat the question?</h3>
+            <p>질문을 한 번 더 말해달라고 요청할 때 사용할 수 있습니다.</p>
+          </article>
+          <article class="english-response-card">
+            <p class="english-response-label">속도를 조절해달라고 요청</p>
+            <h3>Could you please say that a little more slowly?</h3>
+            <p>말이 빨라 알아듣기 어려웠을 때 자연스럽게 속도 조절을 요청할 수 있습니다.</p>
+          </article>
+          <article class="english-response-card">
+            <p class="english-response-label">질문 의미를 확인</p>
+            <h3>If I understood correctly, you are asking about ... right?</h3>
+            <p>질문의 핵심을 맞게 이해했는지 확인하며 답변 방향을 정리할 수 있습니다.</p>
+          </article>
+          <article class="english-response-card">
+            <p class="english-response-label">생각할 시간을 요청</p>
+            <h3>May I have a moment to think about that?</h3>
+            <p>바로 답하기 어려운 질문을 받았을 때 짧게 생각할 시간을 요청할 수 있습니다.</p>
+          </article>
+        </div>
       </div>
       <p class="section-desc">이런 표현도 눈으로 읽는 것만으로는 실제 상황에서 잘 나오지 않습니다. 친구가 빠르게 질문하거나 다른 표현으로 물어보게 한 뒤, 다시 요청하고 답변을 시작하는 과정까지 함께 연습해보세요.</p>
     </div>
@@ -215,16 +240,19 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">카메라를 켜고 3단계로 연습하세요</h2>
       <p class="section-desc">원고를 보며 영어 답변을 읽는 것과 카메라를 바라보며 직접 말하는 것은 완전히 다릅니다. 휴대폰을 세워두고 단계별로 연습하면, 외운 문장을 확인하는 수준에서 벗어나 실제 면접처럼 말하는 힘을 키울 수 있습니다.</p>
-      <div class="about-principle-grid" aria-label="영어 면접 3단계 연습법">
-        <article class="about-principle-item" data-step="01">
+      <div class="camera-practice-board" aria-label="영어 면접 3단계 연습법">
+        <article class="camera-practice-step">
+          <span>STEP 1</span>
           <h3>원고를 보며 말하기</h3>
           <p>문장의 의미와 발음을 익히고, 입으로 말하기 어려운 표현을 더 쉬운 문장으로 바꿉니다.</p>
         </article>
-        <article class="about-principle-item" data-step="02">
+        <article class="camera-practice-step">
+          <span>STEP 2</span>
           <h3>핵심 단어만 보며 말하기</h3>
           <p>완성된 문장 대신 결론과 경험을 나타내는 키워드만 보고 같은 내용을 조금씩 다르게 말해봅니다.</p>
         </article>
-        <article class="about-principle-item" data-step="03">
+        <article class="camera-practice-step">
+          <span>STEP 3</span>
           <h3>질문을 듣고 바로 답하기</h3>
           <p>원고 없이 질문을 들은 뒤 자신의 표현으로 답변하면서 실전 감각을 익힙니다.</p>
         </article>
