@@ -714,26 +714,6 @@
         }
 
         link.dataset.mediaVideoBound = 'true';
-        link.addEventListener('click', (event) => {
-          event.preventDefault();
-          if (link.classList.contains('is-playing')) {
-            return;
-          }
-
-          const videoId = link.dataset.videoId;
-          const title = link.dataset.videoTitle || '바른자리 영상';
-
-          const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
-          iframe.title = title;
-          iframe.loading = 'lazy';
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-          iframe.setAttribute('allowfullscreen', '');
-          iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-
-          link.classList.add('is-playing');
-          link.replaceChildren(iframe);
-        });
       });
     };
 
@@ -1001,6 +981,8 @@
         const track = carousel.querySelector('[data-blog-guide-media-track]');
         const slides = Array.from(track ? track.querySelectorAll('.blog-guide-media-slide') : []);
         const dots = Array.from(carousel.querySelectorAll('.blog-guide-media-dot'));
+        const prevButton = carousel.querySelector('[data-blog-guide-media-prev]');
+        const nextButton = carousel.querySelector('[data-blog-guide-media-next]');
 
         if (!track || slides.length < 2) {
           return;
@@ -1016,15 +998,43 @@
           });
         };
 
+        const setActiveIndex = (index) => {
+          activeIndex = (index + slides.length) % slides.length;
+          render();
+        };
+
         const startRotation = () => {
           if (rotationTimer) {
             window.clearInterval(rotationTimer);
           }
           rotationTimer = window.setInterval(() => {
-            activeIndex = (activeIndex + 1) % slides.length;
-            render();
+            setActiveIndex(activeIndex + 1);
           }, 3600);
         };
+
+        prevButton?.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setActiveIndex(activeIndex - 1);
+          startRotation();
+        });
+
+        nextButton?.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setActiveIndex(activeIndex + 1);
+          startRotation();
+        });
+
+        dots.forEach((dot) => {
+          dot.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const nextIndex = Number.parseInt(dot.dataset.blogGuideMediaDot || '0', 10);
+            setActiveIndex(nextIndex);
+            startRotation();
+          });
+        });
 
         carousel.addEventListener('mouseenter', () => {
           if (rotationTimer) {
