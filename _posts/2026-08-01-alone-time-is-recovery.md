@@ -243,21 +243,6 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="closing-note">
-    <div class="section-inner">
-      <h2 class="section-title">오늘의 나에게도 자리가 필요합니다</h2>
-      <p class="section-desc">우리는 다른 사람을 위한 자리는 잘 마련하지만, 정작 나를 위한 시간은 모든 일이 끝난 뒤로 미루기 쉽습니다. 그래서 때로는 나와의 약속도 다른 일정처럼 먼저 정해야 합니다.</p>
-      <p>아무도 만나지 않는 시간, 아무 말도 하지 않아도 되는 시간, 누군가의 기대에 맞추지 않아도 되는 시간, 무엇이든 잘하려고 애쓰지 않아도 되는 시간은 비어 있는 시간이 아닙니다. 지친 마음을 내려놓고, 흩어진 생각을 모으며, 다시 나에게 돌아오는 시간입니다.</p>
-      <p><strong>혼자 있는 시간은 시간이 남는 사람이 누리는 사치가 아닙니다.</strong> 바쁘고 지친 사람일수록 의도적으로 마련해야 하는 회복의 시간입니다.</p>
-      <p class="section-desc">오늘 필요한 것이 더 많은 정보나 자극이 아니라, 아무도 나를 찾지 않는 한 시간일 수도 있습니다. 혼자 있는 시간은 사치가 아니라 회복입니다.</p>
-      <p class="section-desc">조용한 개인시간의 가치가 왜 점점 더 커지는지 이어서 보고 싶다면 <a href="{{ '/posts/privacy-is-worth-paying-for/' | relative_url }}">프라이버시는 이제 돈으로 사는 가치입니다</a>도 함께 읽어보세요.</p>
-      <div class="hero-btns" style="margin-top: 1.5rem;">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">혼자만의 조용한 시간 예약하기</a>
-        <a href="/blog.html" class="btn-outline">다른 글 보기</a>
-      </div>
-    </div>
-  </section>
-
   {% include post-tags.html %}
 </main>
 
