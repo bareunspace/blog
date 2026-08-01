@@ -25,11 +25,7 @@ script_version: 20260716-4
   </section>
   {% include breadcrumb.html %}
 
-  {% assign priority_post_url = '/posts/cabin-crew-interview-practice/' %}
   {% assign onsite_posts = site.posts | where_exp: "item", "item.draft != true" %}
-  {% assign priority_onsite_posts = onsite_posts | where: "url", priority_post_url %}
-  {% assign regular_onsite_posts = onsite_posts | where_exp: "item", "item.url != priority_post_url" %}
-  {% assign onsite_posts = priority_onsite_posts | concat: regular_onsite_posts %}
   {% assign featured_post = onsite_posts.first %}
 
   <section id="featured-guide" class="blog-featured-section">
