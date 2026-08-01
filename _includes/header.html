@@ -1,12 +1,10 @@
 <header>
   <nav>
     {% assign show_current_nav = false %}
-    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.page_id == "meeting" or page.page_id == "study" or page.collection == "posts" %}
+    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.page_id == "meeting" or page.page_id == "study" or page.page_id == "private" or page.collection == "posts" %}
       {% assign show_current_nav = true %}
-      <a href="{{ '/index.html' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
-    {% else %}
-      <a href="#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
     {% endif %}
+    <a href="{{ '/' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
       <span class="logo-mark" aria-hidden="true"></span>
       <span class="logo-text">바른자리</span>
     </a>
