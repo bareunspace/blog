@@ -213,9 +213,27 @@ script_version: 20260711-4
           <p>공간을 채우기 위해 무언가를 해야 할 필요는 없습니다. 조용히 머무는 것 자체가 목적이 될 수 있습니다.</p>
         </article>
       </div>
-      <blockquote class="example-quote">
-        <p><strong>바른자리 이용 정보</strong><br />1시간 10,000원<br />신중동역 도보 1분<br />이용 1시간 전까지 예약 가능</p>
-      </blockquote>
+      <div class="info-card" role="region" aria-label="바른자리 이용 정보">
+        <div class="info-card-header">
+          <p class="section-label soft">바른자리 이용 정보</p>
+          <h3>조용한 시간을 위한 안내</h3>
+        </div>
+        <ul class="info-card-list">
+          <li>
+            <span class="info-card-label">이용료</span>
+            <strong>1시간 10,000원</strong>
+          </li>
+          <li>
+            <span class="info-card-label">위치</span>
+            <strong>신중동역 도보 1분</strong>
+          </li>
+          <li>
+            <span class="info-card-label">예약 가능 시간</span>
+            <strong>이용 1시간 전까지 예약 가능</strong>
+          </li>
+        </ul>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary info-card-cta">지금 예약하기</a>
+      </div>
     </div>
   </section>
 
