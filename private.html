@@ -1,0 +1,185 @@
+---
+layout: default
+page_id: private
+permalink: /private/
+title: 프라이빗시간 가이드 | 혼자만의 시간, 데이트, 조용한 회복과 대화의 시간
+description: 혼자 쉬는 시간, 둘만의 대화, 기념일, 생각 정리, 조용한 회복처럼 방해받지 않는 시간이 필요한 순간을 한곳에 모았습니다.
+canonical: https://bareunjari.com/private/
+og_image: https://bareunjari.com/images/a-place-for-quiet-recovery.webp
+og_image_alt: 혼자만의 시간과 조용한 대화, 회복을 위한 프라이빗 공간 이미지
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/a-place-for-quiet-recovery.webp
+css_version: 20260801-1
+script_version: 20260711-4
+---
+
+<main class="about-page blog-hub private-hub">
+  <section id="home">
+    <div class="section-inner">
+      <p class="section-label">Private Time Guide</p>
+      <h1 class="section-title">프라이빗시간 가이드</h1>
+      <p class="hero-subtitle">혼자 쉬는 시간부터 둘만의 데이트, 기념일, 생각 정리와 조용한 대화까지 방해받지 않는 시간을 위한 가이드를 모았습니다.</p>
+      <div class="hero-btns">
+        <a href="#private-series" class="btn-primary">시리즈 보기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">프라이빗시간 예약</a>
+      </div>
+    </div>
+  </section>
+  {% include breadcrumb.html %}
+
+  <nav class="guide-toc" aria-label="프라이빗시간 허브 목차">
+    <div class="guide-toc-inner">
+      <span class="guide-toc-label">프라이빗시간 흐름</span>
+      <a href="#private-flow">활용 흐름</a>
+      <a href="#private-series">핵심 시리즈</a>
+      <a href="#upcoming-series">준비 중</a>
+      <a href="#space-fit">공간이 잘 맞는 순간</a>
+      <a href="#booking">시간 예약</a>
+    </div>
+  </nav>
+
+  <section id="private-flow" class="guide-summary-section" aria-label="프라이빗시간 활용 흐름 요약">
+    <div class="section-inner">
+      <div class="interview-flow-heading">
+        <p class="section-label">Preparation Route</p>
+        <h2 class="section-title">프라이빗시간은 이 흐름으로 생각해보세요</h2>
+        <p>무엇을 하러 가는지보다 어떤 상태로 머물고 싶은지부터 정리하면, 바른자리의 활용 방식이 더 선명해집니다.</p>
+      </div>
+      <div class="guide-summary-grid interview-flow-grid">
+        <article class="guide-summary-card">
+          <span>01</span>
+          <h2>혼자 머무는 시간</h2>
+          <p>독서, 생각 정리, 멍때리기, 감정 정리처럼 혼자 조용히 나에게 돌아오고 싶은 시간입니다.</p>
+        </article>
+        <article class="guide-summary-card">
+          <span>02</span>
+          <h2>둘만의 시간</h2>
+          <p>데이트, 기념일, 조용한 대화처럼 서로에게 더 집중하고 싶은 순간의 프라이빗한 시간입니다.</p>
+        </article>
+        <article class="guide-summary-card">
+          <span>03</span>
+          <h2>목적 있는 회복</h2>
+          <p>중요한 결정을 앞두고 생각을 정리하거나, 복잡한 일상 속에서 잠시 속도를 늦추고 싶은 시간입니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="private-series" class="blog-guides-section">
+    <div class="section-inner">
+      <div class="blog-section-heading">
+        <div>
+          <p class="section-label">Series Guide</p>
+          <h2 class="section-title">핵심 프라이빗시간 시리즈</h2>
+        </div>
+        <p>혼자만의 시간, 프라이버시의 가치, 둘만의 대화와 기념일까지 프라이빗한 시간이 필요한 대표 상황부터 읽어보세요.</p>
+      </div>
+      {% assign private_posts = site.posts | where: "category", "프라이빗시간" %}
+      <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="프라이빗시간 시리즈 글 목록">
+        {% for post in private_posts %}
+          {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
+          {% assign card_index = forloop.index | prepend: '0' %}
+          <article class="blog-guide-card meeting-series-card{% if forloop.first %} meeting-series-card-hero{% elsif forloop.index <= 3 %} meeting-series-card-support{% else %} meeting-series-card-archive{% endif %}">
+            <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              {% if post_card_image contains '://' %}
+                <img src="{{ post_card_image }}" alt="" loading="lazy" />
+              {% else %}
+                <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+              {% endif %}
+            </a>
+            <div class="blog-guide-content">
+              <div class="meeting-series-headline-row">
+                <p class="blog-card-eyebrow">{{ card_index }} · {{ post.category }}</p>
+                <span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span>
+              </div>
+              <p class="meeting-series-kicker">방해받지 않는 시간을 위한 가이드</p>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+              <div class="meeting-series-meta">
+                {% for tag in post.tags limit: 3 %}
+                  <span>{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="blog-card-footer meeting-series-footer">
+                <span>프라이빗시간</span>
+                <a href="{{ post.url | relative_url }}">읽기 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="upcoming-series">
+    <div class="section-inner">
+      <div class="blog-section-heading">
+        <div>
+          <p class="section-label">Coming Next</p>
+          <h2 class="section-title">앞으로 이어질 프라이빗시간 글</h2>
+        </div>
+        <p>바른자리의 철학과 가장 가까운 주제들을 중심으로 조용한 시간의 가치와 활용 방식을 더 넓혀갈 수 있습니다.</p>
+      </div>
+      <div class="about-principle-grid" aria-label="앞으로 발행 예정인 프라이빗시간 글">
+        <article class="about-principle-item" data-step="01">
+          <h3>카페 대신 혼자만의 시간을 예약하는 이유</h3>
+          <p>집도 카페도 아닌 공간에 비용을 지불하는 이유가 자리 자체가 아니라 방해받지 않는 시간이라는 점을 다룹니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>아무것도 하지 않는 시간이 필요한 사람들</h3>
+          <p>지쳐 있을수록 오히려 비어 있는 시간과 닫을 수 있는 공간이 왜 중요한지 더 구체적으로 설명합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>실내 데이트가 더 편한 날이 있다</h3>
+          <p>날씨, 체력, 대화의 밀도에 따라 바깥 활동보다 프라이빗한 실내 시간이 더 좋은 이유를 정리합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="04">
+          <h3>생각 정리를 위해 일부러 혼자 있는 시간 만들기</h3>
+          <p>결정을 미루고 있거나 감정이 복잡할 때 혼자 머무는 시간이 어떤 변화를 만드는지 다룹니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="05">
+          <h3>기념일엔 어디를 가느냐보다 어떻게 머무르느냐가 더 중요하다</h3>
+          <p>기념일과 둘만의 대화에서 공간의 화려함보다 프라이빗한 몰입감이 더 크게 작용하는 순간을 다룹니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="space-fit">
+    <div class="section-inner">
+      <h2 class="section-title">프라이빗시간은 이런 순간에 특히 잘 맞습니다</h2>
+      <p class="section-desc">공간을 빌리는 이유가 일을 하기 위해서가 아니라, 외부 시선과 소음에서 잠시 벗어나 자신만의 리듬으로 머물기 위해서일 때 프라이빗시간 허브의 글들이 가장 잘 맞습니다.</p>
+      <div class="about-highlight-grid" aria-label="프라이빗시간 활용 포인트">
+        <article class="about-highlight-card">
+          <h3>혼자 회복하고 싶을 때</h3>
+          <p>조용히 쉬거나 독서, 생각 정리, 감정 정리처럼 혼자만의 시간에 집중하고 싶을 때 잘 맞습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>둘만의 대화가 필요할 때</h3>
+          <p>데이트, 기념일, 진지한 이야기처럼 상대와의 대화 밀도를 높이고 싶은 시간에 적합합니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>중요한 결정을 앞두고 있을 때</h3>
+          <p>복잡한 생각을 정리하고 일상의 속도를 잠시 늦추며 나에게 돌아오고 싶은 순간에도 의미가 있습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="blog-conversion-section">
+    <div class="section-inner">
+      <div class="blog-conversion-panel">
+        <div>
+          <p class="section-label soft">Ready for Your Private Time?</p>
+          <h2>조용히 머물 수 있는 시간을<br />예약해보세요</h2>
+          <p>혼자 쉬는 시간, 둘만의 대화, 기념일, 생각 정리처럼 방해받지 않는 시간이 필요한 날 바른자리에서 프라이빗시간을 준비할 수 있습니다.</p>
+        </div>
+        <div class="blog-conversion-actions">
+          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="private_hub_booking">프라이빗시간 예약하기</a>
+          <a href="/index.html#space" class="btn-outline">공간 사진 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

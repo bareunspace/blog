@@ -17,6 +17,8 @@ home:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
   - label: 오시는 길
     href: "#contact"
 about:
@@ -38,6 +40,8 @@ about:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
   - label: 오시는 길
     href: "index.html#contact"
 blog:
@@ -54,6 +58,8 @@ blog:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
   - label: 최근 글
     href: "#blog-latest"
   - label: 사이트 발행 글
@@ -125,11 +131,39 @@ study:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
         current: true
   - label: 준비 흐름
     href: "#study-flow"
   - label: 시리즈 글
     href: "#study-series"
+  - label: 준비 중
+    href: "#upcoming-series"
+  - label: 활용 포인트
+    href: "#space-fit"
+  - label: 공간 예약
+    href: "#booking"
+private:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
+        current: true
+  - label: 활용 흐름
+    href: "#private-flow"
+  - label: 시리즈 글
+    href: "#private-series"
   - label: 준비 중
     href: "#upcoming-series"
   - label: 활용 포인트
@@ -150,6 +184,8 @@ post:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
   - label: 공간
     href: "index.html#space"
   - label: 요금·예약
