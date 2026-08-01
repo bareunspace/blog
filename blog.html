@@ -135,7 +135,10 @@ script_version: 20260716-4
           {% for post in onsite_posts %}
             {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
             {% assign post_card_video_id = post.youtube_id | default: '' %}
-            {% assign post_card_has_video = post_card_video_id != '' %}
+            {% assign post_card_has_video = false %}
+            {% if post_card_video_id != '' %}
+              {% assign post_card_has_video = true %}
+            {% endif %}
             <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
               <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
                 {% if post_card_has_video %}
