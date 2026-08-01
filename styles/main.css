@@ -676,6 +676,79 @@ main.about-page.blog-hub #home .section-inner {
   overflow: hidden;
   background: #e8efea;
 }
+.blog-guide-image {
+  position: relative;
+}
+.blog-guide-image .blog-guide-media-carousel {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+}
+.blog-guide-media-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #eef3ee;
+}
+.blog-guide-image-has-video .blog-guide-media-carousel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, .02) 0%, rgba(15, 23, 42, .18) 100%);
+  pointer-events: none;
+}
+.blog-guide-media-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform .45s ease;
+}
+.blog-guide-media-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.blog-guide-media-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-guide-media-dots {
+  position: absolute;
+  left: 50%;
+  bottom: .8rem;
+  display: flex;
+  gap: .35rem;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+.blog-guide-media-dot {
+  width: .44rem;
+  height: .44rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, .16);
+  transition: transform .25s ease, background-color .25s ease;
+}
+.blog-guide-media-dot.is-active {
+  transform: scale(1.16);
+  background: #fff;
+}
+.blog-guide-media-badge {
+  position: absolute;
+  left: .8rem;
+  top: .8rem;
+  z-index: 2;
+  padding: .38rem .65rem;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, .8);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
 .blog-featured-image img,
 .blog-guide-image img,
 .blog-field-image img {
@@ -3761,6 +3834,88 @@ main.tutoring-guide #home .section-desc {
   margin: 0;
 }
 
+.post-media-card {
+  display: flex;
+  flex-direction: column;
+  gap: .95rem;
+  margin: 0;
+}
+
+.post-media-video-card {
+  min-height: 100%;
+}
+
+.post-media-video-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f5f7f3 0%, #edf2ea 100%);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, .16);
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(31, 41, 55, .06);
+}
+
+.post-media-video-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, .04) 0%, rgba(15, 23, 42, .16) 100%);
+  pointer-events: none;
+}
+
+.post-media-video-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform .28s ease;
+}
+
+.post-media-video-link:hover .post-media-video-thumb,
+.post-media-video-link:focus-visible .post-media-video-thumb {
+  transform: scale(1.04);
+}
+
+.post-media-video-badge {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2.4rem;
+  color: #fff;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+  z-index: 1;
+}
+
+.post-media-video-link.is-playing {
+  background: #111827;
+}
+
+.post-media-video-link.is-playing iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.post-media-card-caption {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 0 .24rem .1rem;
+  color: #4b5563;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.post-media-card-caption strong {
+  color: #111827;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
 .post-media-carousel-controls {
   display: flex;
   align-items: center;
@@ -4449,8 +4604,29 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .post-youtube-fallback {
     font-size: .8rem;
   }
+  .post-media-carousel {
+    margin: .55rem 0 1.15rem;
+  }
   .post-media-carousel-viewport {
-    border-radius: 12px;
+    border-radius: 16px;
+  }
+  .post-media-card {
+    gap: .75rem;
+  }
+  .post-media-video-link {
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, .14);
+  }
+  .post-media-video-badge {
+    font-size: 2rem;
+  }
+  .post-media-card-caption {
+    padding: 0 .1rem .05rem;
+    font-size: .9rem;
+  }
+  .post-media-carousel-controls {
+    gap: .6rem;
+    margin-top: .7rem;
   }
   .post-media-carousel-btn {
     width: 38px;

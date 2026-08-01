@@ -705,6 +705,38 @@
       });
     };
 
+    const setupPostMediaVideoPlayers = () => {
+      const videoLinks = Array.from(document.querySelectorAll('[data-post-media-video-link]'));
+
+      videoLinks.forEach((link) => {
+        if (link.dataset.mediaVideoBound === 'true') {
+          return;
+        }
+
+        link.dataset.mediaVideoBound = 'true';
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (link.classList.contains('is-playing')) {
+            return;
+          }
+
+          const videoId = link.dataset.videoId;
+          const title = link.dataset.videoTitle || '바른자리 영상';
+
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+          iframe.title = title;
+          iframe.loading = 'lazy';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+
+          link.classList.add('is-playing');
+          link.replaceChildren(iframe);
+        });
+      });
+    };
+
     const updatePromoCountdown = () => {
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -955,6 +987,58 @@
           showNextImage();
         }
       }, { passive: true });
+    };
+
+    const setupBlogGuideMediaCarousels = () => {
+      const carousels = Array.from(document.querySelectorAll('[data-blog-guide-media-carousel]'));
+
+      carousels.forEach((carousel) => {
+        if (carousel.dataset.blogGuideMediaBound === 'true') {
+          return;
+        }
+
+        carousel.dataset.blogGuideMediaBound = 'true';
+        const track = carousel.querySelector('[data-blog-guide-media-track]');
+        const slides = Array.from(track ? track.querySelectorAll('.blog-guide-media-slide') : []);
+        const dots = Array.from(carousel.querySelectorAll('.blog-guide-media-dot'));
+
+        if (!track || slides.length < 2) {
+          return;
+        }
+
+        let activeIndex = 0;
+        let rotationTimer = null;
+
+        const render = () => {
+          track.style.transform = `translateX(-${activeIndex * 100}%)`;
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('is-active', index === activeIndex);
+          });
+        };
+
+        const startRotation = () => {
+          if (rotationTimer) {
+            window.clearInterval(rotationTimer);
+          }
+          rotationTimer = window.setInterval(() => {
+            activeIndex = (activeIndex + 1) % slides.length;
+            render();
+          }, 3600);
+        };
+
+        carousel.addEventListener('mouseenter', () => {
+          if (rotationTimer) {
+            window.clearInterval(rotationTimer);
+            rotationTimer = null;
+          }
+        });
+        carousel.addEventListener('mouseleave', () => {
+          startRotation();
+        });
+
+        render();
+        startRotation();
+      });
     };
 
     const setupBlogGuideLoadMore = () => {
@@ -2500,6 +2584,7 @@
     setupMobileCtaVariant();
     setupSpaceGalleryCarousel();
     setupLightboxSwipe();
+    setupBlogGuideMediaCarousels();
     setupBlogGuideLoadMore();
     setupHomeGuideLoadMore();
     setupBlogFieldFilters();

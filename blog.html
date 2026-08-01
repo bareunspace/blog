@@ -134,12 +134,36 @@ script_version: 20260716-4
         <div class="blog-guide-grid" aria-label="바른자리 실전 가이드 목록">
           {% for post in onsite_posts %}
             {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
+            {% assign post_card_video_id = post.youtube_id | default: '' %}
+            {% assign post_card_has_video = post_card_video_id != '' %}
             <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
-              <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-                {% if post_card_image contains '://' %}
-                  <img src="{{ post_card_image }}" alt="" loading="lazy" />
+              <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+                {% if post_card_has_video %}
+                  <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
+                    <div class="blog-guide-media-track" data-blog-guide-media-track>
+                      <div class="blog-guide-media-slide">
+                        <img src="https://img.youtube.com/vi/{{ post_card_video_id }}/hqdefault.jpg" alt="" loading="lazy" />
+                      </div>
+                      <div class="blog-guide-media-slide">
+                        {% if post_card_image contains '://' %}
+                          <img src="{{ post_card_image }}" alt="" loading="lazy" />
+                        {% else %}
+                          <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="blog-guide-media-dots" aria-hidden="true">
+                      <span class="blog-guide-media-dot is-active"></span>
+                      <span class="blog-guide-media-dot"></span>
+                    </div>
+                    <span class="blog-guide-media-badge">영상 · 이미지</span>
+                  </div>
                 {% else %}
-                  <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                  {% if post_card_image contains '://' %}
+                    <img src="{{ post_card_image }}" alt="" loading="lazy" />
+                  {% else %}
+                    <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                  {% endif %}
                 {% endif %}
               </a>
               <div class="blog-guide-content">
