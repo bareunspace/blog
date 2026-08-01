@@ -18,19 +18,26 @@ script_version: 20260719-1
   <section id="home">
     <span class="badge">네이버 예약 첫 예약 10% 할인 <span id="promoCountdown">지금 적용 중</span></span>
     <h1 class="hero-title">나만의 시간을 예약하세요.</h1>
-    <p class="hero-subtitle">카페는 시끄럽고 집은 흐트러질 때, 필요한 순간을 위한 프라이빗 공간</p>
+    <p class="hero-subtitle">면접, 상담, 스터디, 집중업무부터 방해받지 않는 개인시간까지.</p>
     <p class="hero-desc">
-      <strong>신중동역 1분, 필요한 순간에 단독으로 쓰는 바른자리.</strong>
-      면접, 시험, 회의, 상담, 데이트와 기념일까지, 개인적인 목적의 시간을 예약하세요.
+      <strong>신중동역 1분, 1~6인이 단독으로 이용하는 프라이빗 공간.</strong>
+      조용한 환경에서 몰입하고, 필요한 순간만 자유롭게 쓰는 공간입니다.
     </p>
+    <div class="hero-highlights" aria-label="공간 핵심 정보">
+      <span>신중동역 1분</span>
+      <span>1~6인</span>
+      <span>단독 이용</span>
+      <span>07:00~23:00</span>
+    </div>
+    <p class="hero-price">1시간 10,000원부터</p>
     <ul class="hero-points" aria-label="공간 핵심 포인트">
-      <li>신중동역 도보 1분</li>
-      <li>1인부터 소모임까지 단독 이용</li>
-      <li>운영 07:00~23:00</li>
+      <li>화상면접 · 상담 · 회의에 적합</li>
+      <li>단체 스터디와 개인 집중시간 모두 가능</li>
+      <li>예약 후 입실 비밀번호 사전 안내</li>
     </ul>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="hero_primary">오늘 가능한 시간 예약하기</a>
-      <a href="#space" class="btn-outline" data-cta="hero_secondary_use_case">용도별 빠른 선택</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="hero_primary">빈 시간 확인하기</a>
+      <a href="#space" class="btn-outline" data-cta="hero_secondary_use_case">공간 사진 보기</a>
     </div>
     <p class="hero-assurance">네이버 예약 선결제 · 입실 비밀번호 사전 안내 · 등록 시 주차 2시간 무료</p>
   </section>
@@ -45,29 +52,29 @@ script_version: 20260719-1
       <div class="space-gallery" id="gallery" aria-label="바른자리 공간 사진">
         <div class="space-gallery-track" id="galleryTrack">
           <figure class="gallery-item space-gallery-item space-gallery-featured">
+            <button type="button" class="gallery-open" data-src="images/09.webp" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="바른자리 전체 공간 와이드 뷰 확대 보기">
+              <img src="images/09.webp" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
+              <span class="space-gallery-overlay" id="spaceGalleryOverlay">사진 전체보기</span>
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
+            <button type="button" class="gallery-open" data-src="images/03.webp" data-alt="바른자리 테이블과 좌석, 조용한 집중 환경" aria-label="바른자리 테이블과 좌석, 조용한 집중 환경 확대 보기">
+              <img src="images/03.webp" alt="바른자리 테이블과 좌석, 조용한 집중 환경" loading="lazy" decoding="async" fetchpriority="low" width="2252" height="4000" />
+            </button>
+          </figure>
+          <figure class="gallery-item space-gallery-item">
             <button type="button" class="gallery-open" data-src="images/10.webp" data-alt="바른자리 소파 라운지 공간" aria-label="바른자리 소파 라운지 공간 확대 보기">
               <img src="images/10.webp" alt="바른자리 소파 라운지 공간" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
             </button>
           </figure>
           <figure class="gallery-item space-gallery-item">
-            <button type="button" class="gallery-open" data-src="images/03.webp" data-alt="바른자리 테이블과 책, 아늑한 조명" aria-label="바른자리 테이블과 책, 아늑한 조명 확대 보기">
-              <img src="images/03.webp" alt="바른자리 테이블과 책, 아늑한 조명" loading="lazy" decoding="async" fetchpriority="low" width="2252" height="4000" />
-            </button>
-          </figure>
-          <figure class="gallery-item space-gallery-item">
-            <button type="button" class="gallery-open" data-src="images/09.webp" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="바른자리 전체 공간 와이드 뷰 확대 보기">
-              <img src="images/09.webp" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
-            </button>
-          </figure>
-          <figure class="gallery-item space-gallery-item">
-            <button type="button" class="gallery-open" data-src="images/06.webp" data-alt="바른자리 전체 공간 와이드 뷰" aria-label="바른자리 전체 공간 와이드 뷰 확대 보기">
-              <img src="images/06.webp" alt="바른자리 전체 공간 와이드 뷰" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
+            <button type="button" class="gallery-open" data-src="images/06.webp" data-alt="바른자리 프라이빗한 공간 분위기" aria-label="바른자리 프라이빗한 공간 분위기 확대 보기">
+              <img src="images/06.webp" alt="바른자리 프라이빗한 공간 분위기" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
             </button>
           </figure>
           <figure class="gallery-item space-gallery-item">
             <button type="button" class="gallery-open" data-src="images/12.webp" data-alt="바른자리 아트월과 스탠드 조명" aria-label="바른자리 아트월과 스탠드 조명 확대 보기">
               <img src="images/12.webp" alt="바른자리 아트월과 스탠드 조명" loading="lazy" decoding="async" fetchpriority="low" width="4000" height="3000" />
-              <span class="space-gallery-overlay" id="spaceGalleryOverlay">사진 전체보기</span>
             </button>
           </figure>
           <figure class="gallery-item space-gallery-item">
@@ -96,6 +103,7 @@ script_version: 20260719-1
           <p class="space-gallery-kicker">사진으로 먼저 확인했다면</p>
           <h3>이런 일정으로 가장 많이 예약됩니다.</h3>
           <p>화상면접, 상담, 집중업무처럼 조용히 몰입해야 하는 시간에 잘 맞습니다.</p>
+          <p class="space-gallery-context-note">문을 닫으면 외부 시선 없이 단독으로 이용할 수 있고, 노트북과 자료를 놓고 편안하게 작업하기 좋은 환경입니다.</p>
         </div>
         <div class="space-gallery-context-chips" aria-label="대표 예약 상황">
           <span>화상면접 · PT</span>
@@ -107,11 +115,27 @@ script_version: 20260719-1
           <a href="#about" class="space-gallery-context-link" data-cta="space_gallery_pricing">요금 먼저 보기</a>
         </div>
       </div>
+      {% assign interview_card_post = site.posts | where_exp: "item", "item.url contains '/posts/cabin-crew-interview-practice/'" | first %}
+      {% assign online_exam_card_post = site.posts | where_exp: "item", "item.url contains '/posts/study-space-for-presentation-discussion-project/'" | first %}
+      {% assign private_office_card_post = site.posts | where_exp: "item", "item.url contains '/posts/recurring-space-booking-for-freelance-counselors/'" | first %}
+      {% assign consulting_card_post = site.posts | where_exp: "item", "item.url contains '/posts/freelance-counselor-office/'" | first %}
+      {% assign date_card_post = site.posts | where_exp: "item", "item.url contains '/posts/alone-time-is-recovery/'" | first %}
+      {% assign popup_card_post = site.posts | where_exp: "item", "item.url contains '/posts/summer-hotday-date-at-bareunjari/'" | first %}
       <div class="features-grid">
         <div class="feature-card feature-toggle feature-card-primary" id="videoInterviewToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="videoInterviewPanel">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
           <h3>화상면접 · 온라인회의 · PT <span class="feature-priority" aria-label="주력 서비스">추천</span></h3>
           <p>화면 인상과 전달력이 중요한 일정에 맞춘 밝은 배경과 조용한 독립 공간입니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>영상</span>
+              <span>조용함</span>
+              <span>와이파이</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="화상면접 활용 포인트">
             <li>추천 2시간</li>
             <li>면접 · PT</li>
@@ -170,6 +194,16 @@ script_version: 20260719-1
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-clipboard"></use></svg></div>
           <h3>온라인 시험장소 · 자격증</h3>
           <p>감독형 온라인 시험과 자격증 응시에 필요한 집중 환경을 빠르게 확보할 수 있습니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>집중</span>
+              <span>시험</span>
+              <span>점검</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="온라인 시험 활용 포인트">
             <li>추천 2~3시간</li>
             <li>감독형 시험</li>
@@ -214,6 +248,16 @@ script_version: 20260719-1
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
           <h3>집중업무 · 원격근무 오피스</h3>
           <p>재택 대신 몰입이 필요한 업무 시간을 단독 공간으로 확보하는 용도에 잘 맞습니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>몰입</span>
+              <span>원격</span>
+              <span>정기</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="집중업무 활용 포인트">
             <li>추천 3~4시간</li>
             <li>원격근무</li>
@@ -273,6 +317,16 @@ script_version: 20260719-1
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-users"></use></svg></div>
           <h3>상담 · 컨설팅 · 소모임 <span class="feature-priority" aria-label="주력 서비스">추천</span></h3>
           <p>민감한 대화와 집중 토론이 필요한 1:1 상담, 컨설팅, 소규모 모임에 적합합니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>대화</span>
+              <span>프라이버시</span>
+              <span>스터디</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="상담 소모임 활용 포인트">
             <li>추천 2~4시간</li>
             <li>1:1 상담</li>
@@ -332,6 +386,16 @@ script_version: 20260719-1
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></div>
           <h3>혼자만의 시간 · 데이트 · 가족 기념일</h3>
           <p>카페보다 조용한 실내에서 혼자 쉬거나, 연인과 함께, 가족과 함께 의미 있는 시간을 보내고 싶은 일정에 어울립니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>휴식</span>
+              <span>데이트</span>
+              <span>가족</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="데이트 활용 포인트">
             <li>추천 2시간</li>
             <li>휴식 · 데이트</li>
@@ -387,6 +451,16 @@ script_version: 20260719-1
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-bag"></use></svg></div>
           <h3>팝업 · 전시 · 대관</h3>
           <p>브랜드 팝업, 쇼룸, 소규모 전시처럼 종일 운영이 필요한 일정도 상담 후 진행 가능합니다.</p>
+          <div class="feature-card-preview" aria-hidden="true">
+            <div class="feature-card-preview-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="feature-card-preview-tags">
+              <span>전시</span>
+              <span>대관</span>
+              <span>상담</span>
+            </div>
+          </div>
           <ul class="feature-quick-list" aria-label="팝업 전시 활용 포인트">
             <li>종일 대관</li>
             <li>사전 상담</li>
