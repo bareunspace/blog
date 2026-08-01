@@ -59,6 +59,7 @@
     const postShareRoot = document.querySelector('[data-post-share]');
     const postReactionsRoot = document.querySelector('[data-post-reaction]');
     const relatedCarousels = Array.from(document.querySelectorAll('[data-related-carousel]'));
+    const postMediaCarousels = Array.from(document.querySelectorAll('[data-post-media-carousel]'));
     const FEATURE_PANEL_ANIM_MS = 150;
     const BLOG_GUIDE_INITIAL_VISIBLE = 3;
     const BLOG_GUIDE_LOAD_STEP = 3;
@@ -659,6 +660,48 @@
         track.addEventListener('scroll', updateButtons, { passive: true });
         window.addEventListener('resize', updateButtons);
         updateButtons();
+      });
+    };
+
+    const setupPostMediaCarousels = () => {
+      if (!postMediaCarousels.length) {
+        return;
+      }
+
+      postMediaCarousels.forEach((carousel) => {
+        const track = carousel.querySelector('[data-post-media-track]');
+        const prevButton = carousel.querySelector('[data-post-media-prev]');
+        const nextButton = carousel.querySelector('[data-post-media-next]');
+        const status = carousel.querySelector('[data-post-media-status]');
+        const slides = Array.from(carousel.querySelectorAll('[data-post-media-slide]'));
+
+        if (!track || !prevButton || !nextButton || !slides.length) {
+          return;
+        }
+
+        let activeIndex = 0;
+        const lastIndex = slides.length - 1;
+
+        const updateUi = () => {
+          track.style.transform = `translateX(-${activeIndex * 100}%)`;
+          prevButton.disabled = activeIndex === 0;
+          nextButton.disabled = activeIndex === lastIndex;
+          if (status) {
+            status.textContent = `${activeIndex + 1} / ${slides.length}`;
+          }
+        };
+
+        prevButton.addEventListener('click', () => {
+          activeIndex = Math.max(0, activeIndex - 1);
+          updateUi();
+        });
+
+        nextButton.addEventListener('click', () => {
+          activeIndex = Math.min(lastIndex, activeIndex + 1);
+          updateUi();
+        });
+
+        updateUi();
       });
     };
 
@@ -2465,4 +2508,5 @@
     setupPostShare();
     setupPostReactions();
     setupRelatedCarousels();
+    setupPostMediaCarousels();
     loadUseCasesFromRss();

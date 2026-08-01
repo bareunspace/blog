@@ -3637,18 +3637,24 @@ main.tutoring-guide #home .section-desc {
   transform: translateY(-1px);
 }
 .post-youtube {
-  margin: 1.25rem 0 2rem;
+  margin: 1.35rem 0 2.1rem;
+  padding: 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fbfdfb 0%, #f3f8f5 100%);
+  box-shadow: 0 16px 36px rgba(17,24,39,.08);
 }
 
 .post-youtube-frame {
   position: relative;
   width: 100%;
-  max-width: 760px;
+  max-width: 920px;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   background: #000;
+  box-shadow: 0 20px 36px rgba(0,0,0,.25);
 }
 
 .post-youtube-frame iframe {
@@ -3660,13 +3666,13 @@ main.tutoring-guide #home .section-desc {
 }
 
 .post-youtube figcaption {
-  margin-top: .625rem;
+  margin-top: .72rem;
   text-align: center;
-  font-size: .95rem;
-  color: #666;
+  font-size: .93rem;
+  color: #4f5d55;
 }
 .post-youtube-fallback {
-  margin-top: .4rem;
+  margin-top: .46rem;
   text-align: center;
   font-size: .84rem;
   color: #7a7a7a;
@@ -3675,6 +3681,77 @@ main.tutoring-guide #home .section-desc {
   color: #2d6a4f;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+.post-media-carousel {
+  margin: .4rem 0 1.2rem;
+}
+
+.post-media-carousel-viewport {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.post-media-carousel-track {
+  display: flex;
+  transition: transform .4s ease;
+  will-change: transform;
+}
+
+.post-media-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.post-media-slide .article-hero-visual {
+  margin: 0;
+}
+
+.post-media-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  margin-top: .78rem;
+}
+
+.post-media-carousel-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(31,41,55,.14);
+  border-radius: 999px;
+  background: #fff;
+  color: #1f2937;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.post-media-carousel-btn:hover,
+.post-media-carousel-btn:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(45,106,79,.35);
+  box-shadow: 0 12px 24px rgba(17,24,39,.15);
+}
+
+.post-media-carousel-btn:focus-visible {
+  outline: 2px solid rgba(45,106,79,.35);
+  outline-offset: 2px;
+}
+
+.post-media-carousel-btn[disabled] {
+  opacity: .35;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.post-media-carousel-status {
+  min-width: 4.7rem;
+  text-align: center;
+  font-size: .83rem;
+  font-weight: 800;
+  color: #4f5d55;
 }
 .guide-summary-section {
   padding-top: 1.5rem !important;
@@ -4303,16 +4380,31 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .post-youtube {
     margin: 1rem 0 1.6rem;
+    padding: .8rem;
+    border-radius: 12px;
   }
   .post-youtube-frame {
     max-width: 100%;
     border-radius: 8px;
+    box-shadow: 0 14px 24px rgba(0,0,0,.2);
   }
   .post-youtube figcaption {
     font-size: .9rem;
   }
   .post-youtube-fallback {
     font-size: .8rem;
+  }
+  .post-media-carousel-viewport {
+    border-radius: 12px;
+  }
+  .post-media-carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.25rem;
+  }
+  .post-media-carousel-status {
+    min-width: 4.2rem;
+    font-size: .78rem;
   }
   .guide-toc-label {
     display: none;
