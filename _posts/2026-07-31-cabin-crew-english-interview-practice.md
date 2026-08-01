@@ -61,41 +61,20 @@ youtube_caption: 영상으로 실제 연습 분위기를 먼저 확인해보세�
   </section>
   {% include breadcrumb.html %}
 
-  {% if page.youtube_id %}
-  <section id="video-first" aria-label="영상과 대표 이미지 보기">
-    <div class="section-inner">
-      <div class="post-media-carousel" data-post-media-carousel>
-        <div class="post-media-carousel-viewport">
-          <div class="post-media-carousel-track" data-post-media-track>
-            <article class="post-media-slide" data-post-media-slide>
-              {% include post-youtube.html id=page.youtube_id title=page.youtube_title caption=page.youtube_caption %}
-            </article>
-            <article class="post-media-slide" data-post-media-slide>
-              <figure class="article-hero-visual">
-                <img class="article-hero-full" src="/images/cabin-crew-english-interview-practice.webp" alt="승무원 영어 면접 답변을 실제처럼 연습하는 장면" loading="lazy" width="1672" height="941" />
-                <figcaption>승무원 영어 면접은 원고를 읽는 연습보다, 질문을 듣고 자신의 표현으로 이어가는 연습이 더 중요합니다.</figcaption>
-              </figure>
-            </article>
-          </div>
-        </div>
-        <div class="post-media-carousel-controls" aria-label="미디어 슬라이드 컨트롤">
-          <button type="button" class="post-media-carousel-btn" data-post-media-prev aria-label="이전 미디어">&#8249;</button>
-          <span class="post-media-carousel-status" data-post-media-status>1 / 2</span>
-          <button type="button" class="post-media-carousel-btn" data-post-media-next aria-label="다음 미디어">&#8250;</button>
-        </div>
-      </div>
-    </div>
-  </section>
-  {% else %}
-  <section id="guide-visual">
-    <div class="section-inner">
-      <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/cabin-crew-english-interview-practice.webp" alt="승무원 영어 면접 답변을 실제처럼 연습하는 장면" loading="eager" width="1672" height="941" />
-        <figcaption>승무원 영어 면접은 원고를 읽는 연습보다, 질문을 듣고 자신의 표현으로 이어가는 연습이 더 중요합니다.</figcaption>
-      </figure>
-    </div>
-  </section>
-  {% endif %}
+  {% include post-media-carousel.html
+    youtube_id=page.youtube_id
+    youtube_title=page.youtube_title
+    youtube_caption=page.youtube_caption
+    video_section_id='video-first'
+    video_aria_label='영상과 대표 이미지 보기'
+    image_section_id='guide-visual'
+    image_src='/images/cabin-crew-english-interview-practice.webp'
+    image_alt='승무원 영어 면접 답변을 실제처럼 연습하는 장면'
+    image_width='1672'
+    image_height='941'
+    image_loading='eager'
+    image_caption='승무원 영어 면접은 원고를 읽는 연습보다, 질문을 듣고 자신의 표현으로 이어가는 연습이 더 중요합니다.'
+  %}
 
   <nav class="guide-toc" aria-label="승무원 영어 면접 연습 가이드 목차">
     <div class="guide-toc-inner">

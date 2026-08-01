@@ -1,0 +1,37 @@
+{% assign has_video = include.youtube_id and include.youtube_id != '' %}
+
+{% if has_video %}
+<section id="{{ include.video_section_id | default: 'video-first' }}" aria-label="{{ include.video_aria_label | default: '영상과 대표 이미지 보기' }}">
+  <div class="section-inner">
+    <div class="post-media-carousel" data-post-media-carousel>
+      <div class="post-media-carousel-viewport">
+        <div class="post-media-carousel-track" data-post-media-track>
+          <article class="post-media-slide" data-post-media-slide>
+            {% include post-youtube.html id=include.youtube_id title=include.youtube_title caption=include.youtube_caption %}
+          </article>
+          <article class="post-media-slide" data-post-media-slide>
+            <figure class="article-hero-visual">
+              <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'lazy' }}" width="{{ include.image_width }}" height="{{ include.image_height }}" />
+              {% if include.image_caption %}<figcaption>{{ include.image_caption }}</figcaption>{% endif %}
+            </figure>
+          </article>
+        </div>
+      </div>
+      <div class="post-media-carousel-controls" aria-label="미디어 슬라이드 컨트롤">
+        <button type="button" class="post-media-carousel-btn" data-post-media-prev aria-label="이전 미디어">&#8249;</button>
+        <span class="post-media-carousel-status" data-post-media-status>1 / 2</span>
+        <button type="button" class="post-media-carousel-btn" data-post-media-next aria-label="다음 미디어">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section id="{{ include.image_section_id | default: 'guide-visual' }}">
+  <div class="section-inner">
+    <figure class="article-hero-visual">
+      <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'eager' }}" width="{{ include.image_width }}" height="{{ include.image_height }}" />
+      {% if include.image_caption %}<figcaption>{{ include.image_caption }}</figcaption>{% endif %}
+    </figure>
+  </div>
+</section>
+{% endif %}
