@@ -20,6 +20,9 @@ og_image_height: 1024
 preload_image: images/privacy-is-worth-paying-for.webp
 css_version: 20260730-1
 script_version: 20260711-4
+youtube_id: NVVOMUl6BJY
+youtube_title: 프라이버시와 개인시간의 가치를 보여주는 바른자리 영상
+youtube_caption: 방해받지 않는 시간과 프라이버시가 왜 중요한지 영상으로 먼저 확인해보세요.
 ---
 
 <main class="about-page">
@@ -36,18 +39,25 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
-  <section id="guide-visual">
-    <div class="section-inner">
-      <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/privacy-is-worth-paying-for.webp" alt="방해받지 않는 개인시간의 가치를 보여주는 프라이빗 공간 이미지" loading="eager" width="1536" height="1024" />
-        <figcaption>사람들이 찾는 것은 화려한 공간이 아니라, 잠시라도 온전히 자기 자신에게 집중할 수 있는 시간입니다.</figcaption>
-      </figure>
-    </div>
-  </section>
+  {% include post-media-carousel.html
+    youtube_id=page.youtube_id
+    youtube_title=page.youtube_title
+    youtube_caption=page.youtube_caption
+    video_section_id='video-first'
+    video_aria_label='영상과 대표 이미지 보기'
+    image_section_id='guide-visual'
+    image_src='/images/privacy-is-worth-paying-for.webp'
+    image_alt='방해받지 않는 개인시간의 가치를 보여주는 프라이빗 공간 이미지'
+    image_width='1536'
+    image_height='1024'
+    image_loading='eager'
+    image_caption='사람들이 찾는 것은 화려한 공간이 아니라, 잠시라도 온전히 자기 자신에게 집중할 수 있는 시간입니다.'
+  %}
 
   <nav class="guide-toc" aria-label="프라이버시와 개인시간 가이드 목차">
     <div class="guide-toc-inner">
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      {% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}
       <a href="#why-privacy-matters">왜 프라이버시가 희소해졌는가</a>
       <a href="#time-vs-focus">시간과 집중의 차이</a>
       <a href="#reserve-time">우리는 공간보다 시간을 예약한다</a>
