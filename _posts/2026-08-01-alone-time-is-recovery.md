@@ -21,6 +21,9 @@ og_image_height: 941
 preload_image: images/a-place-for-quiet-recovery.webp
 css_version: 20260801-1
 script_version: 20260711-4
+youtube_id: s7GQWEomwjY
+youtube_title: 혼자 있는 시간의 가치를 담은 바른자리 영상
+youtube_caption: 혼자만의 시간을 보내는 이유와 회복의 의미를 영상으로 먼저 확인해보세요.
 ---
 
 <main class="about-page">
@@ -37,18 +40,25 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
-  <section id="guide-visual">
-    <div class="section-inner">
-      <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/a-place-for-quiet-recovery.webp" alt="혼자 조용히 머물며 회복하는 시간을 표현한 프라이빗 공간 이미지" loading="eager" width="1672" height="941" />
-        <figcaption>혼자 있는 시간은 무언가를 더 하기 위한 사치가 아니라, 다시 일상으로 돌아가기 위한 회복의 여백이 될 수 있습니다.</figcaption>
-      </figure>
-    </div>
-  </section>
+  {% include post-media-carousel.html
+    youtube_id=page.youtube_id
+    youtube_title=page.youtube_title
+    youtube_caption=page.youtube_caption
+    video_section_id='video-first'
+    video_aria_label='영상과 대표 이미지 보기'
+    image_section_id='guide-visual'
+    image_src='/images/a-place-for-quiet-recovery.webp'
+    image_alt='혼자 조용히 머물며 회복하는 시간을 표현한 프라이빗 공간 이미지'
+    image_width='1672'
+    image_height='941'
+    image_loading='eager'
+    image_caption='혼자 있는 시간은 무언가를 더 하기 위한 사치가 아니라, 다시 일상으로 돌아가기 위한 회복의 여백이 될 수 있습니다.'
+  %}
 
   <nav class="guide-toc" aria-label="혼자 있는 시간과 회복 가이드 목차">
     <div class="guide-toc-inner">
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      {% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}
       <a href="#why-we-need-it">왜 반응 없는 시간이 필요한가</a>
       <a href="#alone-vs-lonely">혼자 있는 것과 외로움의 차이</a>
       <a href="#rest-without-doing">아무것도 하지 않는 시간의 가치</a>
