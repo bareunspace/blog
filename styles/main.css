@@ -3405,23 +3405,78 @@ main.about-page .about-highlight-grid {
   margin-top: 1rem;
 }
 main.about-page .about-highlight-card {
-  background: #fff;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(244,248,245,.98));
   border: 1px solid #dce8e1;
   border-radius: 14px;
   padding: .95rem 1rem;
-  box-shadow: 0 8px 18px rgba(17,24,39,.08);
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
 }
 main.about-page .about-highlight-card h3 {
   margin-bottom: .28rem;
   color: var(--primary);
   font-size: .92rem;
   font-weight: 800;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
 }
 main.about-page .about-highlight-card p {
-  color: #374151;
+  color: #4b5563;
   font-size: .84rem;
-  line-height: 1.65;
+  line-height: 1.7;
+}
+main.about-page .info-card {
+  margin-top: .75rem;
+  max-width: 100%;
+  background: linear-gradient(135deg, #f8fcfa 0%, #eef7f1 100%);
+  border: 1px solid #dce8e1;
+  border-radius: 13px;
+  padding: .78rem .82rem .82rem;
+  box-shadow: 0 8px 18px rgba(17,24,39,.05);
+}
+main.about-page .info-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  margin-bottom: .45rem;
+}
+main.about-page .info-card-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: .9rem;
+  font-weight: 800;
+}
+main.about-page .info-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 .55rem;
+  display: grid;
+  gap: .4rem;
+}
+main.about-page .info-card-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  align-items: center;
+  padding: .48rem .58rem;
+  border-radius: 9px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid rgba(45,106,79,.09);
+}
+main.about-page .info-card-label {
+  color: #6b7280;
+  font-size: .72rem;
+}
+main.about-page .info-card-list strong {
+  color: #111827;
+  font-size: .8rem;
+  font-weight: 700;
+  text-align: right;
+}
+main.about-page .info-card-cta {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding: .6rem .8rem;
+  font-size: .86rem;
 }
 main.about-page .about-principle-grid {
   display: grid;
@@ -3431,11 +3486,11 @@ main.about-page .about-principle-grid {
 }
 main.about-page .about-principle-item {
   position: relative;
-  background: #fff;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(244,248,245,.98));
   border: 1px solid #dce8e1;
   border-radius: 14px;
   padding: 1rem 1rem 1rem 3.1rem;
-  box-shadow: 0 8px 18px rgba(17,24,39,.08);
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
 }
 main.about-page .about-principle-item::before {
   content: attr(data-step);
