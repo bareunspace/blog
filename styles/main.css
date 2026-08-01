@@ -730,22 +730,27 @@ main.about-page.blog-hub #home .section-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.05rem;
-  height: 2.05rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, .78);
+  background: rgba(255, 255, 255, .68);
   color: #111827;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   line-height: 1;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, .16);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, .14);
   cursor: pointer;
   pointer-events: auto;
-  transition: transform .2s ease, background-color .2s ease;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
 }
 .blog-guide-media-btn:hover,
-.blog-guide-media-btn:focus-visible {
-  transform: translateY(-1px);
+.blog-guide-media-btn:focus-visible,
+.blog-guide-media-carousel:hover .blog-guide-media-btn,
+.blog-guide-media-carousel:focus-within .blog-guide-media-btn {
+  opacity: 1;
+  transform: translateY(0);
   background: rgba(255, 255, 255, .86);
 }
 .blog-guide-media-dots {
@@ -771,21 +776,6 @@ main.about-page.blog-hub #home .section-inner {
 .blog-guide-media-dot.is-active {
   transform: scale(1.16);
   background: rgba(255, 255, 255, .84);
-}
-.blog-guide-media-badge {
-  position: absolute;
-  left: .8rem;
-  top: .8rem;
-  z-index: 2;
-  padding: .38rem .65rem;
-  border: 1px solid rgba(17, 24, 39, .08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .76);
-  color: #111827;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .03em;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, .12);
 }
 .blog-featured-image img,
 .blog-guide-image img,
@@ -2447,6 +2437,10 @@ main.about-page.blog-hub #home .section-inner {
 .gallery-item img {
   width: 100%;
   height: auto;
+  display: block;
+  image-rendering: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .space-gallery .space-gallery-item {
   margin: 0;
@@ -2509,6 +2503,8 @@ main.about-page.blog-hub #home .section-inner {
   border-radius: var(--radius);
   box-shadow: 0 18px 50px rgba(0,0,0,.35);
   background: #fff;
+  transform: translateZ(0);
+  image-rendering: auto;
 }
 .lightbox-nav {
   position: absolute;
@@ -3475,18 +3471,22 @@ main.about-page .article-hero-visual {
   margin: 0;
   overflow: hidden;
   border: 1px solid #dce8e1;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 14px 30px rgba(17,24,39,.1);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f7fbf8 0%, #eef5f0 100%);
+  box-shadow: 0 16px 34px rgba(17,24,39,.1);
+  isolation: isolate;
 }
 main.about-page .article-hero-visual img {
   width: 100%;
   height: clamp(145px, 14vw, 180px);
   object-fit: cover;
+  display: block;
+  transform: translateZ(0);
 }
 main.about-page .article-hero-visual img.article-hero-full {
   height: auto;
   object-fit: contain;
+  background: linear-gradient(135deg, #f7fbf8 0%, #eef5f0 100%);
 }
 main.about-page .article-hero-visual .gallery-open {
   border: 0;
@@ -3854,7 +3854,9 @@ main.tutoring-guide #home .section-desc {
 
 .post-media-carousel-viewport {
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f7fbf8 0%, #eef5f0 100%);
+  box-shadow: 0 16px 34px rgba(17,24,39,.1);
 }
 
 .post-media-carousel-track {
@@ -3892,6 +3894,7 @@ main.tutoring-guide #home .section-desc {
   box-shadow: 0 18px 38px rgba(15, 23, 42, .16);
   aspect-ratio: 16 / 9;
   border: 1px solid rgba(31, 41, 55, .06);
+  transform: translateZ(0);
 }
 
 .post-media-video-link::after {
@@ -3938,6 +3941,7 @@ main.tutoring-guide #home .section-desc {
   min-height: 100%;
   border: 0;
   background: #000;
+  object-fit: cover;
 }
 
 .post-media-video-link.is-playing {

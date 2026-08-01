@@ -9,7 +9,7 @@
           <article class="post-media-slide" data-post-media-slide>
             <figure class="post-media-card post-media-video-card">
               <a class="post-media-video-link is-playing" href="https://www.youtube.com/watch?v={{ include.youtube_id }}" target="_blank" rel="noopener noreferrer" data-post-media-video-link data-video-id="{{ include.youtube_id }}" data-video-title="{{ include.youtube_title | default: '바른자리 영상 보기' }}" aria-label="{{ include.youtube_title | default: '바른자리 영상 보기' }}">
-                <iframe src="https://www.youtube.com/embed/{{ include.youtube_id }}?rel=0&modestbranding=1" title="{{ include.youtube_title | default: '바른자리 영상 보기' }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.youtube.com/embed/{{ include.youtube_id }}?rel=0&modestbranding=1" title="{{ include.youtube_title | default: '바른자리 영상 보기' }}" loading="lazy" decoding="async" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </a>
               {% if include.youtube_title or include.youtube_caption %}
               <figcaption class="post-media-card-caption">
@@ -21,7 +21,7 @@
           </article>
           <article class="post-media-slide" data-post-media-slide>
             <figure class="article-hero-visual">
-              <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'lazy' }}" width="{{ include.image_width }}" height="{{ include.image_height }}" />
+              <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'lazy' }}" decoding="async" fetchpriority="low" width="{{ include.image_width }}" height="{{ include.image_height }}" />
               {% if include.image_caption %}<figcaption>{{ include.image_caption }}</figcaption>{% endif %}
             </figure>
           </article>
@@ -39,7 +39,7 @@
 <section id="{{ include.image_section_id | default: 'guide-visual' }}">
   <div class="section-inner">
     <figure class="article-hero-visual">
-      <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'eager' }}" width="{{ include.image_width }}" height="{{ include.image_height }}" />
+      <img class="article-hero-full" src="{{ include.image_src }}" alt="{{ include.image_alt }}" loading="{{ include.image_loading | default: 'eager' }}" decoding="async" fetchpriority="high" width="{{ include.image_width }}" height="{{ include.image_height }}" />
       {% if include.image_caption %}<figcaption>{{ include.image_caption }}</figcaption>{% endif %}
     </figure>
   </div>
