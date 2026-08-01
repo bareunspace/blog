@@ -48,6 +48,7 @@
     const promoInlineCountdown = document.getElementById('promoInlineCountdown');
     const blogGuideFilters = document.getElementById('blogGuideFilters');
     const blogGuideGrid = document.querySelector('#blog-onsite .blog-guide-grid');
+    const guideFavoriteButtons = Array.from(document.querySelectorAll('[data-guide-favorite]'));
     const blogGuideLoadMore = document.getElementById('blogGuideLoadMore');
     const homeGuideFilters = document.getElementById('homeGuideFilters');
     const homeGuideGrid = document.getElementById('homeGuideGrid');
@@ -820,6 +821,43 @@
       window.scrollTo(0, scrollLockTop);
     };
 
+    const bindGuideFavorites = () => {
+      const buttons = Array.from(document.querySelectorAll('[data-guide-favorite]'));
+      buttons.forEach((button) => {
+        if (button.dataset.favoriteBound === 'true') {
+          return;
+        }
+
+        button.dataset.favoriteBound = 'true';
+        const countEl = button.querySelector('[data-guide-favorite-count]');
+        const card = button.closest('.blog-guide-card');
+        const stateKey = `guide-favorite:${card ? card.dataset.homeGuideItem ? 'home' : 'global' : 'global'}:${window.location.pathname}`;
+
+        const syncState = () => {
+          const stored = Number(window.localStorage.getItem(stateKey) || 0);
+          if (countEl) {
+            countEl.textContent = String(stored);
+          }
+          button.classList.toggle('is-active', stored > 0);
+          button.setAttribute('aria-pressed', stored > 0 ? 'true' : 'false');
+          const icon = button.querySelector('span');
+          if (icon) {
+            icon.textContent = stored > 0 ? '♥' : '♡';
+          }
+        };
+
+        syncState();
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const current = Number(window.localStorage.getItem(stateKey) || 0);
+          const next = current + 1;
+          window.localStorage.setItem(stateKey, String(next));
+          syncState();
+        });
+      });
+    };
+
     const bindGalleryOpenButtons = (scope) => {
       const root = scope || document;
       const buttons = Array.from(root.querySelectorAll('.gallery-open'));
@@ -876,6 +914,7 @@
     };
 
     bindGalleryOpenButtons();
+    bindGuideFavorites();
     attachGalleryImageFallback();
 
     const setupSpaceGalleryCarousel = () => {
