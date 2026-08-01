@@ -3636,6 +3636,46 @@ main.tutoring-guide #home .section-desc {
   color: var(--primary);
   transform: translateY(-1px);
 }
+.post-youtube {
+  margin: 1.25rem 0 2rem;
+}
+
+.post-youtube-frame {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.post-youtube-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.post-youtube figcaption {
+  margin-top: .625rem;
+  text-align: center;
+  font-size: .95rem;
+  color: #666;
+}
+.post-youtube-fallback {
+  margin-top: .4rem;
+  text-align: center;
+  font-size: .84rem;
+  color: #7a7a7a;
+}
+.post-youtube-fallback a {
+  color: #2d6a4f;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .guide-summary-section {
   padding-top: 1.5rem !important;
   padding-bottom: 2.2rem !important;
@@ -4260,6 +4300,19 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .guide-toc {
     top: 60px;
     padding: .58rem 1rem;
+  }
+  .post-youtube {
+    margin: 1rem 0 1.6rem;
+  }
+  .post-youtube-frame {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  .post-youtube figcaption {
+    font-size: .9rem;
+  }
+  .post-youtube-fallback {
+    font-size: .8rem;
   }
   .guide-toc-label {
     display: none;

@@ -1,0 +1,21 @@
+{% if include.id %}
+<figure class="post-youtube">
+  <div class="post-youtube-frame">
+    <iframe width="560" height="315"
+      src="https://www.youtube.com/embed/{{ include.id }}"
+      title="{{ include.title | default: 'YouTube video player' | escape }}"
+      frameborder="0"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+  {% if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+  <p class="post-youtube-fallback">
+    영상이 재생되지 않으면
+    <a href="https://www.youtube.com/watch?v={{ include.id }}" target="_blank" rel="noopener noreferrer">YouTube에서 보기</a>
+  </p>
+</figure>
+{% endif %}

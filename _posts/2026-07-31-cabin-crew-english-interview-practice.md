@@ -24,8 +24,11 @@ og_image_alt: 승무원 영어 면접 답변을 실제처럼 연습하는 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/cabin-crew-english-interview-practice.webp
-css_version: 20260731-1
+css_version: 20260801-1
 script_version: 20260711-4
+youtube_id: g7UWM-FYNoU
+youtube_title: 바른자리에서 승무원 영어 면접 연습하기
+youtube_caption: 영상으로 실제 연습 분위기를 먼저 확인해보세요.
 ---
 
 <main class="about-page cabin-crew-english-page">
@@ -67,9 +70,18 @@ script_version: 20260711-4
     </div>
   </section>
 
+  {% if page.youtube_id %}
+  <section id="video-first" aria-label="영상 먼저 보기">
+    <div class="section-inner">
+      {% include post-youtube.html id=page.youtube_id title=page.youtube_title caption=page.youtube_caption %}
+    </div>
+  </section>
+  {% endif %}
+
   <nav class="guide-toc" aria-label="승무원 영어 면접 연습 가이드 목차">
     <div class="guide-toc-inner">
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      {% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}
       <a href="#why-you-freeze">왜 외운 답변이 막히는가</a>
       <a href="#self-intro">영어 자기소개 연습법</a>
       <a href="#motivation">영어 지원 동기 구성법</a>
@@ -320,7 +332,6 @@ script_version: 20260711-4
   <section id="why-bareunjari">
     <div class="section-inner">
       <h2 class="section-title">바른자리에서 승무원 영어 면접 연습하기</h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/g7UWM-FYNoU?si=wkhYXdjwb1zY8jfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <p class="section-desc">바른자리는 신중동역 도보 1분 거리에 있는 프라이빗 공간입니다. 다른 이용자와 공간을 공유하지 않아 영어 자기소개와 예상 질문을 반복해서 말하거나, 친구와 영어 모의면접을 진행하기에 잘 맞습니다.</p>
       <div class="about-principle-grid" aria-label="바른자리 활용 예시">
         <article class="about-principle-item" data-step="01">
