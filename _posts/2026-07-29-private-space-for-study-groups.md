@@ -243,7 +243,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">화상회의나 온라인 수업도 가능한가요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">네. 인터넷 환경이 준비되어 있어 화상회의, 온라인 수업, 원격 협업 일정도 함께 진행하실 수 있습니다.</p>
+            <p itemprop="text">네. Wi-Fi와 넓은 테이블, 콘센트가 준비되어 있어 화상회의, 온라인 수업, 원격 협업 일정도 함께 진행하실 수 있습니다.</p>
           </div>
         </details>
       </div>

@@ -326,7 +326,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">화상면접도 진행할 수 있나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">노트북과 필요한 장비를 직접 준비하면 화상면접 리허설이나 실제 화상면접에도 활용할 수 있습니다. 접속 프로그램 설치와 로그인, 카메라와 마이크 테스트는 미리 마쳐두는 것이 좋습니다.</p>
+            <p itemprop="text">Wi-Fi와 유선 인터넷, 전원, 링라이트가 있는 환경을 활용하면 화상면접 리허설이나 실제 화상면접에도 활용할 수 있습니다. 접속 프로그램 설치와 로그인, 카메라와 마이크 테스트는 미리 마쳐두는 것이 좋습니다.</p>
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">

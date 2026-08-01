@@ -264,7 +264,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">화상 상담도 함께 운영할 수 있나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">가능합니다. 와이파이, 조명, 배경만 미리 점검해두면 대면 상담이 없는 시간에 화상 상담까지 함께 운영하기 좋습니다.</p>
+            <p itemprop="text">가능합니다. 조용한 공간과 와이파이, 조명, 배경만 미리 점검해두면 대면 상담이 없는 시간에 화상 상담까지 함께 운영하기 좋습니다.</p>
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">

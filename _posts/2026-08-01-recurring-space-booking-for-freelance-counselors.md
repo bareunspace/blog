@@ -216,7 +216,7 @@ script_version: 20260711-4
           <p>현재 이용 요금은 1시간 10,000원이며 이후에는 30분 단위로 이용 시간을 추가할 수 있습니다. 예약은 이용 1시간 전까지 가능합니다.</p>
         </article>
       </div>
-      <p>급하게 이용해야 하는 경우에는 전화 또는 네이버 톡톡으로 문의해 주세요. 빈 시간이라면 바로 이용할 수 있도록 안내해 드립니다.</p>
+      <p>급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요. 운영자가 확인 가능하고 빈 시간이라면 바로 이용하실 수 있도록 안내해 드립니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/" class="btn-primary">예약 가능 시간 확인하기</a>
         <a href="/posts/bucheon-meeting-room/" class="btn-outline">다음 글: 고객 미팅 공간 보기</a>

@@ -7,7 +7,18 @@
       <div class="post-media-carousel-viewport">
         <div class="post-media-carousel-track" data-post-media-track>
           <article class="post-media-slide" data-post-media-slide>
-            {% include post-youtube.html id=include.youtube_id title=include.youtube_title caption=include.youtube_caption %}
+            <figure class="post-media-card post-media-video-card">
+              <a class="post-media-video-link" href="#" data-post-media-video-link data-video-id="{{ include.youtube_id }}" data-video-title="{{ include.youtube_title | default: '바른자리 영상 보기' }}" aria-label="{{ include.youtube_title | default: '바른자리 영상 보기' }}">
+                <img class="post-media-video-thumb" src="https://img.youtube.com/vi/{{ include.youtube_id }}/hqdefault.jpg" alt="{{ include.youtube_title | default: '바른자리 영상 썸네일' }}" loading="lazy" width="1280" height="720" />
+                <span class="post-media-video-badge" aria-hidden="true">▶</span>
+              </a>
+              {% if include.youtube_title or include.youtube_caption %}
+              <figcaption class="post-media-card-caption">
+                {% if include.youtube_title %}<strong>{{ include.youtube_title }}</strong>{% endif %}
+                {% if include.youtube_caption %}<span>{{ include.youtube_caption }}</span>{% endif %}
+              </figcaption>
+              {% endif %}
+            </figure>
           </article>
           <article class="post-media-slide" data-post-media-slide>
             <figure class="article-hero-visual">

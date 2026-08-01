@@ -228,7 +228,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">화상 수업도 가능한가요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">네. 안정적인 인터넷 환경을 제공해 화상 영어, 온라인 면접, 온라인 수업에도 편하게 이용하실 수 있습니다.</p>
+            <p itemprop="text">네. 넓은 테이블과 콘센트, 안정적인 Wi-Fi 환경 덕분에 화상 영어, 온라인 면접, 온라인 수업에도 편하게 이용하실 수 있습니다.</p>
           </div>
         </details>
       </div>

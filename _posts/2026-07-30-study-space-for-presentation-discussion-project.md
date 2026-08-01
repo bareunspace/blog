@@ -297,7 +297,7 @@ script_version: 20260711-4
   <section id="booking-note">
     <div class="section-inner">
       <h2 class="section-title">예약 전 확인해 주세요</h2>
-      <p class="section-desc">예약은 이용 1시간 전까지 가능합니다. 급하게 공간이 필요한 경우 전화 또는 네이버 톡톡으로 문의해 주세요. 예약이 없는 시간이라면 바로 이용할 수 있도록 안내해 드립니다.</p>
+      <p class="section-desc">예약은 이용 1시간 전까지 가능합니다. 급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요. 운영자가 확인 가능하고 빈 시간이라면 바로 이용하실 수 있도록 안내해 드립니다.</p>
       <p>공간 사진과 현재 예약 가능 시간, 이용 요금은 예약 페이지에서 확인할 수 있습니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/" class="btn-primary">바른자리 예약 가능 시간 확인하기</a>

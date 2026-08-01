@@ -225,7 +225,7 @@ script_version: 20260711-4
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">Wi-Fi를 사용할 수 있나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">네. 무료 Wi-Fi를 제공해 노트북 작업이나 화상회의에도 비교적 편하게 이용하실 수 있습니다.</p>
+            <p itemprop="text">네. 무료 Wi-Fi와 콘센트, 냉난방, 커피머신·정수기 같은 기본 편의시설을 함께 이용할 수 있어 노트북 작업이나 화상회의에도 비교적 편하게 이용하실 수 있습니다.</p>
           </div>
         </details>
       </div>
