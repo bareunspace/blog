@@ -361,9 +361,9 @@ script_version: 20260719-1
                 <li>음료나 함께 볼 콘텐츠를 준비하면 더 편하게 머물 수 있음</li>
               </ul>
             </article>
-            <article class="private-office-card" aria-label="데이트 관련 블로그 글">
-              <h3>데이트 관련 블로그 글</h3>
-              {% assign date_category_posts = site.posts | where: "category", "데이트" %}
+            <article class="private-office-card" aria-label="프라이빗시간 관련 블로그 글">
+              <h3>프라이빗시간 관련 블로그 글</h3>
+              {% assign date_category_posts = site.posts | where: "category", "프라이빗시간" %}
               {% assign date_title_posts = site.posts | where_exp: "item", "item.title contains '데이트'" %}
               {% assign date_description_posts = site.posts | where_exp: "item", "item.description contains '데이트'" %}
               {% assign date_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '데이트'" %}
@@ -374,9 +374,9 @@ script_version: 20260719-1
                     <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
                   {% endfor %}
                 </ul>
-                <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">데이트 관련 글 더 보기</a></p>
+                <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">프라이빗시간 관련 글 더 보기</a></p>
               {% else %}
-                <p>아직 등록된 데이트 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
+                <p>아직 등록된 프라이빗시간 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
                 <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">사이트 발행 글 확인하기</a></p>
               {% endif %}
             </article>
@@ -537,7 +537,7 @@ script_version: 20260719-1
         <button type="button" class="blog-guide-filter" data-category="면접준비" aria-pressed="false">면접준비</button>
         <button type="button" class="blog-guide-filter" data-category="스터디룸" aria-pressed="false">스터디룸</button>
         <button type="button" class="blog-guide-filter" data-category="미팅·상담" aria-pressed="false">미팅·상담</button>
-        <button type="button" class="blog-guide-filter" data-category="데이트" aria-pressed="false">데이트</button>
+        <button type="button" class="blog-guide-filter" data-category="프라이빗시간" aria-pressed="false">프라이빗시간</button>
       </div>
       <div class="blog-guide-grid" id="homeGuideGrid" aria-label="바른자리 실전 가이드 목록">
         {% for post in onsite_posts %}
