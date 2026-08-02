@@ -2856,13 +2856,14 @@ main.about-page .post-tags {
   gap: .4rem;
   border: 1px solid #d6e4dc;
   border-radius: 999px;
-  background: #fff;
+  background: linear-gradient(135deg, #ffffff 0%, #f7fcfa 100%);
   color: #1f2937;
   padding: .52rem .86rem;
   font-size: .84rem;
   font-weight: 700;
   line-height: 1.2;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(17,24,39,.04);
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
 }
 .post-reaction-btn[disabled] {
@@ -2872,7 +2873,7 @@ main.about-page .post-tags {
 .post-reaction-btn:hover {
   transform: translateY(-1px);
   border-color: #b7d2c5;
-  box-shadow: 0 8px 16px rgba(31,63,49,.09);
+  box-shadow: 0 10px 18px rgba(31,63,49,.1);
 }
 .post-reaction-btn:focus-visible {
   outline: 2px solid rgba(45,106,79,.55);
@@ -2880,7 +2881,7 @@ main.about-page .post-tags {
 }
 .post-reaction-btn.is-active {
   border-color: rgba(45,106,79,.55);
-  background: rgba(82,183,136,.14);
+  background: linear-gradient(135deg, rgba(82,183,136,.16), rgba(45,106,79,.12));
   color: #144531;
   box-shadow: 0 10px 18px rgba(45,106,79,.14);
 }
