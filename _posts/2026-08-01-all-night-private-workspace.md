@@ -27,15 +27,31 @@ script_version: 20260711-4
 booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
 ---
 
-<main class="about-page">
+<main class="about-page all-night-private-workspace-page">
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Overnight Private Workspace</p>
       <h1 class="section-title">밤 12시부터 아침 6시까지,<br />올나잇 공간이 필요한 순간 7가지</h1>
       <p class="section-desc">과제 마감, 포트폴리오 작업, 영상 편집, 면접 연습처럼 긴 집중 시간이 필요한 밤에는 조용하고 프라이빗한 공간이 필요합니다. 바른자리 올나잇은 밤 12시부터 아침 6시까지 총 6시간 동안 단독으로 이용할 수 있는 심야 작업 공간입니다.</p>
+      <ul class="about-hero-points" aria-label="올나잇 핵심 포인트">
+        <li>00:00~06:00 단독 이용</li>
+        <li>집중형 작업 환경</li>
+        <li>회의·연습·포트폴리오까지</li>
+      </ul>
       <div class="hero-btns">
         <a href="#guide-overview" class="btn-primary">이용 방식 보기</a>
         <a href="{{ page.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-outline">올나잇 예약하기</a>
+      </div>
+      <div class="workspace-usage-panel" aria-label="올나잇 이용 포인트">
+        <div class="workspace-usage-card">
+          <span class="workspace-usage-label">바로 확인</span>
+          <h3>긴 집중이 필요한 밤을 위한 심야 작업 공간</h3>
+          <ul>
+            <li>카페·집의 방해 없이 정리된 환경에서 작업을 이어갑니다.</li>
+            <li>개인 작업, 회의, 발표 연습까지 한 흐름으로 진행할 수 있습니다.</li>
+            <li>예약한 시간 안에 필요한 만큼 자유롭게 이용할 수 있습니다.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
