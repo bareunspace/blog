@@ -196,11 +196,11 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
 
   <section id="booking-cta">
     <div class="section-inner">
-      <div class="about-overview-panel" style="max-width: 860px; margin: 0 auto;">
+      <div class="about-overview-panel booking-cta-panel" style="max-width: 860px; margin: 0 auto;">
         <div class="about-overview-copy">
           <p class="section-label">Booking</p>
-          <h2 class="section-title">끝내야 할 일이 있는 밤, 공간부터 바꿔 보세요</h2>
-          <p class="section-desc">해야 할 일을 내일로 넘기지 않고 오늘 끝내고 싶다면, 바른자리 올나잇에서 방해받지 않는 6시간을 예약해 보세요.</p>
+          <h2 class="section-title">끝내야 할 일이 있는 밤,<br />공간부터 바꿔 보세요</h2>
+          <p class="section-desc">해야 할 일을 오늘 끝내고 싶다면, 바른자리 올나잇에서 방해받지 않는 6시간을 예약해 보세요.</p>
           <div class="hero-btns">
             <a href="{{ page.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 올나잇 예약하기</a>
           </div>
