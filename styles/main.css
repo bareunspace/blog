@@ -1901,13 +1901,7 @@ main.about-page.blog-hub #home .section-inner {
 .feature-card-preview {
   grid-column: 1 / -1;
   grid-row: 4;
-  display: flex;
-  flex-direction: column;
-  gap: .55rem;
-  padding: .8rem;
-  border-radius: 12px;
-  border: 1px solid #e5ece7;
-  background: linear-gradient(135deg, #f9fcfa 0%, #f2f7f3 100%);
+  display: none;
 }
 .feature-card-preview-bar {
   display: flex;
