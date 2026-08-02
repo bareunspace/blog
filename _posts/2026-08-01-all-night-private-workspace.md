@@ -208,4 +208,6 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
       </div>
     </div>
   </section>
+
+  {% include post-tags.html %}
 </main>
