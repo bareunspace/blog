@@ -2828,15 +2828,17 @@ main.about-page .post-tags {
   margin: 0 auto;
 }
 .post-reactions-title {
+  margin: 0;
   font-size: 1rem;
   font-weight: 800;
   color: #1f2937;
   line-height: 1.4;
 }
 .post-reaction-toolbar {
-  margin-top: .85rem;
+  margin-top: .8rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: .7rem 1rem;
   flex-wrap: wrap;
 }
