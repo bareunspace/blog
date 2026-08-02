@@ -2274,12 +2274,31 @@ main.about-page.blog-hub #home .section-inner {
 }
 .price-card.featured .price-label,
 .price-card.featured .price-desc { color: rgba(255,255,255,.75); }
+.price-card.is-new {
+  background: linear-gradient(135deg, #fff9e8 0%, #ffffff 100%);
+  border: 1px solid rgba(45,106,79,.18);
+  box-shadow: 0 12px 30px rgba(45,106,79,.12);
+}
+.price-card.is-new .price-label {
+  color: var(--primary);
+  font-weight: 700;
+}
+.price-card.is-new .price-amount {
+  color: #1f4d3a;
+}
+.price-card.is-new .price-desc {
+  color: #4b5563;
+}
 .price-badge {
   position: absolute; top: 1rem; right: -1.8rem;
   background: var(--accent); color: #fff;
   font-size: .72rem; font-weight: 700; padding: .25rem 2.2rem;
   transform: rotate(35deg);
   letter-spacing: .5px;
+}
+.price-card.is-new .price-badge {
+  background: linear-gradient(135deg, #2d6a4f 0%, #4b8b66 100%);
+  box-shadow: 0 6px 14px rgba(45,106,79,.2);
 }
 .price-label { font-size: .85rem; color: var(--muted); margin-bottom: .3rem; }
 .price-amount {
