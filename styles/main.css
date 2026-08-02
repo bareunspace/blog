@@ -1107,12 +1107,6 @@ main.about-page.blog-hub #home .section-inner {
   font-weight: 800;
   color: #172124;
 }
-.blog-guide-category-group[data-category="프라이빗시간"] .blog-guide-category-header h3 {
-  color: var(--primary);
-}
-.blog-guide-category-group[data-category="면접준비"] .blog-guide-category-header h3 {
-  color: #244b39;
-}
 .blog-guide-category-link {
   display: inline-flex;
   align-items: center;
