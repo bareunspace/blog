@@ -60,8 +60,8 @@ blog:
         href: "study/"
       - label: 프라이빗시간
         href: "private/"
-  - label: 최근 글
-    href: "#blog-latest"
+  - label: 추천 가이드
+    href: "#featured-guide"
   - label: 사이트 발행 글
     href: "#blog-onsite"
   - label: 브랜드 스토리
