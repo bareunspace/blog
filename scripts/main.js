@@ -691,6 +691,13 @@
           return firstCard.getBoundingClientRect().width + gap;
         };
 
+        const getVisibleCardCount = () => {
+          const stepWidth = Math.max(1, getStepWidth());
+          const availableWidth = Math.max(1, track.clientWidth);
+          const visibleCount = Math.floor((availableWidth + 1) / stepWidth);
+          return Math.max(1, Math.min(3, visibleCount));
+        };
+
         const getNearestIndex = () => {
           const stepWidth = Math.max(1, getStepWidth());
           const rawIndex = Math.round(track.scrollLeft / stepWidth);
@@ -718,11 +725,11 @@
 
         prevButton.addEventListener('click', () => {
           const currentIndex = getNearestIndex();
-          scrollToIndex(currentIndex - 1);
+          scrollToIndex(currentIndex - getVisibleCardCount());
         });
         nextButton.addEventListener('click', () => {
           const currentIndex = getNearestIndex();
-          scrollToIndex(currentIndex + 1);
+          scrollToIndex(currentIndex + getVisibleCardCount());
         });
 
         track.addEventListener('scroll', updateButtons, { passive: true });
