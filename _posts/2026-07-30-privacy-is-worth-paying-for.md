@@ -13,6 +13,7 @@ tags:
 canonical: https://bareunjari.com/posts/privacy-is-worth-paying-for/
 permalink: /posts/privacy-is-worth-paying-for/
 date: 2026-07-30 09:00:00 +0900
+editor_pick: true
 og_image: https://bareunjari.com/images/privacy-is-worth-paying-for.webp
 og_image_alt: 방해받지 않는 개인시간의 가치를 보여주는 프라이빗 공간 이미지
 og_image_width: 1536

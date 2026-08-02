@@ -26,7 +26,11 @@ script_version: 20260716-4
   {% include breadcrumb.html %}
 
   {% assign onsite_posts = site.posts | where_exp: "item", "item.draft != true" %}
-  {% assign featured_post = onsite_posts.first %}
+  {% assign featured_posts = onsite_posts | where_exp: "item", "item.editor_pick == true" %}
+  {% if featured_posts.size == 0 %}
+    {% assign featured_posts = onsite_posts | sort: "date" | reverse %}
+  {% endif %}
+  {% assign featured_posts = featured_posts | sort: "date" | reverse | slice: 0, 4 %}
 
   <section id="featured-guide" class="blog-featured-section">
     <div class="section-inner">
@@ -37,37 +41,70 @@ script_version: 20260716-4
         </div>
         <p>예약 전 고민을 줄이고 중요한 일정의 변수를 미리 점검할 수 있는 콘텐츠입니다.</p>
       </div>
-      <div class="blog-conversion-panel blog-conversion-panel-soft" style="margin-bottom: 2rem;">
-        <div>
-          <p class="section-label soft">Before You Read</p>
-          <h2>필요한 시간이 이미 정해져 있다면</h2>
-          <p>가이드를 읽기 전에, 여러분의 일정에 맞는 시간부터 가볍게 확인해 보셔도 좋습니다.</p>
-        </div>
-        <div class="blog-conversion-actions">
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline" data-cta="blog_fast_track_booking">가능한 시간 보기</a>
-          <a href="/index.html#space" class="blog-conversion-text-link" data-cta="blog_fast_track_space">공간 먼저 보기</a>
-        </div>
-      </div>
-      {% if featured_post %}
-        {% assign featured_image = featured_post.preload_image | default: featured_post.og_image | default: '/images/main.jpeg' %}
-        <article class="blog-featured-card">
-          <a class="blog-featured-image{% if featured_post.url == '/posts/interview-questions-to-ask/' %} blog-image-contain{% endif %}" href="{{ featured_post.url | relative_url }}" aria-label="{{ featured_post.title }} 읽기">
-            {% if featured_image contains '://' %}
-              <img src="{{ featured_image }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
-            {% else %}
-              <img src="{{ '/' | append: featured_image | relative_url }}" alt="{{ featured_post.og_image_alt | default: featured_post.title }}" loading="eager" />
-            {% endif %}
-          </a>
-          <div class="blog-featured-content">
-            <p class="blog-card-eyebrow">추천 · {{ featured_post.category | default: "시간 활용 가이드" }}</p>
-            <h3><a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a></h3>
-            <p>{{ featured_post.description | default: featured_post.excerpt | strip_html | truncate: 180 }}</p>
-            <div class="blog-card-footer">
-              <span>{{ featured_post.date | date: "%Y-%m-%d" }}</span>
-              <a href="{{ featured_post.url | relative_url }}">가이드 읽기 <span aria-hidden="true">→</span></a>
+      {% if featured_posts.size > 0 %}
+        <section class="blog-guide-category-group blog-editor-picks-group" data-category="Editor's Pick">
+          <div class="blog-guide-category-header">
+            <div class="blog-guide-category-title-row">
+              <h3>Editor's Pick</h3>
+              <a class="blog-guide-category-link" href="{{ '/blog.html' | relative_url }}" aria-label="Editor's Pick 전체 글 보기">→</a>
+            </div>
+            <div class="blog-guide-category-controls" aria-label="Editor's Pick 가이드 넘기기">
+              <button type="button" class="blog-guide-category-nav blog-guide-category-prev" data-blog-guide-prev aria-label="Editor's Pick 이전 가이드">‹</button>
+              <button type="button" class="blog-guide-category-nav blog-guide-category-next" data-blog-guide-next aria-label="Editor's Pick 다음 가이드">›</button>
             </div>
           </div>
-        </article>
+          <div class="blog-guide-category-list" data-blog-guide-track tabindex="0" aria-label="Editor's Pick 가이드 목록">
+            {% for featured_post in featured_posts %}
+              {% assign featured_image = featured_post.preload_image | default: featured_post.og_image | default: '/images/main.jpeg' %}
+              {% assign featured_video_id = featured_post.youtube_id | default: '' %}
+              {% assign featured_has_video = false %}
+              {% if featured_video_id != '' %}
+                {% assign featured_has_video = true %}
+              {% endif %}
+              <article class="blog-guide-card" data-category="{{ featured_post.category | default: '시간 활용 가이드' }}">
+                <a class="blog-guide-image{% if featured_post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if featured_has_video %} blog-guide-image-has-video{% endif %}" href="{{ featured_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+                  {% if featured_has_video %}
+                    <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
+                      <div class="blog-guide-media-track" data-blog-guide-media-track>
+                        <div class="blog-guide-media-slide">
+                          <img src="https://img.youtube.com/vi/{{ featured_video_id }}/hqdefault.jpg" alt="" loading="lazy" />
+                        </div>
+                        <div class="blog-guide-media-slide">
+                          {% if featured_image contains '://' %}
+                            <img src="{{ featured_image }}" alt="" loading="lazy" />
+                          {% else %}
+                            <img src="{{ '/' | append: featured_image | relative_url }}" alt="" loading="lazy" />
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="blog-guide-media-controls" aria-label="미디어 탐색">
+                        <button type="button" class="blog-guide-media-btn blog-guide-media-btn-prev" data-blog-guide-media-prev aria-label="이전 이미지">‹</button>
+                        <button type="button" class="blog-guide-media-btn blog-guide-media-btn-next" data-blog-guide-media-next aria-label="다음 이미지">›</button>
+                      </div>
+                      <div class="blog-guide-media-dots" aria-label="미디어 이미지 선택" role="tablist">
+                        <button type="button" class="blog-guide-media-dot is-active" data-blog-guide-media-dot="0" aria-label="1번째 이미지"></button>
+                        <button type="button" class="blog-guide-media-dot" data-blog-guide-media-dot="1" aria-label="2번째 이미지"></button>
+                      </div>
+                    </div>
+                  {% else %}
+                    {% if featured_image contains '://' %}
+                      <img src="{{ featured_image }}" alt="" loading="lazy" />
+                    {% else %}
+                      <img src="{{ '/' | append: featured_image | relative_url }}" alt="" loading="lazy" />
+                    {% endif %}
+                  {% endif %}
+                </a>
+                <div class="blog-guide-content">
+                  <h3><a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a></h3>
+                  <div class="blog-card-footer">
+                    <span>{{ featured_post.date | date: "%Y-%m-%d" }}</span>
+                  </div>
+                  <p>{{ featured_post.description | default: featured_post.excerpt | strip_html | truncate: 120 }}</p>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
       {% else %}
         <div class="blog-empty-state">첫 번째 가이드를 준비하고 있습니다.</div>
       {% endif %}
@@ -124,68 +161,87 @@ script_version: 20260716-4
         <p>중요한 일정을 준비할 때 바로 적용할 수 있도록 체크리스트와 실행 방법을 정리했습니다.</p>
       </div>
       {% if onsite_posts.size > 0 %}
-        <div class="blog-guide-filters" id="blogGuideFilters" aria-label="실전 가이드 카테고리 필터">
-          <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
-          <button type="button" class="blog-guide-filter" data-category="면접준비" aria-pressed="false">면접준비</button>
-          <button type="button" class="blog-guide-filter" data-category="스터디룸" aria-pressed="false">스터디룸</button>
-          <button type="button" class="blog-guide-filter" data-category="미팅·상담" aria-pressed="false">미팅·상담</button>
-          <button type="button" class="blog-guide-filter" data-category="프라이빗시간" aria-pressed="false">프라이빗시간</button>
-        </div>
-        <div class="blog-guide-grid" aria-label="바른자리 실전 가이드 목록">
-          {% for post in onsite_posts %}
-            {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
-            {% assign post_card_video_id = post.youtube_id | default: '' %}
-            {% assign post_card_has_video = false %}
-            {% if post_card_video_id != '' %}
-              {% assign post_card_has_video = true %}
-            {% endif %}
-            <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
-              <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-                {% if post_card_has_video %}
-                  <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
-                    <div class="blog-guide-media-track" data-blog-guide-media-track>
-                      <div class="blog-guide-media-slide">
-                        <img src="https://img.youtube.com/vi/{{ post_card_video_id }}/hqdefault.jpg" alt="" loading="lazy" />
-                      </div>
-                      <div class="blog-guide-media-slide">
-                        {% if post_card_image contains '://' %}
-                          <img src="{{ post_card_image }}" alt="" loading="lazy" />
-                        {% else %}
-                          <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
-                        {% endif %}
-                      </div>
-                    </div>
-                    <div class="blog-guide-media-controls" aria-label="미디어 탐색">
-                      <button type="button" class="blog-guide-media-btn blog-guide-media-btn-prev" data-blog-guide-media-prev aria-label="이전 이미지">‹</button>
-                      <button type="button" class="blog-guide-media-btn blog-guide-media-btn-next" data-blog-guide-media-next aria-label="다음 이미지">›</button>
-                    </div>
-                    <div class="blog-guide-media-dots" aria-label="미디어 이미지 선택" role="tablist">
-                      <button type="button" class="blog-guide-media-dot is-active" data-blog-guide-media-dot="0" aria-label="1번째 이미지"></button>
-                      <button type="button" class="blog-guide-media-dot" data-blog-guide-media-dot="1" aria-label="2번째 이미지"></button>
-                    </div>
+        {% assign guide_groups = onsite_posts | group_by: "category" %}
+        <div class="blog-guide-groups" aria-label="바른자리 실전 가이드 카테고리별 목록">
+          {% for group in guide_groups %}
+            {% assign category_name = group.name | default: '기타' | strip %}
+            {% if category_name != '' %}
+              {% assign category_url = '/blog.html' %}
+              {% case category_name %}
+                {% when '면접준비' %}
+                  {% assign category_url = '/interview/' %}
+                {% when '스터디룸' %}
+                  {% assign category_url = '/study/' %}
+                {% when '미팅·상담' %}
+                  {% assign category_url = '/meeting/' %}
+                {% when '프라이빗시간' %}
+                  {% assign category_url = '/private/' %}
+              {% endcase %}
+              <section class="blog-guide-category-group" data-category="{{ category_name }}">
+                <div class="blog-guide-category-header">
+                  <div class="blog-guide-category-title-row">
+                    <h3>{{ category_name }}</h3>
+                    <a class="blog-guide-category-link" href="{{ category_url | relative_url }}" aria-label="{{ category_name }} 전체 글 보기">→</a>
                   </div>
-                {% else %}
-                  {% if post_card_image contains '://' %}
-                    <img src="{{ post_card_image }}" alt="" loading="lazy" />
-                  {% else %}
-                    <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
-                  {% endif %}
-                {% endif %}
-              </a>
-              <div class="blog-guide-content">
-                <p class="blog-card-eyebrow">{{ post.category | default: "시간 활용 가이드" }}</p>
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-                <div class="blog-card-footer">
-                  <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                  <a href="{{ post.url | relative_url }}" aria-label="{{ post.title }} 자세히 보기">자세히 보기 <span aria-hidden="true">→</span></a>
+                  <div class="blog-guide-category-controls" aria-label="{{ category_name }} 가이드 넘기기">
+                    <button type="button" class="blog-guide-category-nav blog-guide-category-prev" data-blog-guide-prev aria-label="{{ category_name }} 이전 가이드">‹</button>
+                    <button type="button" class="blog-guide-category-nav blog-guide-category-next" data-blog-guide-next aria-label="{{ category_name }} 다음 가이드">›</button>
+                  </div>
                 </div>
-              </div>
-            </article>
+                <div class="blog-guide-category-list" data-blog-guide-track tabindex="0" aria-label="{{ category_name }} 가이드 목록">
+                  {% for post in group.items %}
+                    {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
+                    {% assign post_card_video_id = post.youtube_id | default: '' %}
+                    {% assign post_card_has_video = false %}
+                    {% if post_card_video_id != '' %}
+                      {% assign post_card_has_video = true %}
+                    {% endif %}
+                    <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
+                      <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+                        {% if post_card_has_video %}
+                          <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
+                            <div class="blog-guide-media-track" data-blog-guide-media-track>
+                              <div class="blog-guide-media-slide">
+                                <img src="https://img.youtube.com/vi/{{ post_card_video_id }}/hqdefault.jpg" alt="" loading="lazy" />
+                              </div>
+                              <div class="blog-guide-media-slide">
+                                {% if post_card_image contains '://' %}
+                                  <img src="{{ post_card_image }}" alt="" loading="lazy" />
+                                {% else %}
+                                  <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                                {% endif %}
+                              </div>
+                            </div>
+                            <div class="blog-guide-media-controls" aria-label="미디어 탐색">
+                              <button type="button" class="blog-guide-media-btn blog-guide-media-btn-prev" data-blog-guide-media-prev aria-label="이전 이미지">‹</button>
+                              <button type="button" class="blog-guide-media-btn blog-guide-media-btn-next" data-blog-guide-media-next aria-label="다음 이미지">›</button>
+                            </div>
+                            <div class="blog-guide-media-dots" aria-label="미디어 이미지 선택" role="tablist">
+                              <button type="button" class="blog-guide-media-dot is-active" data-blog-guide-media-dot="0" aria-label="1번째 이미지"></button>
+                              <button type="button" class="blog-guide-media-dot" data-blog-guide-media-dot="1" aria-label="2번째 이미지"></button>
+                            </div>
+                          </div>
+                        {% else %}
+                          {% if post_card_image contains '://' %}
+                            <img src="{{ post_card_image }}" alt="" loading="lazy" />
+                          {% else %}
+                            <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
+                          {% endif %}
+                        {% endif %}
+                      </a>
+                      <div class="blog-guide-content">
+                        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                        <div class="blog-card-footer">
+                          <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                        </div>
+                        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
+                      </div>
+                    </article>
+                  {% endfor %}
+                </div>
+              </section>
+            {% endif %}
           {% endfor %}
-        </div>
-        <div class="blog-guide-more-wrap">
-          <button type="button" class="blog-guide-load-more" id="blogGuideLoadMore">가이드 더 보기</button>
         </div>
       {% else %}
         <div class="blog-empty-state">첫 번째 실전 가이드를 준비하고 있습니다.</div>

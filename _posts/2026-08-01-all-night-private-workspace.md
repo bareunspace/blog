@@ -19,6 +19,7 @@ hubs:
 canonical: https://bareunjari.com/posts/all-night-private-workspace/
 permalink: /posts/all-night-private-workspace/
 date: 2026-08-01 19:00:00 +0900
+editor_pick: true
 og_image: https://bareunjari.com/images/all-night-private-workspace.webp
 og_image_alt: 부천 밤샘 작업 공간이 필요한 순간을 위한 바른자리 올나잇 이미지
 preload_image: images/all-night-private-workspace.webp

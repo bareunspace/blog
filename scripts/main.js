@@ -663,6 +663,74 @@
       });
     };
 
+    const setupBlogGuideCategoryCarousels = () => {
+      const groups = Array.from(document.querySelectorAll('.blog-guide-category-group'));
+      if (!groups.length) {
+        return;
+      }
+
+      groups.forEach((group) => {
+        const track = group.querySelector('[data-blog-guide-track]');
+        const prevButton = group.querySelector('[data-blog-guide-prev]');
+        const nextButton = group.querySelector('[data-blog-guide-next]');
+        if (!track || !prevButton || !nextButton) {
+          return;
+        }
+
+        const cards = Array.from(track.querySelectorAll('.blog-guide-card'));
+        if (!cards.length) {
+          prevButton.hidden = true;
+          nextButton.hidden = true;
+          return;
+        }
+
+        const getStepWidth = () => {
+          const firstCard = cards[0];
+          const styles = window.getComputedStyle(track);
+          const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        const getNearestIndex = () => {
+          const stepWidth = Math.max(1, getStepWidth());
+          const rawIndex = Math.round(track.scrollLeft / stepWidth);
+          return Math.min(Math.max(0, rawIndex), cards.length - 1);
+        };
+
+        const scrollToIndex = (index) => {
+          const clampedIndex = Math.min(Math.max(0, index), cards.length - 1);
+          const targetCard = cards[clampedIndex];
+          if (!targetCard) {
+            return;
+          }
+          targetCard.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        };
+
+        const updateButtons = () => {
+          const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth - 1);
+          const canScroll = track.scrollWidth > track.clientWidth + 2;
+          const nearestIndex = getNearestIndex();
+          prevButton.hidden = !canScroll;
+          nextButton.hidden = !canScroll;
+          prevButton.disabled = !canScroll || nearestIndex <= 0 || track.scrollLeft <= 1;
+          nextButton.disabled = !canScroll || nearestIndex >= cards.length - 1 || track.scrollLeft >= maxScrollLeft;
+        };
+
+        prevButton.addEventListener('click', () => {
+          const currentIndex = getNearestIndex();
+          scrollToIndex(currentIndex - 1);
+        });
+        nextButton.addEventListener('click', () => {
+          const currentIndex = getNearestIndex();
+          scrollToIndex(currentIndex + 1);
+        });
+
+        track.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
+      });
+    };
+
     const setupPostMediaCarousels = () => {
       if (!postMediaCarousels.length) {
         return;
@@ -2595,6 +2663,7 @@
     setupSpaceGalleryCarousel();
     setupLightboxSwipe();
     setupBlogGuideMediaCarousels();
+    setupBlogGuideCategoryCarousels();
     setupBlogGuideLoadMore();
     setupHomeGuideLoadMore();
     setupBlogFieldFilters();
