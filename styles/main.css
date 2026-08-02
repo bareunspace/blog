@@ -483,17 +483,18 @@ section { padding: 5rem 1.5rem; }
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .post-related-title-row {
   display: flex;
   align-items: center;
   gap: .75rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   min-width: 0;
 }
 .post-related-title-row .section-title {
   margin-bottom: 0;
+  white-space: nowrap;
 }
 .post-related-title-link {
   display: inline-flex;
@@ -532,6 +533,7 @@ section { padding: 5rem 1.5rem; }
   margin-bottom: 0;
   margin-left: auto;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 .post-related-grid {
   display: grid;
