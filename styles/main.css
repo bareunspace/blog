@@ -478,13 +478,22 @@ section { padding: 5rem 1.5rem; }
 .post-related-head {
   margin-bottom: .85rem;
 }
+.post-related-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 .post-related-title-row {
   display: flex;
   align-items: center;
   gap: .75rem;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 .post-related-title-row .section-title {
-  margin-bottom: .65rem;
+  margin-bottom: 0;
 }
 .post-related-title-link {
   display: inline-flex;
@@ -520,8 +529,9 @@ section { padding: 5rem 1.5rem; }
   align-items: center;
   justify-content: flex-end;
   gap: .65rem;
-  width: 100%;
-  margin-bottom: .8rem;
+  margin-bottom: 0;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 .post-related-grid {
   display: grid;
@@ -5493,6 +5503,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .post-related {
     padding: 3.5rem 1rem;
+  }
+  .post-related-head-row {
+    gap: .75rem;
   }
   .post-related-title-row {
     gap: .55rem;

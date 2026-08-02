@@ -13,16 +13,16 @@
     <div class="section-inner">
       <div class="post-related-carousel" data-related-carousel>
         <div class="post-related-head">
-          <div>
+          <div class="post-related-head-row">
             <div class="post-related-title-row">
               <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
               <a class="post-related-title-link" href="{{ related_more_url | relative_url }}" aria-label="{{ page.category }} 글 전체 보기">→</a>
             </div>
+            <div class="post-related-controls" aria-label="관련 글 넘기기">
+              <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 관련 글 보기">‹</button>
+              <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 관련 글 보기">›</button>
+            </div>
           </div>
-        </div>
-        <div class="post-related-controls" aria-label="관련 글 넘기기">
-          <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 관련 글 보기">‹</button>
-          <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 관련 글 보기">›</button>
         </div>
         <div class="post-related-grid" data-related-track tabindex="0" aria-label="{{ page.category }} 관련 글 목록">
           {% for related_post in related_posts limit: 8 %}
