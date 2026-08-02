@@ -45,6 +45,10 @@ about:
   - label: 오시는 길
     href: "index.html#contact"
 blog:
+  - label: 공간
+    href: "index.html#space"
+  - label: 요금·예약
+    href: "index.html#about"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -60,14 +64,6 @@ blog:
         href: "study/"
       - label: 프라이빗시간
         href: "private/"
-  - label: 추천 가이드
-    href: "#featured-guide"
-  - label: 사이트 발행 글
-    href: "#blog-onsite"
-  - label: 브랜드 스토리
-    href: "about.html"
-  - label: 요금·예약
-    href: "index.html#about"
   - label: 오시는 길
     href: "index.html#contact"
 interview:
