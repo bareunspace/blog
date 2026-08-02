@@ -32,6 +32,9 @@ og_image_height: 941
 preload_image: images/study-space-for-presentation-discussion-project.webp
 css_version: 20260730-1
 script_version: 20260711-4
+youtube_id: 24OwtfCx4sE
+youtube_title: 발표·토론·팀 프로젝트 준비에 어울리는 바른자리 영상
+youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간이 도움이 되는지 영상으로 먼저 확인해보세요.
 ---
 
 <main class="about-page">
@@ -48,18 +51,25 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
-  <section id="guide-visual">
-    <div class="section-inner">
-      <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/study-space-for-presentation-discussion-project.webp" alt="발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간" loading="eager" width="1672" height="941" />
-        <figcaption>이제 공부는 혼자 조용히 이해하는 시간을 넘어, 함께 설명하고 질문하고 완성하는 시간까지 포함합니다.</figcaption>
-      </figure>
-    </div>
-  </section>
+  {% include post-media-carousel.html
+    youtube_id=page.youtube_id
+    youtube_title=page.youtube_title
+    youtube_caption=page.youtube_caption
+    video_section_id='video-first'
+    video_aria_label='영상과 대표 이미지 보기'
+    image_section_id='guide-visual'
+    image_src='/images/study-space-for-presentation-discussion-project.webp'
+    image_alt='발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간'
+    image_width='1672'
+    image_height='941'
+    image_loading='eager'
+    image_caption='이제 공부는 혼자 조용히 이해하는 시간을 넘어, 함께 설명하고 질문하고 완성하는 시간까지 포함합니다.'
+  %}
 
   <nav class="guide-toc" aria-label="발표 토론 팀 프로젝트 공간 가이드 목차">
     <div class="guide-toc-inner">
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
+      {% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}
       <a href="#why-study-is-changing">공부 방식의 변화</a>
       <a href="#ap-ib-example">AP · IB 사례</a>
       <a href="#why-space-matters">왜 공간이 중요한가</a>
