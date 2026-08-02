@@ -79,38 +79,44 @@ script_version: 20260716-4
       <p class="section-label">Explore by Purpose</p>
       <h2 class="section-title">어떤 개인적인 이유로 시간을 찾고 있나요?</h2>
       <p class="section-desc">지금 필요한 정보와 가까운 주제부터 살펴보세요.</p>
-      <nav class="blog-topic-grid" aria-label="블로그 주제 바로가기">
-        <a class="blog-topic-card is-active" href="/interview/">
-          <span class="blog-topic-number">01</span>
-          <strong>면접준비</strong>
-          <span>화상면접·AI 면접·장소 선택</span>
-        </a>
-        <a class="blog-topic-card" href="/study/">
-          <span class="blog-topic-number">02</span>
-          <strong>스터디룸</strong>
-          <span>집중 학습·말하기 연습·그룹 스터디</span>
-        </a>
-        <a class="blog-topic-card" href="/meeting/">
-          <span class="blog-topic-number">03</span>
-          <strong>미팅·상담</strong>
-          <span>프라이빗 상담·코칭·컨설팅 미팅</span>
-        </a>
-        <a class="blog-topic-card" href="/private/">
-          <span class="blog-topic-number">04</span>
-          <strong>프라이빗시간</strong>
-          <span>혼자 시간·데이트·가족 기념일</span>
-        </a>
-        <a class="blog-topic-card" href="#blog-latest" data-filter-group="field" data-filter-target="이용사례">
-          <span class="blog-topic-number">05</span>
-          <strong>이용사례</strong>
-          <span>실제 시간 활용 후기와 사례</span>
-        </a>
-        <a class="blog-topic-card" href="#blog-latest" data-filter-group="field" data-filter-target="이용안내">
-          <span class="blog-topic-number">06</span>
-          <strong>이용안내</strong>
-          <span>예약·입실·주차·시설 사용법</span>
-        </a>
-      </nav>
+      <div class="blog-topic-rail" aria-label="블로그 주제 바로가기">
+        <button type="button" class="blog-topic-nav blog-topic-nav-prev" aria-label="이전 주제 보기">‹</button>
+        <div class="blog-topic-scroll" tabindex="0">
+          <nav class="blog-topic-grid" aria-label="블로그 주제 목록">
+            <a class="blog-topic-card is-active" href="/interview/">
+              <span class="blog-topic-number">01</span>
+              <strong>면접준비</strong>
+              <span>화상면접·AI 면접·장소 선택</span>
+            </a>
+            <a class="blog-topic-card" href="/study/">
+              <span class="blog-topic-number">02</span>
+              <strong>스터디룸</strong>
+              <span>집중 학습·말하기 연습·그룹 스터디</span>
+            </a>
+            <a class="blog-topic-card" href="/meeting/">
+              <span class="blog-topic-number">03</span>
+              <strong>미팅·상담</strong>
+              <span>프라이빗 상담·코칭·컨설팅 미팅</span>
+            </a>
+            <a class="blog-topic-card" href="/private/">
+              <span class="blog-topic-number">04</span>
+              <strong>프라이빗시간</strong>
+              <span>혼자 시간·데이트·가족 기념일</span>
+            </a>
+            <a class="blog-topic-card" href="#blog-latest" data-filter-group="field" data-filter-target="이용사례">
+              <span class="blog-topic-number">05</span>
+              <strong>이용사례</strong>
+              <span>실제 시간 활용 후기와 사례</span>
+            </a>
+            <a class="blog-topic-card" href="#blog-latest" data-filter-group="field" data-filter-target="이용안내">
+              <span class="blog-topic-number">06</span>
+              <strong>이용안내</strong>
+              <span>예약·입실·주차·시설 사용법</span>
+            </a>
+          </nav>
+        </div>
+        <button type="button" class="blog-topic-nav blog-topic-nav-next" aria-label="다음 주제 보기">›</button>
+      </div>
     </div>
   </section>
 

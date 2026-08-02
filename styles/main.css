@@ -908,14 +908,49 @@ main.about-page.blog-hub #home .section-inner {
 .blog-topics-section {
   background: #eef5f0 !important;
 }
+.blog-topic-rail {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.blog-topic-scroll {
+  flex: 1;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: .25rem;
+}
 .blog-topic-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(220px, 1fr);
   gap: 1rem;
+  min-width: max-content;
+}
+.blog-topic-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--primary);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(26,67,47,.08);
+  flex-shrink: 0;
+}
+.blog-topic-nav:hover,
+.blog-topic-nav:focus-visible {
+  background: var(--primary);
+  color: #fff;
 }
 .blog-topic-card {
   display: flex;
   min-height: 180px;
+  width: 100%;
   flex-direction: column;
   padding: 1.4rem;
   border: 1px solid #d8e5dc;
@@ -923,6 +958,7 @@ main.about-page.blog-hub #home .section-inner {
   background: rgba(255,255,255,.8);
   color: var(--primary);
   text-decoration: none;
+  scroll-snap-align: start;
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 .blog-topic-card.is-active {
@@ -5418,8 +5454,11 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .blog-featured-image {
     height: 340px;
   }
+  .blog-topic-rail {
+    gap: .6rem;
+  }
   .blog-topic-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: minmax(220px, 1fr);
   }
   .blog-guide-grid {
     grid-template-columns: 1fr;
@@ -5536,6 +5575,16 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     width: 40px;
     height: 40px;
     font-size: 1.35rem;
+  }
+  .blog-topic-rail {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .blog-topic-nav {
+    display: none;
+  }
+  .blog-topic-grid {
+    grid-auto-columns: minmax(80vw, 1fr);
   }
   .blog-featured-image {
     height: 230px;
