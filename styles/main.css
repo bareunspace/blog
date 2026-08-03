@@ -2813,7 +2813,7 @@ main.about-page.blog-hub #home .section-inner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: .35rem;
+  margin-top: 1.2rem;
   background: var(--primary);
   color: #fff;
   padding: .72rem 1.2rem;
