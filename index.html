@@ -599,7 +599,6 @@ script_version: 20260719-1
               <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
               <div class="blog-card-footer">
                 <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                <a href="{{ post.url | relative_url }}" aria-label="{{ post.title }} 자세히 보기">자세히 보기 <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>
