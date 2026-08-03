@@ -1644,7 +1644,7 @@ main.about-page.blog-hub #home .section-inner {
 }
 .interview-series-editorial-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1.35rem;
+  gap: 1.6rem;
 }
 .interview-series-editorial-grid .interview-series-card {
   position: relative;
@@ -1677,8 +1677,8 @@ main.about-page.blog-hub #home .section-inner {
   pointer-events: none;
 }
 .interview-series-editorial-grid .interview-series-card .blog-guide-content {
-  gap: .82rem;
-  padding: 1.35rem;
+  gap: .95rem;
+  padding: 1.5rem;
 }
 .interview-series-headline-row {
   display: flex;
@@ -1743,7 +1743,7 @@ main.about-page.blog-hub #home .section-inner {
   min-height: 360px;
 }
 .interview-series-editorial-grid .interview-series-card-hero .blog-guide-content {
-  padding: 1.7rem 1.7rem 1.6rem;
+  padding: 1.9rem 1.9rem 1.8rem;
 }
 .interview-series-editorial-grid .interview-series-card-hero .interview-series-index {
   font-size: clamp(3.4rem, 7vw, 5rem);
@@ -1771,15 +1771,15 @@ main.about-page.blog-hub #home .section-inner {
   min-height: 100%;
 }
 .interview-series-editorial-grid .interview-series-card-archive .blog-guide-image {
-  aspect-ratio: 16 / 10;
-  min-height: 220px;
+  aspect-ratio: 16 / 9;
+  min-height: 250px;
 }
 .interview-series-editorial-grid .interview-series-card-archive .blog-guide-content {
-  padding: 1.15rem 1.15rem 1.2rem;
+  padding: 1.3rem 1.3rem 1.35rem;
 }
 .interview-series-editorial-grid .interview-series-card-archive h3 {
-  font-size: 1.06rem;
-  line-height: 1.35;
+  font-size: 1.16rem;
+  line-height: 1.38;
 }
 .interview-series-editorial-grid .interview-series-card-archive p {
   font-size: .94rem;
