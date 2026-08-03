@@ -7,7 +7,7 @@ home:
   - label: 요금·예약
     href: "#about"
   - label: 블로그
-    href: "#practical-guides"
+    href: "blog.html"
     children:
       - label: 전체 보기
         href: "blog.html"
