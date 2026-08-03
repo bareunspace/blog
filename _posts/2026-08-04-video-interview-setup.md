@@ -48,7 +48,7 @@ preload_image: images/video-interview-setup-header.webp
       <div class="about-highlight-grid" aria-label="화상면접 세팅 핵심 요소">
         <article class="about-highlight-card">
           <h3>카메라 위치</h3>
-          <p>눈높이보다 아래에 있으면 얼굴이 위로 올라간 듯 보이기 쉽습니다. 책이나 받침대를 써서 카메라를 눈높이에 맞추면 훨씬 자연스럽습니다.</p>
+          <p>눈높이보다 아래에 있으면 얼굴이 위로 올라간 듯 보이기 쉽습니다. 노트북 거치대나 받침대를 써서 카메라를 눈높이에 맞추면 훨씬 자연스럽습니다.</p>
         </article>
         <article class="about-highlight-card">
           <h3>조명 방향</h3>
@@ -70,7 +70,7 @@ preload_image: images/video-interview-setup-header.webp
       <div class="about-highlight-grid" aria-label="화상면접 세팅 핵심 포인트">
         <article class="about-highlight-card">
           <h3>카메라는 눈높이에</h3>
-          <p>노트북을 그대로 두면 아래에서 얼굴을 올려다보는 각도가 되기 쉽습니다. 책이나 받침대를 이용해 카메라를 눈높이에 맞추면 훨씬 자연스럽고 안정적인 인상을 줍니다.</p>
+          <p>노트북을 그대로 두면 아래에서 얼굴을 올려다보는 각도가 되기 쉽습니다. 노트북 거치대나 책, 받침대를 이용해 카메라를 눈높이에 맞추면 훨씬 자연스럽고 안정적인 인상을 줍니다.</p>
         </article>
         <article class="about-highlight-card">
           <h3>조명은 얼굴 앞에서</h3>
@@ -110,6 +110,7 @@ preload_image: images/video-interview-setup-header.webp
     <div class="section-inner">
       <h2 class="section-title">면접 전날 꼭 확인할 체크리스트</h2>
       <ul class="about-quick-list">
+        <li>노트북 거치대나 받침대 활용 가능 여부 확인</li>
         <li>카메라 높이와 얼굴 위치 확인</li>
         <li>얼굴 앞쪽 조명 정리</li>
         <li>배경과 책상 정돈</li>
