@@ -3063,7 +3063,7 @@ main.about-page.blog-hub #home .section-inner {
 .tag-group {
   margin-bottom: .95rem;
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-columns: 128px minmax(0, 1fr);
   gap: .55rem 1rem;
   align-items: start;
 }
