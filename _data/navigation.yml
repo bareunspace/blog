@@ -70,6 +70,13 @@ blog:
   - label: 오시는 길
     href: "index.html#contact"
 interview:
+  - label: 공간
+    href: "index.html#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
+  - label: 요금·예약
+    href: "index.html#about"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -79,70 +86,64 @@ interview:
       - label: 면접
         href: "interview/"
         current: true
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-  - label: 준비 흐름
-    href: "#prep-flow"
-  - label: 시리즈 글
-    href: "#interview-series"
-  - label: 준비 중
-    href: "#upcoming-series"
-  - label: 화상면접
-    href: "#video-interview"
-  - label: 공간 예약
-    href: "#booking"
-meeting:
-  - label: 블로그
-    href: "blog.html"
-    current: true
-    children:
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-        current: true
-      - label: 스터디
-        href: "study/"
-  - label: 준비 흐름
-    href: "#meeting-flow"
-  - label: 시리즈 글
-    href: "#meeting-series"
-  - label: 준비 중
-    href: "#upcoming-series"
-  - label: 상담 환경
-    href: "#space-fit"
-  - label: 공간 예약
-    href: "#booking"
-study:
-  - label: 블로그
-    href: "blog.html"
-    current: true
-    children:
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
       - label: 미팅·상담
         href: "meeting/"
       - label: 스터디
         href: "study/"
       - label: 프라이빗시간
         href: "private/"
+  - label: 오시는 길
+    href: "index.html#contact"
+meeting:
+  - label: 공간
+    href: "index.html#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
+  - label: 요금·예약
+    href: "index.html#about"
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
         current: true
-  - label: 준비 흐름
-    href: "#study-flow"
-  - label: 시리즈 글
-    href: "#study-series"
-  - label: 준비 중
-    href: "#upcoming-series"
-  - label: 활용 포인트
-    href: "#space-fit"
-  - label: 공간 예약
-    href: "#booking"
+      - label: 스터디
+        href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
+  - label: 오시는 길
+    href: "index.html#contact"
+study:
+  - label: 공간
+    href: "index.html#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
+  - label: 요금·예약
+    href: "index.html#about"
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
+        current: true
+      - label: 프라이빗시간
+        href: "private/"
+  - label: 오시는 길
+    href: "index.html#contact"
 private:
   - label: 블로그
     href: "blog.html"
