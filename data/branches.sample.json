@@ -21,8 +21,8 @@
       },
       "hours": {
         "open": "07:00",
-        "close": "23:00",
-        "lastBooking": "21:00"
+        "close": "24:00",
+        "lastBooking": "23:00"
       },
       "links": {
         "booking": "https://m.place.naver.com/place/2041312316/ticket",
@@ -31,7 +31,7 @@
       },
       "pricing": [
         {
-          "name": "2시간 이용",
+          "name": "1시간 이용",
           "price": 10000,
           "currency": "KRW",
           "url": "https://m.place.naver.com/place/2041312316/ticket"
