@@ -3075,6 +3075,9 @@ main.about-page.blog-hub #home .section-inner {
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
 .tag {
