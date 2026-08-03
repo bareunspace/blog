@@ -1768,12 +1768,29 @@ main.about-page.blog-hub #home .section-inner {
 }
 .interview-series-editorial-grid .interview-series-card-archive {
   grid-column: span 4;
+  min-height: 100%;
 }
 .interview-series-editorial-grid .interview-series-card-archive .blog-guide-image {
   aspect-ratio: 16 / 10;
+  min-height: 220px;
+}
+.interview-series-editorial-grid .interview-series-card-archive .blog-guide-content {
+  padding: 1.15rem 1.15rem 1.2rem;
 }
 .interview-series-editorial-grid .interview-series-card-archive h3 {
   font-size: 1.06rem;
+  line-height: 1.35;
+}
+.interview-series-editorial-grid .interview-series-card-archive p {
+  font-size: .94rem;
+  line-height: 1.6;
+}
+.interview-series-editorial-grid .interview-series-card-archive .interview-series-meta {
+  gap: .35rem;
+}
+.interview-series-editorial-grid .interview-series-card-archive .interview-series-meta span {
+  font-size: .72rem;
+  min-height: 1.72rem;
 }
 .meeting-series-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
