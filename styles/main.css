@@ -539,8 +539,8 @@ section { padding: 5rem 1.5rem; }
 .post-related-grid {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(220px, 24%);
-  gap: .95rem;
+  grid-auto-columns: minmax(260px, 28%);
+  gap: 1.15rem;
   margin: 0 -1.5rem;
   padding: .35rem 1.5rem 1rem;
   overflow-x: auto;
