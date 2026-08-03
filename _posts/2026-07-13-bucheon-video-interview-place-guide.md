@@ -11,11 +11,11 @@ tags:
   - 온라인면접장소
 canonical: https://bareunjari.com/posts/bucheon-video-interview-place-guide/
 permalink: /posts/bucheon-video-interview-place-guide/
-og_image: https://bareunjari.com/images/posts/bucheon-video-interview-place-guide/hero.jpg
+og_image: https://bareunjari.com/images/posts/hero-bucheon-video-interview-place-guide.jpg
 og_image_alt: 화상면접에 집중하기 좋은 조용한 프라이빗 예약 공간
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/posts/bucheon-video-interview-place-guide/hero.jpg
+preload_image: images/posts/hero-bucheon-video-interview-place-guide.jpg
 css_version: 20260713-7
 script_version: 20260711-4
 ---
@@ -42,7 +42,7 @@ script_version: 20260711-4
           <p class="section-desc">준비한 답변이 좋아도 생활 소음, 어두운 얼굴, 불안정한 인터넷처럼 통제하기 어려운 변수가 생기면 집중력과 전달력이 함께 흔들릴 수 있습니다.</p>
         </div>
         <figure class="article-hero-visual">
-          <img src="/images/posts/bucheon-video-interview-place-guide/hero.jpg" alt="노트북과 조명이 준비된 조용한 화상면접 프라이빗룸" loading="eager" width="1672" height="941" />
+          <img src="/images/posts/hero-bucheon-video-interview-place-guide.jpg" alt="노트북과 조명이 준비된 조용한 화상면접 프라이빗룸" loading="eager" width="1672" height="941" />
           <figcaption>소음, 조명, 배경, 인터넷을 함께 점검하세요.</figcaption>
         </figure>
       </div>
