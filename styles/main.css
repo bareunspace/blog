@@ -1043,12 +1043,20 @@ main.about-page.blog-hub #home .section-inner {
 .blog-featured-section {
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;
-  background: linear-gradient(180deg, #f6faf7 0%, #fdfefe 100%);
-}
-#practical-guides.blog-guides-section {
-  border-top: 1px solid #e0e8e2;
-  border-bottom: 1px solid #e0e8e2;
   background: #fff !important;
+}
+#featured-guide.blog-featured-section,
+#blog-onsite.blog-guides-section,
+#blog-latest.blog-field-section,
+#blog-conversion.blog-conversion-section,
+#tags {
+  background: #fff !important;
+}
+#blog-onsite.blog-guides-section,
+#blog-latest.blog-field-section,
+#blog-conversion.blog-conversion-section,
+#tags {
+  border-top: 1px solid #edf2ee;
 }
 .blog-guide-filters {
   margin-bottom: 1rem;
@@ -3047,9 +3055,9 @@ main.about-page.blog-hub #home .section-inner {
 
 /* ── Tags ── */
 #tags {
-  border-top: 1px solid #e0e8e2;
-  border-bottom: 1px solid #e0e8e2;
-  background: #f7faf8;
+  border-top: 1px solid #edf2ee;
+  border-bottom: 1px solid #edf2ee;
+  background: #fff;
   padding: 3rem 1.5rem;
 }
 .tag-group {
