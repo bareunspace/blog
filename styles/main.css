@@ -4538,6 +4538,30 @@ main.tutoring-guide #home .section-desc {
   font-size: .95rem;
   line-height: 1.5;
 }
+main.about-page .about-checklist-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+main.about-page .about-checklist-item {
+  background: linear-gradient(145deg, rgba(255,255,255,.99), rgba(240,247,243,.98));
+  border-color: rgba(45,106,79,.14);
+  padding: 1.05rem 1rem 1rem 3.2rem;
+  box-shadow: 0 12px 26px rgba(17,24,39,.065);
+}
+main.about-page .about-checklist-item::before {
+  background: rgba(45,106,79,.16);
+  color: var(--primary);
+}
+main.about-page .about-checklist-item h3 {
+  font-size: .98rem;
+  line-height: 1.42;
+  margin-bottom: .38rem;
+}
+main.about-page .about-checklist-item p {
+  font-size: .86rem;
+  line-height: 1.66;
+}
 
 .post-media-card-caption strong {
   color: #111827;

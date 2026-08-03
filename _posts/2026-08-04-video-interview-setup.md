@@ -109,15 +109,37 @@ preload_image: images/video-interview-setup-header.webp
   <section>
     <div class="section-inner">
       <h2 class="section-title">면접 전날 꼭 확인할 체크리스트</h2>
-      <ul class="about-quick-list">
-        <li>노트북 거치대나 받침대 활용 가능 여부 확인</li>
-        <li>카메라 높이와 얼굴 위치 확인</li>
-        <li>얼굴 앞쪽 조명 정리</li>
-        <li>배경과 책상 정돈</li>
-        <li>이어폰 또는 마이크 연결 확인</li>
-        <li>인터넷 연결과 프로그램 접속 테스트</li>
-        <li>복장과 물 한 잔 준비</li>
-      </ul>
+      <p class="section-desc">아래 항목을 순서대로 확인하면 화상면접 화면이 훨씬 안정적으로 보입니다.</p>
+      <div class="about-principle-grid about-checklist-grid" aria-label="면접 전날 꼭 확인할 체크리스트">
+        <article class="about-principle-item about-checklist-item" data-step="01">
+          <h3>노트북 거치대나 받침대 활용 가능 여부 확인</h3>
+          <p>카메라 높이를 빠르게 맞출 수 있는지 먼저 확인하면 면접 직전 세팅 시간이 줄어듭니다.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="02">
+          <h3>카메라 높이와 얼굴 위치 확인</h3>
+          <p>눈높이와 렌즈가 맞아야 시선이 안정적으로 보이고, 화면 인상도 자연스럽게 정리됩니다.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="03">
+          <h3>얼굴 앞쪽 조명 정리</h3>
+          <p>역광을 피하고 얼굴 앞에 빛을 두면 표정이 더 또렷하게 전달됩니다.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="04">
+          <h3>배경과 책상 정돈</h3>
+          <p>정리된 배경과 단정한 책상은 화면 전체를 깔끔하게 보이게 해줍니다.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="05">
+          <h3>이어폰 또는 마이크 연결 확인</h3>
+          <p>소리 끊김이나 울림을 줄이려면 장비 연결을 실제 면접 플랫폼에서 한 번 더 확인하세요.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="06">
+          <h3>인터넷 연결과 프로그램 접속 테스트</h3>
+          <p>영상, 음성, 화면 공유까지 미리 테스트해야 당일 접속 문제를 줄일 수 있습니다.</p>
+        </article>
+        <article class="about-principle-item about-checklist-item" data-step="07">
+          <h3>복장과 물 한 잔 준비</h3>
+          <p>복장 점검과 간단한 수분 준비만 해도 시작 직전 긴장을 조금 덜 수 있습니다.</p>
+        </article>
+      </div>
     </div>
   </section>
 
