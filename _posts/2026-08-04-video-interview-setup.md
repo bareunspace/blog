@@ -35,9 +35,30 @@ preload_image: images/video-interview-setup-header.webp
 
   <section id="guide-visual">
     <div class="section-inner">
-      <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/video-interview-setup-header.webp" alt="화상면접 장비와 배경 세팅법" loading="eager" />
-      </figure>
+      <div class="article-intro-layout">
+        <div class="article-intro-copy">
+          <h2 class="section-title">시각적 인상도 답변만큼 중요합니다</h2>
+          <p class="section-desc">좋은 답변을 해도 화면이 어둡거나 복잡하면 면접관에게 안정감이 덜 전달될 수 있습니다. 카메라 높이, 조명, 마이크, 배경을 미리 정리해 두면 면접 시작 전 10분만으로도 인상을 크게 바꿀 수 있습니다.</p>
+        </div>
+        <figure class="article-hero-visual">
+          <img class="article-hero-full" src="/images/video-interview-setup-header.webp" alt="화상면접 장비와 배경 세팅법" loading="eager" />
+          <figcaption>카메라 높이와 화면 구도를 미리 점검해 두세요.</figcaption>
+        </figure>
+      </div>
+      <div class="about-highlight-grid" aria-label="화상면접 세팅 핵심 요소">
+        <article class="about-highlight-card">
+          <h3>카메라 위치</h3>
+          <p>눈높이보다 아래에 있으면 얼굴이 위로 올라간 듯 보이기 쉽습니다. 책이나 받침대를 써서 카메라를 눈높이에 맞추면 훨씬 자연스럽습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>조명 방향</h3>
+          <p>창문이나 전등이 뒤에 있으면 얼굴이 어둡게 찍힐 수 있습니다. 얼굴 앞쪽에서 부드럽게 비추는 조명으로 정리하는 것이 좋습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>배경 정리</h3>
+          <p>복잡한 물건이나 불필요한 장식이 보이면 면접관의 시선이 분산됩니다. 단순하고 깔끔한 배경이 가장 안전합니다.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -106,4 +127,17 @@ preload_image: images/video-interview-setup-header.webp
       <p class="section-desc">바른자리는 조용한 환경에서 면접을 연습하거나 실제 면접을 준비하기 좋은 프라이빗 공간입니다. 안정적인 Wi-Fi, 넓은 테이블, 정돈된 환경을 원하신다면 예약을 미리 확인해 보세요.</p>
     </div>
   </section>
+
+  <section>
+    <div class="section-inner">
+      <h2 class="section-title">면접 준비를 한 번에 정리하고 싶다면</h2>
+      <p class="section-desc">면접은 답변만 준비해도 충분하지 않습니다. 화면과 환경까지 함께 점검하면 당일 긴장도 훨씬 줄어듭니다.</p>
+      <div class="hero-btns" style="margin-top: 2rem;">
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 준비 공간 예약하기</a>
+        <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트 보기</a>
+        <a href="/posts/bucheon-video-interview-place-guide/" class="btn-outline">화상면접 장소 기준 보기</a>
+      </div>
+    </div>
+  </section>
+  {% include post-tags.html %}
 </main>
