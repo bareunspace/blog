@@ -677,7 +677,7 @@
           return;
         }
 
-        const cards = Array.from(track.querySelectorAll('.blog-guide-card'));
+        const cards = Array.from(track.querySelectorAll('.blog-guide-card, .blog-field-card'));
         if (!cards.length) {
           prevButton.hidden = true;
           nextButton.hidden = true;

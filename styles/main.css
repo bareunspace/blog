@@ -679,16 +679,24 @@ main.about-page.blog-hub #home .section-inner {
 .blog-hub #home .hero-subtitle {
   max-width: 660px;
 }
+.blog-hub #home {
+  min-height: clamp(280px, 42vh, 380px);
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+.blog-hub #home .hero-btns {
+  margin-top: .35rem;
+}
 .blog-hub section:not(#home) {
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 3rem;
+  padding-bottom: 2.25rem;
 }
 .blog-section-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.1rem;
 }
 .blog-section-heading .section-label,
 .blog-section-heading .section-title {
@@ -696,7 +704,7 @@ main.about-page.blog-hub #home .section-inner {
 }
 .blog-section-heading > p {
   max-width: 470px;
-  margin: 0 0 .55rem;
+  margin: 0 0 .2rem;
   color: var(--muted);
   line-height: 1.75;
 }
@@ -895,6 +903,10 @@ main.about-page.blog-hub #home .section-inner {
 .blog-field-card:hover .blog-field-image img {
   transform: scale(1.025);
 }
+.blog-field-card:hover .blog-field-content h3 a,
+.blog-field-card:focus-within .blog-field-content h3 a {
+  text-decoration: underline;
+}
 .blog-image-contain,
 .blog-guide-image.blog-guide-image-contain {
   background: #f6faf7;
@@ -963,6 +975,9 @@ main.about-page.blog-hub #home .section-inner {
 .blog-guide-content .blog-card-footer span {
   font-weight: 800;
 }
+.blog-field-content .blog-card-footer span {
+  font-weight: 800;
+}
 .blog-featured-content h3 a:hover,
 .blog-featured-content h3 a:focus-visible,
 .blog-guide-content h3 a:hover,
@@ -1024,6 +1039,11 @@ main.about-page.blog-hub #home .section-inner {
 }
 .blog-guides-section {
   background: #fff !important;
+}
+.blog-featured-section {
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  background: linear-gradient(180deg, #f6faf7 0%, #fdfefe 100%);
 }
 #practical-guides.blog-guides-section {
   border-top: 1px solid #e0e8e2;
@@ -1312,15 +1332,94 @@ main.about-page.blog-hub #home .section-inner {
   text-overflow: ellipsis;
 }
 .blog-field-section {
-  background: #f7f7f3 !important;
+  background: #fff !important;
+}
+.blog-hub #blog-latest .blog-section-heading {
+  margin-bottom: 0;
+}
+.blog-hub #blog-latest .blog-section-heading > p {
+  margin-bottom: 0;
 }
 .blog-field-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
 }
+.blog-field-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.blog-field-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: .34rem;
+}
+.blog-hub #blog-latest .blog-field-category-group + .blog-field-category-group {
+  margin-top: -.28rem;
+}
+.blog-field-category-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 26%);
+  gap: .58rem;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.blog-field-category-list::-webkit-scrollbar {
+  display: none;
+}
 .blog-field-card {
-  grid-template-rows: 190px 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  scroll-snap-align: start;
+  transition: transform var(--transition);
+}
+.blog-field-card:hover,
+.blog-field-card:focus-within {
+  transform: translateY(-2px);
+}
+.blog-field-image {
+  display: block;
+  aspect-ratio: 1.18 / 1;
+  overflow: hidden;
+  border-radius: 22px;
+}
+.blog-field-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-field-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: .34rem .06rem 0;
+}
+.blog-field-content h3 {
+  margin-bottom: .28rem;
+  font-size: .98rem;
+  line-height: 1.35;
+}
+.blog-field-content > p:not(.blog-card-eyebrow) {
+  font-size: .84rem;
+  line-height: 1.52;
+}
+.blog-field-section .blog-card-footer {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: .82rem;
 }
 .blog-external-more {
   margin: 2rem 0 0;
