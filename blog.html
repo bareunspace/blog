@@ -49,7 +49,7 @@ script_version: 20260716-4
               {% if featured_video_id != '' %}
                 {% assign featured_has_video = true %}
               {% endif %}
-              <article class="blog-guide-card" data-category="{{ featured_post.category | default: '시간 활용 가이드' }}">
+              <article class="blog-guide-card blog-guide-card-featured" data-category="{{ featured_post.category | default: '시간 활용 가이드' }}">
                 <a class="blog-guide-image{% if featured_post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if featured_has_video %} blog-guide-image-has-video{% endif %}" href="{{ featured_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
                   {% if featured_has_video %}
                     <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
@@ -83,6 +83,7 @@ script_version: 20260716-4
                   {% endif %}
                 </a>
                 <div class="blog-guide-content">
+                  <span class="blog-guide-featured-badge">추천</span>
                   <h3><a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a></h3>
                   <div class="blog-card-footer">
                     <span>{{ featured_post.date | date: "%Y-%m-%d" }}</span>
