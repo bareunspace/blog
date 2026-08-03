@@ -638,11 +638,11 @@
         const getScrollAmount = () => {
           const firstCard = track.querySelector('.post-related-card');
           if (!firstCard) {
-            return Math.max(280, track.clientWidth * 0.8);
+            return Math.max(840, track.clientWidth * 2.4);
           }
           const styles = window.getComputedStyle(track);
           const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-          return firstCard.getBoundingClientRect().width + gap;
+          return (firstCard.getBoundingClientRect().width * 3) + (gap * 2);
         };
 
         const updateButtons = () => {
