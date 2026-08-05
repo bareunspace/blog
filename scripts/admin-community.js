@@ -20,8 +20,8 @@
   let allGroups = [];
 
   const labels = {
-    interest: '관심 등록',
-    host: '모임 시작',
+    interest: '참여 관심',
+    host: '모임장 신청',
     existing_group: '기존 모임 등록',
     interview: '면접 준비',
     reading: '독서모임',
