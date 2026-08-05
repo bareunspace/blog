@@ -4602,7 +4602,7 @@ main.community-page .community-host-actions a[aria-disabled="true"] {
 }
 main.community-page .community-application-form {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: .72rem;
   padding: 1rem;
   border: 1px solid #dce8e1;
@@ -4654,6 +4654,24 @@ main.community-page .community-choice-inline-item input {
 }
 main.community-page .community-choice-inline-availability {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+main.community-page .community-form-optional {
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  background: #fff;
+}
+main.community-page .community-form-optional summary {
+  padding: .62rem .72rem;
+  color: #2a3d33;
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+main.community-page .community-form-optional-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .72rem;
+  padding: 0 .72rem .72rem;
 }
 main.community-page .community-form-row input,
 main.community-page .community-form-row select,
@@ -4754,6 +4772,9 @@ main.community-page .community-principle-card {
   main.community-page .community-group-grid,
   main.community-page .community-flow-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main.community-page .community-application-form {
+    grid-template-columns: 1fr;
   }
   main.community-page .community-choice-inline,
   main.community-page .community-choice-inline-availability {
