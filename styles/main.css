@@ -4697,6 +4697,30 @@ main.community-page .community-host-panel {
   background: linear-gradient(135deg, #f9fdfb 0%, #eef8f2 48%, #ffffff 100%);
   box-shadow: 0 16px 34px rgba(17,24,39,.08);
 }
+main.community-page .community-decision-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  margin-bottom: 1rem;
+}
+main.community-page .community-decision-strip article {
+  padding: .95rem 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 16px;
+  background: #fbfdfc;
+  box-shadow: 0 10px 20px rgba(17,24,39,.05);
+}
+main.community-page .community-decision-strip strong {
+  display: block;
+  margin-bottom: .26rem;
+  color: #173726;
+  font-size: .9rem;
+}
+main.community-page .community-decision-strip p {
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.65;
+}
 main.community-page .community-host-copy .section-title {
   margin-bottom: .55rem;
 }
@@ -4950,6 +4974,52 @@ main.community-page .community-form-assurance p + p {
 main.community-page .community-form-assurance strong {
   color: #173726;
 }
+main.community-page .community-response-promise {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+main.community-page .community-response-promise article {
+  padding: .9rem 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.82);
+}
+main.community-page .community-response-promise strong {
+  display: block;
+  margin-bottom: .24rem;
+  color: #173726;
+  font-size: .86rem;
+}
+main.community-page .community-response-promise p {
+  color: #4b5563;
+  font-size: .82rem;
+  line-height: 1.65;
+}
+main.community-page .community-faq-lite-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  margin-top: 1rem;
+}
+main.community-page .community-faq-lite-card {
+  padding: 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(17,24,39,.06);
+}
+main.community-page .community-faq-lite-card h3 {
+  margin-bottom: .38rem;
+  color: #173726;
+  font-size: .96rem;
+  line-height: 1.45;
+}
+main.community-page .community-faq-lite-card p {
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.7;
+}
 main.community-page .community-principle-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4968,7 +5038,10 @@ main.community-page .community-principle-card {
   main.community-page .community-hero-layout,
   main.community-page .community-proof-grid,
   main.community-page .community-live-guide,
-  main.community-page .community-role-grid {
+  main.community-page .community-role-grid,
+  main.community-page .community-decision-strip,
+  main.community-page .community-response-promise,
+  main.community-page .community-faq-lite-grid {
     grid-template-columns: 1fr;
   }
   main.community-page .community-section-heading {
