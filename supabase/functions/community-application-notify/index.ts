@@ -32,14 +32,17 @@ Deno.serve(async (req) => {
 
     try {
       const supabaseUrl = Deno.env.get('SUPABASE_URL') || 'https://nhiyxgcrjdzdiquutxml.supabase.co';
-      const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY') || 'sb_publishable_kqB-Q3vuJwrd8cvEzbcp7g_a6QBxf_u';
-      const authorizationHeader = req.headers.get('authorization') || req.headers.get('Authorization') || '';
+      const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
-      const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-        auth: { persistSession: false },
-        global: {
-          headers: authorizationHeader ? { Authorization: authorizationHeader } : {}
-        }
+      if (!serviceRoleKey) {
+        return new Response(JSON.stringify({ error: 'SUPABASE_SERVICE_ROLE_KEY is not configured' }), {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const supabase = createClient(supabaseUrl, serviceRoleKey, {
+        auth: { persistSession: false }
       });
 
       const { error } = await supabase
