@@ -339,11 +339,16 @@
     }
 
     editForm.elements.application_id.value = id;
+    editForm.elements.group_title.value = row.group_title || '';
+    editForm.elements.application_type.value = row.application_type || 'interest';
+    editForm.elements.group_key.value = row.group_key || 'other';
+    editForm.elements.status.value = row.status || 'new';
     editForm.elements.applicant_name.value = row.applicant_name || '';
     editForm.elements.contact_email.value = row.contact_email || '';
     editForm.elements.contact_phone.value = row.contact_phone || '';
     editForm.elements.availability.value = row.availability || '';
     editForm.elements.existing_group_summary.value = row.existing_group_summary || '';
+    editForm.elements.admin_note.value = row.admin_note || '';
     editForm.elements.message.value = row.message || '';
     editPanel.hidden = false;
     editPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -362,11 +367,16 @@
     }
 
     const values = {
+      group_title: editForm.elements.group_title.value.trim(),
+      application_type: editForm.elements.application_type.value.trim(),
+      group_key: editForm.elements.group_key.value.trim(),
+      status: editForm.elements.status.value.trim(),
       applicant_name: editForm.elements.applicant_name.value.trim(),
       contact_email: editForm.elements.contact_email.value.trim(),
       contact_phone: editForm.elements.contact_phone.value.trim(),
       availability: editForm.elements.availability.value.trim(),
       existing_group_summary: editForm.elements.existing_group_summary.value.trim(),
+      admin_note: editForm.elements.admin_note.value.trim(),
       message: editForm.elements.message.value.trim()
     };
 

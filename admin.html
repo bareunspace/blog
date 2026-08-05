@@ -146,6 +146,37 @@ script_version: 20260805-6
       <form class="admin-community-edit-form" data-community-edit-form>
         <input type="hidden" name="application_id" />
         <div class="admin-form-row">
+          <label for="editGroupTitle">모임 이름</label>
+          <input id="editGroupTitle" name="group_title" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editApplicationType">신청 유형</label>
+          <select id="editApplicationType" name="application_type">
+            <option value="interest">관심 등록</option>
+            <option value="host">모임 시작</option>
+            <option value="existing_group">기존 모임 등록</option>
+          </select>
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupKey">모임 분류</label>
+          <select id="editGroupKey" name="group_key">
+            <option value="interview">면접 준비</option>
+            <option value="reading">독서모임</option>
+            <option value="ai">AI 사용</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+        <div class="admin-form-row">
+          <label for="editStatus">상태</label>
+          <select id="editStatus" name="status">
+            <option value="new">새 신청</option>
+            <option value="reviewing">검토 중</option>
+            <option value="contacted">연락 완료</option>
+            <option value="matched">매칭/진행</option>
+            <option value="closed">종료</option>
+          </select>
+        </div>
+        <div class="admin-form-row">
           <label for="editApplicantName">신청자 이름</label>
           <input id="editApplicantName" name="applicant_name" type="text" />
         </div>
@@ -164,6 +195,10 @@ script_version: 20260805-6
         <div class="admin-form-row">
           <label for="editExistingGroupSummary">기존 모임 설명</label>
           <textarea id="editExistingGroupSummary" name="existing_group_summary" rows="3"></textarea>
+        </div>
+        <div class="admin-form-row admin-form-row-full">
+          <label for="editAdminNote">관리자 메모</label>
+          <textarea id="editAdminNote" name="admin_note" rows="3"></textarea>
         </div>
         <div class="admin-form-row admin-form-row-full">
           <label for="editMessage">메시지</label>
