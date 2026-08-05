@@ -12,7 +12,12 @@
   const typeFilter = root.querySelector('[data-community-admin-type-filter]');
   const groupFilter = root.querySelector('[data-community-admin-group-filter]');
   const statsNode = root.querySelector('[data-community-admin-stats]');
+  const groupsRoot = document.getElementById('adminCommunityGroups');
+  const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
+  const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
+  const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
   let allRows = [];
+  let allGroups = [];
 
   const labels = {
     interest: '관심 등록',
@@ -26,7 +31,10 @@
     reviewing: '검토 중',
     contacted: '연락 완료',
     matched: '매칭/진행',
-    closed: '종료'
+    closed: '종료',
+    draft: '준비 중',
+    recruiting: '모집 중',
+    scheduled: '일정 확정'
   };
 
   const showStatus = (message, kind = 'info') => {
@@ -41,6 +49,21 @@
     }
     if (kind === 'success') {
       statusNode.classList.add('is-success');
+    }
+  };
+
+  const showGroupsStatus = (message, kind = 'info') => {
+    if (!groupsStatusNode) {
+      return;
+    }
+    groupsStatusNode.textContent = message;
+    groupsStatusNode.hidden = false;
+    groupsStatusNode.classList.remove('is-error', 'is-success');
+    if (kind === 'error') {
+      groupsStatusNode.classList.add('is-error');
+    }
+    if (kind === 'success') {
+      groupsStatusNode.classList.add('is-success');
     }
   };
 
@@ -148,16 +171,86 @@
         </dl>
         ${row.existing_group_summary ? `<p class="admin-community-message"><strong>기존 모임</strong>${escapeHtml(row.existing_group_summary)}</p>` : ''}
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
-        <label class="admin-community-status-control">
-          상태
-          <select data-community-status-select>
-            ${['new', 'reviewing', 'contacted', 'matched', 'closed'].map((status) => `
-              <option value="${status}" ${row.status === status ? 'selected' : ''}>${labels[status]}</option>
-            `).join('')}
-          </select>
-        </label>
+        <div class="admin-community-card-actions">
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>모임 만들기</button>
+          <label class="admin-community-status-control">
+            상태
+            <select data-community-status-select>
+              ${['new', 'reviewing', 'contacted', 'matched', 'closed'].map((status) => `
+                <option value="${status}" ${row.status === status ? 'selected' : ''}>${labels[status]}</option>
+              `).join('')}
+            </select>
+          </label>
+        </div>
       </article>
     `).join('');
+  };
+
+  const renderGroups = (groups) => {
+    if (!groupsListNode) {
+      return;
+    }
+
+    if (!groups.length) {
+      groupsListNode.innerHTML = '<p class="admin-empty">아직 만들어진 모임이 없습니다.</p>';
+      return;
+    }
+
+    groupsListNode.innerHTML = groups.map((group) => `
+      <article class="admin-community-item admin-group-item" data-group-id="${group.id}">
+        <div class="admin-community-item-head">
+          <div>
+            <p class="admin-community-eyebrow">${escapeHtml(labels[group.group_key] || group.group_key)} · ${escapeHtml(labels[group.status] || group.status)}</p>
+            <h3>${escapeHtml(group.title)}</h3>
+          </div>
+          <span class="admin-community-status admin-community-status-${escapeHtml(group.status)}">${escapeHtml(labels[group.status] || group.status)}</span>
+        </div>
+        <dl class="admin-community-meta">
+          <div><dt>일정</dt><dd>${escapeHtml(group.schedule_text || '-')}</dd></div>
+          <div><dt>정원</dt><dd>${escapeHtml(group.capacity || '-')}</dd></div>
+          <div><dt>모임장</dt><dd>${escapeHtml(group.host_name || '-')}</dd></div>
+          <div><dt>생성일</dt><dd>${escapeHtml(formatDate(group.created_at))}</dd></div>
+          <div><dt>신청 ID</dt><dd>${escapeHtml(group.source_application_id || '-')}</dd></div>
+        </dl>
+        ${group.description ? `<p class="admin-community-message"><strong>설명</strong>${escapeHtml(group.description)}</p>` : ''}
+        <div class="admin-community-card-actions">
+          <label class="admin-community-status-control">
+            운영 상태
+            <select data-community-group-status-select>
+              ${['draft', 'recruiting', 'scheduled', 'closed'].map((status) => `
+                <option value="${status}" ${group.status === status ? 'selected' : ''}>${labels[status]}</option>
+              `).join('')}
+            </select>
+          </label>
+        </div>
+      </article>
+    `).join('');
+  };
+
+  const loadGroups = async () => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !groupsRoot) {
+      return;
+    }
+
+    showGroupsStatus('모임 목록을 불러오는 중입니다.', 'success');
+
+    const { data, error } = await client
+      .from('community_groups')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100);
+
+    if (error) {
+      showGroupsStatus('모임 목록을 불러오지 못했습니다. migration 적용 상태를 확인해 주세요.', 'error');
+      return;
+    }
+
+    allGroups = data || [];
+    renderGroups(allGroups);
+    showGroupsStatus(`모임 ${allGroups.length}개를 불러왔습니다.`, 'success');
   };
 
   const loadApplications = async () => {
@@ -220,6 +313,99 @@
     showStatus('상태가 저장되었습니다.', 'success');
   };
 
+  const updateGroupStatus = async (item, nextStatus) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+    const id = item?.dataset?.groupId;
+
+    if (!client || !id) {
+      return;
+    }
+
+    const { error } = await client
+      .from('community_groups')
+      .update({ status: nextStatus })
+      .eq('id', id);
+
+    if (error) {
+      showGroupsStatus('모임 상태를 변경하지 못했습니다.', 'error');
+      return;
+    }
+
+    const group = allGroups.find((item) => String(item.id) === String(id));
+    if (group) {
+      group.status = nextStatus;
+    }
+    renderGroups(allGroups);
+    showGroupsStatus('모임 상태가 저장되었습니다.', 'success');
+  };
+
+  const prefillGroupForm = (applicationId) => {
+    if (!groupForm) {
+      return;
+    }
+
+    const row = allRows.find((item) => String(item.id) === String(applicationId));
+    if (!row) {
+      return;
+    }
+
+    groupForm.elements.title.value = row.group_title || '';
+    groupForm.elements.group_key.value = row.group_key || 'other';
+    groupForm.elements.status.value = 'draft';
+    groupForm.elements.host_name.value = row.application_type === 'host' ? row.applicant_name : '';
+    groupForm.elements.schedule_text.value = row.availability || '';
+    groupForm.elements.description.value = [row.existing_group_summary, row.message].filter(Boolean).join('\n\n');
+    groupForm.elements.source_application_id.value = row.id;
+    groupsRoot?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    showGroupsStatus('신청 내용으로 모임 만들기 양식을 채웠습니다.', 'success');
+  };
+
+  const createGroup = async (event) => {
+    event.preventDefault();
+
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !groupForm) {
+      return;
+    }
+
+    const formData = new FormData(groupForm);
+    const capacityValue = String(formData.get('capacity') || '').trim();
+    const sourceApplicationId = String(formData.get('source_application_id') || '').trim();
+    const payload = {
+      title: String(formData.get('title') || '').trim(),
+      group_key: String(formData.get('group_key') || 'other').trim(),
+      status: String(formData.get('status') || 'draft').trim(),
+      schedule_text: String(formData.get('schedule_text') || '').trim() || null,
+      capacity: capacityValue ? Number(capacityValue) : null,
+      host_name: String(formData.get('host_name') || '').trim() || null,
+      description: String(formData.get('description') || '').trim() || null,
+      source_application_id: sourceApplicationId ? Number(sourceApplicationId) : null
+    };
+
+    if (!payload.title) {
+      showGroupsStatus('모임 이름을 입력해 주세요.', 'error');
+      return;
+    }
+
+    showGroupsStatus('모임을 저장하는 중입니다.', 'success');
+
+    const { error } = await client
+      .from('community_groups')
+      .insert(payload);
+
+    if (error) {
+      showGroupsStatus('모임을 저장하지 못했습니다.', 'error');
+      return;
+    }
+
+    groupForm.reset();
+    await loadGroups();
+    showGroupsStatus('모임을 만들었습니다.', 'success');
+  };
+
   listNode?.addEventListener('change', (event) => {
     const select = event.target.closest('[data-community-status-select]');
     if (!select) {
@@ -228,13 +414,36 @@
     updateStatus(select.closest('[data-application-id]'), select.value);
   });
 
+  listNode?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-create-group-from-application]');
+    if (!button) {
+      return;
+    }
+    const item = button.closest('[data-application-id]');
+    prefillGroupForm(item?.dataset?.applicationId);
+  });
+
+  groupsListNode?.addEventListener('change', (event) => {
+    const select = event.target.closest('[data-community-group-status-select]');
+    if (!select) {
+      return;
+    }
+    updateGroupStatus(select.closest('[data-group-id]'), select.value);
+  });
+
+  groupForm?.addEventListener('submit', createGroup);
+
   statusFilter?.addEventListener('change', renderVisibleRows);
   typeFilter?.addEventListener('change', renderVisibleRows);
   groupFilter?.addEventListener('change', renderVisibleRows);
   refreshButton?.addEventListener('click', loadApplications);
-  window.addEventListener('barunjari:admin-ready', loadApplications);
+  window.addEventListener('barunjari:admin-ready', () => {
+    loadGroups();
+    loadApplications();
+  });
 
   if (window.barunjariAdmin?.client) {
+    loadGroups();
     loadApplications();
   }
 })();

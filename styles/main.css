@@ -6556,7 +6556,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font-weight: 700;
   color: #2a3d33;
 }
-.admin-form-row input {
+.admin-form-row input,
+.admin-form-row select,
+.admin-form-row textarea {
   width: 100%;
   border: 1px solid #ced7d1;
   border-radius: 11px;
@@ -6565,9 +6567,26 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font-size: .94rem;
   color: var(--text);
 }
-.admin-form-row input:focus-visible {
+.admin-form-row textarea {
+  resize: vertical;
+}
+.admin-form-row input:focus-visible,
+.admin-form-row select:focus-visible,
+.admin-form-row textarea:focus-visible {
   outline: 2px solid rgba(45, 106, 79, .3);
   border-color: #2d6a4f;
+}
+.admin-form-row-full {
+  grid-column: 1 / -1;
+}
+.admin-group-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  margin: 1rem 0;
+}
+.admin-group-form .admin-btn {
+  align-self: end;
 }
 .admin-actions {
   display: flex;
@@ -6594,6 +6613,10 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   border: 1px solid #becbc2;
   background: #fff;
   color: #214936;
+}
+.admin-btn-small {
+  padding: .5rem .8rem;
+  font-size: .82rem;
 }
 .admin-note {
   font-size: .82rem;
@@ -6807,6 +6830,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font: inherit;
   font-size: .84rem;
 }
+.admin-community-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  flex-wrap: wrap;
+}
 
 @media (max-width: 640px) {
   .admin-shell {
@@ -6819,6 +6849,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+  .admin-group-form {
+    grid-template-columns: 1fr;
   }
   .admin-section-head,
   .admin-community-item-head {
@@ -6841,6 +6874,10 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-community-status-control {
     justify-self: stretch;
     justify-content: space-between;
+  }
+  .admin-community-card-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
   .admin-btn {
     width: 100%;

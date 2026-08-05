@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260805-2
-script_version: 20260805-2
+css_version: 20260805-3
+script_version: 20260805-3
 ---
 <main class="admin-shell" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -33,6 +33,62 @@ script_version: 20260805-2
     </div>
 
     <p class="admin-status" id="adminAuthStatus" hidden></p>
+  </section>
+
+  <section class="admin-card admin-card-wide" id="adminCommunityGroups" aria-labelledby="adminCommunityGroupsTitle">
+    <div class="admin-section-head">
+      <div>
+        <p class="admin-label">Groups</p>
+        <h2 class="admin-title" id="adminCommunityGroupsTitle">모임 관리</h2>
+        <p class="admin-desc">접수된 신청을 바탕으로 실제 운영할 모임을 만들고 상태를 관리합니다.</p>
+      </div>
+    </div>
+    <form class="admin-group-form" data-community-group-form>
+      <div class="admin-form-row">
+        <label for="communityGroupTitle">모임 이름</label>
+        <input id="communityGroupTitle" name="title" type="text" placeholder="예: 8월 면접 답변 연습 모임" required />
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupKey">모임 분류</label>
+        <select id="communityGroupKey" name="group_key" required>
+          <option value="interview">면접 준비</option>
+          <option value="reading">독서모임</option>
+          <option value="ai">AI 사용</option>
+          <option value="other">기타</option>
+        </select>
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupStatus">운영 상태</label>
+        <select id="communityGroupStatus" name="status" required>
+          <option value="draft">준비 중</option>
+          <option value="recruiting">모집 중</option>
+          <option value="scheduled">일정 확정</option>
+          <option value="closed">종료</option>
+        </select>
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupSchedule">일정</label>
+        <input id="communityGroupSchedule" name="schedule_text" type="text" placeholder="예: 매주 토요일 오후 2시" />
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupCapacity">정원</label>
+        <input id="communityGroupCapacity" name="capacity" type="number" min="1" inputmode="numeric" placeholder="예: 6" />
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupHost">모임장</label>
+        <input id="communityGroupHost" name="host_name" type="text" placeholder="예: 바른자리 또는 신청자 이름" />
+      </div>
+      <div class="admin-form-row admin-form-row-full">
+        <label for="communityGroupDescription">모임 설명</label>
+        <textarea id="communityGroupDescription" name="description" rows="3" placeholder="대상, 진행 방식, 준비물 등을 적어 주세요."></textarea>
+      </div>
+      <input type="hidden" name="source_application_id" />
+      <button class="admin-btn" type="submit">모임 만들기</button>
+    </form>
+    <p class="admin-status" data-community-groups-status hidden></p>
+    <div class="admin-community-list" data-community-groups-list>
+      <p class="admin-empty">관리자 인증 후 모임 목록을 불러옵니다.</p>
+    </div>
   </section>
 
   <section class="admin-card admin-card-wide" id="adminCommunityApplications" aria-labelledby="adminCommunityTitle">
