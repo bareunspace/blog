@@ -97,6 +97,9 @@
 
   const getValue = (form, name) => String(new FormData(form).get(name) || '').trim();
 
+  const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isValidPhone = (value) => /^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(value.replace(/\s+/g, ''));
+
   const setSubmitting = (form, isSubmitting) => {
     form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
     Array.from(form.querySelectorAll('button, input, select, textarea')).forEach((node) => {
@@ -312,8 +315,18 @@
       const targetGroupTitle = getValue(form, 'target_group_title');
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
-      if (!applicationType || !groupKey || !applicantName || !contactEmail || !privacyConsent) {
+      if (!applicationType || !groupKey || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
         showStatus(form, '필수 항목과 개인정보 동의를 확인해 주세요.');
+        return;
+      }
+
+      if (!isValidEmail(contactEmail)) {
+        showStatus(form, '이메일 형식을 확인해 주세요.');
+        return;
+      }
+
+      if (!isValidPhone(contactPhone)) {
+        showStatus(form, '전화번호 형식을 확인해 주세요. 예: 010-1234-5678');
         return;
       }
 

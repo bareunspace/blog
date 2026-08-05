@@ -4273,6 +4273,29 @@ main.community-page .section-inner {
 main.community-page .community-hero .section-inner {
   max-width: 780px;
 }
+main.community-page .community-hero-benefits {
+  margin: 1rem auto 1.1rem;
+  max-width: 620px;
+  padding: .95rem 1rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 14px;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(4px);
+  color: #f3fbf6;
+}
+main.community-page .community-hero-benefits p {
+  margin: 0 0 .42rem;
+  font-size: .85rem;
+  font-weight: 800;
+}
+main.community-page .community-hero-benefits ul {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: .3rem;
+  font-size: .86rem;
+  line-height: 1.6;
+}
 main.community-page .community-hero-points {
   display: flex;
   justify-content: center;
@@ -4817,6 +4840,12 @@ main.community-page .community-principle-card {
     gap: .42rem;
     margin: .85rem 0 1.2rem;
   }
+  main.community-page .community-hero-benefits {
+    padding: .82rem .9rem;
+  }
+  main.community-page .community-hero .section-inner {
+    padding-inline: 1rem;
+  }
   main.community-page .community-hero-points li {
     font-size: .76rem;
     padding: .38rem .66rem;
@@ -4858,6 +4887,11 @@ main.community-page .community-principle-card {
   }
   main.community-page .community-host-panel {
     padding: 1rem;
+    gap: .95rem;
+  }
+  main.community-page .community-application-form {
+    padding: .95rem;
+    gap: .8rem;
   }
 }
 main.about-page #contact .contact-lead-line,

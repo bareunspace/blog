@@ -20,15 +20,23 @@ script_version: 20260805-13
     <div class="section-inner">
       <p class="section-label">Community MVP</p>
       <h1 class="section-title">혼자 준비하면 미루기 쉽습니다.<br />같이 준비하면 꾸준히 할 수 있습니다.</h1>
-      <p class="hero-subtitle">혼자 하기 어려운 준비, 같이 시작해 보세요.</p>
+      <p class="hero-subtitle">혼자 준비하기 어렵다면, 같은 목표를 가진 사람들과 함께 시작해 보세요.</p>
+      <div class="community-hero-benefits" aria-label="커뮤니티 추천 대상">
+        <p><strong>이런 분께 추천해요</strong></p>
+        <ul>
+          <li>면접, 발표, 스터디를 혼자 이어가기 어려운 분</li>
+          <li>같은 목표를 가진 사람들과 실전처럼 연습하고 싶은 분</li>
+          <li>모임을 직접 열어보고 싶은 분</li>
+        </ul>
+      </div>
       <ul class="community-hero-points" aria-label="커뮤니티 운영 방식">
         <li>준비 카테고리: 면접 준비 · 독서모임 · AI 사용</li>
         <li>외부 폼으로 신청</li>
         <li>모임장 또는 관심자 모집</li>
       </ul>
       <div class="hero-btns">
-        <a href="#groups" class="btn-primary">참여 가능한 모임 보기</a>
-        <a href="#forms-needed" class="btn-outline">모임 개설 신청</a>
+        <a href="#groups" class="btn-primary">모집 중인 모임 보기</a>
+        <a href="#forms-needed" class="btn-outline">모임 개설 신청하기</a>
       </div>
       <div class="community-brand-philosophy" aria-label="바른자리 커뮤니티 철학">
         <p>혼자 준비하면 미루기 쉽습니다.</p>
@@ -75,7 +83,7 @@ script_version: 20260805-13
             <span class="community-status">🟢 관심 등록</span>
           </div>
           <h3>면접 준비 모임</h3>
-          <p>자기소개, 지원 동기, 예상 질문을 함께 정리하고 서로 피드백하는 소규모 모임입니다.</p>
+          <p>자기소개와 답변을 같이 다듬고, 서로 피드백받으며 실전 감각을 키우는 모임입니다.</p>
           <dl class="community-group-meta">
             <div>
               <dt>희망 일정</dt>
@@ -102,7 +110,7 @@ script_version: 20260805-13
             <span class="community-status">🟢 관심 등록</span>
           </div>
           <h3>책 읽고 이야기 나누는 모임</h3>
-          <p>부담 없는 속도로 책을 읽고, 인상 깊었던 문장과 생각을 함께 나누는 모임입니다.</p>
+          <p>책을 읽고 핵심 문장과 느낀 점을 나누며, 부담 없이 꾸준히 이어가는 모임입니다.</p>
           <dl class="community-group-meta">
             <div>
               <dt>희망 일정</dt>
@@ -129,7 +137,7 @@ script_version: 20260805-13
             <span class="community-status">🟢 관심 등록</span>
           </div>
           <h3>AI 같이 써보는 모임</h3>
-          <p>업무, 공부, 글쓰기처럼 각자 필요한 상황에 AI를 써보고, 잘 되는 방법을 함께 나누는 모임입니다.</p>
+          <p>업무, 공부, 글쓰기처럼 각자 필요한 상황에서 AI를 써보고, 실용적인 방법을 함께 나누는 모임입니다.</p>
           <dl class="community-group-meta">
             <div>
               <dt>희망 일정</dt>
@@ -213,6 +221,7 @@ script_version: 20260805-13
           <p class="section-label">Start a Group</p>
           <h2 class="section-title">무엇을 하고 싶으신가요?</h2>
           <p>같이 참여하고 싶다면 관심자로 신청하고, 직접 운영하고 싶다면 모임 개설 신청을 남겨 주세요.</p>
+          <p class="community-form-note">신청 후에는 운영 가능 여부와 연락 방식이 확인된 뒤, 가장 적절한 방식으로 개별 안내드립니다.</p>
         </div>
         <div class="community-host-actions" id="forms-needed">
           <form class="community-application-form" data-community-application-form novalidate>
@@ -287,7 +296,7 @@ script_version: 20260805-13
               <span>신청 확인과 연락을 위한 개인정보 수집 및 이용에 동의합니다.</span>
             </label>
             <button type="submit" class="btn-primary community-submit-btn">신청하기</button>
-            <p class="community-application-status" data-community-application-status hidden></p>
+            <p class="community-application-status" data-community-application-status aria-live="polite" hidden></p>
           </form>
         </div>
       </div>
