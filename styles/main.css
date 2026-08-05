@@ -4494,27 +4494,56 @@ main.community-page .community-flow-details {
   margin-top: .9rem;
   border: 1px solid #d8e6dd;
   border-radius: 12px;
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcfa 100%);
 }
 main.community-page .community-flow-details summary {
-  padding: .78rem .88rem;
+  padding: .82rem .92rem;
   color: #2a3d33;
-  font-size: .84rem;
+  font-size: .86rem;
   font-weight: 800;
   cursor: pointer;
 }
-main.community-page .community-flow-details ol {
+main.community-page .community-flow-detail-list {
   margin: 0;
-  padding: 0 1.15rem .95rem 2rem;
-  color: #4b5563;
-  font-size: .84rem;
-  line-height: 1.7;
+  padding: 0 .92rem .95rem;
+  list-style: none;
+  display: grid;
+  gap: .52rem;
+}
+main.community-page .community-flow-detail-list li {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  align-items: start;
+  gap: .56rem;
+  padding: .62rem .66rem;
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(17,24,39,.04);
+}
+main.community-page .community-flow-detail-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(45,106,79,.12);
+  color: var(--primary);
+  font-size: .72rem;
+  font-weight: 900;
+}
+main.community-page .community-flow-detail-list p {
+  margin: 0;
+  color: #405160;
+  font-size: .83rem;
+  line-height: 1.62;
 }
 main.community-page .community-host-panel {
   display: grid;
   grid-template-columns: minmax(0, .95fr) minmax(420px, 1.05fr);
   gap: 1rem;
-  align-items: center;
+  align-items: start;
   padding: clamp(1.1rem, 2.5vw, 1.6rem);
   border: 1px solid #d7e9dc;
   border-radius: 18px;
@@ -4766,6 +4795,10 @@ main.community-page .community-principle-card {
   main.community-page .community-choice-inline,
   main.community-page .community-choice-inline-availability {
     gap: .32rem;
+  }
+  main.community-page .community-flow-detail-list li {
+    grid-template-columns: 1.45rem minmax(0, 1fr);
+    padding: .56rem .58rem;
   }
   main.community-page .community-principle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
