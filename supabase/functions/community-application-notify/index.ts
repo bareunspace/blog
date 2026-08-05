@@ -1,3 +1,5 @@
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -14,6 +16,52 @@ Deno.serve(async (req) => {
       status: 405,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
+  }
+
+  const body = await req.json().catch(() => ({}));
+  const action = String(body.action || '').trim().toLowerCase();
+
+  if (action === 'delete') {
+    const applicationId = body.applicationId ?? body.id;
+    if (!applicationId) {
+      return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    try {
+      const supabaseUrl = Deno.env.get('SUPABASE_URL') || 'https://nhiyxgcrjdzdiquutxml.supabase.co';
+      const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY') || 'sb_publishable_kqB-Q3vuJwrd8cvEzbcp7g_a6QBxf_u';
+      const authorizationHeader = req.headers.get('authorization') || req.headers.get('Authorization') || '';
+
+      const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+        auth: { persistSession: false },
+        global: {
+          headers: authorizationHeader ? { Authorization: authorizationHeader } : {}
+        }
+      });
+
+      const { error } = await supabase
+        .from('community_applications')
+        .delete()
+        .eq('id', applicationId);
+
+      if (error) {
+        throw error;
+      }
+
+      return new Response(JSON.stringify({ ok: true, deleted: true }), {
+        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      return new Response(JSON.stringify({ error: 'Delete failed', detail }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
   }
 
   const resendApiKey = Deno.env.get('RESEND_API_KEY');
@@ -40,7 +88,6 @@ Deno.serve(async (req) => {
     });
   }
 
-  const body = await req.json().catch(() => ({}));
   const application = body.application || {};
   const applicantReplyTo = String(application.contact_email || '').trim();
   const adminUrl = body.adminUrl || 'https://bareunjari.com/admin.html';

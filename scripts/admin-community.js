@@ -331,13 +331,17 @@
       return;
     }
 
-    const { error } = await client
-      .from('community_applications')
-      .delete()
-      .eq('id', id);
+    showStatus('신청을 삭제하는 중입니다.', 'success');
 
-    if (error) {
-      showStatus('신청을 삭제하지 못했습니다.', 'error');
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'delete',
+        applicationId: id
+      }
+    });
+
+    if (error || !data?.ok) {
+      showStatus('신청을 삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
       return;
     }
 
