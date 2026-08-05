@@ -39,6 +39,7 @@
   }
 
   const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+  const MIN_VISIBLE_INTEREST_COUNT = 3;
   let interestCounts = {
     topics: {},
     groups: {}
@@ -52,8 +53,7 @@
 
   const typeLabels = {
     interest: '참여 관심',
-    host: '모임장 신청',
-    existing_group: '기존 모임 등록'
+    host: '모임 개설 신청'
   };
 
   const groupShortLabels = {
@@ -64,8 +64,35 @@
   };
 
   const statusLabels = {
-    recruiting: '모집 중',
-    scheduled: '일정 확정'
+    interest: '🟢 관심 등록',
+    scheduled: '🟡 모집 예정',
+    recruiting: '🔵 모집 중',
+    closed: '🔴 모집 마감'
+  };
+
+  const formatInterestText = (count) => {
+    const parsedCount = Number(count || 0);
+    if (parsedCount >= MIN_VISIBLE_INTEREST_COUNT) {
+      return `${parsedCount}명`;
+    }
+    if (parsedCount > 0) {
+      return '모집 준비 중';
+    }
+    return '관심 등록 가능';
+  };
+
+  const setApplicationType = (form, value) => {
+    const typeNodes = form.querySelectorAll('input[name="application_type"]');
+    if (typeNodes.length) {
+      typeNodes.forEach((node) => {
+        node.checked = node.value === value;
+      });
+      return;
+    }
+
+    if (form.elements.application_type) {
+      form.elements.application_type.value = value;
+    }
   };
 
   const getValue = (form, name) => String(new FormData(form).get(name) || '').trim();
@@ -105,8 +132,8 @@
     if (!groups.length) {
       liveGroupsNode.innerHTML = `
         <div class="community-live-empty">
-          <strong>현재 공개 모집 중인 모임은 준비 중입니다.</strong>
-          <span>관심 등록을 남겨주시면 인원이 모이는 대로 먼저 안내드릴게요.</span>
+          <strong>현재 첫 번째 모임을 준비하고 있습니다.</strong>
+          <span>관심 등록을 남겨주시면 가장 먼저 안내드립니다.</span>
         </div>
       `;
       return;
@@ -141,7 +168,7 @@
               </div>
               <div>
                 <dt>참여 관심</dt>
-                <dd>${escapeHtml(`${interestCounts.groups[group.id] || 0}명`)}</dd>
+                <dd>${escapeHtml(formatInterestText(interestCounts.groups[group.id]))}</dd>
               </div>
             </dl>
             <div class="community-card-actions">
@@ -186,13 +213,13 @@
     Object.entries(interestCounts.topics).forEach(([groupKey, count]) => {
       const node = document.querySelector(`[data-community-topic-count="${groupKey}"]`);
       if (node) {
-        node.textContent = `${count}명`;
+        node.textContent = formatInterestText(count);
       }
     });
 
     document.querySelectorAll('[data-community-topic-count]').forEach((node) => {
       if (!node.textContent || node.textContent === '확인 중') {
-        node.textContent = '0명';
+        node.textContent = '관심 등록 가능';
       }
     });
   };
@@ -232,9 +259,7 @@
     const groupKey = button.dataset.groupKey || 'other';
     const groupTitle = button.dataset.groupTitle || groupLabels[groupKey] || '기타 목적형 모임';
 
-    if (form.elements.application_type) {
-      form.elements.application_type.value = 'interest';
-    }
+    setApplicationType(form, 'interest');
     if (form.elements.group_key) {
       form.elements.group_key.value = groupKey;
     }
@@ -277,7 +302,10 @@
       const applicantName = getValue(form, 'applicant_name');
       const contactEmail = getValue(form, 'contact_email');
       const contactPhone = getValue(form, 'contact_phone');
-      const availability = getValue(form, 'availability');
+      const availabilitySlots = Array.from(form.querySelectorAll('input[name="availability_slots"]:checked'))
+        .map((node) => String(node.value || '').trim())
+        .filter(Boolean);
+      const availability = availabilitySlots.join(', ');
       const message = getValue(form, 'message');
       const existingGroupSummary = getValue(form, 'existing_group_summary');
       const targetGroupId = getValue(form, 'target_group_id');

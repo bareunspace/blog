@@ -4293,6 +4293,22 @@ main.community-page .community-hero-points li {
   line-height: 1.35;
   backdrop-filter: blur(3px);
 }
+main.community-page .community-brand-philosophy {
+  display: grid;
+  gap: .28rem;
+  margin: 1.2rem auto 0;
+  max-width: 520px;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 14px;
+  background: rgba(8, 26, 18, .36);
+  color: #f3fbf6;
+  font-size: .86rem;
+  line-height: 1.6;
+}
+main.community-page .community-brand-philosophy p {
+  margin: 0;
+}
 main.community-page .community-section-heading {
   display: flex;
   align-items: end;
@@ -4431,9 +4447,10 @@ main.community-page .community-flow-note {
 }
 main.community-page .community-flow-note p {
   max-width: 76ch;
-  color: #374151;
-  font-size: .9rem;
-  line-height: 1.75;
+  color: #1f6f3f;
+  font-size: .96rem;
+  font-weight: 800;
+  line-height: 1.7;
 }
 main.community-page .community-flow-step {
   position: relative;
@@ -4469,6 +4486,26 @@ main.community-page .community-principle-card h3 {
 }
 main.community-page .community-flow-step p,
 main.community-page .community-principle-card p {
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.7;
+}
+main.community-page .community-flow-details {
+  margin-top: .9rem;
+  border: 1px solid #d8e6dd;
+  border-radius: 12px;
+  background: #fff;
+}
+main.community-page .community-flow-details summary {
+  padding: .78rem .88rem;
+  color: #2a3d33;
+  font-size: .84rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+main.community-page .community-flow-details ol {
+  margin: 0;
+  padding: 0 1.15rem .95rem 2rem;
   color: #4b5563;
   font-size: .84rem;
   line-height: 1.7;
@@ -4588,6 +4625,43 @@ main.community-page .community-consent {
   font-size: .82rem;
   font-weight: 800;
 }
+main.community-page .community-choice-group {
+  margin: 0;
+  padding: .7rem .78rem;
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  background: #fff;
+}
+main.community-page .community-choice-group legend {
+  padding: 0 .2rem;
+  color: #2a3d33;
+  font-size: .8rem;
+  font-weight: 800;
+}
+main.community-page .community-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .4rem;
+}
+main.community-page .community-choice-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
+  padding: .5rem .55rem;
+  border: 1px solid #d7e5dc;
+  border-radius: 9px;
+  background: #f9fcfa;
+  color: #1f2937;
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+main.community-page .community-choice-item input {
+  margin: 0;
+}
+main.community-page .community-choice-group-availability .community-choice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 main.community-page .community-form-row input,
 main.community-page .community-form-row select,
 main.community-page .community-form-row textarea {
@@ -4688,6 +4762,9 @@ main.community-page .community-principle-card {
   main.community-page .community-flow-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  main.community-page .community-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   main.community-page .community-principle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4712,6 +4789,10 @@ main.community-page .community-principle-card {
   main.community-page .community-group-grid,
   main.community-page .community-flow-grid,
   main.community-page .community-principle-grid {
+    grid-template-columns: 1fr;
+  }
+  main.community-page .community-choice-grid,
+  main.community-page .community-choice-group-availability .community-choice-grid {
     grid-template-columns: 1fr;
   }
   main.community-page .community-group-card {

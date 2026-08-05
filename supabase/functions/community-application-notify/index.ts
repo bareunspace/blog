@@ -17,8 +17,21 @@ Deno.serve(async (req) => {
   }
 
   const resendApiKey = Deno.env.get('RESEND_API_KEY');
-  const notifyTo = Deno.env.get('COMMUNITY_NOTIFY_TO') || 'bareunjari@gmail.com';
-  const notifyFrom = Deno.env.get('COMMUNITY_NOTIFY_FROM') || 'Barunjari <onboarding@resend.dev>';
+  const notifyToRaw = Deno.env.get('COMMUNITY_NOTIFY_TO') || 'bareunjari@gmail.com';
+  const notifyRecipients = notifyToRaw
+    .split(',')
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+  const internalAdminEmailsRaw = Deno.env.get('COMMUNITY_INTERNAL_ADMIN_EMAILS') || 'bareunjari@gmail.com';
+  const internalAdminEmails = new Set(
+    internalAdminEmailsRaw
+      .split(',')
+      .map((email) => email.trim().toLowerCase())
+      .filter(Boolean)
+  );
+  const notifyFromEmail = Deno.env.get('COMMUNITY_NOTIFY_FROM_EMAIL') || Deno.env.get('COMMUNITY_NOTIFY_FROM') || 'onboarding@resend.dev';
+  const notifyFromName = Deno.env.get('COMMUNITY_NOTIFY_FROM_NAME') || 'bareunjari@gmail.com';
+  const notifyFrom = `${notifyFromName} <${notifyFromEmail}>`;
 
   if (!resendApiKey) {
     return new Response(JSON.stringify({ skipped: true, reason: 'RESEND_API_KEY is not configured' }), {
@@ -29,7 +42,9 @@ Deno.serve(async (req) => {
 
   const body = await req.json().catch(() => ({}));
   const application = body.application || {};
+  const applicantReplyTo = String(application.contact_email || '').trim();
   const adminUrl = body.adminUrl || 'https://bareunjari.com/admin.html';
+  const includeAdminUrl = notifyRecipients.length > 0 && notifyRecipients.every((email) => internalAdminEmails.has(email));
   const groupLabels: Record<string, string> = {
     interview: '면접 준비',
     reading: '독서모임',
@@ -39,7 +54,7 @@ Deno.serve(async (req) => {
   const groupLabel = groupLabels[String(application.group_key || '')] || application.group_key || '-';
 
   const subject = `[바른자리 커뮤니티] 새 신청: ${application.group_title || '커뮤니티 신청'}`;
-  const text = [
+  const textLines = [
     '[바른자리 커뮤니티] 새 신청이 도착했습니다.',
     '',
     `신청 유형: ${application.application_type_label || application.application_type || '-'}`,
@@ -51,10 +66,28 @@ Deno.serve(async (req) => {
     `전화: ${application.contact_phone || '-'}`,
     `가능 일정: ${application.availability || '-'}`,
     `기존 모임: ${application.existing_group_summary || '-'}`,
-    `메시지: ${application.message || '-'}`,
-    '',
-    `관리자 페이지: ${adminUrl}`
-  ].join('\n');
+    `메시지: ${application.message || '-'}`
+  ];
+
+  if (includeAdminUrl) {
+    textLines.push('', `관리자 페이지: ${adminUrl}`);
+  }
+
+  const text = textLines.join('\n');
+
+  const emailPayload: Record<string, unknown> = {
+    from: notifyFrom,
+    to: notifyRecipients,
+    subject,
+    text
+  };
+
+  if (applicantReplyTo) {
+    emailPayload.reply_to = [applicantReplyTo];
+    emailPayload.headers = {
+      'Reply-To': applicantReplyTo
+    };
+  }
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -62,12 +95,7 @@ Deno.serve(async (req) => {
       Authorization: `Bearer ${resendApiKey}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      from: notifyFrom,
-      to: [notifyTo],
-      subject,
-      text
-    })
+    body: JSON.stringify(emailPayload)
   });
 
   if (!response.ok) {
