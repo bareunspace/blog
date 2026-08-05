@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete' || action === 'update' || action === 'sync-group') {
+  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group') {
     const applicationId = body.applicationId ?? body.id;
     if (!applicationId) {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
@@ -56,6 +56,55 @@ Deno.serve(async (req) => {
         }
 
         return new Response(JSON.stringify({ ok: true, deleted: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'update-group') {
+        const groupId = body.groupId ?? body.id;
+        if (!groupId) {
+          return new Response(JSON.stringify({ error: 'Missing groupId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const values = body.values || {};
+        const allowedGroupFields = new Set([
+          'title',
+          'group_key',
+          'status',
+          'schedule_text',
+          'capacity',
+          'host_name',
+          'open_chat_url',
+          'description'
+        ]);
+        const fields = Object.entries(values).reduce<Record<string, unknown>>((acc, [key, value]) => {
+          if (allowedGroupFields.has(key)) {
+            acc[key] = value;
+          }
+          return acc;
+        }, {});
+
+        if (!Object.keys(fields).length) {
+          return new Response(JSON.stringify({ error: 'No editable group fields provided' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { error } = await supabase
+          .from('community_groups')
+          .update(fields)
+          .eq('id', groupId);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, updated: true }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });

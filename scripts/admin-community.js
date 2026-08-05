@@ -438,13 +438,17 @@
       description: groupEditForm.elements.description.value.trim()
     };
 
-    const { error } = await client
-      .from('community_groups')
-      .update(values)
-      .eq('id', id);
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'update-group',
+        groupId: id,
+        values
+      }
+    });
 
-    if (error) {
-      showGroupsStatus('모임 정보를 수정하지 못했습니다.', 'error');
+    if (error || !data?.ok) {
+      console.error('submitGroupEditForm failed', { error, data });
+      showGroupsStatus(`모임 정보를 수정하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
       return;
     }
 
