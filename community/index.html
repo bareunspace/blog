@@ -11,8 +11,8 @@ sitemap: false
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
 og_image_alt: 바른자리에서 소규모 모임을 준비하는 공간
 preload_image: images/bucheon-small-group-meeting-space.webp
-css_version: 20260805-11
-script_version: 20260805-11
+css_version: 20260805-12
+script_version: 20260805-12
 ---
 
 <main class="about-page community-page">
@@ -174,7 +174,7 @@ script_version: 20260805-11
           <p>일정이 확정된 모임부터 안내를 드리고 함께 준비를 시작합니다.</p>
         </article>
       </div>
-      <details class="community-flow-details">
+      <details class="community-flow-details" open>
         <summary>자세한 진행 방식 보기</summary>
         <ol>
           <li>모임 또는 관심 주제를 선택해 신청합니다.</li>
@@ -256,18 +256,13 @@ script_version: 20260805-11
                 </label>
               </div>
             </div>
-            <div class="community-form-optional community-form-row-full">
-              <p class="community-inline-label">추가 입력 (필수)</p>
-              <div class="community-form-optional-grid">
-                <div class="community-form-row">
-                  <label for="communityIndexPhone">전화번호</label>
-                  <input id="communityIndexPhone" name="contact_phone" type="tel" autocomplete="tel" required />
-                </div>
-                <div class="community-form-row community-form-row-full">
-                  <label for="communityIndexMessage">남기고 싶은 말</label>
-                  <textarea id="communityIndexMessage" name="message" rows="3" placeholder="참여 이유, 원하는 진행 방식 등을 적어 주세요." required></textarea>
-                </div>
-              </div>
+            <div class="community-form-row">
+              <label for="communityIndexPhone">전화번호</label>
+              <input id="communityIndexPhone" name="contact_phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="community-form-row community-form-row-full">
+              <label for="communityIndexMessage">남기고 싶은 말</label>
+              <textarea id="communityIndexMessage" name="message" rows="3" placeholder="참여 이유, 원하는 진행 방식 등을 적어 주세요." required></textarea>
             </div>
             <label class="community-consent">
               <input type="checkbox" name="privacy_consent" required />
