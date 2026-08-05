@@ -326,11 +326,6 @@
       return;
     }
 
-    const nextMessage = window.prompt('신청 메모를 수정하세요.', row.message || '');
-    if (nextMessage === null) {
-      return;
-    }
-
     const adminContext = window.barunjariAdmin;
     const client = adminContext?.client;
     if (!client) {
@@ -338,9 +333,29 @@
       return;
     }
 
+    const fields = [
+      ['applicant_name', '신청자 이름', row.applicant_name || ''],
+      ['contact_email', '이메일', row.contact_email || ''],
+      ['contact_phone', '전화번호', row.contact_phone || ''],
+      ['availability', '가능 일정', row.availability || ''],
+      ['existing_group_summary', '기존 모임 설명', row.existing_group_summary || ''],
+      ['message', '메시지', row.message || '']
+    ];
+
+    const values = {};
+    const labelsText = fields.map(([key, label]) => `${label}: ${window.prompt(`${label}을(를) 수정하세요.`, row[key] || '') ?? ''}`).join('\n');
+
+    for (const [key, label, defaultValue] of fields) {
+      const nextValue = window.prompt(`${label}을(를) 수정하세요.`, defaultValue);
+      if (nextValue === null) {
+        return;
+      }
+      values[key] = nextValue;
+    }
+
     const { error } = await client
       .from('community_applications')
-      .update({ message: nextMessage })
+      .update(values)
       .eq('id', id);
 
     if (error) {
@@ -348,7 +363,7 @@
       return;
     }
 
-    row.message = nextMessage;
+    Object.assign(row, values);
     renderVisibleRows();
     showStatus('신청 내용이 수정되었습니다.', 'success');
   };
