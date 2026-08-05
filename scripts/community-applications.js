@@ -39,6 +39,10 @@
   }
 
   const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+  let interestCounts = {
+    topics: {},
+    groups: {}
+  };
   const groupLabels = {
     interview: '면접 준비 모임',
     reading: '책 읽고 이야기 나누는 모임',
@@ -135,6 +139,10 @@
                 <dt>모임장</dt>
                 <dd>${escapeHtml(group.host_name || '바른자리 확인 중')}</dd>
               </div>
+              <div>
+                <dt>참여 관심</dt>
+                <dd>${escapeHtml(`${interestCounts.groups[group.id] || 0}명`)}</dd>
+              </div>
             </dl>
             <div class="community-card-actions">
               <button
@@ -157,6 +165,8 @@
       return;
     }
 
+    await loadInterestCounts();
+
     const { data, error } = await client
       .from('community_groups')
       .select('id, group_key, title, description, status, host_name, schedule_text, capacity')
@@ -170,6 +180,46 @@
     }
 
     renderLiveGroups(data || []);
+  };
+
+  const renderTopicCounts = () => {
+    Object.entries(interestCounts.topics).forEach(([groupKey, count]) => {
+      const node = document.querySelector(`[data-community-topic-count="${groupKey}"]`);
+      if (node) {
+        node.textContent = `${count}명`;
+      }
+    });
+
+    document.querySelectorAll('[data-community-topic-count]').forEach((node) => {
+      if (!node.textContent || node.textContent === '확인 중') {
+        node.textContent = '0명';
+      }
+    });
+  };
+
+  const loadInterestCounts = async () => {
+    const { data, error } = await client.rpc('get_community_interest_counts');
+
+    if (error) {
+      renderTopicCounts();
+      return;
+    }
+
+    interestCounts = (data || []).reduce((acc, row) => {
+      const count = Number(row.interest_count || 0);
+      if (row.count_scope === 'topic' && row.group_key) {
+        acc.topics[row.group_key] = count;
+      }
+      if (row.count_scope === 'group' && row.target_group_id) {
+        acc.groups[row.target_group_id] = count;
+      }
+      return acc;
+    }, {
+      topics: {},
+      groups: {}
+    });
+
+    renderTopicCounts();
   };
 
   const focusFormForGroup = (button) => {
@@ -274,6 +324,7 @@
       });
 
       form.reset();
+      await loadLiveGroups();
       showStatus(form, '신청이 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
     });
   });
