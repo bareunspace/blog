@@ -166,6 +166,17 @@
           goTo(loginPath);
         });
       }
+
+      window.barunjariAdmin = {
+        client,
+        currentUser,
+        allowedAdmins
+      };
+      window.dispatchEvent(new CustomEvent('barunjari:admin-ready', {
+        detail: {
+          email: currentUser.email
+        }
+      }));
     }
   };
 

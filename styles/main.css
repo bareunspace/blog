@@ -4259,6 +4259,444 @@ main.about-page #contact .section-inner > p {
   color: #ffffff;
   text-shadow: 0 4px 16px rgba(0,0,0,.32);
 }
+
+main.community-page #home {
+  background-color: #173428;
+  background-image: linear-gradient(rgba(13, 33, 25, .58), rgba(13, 33, 25, .62)), url('../images/bucheon-small-group-meeting-space.webp');
+  background-position: center;
+  background-size: cover;
+  min-height: clamp(440px, 62vh, 620px);
+}
+main.community-page .section-inner {
+  max-width: 1040px;
+}
+main.community-page .community-hero .section-inner {
+  max-width: 780px;
+}
+main.community-page .community-hero-points {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1rem 0 1.45rem;
+  padding: 0;
+  list-style: none;
+}
+main.community-page .community-hero-points li {
+  padding: .42rem .76rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.35;
+  backdrop-filter: blur(3px);
+}
+main.community-page .community-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+main.community-page .community-section-heading .section-title {
+  margin-bottom: 0;
+}
+main.community-page .community-section-heading > p {
+  max-width: 460px;
+  color: #4b5563;
+  font-size: .92rem;
+  line-height: 1.75;
+}
+main.community-page .community-group-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+main.community-page .community-group-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 1.15rem;
+  border: 1px solid #dce8e1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(17,24,39,.07);
+}
+main.community-page .community-group-card-featured {
+  border-color: rgba(45,106,79,.32);
+  background: linear-gradient(160deg, #ffffff 0%, #f3faf5 100%);
+  box-shadow: 0 16px 34px rgba(31,86,61,.12);
+}
+main.community-page .community-group-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  align-items: flex-start;
+  margin-bottom: .85rem;
+}
+main.community-page .community-category,
+main.community-page .community-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: .28rem .58rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+main.community-page .community-category {
+  background: rgba(45,106,79,.1);
+  color: var(--primary);
+}
+main.community-page .community-status {
+  border: 1px solid #e2d6bb;
+  background: #fff8e8;
+  color: #7c5424;
+  text-align: center;
+}
+main.community-page .community-group-card h3 {
+  margin-bottom: .5rem;
+  color: #17251d;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+main.community-page .community-group-card p {
+  color: #4b5563;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+main.community-page .community-group-meta {
+  display: grid;
+  gap: .5rem;
+  margin: 1rem 0 1.1rem;
+}
+main.community-page .community-group-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .62rem .68rem;
+  border: 1px solid #e2ebe5;
+  border-radius: 10px;
+  background: #f8fbf9;
+}
+main.community-page .community-group-meta dt {
+  flex: 0 0 auto;
+  color: #6b7280;
+  font-size: .75rem;
+  font-weight: 700;
+}
+main.community-page .community-group-meta dd {
+  color: #1f2937;
+  font-size: .8rem;
+  font-weight: 800;
+  text-align: right;
+}
+main.community-page .community-card-note {
+  margin: -.2rem 0 1rem;
+  padding: .62rem .7rem;
+  border: 1px dashed rgba(45,106,79,.26);
+  border-radius: 10px;
+  background: rgba(244,250,246,.78);
+  color: #4b5563;
+  font-size: .8rem;
+  line-height: 1.6;
+}
+main.community-page .community-card-actions {
+  margin-top: auto;
+}
+main.community-page .community-card-btn {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding: .72rem 1rem;
+  font-size: .88rem;
+  text-align: center;
+}
+main.community-page .community-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .9rem;
+  margin-top: 1rem;
+}
+main.community-page .community-flow-note {
+  margin: .2rem 0 1rem;
+  padding: .9rem 1rem;
+  border: 1px solid #d7e9dc;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f9fdfb 0%, #eef8f2 100%);
+  box-shadow: 0 10px 22px rgba(17,24,39,.05);
+}
+main.community-page .community-flow-note p {
+  max-width: 76ch;
+  color: #374151;
+  font-size: .9rem;
+  line-height: 1.75;
+}
+main.community-page .community-flow-step {
+  position: relative;
+  min-height: 168px;
+  padding: 1rem 1rem 1rem 3.15rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
+}
+main.community-page .community-flow-step::before {
+  content: attr(data-step);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  background: rgba(45,106,79,.12);
+  color: var(--primary);
+  font-size: .68rem;
+  font-weight: 900;
+}
+main.community-page .community-flow-step h3,
+main.community-page .community-principle-card h3 {
+  margin-bottom: .35rem;
+  color: #1f2937;
+  font-size: .95rem;
+  line-height: 1.45;
+}
+main.community-page .community-flow-step p,
+main.community-page .community-principle-card p {
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.7;
+}
+main.community-page .community-host-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+  gap: 1rem;
+  align-items: center;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  border: 1px solid #d7e9dc;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f9fdfb 0%, #eef8f2 48%, #ffffff 100%);
+  box-shadow: 0 16px 34px rgba(17,24,39,.08);
+}
+main.community-page .community-host-copy .section-title {
+  margin-bottom: .55rem;
+}
+main.community-page .community-host-copy p:not(.section-label) {
+  max-width: 620px;
+  color: #374151;
+  line-height: 1.75;
+}
+main.community-page .community-host-actions {
+  display: grid;
+  gap: .65rem;
+}
+main.community-page .community-form-note {
+  padding: .72rem .8rem;
+  border: 1px dashed rgba(45,106,79,.32);
+  border-radius: 12px;
+  background: rgba(255,255,255,.82);
+  color: #4b5563;
+  font-size: .82rem;
+  line-height: 1.65;
+}
+main.community-page .community-host-actions .btn-primary,
+main.community-page .community-host-actions .btn-outline {
+  text-align: center;
+}
+main.community-page .community-host-actions a[aria-disabled="true"] {
+  opacity: .72;
+  cursor: not-allowed;
+}
+main.community-page .community-application-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  padding: .85rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.88);
+}
+main.community-page .community-form-row {
+  display: grid;
+  gap: .34rem;
+}
+main.community-page .community-form-row-full,
+main.community-page .community-consent,
+main.community-page .community-submit-btn,
+main.community-page .community-application-status {
+  grid-column: 1 / -1;
+}
+main.community-page .community-form-row label,
+main.community-page .community-consent {
+  color: #2a3d33;
+  font-size: .82rem;
+  font-weight: 800;
+}
+main.community-page .community-form-row input,
+main.community-page .community-form-row select,
+main.community-page .community-form-row textarea {
+  width: 100%;
+  border: 1px solid #cedbd3;
+  border-radius: 10px;
+  background: #fff;
+  padding: .65rem .72rem;
+  color: #1f2937;
+  font: inherit;
+  font-size: .86rem;
+}
+main.community-page .community-form-row textarea {
+  resize: vertical;
+}
+main.community-page .community-form-row input:focus-visible,
+main.community-page .community-form-row select:focus-visible,
+main.community-page .community-form-row textarea:focus-visible {
+  outline: 2px solid rgba(45,106,79,.28);
+  border-color: var(--primary);
+}
+main.community-page .community-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: .48rem;
+  line-height: 1.55;
+}
+main.community-page .community-consent input {
+  margin-top: .22rem;
+}
+main.community-page .community-submit-btn {
+  border: 0;
+  cursor: pointer;
+}
+main.community-page .community-submit-btn:disabled,
+main.community-page .community-application-form [disabled] {
+  opacity: .7;
+  cursor: wait;
+}
+main.community-page .community-application-status {
+  border-radius: 10px;
+  padding: .62rem .7rem;
+  font-size: .82rem;
+  line-height: 1.55;
+}
+main.community-page .community-application-status[hidden] {
+  display: none;
+}
+main.community-page .community-application-status.is-error {
+  border: 1px solid #efb2b2;
+  background: #fff4f4;
+  color: #9f2f2f;
+}
+main.community-page .community-application-status.is-success {
+  border: 1px solid #b8dfc4;
+  background: #effcf3;
+  color: #1f6f3f;
+}
+main.community-page .community-hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+main.community-page .community-form-link {
+  justify-self: end;
+  color: var(--primary);
+  font-size: .86rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+main.community-page .community-principle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .85rem;
+  margin-top: 1rem;
+}
+main.community-page .community-principle-card {
+  padding: 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(17,24,39,.06);
+}
+
+@media (max-width: 960px) {
+  main.community-page .community-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .45rem;
+  }
+  main.community-page .community-section-heading > p {
+    max-width: 720px;
+  }
+  main.community-page .community-group-grid,
+  main.community-page .community-flow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main.community-page .community-principle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main.community-page .community-host-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  main.community-page #home {
+    min-height: clamp(420px, 58vh, 560px);
+    background-position: 56% center;
+  }
+  main.community-page .community-hero-points {
+    gap: .42rem;
+    margin: .85rem 0 1.2rem;
+  }
+  main.community-page .community-hero-points li {
+    font-size: .76rem;
+    padding: .38rem .66rem;
+  }
+  main.community-page .community-group-grid,
+  main.community-page .community-flow-grid,
+  main.community-page .community-principle-grid {
+    grid-template-columns: 1fr;
+  }
+  main.community-page .community-group-card {
+    min-height: 0;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+  main.community-page .community-group-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .42rem;
+  }
+  main.community-page .community-category,
+  main.community-page .community-status {
+    min-height: 26px;
+    font-size: .7rem;
+  }
+  main.community-page .community-group-meta div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .2rem;
+  }
+  main.community-page .community-group-meta dd {
+    text-align: left;
+  }
+  main.community-page .community-flow-step {
+    min-height: 0;
+  }
+  main.community-page .community-host-panel {
+    padding: 1rem;
+  }
+  main.community-page .community-application-form {
+    grid-template-columns: 1fr;
+  }
+}
 main.about-page #contact .contact-lead-line,
 main.about-page #contact .contact-closing-line {
   color: #ffffff !important;
@@ -6032,8 +6470,10 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-shell {
   min-height: calc(100dvh - 220px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   padding: 4.5rem 1.5rem;
   background:
     radial-gradient(circle at 12% 12%, rgba(82, 183, 136, .14) 0%, transparent 40%),
@@ -6047,6 +6487,15 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   border-radius: 20px;
   background: rgba(255, 255, 255, .96);
   box-shadow: 0 20px 34px rgba(30, 60, 45, .1);
+}
+.admin-card-wide {
+  width: min(100%, 980px);
+}
+.admin-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 }
 .admin-label {
   display: inline-flex;
@@ -6158,6 +6607,104 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   color: #274435;
   font-size: .9rem;
 }
+.admin-community-list {
+  display: grid;
+  gap: .85rem;
+  margin-top: 1rem;
+}
+.admin-empty {
+  border: 1px dashed #cdd9d1;
+  border-radius: 12px;
+  padding: .85rem;
+  background: #f8fbf9;
+  color: #5e6f65;
+  font-size: .9rem;
+}
+.admin-community-item {
+  display: grid;
+  gap: .75rem;
+  border: 1px solid #dbe4de;
+  border-radius: 14px;
+  padding: 1rem;
+  background: #fff;
+}
+.admin-community-item-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.admin-community-eyebrow {
+  margin-bottom: .2rem;
+  color: var(--primary);
+  font-size: .76rem;
+  font-weight: 900;
+}
+.admin-community-item h3 {
+  color: #173726;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.admin-community-status {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: .3rem .62rem;
+  background: #eef8f2;
+  color: #1f6f3f;
+  font-size: .74rem;
+  font-weight: 900;
+}
+.admin-community-meta {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .5rem;
+}
+.admin-community-meta div {
+  border: 1px solid #e1e9e3;
+  border-radius: 10px;
+  padding: .52rem .58rem;
+  background: #f8fbf9;
+}
+.admin-community-meta dt {
+  margin-bottom: .18rem;
+  color: #6b7280;
+  font-size: .72rem;
+  font-weight: 800;
+}
+.admin-community-meta dd {
+  color: #1f2937;
+  font-size: .8rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.admin-community-message {
+  border-left: 3px solid rgba(45,106,79,.32);
+  padding-left: .72rem;
+  color: #374151;
+  font-size: .86rem;
+  line-height: 1.65;
+}
+.admin-community-message strong {
+  display: block;
+  margin-bottom: .18rem;
+  color: #173726;
+}
+.admin-community-status-control {
+  display: inline-grid;
+  justify-self: start;
+  gap: .32rem;
+  color: #2a3d33;
+  font-size: .82rem;
+  font-weight: 800;
+}
+.admin-community-status-control select {
+  border: 1px solid #cedbd3;
+  border-radius: 10px;
+  background: #fff;
+  padding: .5rem .62rem;
+  font: inherit;
+  font-size: .84rem;
+}
 
 @media (max-width: 640px) {
   .admin-shell {
@@ -6170,6 +6717,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+  .admin-section-head,
+  .admin-community-item-head {
+    flex-direction: column;
+  }
+  .admin-community-meta {
+    grid-template-columns: 1fr;
   }
   .admin-btn {
     width: 100%;
