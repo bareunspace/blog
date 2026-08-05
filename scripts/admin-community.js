@@ -8,7 +8,9 @@
   const listNode = root.querySelector('[data-community-admin-list]');
   const statusNode = root.querySelector('[data-community-admin-status]');
   const refreshButton = root.querySelector('[data-community-admin-refresh]');
-  const filterSelect = root.querySelector('[data-community-admin-filter]');
+  const statusFilter = root.querySelector('[data-community-admin-status-filter]');
+  const typeFilter = root.querySelector('[data-community-admin-type-filter]');
+  const groupFilter = root.querySelector('[data-community-admin-group-filter]');
   const statsNode = root.querySelector('[data-community-admin-stats]');
   let allRows = [];
 
@@ -72,16 +74,24 @@
     }
 
     const counts = rows.reduce((acc, row) => {
-      acc[row.status] = (acc[row.status] || 0) + 1;
+      acc.total += 1;
+      acc.status[row.status] = (acc.status[row.status] || 0) + 1;
+      if (row.application_type === 'interest') {
+        acc.interest[row.group_key] = (acc.interest[row.group_key] || 0) + 1;
+      }
       return acc;
-    }, {});
+    }, {
+      total: 0,
+      status: {},
+      interest: {}
+    });
 
     statsNode.innerHTML = [
-      ['total', '전체', rows.length],
-      ['new', labels.new, counts.new || 0],
-      ['reviewing', labels.reviewing, counts.reviewing || 0],
-      ['contacted', labels.contacted, counts.contacted || 0],
-      ['matched', labels.matched, counts.matched || 0]
+      ['total', '전체 신청', counts.total],
+      ['interest-interview', '면접 관심', counts.interest.interview || 0],
+      ['interest-reading', '독서 관심', counts.interest.reading || 0],
+      ['interest-ai', 'AI 관심', counts.interest.ai || 0],
+      ['new', labels.new, counts.status.new || 0]
     ].map(([key, label, count]) => `
       <div class="admin-stat admin-stat-${key}">
         <span>${escapeHtml(label)}</span>
@@ -91,15 +101,23 @@
   };
 
   const getVisibleRows = () => {
-    const selectedStatus = filterSelect?.value || 'all';
-    if (selectedStatus === 'all') {
-      return allRows;
-    }
-    return allRows.filter((row) => row.status === selectedStatus);
+    const selectedStatus = statusFilter?.value || 'all';
+    const selectedType = typeFilter?.value || 'all';
+    const selectedGroup = groupFilter?.value || 'all';
+
+    return allRows.filter((row) => {
+      return (selectedStatus === 'all' || row.status === selectedStatus)
+        && (selectedType === 'all' || row.application_type === selectedType)
+        && (selectedGroup === 'all' || row.group_key === selectedGroup);
+    });
   };
 
   const renderVisibleRows = () => {
-    renderRows(getVisibleRows());
+    const visibleRows = getVisibleRows();
+    renderRows(visibleRows);
+    if (allRows.length) {
+      showStatus(`조건에 맞는 신청 ${visibleRows.length}건을 표시합니다.`, 'success');
+    }
   };
 
   const renderRows = (rows) => {
@@ -167,7 +185,6 @@
     allRows = data || [];
     renderStats(allRows);
     renderVisibleRows();
-    showStatus(`커뮤니티 신청 ${allRows.length}건을 불러왔습니다.`, 'success');
   };
 
   const updateStatus = async (item, nextStatus) => {
@@ -211,7 +228,9 @@
     updateStatus(select.closest('[data-application-id]'), select.value);
   });
 
-  filterSelect?.addEventListener('change', renderVisibleRows);
+  statusFilter?.addEventListener('change', renderVisibleRows);
+  typeFilter?.addEventListener('change', renderVisibleRows);
+  groupFilter?.addEventListener('change', renderVisibleRows);
   refreshButton?.addEventListener('click', loadApplications);
   window.addEventListener('barunjari:admin-ready', loadApplications);
 

@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260805-1
-script_version: 20260805-1
+css_version: 20260805-2
+script_version: 20260805-2
 ---
 <main class="admin-shell" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -45,13 +45,32 @@ script_version: 20260805-1
       <div class="admin-community-tools">
         <label class="admin-filter">
           상태
-          <select data-community-admin-filter>
+          <select data-community-admin-status-filter>
             <option value="all">전체</option>
             <option value="new">새 신청</option>
             <option value="reviewing">검토 중</option>
             <option value="contacted">연락 완료</option>
             <option value="matched">매칭/진행</option>
             <option value="closed">종료</option>
+          </select>
+        </label>
+        <label class="admin-filter">
+          유형
+          <select data-community-admin-type-filter>
+            <option value="all">전체</option>
+            <option value="interest">관심 등록</option>
+            <option value="host">모임 시작</option>
+            <option value="existing_group">기존 모임 등록</option>
+          </select>
+        </label>
+        <label class="admin-filter">
+          모임
+          <select data-community-admin-group-filter>
+            <option value="all">전체</option>
+            <option value="interview">면접 준비</option>
+            <option value="reading">독서모임</option>
+            <option value="ai">AI 사용</option>
+            <option value="other">기타</option>
           </select>
         </label>
         <button class="admin-btn admin-btn-outline" type="button" data-community-admin-refresh>새로고침</button>

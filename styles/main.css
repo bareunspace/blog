@@ -6489,7 +6489,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   box-shadow: 0 20px 34px rgba(30, 60, 45, .1);
 }
 .admin-card-wide {
-  width: min(100%, 980px);
+  width: min(100%, 1080px);
 }
 .admin-section-head {
   display: flex;
@@ -6501,7 +6501,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: .6rem;
+  gap: .55rem;
   flex-wrap: wrap;
 }
 .admin-filter {
@@ -6512,7 +6512,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font-weight: 900;
 }
 .admin-filter select {
-  min-width: 8.8rem;
+  min-width: 7.8rem;
   border: 1px solid #c9d6ce;
   border-radius: 10px;
   background: #fff;
@@ -6664,6 +6664,18 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-stat-new {
   border-color: #b8dfc4;
   background: #f0fbf4;
+}
+.admin-stat-interest-interview {
+  border-color: #b8dfc4;
+  background: #f0fbf4;
+}
+.admin-stat-interest-reading {
+  border-color: #d4c3f4;
+  background: #f8f4ff;
+}
+.admin-stat-interest-ai {
+  border-color: #bdd7f5;
+  background: #f1f7ff;
 }
 .admin-stat-reviewing {
   border-color: #f2d38d;
