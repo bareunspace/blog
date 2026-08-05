@@ -343,7 +343,6 @@
     ];
 
     const values = {};
-    const labelsText = fields.map(([key, label]) => `${label}: ${window.prompt(`${label}을(를) 수정하세요.`, row[key] || '') ?? ''}`).join('\n');
 
     for (const [key, label, defaultValue] of fields) {
       const nextValue = window.prompt(`${label}을(를) 수정하세요.`, defaultValue);
@@ -353,13 +352,16 @@
       values[key] = nextValue;
     }
 
-    const { error } = await client
-      .from('community_applications')
-      .update(values)
-      .eq('id', id);
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'update',
+        applicationId: id,
+        fields: values
+      }
+    });
 
-    if (error) {
-      showStatus('신청 내용을 수정하지 못했습니다.', 'error');
+    if (error || !data?.ok) {
+      showStatus('신청 내용을 수정하지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
       return;
     }
 

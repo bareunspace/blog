@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete') {
+  if (action === 'delete' || action === 'update') {
     const applicationId = body.applicationId ?? body.id;
     if (!applicationId) {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
@@ -45,22 +45,67 @@ Deno.serve(async (req) => {
         auth: { persistSession: false }
       });
 
+      if (action === 'delete') {
+        const { error } = await supabase
+          .from('community_applications')
+          .delete()
+          .eq('id', applicationId);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, deleted: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const allowedFields = new Set([
+        'applicant_name',
+        'contact_email',
+        'contact_phone',
+        'availability',
+        'existing_group_summary',
+        'message',
+        'status',
+        'admin_note',
+        'group_title',
+        'group_key',
+        'application_type'
+      ]);
+      const incomingFields = body.fields || {};
+      const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
+        if (allowedFields.has(key)) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {});
+
+      if (!Object.keys(fields).length) {
+        return new Response(JSON.stringify({ error: 'No editable fields provided' }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
       const { error } = await supabase
         .from('community_applications')
-        .delete()
+        .update(fields)
         .eq('id', applicationId);
 
       if (error) {
         throw error;
       }
 
-      return new Response(JSON.stringify({ ok: true, deleted: true }), {
+      return new Response(JSON.stringify({ ok: true, updated: true }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
-      return new Response(JSON.stringify({ error: 'Delete failed', detail }), {
+      const errorMessage = action === 'delete' ? 'Delete failed' : 'Update failed';
+      return new Response(JSON.stringify({ error: errorMessage, detail }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
