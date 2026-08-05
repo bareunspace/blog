@@ -313,6 +313,7 @@
       const existingGroupSummary = getValue(form, 'existing_group_summary');
       const targetGroupId = getValue(form, 'target_group_id');
       const targetGroupTitle = getValue(form, 'target_group_title');
+      const customGroupTitle = getValue(form, 'custom_group_title');
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
       if (!applicationType || !groupKey || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
@@ -333,7 +334,7 @@
       const payload = {
         application_type: applicationType,
         group_key: groupKey,
-        group_title: targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임',
+        group_title: customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임',
         target_group_id: targetGroupId ? Number(targetGroupId) : null,
         applicant_name: applicantName,
         contact_email: contactEmail,
