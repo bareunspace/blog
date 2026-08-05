@@ -43,6 +43,62 @@ script_version: 20260805-6
         <p class="admin-desc">접수된 신청을 바탕으로 실제 운영할 모임을 만들고 상태를 관리합니다.</p>
       </div>
     </div>
+    <div class="admin-community-edit-panel" data-community-group-edit-panel hidden>
+      <div class="admin-community-edit-head">
+        <h3>모임 정보 수정</h3>
+        <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-community-group-edit-cancel>닫기</button>
+      </div>
+      <form class="admin-community-edit-form" data-community-group-edit-form>
+        <input type="hidden" name="group_id" />
+        <div class="admin-form-row">
+          <label for="editGroupTitle">모임 이름</label>
+          <input id="editGroupTitle" name="title" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupKey">모임 분류</label>
+          <select id="editGroupKey" name="group_key">
+            <option value="interview">면접 준비</option>
+            <option value="reading">독서모임</option>
+            <option value="ai">AI 사용</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupStatus">운영 상태</label>
+          <select id="editGroupStatus" name="status">
+            <option value="draft">준비 중</option>
+            <option value="recruiting">모집 중</option>
+            <option value="scheduled">일정 확정</option>
+            <option value="closed">종료</option>
+          </select>
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupSchedule">일정</label>
+          <input id="editGroupSchedule" name="schedule_text" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupCapacity">정원</label>
+          <input id="editGroupCapacity" name="capacity" type="number" min="1" inputmode="numeric" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupHost">모임장</label>
+          <input id="editGroupHost" name="host_name" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editGroupOpenChat">오픈채팅 링크</label>
+          <input id="editGroupOpenChat" name="open_chat_url" type="url" />
+        </div>
+        <div class="admin-form-row admin-form-row-full">
+          <label for="editGroupDescription">모임 설명</label>
+          <textarea id="editGroupDescription" name="description" rows="3"></textarea>
+        </div>
+        <div class="admin-community-edit-actions">
+          <button class="admin-btn" type="submit">저장</button>
+          <button class="admin-btn admin-btn-outline" type="button" data-community-group-edit-cancel>취소</button>
+        </div>
+      </form>
+    </div>
+
     <form class="admin-group-form" data-community-group-form>
       <div class="admin-form-row">
         <label for="communityGroupTitle">모임 이름</label>

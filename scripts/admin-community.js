@@ -9,7 +9,10 @@
   const statusNode = root.querySelector('[data-community-admin-status]');
   const editPanel = root.querySelector('[data-community-edit-panel]');
   const editForm = root.querySelector('[data-community-edit-form]');
+  const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
+  const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
   const cancelEditButtons = root.querySelectorAll('[data-community-edit-cancel]');
+  const cancelGroupEditButtons = groupsRoot?.querySelectorAll('[data-community-group-edit-cancel]') || [];
   const refreshButton = root.querySelector('[data-community-admin-refresh]');
   const statusFilter = root.querySelector('[data-community-admin-status-filter]');
   const typeFilter = root.querySelector('[data-community-admin-type-filter]');
@@ -221,6 +224,7 @@
         </dl>
         ${group.description ? `<p class="admin-community-message"><strong>설명</strong>${escapeHtml(group.description)}</p>` : ''}
         <div class="admin-community-card-actions">
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-group>수정</button>
           <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-copy-open-chat-message ${group.open_chat_url ? '' : 'disabled'}>안내문 복사</button>
           <label class="admin-community-status-control">
             운영 상태
@@ -354,6 +358,15 @@
     }
   };
 
+  const closeGroupEditPanel = () => {
+    if (groupEditPanel) {
+      groupEditPanel.hidden = true;
+    }
+    if (groupEditForm) {
+      groupEditForm.reset();
+    }
+  };
+
   const openEditPanel = (item) => {
     const id = item?.dataset?.applicationId;
     const row = allRows.find((entry) => String(entry.id) === String(id));
@@ -381,6 +394,70 @@
     editForm.elements.message.value = row.message || '';
     editPanel.hidden = false;
     editPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const openGroupEditPanel = (item) => {
+    const id = item?.dataset?.groupId;
+    const group = allGroups.find((entry) => String(entry.id) === String(id));
+
+    if (!group || !groupEditPanel || !groupEditForm) {
+      return;
+    }
+
+    groupEditForm.elements.group_id.value = id;
+    groupEditForm.elements.title.value = group.title || '';
+    groupEditForm.elements.group_key.value = group.group_key || 'other';
+    groupEditForm.elements.status.value = group.status || 'draft';
+    groupEditForm.elements.schedule_text.value = group.schedule_text || '';
+    groupEditForm.elements.capacity.value = group.capacity || '';
+    groupEditForm.elements.host_name.value = group.host_name || '';
+    groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
+    groupEditForm.elements.description.value = group.description || '';
+    groupEditPanel.hidden = false;
+    groupEditPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const submitGroupEditForm = async (event) => {
+    event.preventDefault();
+
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+    const id = groupEditForm?.elements?.group_id?.value;
+
+    if (!client || !id) {
+      showGroupsStatus('수정할 모임 정보를 찾지 못했습니다.', 'error');
+      return;
+    }
+
+    const values = {
+      title: groupEditForm.elements.title.value.trim(),
+      group_key: groupEditForm.elements.group_key.value.trim(),
+      status: groupEditForm.elements.status.value.trim(),
+      schedule_text: groupEditForm.elements.schedule_text.value.trim(),
+      capacity: groupEditForm.elements.capacity.value ? Number(groupEditForm.elements.capacity.value) : null,
+      host_name: groupEditForm.elements.host_name.value.trim(),
+      open_chat_url: groupEditForm.elements.open_chat_url.value.trim(),
+      description: groupEditForm.elements.description.value.trim()
+    };
+
+    const { error } = await client
+      .from('community_groups')
+      .update(values)
+      .eq('id', id);
+
+    if (error) {
+      showGroupsStatus('모임 정보를 수정하지 못했습니다.', 'error');
+      return;
+    }
+
+    const group = allGroups.find((entry) => String(entry.id) === String(id));
+    if (group) {
+      Object.assign(group, values);
+    }
+
+    renderGroups(allGroups);
+    closeGroupEditPanel();
+    showGroupsStatus('모임 정보가 수정되었습니다.', 'success');
   };
 
   const submitEditForm = async (event) => {
@@ -634,6 +711,13 @@
   });
 
   groupsListNode?.addEventListener('click', (event) => {
+    const editButton = event.target.closest('[data-edit-group]');
+    if (editButton) {
+      const item = editButton.closest('[data-group-id]');
+      openGroupEditPanel(item);
+      return;
+    }
+
     const button = event.target.closest('[data-copy-open-chat-message]');
     if (!button) {
       return;
@@ -643,6 +727,10 @@
   });
 
   groupForm?.addEventListener('submit', createGroup);
+  groupEditForm?.addEventListener('submit', submitGroupEditForm);
+  cancelGroupEditButtons.forEach((button) => {
+    button.addEventListener('click', closeGroupEditPanel);
+  });
   editForm?.addEventListener('submit', submitEditForm);
   cancelEditButtons.forEach((button) => {
     button.addEventListener('click', closeEditPanel);
