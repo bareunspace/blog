@@ -386,10 +386,6 @@
     editForm.elements.contact_email.value = row.contact_email || '';
     editForm.elements.contact_phone.value = row.contact_phone || '';
     editForm.elements.availability.value = row.availability || '';
-    editForm.elements.schedule_text.value = row.schedule_text || '';
-    editForm.elements.capacity.value = row.capacity || '';
-    editForm.elements.host_name.value = row.host_name || '';
-    editForm.elements.open_chat_url.value = row.open_chat_url || '';
     editForm.elements.existing_group_summary.value = row.existing_group_summary || '';
     editForm.elements.description.value = row.description || '';
     editForm.elements.admin_note.value = row.admin_note || '';
@@ -483,15 +479,13 @@
       contact_email: editForm.elements.contact_email.value.trim(),
       contact_phone: editForm.elements.contact_phone.value.trim(),
       availability: editForm.elements.availability.value.trim(),
-      schedule_text: editForm.elements.schedule_text.value.trim(),
-      capacity: editForm.elements.capacity.value ? Number(editForm.elements.capacity.value) : null,
-      host_name: editForm.elements.host_name.value.trim(),
-      open_chat_url: editForm.elements.open_chat_url.value.trim(),
       existing_group_summary: editForm.elements.existing_group_summary.value.trim(),
       description: editForm.elements.description.value.trim(),
       admin_note: editForm.elements.admin_note.value.trim(),
       message: editForm.elements.message.value.trim()
     };
+
+    console.log('submitEditForm payload', { applicationId: id, values });
 
     const { data, error } = await client.functions.invoke('community-application-notify', {
       body: {
@@ -502,7 +496,8 @@
     });
 
     if (error || !data?.ok) {
-      showStatus('신청 내용을 수정하지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
+      console.error('submitEditForm failed', { error, data });
+      showStatus(`신청 내용을 수정하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
       return;
     }
 

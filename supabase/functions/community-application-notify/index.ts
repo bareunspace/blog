@@ -138,7 +138,8 @@ Deno.serve(async (req) => {
         'admin_note',
         'group_title',
         'group_key',
-        'application_type'
+        'application_type',
+        'description'
       ]);
       const incomingFields = body.fields || {};
       const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
