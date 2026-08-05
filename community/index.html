@@ -11,8 +11,8 @@ sitemap: false
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
 og_image_alt: 바른자리에서 소규모 모임을 준비하는 공간
 preload_image: images/bucheon-small-group-meeting-space.webp
-css_version: 20260805-1
-script_version: 20260711-4
+css_version: 20260805-2
+script_version: 20260805-2
 ---
 
 <main class="about-page community-page">
@@ -54,6 +54,8 @@ script_version: 20260711-4
         </div>
         <p>모임장이 먼저 신청할 수도 있고, 관심 있는 사람들이 모인 뒤 그중 한 사람이 모임장이 될 수도 있습니다.</p>
       </div>
+
+      <div class="community-live-groups" data-community-live-groups aria-label="현재 모집 중인 실제 모임"></div>
 
       <div class="community-group-grid" aria-label="커뮤니티 모임 목록">
         <article class="community-group-card community-group-card-featured">
@@ -187,6 +189,8 @@ script_version: 20260711-4
         <div class="community-host-actions" id="forms-needed">
           <form class="community-application-form" data-community-application-form novalidate>
             <input type="text" name="website" class="community-hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="target_group_id" />
+            <input type="hidden" name="target_group_title" />
             <div class="community-form-row">
               <label for="communityIndexType">신청 유형</label>
               <select id="communityIndexType" name="application_type" required>

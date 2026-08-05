@@ -45,6 +45,7 @@ Deno.serve(async (req) => {
     `신청 유형: ${application.application_type_label || application.application_type || '-'}`,
     `모임 분류: ${groupLabel}`,
     `모임: ${application.group_title || '-'}`,
+    `대상 모임 ID: ${application.target_group_id || '-'}`,
     `신청자: ${application.applicant_name || '-'}`,
     `이메일: ${application.contact_email || '-'}`,
     `전화: ${application.contact_phone || '-'}`,

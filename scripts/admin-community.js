@@ -168,6 +168,7 @@
           <div><dt>전화</dt><dd>${escapeHtml(row.contact_phone || '-')}</dd></div>
           <div><dt>가능 일정</dt><dd>${escapeHtml(row.availability || '-')}</dd></div>
           <div><dt>신청일</dt><dd>${escapeHtml(formatDate(row.created_at))}</dd></div>
+          <div><dt>대상 모임</dt><dd>${escapeHtml(row.target_group_id || '-')}</dd></div>
         </dl>
         ${row.existing_group_summary ? `<p class="admin-community-message"><strong>기존 모임</strong>${escapeHtml(row.existing_group_summary)}</p>` : ''}
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}

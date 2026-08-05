@@ -1,8 +1,9 @@
 (() => {
   const configNode = document.getElementById('communityApplicationConfig');
   const forms = Array.from(document.querySelectorAll('[data-community-application-form]'));
+  const liveGroupsNode = document.querySelector('[data-community-live-groups]');
 
-  if (!configNode || !forms.length) {
+  if (!configNode || (!forms.length && !liveGroupsNode)) {
     return;
   }
 
@@ -51,6 +52,18 @@
     existing_group: '기존 모임 등록'
   };
 
+  const groupShortLabels = {
+    interview: '면접 준비',
+    reading: '독서모임',
+    ai: 'AI 사용',
+    other: '기타'
+  };
+
+  const statusLabels = {
+    recruiting: '모집 중',
+    scheduled: '일정 확정'
+  };
+
   const getValue = (form, name) => String(new FormData(form).get(name) || '').trim();
 
   const setSubmitting = (form, isSubmitting) => {
@@ -73,6 +86,132 @@
     }
   };
 
+  const escapeHtml = (value) => String(value || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+
+  const renderLiveGroups = (groups) => {
+    if (!liveGroupsNode) {
+      return;
+    }
+
+    if (!groups.length) {
+      liveGroupsNode.innerHTML = `
+        <div class="community-live-empty">
+          <strong>현재 공개 모집 중인 모임은 준비 중입니다.</strong>
+          <span>관심 등록을 남겨주시면 인원이 모이는 대로 먼저 안내드릴게요.</span>
+        </div>
+      `;
+      return;
+    }
+
+    liveGroupsNode.innerHTML = `
+      <div class="community-live-heading">
+        <h3>지금 참여할 수 있는 모임</h3>
+        <p>운영자가 일정과 내용을 확인한 실제 모임입니다.</p>
+      </div>
+      <div class="community-group-grid community-live-grid">
+        ${groups.map((group) => `
+          <article class="community-group-card community-live-card">
+            <div class="community-group-topline">
+              <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
+              <span class="community-status">${escapeHtml(statusLabels[group.status] || group.status)}</span>
+            </div>
+            <h3>${escapeHtml(group.title)}</h3>
+            ${group.description ? `<p>${escapeHtml(group.description)}</p>` : '<p>자세한 진행 방식은 신청 후 개별 안내드립니다.</p>'}
+            <dl class="community-group-meta">
+              <div>
+                <dt>일정</dt>
+                <dd>${escapeHtml(group.schedule_text || '개별 안내')}</dd>
+              </div>
+              <div>
+                <dt>정원</dt>
+                <dd>${escapeHtml(group.capacity ? `${group.capacity}명` : '협의')}</dd>
+              </div>
+              <div>
+                <dt>모임장</dt>
+                <dd>${escapeHtml(group.host_name || '바른자리 확인 중')}</dd>
+              </div>
+            </dl>
+            <div class="community-card-actions">
+              <button
+                class="btn-primary community-card-btn"
+                type="button"
+                data-community-group-join
+                data-group-id="${escapeHtml(group.id)}"
+                data-group-key="${escapeHtml(group.group_key)}"
+                data-group-title="${escapeHtml(group.title)}"
+              >참여 관심 등록</button>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+  };
+
+  const loadLiveGroups = async () => {
+    if (!liveGroupsNode) {
+      return;
+    }
+
+    const { data, error } = await client
+      .from('community_groups')
+      .select('id, group_key, title, description, status, host_name, schedule_text, capacity')
+      .in('status', ['recruiting', 'scheduled'])
+      .order('created_at', { ascending: false })
+      .limit(12);
+
+    if (error) {
+      liveGroupsNode.innerHTML = '';
+      return;
+    }
+
+    renderLiveGroups(data || []);
+  };
+
+  const focusFormForGroup = (button) => {
+    const form = forms[0];
+    if (!form) {
+      return;
+    }
+
+    const groupId = button.dataset.groupId || '';
+    const groupKey = button.dataset.groupKey || 'other';
+    const groupTitle = button.dataset.groupTitle || groupLabels[groupKey] || '기타 목적형 모임';
+
+    if (form.elements.application_type) {
+      form.elements.application_type.value = 'interest';
+    }
+    if (form.elements.group_key) {
+      form.elements.group_key.value = groupKey;
+    }
+    if (form.elements.target_group_id) {
+      form.elements.target_group_id.value = groupId;
+    }
+    if (form.elements.target_group_title) {
+      form.elements.target_group_title.value = groupTitle;
+    }
+    if (form.elements.message && !form.elements.message.value.trim()) {
+      form.elements.message.value = `${groupTitle} 참여에 관심 있습니다.`;
+    }
+
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    showStatus(form, `${groupTitle} 참여 관심 등록으로 신청할 수 있습니다.`, 'success');
+  };
+
+  liveGroupsNode?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-community-group-join]');
+    if (!button) {
+      return;
+    }
+    focusFormForGroup(button);
+  });
+
+  loadLiveGroups();
+
   forms.forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -91,6 +230,8 @@
       const availability = getValue(form, 'availability');
       const message = getValue(form, 'message');
       const existingGroupSummary = getValue(form, 'existing_group_summary');
+      const targetGroupId = getValue(form, 'target_group_id');
+      const targetGroupTitle = getValue(form, 'target_group_title');
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
       if (!applicationType || !groupKey || !applicantName || !contactEmail || !privacyConsent) {
@@ -101,7 +242,8 @@
       const payload = {
         application_type: applicationType,
         group_key: groupKey,
-        group_title: groupLabels[groupKey] || '기타 목적형 모임',
+        group_title: targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임',
+        target_group_id: targetGroupId ? Number(targetGroupId) : null,
         applicant_name: applicantName,
         contact_email: contactEmail,
         contact_phone: contactPhone || null,

@@ -4509,6 +4509,40 @@ main.community-page .community-host-actions .btn-primary,
 main.community-page .community-host-actions .btn-outline {
   text-align: center;
 }
+main.community-page .community-live-groups {
+  margin: 1rem 0 1.2rem;
+}
+main.community-page .community-live-heading {
+  margin-bottom: .8rem;
+}
+main.community-page .community-live-heading h3 {
+  color: #173726;
+  font-size: 1.08rem;
+}
+main.community-page .community-live-heading p {
+  color: #4b5563;
+  font-size: .88rem;
+}
+main.community-page .community-live-empty {
+  display: grid;
+  gap: .25rem;
+  border: 1px dashed #cddbd2;
+  border-radius: 14px;
+  padding: .9rem 1rem;
+  background: rgba(255,255,255,.84);
+  color: #4b5563;
+}
+main.community-page .community-live-empty strong {
+  color: #173726;
+}
+main.community-page .community-live-card {
+  border-color: #b8dfc4;
+  background: linear-gradient(180deg, #ffffff 0%, #f5fbf7 100%);
+}
+main.community-page .community-card-actions button.community-card-btn {
+  border: 0;
+  cursor: pointer;
+}
 main.community-page .community-host-actions a[aria-disabled="true"] {
   opacity: .72;
   cursor: not-allowed;
