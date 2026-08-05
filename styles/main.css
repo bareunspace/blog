@@ -4262,46 +4262,72 @@ main.about-page #contact .section-inner > p {
 
 main.community-page #home {
   background-color: #173428;
-  background-image: linear-gradient(rgba(13, 33, 25, .58), rgba(13, 33, 25, .62)), url('../images/bucheon-small-group-meeting-space.webp');
+  background-image:
+    radial-gradient(circle at 14% 22%, rgba(255, 219, 149, .18) 0%, transparent 26%),
+    radial-gradient(circle at 84% 14%, rgba(116, 197, 160, .16) 0%, transparent 28%),
+    linear-gradient(rgba(13, 33, 25, .68), rgba(13, 33, 25, .72)),
+    url('../images/bucheon-small-group-meeting-space.webp');
   background-position: center;
   background-size: cover;
-  min-height: clamp(440px, 62vh, 620px);
+  min-height: clamp(520px, 70vh, 760px);
 }
 main.community-page .section-inner {
-  max-width: 1040px;
+  max-width: 1120px;
 }
 main.community-page .community-hero .section-inner {
-  max-width: 780px;
+  max-width: 1120px;
 }
-main.community-page .community-hero-benefits {
-  margin: 1rem auto 1.1rem;
-  max-width: 620px;
-  padding: .95rem 1rem;
+main.community-page .community-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+main.community-page .community-hero-copy {
+  max-width: 700px;
+}
+main.community-page .community-hero-copy .section-title {
+  margin-bottom: .7rem;
+}
+main.community-page .community-hero-copy .hero-subtitle {
+  max-width: 58ch;
+  color: rgba(255,255,255,.9);
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+main.community-page .community-hero-spotlight {
+  display: grid;
+  gap: .85rem;
+}
+main.community-page .community-hero-spotlight-card {
+  padding: 1.05rem;
   border: 1px solid rgba(255,255,255,.22);
-  border-radius: 14px;
+  border-radius: 20px;
   background: rgba(255,255,255,.12);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
   color: #f3fbf6;
 }
-main.community-page .community-hero-benefits p {
-  margin: 0 0 .42rem;
-  font-size: .85rem;
-  font-weight: 800;
+main.community-page .community-spotlight-label {
+  margin: 0 0 .5rem;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #d8f1e1;
 }
-main.community-page .community-hero-benefits ul {
+main.community-page .community-hero-benefits {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 1.05rem;
   display: grid;
-  gap: .3rem;
-  font-size: .86rem;
-  line-height: 1.6;
+  gap: .45rem;
+  font-size: .9rem;
+  line-height: 1.7;
 }
 main.community-page .community-hero-points {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: .5rem;
-  margin: 1rem 0 1.45rem;
+  margin: 1rem 0 1.35rem;
   padding: 0;
   list-style: none;
 }
@@ -4316,11 +4342,34 @@ main.community-page .community-hero-points li {
   line-height: 1.35;
   backdrop-filter: blur(3px);
 }
+main.community-page .community-hero-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+}
+main.community-page .community-hero-mini-grid article {
+  min-height: 122px;
+  padding: .9rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  background: rgba(6, 18, 13, .34);
+  color: #f6fbf8;
+}
+main.community-page .community-hero-mini-grid strong {
+  display: block;
+  margin-bottom: .32rem;
+  font-size: 1rem;
+}
+main.community-page .community-hero-mini-grid span {
+  font-size: .84rem;
+  line-height: 1.65;
+  color: rgba(244,251,246,.82);
+}
 main.community-page .community-brand-philosophy {
   display: grid;
   gap: .28rem;
-  margin: 1.2rem auto 0;
-  max-width: 520px;
+  margin: 1.2rem 0 0;
+  max-width: 560px;
   padding: .9rem 1rem;
   border: 1px solid rgba(255,255,255,.24);
   border-radius: 14px;
@@ -4331,6 +4380,34 @@ main.community-page .community-brand-philosophy {
 }
 main.community-page .community-brand-philosophy p {
   margin: 0;
+}
+main.community-page .community-proof-strip {
+  margin-top: -2rem;
+  position: relative;
+  z-index: 2;
+}
+main.community-page .community-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+}
+main.community-page .community-proof-grid article {
+  padding: 1rem 1.05rem;
+  border: 1px solid #d8e6dd;
+  border-radius: 18px;
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 16px 30px rgba(17,24,39,.08);
+}
+main.community-page .community-proof-grid strong {
+  display: block;
+  margin-bottom: .28rem;
+  color: #173726;
+  font-size: .95rem;
+}
+main.community-page .community-proof-grid p {
+  color: #4b5563;
+  font-size: .86rem;
+  line-height: 1.65;
 }
 main.community-page .community-section-heading {
   display: flex;
@@ -4356,16 +4433,16 @@ main.community-page .community-group-grid {
 main.community-page .community-group-card {
   display: flex;
   flex-direction: column;
-  min-height: 360px;
-  padding: 1.15rem;
+  min-height: 420px;
+  padding: 1.2rem;
   border: 1px solid #dce8e1;
-  border-radius: 16px;
+  border-radius: 18px;
   background: #fff;
-  box-shadow: 0 12px 28px rgba(17,24,39,.07);
+  box-shadow: 0 16px 34px rgba(17,24,39,.07);
 }
 main.community-page .community-group-card-featured {
   border-color: rgba(45,106,79,.32);
-  background: linear-gradient(160deg, #ffffff 0%, #f3faf5 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #f2fbf5 52%, #edf8f2 100%);
   box-shadow: 0 16px 34px rgba(31,86,61,.12);
 }
 main.community-page .community-group-topline {
@@ -4406,6 +4483,30 @@ main.community-page .community-group-card p {
   color: #4b5563;
   font-size: .9rem;
   line-height: 1.7;
+}
+main.community-page .community-card-highlights {
+  display: grid;
+  gap: .38rem;
+  margin: .15rem 0 .95rem;
+  padding: 0;
+  list-style: none;
+}
+main.community-page .community-card-highlights li {
+  position: relative;
+  padding-left: 1rem;
+  color: #314136;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+main.community-page .community-card-highlights li::before {
+  content: '';
+  position: absolute;
+  top: .55rem;
+  left: 0;
+  width: .42rem;
+  height: .42rem;
+  border-radius: 999px;
+  background: #2d6a4f;
 }
 main.community-page .community-group-meta {
   display: grid;
@@ -4459,6 +4560,29 @@ main.community-page .community-flow-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: .9rem;
   margin-top: 1rem;
+}
+main.community-page .community-live-guide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+  margin-bottom: 1rem;
+}
+main.community-page .community-live-guide article {
+  padding: .9rem 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: #fbfdfc;
+}
+main.community-page .community-live-guide strong {
+  display: block;
+  margin-bottom: .24rem;
+  color: #173726;
+  font-size: .86rem;
+}
+main.community-page .community-live-guide p {
+  color: #4b5563;
+  font-size: .82rem;
+  line-height: 1.65;
 }
 main.community-page .community-flow-note {
   margin: .2rem 0 1rem;
@@ -4581,6 +4705,29 @@ main.community-page .community-host-copy p:not(.section-label) {
   color: #374151;
   line-height: 1.75;
 }
+main.community-page .community-role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 1rem 0;
+}
+main.community-page .community-role-grid article {
+  padding: .9rem 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.78);
+}
+main.community-page .community-role-grid strong {
+  display: block;
+  margin-bottom: .26rem;
+  color: #173726;
+  font-size: .88rem;
+}
+main.community-page .community-role-grid p {
+  color: #4b5563;
+  font-size: .82rem;
+  line-height: 1.65;
+}
 main.community-page .community-host-actions {
   display: grid;
   gap: .65rem;
@@ -4660,8 +4807,9 @@ main.community-page .community-application-form {
   padding: 1rem;
   width: 100%;
   border: 1px solid #dce8e1;
-  border-radius: 14px;
+  border-radius: 16px;
   background: rgba(255,255,255,.88);
+  box-shadow: 0 14px 28px rgba(17,24,39,.06);
 }
 main.community-page .community-form-row {
   display: grid;
@@ -4785,6 +4933,23 @@ main.community-page .community-form-link {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+main.community-page .community-form-assurance {
+  padding: .9rem 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.82);
+  color: #4b5563;
+}
+main.community-page .community-form-assurance p {
+  font-size: .84rem;
+  line-height: 1.68;
+}
+main.community-page .community-form-assurance p + p {
+  margin-top: .3rem;
+}
+main.community-page .community-form-assurance strong {
+  color: #173726;
+}
 main.community-page .community-principle-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4800,6 +4965,12 @@ main.community-page .community-principle-card {
 }
 
 @media (max-width: 960px) {
+  main.community-page .community-hero-layout,
+  main.community-page .community-proof-grid,
+  main.community-page .community-live-guide,
+  main.community-page .community-role-grid {
+    grid-template-columns: 1fr;
+  }
   main.community-page .community-section-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -4810,6 +4981,9 @@ main.community-page .community-principle-card {
   }
   main.community-page .community-group-grid,
   main.community-page .community-flow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main.community-page .community-hero-mini-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   main.community-page .community-application-form {
@@ -4833,8 +5007,11 @@ main.community-page .community-principle-card {
 
 @media (max-width: 640px) {
   main.community-page #home {
-    min-height: clamp(420px, 58vh, 560px);
+    min-height: clamp(500px, 62vh, 680px);
     background-position: 56% center;
+  }
+  main.community-page .community-proof-strip {
+    margin-top: -1rem;
   }
   main.community-page .community-hero-points {
     gap: .42rem;
@@ -4845,6 +5022,9 @@ main.community-page .community-principle-card {
   }
   main.community-page .community-hero .section-inner {
     padding-inline: 1rem;
+  }
+  main.community-page .community-hero-mini-grid {
+    grid-template-columns: 1fr;
   }
   main.community-page .community-hero-points li {
     font-size: .76rem;
@@ -4863,6 +5043,12 @@ main.community-page .community-principle-card {
     min-height: 0;
     padding: 1rem;
     border-radius: 14px;
+  }
+  main.community-page .community-group-card p,
+  main.community-page .community-card-highlights li,
+  main.community-page .community-live-guide p,
+  main.community-page .community-proof-grid p {
+    font-size: .84rem;
   }
   main.community-page .community-group-topline {
     align-items: flex-start;
