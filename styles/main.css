@@ -4512,7 +4512,7 @@ main.community-page .community-flow-details ol {
 }
 main.community-page .community-host-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+  grid-template-columns: minmax(0, .95fr) minmax(420px, 1.05fr);
   gap: 1rem;
   align-items: center;
   padding: clamp(1.1rem, 2.5vw, 1.6rem);
@@ -4532,6 +4532,7 @@ main.community-page .community-host-copy p:not(.section-label) {
 main.community-page .community-host-actions {
   display: grid;
   gap: .65rem;
+  width: 100%;
 }
 main.community-page .community-form-note {
   padding: .72rem .8rem;
@@ -4605,6 +4606,7 @@ main.community-page .community-application-form {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: .72rem;
   padding: 1rem;
+  width: 100%;
   border: 1px solid #dce8e1;
   border-radius: 14px;
   background: rgba(255,255,255,.88);

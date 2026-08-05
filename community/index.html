@@ -11,8 +11,8 @@ sitemap: false
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
 og_image_alt: 바른자리에서 소규모 모임을 준비하는 공간
 preload_image: images/bucheon-small-group-meeting-space.webp
-css_version: 20260805-10
-script_version: 20260805-10
+css_version: 20260805-11
+script_version: 20260805-11
 ---
 
 <main class="about-page community-page">
@@ -256,19 +256,19 @@ script_version: 20260805-10
                 </label>
               </div>
             </div>
-            <details class="community-form-optional community-form-row-full">
-              <summary>추가 정보 입력 (선택)</summary>
+            <div class="community-form-optional community-form-row-full">
+              <p class="community-inline-label">추가 입력 (필수)</p>
               <div class="community-form-optional-grid">
                 <div class="community-form-row">
-                  <label for="communityIndexPhone">전화번호 (선택)</label>
-                  <input id="communityIndexPhone" name="contact_phone" type="tel" autocomplete="tel" />
+                  <label for="communityIndexPhone">전화번호</label>
+                  <input id="communityIndexPhone" name="contact_phone" type="tel" autocomplete="tel" required />
                 </div>
                 <div class="community-form-row community-form-row-full">
-                  <label for="communityIndexMessage">남기고 싶은 말 (선택)</label>
-                  <textarea id="communityIndexMessage" name="message" rows="3" placeholder="참여 이유, 원하는 진행 방식 등을 적어 주세요."></textarea>
+                  <label for="communityIndexMessage">남기고 싶은 말</label>
+                  <textarea id="communityIndexMessage" name="message" rows="3" placeholder="참여 이유, 원하는 진행 방식 등을 적어 주세요." required></textarea>
                 </div>
               </div>
-            </details>
+            </div>
             <label class="community-consent">
               <input type="checkbox" name="privacy_consent" required />
               <span>신청 확인과 연락을 위한 개인정보 수집 및 이용에 동의합니다.</span>
