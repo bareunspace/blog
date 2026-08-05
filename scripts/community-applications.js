@@ -132,7 +132,7 @@
   const getValue = (form, name) => String(new FormData(form).get(name) || '').trim();
 
   const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  const isValidPhone = (value) => /^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(value.replace(/\s+/g, ''));
+  const isValidPhone = (value) => /^(\+?82[-\s]?)?0?\d{1,2}[-\s]?\d{3,4}[-\s]?\d{4}$/.test(String(value || '').trim());
 
   const setSubmitting = (form, isSubmitting) => {
     form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
@@ -141,7 +141,16 @@
     });
   };
 
-  const normalizePhone = (value) => String(value || '').replace(/[^0-9]/g, '');
+  const normalizePhone = (value) => {
+    const digits = String(value || '').replace(/[^0-9]/g, '');
+    if (!digits) {
+      return '';
+    }
+    if (digits.startsWith('82')) {
+      return `0${digits.slice(2)}`;
+    }
+    return digits;
+  };
 
   const showOwnerStatus = (message, kind = 'error') => {
     if (!ownerStatusNode) {
@@ -611,8 +620,8 @@
       return;
     }
 
-    if (!/^0\d{8,10}$/.test(contactPhone)) {
-      showOwnerStatus('전화번호 형식을 확인해 주세요. 예: 01012345678');
+    if (!isValidPhone(contactPhoneRaw)) {
+      showOwnerStatus('전화번호 형식을 확인해 주세요. 예: 010-1234-5678 또는 +82 10-1234-5678');
       return;
     }
 

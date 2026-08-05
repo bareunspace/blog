@@ -53,7 +53,30 @@ Deno.serve(async (req) => {
         auth: { persistSession: false }
       });
 
-      const normalizePhone = (value: unknown) => String(value || '').replace(/[^0-9]/g, '');
+      const normalizePhone = (value: unknown) => {
+        const digits = String(value || '').replace(/[^0-9]/g, '');
+        if (!digits) {
+          return '';
+        }
+        if (digits.startsWith('82')) {
+          return `0${digits.slice(2)}`;
+        }
+        return digits;
+      };
+      const isSamePhone = (left: unknown, right: unknown) => {
+        const a = normalizePhone(left);
+        const b = normalizePhone(right);
+        if (!a || !b) {
+          return false;
+        }
+        if (a === b) {
+          return true;
+        }
+        if (a.length >= 8 && b.length >= 8 && (a.endsWith(b) || b.endsWith(a))) {
+          return true;
+        }
+        return false;
+      };
       const adminEmailsRaw = Deno.env.get('COMMUNITY_ADMIN_EMAILS') || 'keunyong@gmail.com,bareunjari@gmail.com';
       const adminEmails = new Set(
         adminEmailsRaw
@@ -181,8 +204,7 @@ Deno.serve(async (req) => {
         }
 
         const rowEmail = String(row.contact_email || '').trim().toLowerCase();
-        const rowPhone = normalizePhone(row.contact_phone);
-        if (rowEmail !== contactEmail || rowPhone !== contactPhone) {
+        if (rowEmail !== contactEmail || !isSamePhone(row.contact_phone, contactPhone)) {
           throw new Error('본인 확인에 실패했습니다. 이메일과 전화번호를 확인해 주세요.');
         }
 
@@ -217,7 +239,7 @@ Deno.serve(async (req) => {
           throw error;
         }
 
-        const ownedRows = (rows || []).filter((row) => normalizePhone(row.contact_phone) === contactPhone);
+        const ownedRows = (rows || []).filter((row) => isSamePhone(row.contact_phone, contactPhone));
         const sourceIds = ownedRows.map((row) => Number(row.id)).filter((id) => Number.isFinite(id));
         const { data: groups, error: groupError } = sourceIds.length
           ? await supabase
