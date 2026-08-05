@@ -58,14 +58,20 @@ def fetch_rss(rss_url: str) -> bytes:
         {
             "User-Agent": "Mozilla/5.0 (compatible; BareunJariRSSSync/1.0)",
             "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+            "Referer": "https://blog.naver.com/",
+            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
         },
         {
             "User-Agent": "Mozilla/5.0",
             "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+            "Referer": "https://blog.naver.com/",
+            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
         },
         {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
             "Accept": "application/xml, text/xml;q=0.9, */*;q=0.8",
+            "Referer": "https://blog.naver.com/",
+            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
         },
     ]
 
@@ -90,48 +96,48 @@ def parse_items(xml_bytes: bytes) -> list[dict[str, str]]:
     except ET.ParseError:
         root = None
 
-    if root is not None:
-        channel = root.find("channel")
-        if channel is None:
-            channel = root
+    if root is None:
+        return []
 
-        posts: list[dict[str, str]] = []
-        items = channel.findall("item") if channel is not None else []
-        for item in items:
-            title = (item.findtext("title") or "").strip()
-            guid = (item.findtext("guid") or item.findtext("link") or "").strip()
-            category = (item.findtext("category") or "블로그").strip()
-            pub_date = (item.findtext("pubDate") or "").strip()
-            desc = (item.findtext("description") or "").strip()
+    channel = root.find("channel")
+    if channel is None:
+        channel = root
 
-            if not title or not guid:
-                continue
+    posts: list[dict[str, str]] = []
+    items = [elem for elem in channel.iter() if elem.tag.endswith("item")]
+    for item in items:
+        title = (item.findtext("title") or item.findtext("{*}title") or "").strip()
+        guid = (item.findtext("guid") or item.findtext("link") or item.findtext("{*}guid") or item.findtext("{*}link") or "").strip()
+        category = (item.findtext("category") or item.findtext("{*}category") or "블로그").strip()
+        pub_date = (item.findtext("pubDate") or item.findtext("{*}pubDate") or "").strip()
+        desc = (item.findtext("description") or item.findtext("{*}description") or "").strip()
 
-            try:
-                date_value = parsedate_to_datetime(pub_date).date().isoformat()
-            except Exception:
-                date_value = ""
+        if not title or not guid:
+            continue
 
-            summary_raw = strip_html(desc)
-            summary = summary_raw[:180].rstrip()
-            if len(summary_raw) > 180:
-                summary += "..."
-            image_url = extract_image_url(desc)
+        try:
+            date_value = parsedate_to_datetime(pub_date).date().isoformat()
+        except Exception:
+            date_value = ""
 
-            posts.append(
-                {
-                    "title": title,
-                    "url": guid,
-                    "date": date_value,
-                    "category": category or "블로그",
-                    "summary": summary or "네이버 블로그 글 원문을 확인해 주세요.",
-                    "image_url": image_url,
-                }
-            )
+        summary_raw = strip_html(desc)
+        summary = summary_raw[:180].rstrip()
+        if len(summary_raw) > 180:
+            summary += "..."
+        image_url = extract_image_url(desc)
 
-        return posts
+        posts.append(
+            {
+                "title": title,
+                "url": guid,
+                "date": date_value,
+                "category": category or "블로그",
+                "summary": summary or "네이버 블로그 글 원문을 확인해 주세요.",
+                "image_url": image_url,
+            }
+        )
 
-    return []
+    return posts
 
 
 def render_yaml(blog_name: str, blog_url: str, posts: list[dict[str, str]]) -> str:
