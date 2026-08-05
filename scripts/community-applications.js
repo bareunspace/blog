@@ -95,6 +95,24 @@
     }
   };
 
+  const toggleCustomTitleField = (form) => {
+    const customTitleRow = form.querySelector('.community-form-row-custom-title');
+    const groupSelect = form.elements.group_key;
+    if (!customTitleRow || !groupSelect) {
+      return;
+    }
+
+    const shouldShow = groupSelect.value === 'other';
+    customTitleRow.hidden = !shouldShow;
+    const customTitleInput = form.elements.custom_group_title;
+    if (customTitleInput) {
+      customTitleInput.required = shouldShow;
+      if (!shouldShow) {
+        customTitleInput.value = '';
+      }
+    }
+  };
+
   const getValue = (form, name) => String(new FormData(form).get(name) || '').trim();
 
   const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -291,6 +309,12 @@
   loadLiveGroups();
 
   forms.forEach((form) => {
+    const groupSelect = form.elements.group_key;
+    if (groupSelect) {
+      groupSelect.addEventListener('change', () => toggleCustomTitleField(form));
+    }
+    toggleCustomTitleField(form);
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
