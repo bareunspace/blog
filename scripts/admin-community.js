@@ -447,7 +447,7 @@
     });
 
     if (error || !data?.ok) {
-      console.error('submitGroupEditForm failed', { error, data });
+      console.error('submitGroupEditForm failed', error, data);
       showGroupsStatus(`모임 정보를 수정하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
       return;
     }
@@ -559,12 +559,16 @@
       return;
     }
 
-    const { error } = await client
-      .from('community_groups')
-      .update({ status: nextStatus })
-      .eq('id', id);
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'update-group',
+        groupId: id,
+        values: { status: nextStatus }
+      }
+    });
 
-    if (error) {
+    if (error || !data?.ok) {
+      console.error('updateGroupStatus failed', error, data);
       showGroupsStatus('모임 상태를 변경하지 못했습니다.', 'error');
       return;
     }
@@ -631,11 +635,15 @@
 
     showGroupsStatus('모임을 저장하는 중입니다.', 'success');
 
-    const { error } = await client
-      .from('community_groups')
-      .insert(payload);
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'create-group',
+        values: payload
+      }
+    });
 
-    if (error) {
+    if (error || !data?.ok) {
+      console.error('createGroup failed', error, data);
       showGroupsStatus('모임을 저장하지 못했습니다.', 'error');
       return;
     }

@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group') {
+  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group' || action === 'create-group') {
     const applicationId = body.applicationId ?? body.id;
     if (!applicationId) {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
@@ -56,6 +56,49 @@ Deno.serve(async (req) => {
         }
 
         return new Response(JSON.stringify({ ok: true, deleted: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'create-group') {
+        const values = body.values || body.payload || {};
+        const allowedGroupFields = new Set([
+          'title',
+          'group_key',
+          'status',
+          'schedule_text',
+          'capacity',
+          'host_name',
+          'open_chat_url',
+          'description',
+          'source_application_id'
+        ]);
+        const fields = Object.entries(values).reduce<Record<string, unknown>>((acc, [key, value]) => {
+          if (allowedGroupFields.has(key)) {
+            acc[key] = value;
+          }
+          return acc;
+        }, {});
+
+        if (!fields.title) {
+          return new Response(JSON.stringify({ error: 'Missing group title' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { data, error } = await supabase
+          .from('community_groups')
+          .insert(fields)
+          .select('id')
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, created: true, groupId: data?.id }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
