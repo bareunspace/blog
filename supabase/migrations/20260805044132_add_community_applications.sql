@@ -57,7 +57,10 @@ on public.community_applications
 for select
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );
 
 drop policy if exists "community_applications_admin_update" on public.community_applications;
@@ -66,10 +69,16 @@ on public.community_applications
 for update
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 )
 with check (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );
 
 drop policy if exists "community_applications_admin_delete" on public.community_applications;
@@ -78,5 +87,8 @@ on public.community_applications
 for delete
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );

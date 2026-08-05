@@ -37,7 +37,10 @@ on public.community_groups
 for select
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );
 
 drop policy if exists "community_groups_admin_insert" on public.community_groups;
@@ -46,7 +49,10 @@ on public.community_groups
 for insert
 to authenticated
 with check (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );
 
 drop policy if exists "community_groups_admin_update" on public.community_groups;
@@ -55,8 +61,14 @@ on public.community_groups
 for update
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 )
 with check (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );
