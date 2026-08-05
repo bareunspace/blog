@@ -8,6 +8,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 
 
 def strip_html(value: str) -> str:
@@ -53,57 +54,84 @@ def read_existing_meta(output_path: Path) -> tuple[str, str]:
 
 
 def fetch_rss(rss_url: str) -> bytes:
-    req = urllib.request.Request(
-        rss_url,
-        headers={
+    headers = [
+        {
             "User-Agent": "Mozilla/5.0 (compatible; BareunJariRSSSync/1.0)",
             "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
         },
-    )
-    with urllib.request.urlopen(req, timeout=20) as res:
-        return res.read()
+        {
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+        },
+        {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+            "Accept": "application/xml, text/xml;q=0.9, */*;q=0.8",
+        },
+    ]
+
+    last_error: Exception | None = None
+    for header_set in headers:
+        req = urllib.request.Request(rss_url, headers=header_set)
+        try:
+            with urllib.request.urlopen(req, timeout=25) as res:
+                return res.read()
+        except (HTTPError, URLError, TimeoutError) as exc:
+            last_error = exc
+            continue
+
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError("Failed to fetch RSS feed")
 
 
 def parse_items(xml_bytes: bytes) -> list[dict[str, str]]:
-    root = ET.fromstring(xml_bytes)
-    channel = root.find("channel")
-    if channel is None:
-        return []
+    try:
+        root = ET.fromstring(xml_bytes)
+    except ET.ParseError:
+        root = None
 
-    posts: list[dict[str, str]] = []
-    for item in channel.findall("item"):
-        title = (item.findtext("title") or "").strip()
-        guid = (item.findtext("guid") or item.findtext("link") or "").strip()
-        category = (item.findtext("category") or "블로그").strip()
-        pub_date = (item.findtext("pubDate") or "").strip()
-        desc = (item.findtext("description") or "").strip()
+    if root is not None:
+        channel = root.find("channel")
+        if channel is None:
+            channel = root
 
-        if not title or not guid:
-            continue
+        posts: list[dict[str, str]] = []
+        items = channel.findall("item") if channel is not None else []
+        for item in items:
+            title = (item.findtext("title") or "").strip()
+            guid = (item.findtext("guid") or item.findtext("link") or "").strip()
+            category = (item.findtext("category") or "블로그").strip()
+            pub_date = (item.findtext("pubDate") or "").strip()
+            desc = (item.findtext("description") or "").strip()
 
-        try:
-            date_value = parsedate_to_datetime(pub_date).date().isoformat()
-        except Exception:
-            date_value = ""
+            if not title or not guid:
+                continue
 
-        summary_raw = strip_html(desc)
-        summary = summary_raw[:180].rstrip()
-        if len(summary_raw) > 180:
-            summary += "..."
-        image_url = extract_image_url(desc)
+            try:
+                date_value = parsedate_to_datetime(pub_date).date().isoformat()
+            except Exception:
+                date_value = ""
 
-        posts.append(
-            {
-                "title": title,
-                "url": guid,
-                "date": date_value,
-                "category": category or "블로그",
-                "summary": summary or "네이버 블로그 글 원문을 확인해 주세요.",
-                "image_url": image_url,
-            }
-        )
+            summary_raw = strip_html(desc)
+            summary = summary_raw[:180].rstrip()
+            if len(summary_raw) > 180:
+                summary += "..."
+            image_url = extract_image_url(desc)
 
-    return posts
+            posts.append(
+                {
+                    "title": title,
+                    "url": guid,
+                    "date": date_value,
+                    "category": category or "블로그",
+                    "summary": summary or "네이버 블로그 글 원문을 확인해 주세요.",
+                    "image_url": image_url,
+                }
+            )
+
+        return posts
+
+    return []
 
 
 def render_yaml(blog_name: str, blog_url: str, posts: list[dict[str, str]]) -> str:
@@ -140,6 +168,35 @@ def render_yaml(blog_name: str, blog_url: str, posts: list[dict[str, str]]) -> s
     return "\n".join(lines) + "\n"
 
 
+def fetch_blog_html(blog_url: str) -> str:
+    req = urllib.request.Request(
+        blog_url,
+        headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=20) as res:
+        return res.read().decode("utf-8", errors="ignore")
+
+
+def extract_posts_from_html(html_text: str) -> list[dict[str, str]]:
+    posts: list[dict[str, str]] = []
+    for match in re.finditer(r'https://blog\.naver\.com/[^\s"\'>]+/\d+', html_text):
+        url = match.group(0)
+        if url.endswith("/"):
+            url = url[:-1]
+        if not url.startswith("https://blog.naver.com/"):
+            continue
+        if any(existing["url"] == url for existing in posts):
+            continue
+        title = "네이버 블로그 글"
+        posts.append({"title": title, "url": url, "date": "", "category": "블로그", "summary": "네이버 블로그에서 최신 글을 확인해 주세요.", "image_url": ""})
+        if len(posts) >= 8:
+            break
+    return posts
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sync Naver Blog RSS into _data/naver_blog.yml")
     parser.add_argument("--output", default="_data/naver_blog.yml", help="Output YAML path")
@@ -160,8 +217,16 @@ def main() -> int:
         xml_bytes = fetch_rss(rss_url)
         posts = parse_items(xml_bytes)
     except Exception as exc:
-        print(f"[ERROR] Failed to sync RSS: {exc}", file=sys.stderr)
-        return 1
+        try:
+            html_text = fetch_blog_html(blog_url)
+            posts = extract_posts_from_html(html_text)
+        except Exception as fallback_exc:
+            print(f"[ERROR] Failed to sync RSS: {exc}", file=sys.stderr)
+            print(f"[ERROR] Fallback HTML sync failed: {fallback_exc}", file=sys.stderr)
+            return 1
+
+    if not posts:
+        posts = extract_posts_from_html(fetch_blog_html(blog_url))
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(render_yaml(blog_name, blog_url, posts), encoding="utf-8")
