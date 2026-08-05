@@ -2,8 +2,11 @@
   const configNode = document.getElementById('communityApplicationConfig');
   const forms = Array.from(document.querySelectorAll('[data-community-application-form]'));
   const liveGroupsNode = document.querySelector('[data-community-live-groups]');
+  const ownerLookupForm = document.querySelector('[data-community-owner-lookup-form]');
+  const ownerStatusNode = document.querySelector('[data-community-owner-status]');
+  const ownerListNode = document.querySelector('[data-community-owner-list]');
 
-  if (!configNode || (!forms.length && !liveGroupsNode)) {
+  if (!configNode || (!forms.length && !liveGroupsNode && !ownerLookupForm)) {
     return;
   }
 
@@ -40,10 +43,18 @@
 
   const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
   const MIN_VISIBLE_INTEREST_COUNT = 3;
+  const OWNER_EDITABLE_STATUSES = ['new', 'reviewing'];
+  const OWNER_GROUP_STATUSES = ['recruiting', 'closed'];
   let interestCounts = {
     topics: {},
     groups: {}
   };
+  let ownerSession = {
+    email: '',
+    phone: ''
+  };
+  let ownerApplications = [];
+
   const groupLabels = {
     interview: '면접 준비 모임',
     reading: '책 읽고 이야기 나누는 모임',
@@ -67,7 +78,12 @@
     interest: '🟢 관심 등록',
     scheduled: '🟡 모집 예정',
     recruiting: '🔵 모집 중',
-    closed: '🔴 모집 마감'
+    closed: '🔴 모집 마감',
+    new: '새 신청',
+    reviewing: '검토 중',
+    contacted: '연락 완료',
+    matched: '매칭/진행',
+    deleted_by_owner: '작성자 삭제'
   };
 
   const formatInterestText = (count) => {
@@ -121,6 +137,29 @@
   const setSubmitting = (form, isSubmitting) => {
     form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
     Array.from(form.querySelectorAll('button, input, select, textarea')).forEach((node) => {
+      node.disabled = isSubmitting;
+    });
+  };
+
+  const normalizePhone = (value) => String(value || '').replace(/[^0-9]/g, '');
+
+  const showOwnerStatus = (message, kind = 'error') => {
+    if (!ownerStatusNode) {
+      return;
+    }
+
+    ownerStatusNode.textContent = message;
+    ownerStatusNode.hidden = false;
+    ownerStatusNode.classList.remove('is-error', 'is-success');
+    ownerStatusNode.classList.add(kind === 'success' ? 'is-success' : 'is-error');
+  };
+
+  const setOwnerSubmitting = (isSubmitting) => {
+    if (!ownerLookupForm) {
+      return;
+    }
+    ownerLookupForm.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+    Array.from(ownerLookupForm.querySelectorAll('button, input')).forEach((node) => {
       node.disabled = isSubmitting;
     });
   };
@@ -219,11 +258,135 @@
                 data-group-key="${escapeHtml(group.group_key)}"
                 data-group-title="${escapeHtml(group.title)}"
               >참여 관심 등록</button>
+              <button
+                class="btn-outline community-card-btn community-card-btn-report"
+                type="button"
+                data-community-group-report
+                data-group-id="${escapeHtml(group.id)}"
+                data-group-title="${escapeHtml(group.title)}"
+              >신고</button>
             </div>
           </article>
         `).join('')}
       </div>
     `;
+  };
+
+  const renderOwnerApplications = (applications) => {
+    if (!ownerListNode) {
+      return;
+    }
+
+    if (!applications.length) {
+      ownerListNode.innerHTML = '<p class="community-owner-empty">일치하는 신청 내역이 없습니다. 입력한 이메일/전화번호를 확인해 주세요.</p>';
+      return;
+    }
+
+    ownerListNode.innerHTML = applications.map((row) => {
+      const canEdit = OWNER_EDITABLE_STATUSES.includes(String(row.status || ''));
+      const linkedGroup = row.linked_group || null;
+      const canToggleGroupStatus = Boolean(linkedGroup && row.application_type === 'host');
+      return `
+        <article class="community-owner-item" data-owner-application-id="${escapeHtml(row.id)}" data-owner-group-id="${escapeHtml(linkedGroup?.id || '')}">
+          <div class="community-owner-item-head">
+            <div>
+              <p class="community-owner-item-eyebrow">${escapeHtml(typeLabels[row.application_type] || row.application_type)} · ${escapeHtml(groupShortLabels[row.group_key] || row.group_key)}</p>
+              <h4>${escapeHtml(row.group_title || '모임 신청')}</h4>
+            </div>
+            <span class="community-owner-item-status">${escapeHtml(statusLabels[row.status] || row.status || '-')}</span>
+          </div>
+          <dl class="community-owner-item-meta">
+            <div><dt>신청일</dt><dd>${escapeHtml(new Date(row.created_at).toLocaleString('ko-KR'))}</dd></div>
+            <div><dt>희망 일정</dt><dd>${escapeHtml(row.availability || '-')}</dd></div>
+            <div><dt>연락처</dt><dd>${escapeHtml(row.contact_email || '-')} / ${escapeHtml(row.contact_phone || '-')}</dd></div>
+          </dl>
+          <div class="community-owner-edit-grid">
+            <div class="community-form-row community-form-row-full">
+              <label>모임 이름</label>
+              <input type="text" name="group_title" value="${escapeHtml(row.group_title || '')}" ${canEdit ? '' : 'disabled'} />
+            </div>
+            <div class="community-form-row community-form-row-full">
+              <label>희망 일정</label>
+              <input type="text" name="availability" value="${escapeHtml(row.availability || '')}" ${canEdit ? '' : 'disabled'} />
+            </div>
+            <div class="community-form-row community-form-row-full">
+              <label>신청 메시지</label>
+              <textarea name="message" rows="3" ${canEdit ? '' : 'disabled'}>${escapeHtml(row.message || '')}</textarea>
+            </div>
+          </div>
+          <div class="community-owner-actions">
+            <button type="button" class="btn-primary community-owner-btn" data-owner-save ${canEdit ? '' : 'disabled'}>수정 저장</button>
+            <button type="button" class="btn-outline community-owner-btn" data-owner-delete>신청 삭제</button>
+          </div>
+          ${canToggleGroupStatus ? `
+            <div class="community-owner-group-status">
+              <label>
+                모집 상태
+                <select data-owner-group-status>
+                  ${OWNER_GROUP_STATUSES.map((status) => `<option value="${status}" ${linkedGroup.status === status ? 'selected' : ''}>${escapeHtml(statusLabels[status] || status)}</option>`).join('')}
+                </select>
+              </label>
+              <p>내가 개설한 모임은 모집 상태를 직접 바꿀 수 있습니다.</p>
+            </div>
+          ` : ''}
+        </article>
+      `;
+    }).join('');
+  };
+
+  const invokeCommunityAction = async (action, payload) => {
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action,
+        ...payload
+      }
+    });
+
+    if (error || !data?.ok) {
+      throw new Error(data?.detail || error?.message || '요청을 처리하지 못했습니다.');
+    }
+
+    return data;
+  };
+
+  const reloadOwnerApplications = async () => {
+    if (!ownerSession.email || !ownerSession.phone) {
+      return;
+    }
+    const data = await invokeCommunityAction('owner-list', {
+      contactEmail: ownerSession.email,
+      contactPhone: ownerSession.phone
+    });
+    ownerApplications = Array.isArray(data.applications) ? data.applications : [];
+    renderOwnerApplications(ownerApplications);
+  };
+
+  const reportGroup = async (groupId, groupTitle) => {
+    const reason = window.prompt('신고 사유를 입력해 주세요. (최소 5자)');
+    if (!reason) {
+      return;
+    }
+    if (reason.trim().length < 5) {
+      const form = forms[0];
+      if (form) {
+        showStatus(form, '신고 사유를 5자 이상 입력해 주세요.');
+      }
+      return;
+    }
+
+    await invokeCommunityAction('report-group', {
+      groupId: Number(groupId),
+      groupTitle,
+      reason: reason.trim(),
+      sourcePath: window.location.pathname,
+      reporterEmail: ownerSession.email || null,
+      reporterPhone: ownerSession.phone || null
+    });
+
+    const form = forms[0];
+    if (form) {
+      showStatus(form, '신고가 접수되었습니다. 운영자가 확인 후 조치합니다.', 'success');
+    }
   };
 
   const loadLiveGroups = async () => {
@@ -318,10 +481,23 @@
 
   liveGroupsNode?.addEventListener('click', (event) => {
     const button = event.target.closest('[data-community-group-join]');
-    if (!button) {
+    if (button) {
+      focusFormForGroup(button);
       return;
     }
-    focusFormForGroup(button);
+
+    const reportButton = event.target.closest('[data-community-group-report]');
+    if (!reportButton) {
+      return;
+    }
+
+    reportGroup(reportButton.dataset.groupId, reportButton.dataset.groupTitle)
+      .catch((error) => {
+        const form = forms[0];
+        if (form) {
+          showStatus(form, error.message || '신고를 접수하지 못했습니다.');
+        }
+      });
   });
 
   loadLiveGroups();
@@ -421,5 +597,130 @@
       await loadLiveGroups();
       showStatus(form, '신청이 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
     });
+  });
+
+  ownerLookupForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const contactEmail = String(new FormData(ownerLookupForm).get('contact_email') || '').trim().toLowerCase();
+    const contactPhoneRaw = String(new FormData(ownerLookupForm).get('contact_phone') || '').trim();
+    const contactPhone = normalizePhone(contactPhoneRaw);
+
+    if (!isValidEmail(contactEmail)) {
+      showOwnerStatus('이메일 형식을 확인해 주세요.');
+      return;
+    }
+
+    if (!/^0\d{8,10}$/.test(contactPhone)) {
+      showOwnerStatus('전화번호 형식을 확인해 주세요. 예: 01012345678');
+      return;
+    }
+
+    ownerSession = {
+      email: contactEmail,
+      phone: contactPhone
+    };
+
+    setOwnerSubmitting(true);
+    showOwnerStatus('신청 내역을 조회하는 중입니다.', 'success');
+
+    try {
+      await reloadOwnerApplications();
+      showOwnerStatus(`신청 ${ownerApplications.length}건을 불러왔습니다.`, 'success');
+    } catch (error) {
+      showOwnerStatus(error.message || '신청 내역을 불러오지 못했습니다.');
+    } finally {
+      setOwnerSubmitting(false);
+    }
+  });
+
+  ownerListNode?.addEventListener('click', async (event) => {
+    const item = event.target.closest('[data-owner-application-id]');
+    if (!item) {
+      return;
+    }
+
+    const applicationId = Number(item.dataset.ownerApplicationId);
+    if (!applicationId) {
+      return;
+    }
+
+    const saveButton = event.target.closest('[data-owner-save]');
+    if (saveButton) {
+      const groupTitle = item.querySelector('input[name="group_title"]')?.value?.trim() || '';
+      const availability = item.querySelector('input[name="availability"]')?.value?.trim() || '';
+      const message = item.querySelector('textarea[name="message"]')?.value?.trim() || '';
+      try {
+        showOwnerStatus('수정 내용을 저장하는 중입니다.', 'success');
+        await invokeCommunityAction('owner-update', {
+          applicationId,
+          contactEmail: ownerSession.email,
+          contactPhone: ownerSession.phone,
+          fields: {
+            group_title: groupTitle,
+            availability,
+            message
+          }
+        });
+        await reloadOwnerApplications();
+        await loadLiveGroups();
+        showOwnerStatus('신청 수정이 완료되었습니다.', 'success');
+      } catch (error) {
+        showOwnerStatus(error.message || '신청을 수정하지 못했습니다.');
+      }
+      return;
+    }
+
+    const deleteButton = event.target.closest('[data-owner-delete]');
+    if (deleteButton) {
+      const confirmed = window.confirm('내 신청을 삭제하시겠습니까? 삭제 후 복구할 수 없습니다.');
+      if (!confirmed) {
+        return;
+      }
+
+      try {
+        showOwnerStatus('신청을 삭제하는 중입니다.', 'success');
+        await invokeCommunityAction('owner-delete', {
+          applicationId,
+          contactEmail: ownerSession.email,
+          contactPhone: ownerSession.phone
+        });
+        await reloadOwnerApplications();
+        await loadLiveGroups();
+        showOwnerStatus('신청이 삭제되었습니다.', 'success');
+      } catch (error) {
+        showOwnerStatus(error.message || '신청을 삭제하지 못했습니다.');
+      }
+    }
+  });
+
+  ownerListNode?.addEventListener('change', async (event) => {
+    const select = event.target.closest('[data-owner-group-status]');
+    if (!select) {
+      return;
+    }
+
+    const item = select.closest('[data-owner-application-id]');
+    const applicationId = Number(item?.dataset?.ownerApplicationId || 0);
+    const groupId = Number(item?.dataset?.ownerGroupId || 0);
+    if (!applicationId || !groupId) {
+      return;
+    }
+
+    try {
+      showOwnerStatus('모집 상태를 변경하는 중입니다.', 'success');
+      await invokeCommunityAction('owner-update-group-status', {
+        applicationId,
+        groupId,
+        status: select.value,
+        contactEmail: ownerSession.email,
+        contactPhone: ownerSession.phone
+      });
+      await reloadOwnerApplications();
+      await loadLiveGroups();
+      showOwnerStatus('모집 상태가 변경되었습니다.', 'success');
+    } catch (error) {
+      showOwnerStatus(error.message || '모집 상태를 변경하지 못했습니다.');
+    }
   });
 })();

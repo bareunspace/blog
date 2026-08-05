@@ -28,6 +28,8 @@
   const typeFilter = applicationsRoot.querySelector('[data-community-admin-type-filter]');
   const groupFilter = applicationsRoot.querySelector('[data-community-admin-group-filter]');
   const statsNode = applicationsRoot.querySelector('[data-community-admin-stats]');
+  const reportsStatusNode = applicationsRoot.querySelector('[data-community-reports-status]');
+  const reportsListNode = applicationsRoot.querySelector('[data-community-reports-list]');
   const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
@@ -39,6 +41,7 @@
   const overviewActiveGroupsNode = root.querySelector('[data-admin-overview-active-groups]');
   let allRows = [];
   let allGroups = [];
+  let allReports = [];
 
   const labels = {
     interest: '참여 관심',
@@ -55,7 +58,10 @@
     closed: '종료',
     draft: '준비 중',
     recruiting: '모집 중',
-    scheduled: '일정 확정'
+    scheduled: '일정 확정',
+    open: '신고 접수',
+    resolved: '처리 완료',
+    dismissed: '반려'
   };
 
   const showStatus = (message, kind = 'info') => {
@@ -85,6 +91,21 @@
     }
     if (kind === 'success') {
       groupsStatusNode.classList.add('is-success');
+    }
+  };
+
+  const showReportsStatus = (message, kind = 'info') => {
+    if (!reportsStatusNode) {
+      return;
+    }
+    reportsStatusNode.textContent = message;
+    reportsStatusNode.hidden = false;
+    reportsStatusNode.classList.remove('is-error', 'is-success');
+    if (kind === 'error') {
+      reportsStatusNode.classList.add('is-error');
+    }
+    if (kind === 'success') {
+      reportsStatusNode.classList.add('is-success');
     }
   };
 
@@ -294,6 +315,70 @@
         </div>
       </article>
     `).join('');
+  };
+
+  const renderReports = (reports) => {
+    if (!reportsListNode) {
+      return;
+    }
+
+    if (!reports.length) {
+      reportsListNode.innerHTML = '<p class="admin-empty">현재 접수된 신고가 없습니다.</p>';
+      return;
+    }
+
+    reportsListNode.innerHTML = reports.map((report) => {
+      const canDeleteGroup = Boolean(report.group_id && report.group_exists);
+      return `
+        <article class="admin-community-item admin-report-item admin-community-item-${escapeHtml(report.status || 'open')}" data-report-id="${escapeHtml(report.id)}" data-report-group-id="${escapeHtml(report.group_id || '')}">
+          <div class="admin-community-item-head">
+            <div>
+              <p class="admin-community-eyebrow">신고 · ${escapeHtml(labels[report.status] || report.status || 'open')}</p>
+              <h3>${escapeHtml(report.group_title || `모임 #${report.group_id || '-'}`)}</h3>
+              <p class="admin-community-subcopy">모임 ID: ${escapeHtml(report.group_id || '-')} · 신고일: ${escapeHtml(formatDate(report.created_at))}</p>
+            </div>
+            <span class="admin-community-status admin-community-status-${escapeHtml(report.status || 'open')}">${escapeHtml(labels[report.status] || report.status || 'open')}</span>
+          </div>
+          <p class="admin-community-message"><strong>신고 사유</strong>${escapeHtml(report.reason || '-')}</p>
+          ${report.reporter_email || report.reporter_phone ? `<p class="admin-community-message"><strong>신고자</strong>${escapeHtml(report.reporter_email || '-')} / ${escapeHtml(report.reporter_phone || '-')}</p>` : ''}
+          ${report.source_path ? `<p class="admin-community-message"><strong>유입 페이지</strong>${escapeHtml(report.source_path)}</p>` : ''}
+          ${report.resolved_note ? `<p class="admin-community-message"><strong>처리 메모</strong>${escapeHtml(report.resolved_note)}</p>` : ''}
+          <div class="admin-community-card-actions">
+            <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-open-reported-group ${canDeleteGroup ? '' : 'disabled'}>모임 열기</button>
+            <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-reported-group ${canDeleteGroup ? '' : 'disabled'}>신고 반영 삭제</button>
+            <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-resolve-report="resolved">처리 완료</button>
+            <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-resolve-report="dismissed">반려</button>
+          </div>
+        </article>
+      `;
+    }).join('');
+  };
+
+  const loadReports = async () => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !reportsListNode) {
+      return;
+    }
+
+    showReportsStatus('신고 목록을 불러오는 중입니다.', 'success');
+
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'list-reports'
+      }
+    });
+
+    if (error || !data?.ok) {
+      console.error('loadReports failed', error, data);
+      showReportsStatus(`신고 목록을 불러오지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
+      return;
+    }
+
+    allReports = Array.isArray(data.reports) ? data.reports : [];
+    renderReports(allReports);
+    showReportsStatus(`신고 ${allReports.length}건을 불러왔습니다.`, 'success');
   };
 
   const loadGroups = async () => {
@@ -668,6 +753,61 @@
     showGroupsStatus('모임 상태가 저장되었습니다.', 'success');
   };
 
+  const deleteGroupById = async (groupId) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !groupId) {
+      return false;
+    }
+
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'delete-group',
+        groupId
+      }
+    });
+
+    if (error || !data?.ok) {
+      console.error('deleteGroupById failed', error, data);
+      return false;
+    }
+
+    allGroups = allGroups.filter((group) => String(group.id) !== String(groupId));
+    renderGroups(allGroups);
+    renderOverview();
+    closeGroupEditPanel();
+    return true;
+  };
+
+  const resolveReport = async (reportId, nextStatus) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !reportId) {
+      return;
+    }
+
+    const note = window.prompt('처리 메모(선택)를 입력해 주세요.', '');
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'resolve-report',
+        reportId,
+        status: nextStatus,
+        note: (note || '').trim()
+      }
+    });
+
+    if (error || !data?.ok) {
+      console.error('resolveReport failed', error, data);
+      showReportsStatus(`신고 상태를 저장하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
+      return;
+    }
+
+    await loadReports();
+    showReportsStatus('신고 상태를 저장했습니다.', 'success');
+  };
+
   const deleteGroup = async (item) => {
     const adminContext = window.barunjariAdmin;
     const client = adminContext?.client;
@@ -684,23 +824,13 @@
 
     showGroupsStatus('모임을 삭제하는 중입니다.', 'success');
 
-    const { data, error } = await client.functions.invoke('community-application-notify', {
-      body: {
-        action: 'delete-group',
-        groupId: id
-      }
-    });
-
-    if (error || !data?.ok) {
-      console.error('deleteGroup failed', error, data);
-      showGroupsStatus(`모임을 삭제하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
+    const deleted = await deleteGroupById(id);
+    if (!deleted) {
+      showGroupsStatus('모임을 삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
       return;
     }
 
-    allGroups = allGroups.filter((group) => String(group.id) !== String(id));
-    renderGroups(allGroups);
-    renderOverview();
-    closeGroupEditPanel();
+    await loadReports();
     showGroupsStatus('모임이 삭제되었습니다.', 'success');
   };
 
@@ -920,6 +1050,53 @@
     copyOpenChatMessage(item?.dataset?.groupId);
   });
 
+  reportsListNode?.addEventListener('click', async (event) => {
+    const item = event.target.closest('[data-report-id]');
+    if (!item) {
+      return;
+    }
+
+    const reportId = item.dataset.reportId;
+    const groupId = item.dataset.reportGroupId;
+
+    const openButton = event.target.closest('[data-open-reported-group]');
+    if (openButton) {
+      openGroupById(groupId);
+      return;
+    }
+
+    const deleteButton = event.target.closest('[data-delete-reported-group]');
+    if (deleteButton) {
+      if (!groupId) {
+        showReportsStatus('삭제할 모임 정보를 찾지 못했습니다.', 'error');
+        return;
+      }
+
+      const confirmed = window.confirm('신고 반영으로 해당 모임을 삭제하시겠습니까? 이 작업은 복구할 수 없습니다.');
+      if (!confirmed) {
+        return;
+      }
+
+      showReportsStatus('신고 모임을 삭제하는 중입니다.', 'success');
+      const deleted = await deleteGroupById(groupId);
+      if (!deleted) {
+        showReportsStatus('신고 모임을 삭제하지 못했습니다.', 'error');
+        return;
+      }
+
+      await resolveReport(reportId, 'resolved');
+      showGroupsStatus('신고 모임 삭제를 완료했습니다.', 'success');
+      return;
+    }
+
+    const resolveButton = event.target.closest('[data-resolve-report]');
+    if (!resolveButton) {
+      return;
+    }
+
+    await resolveReport(reportId, resolveButton.dataset.resolveReport || 'resolved');
+  });
+
   groupForm?.addEventListener('submit', createGroup);
   groupCreateToggle?.addEventListener('click', () => {
     if (groupCreatePanel?.hidden) {
@@ -945,7 +1122,10 @@
   statusFilter?.addEventListener('change', renderVisibleRows);
   typeFilter?.addEventListener('change', renderVisibleRows);
   groupFilter?.addEventListener('change', renderVisibleRows);
-  refreshButton?.addEventListener('click', loadApplications);
+  refreshButton?.addEventListener('click', () => {
+    loadApplications();
+    loadReports();
+  });
   workspaceTabs.forEach((button) => {
     button.addEventListener('click', () => {
       switchWorkspace(button.dataset.adminWorkspaceTab || 'applications');
@@ -954,11 +1134,13 @@
   window.addEventListener('barunjari:admin-ready', () => {
     loadGroups();
     loadApplications();
+    loadReports();
   });
 
   switchWorkspace('applications');
   if (window.barunjariAdmin?.client) {
     loadGroups();
     loadApplications();
+    loadReports();
   }
 })();

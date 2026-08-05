@@ -4996,6 +4996,146 @@ main.community-page .community-response-promise p {
   font-size: .82rem;
   line-height: 1.65;
 }
+main.community-page .community-owner-manage {
+  margin-top: .85rem;
+  padding: 1rem;
+  border: 1px solid #dce8e1;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(244,249,246,.92) 100%);
+}
+main.community-page .community-owner-manage-head h3 {
+  margin-bottom: .3rem;
+  color: #173726;
+  font-size: 1.02rem;
+}
+main.community-page .community-owner-manage-head p {
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.68;
+}
+main.community-page .community-owner-lookup-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .72rem;
+  margin-top: .72rem;
+}
+main.community-page .community-owner-lookup-btn,
+main.community-page .community-owner-lookup-form .community-application-status {
+  grid-column: 1 / -1;
+}
+main.community-page .community-owner-lookup-btn {
+  border-width: 1px;
+}
+main.community-page .community-owner-list {
+  display: grid;
+  gap: .72rem;
+  margin-top: .8rem;
+}
+main.community-page .community-owner-empty {
+  border: 1px dashed #cdd9d1;
+  border-radius: 12px;
+  padding: .8rem;
+  background: #f8fbf9;
+  color: #5e6f65;
+  font-size: .85rem;
+}
+main.community-page .community-owner-item {
+  display: grid;
+  gap: .7rem;
+  border: 1px solid #dbe4de;
+  border-radius: 14px;
+  background: #fff;
+  padding: .9rem;
+}
+main.community-page .community-owner-item-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .7rem;
+}
+main.community-page .community-owner-item-eyebrow {
+  margin-bottom: .18rem;
+  color: #2d6a4f;
+  font-size: .74rem;
+  font-weight: 900;
+}
+main.community-page .community-owner-item h4 {
+  color: #173726;
+  font-size: .96rem;
+}
+main.community-page .community-owner-item-status {
+  border-radius: 999px;
+  padding: .28rem .58rem;
+  background: #eef8f2;
+  color: #1f6f3f;
+  font-size: .74rem;
+  font-weight: 900;
+}
+main.community-page .community-owner-item-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .48rem;
+}
+main.community-page .community-owner-item-meta div {
+  border: 1px solid #e1e9e3;
+  border-radius: 10px;
+  padding: .52rem .58rem;
+  background: #f8fbf9;
+}
+main.community-page .community-owner-item-meta dt {
+  margin-bottom: .14rem;
+  color: #6b7280;
+  font-size: .72rem;
+  font-weight: 800;
+}
+main.community-page .community-owner-item-meta dd {
+  color: #1f2937;
+  font-size: .8rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+main.community-page .community-owner-edit-grid {
+  display: grid;
+  gap: .6rem;
+}
+main.community-page .community-owner-actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+main.community-page .community-owner-btn {
+  border: 0;
+  cursor: pointer;
+}
+main.community-page .community-owner-group-status {
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  padding: .62rem .68rem;
+  background: #f8fbf9;
+}
+main.community-page .community-owner-group-status label {
+  display: grid;
+  gap: .34rem;
+  color: #2a3d33;
+  font-size: .8rem;
+  font-weight: 800;
+}
+main.community-page .community-owner-group-status select {
+  border: 1px solid #cedbd3;
+  border-radius: 10px;
+  background: #fff;
+  padding: .5rem .62rem;
+  font: inherit;
+}
+main.community-page .community-owner-group-status p {
+  margin-top: .36rem;
+  color: #5e6f65;
+  font-size: .78rem;
+}
+main.community-page .community-card-btn-report {
+  border-width: 1px;
+}
 main.community-page .community-faq-lite-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5060,6 +5200,10 @@ main.community-page .community-principle-card {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   main.community-page .community-application-form {
+    grid-template-columns: 1fr;
+  }
+  main.community-page .community-owner-lookup-form,
+  main.community-page .community-owner-item-meta {
     grid-template-columns: 1fr;
   }
   main.community-page .community-choice-inline,
@@ -7498,6 +7642,34 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   align-items: center;
   justify-content: center;
   min-height: 2.2rem;
+}
+.admin-report-queue {
+  margin: .8rem 0 1rem;
+  border: 1px solid #dbe4de;
+  border-radius: 14px;
+  background: #f9fbfa;
+  padding: .9rem;
+}
+.admin-report-item {
+  border-left: 4px solid #d99a16;
+}
+.admin-community-item-resolved {
+  border-left: 4px solid #2d6a4f;
+}
+.admin-community-item-dismissed {
+  border-left: 4px solid #8a95a2;
+}
+.admin-community-status-open {
+  background: #fff4d6;
+  color: #946000;
+}
+.admin-community-status-resolved {
+  background: #eef8f2;
+  color: #1f6f3f;
+}
+.admin-community-status-dismissed {
+  background: #eef2f7;
+  color: #4c6070;
 }
 
 @media (max-width: 640px) {

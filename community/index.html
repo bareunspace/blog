@@ -9,8 +9,8 @@ canonical: https://bareunjari.com/community/
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
 og_image_alt: 바른자리에서 소규모 모임을 준비하는 공간
 preload_image: images/bucheon-small-group-meeting-space.webp
-css_version: 20260806-15
-script_version: 20260806-15
+css_version: 20260806-16
+script_version: 20260806-16
 ---
 
 <main class="about-page community-page">
@@ -413,6 +413,29 @@ script_version: 20260806-15
               <p>열릴 수 있는 모임부터 연락드리고, 필요한 경우 추가 질문이나 일정 조율을 진행합니다.</p>
             </article>
           </div>
+
+          <section class="community-owner-manage" aria-labelledby="communityOwnerManageTitle">
+            <div class="community-owner-manage-head">
+              <p class="section-label">Self Management</p>
+              <h3 id="communityOwnerManageTitle">내 신청 직접 관리</h3>
+              <p>신청할 때 쓴 이메일과 전화번호로 조회해, 내가 올린 신청을 직접 수정하거나 삭제할 수 있습니다.</p>
+            </div>
+            <form class="community-owner-lookup-form" data-community-owner-lookup-form novalidate>
+              <div class="community-form-row">
+                <label for="communityOwnerLookupEmail">신청 이메일</label>
+                <input id="communityOwnerLookupEmail" name="contact_email" type="email" autocomplete="email" required />
+              </div>
+              <div class="community-form-row">
+                <label for="communityOwnerLookupPhone">신청 전화번호</label>
+                <input id="communityOwnerLookupPhone" name="contact_phone" type="tel" autocomplete="tel" required placeholder="예: 010-1234-5678" />
+              </div>
+              <button type="submit" class="btn-outline community-owner-lookup-btn">내 신청 불러오기</button>
+              <p class="community-application-status" data-community-owner-status aria-live="polite" hidden></p>
+            </form>
+            <div class="community-owner-list" data-community-owner-list aria-live="polite">
+              <p class="community-owner-empty">조회하면 본인 신청 내역이 여기 표시됩니다.</p>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -476,4 +499,4 @@ script_version: 20260806-15
   "supabaseAnonKey": {{ site.supabase_anon_key | jsonify }}
 }
 </script>
-<script src="{{ '/scripts/community-applications.js' | relative_url }}?v={{ page.css_version }}"></script>
+<script src="{{ '/scripts/community-applications.js' | relative_url }}?v={{ page.script_version }}"></script>

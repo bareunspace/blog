@@ -21,15 +21,22 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group' || action === 'create-group' || action === 'delete-group') {
+  if (
+    action === 'delete'
+    || action === 'update'
+    || action === 'sync-group'
+    || action === 'update-group'
+    || action === 'create-group'
+    || action === 'delete-group'
+    || action === 'owner-list'
+    || action === 'owner-update'
+    || action === 'owner-delete'
+    || action === 'owner-update-group-status'
+    || action === 'report-group'
+    || action === 'list-reports'
+    || action === 'resolve-report'
+  ) {
     const applicationId = body.applicationId ?? body.id;
-    // Group CRUD actions operate on groupId, not applicationId.
-    if (!applicationId && action !== 'update-group' && action !== 'create-group' && action !== 'delete-group') {
-      return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
-    }
 
     try {
       const supabaseUrl = Deno.env.get('SUPABASE_URL') || 'https://nhiyxgcrjdzdiquutxml.supabase.co';
@@ -46,7 +53,440 @@ Deno.serve(async (req) => {
         auth: { persistSession: false }
       });
 
+      const normalizePhone = (value: unknown) => String(value || '').replace(/[^0-9]/g, '');
+      const adminEmailsRaw = Deno.env.get('COMMUNITY_ADMIN_EMAILS') || 'keunyong@gmail.com,bareunjari@gmail.com';
+      const adminEmails = new Set(
+        adminEmailsRaw
+          .split(',')
+          .map((email) => email.trim().toLowerCase())
+          .filter(Boolean)
+      );
+      const adminActions = new Set([
+        'delete',
+        'update',
+        'update-group',
+        'create-group',
+        'delete-group',
+        'list-reports',
+        'resolve-report'
+      ]);
+
+      const assertAdmin = async () => {
+        const authHeader = req.headers.get('authorization') || req.headers.get('Authorization') || '';
+        const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
+
+        if (!token) {
+          return {
+            ok: false,
+            response: new Response(JSON.stringify({ error: 'Admin auth required' }), {
+              status: 401,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            })
+          };
+        }
+
+        const { data: userData, error: userError } = await supabase.auth.getUser(token);
+        if (userError || !userData?.user?.email) {
+          return {
+            ok: false,
+            response: new Response(JSON.stringify({ error: 'Invalid admin token' }), {
+              status: 401,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            })
+          };
+        }
+
+        const email = String(userData.user.email).trim().toLowerCase();
+        if (!adminEmails.has(email)) {
+          return {
+            ok: false,
+            response: new Response(JSON.stringify({ error: 'Admin permission denied' }), {
+              status: 403,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            })
+          };
+        }
+
+        return { ok: true, email };
+      };
+
+      const syncGroupFromApplication = async (sourceApplicationId: number, application: Record<string, unknown>) => {
+        const statusMap: Record<string, string> = {
+          new: 'draft',
+          reviewing: 'draft',
+          contacted: 'draft',
+          matched: 'recruiting',
+          closed: 'closed'
+        };
+        const groupKey = String(application.group_key || 'other').trim() || 'other';
+
+        const { data: existingGroups, error: selectError } = await supabase
+          .from('community_groups')
+          .select('*')
+          .eq('source_application_id', sourceApplicationId)
+          .limit(1);
+
+        if (selectError) {
+          throw selectError;
+        }
+
+        const existingGroup = existingGroups?.[0];
+        const trimmedTitle = String(application.group_title || '').trim();
+        const fallbackDescription = [application.existing_group_summary, application.message]
+          .filter((item) => typeof item === 'string' && item.trim())
+          .join('\n\n');
+        const fallbackHostName = application.application_type === 'host' ? String(application.applicant_name || '').trim() || null : null;
+        const nextStatus = statusMap[String(application.status || '')] || existingGroup?.status || 'draft';
+        const nextPayload = {
+          group_key: groupKey,
+          title: trimmedTitle || existingGroup?.title || '모임 초안',
+          description: String(application.description || fallbackDescription || existingGroup?.description || '').trim() || null,
+          status: nextStatus,
+          host_name: String(application.host_name || fallbackHostName || existingGroup?.host_name || '').trim() || null,
+          schedule_text: String(application.schedule_text || application.availability || existingGroup?.schedule_text || '').trim() || null,
+          capacity: existingGroup?.capacity ?? null,
+          open_chat_url: String(application.open_chat_url || existingGroup?.open_chat_url || '').trim() || null,
+          source_application_id: sourceApplicationId
+        };
+
+        if (existingGroup?.id) {
+          const { error } = await supabase
+            .from('community_groups')
+            .update(nextPayload)
+            .eq('id', existingGroup.id);
+
+          if (error) {
+            throw error;
+          }
+        } else {
+          const { error } = await supabase
+            .from('community_groups')
+            .insert(nextPayload);
+
+          if (error) {
+            throw error;
+          }
+        }
+      };
+
+      const getOwnedApplication = async (id: number, contactEmail: string, contactPhone: string) => {
+        const { data: row, error } = await supabase
+          .from('community_applications')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error || !row) {
+          throw new Error('신청 내역을 찾지 못했습니다.');
+        }
+
+        const rowEmail = String(row.contact_email || '').trim().toLowerCase();
+        const rowPhone = normalizePhone(row.contact_phone);
+        if (rowEmail !== contactEmail || rowPhone !== contactPhone) {
+          throw new Error('본인 확인에 실패했습니다. 이메일과 전화번호를 확인해 주세요.');
+        }
+
+        return row;
+      };
+
+      if (adminActions.has(action)) {
+        const adminCheck = await assertAdmin();
+        if (!adminCheck.ok) {
+          return adminCheck.response;
+        }
+      }
+
+      if (action === 'owner-list') {
+        const contactEmail = String(body.contactEmail || '').trim().toLowerCase();
+        const contactPhone = normalizePhone(body.contactPhone);
+        if (!contactEmail || !contactPhone) {
+          return new Response(JSON.stringify({ error: 'Missing owner contact' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { data: rows, error } = await supabase
+          .from('community_applications')
+          .select('*')
+          .ilike('contact_email', contactEmail)
+          .order('created_at', { ascending: false })
+          .limit(30);
+
+        if (error) {
+          throw error;
+        }
+
+        const ownedRows = (rows || []).filter((row) => normalizePhone(row.contact_phone) === contactPhone);
+        const sourceIds = ownedRows.map((row) => Number(row.id)).filter((id) => Number.isFinite(id));
+        const { data: groups, error: groupError } = sourceIds.length
+          ? await supabase
+            .from('community_groups')
+            .select('id, source_application_id, status, title')
+            .in('source_application_id', sourceIds)
+          : { data: [], error: null };
+
+        if (groupError) {
+          throw groupError;
+        }
+
+        const groupBySourceId = new Map<number, Record<string, unknown>>();
+        (groups || []).forEach((group) => {
+          groupBySourceId.set(Number(group.source_application_id), group);
+        });
+
+        const withGroup = ownedRows.map((row) => ({
+          ...row,
+          linked_group: groupBySourceId.get(Number(row.id)) || null
+        }));
+
+        return new Response(JSON.stringify({ ok: true, applications: withGroup }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'owner-update') {
+        const id = Number(applicationId);
+        const contactEmail = String(body.contactEmail || '').trim().toLowerCase();
+        const contactPhone = normalizePhone(body.contactPhone);
+        if (!id || !contactEmail || !contactPhone) {
+          return new Response(JSON.stringify({ error: 'Missing owner update parameters' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        await getOwnedApplication(id, contactEmail, contactPhone);
+
+        const allowedFields = new Set(['group_title', 'availability', 'message']);
+        const incomingFields = body.fields || {};
+        const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
+          if (allowedFields.has(key)) {
+            acc[key] = typeof value === 'string' ? value.trim() : value;
+          }
+          return acc;
+        }, {});
+
+        if (!Object.keys(fields).length) {
+          return new Response(JSON.stringify({ error: 'No editable owner fields provided' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { data: updatedRows, error } = await supabase
+          .from('community_applications')
+          .update(fields)
+          .eq('id', id)
+          .select('*')
+          .limit(1);
+
+        if (error) {
+          throw error;
+        }
+
+        const updated = updatedRows?.[0];
+        if (updated) {
+          await syncGroupFromApplication(id, updated);
+        }
+
+        return new Response(JSON.stringify({ ok: true, updated: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'owner-delete') {
+        const id = Number(applicationId);
+        const contactEmail = String(body.contactEmail || '').trim().toLowerCase();
+        const contactPhone = normalizePhone(body.contactPhone);
+        if (!id || !contactEmail || !contactPhone) {
+          return new Response(JSON.stringify({ error: 'Missing owner delete parameters' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        await getOwnedApplication(id, contactEmail, contactPhone);
+
+        const { error } = await supabase
+          .from('community_applications')
+          .delete()
+          .eq('id', id);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, deleted: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'owner-update-group-status') {
+        const id = Number(applicationId);
+        const groupId = Number(body.groupId);
+        const contactEmail = String(body.contactEmail || '').trim().toLowerCase();
+        const contactPhone = normalizePhone(body.contactPhone);
+        const nextStatus = String(body.status || '').trim();
+        const allowedStatuses = new Set(['recruiting', 'closed']);
+
+        if (!id || !groupId || !contactEmail || !contactPhone || !allowedStatuses.has(nextStatus)) {
+          return new Response(JSON.stringify({ error: 'Invalid owner group status request' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const ownedApplication = await getOwnedApplication(id, contactEmail, contactPhone);
+        if (String(ownedApplication.application_type || '') !== 'host') {
+          return new Response(JSON.stringify({ error: 'Only host applications can change group status' }), {
+            status: 403,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { data: group, error: groupError } = await supabase
+          .from('community_groups')
+          .select('id, source_application_id')
+          .eq('id', groupId)
+          .single();
+
+        if (groupError || !group || Number(group.source_application_id) !== id) {
+          return new Response(JSON.stringify({ error: '이 신청과 연결된 모임만 변경할 수 있습니다.' }), {
+            status: 403,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { error } = await supabase
+          .from('community_groups')
+          .update({ status: nextStatus })
+          .eq('id', groupId);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, updated: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'report-group') {
+        const groupId = Number(body.groupId);
+        const reason = String(body.reason || '').trim();
+        const groupTitle = String(body.groupTitle || '').trim();
+        if (!groupId || reason.length < 5) {
+          return new Response(JSON.stringify({ error: 'Invalid report payload' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const payload = {
+          group_id: groupId,
+          group_title: groupTitle || null,
+          reason,
+          source_path: String(body.sourcePath || '').trim() || null,
+          reporter_email: String(body.reporterEmail || '').trim().toLowerCase() || null,
+          reporter_phone: normalizePhone(body.reporterPhone) || null,
+          status: 'open'
+        };
+
+        const { error } = await supabase
+          .from('community_group_reports')
+          .insert(payload);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, reported: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'list-reports') {
+        const { data: reports, error } = await supabase
+          .from('community_group_reports')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(200);
+
+        if (error) {
+          throw error;
+        }
+
+        const groupIds = (reports || [])
+          .map((report) => Number(report.group_id))
+          .filter((id) => Number.isFinite(id));
+        const { data: groups } = groupIds.length
+          ? await supabase
+            .from('community_groups')
+            .select('id')
+            .in('id', groupIds)
+          : { data: [] };
+
+        const existingGroupIds = new Set((groups || []).map((group) => Number(group.id)));
+        const normalizedReports = (reports || []).map((report) => ({
+          ...report,
+          group_exists: existingGroupIds.has(Number(report.group_id))
+        }));
+
+        return new Response(JSON.stringify({ ok: true, reports: normalizedReports }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'resolve-report') {
+        const reportId = Number(body.reportId);
+        const status = String(body.status || '').trim();
+        const note = String(body.note || '').trim() || null;
+        const adminCheck = await assertAdmin();
+        const adminEmail = adminCheck.ok ? adminCheck.email : null;
+        const allowedStatuses = new Set(['resolved', 'dismissed', 'open']);
+
+        if (!reportId || !allowedStatuses.has(status)) {
+          return new Response(JSON.stringify({ error: 'Invalid report resolve payload' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { error } = await supabase
+          .from('community_group_reports')
+          .update({
+            status,
+            resolved_note: note,
+            resolved_at: status === 'open' ? null : new Date().toISOString(),
+            resolved_by: status === 'open' ? null : (adminEmail || null)
+          })
+          .eq('id', reportId);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, resolved: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
       if (action === 'delete') {
+        if (!applicationId) {
+          return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
         const { error } = await supabase
           .from('community_applications')
           .delete()
@@ -179,64 +619,15 @@ Deno.serve(async (req) => {
       }
 
       if (action === 'sync-group') {
+        if (!applicationId) {
+          return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
         const application = body.application || {};
-        const statusMap: Record<string, string> = {
-          new: 'draft',
-          reviewing: 'draft',
-          contacted: 'draft',
-          matched: 'recruiting',
-          closed: 'closed'
-        };
-        const groupKey = String(application.group_key || 'other').trim() || 'other';
-        const sourceApplicationId = Number(applicationId);
-
-        const { data: existingGroups, error: selectError } = await supabase
-          .from('community_groups')
-          .select('*')
-          .eq('source_application_id', sourceApplicationId)
-          .limit(1);
-
-        if (selectError) {
-          throw selectError;
-        }
-
-        const existingGroup = existingGroups?.[0];
-        const trimmedTitle = String(application.group_title || '').trim();
-        const fallbackDescription = [application.existing_group_summary, application.message]
-          .filter((item) => typeof item === 'string' && item.trim())
-          .join('\n\n');
-        const fallbackHostName = application.application_type === 'host' ? String(application.applicant_name || '').trim() || null : null;
-        const nextStatus = statusMap[String(application.status || '')] || existingGroup?.status || 'draft';
-        const nextPayload = {
-          group_key: groupKey,
-          title: trimmedTitle || existingGroup?.title || '모임 초안',
-          description: String(application.description || fallbackDescription || existingGroup?.description || '').trim() || null,
-          status: nextStatus,
-          host_name: String(application.host_name || fallbackHostName || existingGroup?.host_name || '').trim() || null,
-          schedule_text: String(application.schedule_text || application.availability || existingGroup?.schedule_text || '').trim() || null,
-          capacity: existingGroup?.capacity ?? null,
-          open_chat_url: String(application.open_chat_url || existingGroup?.open_chat_url || '').trim() || null,
-          source_application_id: sourceApplicationId
-        };
-
-        if (existingGroup?.id) {
-          const { error } = await supabase
-            .from('community_groups')
-            .update(nextPayload)
-            .eq('id', existingGroup.id);
-
-          if (error) {
-            throw error;
-          }
-        } else {
-          const { error } = await supabase
-            .from('community_groups')
-            .insert(nextPayload);
-
-          if (error) {
-            throw error;
-          }
-        }
+        await syncGroupFromApplication(Number(applicationId), application);
 
         return new Response(JSON.stringify({ ok: true, synced: true }), {
           status: 200,
@@ -244,50 +635,66 @@ Deno.serve(async (req) => {
         });
       }
 
-      const allowedFields = new Set([
-        'applicant_name',
-        'contact_email',
-        'contact_phone',
-        'availability',
-        'existing_group_summary',
-        'message',
-        'status',
-        'admin_note',
-        'group_title',
-        'group_key',
-        'application_type'
-      ]);
-      const incomingFields = body.fields || {};
-      const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
-        if (allowedFields.has(key)) {
-          acc[key] = value;
+      if (action === 'update') {
+        if (!applicationId) {
+          return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
         }
-        return acc;
-      }, {});
 
-      if (!Object.keys(fields).length) {
-        return new Response(JSON.stringify({ error: 'No editable fields provided' }), {
-          status: 400,
+        const allowedFields = new Set([
+          'applicant_name',
+          'contact_email',
+          'contact_phone',
+          'availability',
+          'existing_group_summary',
+          'message',
+          'status',
+          'admin_note',
+          'group_title',
+          'group_key',
+          'application_type'
+        ]);
+        const incomingFields = body.fields || {};
+        const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
+          if (allowedFields.has(key)) {
+            acc[key] = value;
+          }
+          return acc;
+        }, {});
+
+        if (!Object.keys(fields).length) {
+          return new Response(JSON.stringify({ error: 'No editable fields provided' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { data: updatedRows, error } = await supabase
+          .from('community_applications')
+          .update(fields)
+          .eq('id', applicationId)
+          .select('*')
+          .limit(1);
+
+        if (error) {
+          throw error;
+        }
+
+        const updated = updatedRows?.[0];
+        if (updated) {
+          await syncGroupFromApplication(Number(applicationId), updated);
+        }
+
+        return new Response(JSON.stringify({ ok: true, updated: true }), {
+          status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
       }
-
-      const { error } = await supabase
-        .from('community_applications')
-        .update(fields)
-        .eq('id', applicationId);
-
-      if (error) {
-        throw error;
-      }
-
-      return new Response(JSON.stringify({ ok: true, updated: true }), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
-      const errorMessage = action === 'delete' ? 'Delete failed' : 'Update failed';
+      const errorMessage = action === 'delete' || action === 'owner-delete' || action === 'delete-group' ? 'Delete failed' : 'Update failed';
       return new Response(JSON.stringify({ error: errorMessage, detail }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
