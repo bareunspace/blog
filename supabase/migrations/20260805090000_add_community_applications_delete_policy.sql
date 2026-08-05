@@ -8,5 +8,8 @@ on public.community_applications
 for delete
 to authenticated
 using (
-    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+    lower(coalesce(auth.jwt() ->> 'email', '')) in (
+        'keunyong@gmail.com',
+        'bareunjari@gmail.com'
+    )
 );

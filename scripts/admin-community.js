@@ -256,7 +256,8 @@
       .limit(100);
 
     if (error) {
-      showGroupsStatus('모임 목록을 불러오지 못했습니다. migration 적용 상태를 확인해 주세요.', 'error');
+      console.error('community_groups load failed', error);
+      showGroupsStatus(`모임 목록을 불러오지 못했습니다. (${error.message || '알 수 없는 오류'})`, 'error');
       return;
     }
 
@@ -283,7 +284,8 @@
       .limit(100);
 
     if (error) {
-      showStatus('커뮤니티 신청을 불러오지 못했습니다. Supabase 정책 또는 마이그레이션을 확인해 주세요.', 'error');
+      console.error('community_applications load failed', error);
+      showStatus(`커뮤니티 신청을 불러오지 못했습니다. (${error.message || '알 수 없는 오류'})`, 'error');
       return;
     }
 
