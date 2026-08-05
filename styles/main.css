@@ -7040,9 +7040,17 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-community-card-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: .7rem;
+  justify-content: flex-start;
+  gap: .55rem;
   flex-wrap: wrap;
+  margin-top: .2rem;
+}
+
+.admin-community-card-actions .admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
 }
 
 @media (max-width: 640px) {
