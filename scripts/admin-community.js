@@ -28,8 +28,8 @@
   const typeFilter = applicationsRoot.querySelector('[data-community-admin-type-filter]');
   const groupFilter = applicationsRoot.querySelector('[data-community-admin-group-filter]');
   const statsNode = applicationsRoot.querySelector('[data-community-admin-stats]');
-  const reportsStatusNode = applicationsRoot.querySelector('[data-community-reports-status]');
-  const reportsListNode = applicationsRoot.querySelector('[data-community-reports-list]');
+  const reportsStatusNode = root.querySelector('[data-community-reports-status]');
+  const reportsListNode = root.querySelector('[data-community-reports-list]');
   const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
