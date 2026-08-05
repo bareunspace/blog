@@ -173,6 +173,7 @@
         ${row.existing_group_summary ? `<p class="admin-community-message"><strong>기존 모임</strong>${escapeHtml(row.existing_group_summary)}</p>` : ''}
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
         <div class="admin-community-card-actions">
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-application>수정</button>
           <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>모임 만들기</button>
           <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-application>신청 삭제</button>
           <label class="admin-community-status-control">
@@ -315,6 +316,41 @@
     item.className = `admin-community-item admin-community-item-${nextStatus}`;
     renderStats(allRows);
     showStatus('상태가 저장되었습니다.', 'success');
+  };
+
+  const editApplication = async (item) => {
+    const id = item?.dataset?.applicationId;
+    const row = allRows.find((entry) => String(entry.id) === String(id));
+
+    if (!row) {
+      return;
+    }
+
+    const nextMessage = window.prompt('신청 메모를 수정하세요.', row.message || '');
+    if (nextMessage === null) {
+      return;
+    }
+
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+    if (!client) {
+      showStatus('관리자 인증 정보를 기다리는 중입니다.', 'error');
+      return;
+    }
+
+    const { error } = await client
+      .from('community_applications')
+      .update({ message: nextMessage })
+      .eq('id', id);
+
+    if (error) {
+      showStatus('신청 내용을 수정하지 못했습니다.', 'error');
+      return;
+    }
+
+    row.message = nextMessage;
+    renderVisibleRows();
+    showStatus('신청 내용이 수정되었습니다.', 'success');
   };
 
   const deleteApplication = async (item) => {
@@ -482,6 +518,13 @@
   });
 
   listNode?.addEventListener('click', (event) => {
+    const editButton = event.target.closest('[data-edit-application]');
+    if (editButton) {
+      const item = editButton.closest('[data-application-id]');
+      editApplication(item);
+      return;
+    }
+
     const deleteButton = event.target.closest('[data-delete-application]');
     if (deleteButton) {
       const item = deleteButton.closest('[data-application-id]');
