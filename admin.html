@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260805-5
-script_version: 20260805-5
+css_version: 20260805-6
+script_version: 20260805-6
 ---
 <main class="admin-shell" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -77,6 +77,10 @@ script_version: 20260805-5
       <div class="admin-form-row">
         <label for="communityGroupHost">모임장</label>
         <input id="communityGroupHost" name="host_name" type="text" placeholder="예: 바른자리 또는 신청자 이름" />
+      </div>
+      <div class="admin-form-row">
+        <label for="communityGroupOpenChat">오픈채팅 링크</label>
+        <input id="communityGroupOpenChat" name="open_chat_url" type="url" placeholder="https://open.kakao.com/..." />
       </div>
       <div class="admin-form-row admin-form-row-full">
         <label for="communityGroupDescription">모임 설명</label>

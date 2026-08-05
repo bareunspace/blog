@@ -210,11 +210,13 @@
           <div><dt>일정</dt><dd>${escapeHtml(group.schedule_text || '-')}</dd></div>
           <div><dt>정원</dt><dd>${escapeHtml(group.capacity || '-')}</dd></div>
           <div><dt>모임장</dt><dd>${escapeHtml(group.host_name || '-')}</dd></div>
+          <div><dt>오픈채팅</dt><dd>${group.open_chat_url ? '저장됨' : '-'}</dd></div>
           <div><dt>생성일</dt><dd>${escapeHtml(formatDate(group.created_at))}</dd></div>
           <div><dt>신청 ID</dt><dd>${escapeHtml(group.source_application_id || '-')}</dd></div>
         </dl>
         ${group.description ? `<p class="admin-community-message"><strong>설명</strong>${escapeHtml(group.description)}</p>` : ''}
         <div class="admin-community-card-actions">
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-copy-open-chat-message ${group.open_chat_url ? '' : 'disabled'}>안내문 복사</button>
           <label class="admin-community-status-control">
             운영 상태
             <select data-community-group-status-select>
@@ -356,6 +358,7 @@
     groupForm.elements.status.value = 'draft';
     groupForm.elements.host_name.value = row.application_type === 'host' ? row.applicant_name : '';
     groupForm.elements.schedule_text.value = row.availability || '';
+    groupForm.elements.open_chat_url.value = '';
     groupForm.elements.description.value = [row.existing_group_summary, row.message].filter(Boolean).join('\n\n');
     groupForm.elements.source_application_id.value = row.id;
     groupsRoot?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -382,6 +385,7 @@
       schedule_text: String(formData.get('schedule_text') || '').trim() || null,
       capacity: capacityValue ? Number(capacityValue) : null,
       host_name: String(formData.get('host_name') || '').trim() || null,
+      open_chat_url: String(formData.get('open_chat_url') || '').trim() || null,
       description: String(formData.get('description') || '').trim() || null,
       source_application_id: sourceApplicationId ? Number(sourceApplicationId) : null
     };
@@ -407,6 +411,33 @@
     showGroupsStatus('모임을 만들었습니다.', 'success');
   };
 
+  const copyOpenChatMessage = async (groupId) => {
+    const group = allGroups.find((item) => String(item.id) === String(groupId));
+    if (!group?.open_chat_url) {
+      showGroupsStatus('저장된 오픈채팅 링크가 없습니다.', 'error');
+      return;
+    }
+
+    const message = [
+      `[바른자리 커뮤니티] ${group.title} 안내드립니다.`,
+      '',
+      `일정: ${group.schedule_text || '개별 안내'}`,
+      `장소: 바른자리`,
+      '',
+      '아래 오픈채팅에 입장해 주세요.',
+      group.open_chat_url,
+      '',
+      '오픈채팅 링크는 신청자에게만 안내드립니다.'
+    ].join('\n');
+
+    try {
+      await navigator.clipboard.writeText(message);
+      showGroupsStatus('오픈채팅 안내문을 복사했습니다.', 'success');
+    } catch (error) {
+      showGroupsStatus('복사하지 못했습니다. 브라우저 권한을 확인해 주세요.', 'error');
+    }
+  };
+
   listNode?.addEventListener('change', (event) => {
     const select = event.target.closest('[data-community-status-select]');
     if (!select) {
@@ -430,6 +461,15 @@
       return;
     }
     updateGroupStatus(select.closest('[data-group-id]'), select.value);
+  });
+
+  groupsListNode?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-copy-open-chat-message]');
+    if (!button) {
+      return;
+    }
+    const item = button.closest('[data-group-id]');
+    copyOpenChatMessage(item?.dataset?.groupId);
   });
 
   groupForm?.addEventListener('submit', createGroup);

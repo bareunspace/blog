@@ -6659,10 +6659,20 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-btn:focus-visible {
   background: var(--primary-light);
 }
+.admin-btn:disabled {
+  opacity: .52;
+  cursor: not-allowed;
+}
+.admin-btn:disabled:hover {
+  background: var(--primary);
+}
 .admin-btn.admin-btn-outline {
   border: 1px solid #becbc2;
   background: #fff;
   color: #214936;
+}
+.admin-btn.admin-btn-outline:disabled:hover {
+  background: #fff;
 }
 .admin-btn-small {
   padding: .5rem .8rem;
