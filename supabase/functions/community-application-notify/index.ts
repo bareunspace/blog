@@ -21,10 +21,10 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group' || action === 'create-group') {
+  if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group' || action === 'create-group' || action === 'delete-group') {
     const applicationId = body.applicationId ?? body.id;
-    // update-group and create-group operate on groupId, not applicationId
-    if (!applicationId && action !== 'update-group' && action !== 'create-group') {
+    // Group CRUD actions operate on groupId, not applicationId.
+    if (!applicationId && action !== 'update-group' && action !== 'create-group' && action !== 'delete-group') {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -149,6 +149,30 @@ Deno.serve(async (req) => {
         }
 
         return new Response(JSON.stringify({ ok: true, updated: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'delete-group') {
+        const groupId = body.groupId ?? body.id;
+        if (!groupId) {
+          return new Response(JSON.stringify({ error: 'Missing groupId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const { error } = await supabase
+          .from('community_groups')
+          .delete()
+          .eq('id', groupId);
+
+        if (error) {
+          throw error;
+        }
+
+        return new Response(JSON.stringify({ ok: true, deleted: true }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });

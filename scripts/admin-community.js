@@ -1,27 +1,42 @@
 (() => {
-  const root = document.getElementById('adminCommunityApplications');
+  const root = document.getElementById('adminDashboardRoot');
 
   if (!root) {
     return;
   }
 
-  const listNode = root.querySelector('[data-community-admin-list]');
-  const statusNode = root.querySelector('[data-community-admin-status]');
-  const editPanel = root.querySelector('[data-community-edit-panel]');
-  const editForm = root.querySelector('[data-community-edit-form]');
+  const applicationsRoot = document.getElementById('adminCommunityApplications');
   const groupsRoot = document.getElementById('adminCommunityGroups');
+
+  if (!applicationsRoot || !groupsRoot) {
+    return;
+  }
+
+  const listNode = applicationsRoot.querySelector('[data-community-admin-list]');
+  const statusNode = applicationsRoot.querySelector('[data-community-admin-status]');
+  const editPanel = applicationsRoot.querySelector('[data-community-edit-panel]');
+  const editForm = applicationsRoot.querySelector('[data-community-edit-form]');
   const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
   const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
-  const cancelEditButtons = root.querySelectorAll('[data-community-edit-cancel]');
+  const groupCreatePanel = groupsRoot?.querySelector('[data-community-group-create-panel]');
+  const groupCreateToggle = groupsRoot?.querySelector('[data-community-group-create-toggle]');
+  const groupCreateCancelButtons = groupsRoot?.querySelectorAll('[data-community-group-create-cancel]') || [];
+  const cancelEditButtons = applicationsRoot.querySelectorAll('[data-community-edit-cancel]');
   const cancelGroupEditButtons = groupsRoot?.querySelectorAll('[data-community-group-edit-cancel]') || [];
-  const refreshButton = root.querySelector('[data-community-admin-refresh]');
-  const statusFilter = root.querySelector('[data-community-admin-status-filter]');
-  const typeFilter = root.querySelector('[data-community-admin-type-filter]');
-  const groupFilter = root.querySelector('[data-community-admin-group-filter]');
-  const statsNode = root.querySelector('[data-community-admin-stats]');
+  const refreshButton = applicationsRoot.querySelector('[data-community-admin-refresh]');
+  const statusFilter = applicationsRoot.querySelector('[data-community-admin-status-filter]');
+  const typeFilter = applicationsRoot.querySelector('[data-community-admin-type-filter]');
+  const groupFilter = applicationsRoot.querySelector('[data-community-admin-group-filter]');
+  const statsNode = applicationsRoot.querySelector('[data-community-admin-stats]');
   const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
+  const workspaceTabs = Array.from(root.querySelectorAll('[data-admin-workspace-tab]'));
+  const workspacePanels = Array.from(root.querySelectorAll('[data-admin-workspace-panel]'));
+  const overviewPendingNode = root.querySelector('[data-admin-overview-pending]');
+  const overviewNewNode = root.querySelector('[data-admin-overview-new]');
+  const overviewGroupsNode = root.querySelector('[data-admin-overview-groups]');
+  const overviewActiveGroupsNode = root.querySelector('[data-admin-overview-active-groups]');
   let allRows = [];
   let allGroups = [];
 
@@ -97,6 +112,38 @@
     listNode.innerHTML = '<p class="admin-empty">아직 커뮤니티 신청이 없습니다.</p>';
   };
 
+  const switchWorkspace = (workspace) => {
+    workspaceTabs.forEach((button) => {
+      const isActive = button.dataset.adminWorkspaceTab === workspace;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      button.tabIndex = isActive ? 0 : -1;
+    });
+
+    workspacePanels.forEach((panel) => {
+      panel.hidden = panel.dataset.adminWorkspacePanel !== workspace;
+    });
+  };
+
+  const renderOverview = () => {
+    const pendingCount = allRows.filter((row) => row.status === 'new' || row.status === 'reviewing').length;
+    const newCount = allRows.filter((row) => row.status === 'new').length;
+    const activeGroupCount = allGroups.filter((group) => group.status === 'recruiting' || group.status === 'scheduled').length;
+
+    if (overviewPendingNode) {
+      overviewPendingNode.textContent = String(pendingCount);
+    }
+    if (overviewNewNode) {
+      overviewNewNode.textContent = String(newCount);
+    }
+    if (overviewGroupsNode) {
+      overviewGroupsNode.textContent = String(allGroups.length);
+    }
+    if (overviewActiveGroupsNode) {
+      overviewActiveGroupsNode.textContent = String(activeGroupCount);
+    }
+  };
+
   const renderStats = (rows) => {
     if (!statsNode) {
       return;
@@ -159,12 +206,16 @@
       return;
     }
 
-    listNode.innerHTML = rows.map((row) => `
+    listNode.innerHTML = rows.map((row) => {
+      const linkedGroup = allGroups.find((group) => String(group.source_application_id) === String(row.id));
+
+      return `
       <article class="admin-community-item admin-community-item-${escapeHtml(row.status)}" data-application-id="${row.id}">
         <div class="admin-community-item-head">
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[row.application_type] || row.application_type)} · ${escapeHtml(labels[row.group_key] || row.group_key)}</p>
             <h3>${escapeHtml(row.group_title)}</h3>
+            <p class="admin-community-subcopy">${linkedGroup ? `이 신청으로 만든 모임 #${escapeHtml(linkedGroup.id)}` : '아직 모임으로 전환되지 않았습니다.'}</p>
           </div>
           <span class="admin-community-status admin-community-status-${escapeHtml(row.status)}">${escapeHtml(labels[row.status] || row.status)}</span>
         </div>
@@ -179,8 +230,10 @@
         ${row.existing_group_summary ? `<p class="admin-community-message"><strong>기존 모임</strong>${escapeHtml(row.existing_group_summary)}</p>` : ''}
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
         <div class="admin-community-card-actions">
-          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-application>수정</button>
-          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>모임 만들기</button>
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-application>신청 수정</button>
+          ${linkedGroup
+            ? `<button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-open-linked-group data-linked-group-id="${linkedGroup.id}">만들어진 모임 열기</button>`
+            : `<button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>이 신청으로 모임 만들기</button>`}
           <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-application>신청 삭제</button>
           <label class="admin-community-status-control">
             상태
@@ -192,7 +245,8 @@
           </label>
         </div>
       </article>
-    `).join('');
+    `;
+    }).join('');
   };
 
   const renderGroups = (groups) => {
@@ -211,6 +265,7 @@
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[group.group_key] || group.group_key)} · ${escapeHtml(labels[group.status] || group.status)}</p>
             <h3>${escapeHtml(group.title)}</h3>
+            <p class="admin-community-subcopy">${group.source_application_id ? `원본 신청 #${escapeHtml(group.source_application_id)}에서 만든 모임입니다.` : '관리자가 직접 만든 모임입니다.'}</p>
           </div>
           <span class="admin-community-status admin-community-status-${escapeHtml(group.status)}">${escapeHtml(labels[group.status] || group.status)}</span>
         </div>
@@ -224,8 +279,10 @@
         </dl>
         ${group.description ? `<p class="admin-community-message"><strong>설명</strong>${escapeHtml(group.description)}</p>` : ''}
         <div class="admin-community-card-actions">
-          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-group>수정</button>
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-edit-group>모임 수정</button>
+          <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-open-source-application data-source-application-id="${escapeHtml(group.source_application_id || '')}" ${group.source_application_id ? '' : 'disabled'}>원본 신청 열기</button>
           <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-copy-open-chat-message ${group.open_chat_url ? '' : 'disabled'}>안내문 복사</button>
+          <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-group>모임 삭제</button>
           <label class="admin-community-status-control">
             운영 상태
             <select data-community-group-status-select>
@@ -263,6 +320,7 @@
 
     allGroups = data || [];
     renderGroups(allGroups);
+    renderOverview();
     showGroupsStatus(`모임 ${allGroups.length}개를 불러왔습니다.`, 'success');
   };
 
@@ -290,6 +348,7 @@
     }
 
     allRows = data || [];
+    renderOverview();
     renderStats(allRows);
     renderVisibleRows();
   };
@@ -327,6 +386,7 @@
       await syncGroupFromApplication(id, { ...row, status: nextStatus });
     }
     renderStats(allRows);
+    renderOverview();
     showStatus('상태가 저장되었습니다.', 'success');
   };
 
@@ -360,6 +420,27 @@
     }
   };
 
+  const openGroupCreatePanel = () => {
+    if (groupCreatePanel) {
+      groupCreatePanel.hidden = false;
+    }
+    if (groupCreateToggle) {
+      groupCreateToggle.setAttribute('aria-expanded', 'true');
+    }
+  };
+
+  const closeGroupCreatePanel = () => {
+    if (groupCreatePanel) {
+      groupCreatePanel.hidden = true;
+    }
+    if (groupForm) {
+      groupForm.reset();
+    }
+    if (groupCreateToggle) {
+      groupCreateToggle.setAttribute('aria-expanded', 'false');
+    }
+  };
+
   const closeGroupEditPanel = () => {
     if (groupEditPanel) {
       groupEditPanel.hidden = true;
@@ -377,6 +458,7 @@
       return;
     }
 
+    switchWorkspace('applications');
     editForm.elements.application_id.value = id;
     editForm.elements.group_title.value = row.group_title || '';
     editForm.elements.application_type.value = row.application_type || 'interest';
@@ -402,6 +484,8 @@
       return;
     }
 
+    switchWorkspace('groups');
+    closeGroupCreatePanel();
     groupEditForm.elements.group_id.value = id;
     groupEditForm.elements.title.value = group.title || '';
     groupEditForm.elements.group_key.value = group.group_key || 'other';
@@ -423,7 +507,7 @@
     const id = groupEditForm?.elements?.group_id?.value;
 
     if (!client || !id) {
-      showGroupsStatus('수정할 모임 정보를 찾지 못했습니다.', 'error');
+      showGroupsStatus('수정할 모임을 찾지 못했습니다.', 'error');
       return;
     }
 
@@ -458,8 +542,9 @@
     }
 
     renderGroups(allGroups);
+    renderOverview();
     closeGroupEditPanel();
-    showGroupsStatus('모임 정보가 수정되었습니다.', 'success');
+    showGroupsStatus('모임 정보가 저장되었습니다.', 'success');
   };
 
   const submitEditForm = async (event) => {
@@ -470,7 +555,7 @@
     const id = editForm?.elements?.application_id?.value;
 
     if (!client || !id) {
-      showStatus('수정할 신청 정보를 찾지 못했습니다.', 'error');
+      showStatus('수정할 신청을 찾지 못했습니다.', 'error');
       return;
     }
 
@@ -513,7 +598,7 @@
     await syncGroupFromApplication(id, { ...(row || {}), ...values, id });
     renderVisibleRows();
     closeEditPanel();
-    showStatus('신청 내용이 수정되었습니다.', 'success');
+    showStatus('신청 정보가 저장되었습니다.', 'success');
   };
 
   const deleteApplication = async (item) => {
@@ -545,6 +630,7 @@
     }
 
     allRows = allRows.filter((row) => String(row.id) !== String(id));
+    renderOverview();
     renderStats(allRows);
     renderVisibleRows();
     showStatus('신청 내역이 삭제되었습니다.', 'success');
@@ -578,7 +664,83 @@
       group.status = nextStatus;
     }
     renderGroups(allGroups);
+    renderOverview();
     showGroupsStatus('모임 상태가 저장되었습니다.', 'success');
+  };
+
+  const deleteGroup = async (item) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+    const id = item?.dataset?.groupId;
+
+    if (!client || !id) {
+      return;
+    }
+
+    const confirmed = window.confirm('이 모임 정보를 영구 삭제하시겠습니까? 삭제된 내용은 복구할 수 없습니다.');
+    if (!confirmed) {
+      return;
+    }
+
+    showGroupsStatus('모임을 삭제하는 중입니다.', 'success');
+
+    const { data, error } = await client.functions.invoke('community-application-notify', {
+      body: {
+        action: 'delete-group',
+        groupId: id
+      }
+    });
+
+    if (error || !data?.ok) {
+      console.error('deleteGroup failed', error, data);
+      showGroupsStatus(`모임을 삭제하지 못했습니다. (${data?.detail || error?.message || '알 수 없는 오류'})`, 'error');
+      return;
+    }
+
+    allGroups = allGroups.filter((group) => String(group.id) !== String(id));
+    renderGroups(allGroups);
+    renderOverview();
+    closeGroupEditPanel();
+    showGroupsStatus('모임이 삭제되었습니다.', 'success');
+  };
+
+  const openApplicationById = (applicationId) => {
+    if (!applicationId) {
+      return;
+    }
+
+    if (statusFilter) {
+      statusFilter.value = 'all';
+    }
+    if (typeFilter) {
+      typeFilter.value = 'all';
+    }
+    if (groupFilter) {
+      groupFilter.value = 'all';
+    }
+
+    renderVisibleRows();
+    switchWorkspace('applications');
+
+    const item = listNode?.querySelector(`[data-application-id="${String(applicationId)}"]`);
+    if (item) {
+      openEditPanel(item);
+      item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  const openGroupById = (groupId) => {
+    if (!groupId) {
+      return;
+    }
+
+    switchWorkspace('groups');
+
+    const item = groupsListNode?.querySelector(`[data-group-id="${String(groupId)}"]`);
+    if (item) {
+      openGroupEditPanel(item);
+      item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const prefillGroupForm = (applicationId) => {
@@ -599,8 +761,11 @@
     groupForm.elements.open_chat_url.value = '';
     groupForm.elements.description.value = [row.existing_group_summary, row.message].filter(Boolean).join('\n\n');
     groupForm.elements.source_application_id.value = row.id;
+    switchWorkspace('groups');
+    closeGroupEditPanel();
+    openGroupCreatePanel();
     groupsRoot?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    showGroupsStatus('신청 내용으로 모임 만들기 양식을 채웠습니다.', 'success');
+    showGroupsStatus('선택한 신청 내용으로 모임 초안을 채웠습니다.', 'success');
   };
 
   const createGroup = async (event) => {
@@ -649,6 +814,7 @@
     }
 
     groupForm.reset();
+    closeGroupCreatePanel();
     await loadGroups();
     showGroupsStatus('모임을 만들었습니다.', 'success');
   };
@@ -703,6 +869,12 @@
       return;
     }
 
+    const linkedGroupButton = event.target.closest('[data-open-linked-group]');
+    if (linkedGroupButton) {
+      openGroupById(linkedGroupButton.dataset.linkedGroupId);
+      return;
+    }
+
     const button = event.target.closest('[data-create-group-from-application]');
     if (!button) {
       return;
@@ -727,6 +899,19 @@
       return;
     }
 
+    const deleteButton = event.target.closest('[data-delete-group]');
+    if (deleteButton) {
+      const item = deleteButton.closest('[data-group-id]');
+      deleteGroup(item);
+      return;
+    }
+
+    const sourceButton = event.target.closest('[data-open-source-application]');
+    if (sourceButton) {
+      openApplicationById(sourceButton.dataset.sourceApplicationId);
+      return;
+    }
+
     const button = event.target.closest('[data-copy-open-chat-message]');
     if (!button) {
       return;
@@ -736,6 +921,18 @@
   });
 
   groupForm?.addEventListener('submit', createGroup);
+  groupCreateToggle?.addEventListener('click', () => {
+    if (groupCreatePanel?.hidden) {
+      openGroupCreatePanel();
+      closeGroupEditPanel();
+      return;
+    }
+
+    closeGroupCreatePanel();
+  });
+  groupCreateCancelButtons.forEach((button) => {
+    button.addEventListener('click', closeGroupCreatePanel);
+  });
   groupEditForm?.addEventListener('submit', submitGroupEditForm);
   cancelGroupEditButtons.forEach((button) => {
     button.addEventListener('click', closeGroupEditPanel);
@@ -749,11 +946,17 @@
   typeFilter?.addEventListener('change', renderVisibleRows);
   groupFilter?.addEventListener('change', renderVisibleRows);
   refreshButton?.addEventListener('click', loadApplications);
+  workspaceTabs.forEach((button) => {
+    button.addEventListener('click', () => {
+      switchWorkspace(button.dataset.adminWorkspaceTab || 'applications');
+    });
+  });
   window.addEventListener('barunjari:admin-ready', () => {
     loadGroups();
     loadApplications();
   });
 
+  switchWorkspace('applications');
   if (window.barunjariAdmin?.client) {
     loadGroups();
     loadApplications();
