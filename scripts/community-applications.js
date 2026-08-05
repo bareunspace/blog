@@ -355,10 +355,14 @@
         return;
       }
 
+      const resolvedGroupTitle = groupKey === 'other'
+        ? (customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임')
+        : (targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임');
+
       const payload = {
         application_type: applicationType,
         group_key: groupKey,
-        group_title: customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임',
+        group_title: resolvedGroupTitle,
         target_group_id: targetGroupId ? Number(targetGroupId) : null,
         applicant_name: applicantName,
         contact_email: contactEmail,
