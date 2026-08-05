@@ -23,7 +23,8 @@ Deno.serve(async (req) => {
 
   if (action === 'delete' || action === 'update' || action === 'sync-group' || action === 'update-group' || action === 'create-group') {
     const applicationId = body.applicationId ?? body.id;
-    if (!applicationId) {
+    // update-group and create-group operate on groupId, not applicationId
+    if (!applicationId && action !== 'update-group' && action !== 'create-group') {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -230,8 +231,7 @@ Deno.serve(async (req) => {
         'admin_note',
         'group_title',
         'group_key',
-        'application_type',
-        'description'
+        'application_type'
       ]);
       const incomingFields = body.fields || {};
       const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
