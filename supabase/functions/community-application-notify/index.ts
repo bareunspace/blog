@@ -98,10 +98,7 @@ Deno.serve(async (req) => {
     };
 
     if (replyTo) {
-      payload.reply_to = [replyTo];
-      payload.headers = {
-        'Reply-To': replyTo
-      };
+      payload.reply_to = replyTo;
     }
 
     const response = await fetch('https://api.resend.com/emails', {
