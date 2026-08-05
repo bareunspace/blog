@@ -174,7 +174,7 @@
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
         <div class="admin-community-card-actions">
           <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>모임 만들기</button>
-          <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-application>삭제</button>
+          <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-application>신청 삭제</button>
           <label class="admin-community-status-control">
             상태
             <select data-community-status-select>
@@ -326,7 +326,7 @@
       return;
     }
 
-    const confirmed = window.confirm('이 신청 내역을 삭제하시겠습니까?');
+    const confirmed = window.confirm('이 신청 내역을 영구 삭제하시겠습니까? 삭제된 내용은 복구할 수 없습니다.');
     if (!confirmed) {
       return;
     }
