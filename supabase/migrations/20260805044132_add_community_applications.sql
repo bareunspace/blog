@@ -35,6 +35,7 @@ revoke all on public.community_applications from anon, authenticated;
 grant insert on public.community_applications to anon, authenticated;
 grant select on public.community_applications to authenticated;
 grant update (status, admin_note, updated_at) on public.community_applications to authenticated;
+grant delete on public.community_applications to authenticated;
 
 grant usage, select on sequence public.community_applications_id_seq to anon, authenticated;
 
@@ -68,5 +69,14 @@ using (
     lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
 )
 with check (
+    lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
+);
+
+drop policy if exists "community_applications_admin_delete" on public.community_applications;
+create policy "community_applications_admin_delete"
+on public.community_applications
+for delete
+to authenticated
+using (
     lower(coalesce(auth.jwt() ->> 'email', '')) in ('keunyong@gmail.com')
 );

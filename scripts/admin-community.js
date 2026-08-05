@@ -174,6 +174,7 @@
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
         <div class="admin-community-card-actions">
           <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-create-group-from-application>모임 만들기</button>
+          <button class="admin-btn admin-btn-danger admin-btn-small" type="button" data-delete-application>삭제</button>
           <label class="admin-community-status-control">
             상태
             <select data-community-status-select>
@@ -316,6 +317,36 @@
     showStatus('상태가 저장되었습니다.', 'success');
   };
 
+  const deleteApplication = async (item) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+    const id = item?.dataset?.applicationId;
+
+    if (!client || !id) {
+      return;
+    }
+
+    const confirmed = window.confirm('이 신청 내역을 삭제하시겠습니까?');
+    if (!confirmed) {
+      return;
+    }
+
+    const { error } = await client
+      .from('community_applications')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      showStatus('신청을 삭제하지 못했습니다.', 'error');
+      return;
+    }
+
+    allRows = allRows.filter((row) => String(row.id) !== String(id));
+    renderStats(allRows);
+    renderVisibleRows();
+    showStatus('신청 내역이 삭제되었습니다.', 'success');
+  };
+
   const updateGroupStatus = async (item, nextStatus) => {
     const adminContext = window.barunjariAdmin;
     const client = adminContext?.client;
@@ -447,6 +478,13 @@
   });
 
   listNode?.addEventListener('click', (event) => {
+    const deleteButton = event.target.closest('[data-delete-application]');
+    if (deleteButton) {
+      const item = deleteButton.closest('[data-application-id]');
+      deleteApplication(item);
+      return;
+    }
+
     const button = event.target.closest('[data-create-group-from-application]');
     if (!button) {
       return;
