@@ -317,8 +317,32 @@
       row.status = nextStatus;
     }
     item.className = `admin-community-item admin-community-item-${nextStatus}`;
+    if (row) {
+      await syncGroupFromApplication(id, { ...row, status: nextStatus });
+    }
     renderStats(allRows);
     showStatus('상태가 저장되었습니다.', 'success');
+  };
+
+  const syncGroupFromApplication = async (applicationId, application) => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !applicationId) {
+      return;
+    }
+
+    try {
+      await client.functions.invoke('community-application-notify', {
+        body: {
+          action: 'sync-group',
+          applicationId,
+          application
+        }
+      });
+    } catch (error) {
+      // Group sync is best-effort so the admin edit flow still succeeds.
+    }
   };
 
   const closeEditPanel = () => {
@@ -408,6 +432,7 @@
       Object.assign(row, values);
     }
 
+    await syncGroupFromApplication(id, { ...(row || {}), ...values, id });
     renderVisibleRows();
     closeEditPanel();
     showStatus('신청 내용이 수정되었습니다.', 'success');

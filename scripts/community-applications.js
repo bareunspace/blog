@@ -138,6 +138,24 @@
     }
   };
 
+  const syncGroupDraft = async (applicationId, application) => {
+    if (!applicationId) {
+      return;
+    }
+
+    try {
+      await client.functions.invoke('community-application-notify', {
+        body: {
+          action: 'sync-group',
+          applicationId,
+          application
+        }
+      });
+    } catch (error) {
+      // Group syncing is best-effort so the application submit flow still succeeds.
+    }
+  };
+
   const escapeHtml = (value) => String(value || '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
@@ -377,9 +395,10 @@
       setSubmitting(form, true);
       showStatus(form, '신청을 저장하는 중입니다.', 'success');
 
-      const { error } = await client
+      const { data: insertedRows, error } = await client
         .from('community_applications')
-        .insert(payload);
+        .insert(payload)
+        .select('*');
 
       setSubmitting(form, false);
 
@@ -388,10 +407,15 @@
         return;
       }
 
-      await notifyAdmin({
+      const insertedApplication = insertedRows?.[0];
+      const applicationPayload = {
         ...payload,
+        id: insertedApplication?.id,
         application_type_label: typeLabels[applicationType] || applicationType
-      });
+      };
+
+      await notifyAdmin(applicationPayload);
+      await syncGroupDraft(insertedApplication?.id, applicationPayload);
 
       form.reset();
       await loadLiveGroups();

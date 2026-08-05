@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const action = String(body.action || '').trim().toLowerCase();
 
-  if (action === 'delete' || action === 'update') {
+  if (action === 'delete' || action === 'update' || action === 'sync-group') {
     const applicationId = body.applicationId ?? body.id;
     if (!applicationId) {
       return new Response(JSON.stringify({ error: 'Missing applicationId' }), {
@@ -56,6 +56,72 @@ Deno.serve(async (req) => {
         }
 
         return new Response(JSON.stringify({ ok: true, deleted: true }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (action === 'sync-group') {
+        const application = body.application || {};
+        const statusMap: Record<string, string> = {
+          new: 'draft',
+          reviewing: 'draft',
+          contacted: 'draft',
+          matched: 'recruiting',
+          closed: 'closed'
+        };
+        const groupKey = String(application.group_key || 'other').trim() || 'other';
+        const sourceApplicationId = Number(applicationId);
+
+        const { data: existingGroups, error: selectError } = await supabase
+          .from('community_groups')
+          .select('*')
+          .eq('source_application_id', sourceApplicationId)
+          .limit(1);
+
+        if (selectError) {
+          throw selectError;
+        }
+
+        const existingGroup = existingGroups?.[0];
+        const trimmedTitle = String(application.group_title || '').trim();
+        const fallbackDescription = [application.existing_group_summary, application.message]
+          .filter((item) => typeof item === 'string' && item.trim())
+          .join('\n\n');
+        const fallbackHostName = application.application_type === 'host' ? String(application.applicant_name || '').trim() || null : null;
+        const nextStatus = statusMap[String(application.status || '')] || existingGroup?.status || 'draft';
+        const nextPayload = {
+          group_key: groupKey,
+          title: trimmedTitle || existingGroup?.title || '모임 초안',
+          description: String(application.description || fallbackDescription || existingGroup?.description || '').trim() || null,
+          status: nextStatus,
+          host_name: String(application.host_name || fallbackHostName || existingGroup?.host_name || '').trim() || null,
+          schedule_text: String(application.schedule_text || application.availability || existingGroup?.schedule_text || '').trim() || null,
+          capacity: existingGroup?.capacity ?? null,
+          open_chat_url: String(application.open_chat_url || existingGroup?.open_chat_url || '').trim() || null,
+          source_application_id: sourceApplicationId
+        };
+
+        if (existingGroup?.id) {
+          const { error } = await supabase
+            .from('community_groups')
+            .update(nextPayload)
+            .eq('id', existingGroup.id);
+
+          if (error) {
+            throw error;
+          }
+        } else {
+          const { error } = await supabase
+            .from('community_groups')
+            .insert(nextPayload);
+
+          if (error) {
+            throw error;
+          }
+        }
+
+        return new Response(JSON.stringify({ ok: true, synced: true }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
