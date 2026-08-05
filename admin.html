@@ -138,6 +138,43 @@ script_version: 20260805-6
     </div>
     <div class="admin-community-stats" data-community-admin-stats aria-label="커뮤니티 신청 요약"></div>
     <p class="admin-status" data-community-admin-status hidden></p>
+    <div class="admin-community-edit-panel" data-community-edit-panel hidden>
+      <div class="admin-community-edit-head">
+        <h3>신청 내용 수정</h3>
+        <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-community-edit-cancel>닫기</button>
+      </div>
+      <form class="admin-community-edit-form" data-community-edit-form>
+        <input type="hidden" name="application_id" />
+        <div class="admin-form-row">
+          <label for="editApplicantName">신청자 이름</label>
+          <input id="editApplicantName" name="applicant_name" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editContactEmail">이메일</label>
+          <input id="editContactEmail" name="contact_email" type="email" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editContactPhone">전화번호</label>
+          <input id="editContactPhone" name="contact_phone" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editAvailability">가능 일정</label>
+          <input id="editAvailability" name="availability" type="text" />
+        </div>
+        <div class="admin-form-row">
+          <label for="editExistingGroupSummary">기존 모임 설명</label>
+          <textarea id="editExistingGroupSummary" name="existing_group_summary" rows="3"></textarea>
+        </div>
+        <div class="admin-form-row admin-form-row-full">
+          <label for="editMessage">메시지</label>
+          <textarea id="editMessage" name="message" rows="4"></textarea>
+        </div>
+        <div class="admin-community-edit-actions">
+          <button class="admin-btn" type="submit">저장</button>
+          <button class="admin-btn admin-btn-outline" type="button" data-community-edit-cancel>취소</button>
+        </div>
+      </form>
+    </div>
     <div class="admin-community-list" data-community-admin-list>
       <p class="admin-empty">관리자 인증 후 신청 목록을 불러옵니다.</p>
     </div>

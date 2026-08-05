@@ -7,6 +7,9 @@
 
   const listNode = root.querySelector('[data-community-admin-list]');
   const statusNode = root.querySelector('[data-community-admin-status]');
+  const editPanel = root.querySelector('[data-community-edit-panel]');
+  const editForm = root.querySelector('[data-community-edit-form]');
+  const cancelEditButtons = root.querySelectorAll('[data-community-edit-cancel]');
   const refreshButton = root.querySelector('[data-community-admin-refresh]');
   const statusFilter = root.querySelector('[data-community-admin-status-filter]');
   const typeFilter = root.querySelector('[data-community-admin-type-filter]');
@@ -318,39 +321,54 @@
     showStatus('상태가 저장되었습니다.', 'success');
   };
 
-  const editApplication = async (item) => {
+  const closeEditPanel = () => {
+    if (editPanel) {
+      editPanel.hidden = true;
+    }
+    if (editForm) {
+      editForm.reset();
+    }
+  };
+
+  const openEditPanel = (item) => {
     const id = item?.dataset?.applicationId;
     const row = allRows.find((entry) => String(entry.id) === String(id));
 
-    if (!row) {
+    if (!row || !editPanel || !editForm) {
       return;
     }
+
+    editForm.elements.application_id.value = id;
+    editForm.elements.applicant_name.value = row.applicant_name || '';
+    editForm.elements.contact_email.value = row.contact_email || '';
+    editForm.elements.contact_phone.value = row.contact_phone || '';
+    editForm.elements.availability.value = row.availability || '';
+    editForm.elements.existing_group_summary.value = row.existing_group_summary || '';
+    editForm.elements.message.value = row.message || '';
+    editPanel.hidden = false;
+    editPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const submitEditForm = async (event) => {
+    event.preventDefault();
 
     const adminContext = window.barunjariAdmin;
     const client = adminContext?.client;
-    if (!client) {
-      showStatus('관리자 인증 정보를 기다리는 중입니다.', 'error');
+    const id = editForm?.elements?.application_id?.value;
+
+    if (!client || !id) {
+      showStatus('수정할 신청 정보를 찾지 못했습니다.', 'error');
       return;
     }
 
-    const fields = [
-      ['applicant_name', '신청자 이름', row.applicant_name || ''],
-      ['contact_email', '이메일', row.contact_email || ''],
-      ['contact_phone', '전화번호', row.contact_phone || ''],
-      ['availability', '가능 일정', row.availability || ''],
-      ['existing_group_summary', '기존 모임 설명', row.existing_group_summary || ''],
-      ['message', '메시지', row.message || '']
-    ];
-
-    const values = {};
-
-    for (const [key, label, defaultValue] of fields) {
-      const nextValue = window.prompt(`${label}을(를) 수정하세요.`, defaultValue);
-      if (nextValue === null) {
-        return;
-      }
-      values[key] = nextValue;
-    }
+    const values = {
+      applicant_name: editForm.elements.applicant_name.value.trim(),
+      contact_email: editForm.elements.contact_email.value.trim(),
+      contact_phone: editForm.elements.contact_phone.value.trim(),
+      availability: editForm.elements.availability.value.trim(),
+      existing_group_summary: editForm.elements.existing_group_summary.value.trim(),
+      message: editForm.elements.message.value.trim()
+    };
 
     const { data, error } = await client.functions.invoke('community-application-notify', {
       body: {
@@ -365,8 +383,13 @@
       return;
     }
 
-    Object.assign(row, values);
+    const row = allRows.find((entry) => String(entry.id) === String(id));
+    if (row) {
+      Object.assign(row, values);
+    }
+
     renderVisibleRows();
+    closeEditPanel();
     showStatus('신청 내용이 수정되었습니다.', 'success');
   };
 
@@ -538,7 +561,7 @@
     const editButton = event.target.closest('[data-edit-application]');
     if (editButton) {
       const item = editButton.closest('[data-application-id]');
-      editApplication(item);
+      openEditPanel(item);
       return;
     }
 
@@ -575,6 +598,10 @@
   });
 
   groupForm?.addEventListener('submit', createGroup);
+  editForm?.addEventListener('submit', submitEditForm);
+  cancelEditButtons.forEach((button) => {
+    button.addEventListener('click', closeEditPanel);
+  });
 
   statusFilter?.addEventListener('change', renderVisibleRows);
   typeFilter?.addEventListener('change', renderVisibleRows);
