@@ -9,6 +9,7 @@
   const statusNode = root.querySelector('[data-community-admin-status]');
   const editPanel = root.querySelector('[data-community-edit-panel]');
   const editForm = root.querySelector('[data-community-edit-form]');
+  const groupsRoot = document.getElementById('adminCommunityGroups');
   const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
   const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
   const cancelEditButtons = root.querySelectorAll('[data-community-edit-cancel]');
@@ -18,7 +19,6 @@
   const typeFilter = root.querySelector('[data-community-admin-type-filter]');
   const groupFilter = root.querySelector('[data-community-admin-group-filter]');
   const statsNode = root.querySelector('[data-community-admin-stats]');
-  const groupsRoot = document.getElementById('adminCommunityGroups');
   const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
