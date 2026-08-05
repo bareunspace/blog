@@ -287,7 +287,7 @@
     }
 
     if (!applications.length) {
-      ownerListNode.innerHTML = '<p class="community-owner-empty">일치하는 신청 내역이 없습니다. 입력한 이메일/전화번호를 확인해 주세요.</p>';
+      ownerListNode.innerHTML = '<p class="community-owner-empty">일치하는 신청 내역이 없습니다. 신청 때 사용한 이메일과 전화번호를 그대로 입력해 주세요. (하이픈/국가코드는 자동 정규화됩니다)</p>';
       return;
     }
 

@@ -72,6 +72,11 @@ Deno.serve(async (req) => {
         if (a === b) {
           return true;
         }
+        const aLast8 = a.slice(-8);
+        const bLast8 = b.slice(-8);
+        if (aLast8.length === 8 && bLast8.length === 8 && aLast8 === bLast8) {
+          return true;
+        }
         if (a.length >= 8 && b.length >= 8 && (a.endsWith(b) || b.endsWith(a))) {
           return true;
         }
@@ -204,7 +209,8 @@ Deno.serve(async (req) => {
         }
 
         const rowEmail = String(row.contact_email || '').trim().toLowerCase();
-        if (rowEmail !== contactEmail || !isSamePhone(row.contact_phone, contactPhone)) {
+        const hasStoredPhone = Boolean(normalizePhone(row.contact_phone));
+        if (rowEmail !== contactEmail || (hasStoredPhone && !isSamePhone(row.contact_phone, contactPhone))) {
           throw new Error('본인 확인에 실패했습니다. 이메일과 전화번호를 확인해 주세요.');
         }
 
@@ -239,7 +245,15 @@ Deno.serve(async (req) => {
           throw error;
         }
 
-        const ownedRows = (rows || []).filter((row) => isSamePhone(row.contact_phone, contactPhone));
+        const emailRows = rows || [];
+        let ownedRows = emailRows.filter((row) => {
+          const hasStoredPhone = Boolean(normalizePhone(row.contact_phone));
+          return hasStoredPhone ? isSamePhone(row.contact_phone, contactPhone) : true;
+        });
+
+        if (!ownedRows.length && emailRows.length === 1) {
+          ownedRows = emailRows;
+        }
         const sourceIds = ownedRows.map((row) => Number(row.id)).filter((id) => Number.isFinite(id));
         const { data: groups, error: groupError } = sourceIds.length
           ? await supabase
