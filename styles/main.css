@@ -4602,9 +4602,9 @@ main.community-page .community-host-actions a[aria-disabled="true"] {
 }
 main.community-page .community-application-form {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .7rem;
-  padding: .85rem;
+  grid-template-columns: 1fr;
+  gap: .72rem;
+  padding: 1rem;
   border: 1px solid #dce8e1;
   border-radius: 14px;
   background: rgba(255,255,255,.88);
@@ -4625,41 +4625,34 @@ main.community-page .community-consent {
   font-size: .82rem;
   font-weight: 800;
 }
-main.community-page .community-choice-group {
+main.community-page .community-inline-label {
   margin: 0;
-  padding: .7rem .78rem;
-  border: 1px solid #dce8e1;
-  border-radius: 10px;
-  background: #fff;
-}
-main.community-page .community-choice-group legend {
-  padding: 0 .2rem;
   color: #2a3d33;
-  font-size: .8rem;
+  font-size: .82rem;
   font-weight: 800;
 }
-main.community-page .community-choice-grid {
+main.community-page .community-choice-inline {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: .4rem;
 }
-main.community-page .community-choice-item {
+main.community-page .community-choice-inline-item {
   display: inline-flex;
   align-items: center;
   gap: .42rem;
-  padding: .5rem .55rem;
+  padding: .52rem .58rem;
   border: 1px solid #d7e5dc;
   border-radius: 9px;
-  background: #f9fcfa;
+  background: #fff;
   color: #1f2937;
   font-size: .82rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
 }
-main.community-page .community-choice-item input {
+main.community-page .community-choice-inline-item input {
   margin: 0;
 }
-main.community-page .community-choice-group-availability .community-choice-grid {
+main.community-page .community-choice-inline-availability {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 main.community-page .community-form-row input,
@@ -4762,7 +4755,8 @@ main.community-page .community-principle-card {
   main.community-page .community-flow-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  main.community-page .community-choice-grid {
+  main.community-page .community-choice-inline,
+  main.community-page .community-choice-inline-availability {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   main.community-page .community-principle-grid {
@@ -4791,8 +4785,8 @@ main.community-page .community-principle-card {
   main.community-page .community-principle-grid {
     grid-template-columns: 1fr;
   }
-  main.community-page .community-choice-grid,
-  main.community-page .community-choice-group-availability .community-choice-grid {
+  main.community-page .community-choice-inline,
+  main.community-page .community-choice-inline-availability {
     grid-template-columns: 1fr;
   }
   main.community-page .community-group-card {
@@ -4823,9 +4817,6 @@ main.community-page .community-principle-card {
   }
   main.community-page .community-host-panel {
     padding: 1rem;
-  }
-  main.community-page .community-application-form {
-    grid-template-columns: 1fr;
   }
 }
 main.about-page #contact .contact-lead-line,

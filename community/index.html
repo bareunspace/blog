@@ -11,8 +11,8 @@ sitemap: false
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
 og_image_alt: 바른자리에서 소규모 모임을 준비하는 공간
 preload_image: images/bucheon-small-group-meeting-space.webp
-css_version: 20260805-7
-script_version: 20260805-7
+css_version: 20260805-8
+script_version: 20260805-8
 ---
 
 <main class="about-page community-page">
@@ -202,17 +202,17 @@ script_version: 20260805-7
             <input type="hidden" name="target_group_id" />
             <input type="hidden" name="target_group_title" />
             <div class="community-form-row community-form-row-full">
-              <fieldset class="community-choice-group">
-                <legend>무엇을 하고 싶으신가요?</legend>
-                <label class="community-choice-item">
+              <p class="community-inline-label">무엇을 하고 싶으신가요?</p>
+              <div class="community-choice-inline" role="radiogroup" aria-label="참여 방식">
+                <label class="community-choice-inline-item">
                   <input type="radio" name="application_type" value="interest" checked required />
                   <span>같이 참여하고 싶어요.</span>
                 </label>
-                <label class="community-choice-item">
+                <label class="community-choice-inline-item">
                   <input type="radio" name="application_type" value="host" required />
                   <span>제가 직접 모임을 만들고 싶어요.</span>
                 </label>
-              </fieldset>
+              </div>
             </div>
             <div class="community-form-row">
               <label for="communityIndexGroup">관심 모임</label>
@@ -236,31 +236,29 @@ script_version: 20260805-7
               <input id="communityIndexPhone" name="contact_phone" type="tel" autocomplete="tel" />
             </div>
             <div class="community-form-row community-form-row-full">
-              <fieldset class="community-choice-group community-choice-group-availability">
-                <legend>가능한 요일/시간</legend>
-                <div class="community-choice-grid">
-                  <label class="community-choice-item">
-                    <input type="checkbox" name="availability_slots" value="평일 오전" />
-                    <span>평일 오전</span>
-                  </label>
-                  <label class="community-choice-item">
-                    <input type="checkbox" name="availability_slots" value="평일 오후" />
-                    <span>평일 오후</span>
-                  </label>
-                  <label class="community-choice-item">
-                    <input type="checkbox" name="availability_slots" value="평일 저녁" />
-                    <span>평일 저녁</span>
-                  </label>
-                  <label class="community-choice-item">
-                    <input type="checkbox" name="availability_slots" value="토요일" />
-                    <span>토요일</span>
-                  </label>
-                  <label class="community-choice-item">
-                    <input type="checkbox" name="availability_slots" value="일요일" />
-                    <span>일요일</span>
-                  </label>
-                </div>
-              </fieldset>
+              <p class="community-inline-label">가능한 요일/시간 (중복 선택)</p>
+              <div class="community-choice-inline community-choice-inline-availability">
+                <label class="community-choice-inline-item">
+                  <input type="checkbox" name="availability_slots" value="평일 오전" />
+                  <span>평일 오전</span>
+                </label>
+                <label class="community-choice-inline-item">
+                  <input type="checkbox" name="availability_slots" value="평일 오후" />
+                  <span>평일 오후</span>
+                </label>
+                <label class="community-choice-inline-item">
+                  <input type="checkbox" name="availability_slots" value="평일 저녁" />
+                  <span>평일 저녁</span>
+                </label>
+                <label class="community-choice-inline-item">
+                  <input type="checkbox" name="availability_slots" value="토요일" />
+                  <span>토요일</span>
+                </label>
+                <label class="community-choice-inline-item">
+                  <input type="checkbox" name="availability_slots" value="일요일" />
+                  <span>일요일</span>
+                </label>
+              </div>
             </div>
             <div class="community-form-row community-form-row-full">
               <label for="communityIndexMessage">남기고 싶은 말</label>
