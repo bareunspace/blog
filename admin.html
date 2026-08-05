@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260717-1
-script_version: 20260717-1
+css_version: 20260805-1
+script_version: 20260805-1
 ---
 <main class="admin-shell" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -42,8 +42,22 @@ script_version: 20260717-1
         <h2 class="admin-title" id="adminCommunityTitle">커뮤니티 신청</h2>
         <p class="admin-desc">사이트에서 접수된 관심 등록, 모임 시작, 기존 모임 등록 신청을 확인합니다.</p>
       </div>
-      <button class="admin-btn admin-btn-outline" type="button" data-community-admin-refresh>새로고침</button>
+      <div class="admin-community-tools">
+        <label class="admin-filter">
+          상태
+          <select data-community-admin-filter>
+            <option value="all">전체</option>
+            <option value="new">새 신청</option>
+            <option value="reviewing">검토 중</option>
+            <option value="contacted">연락 완료</option>
+            <option value="matched">매칭/진행</option>
+            <option value="closed">종료</option>
+          </select>
+        </label>
+        <button class="admin-btn admin-btn-outline" type="button" data-community-admin-refresh>새로고침</button>
+      </div>
     </div>
+    <div class="admin-community-stats" data-community-admin-stats aria-label="커뮤니티 신청 요약"></div>
     <p class="admin-status" data-community-admin-status hidden></p>
     <div class="admin-community-list" data-community-admin-list>
       <p class="admin-empty">관리자 인증 후 신청 목록을 불러옵니다.</p>

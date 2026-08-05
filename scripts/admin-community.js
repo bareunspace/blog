@@ -8,6 +8,9 @@
   const listNode = root.querySelector('[data-community-admin-list]');
   const statusNode = root.querySelector('[data-community-admin-status]');
   const refreshButton = root.querySelector('[data-community-admin-refresh]');
+  const filterSelect = root.querySelector('[data-community-admin-filter]');
+  const statsNode = root.querySelector('[data-community-admin-stats]');
+  let allRows = [];
 
   const labels = {
     interest: '관심 등록',
@@ -63,6 +66,42 @@
     listNode.innerHTML = '<p class="admin-empty">아직 커뮤니티 신청이 없습니다.</p>';
   };
 
+  const renderStats = (rows) => {
+    if (!statsNode) {
+      return;
+    }
+
+    const counts = rows.reduce((acc, row) => {
+      acc[row.status] = (acc[row.status] || 0) + 1;
+      return acc;
+    }, {});
+
+    statsNode.innerHTML = [
+      ['total', '전체', rows.length],
+      ['new', labels.new, counts.new || 0],
+      ['reviewing', labels.reviewing, counts.reviewing || 0],
+      ['contacted', labels.contacted, counts.contacted || 0],
+      ['matched', labels.matched, counts.matched || 0]
+    ].map(([key, label, count]) => `
+      <div class="admin-stat admin-stat-${key}">
+        <span>${escapeHtml(label)}</span>
+        <strong>${count}</strong>
+      </div>
+    `).join('');
+  };
+
+  const getVisibleRows = () => {
+    const selectedStatus = filterSelect?.value || 'all';
+    if (selectedStatus === 'all') {
+      return allRows;
+    }
+    return allRows.filter((row) => row.status === selectedStatus);
+  };
+
+  const renderVisibleRows = () => {
+    renderRows(getVisibleRows());
+  };
+
   const renderRows = (rows) => {
     if (!listNode) {
       return;
@@ -74,13 +113,13 @@
     }
 
     listNode.innerHTML = rows.map((row) => `
-      <article class="admin-community-item" data-application-id="${row.id}">
+      <article class="admin-community-item admin-community-item-${escapeHtml(row.status)}" data-application-id="${row.id}">
         <div class="admin-community-item-head">
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[row.application_type] || row.application_type)} · ${escapeHtml(labels[row.group_key] || row.group_key)}</p>
             <h3>${escapeHtml(row.group_title)}</h3>
           </div>
-          <span class="admin-community-status">${escapeHtml(labels[row.status] || row.status)}</span>
+          <span class="admin-community-status admin-community-status-${escapeHtml(row.status)}">${escapeHtml(labels[row.status] || row.status)}</span>
         </div>
         <dl class="admin-community-meta">
           <div><dt>신청자</dt><dd>${escapeHtml(row.applicant_name)}</dd></div>
@@ -125,8 +164,10 @@
       return;
     }
 
-    renderRows(data || []);
-    showStatus(`커뮤니티 신청 ${data?.length || 0}건을 불러왔습니다.`, 'success');
+    allRows = data || [];
+    renderStats(allRows);
+    renderVisibleRows();
+    showStatus(`커뮤니티 신청 ${allRows.length}건을 불러왔습니다.`, 'success');
   };
 
   const updateStatus = async (item, nextStatus) => {
@@ -151,7 +192,14 @@
     const badge = item.querySelector('.admin-community-status');
     if (badge) {
       badge.textContent = labels[nextStatus] || nextStatus;
+      badge.className = `admin-community-status admin-community-status-${nextStatus}`;
     }
+    const row = allRows.find((item) => String(item.id) === String(id));
+    if (row) {
+      row.status = nextStatus;
+    }
+    item.className = `admin-community-item admin-community-item-${nextStatus}`;
+    renderStats(allRows);
     showStatus('상태가 저장되었습니다.', 'success');
   };
 
@@ -163,6 +211,7 @@
     updateStatus(select.closest('[data-application-id]'), select.value);
   });
 
+  filterSelect?.addEventListener('change', renderVisibleRows);
   refreshButton?.addEventListener('click', loadApplications);
   window.addEventListener('barunjari:admin-ready', loadApplications);
 

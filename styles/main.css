@@ -6497,6 +6497,30 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   align-items: flex-start;
   gap: 1rem;
 }
+.admin-community-tools {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+.admin-filter {
+  display: grid;
+  gap: .34rem;
+  color: #42574b;
+  font-size: .78rem;
+  font-weight: 900;
+}
+.admin-filter select {
+  min-width: 8.8rem;
+  border: 1px solid #c9d6ce;
+  border-radius: 10px;
+  background: #fff;
+  padding: .58rem .72rem;
+  color: #183929;
+  font: inherit;
+  font-size: .86rem;
+}
 .admin-label {
   display: inline-flex;
   align-items: center;
@@ -6612,6 +6636,44 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   gap: .85rem;
   margin-top: 1rem;
 }
+.admin-community-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .65rem;
+  margin: 1rem 0 .8rem;
+}
+.admin-stat {
+  border: 1px solid #dfe8e2;
+  border-radius: 12px;
+  padding: .72rem .78rem;
+  background: #f9fbfa;
+}
+.admin-stat span {
+  display: block;
+  margin-bottom: .18rem;
+  color: #657569;
+  font-size: .74rem;
+  font-weight: 900;
+}
+.admin-stat strong {
+  display: block;
+  color: #173726;
+  font-size: 1.32rem;
+  line-height: 1;
+}
+.admin-stat-new {
+  border-color: #b8dfc4;
+  background: #f0fbf4;
+}
+.admin-stat-reviewing {
+  border-color: #f2d38d;
+  background: #fff9e8;
+}
+.admin-stat-contacted,
+.admin-stat-matched {
+  border-color: #bdd7f5;
+  background: #f1f7ff;
+}
 .admin-empty {
   border: 1px dashed #cdd9d1;
   border-radius: 12px;
@@ -6622,11 +6684,25 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-community-item {
   display: grid;
-  gap: .75rem;
+  gap: .9rem;
   border: 1px solid #dbe4de;
   border-radius: 14px;
-  padding: 1rem;
+  padding: 1.05rem;
   background: #fff;
+  box-shadow: 0 10px 22px rgba(30, 60, 45, .06);
+}
+.admin-community-item-new {
+  border-left: 4px solid #2d6a4f;
+}
+.admin-community-item-reviewing {
+  border-left: 4px solid #d99a16;
+}
+.admin-community-item-contacted,
+.admin-community-item-matched {
+  border-left: 4px solid #3b82c4;
+}
+.admin-community-item-closed {
+  opacity: .74;
 }
 .admin-community-item-head {
   display: flex;
@@ -6648,15 +6724,28 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-community-status {
   flex: 0 0 auto;
   border-radius: 999px;
-  padding: .3rem .62rem;
+  padding: .34rem .68rem;
   background: #eef8f2;
   color: #1f6f3f;
   font-size: .74rem;
   font-weight: 900;
 }
+.admin-community-status-reviewing {
+  background: #fff4d6;
+  color: #946000;
+}
+.admin-community-status-contacted,
+.admin-community-status-matched {
+  background: #eaf3ff;
+  color: #1f5f9f;
+}
+.admin-community-status-closed {
+  background: #f1f3f2;
+  color: #66736a;
+}
 .admin-community-meta {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(8rem, 1fr));
   gap: .5rem;
 }
 .admin-community-meta div {
@@ -6690,8 +6779,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   color: #173726;
 }
 .admin-community-status-control {
-  display: inline-grid;
-  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
   gap: .32rem;
   color: #2a3d33;
   font-size: .82rem;
@@ -6722,8 +6812,23 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-community-item-head {
     flex-direction: column;
   }
+  .admin-community-tools {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .admin-filter,
+  .admin-filter select {
+    width: 100%;
+  }
+  .admin-community-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .admin-community-meta {
     grid-template-columns: 1fr;
+  }
+  .admin-community-status-control {
+    justify-self: stretch;
+    justify-content: space-between;
   }
   .admin-btn {
     width: 100%;
