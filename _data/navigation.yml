@@ -6,6 +6,8 @@ home:
         href: "about.html"
   - label: 요금·예약
     href: "#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     children:
@@ -29,6 +31,8 @@ about:
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     children:
@@ -52,6 +56,8 @@ blog:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -77,6 +83,8 @@ interview:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -102,6 +110,8 @@ meeting:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -127,6 +137,8 @@ study:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -145,6 +157,8 @@ study:
   - label: 오시는 길
     href: "index.html#contact"
 private:
+  - label: 커뮤니티
+    href: "community/"
   - label: 블로그
     href: "blog.html"
     current: true
@@ -186,9 +200,24 @@ post:
         href: "study/"
       - label: 프라이빗시간
         href: "private/"
+  - label: 커뮤니티
+    href: "community/"
   - label: 공간
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
   - label: 오시는 길
     href: "index.html#contact"
+
+community:
+  - label: 커뮤니티
+    href: "community/"
+    current: true
+  - label: 모집 중 모임
+    href: "#groups"
+  - label: 이용 흐름
+    href: "#flow"
+  - label: 모임 만들기
+    href: "#host"
+  - label: 운영 원칙
+    href: "#principles"
