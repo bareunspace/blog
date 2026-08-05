@@ -53,8 +53,8 @@ Deno.serve(async (req) => {
   };
   const groupLabel = groupLabels[String(application.group_key || '')] || application.group_key || '-';
 
-  const subject = `[바른자리 커뮤니티] 새 신청: ${application.group_title || '커뮤니티 신청'}`;
-  const textLines = [
+  const adminSubject = `[바른자리 커뮤니티] 새 신청: ${application.group_title || '커뮤니티 신청'}`;
+  const adminTextLines = [
     '[바른자리 커뮤니티] 새 신청이 도착했습니다.',
     '',
     `신청 유형: ${application.application_type_label || application.application_type || '-'}`,
@@ -70,37 +70,66 @@ Deno.serve(async (req) => {
   ];
 
   if (includeAdminUrl) {
-    textLines.push('', `관리자 페이지: ${adminUrl}`);
+    adminTextLines.push('', `관리자 페이지: ${adminUrl}`);
   }
 
-  const text = textLines.join('\n');
+  const adminText = adminTextLines.join('\n');
+  const applicantSubject = `[바른자리 커뮤니티] 신청 접수 확인`;
+  const applicantText = [
+    `${application.applicant_name || '신청자'}님, 신청이 접수되었습니다.`,
+    '',
+    '바른자리 커뮤니티 신청이 정상적으로 접수되었습니다.',
+    '운영 가능 여부와 연락 방식은 신청 내용 확인 후 개별로 안내드리겠습니다.',
+    '',
+    `신청 유형: ${application.application_type_label || application.application_type || '-'}`,
+    `모임 분류: ${groupLabel}`,
+    `모임: ${application.group_title || '-'}`,
+    `신청자 이름: ${application.applicant_name || '-'}`,
+    `연락 이메일: ${application.contact_email || '-'}`,
+    `연락 전화: ${application.contact_phone || '-'}`
+  ].join('\n');
 
-  const emailPayload: Record<string, unknown> = {
-    from: notifyFrom,
-    to: notifyRecipients,
-    subject,
-    text
+  const sendEmail = async (to: string[], subject: string, text: string, replyTo?: string) => {
+    const payload: Record<string, unknown> = {
+      from: notifyFrom,
+      to,
+      subject,
+      text
+    };
+
+    if (replyTo) {
+      payload.reply_to = [replyTo];
+      payload.headers = {
+        'Reply-To': replyTo
+      };
+    }
+
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
   };
 
-  if (applicantReplyTo) {
-    emailPayload.reply_to = [applicantReplyTo];
-    emailPayload.headers = {
-      'Reply-To': applicantReplyTo
-    };
-  }
+  try {
+    if (notifyRecipients.length > 0) {
+      await sendEmail(notifyRecipients, adminSubject, adminText, applicantReplyTo);
+    }
 
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(emailPayload)
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    return new Response(JSON.stringify({ error: 'Email send failed', detail: errorText }), {
+    if (applicantReplyTo) {
+      await sendEmail([applicantReplyTo], applicantSubject, applicantText, applicantReplyTo);
+    }
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    return new Response(JSON.stringify({ error: 'Email send failed', detail }), {
       status: 502,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
