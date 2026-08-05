@@ -30,12 +30,20 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const application = body.application || {};
   const adminUrl = body.adminUrl || 'https://bareunjari.com/admin.html';
+  const groupLabels: Record<string, string> = {
+    interview: '면접 준비',
+    reading: '독서모임',
+    ai: 'AI 사용',
+    other: '기타'
+  };
+  const groupLabel = groupLabels[String(application.group_key || '')] || application.group_key || '-';
 
   const subject = `[바른자리 커뮤니티] 새 신청: ${application.group_title || '커뮤니티 신청'}`;
   const text = [
     '[바른자리 커뮤니티] 새 신청이 도착했습니다.',
     '',
     `신청 유형: ${application.application_type_label || application.application_type || '-'}`,
+    `모임 분류: ${groupLabel}`,
     `모임: ${application.group_title || '-'}`,
     `신청자: ${application.applicant_name || '-'}`,
     `이메일: ${application.contact_email || '-'}`,
