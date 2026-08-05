@@ -107,9 +107,9 @@
     const customTitleInput = form.elements.custom_group_title;
     if (customTitleInput) {
       customTitleInput.required = shouldShow;
-      if (!shouldShow) {
-        customTitleInput.value = '';
-      }
+      customTitleInput.disabled = !shouldShow;
+      customTitleInput.value = shouldShow ? customTitleInput.value : '';
+      customTitleInput.setAttribute('aria-disabled', String(!shouldShow));
     }
   };
 
