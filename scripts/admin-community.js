@@ -135,7 +135,7 @@
   const COMMUNITY_IMAGE_PREFIX = 'uploads';
   const COMMUNITY_IMAGE_MAX_BYTES = 500000;
   const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
-  const COMMUNITY_IMAGE_MAX_FILES = 3;
+  const COMMUNITY_IMAGE_MAX_FILES = 1;
 
   const slugify = (value) => String(value || '')
     .trim()
@@ -235,7 +235,7 @@
       return [];
     }
     if (list.length > COMMUNITY_IMAGE_MAX_FILES) {
-      throw new Error(`이미지는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 업로드할 수 있습니다.`);
+      throw new Error('대표 이미지는 1장만 업로드할 수 있습니다.');
     }
 
     const uploaded = [];
@@ -844,14 +844,11 @@
       : null;
 
     if (imageFiles.length) {
-      if (nextImagePaths.length + imageFiles.length > COMMUNITY_IMAGE_MAX_FILES) {
-        showGroupsStatus(`현재 유지 이미지와 새 업로드 합계는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 가능합니다.`, 'error');
-        return;
-      }
       try {
         showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
         const uploadedUrls = await uploadCommunityImages(client, imageFiles, groupEditForm.elements.title.value || 'group-image');
-        nextImagePaths = [...nextImagePaths, ...uploadedUrls].slice(0, COMMUNITY_IMAGE_MAX_FILES);
+        const uploadedPath = uploadedUrls[0] || null;
+        nextImagePaths = uploadedPath ? [uploadedPath] : [];
       } catch (error) {
         showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
         return;

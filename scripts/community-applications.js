@@ -60,7 +60,7 @@
   const COMMUNITY_IMAGE_PREFIX = 'uploads';
   const COMMUNITY_IMAGE_MAX_BYTES = 500000;
   const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
-  const COMMUNITY_IMAGE_MAX_FILES = 3;
+  const COMMUNITY_IMAGE_MAX_FILES = 1;
 
   const slugify = (value) => String(value || '')
     .trim()
@@ -149,7 +149,7 @@
       return [];
     }
     if (list.length > COMMUNITY_IMAGE_MAX_FILES) {
-      throw new Error(`이미지는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 업로드할 수 있습니다.`);
+      throw new Error('대표 이미지는 1장만 업로드할 수 있습니다.');
     }
 
     const urls = [];
