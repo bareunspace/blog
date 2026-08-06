@@ -240,7 +240,18 @@ script_version: 20260806-24
   .aii-device-card h3 { margin: 0; color: #173726; }
   .aii-device-copy { margin: 0; color: #4b5e54; }
   .aii-device-status { margin: 0; font-weight: 700; color: #2a3d33; }
-  .aii-device-card .aii-actions { align-items: flex-start; }
+  .aii-device-card .aii-actions { align-items: flex-start; gap: .42rem; }
+  .aii-device-card [data-aii-device-start],
+  .aii-device-card [data-aii-device-stop],
+  .aii-device-card [data-aii-record-start],
+  .aii-device-card [data-aii-record-stop],
+  .aii-device-card [data-aii-record-download] {
+    min-height: 32px;
+    padding: .34rem .56rem;
+    font-size: .78rem;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
   .aii-record-pref { display: inline-flex; align-items: center; gap: .35rem; color: #355745; font-size: .82rem; font-weight: 600; }
   .aii-record-pref input[type='checkbox'] { accent-color: #2d6a4f; }
   .aii-record-note { margin: -0.2rem 0 0; color: #4b5e54; font-size: .76rem; line-height: 1.35; }
@@ -333,6 +344,15 @@ script_version: 20260806-24
     .aii-page .aii-hero .hero-btns .btn-primary,
     .aii-page .aii-hero .hero-btns .btn-outline { min-height: 36px; padding: .48rem .78rem; font-size: .84rem; }
     .aii-page .section-inner { max-width: 100%; }
+    .aii-device-card [data-aii-device-start],
+    .aii-device-card [data-aii-device-stop],
+    .aii-device-card [data-aii-record-start],
+    .aii-device-card [data-aii-record-stop],
+    .aii-device-card [data-aii-record-download] {
+      min-height: 30px;
+      padding: .3rem .5rem;
+      font-size: .75rem;
+    }
     .aii-form { grid-template-columns: 1fr; }
     .aii-page .aii-block { padding: 1.5rem 0; }
     #aiDemoSetup.aii-block { padding-bottom: 0; }
@@ -830,7 +850,7 @@ script_version: 20260806-24
             ? new Blob(recordingChunks, { type: mediaRecorder?.mimeType || 'video/webm' })
             : null;
           recordingChunks = [];
-          setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 저장 버튼으로 다운로드하세요.' : '녹화 데이터가 없어 저장할 수 없습니다.');
+          setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 저장 후 영상을 다시 확인하고 답변을 개선해 보세요.' : '녹화 데이터가 없어 저장할 수 없습니다.');
           updateRecordingButtons();
           if (recordedBlob && recordAutoSaveNode.checked) {
             downloadRecordedVideo();
