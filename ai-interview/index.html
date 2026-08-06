@@ -106,6 +106,14 @@ script_version: 20260806-24
         <p class="aii-stage" data-aii-stage>대기 중</p>
         <p class="aii-progress" data-aii-progress>질문 0 / 0</p>
         <h3 class="aii-question" data-aii-question>면접 시작 버튼을 누르면 질문이 표시됩니다.</h3>
+        <div class="aii-question-fit" data-aii-question-fit>
+          <p class="aii-question-fit-label">질문이 주제/목표와 잘 맞나요?</p>
+          <div class="aii-question-fit-actions" role="group" aria-label="질문 적합도 피드백">
+            <button type="button" class="btn-outline" data-aii-question-fit="yes">잘 맞아요</button>
+            <button type="button" class="btn-outline" data-aii-question-fit="no">조금 아쉬워요</button>
+          </div>
+          <p class="aii-question-fit-status" data-aii-question-fit-status>한 번 클릭하면 품질 개선에 반영됩니다.</p>
+        </div>
         <div class="aii-actions">
           <button type="button" class="btn-outline" data-aii-speak-question disabled>질문 다시 듣기</button>
           <button type="button" class="btn-outline" data-aii-answer-start disabled>답변 시작</button>
@@ -230,6 +238,12 @@ script_version: 20260806-24
   .aii-progress { margin: 0; color: #4b5e54; font-weight: 700; letter-spacing: .02em; }
   .aii-stage { margin: 0; display: inline-flex; align-items: center; width: fit-content; padding: .28rem .6rem; border-radius: 999px; background: #edf7f1; color: #1f6a46; font-size: .82rem; font-weight: 800; letter-spacing: .02em; }
   .aii-question { margin: 0; color: #173726; line-height: 1.45; font-size: clamp(1.08rem, 1.8vw, 1.35rem); }
+  .aii-question-fit { border: 1px solid #deebe3; border-radius: 12px; padding: .55rem .65rem; background: #f8fcfa; display: grid; gap: .4rem; }
+  .aii-question-fit-label { margin: 0; color: #355745; font-size: .82rem; font-weight: 700; }
+  .aii-question-fit-actions { display: flex; gap: .42rem; flex-wrap: wrap; }
+  .aii-question-fit-actions .btn-outline { min-height: 34px; padding: .35rem .62rem; font-size: .8rem; }
+  .aii-question-fit-actions .btn-outline.is-selected { background: #1f6a46; color: #fff; border-color: #1f6a46; }
+  .aii-question-fit-status { margin: 0; color: #4b5e54; font-size: .78rem; }
   .aii-voice-status { margin: 0; color: #355745; font-size: .9rem; font-weight: 700; }
   .aii-voice-controls { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(170px, 220px); gap: .6rem; align-items: end; }
   .aii-voice-control { display: grid; gap: .25rem; }
@@ -337,6 +351,9 @@ script_version: 20260806-24
     const form = document.querySelector('[data-aii-form]');
     const submitButton = form ? form.querySelector("button[type='submit']") : null;
     const questionNode = document.querySelector('[data-aii-question]');
+    const questionFitYesButton = document.querySelector('[data-aii-question-fit="yes"]');
+    const questionFitNoButton = document.querySelector('[data-aii-question-fit="no"]');
+    const questionFitStatusNode = document.querySelector('[data-aii-question-fit-status]');
     const progressNode = document.querySelector('[data-aii-progress]');
     const answerNode = document.querySelector('[data-aii-answer]');
     const nextButton = document.querySelector('[data-aii-next]');
@@ -379,7 +396,7 @@ script_version: 20260806-24
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !practiceModeNode || !interviewTypeNode || !interviewTypeLabelNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !questionFitYesButton || !questionFitNoButton || !questionFitStatusNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !practiceModeNode || !interviewTypeNode || !interviewTypeLabelNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
 
@@ -580,7 +597,14 @@ script_version: 20260806-24
         `Focus on this goal: "${goalText}". Say one sentence, then expand it with two supporting details.`,
         `For "${topicText}", what expression would you use to sound polite and natural?`,
         `Connect your answer to this goal: "${goalText}". What did you improve compared to yesterday?`,
-        `If your partner asks a follow-up question about "${topicText}", how would you respond smoothly?`
+        `If your partner asks a follow-up question about "${topicText}", how would you respond smoothly?`,
+        `Role-play: You have 40 seconds to explain "${topicText}" clearly to a new teammate.`,
+        `Mini challenge: For "${topicText}", use one transition phrase and one example sentence.`,
+        `Goal check: "${goalText}". What is one sentence you can say more naturally than last time?`,
+        `In a daily life context, how would you start a conversation on "${topicText}" and keep it going?`,
+        `Speak about "${topicText}" and end with a question to keep the conversation flowing.`,
+        `Use this goal "${goalText}" and try to answer with one key idea plus one personal story.`,
+        `For "${topicText}", give two options and briefly explain which one you prefer and why.`
       ];
     };
 
@@ -653,6 +677,8 @@ script_version: 20260806-24
       question: null,
       voice: null
     };
+    let questionFeedbackVotes = {};
+    let currentQuestionSource = 'unknown';
 
     const configNode = document.getElementById('aiInterviewConfig');
     const pageConfig = (() => {
@@ -674,12 +700,36 @@ script_version: 20260806-24
       voiceStatusNode.textContent = message;
     };
 
+    const getCurrentInterviewType = () => {
+      return String(interviewSetup.interviewType || form.interview_type.value || '').trim();
+    };
+
+    const getCurrentPracticeMode = () => {
+      return getCurrentInterviewType() === '데일리영어' ? 'daily_english' : 'interview';
+    };
+
+    const getSourceGroup = (source) => {
+      const value = String(source || '').trim().toLowerCase();
+      if (value === 'local_daily_faststart') {
+        return 'daily_english_local';
+      }
+      if (value === 'ai') {
+        return 'ai_generated';
+      }
+      if (value === 'local_fallback') {
+        return 'fallback_local';
+      }
+      return 'unknown';
+    };
+
     const trackInterviewEvent = (eventName, params = {}) => {
       if (typeof window.gtag !== 'function') {
         return;
       }
       window.gtag('event', eventName, {
         page: 'ai-interview',
+        practice_mode: getCurrentPracticeMode(),
+        interview_type: getCurrentInterviewType(),
         ...params
       });
     };
@@ -994,6 +1044,41 @@ script_version: 20260806-24
         answerCountNode.classList.add('is-long');
       }
       answerCountNode.textContent = `${length}자 · 권장 120~220자`;
+    };
+
+    const updateQuestionFitStatus = (vote = '') => {
+      if (!vote) {
+        questionFitStatusNode.textContent = '한 번 클릭하면 품질 개선에 반영됩니다.';
+        return;
+      }
+      questionFitStatusNode.textContent = vote === 'yes'
+        ? '고마워요. 유사한 주제에서 이 유형의 질문을 더 늘릴게요.'
+        : '고마워요. 다음 질문에서 주제/목표 반영도를 더 높일게요.';
+    };
+
+    const renderQuestionFitState = () => {
+      const vote = state.index >= 0 ? String(questionFeedbackVotes[state.index] || '') : '';
+      questionFitYesButton.classList.toggle('is-selected', vote === 'yes');
+      questionFitNoButton.classList.toggle('is-selected', vote === 'no');
+      updateQuestionFitStatus(vote);
+    };
+
+    const submitQuestionFitFeedback = (vote) => {
+      if (state.index < 0 || !state.questions[state.index]) {
+        return;
+      }
+      const normalizedVote = vote === 'yes' ? 'yes' : 'no';
+      questionFeedbackVotes[state.index] = normalizedVote;
+      renderQuestionFitState();
+      trackInterviewEvent('ai_interview_question_fit_feedback', {
+        vote: normalizedVote,
+        question_index: state.index + 1,
+        question_count: state.questions.length,
+        source: currentQuestionSource,
+        source_group: getSourceGroup(currentQuestionSource),
+        topic: String(interviewSetup.company || '').slice(0, 80),
+        goal: String(interviewSetup.role || '').slice(0, 80)
+      });
     };
 
     const updateStage = () => {
@@ -1822,6 +1907,7 @@ script_version: 20260806-24
       if (!isComplete) {
         clearResult();
       }
+      renderQuestionFitState();
       updateStage();
     };
 
@@ -1858,6 +1944,8 @@ script_version: 20260806-24
       }
       isComplete = false;
       stageQuality = { setup: null, question: null, voice: null };
+      currentQuestionSource = 'unknown';
+      questionFeedbackVotes = {};
       state = { questions: [], answers: [], index: -1 };
       form.reset();
       renderInterviewTypeOptionsByMode('인성면접');
@@ -1910,11 +1998,15 @@ script_version: 20260806-24
       });
       stageQuality.setup = evaluateSetupQuality(interviewSetup, selectedCount);
       stageQuality.voice = evaluateVoiceQuality();
+      questionFeedbackVotes = {};
+      currentQuestionSource = 'unknown';
       if (isDailyEnglish) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+        currentQuestionSource = 'local_daily_faststart';
         stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
         trackInterviewEvent('ai_interview_questions_ready', {
           source: 'local_daily_faststart',
+          source_group: getSourceGroup('local_daily_faststart'),
           interview_type: interviewSetup.interviewType,
           question_count: state.questions.length,
           question_quality: stageQuality.question
@@ -1924,9 +2016,11 @@ script_version: 20260806-24
         setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
         try {
           state.questions = await fetchRemoteQuestions(selectedCount);
+          currentQuestionSource = 'ai';
           stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
           trackInterviewEvent('ai_interview_questions_ready', {
             source: 'ai',
+            source_group: getSourceGroup('ai'),
             interview_type: interviewSetup.interviewType,
             question_count: state.questions.length,
             question_quality: stageQuality.question
@@ -1934,9 +2028,11 @@ script_version: 20260806-24
           setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
         } catch (_error) {
           state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+          currentQuestionSource = 'local_fallback';
           stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
           trackInterviewEvent('ai_interview_questions_ready', {
             source: 'local_fallback',
+            source_group: getSourceGroup('local_fallback'),
             interview_type: interviewSetup.interviewType,
             question_count: state.questions.length,
             question_quality: stageQuality.question
@@ -1969,6 +2065,7 @@ script_version: 20260806-24
           renderFeedback(remoteFeedback.feedback, 'AI 피드백 생성 완료', remoteFeedback.qualityAudit);
           trackInterviewEvent('ai_interview_feedback_ready', {
             source: 'ai',
+            source_group: getSourceGroup('ai'),
             interview_type: interviewSetup.interviewType,
             question_count: state.questions.length,
             feedback_overall: Number(remoteFeedback?.feedback?.scoreCard?.overall || 0)
@@ -1977,6 +2074,7 @@ script_version: 20260806-24
           renderFeedback(buildLocalFeedback(), '무료 API 응답이 없어 로컬 피드백으로 안내합니다.');
           trackInterviewEvent('ai_interview_feedback_ready', {
             source: 'local_fallback',
+            source_group: getSourceGroup('local_fallback'),
             interview_type: interviewSetup.interviewType,
             question_count: state.questions.length
           });
@@ -2011,6 +2109,8 @@ script_version: 20260806-24
     restartButton.addEventListener('click', resetInterviewSession);
 
     speakQuestionButton.addEventListener('click', speakCurrentQuestion);
+    questionFitYesButton.addEventListener('click', () => submitQuestionFitFeedback('yes'));
+    questionFitNoButton.addEventListener('click', () => submitQuestionFitFeedback('no'));
     answerStartButton.addEventListener('click', startAnswerListening);
     answerStopButton.addEventListener('click', stopAnswerListening);
     voiceSelectNode.addEventListener('change', () => {
