@@ -86,6 +86,35 @@ interview:
       - label: 면접
         href: "interview/"
         current: true
+      - label: AI 모의면접 데모
+        href: "ai-interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
+  - label: 오시는 길
+    href: "index.html#contact"
+ai_interview:
+  - label: 공간
+    href: "index.html#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
+  - label: 요금·예약
+    href: "index.html#about"
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: AI 모의면접 데모
+        href: "ai-interview/"
+        current: true
       - label: 미팅·상담
         href: "meeting/"
       - label: 스터디
