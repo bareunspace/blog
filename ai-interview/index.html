@@ -1088,6 +1088,24 @@ script_version: 20260806-24
         topic: String(interviewSetup.company || '').slice(0, 80),
         goal: String(interviewSetup.role || '').slice(0, 80)
       });
+
+      const supabaseUrl = String(pageConfig.supabaseUrl || '').trim();
+      const supabaseAnonKey = String(pageConfig.supabaseAnonKey || '').trim();
+      if (!supabaseUrl || !supabaseAnonKey) {
+        return;
+      }
+      const endpoint = `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/ai-interview-feedback`;
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': supabaseAnonKey,
+          'Authorization': `Bearer ${supabaseAnonKey}`
+        },
+        body: JSON.stringify(buildQuestionFeedbackPayload(normalizedVote))
+      }).catch(() => {
+        // no-op
+      });
     };
 
     const updateStage = () => {
@@ -1480,6 +1498,16 @@ script_version: 20260806-24
       role: interviewSetup.role,
       interviewType: interviewSetup.interviewType,
       questionCount
+    });
+
+    const buildQuestionFeedbackPayload = (vote) => ({
+      action: 'question_feedback',
+      company: interviewSetup.company,
+      role: interviewSetup.role,
+      interviewType: interviewSetup.interviewType,
+      questionCount: state.questions.length,
+      question: String(state.questions[state.index] || '').trim().slice(0, 240),
+      vote: vote === 'yes' ? 'yes' : 'no'
     });
 
     const requestTimeoutMs = 15000;

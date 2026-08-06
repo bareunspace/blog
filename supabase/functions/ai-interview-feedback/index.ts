@@ -25,6 +25,15 @@ type QuestionGenerationPayload = {
   questionCount: number;
 };
 
+type QuestionFeedbackPayload = {
+  company: string;
+  role: string;
+  interviewType: string;
+  questionCount: number;
+  question: string;
+  vote: 'yes' | 'no';
+};
+
 type FeedbackResult = {
   summary: string;
   strengths: string[];
@@ -645,13 +654,13 @@ const readStoredQuestions = async (payload: QuestionGenerationPayload) => {
     const roleKey = normalizeCacheText(payload.role);
     const interviewTypeKey = normalizeCacheText(payload.interviewType, 40);
     const { data, error } = await supabase
-      .from('ai_interview_question_corpus')
+      .from('ai_interview_question_corpus_ranked')
       .select('id, questions, reuse_count')
       .eq('interview_type_key', interviewTypeKey)
       .eq('company_key', companyKey)
       .eq('role_key', roleKey)
       .eq('question_count', payload.questionCount)
-      .order('quality_score', { ascending: false })
+      .order('rank_score', { ascending: false })
       .order('last_used_at', { ascending: false })
       .limit(1)
       .maybeSingle();
@@ -709,6 +718,131 @@ const storeGeneratedQuestions = async (
   }
 };
 
+const storeQuestionFeedback = async (payload: QuestionFeedbackPayload) => {
+  try {
+    const supabase = createServiceClient();
+    const companyKey = normalizeCacheText(payload.company);
+    const roleKey = normalizeCacheText(payload.role);
+    const interviewTypeKey = normalizeCacheText(payload.interviewType, 40);
+    const questionText = String(payload.question || '').trim();
+    if (!questionText) {
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('ai_interview_question_corpus')
+      .select('id, questions, fit_yes_count, fit_no_count')
+      .eq('interview_type_key', interviewTypeKey)
+      .eq('company_key', companyKey)
+      .eq('role_key', roleKey)
+      .eq('question_count', payload.questionCount)
+      .order('quality_score', { ascending: false })
+      .order('last_used_at', { ascending: false })
+      .limit(10);
+
+    if (error || !Array.isArray(data) || data.length === 0) {
+      return;
+    }
+
+    const target = data.find((row) => {
+      const questions = Array.isArray((row as Record<string, unknown>).questions)
+        ? (row as Record<string, unknown>).questions as unknown[]
+        : [];
+      return questions.some((item) => String(item || '').trim() === questionText);
+    });
+
+    if (!target) {
+      return;
+    }
+
+    const currentYes = Number((target as Record<string, unknown>).fit_yes_count || 0);
+    const currentNo = Number((target as Record<string, unknown>).fit_no_count || 0);
+    const nextYes = payload.vote === 'yes' ? currentYes + 1 : currentYes;
+    const nextNo = payload.vote === 'no' ? currentNo + 1 : currentNo;
+
+    await supabase
+      .from('ai_interview_question_corpus')
+      .update({
+        fit_yes_count: nextYes,
+        fit_no_count: nextNo,
+        last_feedback_at: new Date().toISOString()
+      })
+      .eq('id', (target as Record<string, unknown>).id);
+  } catch (_error) {
+    // no-op
+  }
+};
+
+const storeQuestionAnswerStats = async (payload: FeedbackPayload) => {
+  try {
+    const answeredItems = payload.qa
+      .map((item) => ({
+        question: String(item.question || '').trim(),
+        answer: String(item.answer || '').trim()
+      }))
+      .filter((item) => item.question.length > 0 && item.answer.length > 0);
+
+    if (answeredItems.length === 0) {
+      return;
+    }
+
+    const supabase = createServiceClient();
+    const companyKey = normalizeCacheText(payload.company);
+    const roleKey = normalizeCacheText(payload.role);
+    const interviewTypeKey = normalizeCacheText(payload.interviewType, 40);
+    const questionCount = Math.min(Math.max(payload.qa.length, 1), 10);
+
+    const { data, error } = await supabase
+      .from('ai_interview_question_corpus')
+      .select('id, questions, answer_count, avg_answer_length')
+      .eq('interview_type_key', interviewTypeKey)
+      .eq('company_key', companyKey)
+      .eq('role_key', roleKey)
+      .eq('question_count', questionCount)
+      .order('quality_score', { ascending: false })
+      .order('last_used_at', { ascending: false })
+      .limit(10);
+
+    if (error || !Array.isArray(data) || data.length === 0) {
+      return;
+    }
+
+    const answerQuestionSet = new Set(answeredItems.map((item) => item.question));
+    const scored = data.map((row) => {
+      const questions = Array.isArray((row as Record<string, unknown>).questions)
+        ? (row as Record<string, unknown>).questions as unknown[]
+        : [];
+      const overlap = questions.filter((item) => answerQuestionSet.has(String(item || '').trim())).length;
+      return { row, overlap };
+    });
+    scored.sort((a, b) => b.overlap - a.overlap);
+    const best = scored[0];
+    if (!best || best.overlap <= 0) {
+      return;
+    }
+
+    const currentCount = Number((best.row as Record<string, unknown>).answer_count || 0);
+    const currentAvg = Number((best.row as Record<string, unknown>).avg_answer_length || 0);
+    const sampleCount = answeredItems.length;
+    const sampleAvg = answeredItems.reduce((sum, item) => sum + item.answer.length, 0) / sampleCount;
+    const nextCount = currentCount + sampleCount;
+    const nextAvg = nextCount > 0
+      ? ((currentAvg * currentCount) + (sampleAvg * sampleCount)) / nextCount
+      : sampleAvg;
+
+    await supabase
+      .from('ai_interview_question_corpus')
+      .update({
+        answer_count: nextCount,
+        avg_answer_length: Math.round(nextAvg * 100) / 100,
+        last_feedback_at: new Date().toISOString()
+      })
+      .eq('id', (best.row as Record<string, unknown>).id);
+  } catch (_error) {
+    // no-op
+  }
+};
+
 const storeQaCorpus = async (payload: FeedbackPayload) => {
   try {
     const supabase = createServiceClient();
@@ -748,6 +882,27 @@ Deno.serve(async (req) => {
 
   const body = await req.json().catch(() => ({}));
   const action = String((body as Record<string, unknown>)?.action || 'feedback').trim().toLowerCase();
+
+  if (action === 'question_feedback') {
+    const company = String((body as Record<string, unknown>)?.company || '').trim().slice(0, 120);
+    const role = String((body as Record<string, unknown>)?.role || '').trim().slice(0, 120);
+    const interviewType = String((body as Record<string, unknown>)?.interviewType || '').trim().slice(0, 40);
+    const questionCountRaw = Number((body as Record<string, unknown>)?.questionCount || 1);
+    const questionCount = Math.min(10, Math.max(1, Number.isFinite(questionCountRaw) ? Math.round(questionCountRaw) : 1));
+    const question = String((body as Record<string, unknown>)?.question || '').trim().slice(0, 240);
+    const voteRaw = String((body as Record<string, unknown>)?.vote || '').trim().toLowerCase();
+    const vote = voteRaw === 'yes' ? 'yes' : 'no';
+
+    await storeQuestionFeedback({
+      company,
+      role,
+      interviewType,
+      questionCount,
+      question,
+      vote
+    });
+    return jsonResponse(200, { ok: true });
+  }
 
   if (action === 'generate_questions') {
     const company = String((body as Record<string, unknown>)?.company || '').trim().slice(0, 120);
@@ -815,6 +970,7 @@ Deno.serve(async (req) => {
   };
 
   await storeQaCorpus(payload);
+  await storeQuestionAnswerStats(payload);
 
   try {
     const guardContext = await runUsageGuards(req);
