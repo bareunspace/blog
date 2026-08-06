@@ -215,6 +215,15 @@ nav {
   font-size: .93rem;
   line-height: 1.5;
 }
+main.about-page #home .post-inline-community-note {
+  display: inline-block;
+  margin-top: .7rem;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+  color: rgba(255,255,255,.94);
+  background: rgba(0,0,0,.28);
+  text-shadow: 0 2px 8px rgba(0,0,0,.32);
+}
 
 /* ── Breadcrumb ── */
 .breadcrumb-wrap {
