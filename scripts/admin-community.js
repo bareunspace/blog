@@ -32,12 +32,16 @@
   const statusFilter = applicationsRoot.querySelector('[data-community-admin-status-filter]');
   const typeFilter = applicationsRoot.querySelector('[data-community-admin-type-filter]');
   const groupFilter = applicationsRoot.querySelector('[data-community-admin-group-filter]');
+  const groupsStatusFilter = groupsRoot?.querySelector('[data-community-groups-status-filter]');
+  const groupsKeyFilter = groupsRoot?.querySelector('[data-community-groups-key-filter]');
+  const groupsQueryFilter = groupsRoot?.querySelector('[data-community-groups-query-filter]');
   const statsNode = applicationsRoot.querySelector('[data-community-admin-stats]');
   const reportsStatusNode = root.querySelector('[data-community-reports-status]');
   const reportsListNode = root.querySelector('[data-community-reports-list]');
   const groupForm = groupsRoot?.querySelector('[data-community-group-form]');
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
+  const groupsRefreshButton = groupsRoot?.querySelector('[data-community-groups-refresh]');
   const workspaceTabs = Array.from(root.querySelectorAll('[data-admin-workspace-tab]'));
   const workspacePanels = Array.from(root.querySelectorAll('[data-admin-workspace-panel]'));
   const overviewPendingNode = root.querySelector('[data-admin-overview-pending]');
@@ -428,6 +432,32 @@
     }
   };
 
+  const getVisibleGroups = () => {
+    const selectedStatus = groupsStatusFilter?.value || 'all';
+    const selectedKey = groupsKeyFilter?.value || 'all';
+    const query = String(groupsQueryFilter?.value || '').trim().toLowerCase();
+
+    return allGroups.filter((group) => {
+      const statusMatched = selectedStatus === 'all' || group.status === selectedStatus;
+      const keyMatched = selectedKey === 'all' || group.group_key === selectedKey;
+      const searchable = [group.title, group.host_name, group.schedule_text]
+        .map((value) => String(value || '').toLowerCase())
+        .join(' ');
+      const queryMatched = !query || searchable.includes(query);
+      return statusMatched && keyMatched && queryMatched;
+    });
+  };
+
+  const renderVisibleGroups = () => {
+    const visibleGroups = getVisibleGroups();
+    renderGroups(visibleGroups);
+    if (!allGroups.length) {
+      showGroupsStatus('등록된 모임이 없습니다.', 'success');
+      return;
+    }
+    showGroupsStatus(`조건에 맞는 모임 ${visibleGroups.length}개를 표시합니다.`, 'success');
+  };
+
   const renderRows = (rows) => {
     if (!listNode) {
       return;
@@ -616,9 +646,8 @@
     }
 
     allGroups = data || [];
-    renderGroups(allGroups);
     renderOverview();
-    showGroupsStatus(`모임 ${allGroups.length}개를 불러왔습니다.`, 'success');
+    renderVisibleGroups();
   };
 
   const loadApplications = async () => {
@@ -908,7 +937,7 @@
       Object.assign(group, values);
     }
 
-    renderGroups(allGroups);
+    renderVisibleGroups();
     renderOverview();
     closeGroupEditPanel();
     showGroupsStatus('모임 정보가 저장되었습니다.', 'success');
@@ -1030,7 +1059,7 @@
     if (group) {
       group.status = nextStatus;
     }
-    renderGroups(allGroups);
+    renderVisibleGroups();
     renderOverview();
     showGroupsStatus('모임 상태가 저장되었습니다.', 'success');
   };
@@ -1056,7 +1085,7 @@
     }
 
     allGroups = allGroups.filter((group) => String(group.id) !== String(groupId));
-    renderGroups(allGroups);
+    renderVisibleGroups();
     renderOverview();
     closeGroupEditPanel();
     return true;
@@ -1148,7 +1177,15 @@
 
     switchWorkspace('groups');
 
-    const item = groupsListNode?.querySelector(`[data-group-id="${String(groupId)}"]`);
+    let item = groupsListNode?.querySelector(`[data-group-id="${String(groupId)}"]`);
+    if (!item && groupsStatusFilter && groupsKeyFilter && groupsQueryFilter) {
+      groupsStatusFilter.value = 'all';
+      groupsKeyFilter.value = 'all';
+      groupsQueryFilter.value = '';
+      renderVisibleGroups();
+      item = groupsListNode?.querySelector(`[data-group-id="${String(groupId)}"]`);
+    }
+
     if (item) {
       openGroupEditPanel(item);
       item.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1464,6 +1501,12 @@
   refreshButton?.addEventListener('click', () => {
     loadApplications();
     loadReports();
+  });
+  groupsStatusFilter?.addEventListener('change', renderVisibleGroups);
+  groupsKeyFilter?.addEventListener('change', renderVisibleGroups);
+  groupsQueryFilter?.addEventListener('input', renderVisibleGroups);
+  groupsRefreshButton?.addEventListener('click', () => {
+    loadGroups();
   });
   workspaceTabs.forEach((button) => {
     button.addEventListener('click', () => {
