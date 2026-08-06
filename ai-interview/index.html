@@ -242,14 +242,20 @@ script_version: 20260806-24
   .aii-device-status { margin: 0; font-weight: 700; color: #2a3d33; }
   .aii-device-card .aii-actions { align-items: flex-start; gap: .42rem; }
   .aii-device-card [data-aii-device-start],
-  .aii-device-card [data-aii-device-stop],
+  .aii-device-card [data-aii-device-stop] {
+    min-height: 27px;
+    padding: .22rem .46rem;
+    font-size: .7rem;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
   .aii-device-card [data-aii-record-start],
   .aii-device-card [data-aii-record-stop],
   .aii-device-card [data-aii-record-download] {
-    min-height: 32px;
-    padding: .34rem .56rem;
-    font-size: .78rem;
-    line-height: 1.1;
+    min-height: 26px;
+    padding: .2rem .44rem;
+    font-size: .69rem;
+    line-height: 1.05;
     white-space: nowrap;
   }
   .aii-record-pref { display: inline-flex; align-items: center; gap: .35rem; color: #355745; font-size: .82rem; font-weight: 600; }
@@ -345,14 +351,18 @@ script_version: 20260806-24
     .aii-page .aii-hero .hero-btns .btn-primary,
     .aii-page .aii-hero .hero-btns .btn-outline { min-height: 36px; padding: .48rem .78rem; font-size: .84rem; }
     .aii-page .section-inner { max-width: 100%; }
-    .aii-device-card [data-aii-device-start],
-    .aii-device-card [data-aii-device-stop],
     .aii-device-card [data-aii-record-start],
     .aii-device-card [data-aii-record-stop],
     .aii-device-card [data-aii-record-download] {
-      min-height: 30px;
-      padding: .3rem .5rem;
-      font-size: .75rem;
+      min-height: 24px;
+      padding: .18rem .38rem;
+      font-size: .66rem;
+    }
+    .aii-device-card [data-aii-device-start],
+    .aii-device-card [data-aii-device-stop] {
+      min-height: 25px;
+      padding: .18rem .4rem;
+      font-size: .67rem;
     }
     .aii-form { grid-template-columns: 1fr; }
     .aii-page .aii-block { padding: 1.5rem 0; }
