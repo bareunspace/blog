@@ -56,10 +56,10 @@
   let ownerApplications = [];
 
   const groupLabels = {
-    interview: '면접 준비 모임',
-    reading: '책 읽고 이야기 나누는 모임',
-    ai: 'AI 같이 써보는 모임',
-    other: '기타 목적형 모임'
+    interview: '면접 준비',
+    reading: '독서모임',
+    ai: 'AI 사용',
+    other: '기타 목적'
   };
 
   const typeLabels = {
@@ -113,19 +113,16 @@
 
   const toggleCustomTitleField = (form) => {
     const customTitleRow = form.querySelector('.community-form-row-custom-title');
-    const groupSelect = form.elements.group_key;
-    if (!customTitleRow || !groupSelect) {
+    if (!customTitleRow) {
       return;
     }
 
-    const shouldShow = groupSelect.value === 'other';
-    customTitleRow.hidden = !shouldShow;
+    customTitleRow.hidden = false;
     const customTitleInput = form.elements.custom_group_title;
     if (customTitleInput) {
-      customTitleInput.required = shouldShow;
-      customTitleInput.disabled = !shouldShow;
-      customTitleInput.value = shouldShow ? customTitleInput.value : '';
-      customTitleInput.setAttribute('aria-disabled', String(!shouldShow));
+      customTitleInput.required = true;
+      customTitleInput.disabled = false;
+      customTitleInput.setAttribute('aria-disabled', 'false');
     }
   };
 
@@ -480,6 +477,9 @@
     if (form.elements.target_group_title) {
       form.elements.target_group_title.value = groupTitle;
     }
+    if (form.elements.custom_group_title) {
+      form.elements.custom_group_title.value = groupTitle;
+    }
     if (form.elements.message && !form.elements.message.value.trim()) {
       form.elements.message.value = `${groupTitle} 참여에 관심 있습니다.`;
     }
@@ -543,8 +543,8 @@
       const customGroupTitle = getValue(form, 'custom_group_title');
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
-      if (!applicationType || !groupKey || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
-        showStatus(form, '필수 항목과 개인정보 동의를 확인해 주세요.');
+      if (!applicationType || !groupKey || !customGroupTitle || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
+        showStatus(form, '모임 제목을 포함한 필수 항목과 개인정보 동의를 확인해 주세요.');
         return;
       }
 
@@ -558,9 +558,7 @@
         return;
       }
 
-      const resolvedGroupTitle = groupKey === 'other'
-        ? (customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임')
-        : (targetGroupTitle || groupLabels[groupKey] || '기타 목적형 모임');
+      const resolvedGroupTitle = customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적';
 
       const payload = {
         application_type: applicationType,

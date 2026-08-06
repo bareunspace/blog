@@ -335,17 +335,17 @@ script_version: 20260806-17
               </div>
             </div>
             <div class="community-form-row">
-              <label for="communityIndexGroup">관심 모임</label>
+              <label for="communityIndexGroup">관심 카테고리</label>
               <select id="communityIndexGroup" name="group_key" required>
-                <option value="interview">면접 준비 모임</option>
-                <option value="reading">책 읽고 이야기 나누는 모임</option>
-                <option value="ai">AI 같이 써보는 모임</option>
-                <option value="other">기타 목적형 모임</option>
+                <option value="interview">면접 준비</option>
+                <option value="reading">독서모임</option>
+                <option value="ai">AI 사용</option>
+                <option value="other">기타 목적</option>
               </select>
             </div>
-            <div class="community-form-row community-form-row-custom-title" hidden>
-              <label for="communityIndexCustomTitle">모임 제목(선택 · 기타일 때만 입력 가능)</label>
-              <input id="communityIndexCustomTitle" name="custom_group_title" type="text" maxlength="80" placeholder="예: 8월 면접 답변 연습 모임" />
+            <div class="community-form-row community-form-row-custom-title">
+              <label for="communityIndexCustomTitle">모임 제목</label>
+              <input id="communityIndexCustomTitle" name="custom_group_title" type="text" maxlength="80" placeholder="예: 8월 면접 답변 연습 모임" required />
             </div>
             <div class="community-form-row">
               <label for="communityIndexName">이름 또는 닉네임</label>
