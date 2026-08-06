@@ -207,6 +207,7 @@ nav {
   border-style: dashed;
   border-color: rgba(45,106,79,.55);
   background: rgba(45,106,79,.04);
+  white-space: nowrap;
 }
 
 /* ── Breadcrumb ── */
