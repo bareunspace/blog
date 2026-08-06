@@ -129,7 +129,7 @@
     .replaceAll("'", '&#039;');
 
   const COMMUNITY_IMAGE_BUCKET = 'community-images';
-  const COMMUNITY_IMAGE_PREFIX = 'images/community';
+  const COMMUNITY_IMAGE_PREFIX = 'uploads';
   const COMMUNITY_IMAGE_MAX_BYTES = 500000;
   const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
   const COMMUNITY_IMAGE_MAX_FILES = 3;

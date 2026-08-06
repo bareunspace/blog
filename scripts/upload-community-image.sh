@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUTPUT_DIR="$ROOT_DIR/images/community"
+OUTPUT_DIR="$ROOT_DIR/images/uploads"
 
 usage() {
   cat <<'EOF'
@@ -20,7 +20,7 @@ Options:
   -h, --help            Show help
 
 Output:
-  images/community/<name>.webp
+  images/uploads/<name>.webp
 
 Notes:
 - Converts to WebP only.
@@ -149,7 +149,7 @@ if [[ "$delete_source" == "true" ]]; then
   rm -f "$source_file"
 fi
 
-relative_path="images/community/${output_name}.webp"
+relative_path="images/uploads/${output_name}.webp"
 final_size="$(wc -c < "$output_path" | tr -d ' ')"
 
 echo "[OK] Community image prepared"
