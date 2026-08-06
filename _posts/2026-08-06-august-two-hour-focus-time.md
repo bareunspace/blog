@@ -25,7 +25,7 @@ editor_pick: true
 og_image: https://bareunjari.com/images/august-focus-time.webp
 og_image_alt: 8월 방학 막바지 집중 준비를 상징하는 작업 장면 이미지
 preload_image: images/august-focus-time.webp
-css_version: 20260806-1
+css_version: 20260806-2
 script_version: 20260711-4
 ---
 
@@ -267,7 +267,7 @@ script_version: 20260711-4
           <strong>8월의 남은 시간을 실제 결과로 바꿔보세요.</strong><br />
           방해받지 않고 사용할 수 있는 시간을 확인해 보세요.
         </p>
-        <a href="{{ site.data.location.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">바른자리 예약 가능 시간 확인하기</a>
+        <a href="{{ site.data.location.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약 가능 시간 확인하기</a>
       </div>
     </div>
   </section>
