@@ -323,13 +323,13 @@ script_version: 20260806-16
               </div>
               <div class="admin-form-row">
                 <label for="communityGroupImageFile">대표 이미지 파일 업로드</label>
-                <input id="communityGroupImageFile" name="image_file" type="file" accept="image/*" />
+                <input id="communityGroupImageFile" name="image_file" type="file" accept="image/*" multiple />
               </div>
               <div class="admin-form-row admin-form-row-full">
                 <label for="communityGroupDescription">운영 메모</label>
                 <textarea id="communityGroupDescription" name="description" rows="3" placeholder="대상, 진행 방식, 준비물 등을 적어 주세요."></textarea>
               </div>
-              <p class="admin-desc">파일 업로드 시 브라우저에서 WebP 변환 후 업로드합니다. 최대 500KB로 자동 압축합니다.</p>
+              <p class="admin-desc">파일 업로드 시 브라우저에서 WebP 변환 후 업로드합니다. 최대 3장, 장당 500KB로 자동 압축합니다.</p>
               <input type="hidden" name="source_application_id" />
               <div class="admin-community-edit-actions">
                 <button class="admin-btn" type="submit">모임 저장</button>
@@ -389,7 +389,7 @@ script_version: 20260806-16
               </div>
               <div class="admin-form-row">
                 <label for="groupEditImageFile">대표 이미지 파일 업로드</label>
-                <input id="groupEditImageFile" name="image_file" type="file" accept="image/*" />
+                <input id="groupEditImageFile" name="image_file" type="file" accept="image/*" multiple />
               </div>
               <div class="admin-form-row admin-form-row-full">
                 <label for="groupEditDescription">운영 메모</label>

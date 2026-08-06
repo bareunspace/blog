@@ -130,6 +130,7 @@
   const COMMUNITY_IMAGE_PREFIX = 'images/community';
   const COMMUNITY_IMAGE_MAX_BYTES = 500000;
   const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
+  const COMMUNITY_IMAGE_MAX_FILES = 3;
 
   const slugify = (value) => String(value || '')
     .trim()
@@ -221,6 +222,23 @@
       objectPath,
       publicUrl: publicUrlData?.publicUrl || null
     };
+  };
+
+  const uploadCommunityImages = async (client, files, baseName) => {
+    const list = Array.from(files || []).filter((file) => file instanceof File && file.size > 0);
+    if (!list.length) {
+      return [];
+    }
+    if (list.length > COMMUNITY_IMAGE_MAX_FILES) {
+      throw new Error(`이미지는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 업로드할 수 있습니다.`);
+    }
+
+    const uploaded = [];
+    for (let index = 0; index < list.length; index += 1) {
+      const result = await uploadCommunityImage(client, list[index], `${baseName}-${index + 1}`);
+      uploaded.push(result.publicUrl);
+    }
+    return uploaded.filter(Boolean);
   };
 
   const renderEmpty = () => {
@@ -377,7 +395,7 @@
 
     groupsListNode.innerHTML = groups.map((group) => `
       <article class="admin-community-item admin-group-item" data-group-id="${group.id}">
-        ${group.image_path ? `<p class="admin-community-subcopy">이미지: ${escapeHtml(group.image_path)}</p>` : ''}
+        ${group.image_path ? `<p class="admin-community-subcopy">대표 이미지: ${escapeHtml(group.image_path)}</p>` : ''}
         <div class="admin-community-item-head">
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[group.group_key] || group.group_key)} · ${escapeHtml(labels[group.status] || group.status)}</p>
@@ -392,6 +410,7 @@
           <div><dt>모임장</dt><dd>${escapeHtml(group.host_name || '-')}</dd></div>
           <div><dt>오픈채팅</dt><dd>${group.open_chat_url ? '저장됨' : '-'}</dd></div>
           <div><dt>대표 이미지</dt><dd>${group.image_path ? '저장됨' : '-'}</dd></div>
+          <div><dt>이미지 개수</dt><dd>${Array.isArray(group.image_paths) ? group.image_paths.length : (group.image_path ? 1 : 0)}장</dd></div>
           <div><dt>생성일</dt><dd>${escapeHtml(formatDate(group.created_at))}</dd></div>
           <div><dt>신청 ID</dt><dd>${escapeHtml(group.source_application_id || '-')}</dd></div>
         </dl>
@@ -677,6 +696,7 @@
     groupEditForm.elements.host_name.value = group.host_name || '';
     groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
     groupEditForm.elements.image_path.value = group.image_path || '';
+    groupEditForm.dataset.imagePaths = JSON.stringify(Array.isArray(group.image_paths) ? group.image_paths : (group.image_path ? [group.image_path] : []));
     groupEditForm.elements.image_file.value = '';
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
@@ -695,24 +715,51 @@
       return;
     }
 
-    const currentImagePath = groupEditForm.elements.image_path.value.trim() || null;
-    const imageFile = groupEditForm.elements.image_file?.files?.[0] || null;
-    let nextImagePath = currentImagePath;
+    const currentGroup = allGroups.find((entry) => String(entry.id) === String(id));
+    const persistedImagePath = String(currentGroup?.image_path || '').trim() || null;
+    const persistedImagePaths = Array.isArray(currentGroup?.image_paths)
+      ? currentGroup.image_paths.filter((path) => typeof path === 'string' && path.trim())
+      : (persistedImagePath ? [persistedImagePath] : []);
+    const requestedImagePath = groupEditForm.elements.image_path.value.trim() || null;
+    const imageFiles = Array.from(groupEditForm.elements.image_file?.files || []);
+    let nextImagePath = requestedImagePath;
+    let nextImagePaths = requestedImagePath ? [requestedImagePath] : [];
 
-    if (imageFile) {
+    if (imageFiles.length) {
       try {
         showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
-        const uploaded = await uploadCommunityImage(client, imageFile, groupEditForm.elements.title.value || imageFile.name);
-        nextImagePath = uploaded.publicUrl;
+        const uploadedUrls = await uploadCommunityImages(client, imageFiles, groupEditForm.elements.title.value || 'group-image');
+        nextImagePaths = uploadedUrls;
+        nextImagePath = uploadedUrls[0] || null;
 
-        const oldObjectPath = extractStorageObjectPath(currentImagePath);
-        if (oldObjectPath) {
-          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove([oldObjectPath]);
+        const removablePaths = persistedImagePaths
+          .map((value) => extractStorageObjectPath(value))
+          .filter(Boolean);
+        if (removablePaths.length) {
+          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove(removablePaths);
         }
       } catch (error) {
         showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
         return;
       }
+    } else if (persistedImagePaths.length && !requestedImagePath) {
+      const removablePaths = persistedImagePaths
+        .map((value) => extractStorageObjectPath(value))
+        .filter(Boolean);
+      if (removablePaths.length) {
+        try {
+          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove(removablePaths);
+          nextImagePaths = [];
+        } catch (error) {
+          // If deletion fails, keep DB path as-is to avoid broken references.
+          nextImagePath = persistedImagePath;
+          nextImagePaths = persistedImagePaths;
+        }
+      }
+    } else if (!imageFiles.length && requestedImagePath) {
+      const rest = persistedImagePaths.filter((path) => path !== requestedImagePath);
+      nextImagePaths = [requestedImagePath, ...rest].slice(0, COMMUNITY_IMAGE_MAX_FILES);
+      nextImagePath = nextImagePaths[0] || null;
     }
 
     const values = {
@@ -724,6 +771,7 @@
       host_name: groupEditForm.elements.host_name.value.trim(),
       open_chat_url: groupEditForm.elements.open_chat_url.value.trim(),
       image_path: nextImagePath,
+      image_paths: nextImagePaths,
       description: groupEditForm.elements.description.value.trim()
     };
 
@@ -1010,6 +1058,7 @@
     groupForm.elements.schedule_text.value = row.availability || '';
     groupForm.elements.open_chat_url.value = '';
     groupForm.elements.image_path.value = '';
+    groupForm.elements.image_file.value = '';
     groupForm.elements.description.value = [row.existing_group_summary, row.message].filter(Boolean).join('\n\n');
     groupForm.elements.source_application_id.value = row.id;
     switchWorkspace('groups');
@@ -1033,13 +1082,15 @@
     const capacityValue = String(formData.get('capacity') || '').trim();
     const sourceApplicationId = String(formData.get('source_application_id') || '').trim();
     let imagePathValue = String(formData.get('image_path') || '').trim() || null;
-    const imageFile = formData.get('image_file');
+    const imageFiles = groupForm.elements.image_file?.files || [];
+    let imagePathsValue = imagePathValue ? [imagePathValue] : [];
 
-    if (imageFile instanceof File && imageFile.size > 0) {
+    if (imageFiles.length) {
       try {
         showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
-        const uploaded = await uploadCommunityImage(client, imageFile, formData.get('title') || imageFile.name);
-        imagePathValue = uploaded.publicUrl;
+        const uploadedUrls = await uploadCommunityImages(client, imageFiles, formData.get('title') || 'group-image');
+        imagePathsValue = uploadedUrls;
+        imagePathValue = uploadedUrls[0] || null;
       } catch (error) {
         showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
         return;
@@ -1055,6 +1106,7 @@
       host_name: String(formData.get('host_name') || '').trim() || null,
       open_chat_url: String(formData.get('open_chat_url') || '').trim() || null,
       image_path: imagePathValue,
+      image_paths: imagePathsValue,
       description: String(formData.get('description') || '').trim() || null,
       source_application_id: sourceApplicationId ? Number(sourceApplicationId) : null
     };

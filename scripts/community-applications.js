@@ -60,6 +60,7 @@
   const COMMUNITY_IMAGE_PREFIX = 'images/community';
   const COMMUNITY_IMAGE_MAX_BYTES = 500000;
   const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
+  const COMMUNITY_IMAGE_MAX_FILES = 3;
 
   const slugify = (value) => String(value || '')
     .trim()
@@ -140,6 +141,35 @@
 
     const { data: publicUrlData } = client.storage.from(COMMUNITY_IMAGE_BUCKET).getPublicUrl(objectPath);
     return publicUrlData?.publicUrl || null;
+  };
+
+  const uploadCommunityImages = async (files, baseName) => {
+    const list = Array.from(files || []).filter((file) => file instanceof File && file.size > 0);
+    if (!list.length) {
+      return [];
+    }
+    if (list.length > COMMUNITY_IMAGE_MAX_FILES) {
+      throw new Error(`이미지는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 업로드할 수 있습니다.`);
+    }
+
+    const urls = [];
+    for (let index = 0; index < list.length; index += 1) {
+      const publicUrl = await uploadCommunityImage(list[index], `${baseName}-${index + 1}`);
+      if (publicUrl) {
+        urls.push(publicUrl);
+      }
+    }
+    return urls;
+  };
+
+  const getPrimaryImagePath = (group) => {
+    const imagePaths = Array.isArray(group?.image_paths)
+      ? group.image_paths.filter((path) => typeof path === 'string' && path.trim())
+      : [];
+    if (imagePaths.length) {
+      return imagePaths[0];
+    }
+    return typeof group?.image_path === 'string' && group.image_path.trim() ? group.image_path : null;
   };
 
   const groupLabels = {
@@ -318,7 +348,7 @@
       <div class="community-group-grid community-live-grid">
         ${groups.map((group) => `
           <article class="community-group-card community-live-card">
-            ${group.image_path ? `<img src="${escapeHtml(group.image_path)}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
+            ${getPrimaryImagePath(group) ? `<img src="${escapeHtml(getPrimaryImagePath(group))}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
             <div class="community-group-topline">
               <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
               <span class="community-status">${escapeHtml(statusLabels[group.status] || group.status)}</span>
@@ -383,7 +413,7 @@
 
     topicGroupsNode.innerHTML = groups.map((group, index) => `
       <article class="community-group-card${index === 0 ? ' community-group-card-featured' : ''}">
-        ${group.image_path ? `<img src="${escapeHtml(group.image_path)}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
+        ${getPrimaryImagePath(group) ? `<img src="${escapeHtml(getPrimaryImagePath(group))}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
         <div class="community-group-topline">
           <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
           <span class="community-status">🟢 관심 등록</span>
@@ -544,7 +574,7 @@
 
     const { data, error } = await client
       .from('community_groups')
-      .select('id, group_key, title, description, status, host_name, schedule_text, capacity, image_path')
+      .select('id, group_key, title, description, status, host_name, schedule_text, capacity, image_path, image_paths')
       .in('status', ['draft', 'recruiting', 'scheduled'])
       .order('created_at', { ascending: false })
       .limit(24);
@@ -691,7 +721,7 @@
       const targetGroupId = getValue(form, 'target_group_id');
       const targetGroupTitle = getValue(form, 'target_group_title');
       const customGroupTitle = getValue(form, 'custom_group_title');
-      const imageFile = form.elements.image_file?.files?.[0] || null;
+      const imageFiles = Array.from(form.elements.image_file?.files || []);
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
       if (!applicationType || !groupKey || !customGroupTitle || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
@@ -712,12 +742,14 @@
       const resolvedGroupTitle = customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적';
 
       let uploadedImagePath = null;
+      let uploadedImagePaths = [];
 
-      if (imageFile) {
+      if (imageFiles.length) {
         setSubmitting(form, true);
         showStatus(form, '대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
         try {
-          uploadedImagePath = await uploadCommunityImage(imageFile, resolvedGroupTitle || imageFile.name);
+          uploadedImagePaths = await uploadCommunityImages(imageFiles, resolvedGroupTitle || 'community-image');
+          uploadedImagePath = uploadedImagePaths[0] || null;
         } catch (error) {
           setSubmitting(form, false);
           showStatus(form, error.message || '대표 이미지를 업로드하지 못했습니다.');
@@ -730,6 +762,7 @@
         group_key: groupKey,
         group_title: resolvedGroupTitle,
         image_path: uploadedImagePath,
+        image_paths: uploadedImagePaths,
         target_group_id: targetGroupId ? Number(targetGroupId) : null,
         applicant_name: applicantName,
         contact_email: contactEmail,

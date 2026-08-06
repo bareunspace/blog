@@ -82,6 +82,16 @@ Deno.serve(async (req) => {
         }
         return false;
       };
+      const normalizeImagePaths = (value: unknown) => {
+        if (!Array.isArray(value)) {
+          return null;
+        }
+        const normalized = value
+          .map((item) => String(item || '').trim())
+          .filter(Boolean)
+          .slice(0, 3);
+        return normalized;
+      };
       const adminEmailsRaw = Deno.env.get('COMMUNITY_ADMIN_EMAILS') || 'keunyong@gmail.com,bareunjari@gmail.com';
       const adminEmails = new Set(
         adminEmailsRaw
@@ -175,8 +185,16 @@ Deno.serve(async (req) => {
           capacity: existingGroup?.capacity ?? null,
           open_chat_url: String(application.open_chat_url || existingGroup?.open_chat_url || '').trim() || null,
           image_path: String(application.image_path || existingGroup?.image_path || '').trim() || null,
+          image_paths: normalizeImagePaths(application.image_paths) || normalizeImagePaths(existingGroup?.image_paths) || null,
           source_application_id: sourceApplicationId
         };
+
+        if ((!nextPayload.image_paths || !nextPayload.image_paths.length) && nextPayload.image_path) {
+          nextPayload.image_paths = [nextPayload.image_path];
+        }
+        if (nextPayload.image_paths?.length) {
+          nextPayload.image_path = nextPayload.image_paths[0];
+        }
 
         if (existingGroup?.id) {
           const { error } = await supabase
@@ -296,14 +314,22 @@ Deno.serve(async (req) => {
 
         await getOwnedApplication(id, contactEmail, contactPhone);
 
-        const allowedFields = new Set(['group_title', 'availability', 'message', 'image_path']);
+        const allowedFields = new Set(['group_title', 'availability', 'message', 'image_path', 'image_paths']);
         const incomingFields = body.fields || {};
         const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
           if (allowedFields.has(key)) {
-            acc[key] = typeof value === 'string' ? value.trim() : value;
+            if (key === 'image_paths') {
+              acc[key] = normalizeImagePaths(value) || null;
+            } else {
+              acc[key] = typeof value === 'string' ? value.trim() : value;
+            }
           }
           return acc;
         }, {});
+
+        if ('image_paths' in fields && Array.isArray(fields.image_paths) && fields.image_paths.length) {
+          fields.image_path = fields.image_paths[0];
+        }
 
         if (!Object.keys(fields).length) {
           return new Response(JSON.stringify({ error: 'No editable owner fields provided' }), {
@@ -550,15 +576,27 @@ Deno.serve(async (req) => {
           'host_name',
           'open_chat_url',
           'image_path',
+          'image_paths',
           'description',
           'source_application_id'
         ]);
         const fields = Object.entries(values).reduce<Record<string, unknown>>((acc, [key, value]) => {
           if (allowedGroupFields.has(key)) {
-            acc[key] = value;
+            if (key === 'image_paths') {
+              acc[key] = normalizeImagePaths(value) || null;
+            } else {
+              acc[key] = value;
+            }
           }
           return acc;
         }, {});
+
+        if ((!fields.image_paths || !Array.isArray(fields.image_paths) || !fields.image_paths.length) && typeof fields.image_path === 'string' && fields.image_path.trim()) {
+          fields.image_paths = [fields.image_path.trim()];
+        }
+        if (Array.isArray(fields.image_paths) && fields.image_paths.length) {
+          fields.image_path = String(fields.image_paths[0]);
+        }
 
         if (!fields.title) {
           return new Response(JSON.stringify({ error: 'Missing group title' }), {
@@ -602,14 +640,26 @@ Deno.serve(async (req) => {
           'host_name',
           'open_chat_url',
           'image_path',
+          'image_paths',
           'description'
         ]);
         const fields = Object.entries(values).reduce<Record<string, unknown>>((acc, [key, value]) => {
           if (allowedGroupFields.has(key)) {
-            acc[key] = value;
+            if (key === 'image_paths') {
+              acc[key] = normalizeImagePaths(value) || null;
+            } else {
+              acc[key] = value;
+            }
           }
           return acc;
         }, {});
+
+        if ((!fields.image_paths || !Array.isArray(fields.image_paths) || !fields.image_paths.length) && typeof fields.image_path === 'string' && fields.image_path.trim()) {
+          fields.image_paths = [fields.image_path.trim()];
+        }
+        if (Array.isArray(fields.image_paths) && fields.image_paths.length) {
+          fields.image_path = String(fields.image_paths[0]);
+        }
 
         if (!Object.keys(fields).length) {
           return new Response(JSON.stringify({ error: 'No editable group fields provided' }), {
@@ -690,6 +740,7 @@ Deno.serve(async (req) => {
           'existing_group_summary',
           'message',
           'image_path',
+          'image_paths',
           'status',
           'admin_note',
           'group_title',
@@ -699,10 +750,21 @@ Deno.serve(async (req) => {
         const incomingFields = body.fields || {};
         const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
           if (allowedFields.has(key)) {
-            acc[key] = value;
+            if (key === 'image_paths') {
+              acc[key] = normalizeImagePaths(value) || null;
+            } else {
+              acc[key] = value;
+            }
           }
           return acc;
         }, {});
+
+        if ((!fields.image_paths || !Array.isArray(fields.image_paths) || !fields.image_paths.length) && typeof fields.image_path === 'string' && fields.image_path.trim()) {
+          fields.image_paths = [fields.image_path.trim()];
+        }
+        if (Array.isArray(fields.image_paths) && fields.image_paths.length) {
+          fields.image_path = String(fields.image_paths[0]);
+        }
 
         if (!Object.keys(fields).length) {
           return new Response(JSON.stringify({ error: 'No editable fields provided' }), {
