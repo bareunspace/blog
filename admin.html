@@ -383,9 +383,10 @@ script_version: 20260806-18
                 <label for="groupEditOpenChat">오픈채팅 링크</label>
                 <input id="groupEditOpenChat" name="open_chat_url" type="url" />
               </div>
-              <div class="admin-form-row">
-                <label for="groupEditImagePath">대표 이미지 경로</label>
-                <input id="groupEditImagePath" name="image_path" type="text" />
+              <input id="groupEditImagePath" name="image_path" type="hidden" />
+              <div class="admin-form-row admin-form-row-full">
+                <label>대표 이미지</label>
+                <p class="admin-image-path-preview" data-group-edit-image-path-preview>-</p>
               </div>
               <div class="admin-form-row admin-form-row-full" data-group-edit-image-list-wrap hidden>
                 <label>현재 이미지(개별 삭제 가능)</label>

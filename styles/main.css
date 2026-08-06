@@ -7514,6 +7514,17 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   white-space: nowrap;
   color: #55645c;
 }
+.admin-image-path-preview {
+  margin: 0;
+  border: 1px solid #d8e1db;
+  border-radius: 10px;
+  background: #fff;
+  padding: .62rem .72rem;
+  color: #3d5549;
+  font-size: .88rem;
+  line-height: 1.4;
+  word-break: break-all;
+}
 .admin-group-form {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

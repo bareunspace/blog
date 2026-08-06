@@ -18,6 +18,7 @@
   const editForm = applicationsRoot.querySelector('[data-community-edit-form]');
   const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
   const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
+  const groupEditImagePathPreview = groupsRoot?.querySelector('[data-group-edit-image-path-preview]');
   const groupEditImageListWrap = groupsRoot?.querySelector('[data-group-edit-image-list-wrap]');
   const groupEditImageList = groupsRoot?.querySelector('[data-group-edit-image-list]');
   const groupCreatePanel = groupsRoot?.querySelector('[data-community-group-create-panel]');
@@ -269,6 +270,29 @@
       return;
     }
     groupEditForm.dataset.removedImagePaths = JSON.stringify(normalizeImagePaths(paths));
+  };
+
+  const updateGroupEditImagePathPreview = (imagePath) => {
+    if (!groupEditImagePathPreview) {
+      return;
+    }
+
+    const value = String(imagePath || '').trim();
+    if (!value) {
+      groupEditImagePathPreview.textContent = '선택된 대표 이미지 없음';
+      return;
+    }
+
+    try {
+      const parsed = new URL(value);
+      const parts = parsed.pathname.split('/').filter(Boolean);
+      const fileName = parts[parts.length - 1] || 'image.webp';
+      const parent = parts[parts.length - 2] || '';
+      groupEditImagePathPreview.textContent = parent ? `${fileName} (${parent})` : fileName;
+    } catch (error) {
+      const chunks = value.split('/').filter(Boolean);
+      groupEditImagePathPreview.textContent = chunks[chunks.length - 1] || value;
+    }
   };
 
   const renderGroupEditImageList = (imagePaths, removedImagePaths = []) => {
@@ -704,6 +728,7 @@
       groupEditForm.dataset.imagePaths = '[]';
       groupEditForm.dataset.removedImagePaths = '[]';
     }
+    updateGroupEditImagePathPreview('');
     if (groupEditImageListWrap) {
       groupEditImageListWrap.hidden = true;
     }
@@ -757,6 +782,7 @@
     groupEditForm.elements.host_name.value = group.host_name || '';
     groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
     groupEditForm.elements.image_path.value = group.image_path || '';
+    updateGroupEditImagePathPreview(group.image_path || '');
     const initialImagePaths = normalizeImagePaths(Array.isArray(group.image_paths) ? group.image_paths : (group.image_path ? [group.image_path] : []));
     groupEditForm.dataset.imagePaths = JSON.stringify(initialImagePaths);
     groupEditForm.dataset.removedImagePaths = '[]';
@@ -816,6 +842,8 @@
     }
 
     const nextImagePath = nextImagePaths[0] || null;
+    groupEditForm.elements.image_path.value = nextImagePath || '';
+    updateGroupEditImagePathPreview(nextImagePath || '');
     const removablePaths = persistedImagePaths
       .filter((path) => !nextImagePaths.includes(path))
       .map((value) => extractStorageObjectPath(value))
@@ -1303,6 +1331,7 @@
     if (currentPath && removedSet.has(currentPath)) {
       const nextRepresentative = allImagePaths.find((path) => !removedSet.has(path)) || '';
       groupEditForm.elements.image_path.value = nextRepresentative;
+      updateGroupEditImagePathPreview(nextRepresentative);
     }
   });
 
