@@ -596,10 +596,10 @@ script_version: 20260719-1
             <div class="blog-guide-content">
               <p class="blog-card-eyebrow">{{ post.category | default: "시간 활용 가이드" }}</p>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
               <div class="blog-card-footer">
                 <span>{{ post.date | date: "%Y-%m-%d" }}</span>
               </div>
+              <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
             </div>
           </article>
         {% endfor %}
