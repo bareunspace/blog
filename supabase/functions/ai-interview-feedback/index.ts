@@ -69,6 +69,11 @@ const isEnglishSentence = (value: string) => {
   return letters.length >= hangul.length * 2;
 };
 
+const isEnglishPracticeMode = (interviewType: string) => {
+  const value = String(interviewType || '').trim();
+  return value === '영어면접' || value === '데일리영어';
+};
+
 type GuardContext = {
   model: string;
   provider: 'openrouter' | 'openai' | 'compatible';
@@ -151,10 +156,10 @@ const evaluateGeneratedQuestionQuality = (
   }
   const normalized = questions.map((item) => item.toLowerCase());
   const uniqueScore = Math.round((new Set(normalized).size / questions.length) * 100);
-  const languageScore = payload.interviewType === '영어면접'
+  const languageScore = isEnglishPracticeMode(payload.interviewType)
     ? Math.round((questions.filter((item) => isEnglishSentence(item)).length / questions.length) * 100)
     : Math.round((questions.filter((item) => !isEnglishSentence(item)).length / questions.length) * 100);
-  const trendKeywords = payload.interviewType === '영어면접'
+  const trendKeywords = isEnglishPracticeMode(payload.interviewType)
     ? ['data', 'ai', 'customer', 'collaboration', 'problem', 'adapt', 'execution', 'impact']
     : ['데이터', 'ai', '고객', '협업', '문제', '적응', '실행', '성과'];
   const trendHits = questions.filter((item) => trendKeywords.some((keyword) => item.toLowerCase().includes(keyword))).length;
@@ -332,7 +337,7 @@ const normalizeQuestionGeneration = (
   }
 
   const record = value as Record<string, unknown>;
-  const useEnglishOnly = interviewType === '영어면접';
+  const useEnglishOnly = isEnglishPracticeMode(interviewType);
   const questions = normalizeArray(record.questions, maxItems)
     .map((item) => item.replace(/\s+/g, ' ').trim())
     .filter((item) => (useEnglishOnly ? isEnglishSentence(item) : true))
@@ -366,9 +371,18 @@ const buildPrompt = (payload: FeedbackPayload) => {
 };
 
 const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
-  const languageRule = payload.interviewType === '영어면접'
+  const englishMode = isEnglishPracticeMode(payload.interviewType);
+  const languageRule = englishMode
     ? '질문은 모두 자연스러운 영어로 작성하세요.'
     : '질문은 모두 자연스러운 한국어 존댓말로 작성하세요.';
+  const practiceRule = payload.interviewType === '데일리영어'
+    ? [
+      '질문 설계는 데일리 영어 스피킹 연습 목적에 맞추세요.',
+      '- 면접형 질문보다 일상 대화/설명/롤플레이 중심으로 작성',
+      '- 자기소개, 하루 루틴, 취향 설명, 상황 대화, 의견 말하기를 고르게 포함',
+      '- 답변 난이도는 B1~B2 수준의 명확한 문장으로 답할 수 있게 작성'
+    ]
+    : [];
 
   return [
     '당신은 채용 트렌드 기반 면접 질문 설계자입니다.',
@@ -381,6 +395,7 @@ const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
     '- 서로 중복되지 않게 작성',
     '- 한 질문은 1~2문장 이내',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
+    ...practiceRule,
     `- ${languageRule}`,
     '',
     JSON.stringify(payload)
