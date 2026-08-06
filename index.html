@@ -171,7 +171,10 @@ script_version: 20260719-1
               {% endif %}
             </article>
           </div>
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="video_interview_panel_booking">화상면접 · 회의 예약하기</a>
+          <div class="about-cta-row" role="group" aria-label="화상면접 추천 액션">
+            <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="video_interview_panel_booking">화상면접 · 회의 예약하기</a>
+            <a href="{{ '/ai-interview/' | relative_url }}" class="about-cta about-cta-secondary" data-cta="video_interview_panel_ai_demo">AI 모의면접 바로가기</a>
+          </div>
         </div>
         <div class="feature-card feature-toggle" id="onlineExamToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="onlineExamPanel">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-clipboard"></use></svg></div>

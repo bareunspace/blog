@@ -2673,6 +2673,25 @@ main.about-page.blog-hub #home .section-inner {
 .private-office-panel .about-cta {
   margin-top: .95rem;
 }
+.private-office-panel .about-cta-row {
+  margin-top: .95rem;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  flex-wrap: wrap;
+}
+.private-office-panel .about-cta-row .about-cta {
+  margin-top: 0;
+}
+.private-office-panel .about-cta-secondary {
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid rgba(45,106,79,.35);
+  box-shadow: none;
+}
+.private-office-panel .about-cta-secondary:hover {
+  box-shadow: 0 8px 18px rgba(45,106,79,.16);
+}
 
 /* ── Pricing ── */
 #about {
