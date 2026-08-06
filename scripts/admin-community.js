@@ -236,7 +236,6 @@
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[row.application_type] || row.application_type)} · ${escapeHtml(labels[row.group_key] || row.group_key)}</p>
             <h3>${escapeHtml(row.group_title)}</h3>
-            <p class="admin-community-subcopy">${linkedGroup ? `이 신청으로 만든 모임 #${escapeHtml(linkedGroup.id)}` : '아직 모임으로 전환되지 않았습니다.'}</p>
           </div>
           <span class="admin-community-status admin-community-status-${escapeHtml(row.status)}">${escapeHtml(labels[row.status] || row.status)}</span>
         </div>
@@ -246,7 +245,6 @@
           <div><dt>전화</dt><dd>${escapeHtml(row.contact_phone || '-')}</dd></div>
           <div><dt>가능 일정</dt><dd>${escapeHtml(row.availability || '-')}</dd></div>
           <div><dt>신청일</dt><dd>${escapeHtml(formatDate(row.created_at))}</dd></div>
-          <div><dt>대상 모임</dt><dd>${escapeHtml(row.target_group_id || '-')}</dd></div>
         </dl>
         ${row.existing_group_summary ? `<p class="admin-community-message"><strong>기존 모임</strong>${escapeHtml(row.existing_group_summary)}</p>` : ''}
         ${row.message ? `<p class="admin-community-message"><strong>메시지</strong>${escapeHtml(row.message)}</p>` : ''}
