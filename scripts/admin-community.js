@@ -770,9 +770,12 @@
       .map((node) => String(node.value || '').trim())
       .filter(Boolean);
     const removedSet = new Set(removedImagePaths);
-    const requestedImagePath = groupEditForm.elements.image_path.value.trim() || null;
     const imageFiles = Array.from(groupEditForm.elements.image_file?.files || []);
     let nextImagePaths = persistedImagePaths.filter((path) => !removedSet.has(path));
+    const requestedImagePathRaw = groupEditForm.elements.image_path.value.trim() || null;
+    const requestedImagePath = requestedImagePathRaw && !removedSet.has(requestedImagePathRaw)
+      ? requestedImagePathRaw
+      : null;
 
     if (imageFiles.length) {
       if (nextImagePaths.length + imageFiles.length > COMMUNITY_IMAGE_MAX_FILES) {
