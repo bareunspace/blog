@@ -47,6 +47,15 @@ type QuestionGenerationResult = {
   questions: string[];
 };
 
+type FeedbackQualityAudit = {
+  completionScore: number;
+  answerQualityScore: number;
+  evidenceScore: number;
+  feedbackScore: number;
+  overall: number;
+  reasons: string[];
+};
+
 const isEnglishSentence = (value: string) => {
   const text = String(value || '').trim();
   if (!text) {
@@ -124,6 +133,84 @@ const parsePositiveInt = (value: string, fallbackValue: number) => {
     return fallbackValue;
   }
   return parsed;
+};
+
+const clampScore = (value: number) => {
+  if (!Number.isFinite(value)) {
+    return 0;
+  }
+  return Math.max(0, Math.min(100, Math.round(value)));
+};
+
+const evaluateGeneratedQuestionQuality = (
+  questions: string[],
+  payload: QuestionGenerationPayload
+) => {
+  if (questions.length === 0) {
+    return 0;
+  }
+  const normalized = questions.map((item) => item.toLowerCase());
+  const uniqueScore = Math.round((new Set(normalized).size / questions.length) * 100);
+  const languageScore = payload.interviewType === '영어면접'
+    ? Math.round((questions.filter((item) => isEnglishSentence(item)).length / questions.length) * 100)
+    : Math.round((questions.filter((item) => !isEnglishSentence(item)).length / questions.length) * 100);
+  const trendKeywords = payload.interviewType === '영어면접'
+    ? ['data', 'ai', 'customer', 'collaboration', 'problem', 'adapt', 'execution', 'impact']
+    : ['데이터', 'ai', '고객', '협업', '문제', '적응', '실행', '성과'];
+  const trendHits = questions.filter((item) => trendKeywords.some((keyword) => item.toLowerCase().includes(keyword))).length;
+  const trendScore = Math.round((trendHits / questions.length) * 100);
+  const role = String(payload.role || '').trim().toLowerCase();
+  const company = String(payload.company || '').trim().toLowerCase();
+  const contextHits = questions.filter((item) => {
+    const lower = item.toLowerCase();
+    return (role && lower.includes(role)) || (company && lower.includes(company));
+  }).length;
+  const contextScore = (role || company)
+    ? Math.round((contextHits / questions.length) * 100)
+    : 70;
+
+  return clampScore(Math.round((languageScore * 0.35) + (uniqueScore * 0.25) + (trendScore * 0.25) + (contextScore * 0.15)));
+};
+
+const buildFeedbackQualityAudit = (payload: FeedbackPayload, feedback: FeedbackResult): FeedbackQualityAudit => {
+  const answers = payload.qa.map((item) => String(item.answer || '').trim());
+  const total = Math.max(1, payload.qa.length);
+  const answered = answers.filter(Boolean).length;
+  const completionScore = clampScore((answered / total) * 100);
+  const avgLength = answered > 0
+    ? Math.round(answers.filter(Boolean).reduce((sum, item) => sum + item.length, 0) / answered)
+    : 0;
+  const answerQualityScore = clampScore(avgLength >= 170 ? 92 : avgLength >= 120 ? 80 : avgLength >= 80 ? 68 : 52);
+  const evidenceHits = answers.filter((item) => /\d|결과|성과|개선|impact|result|metric|data/i.test(item)).length;
+  const evidenceScore = clampScore((evidenceHits / total) * 100);
+  const feedbackScore = clampScore(feedback.scoreCard?.overall ?? Math.round((feedback.scoreCard.clarity + feedback.scoreCard.specificity + feedback.scoreCard.structure) / 3));
+  const overall = clampScore(Math.round((completionScore * 0.35) + (answerQualityScore * 0.25) + (evidenceScore * 0.2) + (feedbackScore * 0.2)));
+
+  const reasons: string[] = [];
+  if (completionScore >= 85) {
+    reasons.push('답변 완료율이 높아 면접 흐름 유지가 좋습니다.');
+  } else {
+    reasons.push('미응답 질문을 줄이면 점수가 크게 올라갑니다.');
+  }
+  if (evidenceScore >= 70) {
+    reasons.push('수치/결과 근거를 포함해 답변 신뢰도가 높습니다.');
+  } else {
+    reasons.push('수치, 기간, 결과를 보강하면 설득력이 올라갑니다.');
+  }
+  if (answerQualityScore >= 75) {
+    reasons.push('평균 답변 길이가 적절해 핵심 전달이 안정적입니다.');
+  } else {
+    reasons.push('답변 길이를 120자 이상으로 유지하면 전달력이 좋아집니다.');
+  }
+
+  return {
+    completionScore,
+    answerQualityScore,
+    evidenceScore,
+    feedbackScore,
+    overall,
+    reasons: reasons.slice(0, 3)
+  };
 };
 
 const getHeaderValue = (req: Request, key: string) => {
@@ -374,7 +461,8 @@ const callAiProvider = async (
 const callAiProviderForQuestions = async (
   payload: QuestionGenerationPayload,
   model: string,
-  provider: 'openrouter' | 'openai' | 'compatible'
+  provider: 'openrouter' | 'openai' | 'compatible',
+  temperature = 0.7
 ): Promise<QuestionGenerationResult> => {
   const apiKey = String(Deno.env.get('AI_INTERVIEW_API_KEY') || '').trim()
     || (provider === 'openai'
@@ -405,7 +493,7 @@ const callAiProviderForQuestions = async (
     headers,
     body: JSON.stringify({
       model,
-      temperature: 0.7,
+      temperature,
       max_tokens: 900,
       messages: [
         {
@@ -440,6 +528,22 @@ const callAiProviderForQuestions = async (
   }
 
   return normalized;
+};
+
+const generateQuestionsWithRetry = async (
+  payload: QuestionGenerationPayload,
+  model: string,
+  provider: 'openrouter' | 'openai' | 'compatible'
+) => {
+  const first = await callAiProviderForQuestions(payload, model, provider, 0.7);
+  const firstQuality = evaluateGeneratedQuestionQuality(first.questions, payload);
+  if (firstQuality >= 72) {
+    return first;
+  }
+
+  const second = await callAiProviderForQuestions(payload, model, provider, 0.45);
+  const secondQuality = evaluateGeneratedQuestionQuality(second.questions, payload);
+  return secondQuality >= firstQuality ? second : first;
 };
 
 const runUsageGuards = async (req: Request): Promise<GuardContext> => {
@@ -536,7 +640,7 @@ Deno.serve(async (req) => {
 
     try {
       const guardContext = await runUsageGuards(req);
-      const generated = await callAiProviderForQuestions(payload, guardContext.model, guardContext.provider);
+      const generated = await generateQuestionsWithRetry(payload, guardContext.model, guardContext.provider);
       return jsonResponse(200, {
         questions: generated.questions,
         source: 'ai'
@@ -579,7 +683,8 @@ Deno.serve(async (req) => {
   try {
     const guardContext = await runUsageGuards(req);
     const feedback = await callAiProvider(payload, guardContext.model, guardContext.provider);
-    return jsonResponse(200, { feedback });
+    const qualityAudit = buildFeedbackQualityAudit(payload, feedback);
+    return jsonResponse(200, { feedback, qualityAudit });
   } catch (error) {
     const reason = error instanceof Error
       ? String(error.message || 'unknown_error')

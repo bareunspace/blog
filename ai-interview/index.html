@@ -515,6 +515,12 @@ script_version: 20260806-21
       interviewType: ''
     };
     const resumeStoragePrefix = 'aii-resume:';
+    const qualityScoreStorageKey = 'aii:last-quality-score';
+    let stageQuality = {
+      setup: null,
+      question: null,
+      voice: null
+    };
 
     const configNode = document.getElementById('aiInterviewConfig');
     const pageConfig = (() => {
@@ -534,6 +540,106 @@ script_version: 20260806-21
 
     const setVoiceStatus = (message) => {
       voiceStatusNode.textContent = message;
+    };
+
+    const clampScore = (value) => {
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) {
+        return 0;
+      }
+      return Math.max(0, Math.min(100, Math.round(numeric)));
+    };
+
+    const evaluateSetupQuality = (setup, questionCount) => {
+      let score = 50;
+      if (String(setup.company || '').trim().length >= 2) {
+        score += 18;
+      }
+      if (String(setup.role || '').trim().length >= 2) {
+        score += 20;
+      }
+      if (String(setup.interviewType || '').trim().length > 0) {
+        score += 8;
+      }
+      if (Number(questionCount) >= 7) {
+        score += 4;
+      }
+      return clampScore(score);
+    };
+
+    const evaluateQuestionQuality = (questions, setup) => {
+      const rows = Array.isArray(questions) ? questions.map((item) => String(item || '').trim()).filter(Boolean) : [];
+      if (rows.length === 0) {
+        return 0;
+      }
+
+      const normalized = rows.map((q) => q.toLowerCase());
+      const uniqueRatio = new Set(normalized).size / rows.length;
+      const languageScore = setup.interviewType === '영어면접'
+        ? Math.round((rows.filter((q) => isEnglishSentence(q)).length / rows.length) * 100)
+        : Math.round((rows.filter((q) => !isEnglishSentence(q)).length / rows.length) * 100);
+
+      const trendKeywords = setup.interviewType === '영어면접'
+        ? ['data', 'ai', 'customer', 'collaboration', 'problem', 'adapt', 'execution', 'impact']
+        : ['데이터', 'ai', '고객', '협업', '문제', '적응', '실행', '성과'];
+      const trendHits = rows.filter((q) => trendKeywords.some((keyword) => q.toLowerCase().includes(keyword))).length;
+      const trendScore = Math.round((trendHits / rows.length) * 100);
+
+      const role = String(setup.role || '').trim().toLowerCase();
+      const company = String(setup.company || '').trim().toLowerCase();
+      const contextHits = rows.filter((q) => {
+        const lower = q.toLowerCase();
+        return (role && lower.includes(role)) || (company && lower.includes(company));
+      }).length;
+      const contextScore = (role || company)
+        ? Math.round((contextHits / rows.length) * 100)
+        : 70;
+
+      const total = Math.round((languageScore * 0.35) + (Math.round(uniqueRatio * 100) * 0.25) + (trendScore * 0.25) + (contextScore * 0.15));
+      return clampScore(total);
+    };
+
+    const evaluateVoiceQuality = () => {
+      const recognitionScore = recognitionSupported ? 55 : 25;
+      if (!window.speechSynthesis) {
+        return clampScore(recognitionScore);
+      }
+      const langPrefix = isEnglishInterviewMode() ? 'en' : 'ko';
+      const voices = window.speechSynthesis.getVoices() || [];
+      const matched = voices.some((voice) => String(voice?.lang || '').toLowerCase().startsWith(langPrefix));
+      return clampScore(recognitionScore + (matched ? 45 : 20));
+    };
+
+    const evaluateAnswerQuality = (answers, questionCount) => {
+      const normalized = Array.isArray(answers) ? answers.map((item) => String(item || '').trim()) : [];
+      const total = Math.max(1, Number(questionCount) || normalized.length || 1);
+      const answered = normalized.filter(Boolean).length;
+      const completionScore = Math.round((answered / total) * 100);
+      const avgLength = answered > 0
+        ? Math.round(normalized.filter(Boolean).reduce((sum, item) => sum + item.length, 0) / answered)
+        : 0;
+      const lengthScore = avgLength >= 170 ? 92 : avgLength >= 120 ? 80 : avgLength >= 80 ? 68 : 52;
+      const evidenceHits = normalized.filter((item) => /\d|결과|성과|개선|impact|result|metric|data/i.test(item)).length;
+      const evidenceScore = Math.round((evidenceHits / total) * 100);
+      return clampScore(Math.round((completionScore * 0.45) + (lengthScore * 0.3) + (evidenceScore * 0.25)));
+    };
+
+    const readPreviousQualityScore = () => {
+      try {
+        const raw = localStorage.getItem(qualityScoreStorageKey);
+        const numeric = Number(raw);
+        return Number.isFinite(numeric) ? clampScore(numeric) : null;
+      } catch (_error) {
+        return null;
+      }
+    };
+
+    const writeCurrentQualityScore = (score) => {
+      try {
+        localStorage.setItem(qualityScoreStorageKey, String(clampScore(score)));
+      } catch (_error) {
+        // no-op
+      }
     };
 
     const setFocusMode = (enabled) => {
@@ -827,7 +933,37 @@ script_version: 20260806-21
       });
     };
 
-    const renderFeedback = (feedback, statusText) => {
+    const buildLocalQualityReasons = (setupScore, questionScore, voiceScore, answerScore, feedbackScore) => {
+      const reasons = [];
+      if (setupScore >= 80) {
+        reasons.push('회사/직무/유형 입력이 충분해 맞춤형 질문 정확도가 높습니다.');
+      } else {
+        reasons.push('회사명과 직무를 더 구체적으로 입력하면 질문 적합도가 올라갑니다.');
+      }
+      if (questionScore >= 78) {
+        reasons.push('질문 언어·중복·트렌드 반영 품질이 안정적입니다.');
+      } else {
+        reasons.push('질문 중복과 트렌드 키워드 반영을 더 높이면 좋습니다.');
+      }
+      if (voiceScore >= 85) {
+        reasons.push('음성 입력/출력 환경이 면접 연습에 적합합니다.');
+      } else {
+        reasons.push('브라우저 음성 권한 및 음성 선택을 점검하면 인식률이 좋아집니다.');
+      }
+      if (answerScore >= 78) {
+        reasons.push('답변 완성도와 근거 밀도가 높아 설득력이 좋습니다.');
+      } else {
+        reasons.push('답변에 수치·결과 근거를 추가하면 점수가 빠르게 개선됩니다.');
+      }
+      if (feedbackScore >= 78) {
+        reasons.push('피드백 점수가 높아 다음 라운드에서 세부 보정만 하면 됩니다.');
+      } else {
+        reasons.push('피드백 코멘트의 개선 항목을 우선 순위로 보완해 보세요.');
+      }
+      return reasons.slice(0, 3);
+    };
+
+    const renderFeedback = (feedback, statusText, qualityAudit = null) => {
       const summary = String(feedback?.summary || '').trim() || '답변을 기반으로 연습 방향을 정리했습니다.';
       const strengths = Array.isArray(feedback?.strengths) ? feedback.strengths.map((item) => String(item || '').trim()).filter(Boolean) : [];
       const improvements = Array.isArray(feedback?.improvements) ? feedback.improvements.map((item) => String(item || '').trim()).filter(Boolean) : [];
@@ -859,8 +995,34 @@ script_version: 20260806-21
       appendListItems(feedbackStrengthsNode, strengths.length ? strengths : ['핵심 메시지를 문장 첫 부분에 잘 배치했습니다.']);
       appendListItems(feedbackImprovementsNode, improvements.length ? improvements : ['답변마다 수치/기간 같은 근거를 1개씩 추가해 보세요.']);
       appendListItems(feedbackNextQuestionsNode, nextQuestions.length ? nextQuestions : ['방금 답변에서 가장 아쉬운 점을 한 문장으로 다시 말해 주세요.']);
-      appendListItems(feedbackQuestionReviewsNode, questionReviews.length ? questionReviews : ['질문별 코멘트가 없어 전체 피드백을 우선 참고해 주세요.']);
-      feedbackStatusNode.textContent = statusText;
+      const setupScore = clampScore(stageQuality.setup || evaluateSetupQuality(interviewSetup, state.questions.length));
+      const questionScore = clampScore(stageQuality.question || evaluateQuestionQuality(state.questions, interviewSetup));
+      const voiceScore = clampScore(stageQuality.voice || evaluateVoiceQuality());
+      const answerScore = qualityAudit && Number.isFinite(Number(qualityAudit?.answerQualityScore))
+        ? clampScore(Number(qualityAudit.answerQualityScore))
+        : evaluateAnswerQuality(state.answers, state.questions.length);
+      const feedbackScore = qualityAudit && Number.isFinite(Number(qualityAudit?.feedbackScore))
+        ? clampScore(Number(qualityAudit.feedbackScore))
+        : normalizeScore(scoreCard.overall, Math.round((clarity + specificity + structure) / 3));
+      const totalScore = clampScore(Math.round((setupScore * 0.15) + (questionScore * 0.3) + (voiceScore * 0.1) + (answerScore * 0.2) + (feedbackScore * 0.25)));
+      const previous = readPreviousQualityScore();
+      const deltaText = previous === null
+        ? '첫 측정입니다.'
+        : `${totalScore - previous >= 0 ? '+' : ''}${totalScore - previous}점`;
+      writeCurrentQualityScore(totalScore);
+
+      const reasons = Array.isArray(qualityAudit?.reasons) && qualityAudit.reasons.length > 0
+        ? qualityAudit.reasons.map((item) => String(item || '').trim()).filter(Boolean).slice(0, 3)
+        : buildLocalQualityReasons(setupScore, questionScore, voiceScore, answerScore, feedbackScore);
+      const reviewLines = questionReviews.length
+        ? questionReviews
+        : ['질문별 코멘트가 없어 전체 피드백을 우선 참고해 주세요.'];
+
+      feedbackStatusNode.textContent = `${statusText} | 단계점수: 설정 ${setupScore} · 질문 ${questionScore} · 음성 ${voiceScore} · 답변 ${answerScore} · 피드백 ${feedbackScore} | 종합 ${totalScore}점 (${deltaText})`;
+      appendListItems(feedbackQuestionReviewsNode, [
+        ...reviewLines,
+        ...reasons.map((reason, index) => `개선 근거 ${index + 1}: ${reason}`)
+      ]);
       feedbackNode.hidden = false;
     };
 
@@ -1061,7 +1223,10 @@ script_version: 20260806-21
         if (data?.fallback || !data?.feedback) {
           throw new Error(String(data?.reason || 'AI 피드백을 생성하지 못했습니다.'));
         }
-        return data.feedback;
+        return {
+          feedback: data.feedback,
+          qualityAudit: data.qualityAudit || null
+        };
       } finally {
         if (timeoutId) {
           window.clearTimeout(timeoutId);
@@ -1316,6 +1481,7 @@ script_version: 20260806-21
         window.speechSynthesis.cancel();
       }
       isComplete = false;
+      stageQuality = { setup: null, question: null, voice: null };
       state = { questions: [], answers: [], index: -1 };
       form.reset();
       stopDevice();
@@ -1348,13 +1514,17 @@ script_version: 20260806-21
       renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 3), 10);
-      setVoiceStatus('최신 트렌드 기반 맞춤 질문을 생성 중입니다...');
+      stageQuality.setup = evaluateSetupQuality(interviewSetup, selectedCount);
+      stageQuality.voice = evaluateVoiceQuality();
+      setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
       try {
         state.questions = await fetchRemoteQuestions(selectedCount);
-        setVoiceStatus('AI 맞춤 질문 생성 완료. 바로 답변을 시작해 주세요.');
+        stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+        setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
       } catch (_error) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
-        setVoiceStatus('트렌드 질문 생성에 실패해 기본 질문으로 시작합니다.');
+        stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+        setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
       }
       state.answers = new Array(selectedCount).fill('');
       state.index = 0;
@@ -1373,7 +1543,7 @@ script_version: 20260806-21
         completeInterview();
         try {
           const remoteFeedback = await fetchRemoteFeedback();
-          renderFeedback(remoteFeedback, 'AI 피드백 생성 완료');
+          renderFeedback(remoteFeedback.feedback, 'AI 피드백 생성 완료', remoteFeedback.qualityAudit);
         } catch (error) {
           renderFeedback(buildLocalFeedback(), '무료 API 응답이 없어 로컬 피드백으로 안내합니다.');
         }
