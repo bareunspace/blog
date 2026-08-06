@@ -273,6 +273,25 @@
     node.textContent = formatImageSelectionSummary(form.elements.image_file?.files || []);
   };
 
+  const toggleImageUploadField = (form) => {
+    const imageRow = form.querySelector('[data-community-image-row]');
+    const imageInput = form.elements.image_file;
+    const applicationType = getValue(form, 'application_type');
+    const isHost = applicationType === 'host';
+
+    if (!imageRow || !imageInput) {
+      return;
+    }
+
+    imageRow.hidden = !isHost;
+    imageInput.disabled = !isHost;
+
+    if (!isHost && imageInput.value) {
+      imageInput.value = '';
+    }
+    updateImageSelectionSummary(form);
+  };
+
   const normalizePhone = (value) => {
     const digits = String(value || '').replace(/[^0-9]/g, '');
     if (!digits) {
@@ -711,10 +730,17 @@
 
   forms.forEach((form) => {
     const groupSelect = form.elements.group_key;
+    const typeNodes = form.querySelectorAll('input[name="application_type"]');
     if (groupSelect) {
       groupSelect.addEventListener('change', () => toggleCustomTitleField(form));
     }
+    if (typeNodes.length) {
+      typeNodes.forEach((node) => {
+        node.addEventListener('change', () => toggleImageUploadField(form));
+      });
+    }
     toggleCustomTitleField(form);
+    toggleImageUploadField(form);
     updateImageSelectionSummary(form);
 
     const imageInput = form.elements.image_file;
