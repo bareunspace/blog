@@ -255,6 +255,24 @@
     });
   };
 
+  const formatImageSelectionSummary = (files) => {
+    const list = Array.from(files || []).filter((file) => file instanceof File && file.size > 0);
+    if (!list.length) {
+      return '선택된 이미지 없음';
+    }
+    const names = list.slice(0, 2).map((file) => file.name).join(', ');
+    const tail = list.length > 2 ? ` 외 ${list.length - 2}장` : '';
+    return `${list.length}장 선택됨: ${names}${tail}`;
+  };
+
+  const updateImageSelectionSummary = (form) => {
+    const node = form.querySelector('[data-community-image-selection]');
+    if (!node) {
+      return;
+    }
+    node.textContent = formatImageSelectionSummary(form.elements.image_file?.files || []);
+  };
+
   const normalizePhone = (value) => {
     const digits = String(value || '').replace(/[^0-9]/g, '');
     if (!digits) {
@@ -697,6 +715,14 @@
       groupSelect.addEventListener('change', () => toggleCustomTitleField(form));
     }
     toggleCustomTitleField(form);
+    updateImageSelectionSummary(form);
+
+    const imageInput = form.elements.image_file;
+    if (imageInput) {
+      imageInput.addEventListener('change', () => {
+        updateImageSelectionSummary(form);
+      });
+    }
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -800,6 +826,7 @@
       await syncGroupDraft(insertedApplication?.id, applicationPayload);
 
       form.reset();
+      updateImageSelectionSummary(form);
       await loadLiveGroups();
       showStatus(form, '신청이 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
     });

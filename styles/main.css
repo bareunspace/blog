@@ -4818,6 +4818,14 @@ main.community-page .community-form-note {
   font-size: .82rem;
   line-height: 1.65;
 }
+main.community-page .community-image-selection {
+  padding: .56rem .72rem;
+  border-radius: 10px;
+  background: rgba(45,106,79,.08);
+  color: #1f4f3a;
+  font-size: .8rem;
+  font-weight: 700;
+}
 main.community-page .community-host-actions .btn-primary,
 main.community-page .community-host-actions .btn-outline {
   text-align: center;
@@ -7476,6 +7484,20 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-form-row-full {
   grid-column: 1 / -1;
+}
+.admin-form-hint {
+  margin: 0;
+  color: #5f6f66;
+  font-size: .8rem;
+}
+.admin-image-selection {
+  margin: 0;
+  padding: .52rem .68rem;
+  border-radius: 10px;
+  background: #eef6f0;
+  color: #1f4f3a;
+  font-size: .8rem;
+  font-weight: 700;
 }
 .admin-image-edit-list {
   list-style: none;

@@ -18,6 +18,8 @@
   const editForm = applicationsRoot.querySelector('[data-community-edit-form]');
   const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
   const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
+  const groupCreateImageSelectionNode = groupsRoot?.querySelector('[data-group-create-image-selection]');
+  const groupEditImageSelectionNode = groupsRoot?.querySelector('[data-group-edit-image-selection]');
   const groupEditImagePathPreview = groupsRoot?.querySelector('[data-group-edit-image-path-preview]');
   const groupEditImageListWrap = groupsRoot?.querySelector('[data-group-edit-image-list-wrap]');
   const groupEditImageList = groupsRoot?.querySelector('[data-group-edit-image-list]');
@@ -242,6 +244,23 @@
       uploaded.push(result.publicUrl);
     }
     return uploaded.filter(Boolean);
+  };
+
+  const formatImageSelectionSummary = (files) => {
+    const list = Array.from(files || []).filter((file) => file instanceof File && file.size > 0);
+    if (!list.length) {
+      return '선택된 이미지 없음';
+    }
+    const names = list.slice(0, 2).map((file) => file.name).join(', ');
+    const tail = list.length > 2 ? ` 외 ${list.length - 2}장` : '';
+    return `${list.length}장 선택됨: ${names}${tail}`;
+  };
+
+  const updateImageSelectionSummary = (inputNode, textNode) => {
+    if (!textNode) {
+      return;
+    }
+    textNode.textContent = formatImageSelectionSummary(inputNode?.files || []);
   };
 
   const normalizeImagePaths = (value) => {
@@ -714,6 +733,7 @@
     if (groupForm) {
       groupForm.reset();
     }
+    updateImageSelectionSummary(groupForm?.elements?.image_file, groupCreateImageSelectionNode);
     if (groupCreateToggle) {
       groupCreateToggle.setAttribute('aria-expanded', 'false');
     }
@@ -728,6 +748,7 @@
       groupEditForm.dataset.imagePaths = '[]';
       groupEditForm.dataset.removedImagePaths = '[]';
     }
+    updateImageSelectionSummary(groupEditForm?.elements?.image_file, groupEditImageSelectionNode);
     updateGroupEditImagePathPreview('');
     if (groupEditImageListWrap) {
       groupEditImageListWrap.hidden = true;
@@ -788,6 +809,7 @@
     groupEditForm.dataset.removedImagePaths = '[]';
     renderGroupEditImageList(initialImagePaths, []);
     groupEditForm.elements.image_file.value = '';
+    updateImageSelectionSummary(groupEditForm.elements.image_file, groupEditImageSelectionNode);
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
     groupEditPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1412,6 +1434,9 @@
   });
 
   groupForm?.addEventListener('submit', createGroup);
+  groupForm?.elements?.image_file?.addEventListener('change', () => {
+    updateImageSelectionSummary(groupForm.elements.image_file, groupCreateImageSelectionNode);
+  });
   groupCreateToggle?.addEventListener('click', () => {
     if (groupCreatePanel?.hidden) {
       openGroupCreatePanel();
@@ -1425,6 +1450,9 @@
     button.addEventListener('click', closeGroupCreatePanel);
   });
   groupEditForm?.addEventListener('submit', submitGroupEditForm);
+  groupEditForm?.elements?.image_file?.addEventListener('change', () => {
+    updateImageSelectionSummary(groupEditForm.elements.image_file, groupEditImageSelectionNode);
+  });
   cancelGroupEditButtons.forEach((button) => {
     button.addEventListener('click', closeGroupEditPanel);
   });
@@ -1457,4 +1485,6 @@
     loadApplications();
     loadReports();
   }
+  updateImageSelectionSummary(groupForm?.elements?.image_file, groupCreateImageSelectionNode);
+  updateImageSelectionSummary(groupEditForm?.elements?.image_file, groupEditImageSelectionNode);
 })();
