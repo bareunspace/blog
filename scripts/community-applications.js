@@ -58,7 +58,7 @@
 
   const groupLabels = {
     interview: '면접 준비',
-    reading: '독서모임',
+    reading: '소모임',
     ai: 'AI 사용',
     other: '기타 목적'
   };
@@ -70,7 +70,7 @@
 
   const groupShortLabels = {
     interview: '면접 준비',
-    reading: '독서모임',
+    reading: '소모임',
     ai: 'AI 사용',
     other: '기타'
   };

@@ -48,7 +48,7 @@
     host: '모임장 신청',
     existing_group: '기존 모임 등록',
     interview: '면접 준비',
-    reading: '독서모임',
+    reading: '소모임',
     ai: 'AI 사용',
     other: '기타',
     new: '새 신청',
@@ -186,7 +186,7 @@
     statsNode.innerHTML = [
       ['total', '전체 신청', counts.total],
       ['interest-interview', '면접 관심', counts.interest.interview || 0],
-      ['interest-reading', '독서 관심', counts.interest.reading || 0],
+      ['interest-reading', '소모임 관심', counts.interest.reading || 0],
       ['interest-ai', 'AI 관심', counts.interest.ai || 0],
       ['new', labels.new, counts.status.new || 0]
     ].map(([key, label, count]) => `
