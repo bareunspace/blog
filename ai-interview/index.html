@@ -335,6 +335,7 @@ script_version: 20260806-24
 <script>
   (() => {
     const form = document.querySelector('[data-aii-form]');
+    const submitButton = form ? form.querySelector("button[type='submit']") : null;
     const questionNode = document.querySelector('[data-aii-question]');
     const progressNode = document.querySelector('[data-aii-progress]');
     const answerNode = document.querySelector('[data-aii-answer]');
@@ -397,6 +398,25 @@ script_version: 20260806-24
         localStorage.setItem(setupDraftStorageKey, JSON.stringify(getSetupDraft()));
       } catch (_error) {
         // no-op
+      }
+    };
+
+    const isDailyEnglishModeSelected = () => {
+      const mode = String(practiceModeNode.value || 'interview').trim();
+      const type = String(form?.interview_type?.value || '').trim();
+      return mode === 'daily_english' || type === '데일리영어';
+    };
+
+    const getStartActionText = () => (isDailyEnglishModeSelected() ? '연습 시작' : '면접 시작');
+
+    const getIdleQuestionText = () => `${getStartActionText()} 버튼을 누르면 질문이 표시됩니다.`;
+
+    const applyModeCopy = () => {
+      if (submitButton) {
+        submitButton.textContent = getStartActionText();
+      }
+      if (state.questions.length === 0 && !isComplete) {
+        questionNode.textContent = getIdleQuestionText();
       }
     };
 
@@ -547,11 +567,29 @@ script_version: 20260806-24
       return cloned;
     };
 
+    const buildDailyEnglishContextQuestions = () => {
+      const topic = String(interviewSetup.company || '').trim();
+      const goal = String(interviewSetup.role || '').trim();
+      const topicText = topic || 'daily conversation';
+      const goalText = goal || 'speak naturally for one minute';
+      return [
+        `Today\'s topic is "${topicText}". Please speak for about one minute and include at least one real example.`,
+        `Practice goal: "${goalText}". How will you show this in your answer right now?`,
+        `Imagine you are in a real-life situation about "${topicText}". What would you say first?`,
+        `Use this topic: "${topicText}". Give a clear answer in conclusion-reason-example order.`,
+        `Focus on this goal: "${goalText}". Say one sentence, then expand it with two supporting details.`,
+        `For "${topicText}", what expression would you use to sound polite and natural?`,
+        `Connect your answer to this goal: "${goalText}". What did you improve compared to yesterday?`,
+        `If your partner asks a follow-up question about "${topicText}", how would you respond smoothly?`
+      ];
+    };
+
     const pickQuestions = (interviewType, count) => {
       const typePool = Array.isArray(questionBankByType[interviewType]) ? questionBankByType[interviewType] : [];
       const isEnglishType = interviewType === '영어면접' || interviewType === '데일리영어';
+      const contextPool = interviewType === '데일리영어' ? buildDailyEnglishContextQuestions() : [];
       const mergedPool = isEnglishType
-        ? [...typePool, ...baseQuestionsEnglish]
+        ? [...contextPool, ...typePool, ...baseQuestionsEnglish]
         : [...typePool, ...baseQuestions];
       const uniquePool = Array.from(new Set(mergedPool.map((item) => String(item || '').trim()).filter(Boolean)));
       const languageFilteredPool = isEnglishType
@@ -818,6 +856,7 @@ script_version: 20260806-24
         roleInputNode.placeholder = '예: 1분 이상 자연스럽게 말하기';
         companyInputNode.required = false;
         roleInputNode.required = false;
+        applyModeCopy();
         return;
       }
 
@@ -827,6 +866,7 @@ script_version: 20260806-24
       roleInputNode.placeholder = defaultRolePlaceholder;
       companyInputNode.required = true;
       roleInputNode.required = true;
+      applyModeCopy();
     };
 
     const getRecognitionLang = () => {
@@ -1043,6 +1083,17 @@ script_version: 20260806-24
         if (state.questions.length >= 1 && state.questions.length <= 10) {
           form.question_count.value = String(state.questions.length);
         }
+
+        state.questions = normalizeQuestionsForInterviewType(
+          interviewSetup.interviewType,
+          state.questions,
+          Number(form.question_count.value || state.questions.length || 1)
+        );
+        state.answers = Array.isArray(state.answers) ? state.answers.slice(0, state.questions.length) : [];
+        while (state.answers.length < state.questions.length) {
+          state.answers.push('');
+        }
+        form.question_count.value = String(Math.max(1, state.questions.length));
 
         if (state.index >= state.questions.length) {
           state.index = state.questions.length - 1;
@@ -1410,6 +1461,31 @@ script_version: 20260806-24
       );
     };
 
+    const normalizeQuestionsForInterviewType = (interviewType, questions, targetCount) => {
+      const safeCount = Math.min(Math.max(Number(targetCount) || 1, 1), 10);
+      const normalized = dedupeQuestions(
+        Array.isArray(questions)
+          ? questions.map((item) => String(item || '').replace(/\s+/g, ' ').trim()).filter(Boolean)
+          : [],
+        safeCount * 3
+      );
+
+      const isEnglishType = interviewType === '영어면접' || interviewType === '데일리영어';
+      if (!isEnglishType) {
+        return normalized.slice(0, safeCount);
+      }
+
+      let englishOnly = normalized.filter((item) => isEnglishSentence(item));
+      if (englishOnly.length < safeCount) {
+        const typePool = Array.isArray(questionBankByType[interviewType]) ? questionBankByType[interviewType] : [];
+        const fallbackPool = dedupeQuestions([...typePool, ...baseQuestionsEnglish], safeCount * 3)
+          .filter((item) => isEnglishSentence(item));
+        englishOnly = dedupeQuestions([...englishOnly, ...fallbackPool], safeCount);
+      }
+
+      return englishOnly.slice(0, safeCount);
+    };
+
     const fetchRemoteQuestions = async (questionCount) => {
       const supabaseUrl = String(pageConfig.supabaseUrl || '').trim();
       const supabaseAnonKey = String(pageConfig.supabaseAnonKey || '').trim();
@@ -1728,7 +1804,7 @@ script_version: 20260806-24
       const total = state.questions.length;
       const current = state.index + 1;
       progressNode.textContent = total ? `질문 ${current} / ${total}` : '질문 0 / 0';
-      questionNode.textContent = total ? state.questions[state.index] : '면접 시작 버튼을 누르면 질문이 표시됩니다.';
+      questionNode.textContent = total ? state.questions[state.index] : getIdleQuestionText();
       answerNode.value = total ? (state.answers[state.index] || '') : '';
       updateAnswerCount();
       if (isComplete) {
@@ -1868,7 +1944,12 @@ script_version: 20260806-24
           setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
         }
       }
-      state.answers = new Array(selectedCount).fill('');
+      state.questions = normalizeQuestionsForInterviewType(interviewSetup.interviewType, state.questions, selectedCount);
+      if (state.questions.length < selectedCount) {
+        state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+      }
+      const answerCount = state.questions.length;
+      state.answers = new Array(answerCount).fill('');
       state.index = 0;
       syncView();
       speakCurrentQuestion();
