@@ -1158,6 +1158,32 @@ main.about-page.blog-hub #home .section-inner {
   font-weight: 800;
   color: #172124;
 }
+.blog-guide-demo-link {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 .72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(45,106,79,.28);
+  background: #f3faf6;
+  color: #1f6a46;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .01em;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.blog-guide-demo-link:hover,
+.blog-guide-demo-link:focus-visible {
+  border-color: rgba(31,106,70,.45);
+  background: #1f6a46;
+  color: #ffffff;
+}
+.blog-guide-demo-link:focus-visible {
+  outline: 2px solid rgba(45,106,79,.45);
+  outline-offset: 2px;
+}
 .blog-guide-category-link {
   display: inline-flex;
   align-items: center;

@@ -129,6 +129,9 @@ script_version: 20260716-4
                 <div class="blog-guide-category-header">
                   <div class="blog-guide-category-title-row">
                     <h3>{{ category_name }}</h3>
+                    {% if category_name == '면접준비' %}
+                      <a class="blog-guide-demo-link" href="{{ '/ai-interview/' | relative_url }}">AI 모의면접 데모</a>
+                    {% endif %}
                     <a class="blog-guide-category-link" href="{{ category_url | relative_url }}" aria-label="{{ category_name }} 전체 글 보기">→</a>
                   </div>
                   <div class="blog-guide-category-controls" aria-label="{{ category_name }} 가이드 넘기기">

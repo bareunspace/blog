@@ -11,6 +11,8 @@
 
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
+      {% assign ai_demo_cta_label = 'AI 모의면접 데모' %}
+      {% assign ai_demo_cta_href = '/ai-interview/' %}
       {% assign community_cta_label = '같이 면접 연습할 사람을 찾고 있나요?' %}
       {% assign community_cta_note = '모의면접, 답변 연습, 피드백 모임에 관심이 있다면 신청해 주세요.' %}
     {% else %}
@@ -23,6 +25,17 @@
         if (!heroButtons || heroButtons.querySelector('[data-community-cta]')) {
           return;
         }
+
+        {% if page.category == '면접준비' %}
+        if (!heroButtons.querySelector('[data-ai-interview-cta]')) {
+          var demoLink = document.createElement('a');
+          demoLink.href = {{ ai_demo_cta_href | jsonify }};
+          demoLink.className = 'btn-outline';
+          demoLink.textContent = {{ ai_demo_cta_label | jsonify }};
+          demoLink.setAttribute('data-ai-interview-cta', 'true');
+          heroButtons.appendChild(demoLink);
+        }
+        {% endif %}
 
         var link = document.createElement('a');
         link.href = '/community/#forms-needed';
