@@ -83,6 +83,41 @@ const isEnglishPracticeMode = (interviewType: string) => {
   return value === '영어면접' || value === '데일리영어';
 };
 
+const extendedAnswerRequiredTypes = new Set(['영어면접', '데일리영어', '승무원면접', '일반 모의면접']);
+
+const isExtendedAnswerQuestionByType = (interviewType: string, value: string) => {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  const type = String(interviewType || '').trim();
+  if (!text) {
+    return false;
+  }
+
+  if (type === '영어면접' || type === '데일리영어') {
+    if (!isEnglishSentence(text)) {
+      return false;
+    }
+    if (text.length < (type === '데일리영어' ? 56 : 52)) {
+      return false;
+    }
+    if (/^(what is|who is|when is|where is|do you|are you)\b/i.test(text)) {
+      return false;
+    }
+    return /(tell me about|describe|explain|how would|what would|include|example|why|follow-up|support|process|result|action)/i.test(text);
+  }
+
+  if (type === '승무원면접' || type === '일반 모의면접') {
+    if (text.length < 32) {
+      return false;
+    }
+    if (/^(무엇|언제|어디|누구|있나요\?|인가요\?)/i.test(text)) {
+      return false;
+    }
+    return /(경험|사례|구체|설명|이유|결과|성과|어떻게|행동|기준|과정|영향)/.test(text);
+  }
+
+  return true;
+};
+
 type GuardContext = {
   model: string;
   provider: 'openrouter' | 'openai' | 'compatible';
@@ -393,9 +428,11 @@ const normalizeQuestionGeneration = (
 
   const record = value as Record<string, unknown>;
   const useEnglishOnly = isEnglishPracticeMode(interviewType);
+  const requireExtended = extendedAnswerRequiredTypes.has(String(interviewType || '').trim());
   const questions = normalizeArray(record.questions, maxItems)
     .map((item) => item.replace(/\s+/g, ' ').trim())
     .filter((item) => (useEnglishOnly ? isEnglishSentence(item) : true))
+    .filter((item) => (!requireExtended || isExtendedAnswerQuestionByType(interviewType, item)))
     .filter((item) => item.length >= 12)
     .slice(0, maxItems);
 
@@ -435,7 +472,18 @@ const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
       '질문 설계는 데일리 영어 스피킹 연습 목적에 맞추세요.',
       '- 면접형 질문보다 일상 대화/설명/롤플레이 중심으로 작성',
       '- 자기소개, 하루 루틴, 취향 설명, 상황 대화, 의견 말하기를 고르게 포함',
-      '- 답변 난이도는 B1~B2 수준의 명확한 문장으로 답할 수 있게 작성'
+      '- 답변 난이도는 B1~B2 수준의 명확한 문장으로 답할 수 있게 작성',
+      '- 각 질문은 최소 45~70초 분량으로 말할 수 있도록 2개 이상의 디테일을 요구',
+      '- 각 질문에는 real example 또는 real situation 요구 문구를 반드시 포함',
+      '- 단일 정의형 질문(예: What is ...?)을 피하고, 경험 설명 + 이유 + 후속 문장을 유도'
+    ]
+    : [];
+  const practicalInterviewRule = ['영어면접', '승무원면접', '일반 모의면접'].includes(payload.interviewType)
+    ? [
+      '질문은 실무 면접 기준으로 단답형이 불가능하도록 작성하세요.',
+      '- 각 질문은 경험 기반으로 답하도록 만들고, 상황-행동-결과 중 최소 2개 요소를 요구',
+      '- 짧은 정의형 질문(예: What is ..., 무엇인가요?) 금지',
+      '- 답변자가 최소 40~70초는 말할 수 있도록 이유/근거/예시를 함께 요구'
     ]
     : [];
 
@@ -454,6 +502,7 @@ const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
     '- 수치, 기간, 지표, 영향 등 검증 가능한 근거를 말하게 유도',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
     ...practiceRule,
+    ...practicalInterviewRule,
     `- ${languageRule}`,
     '',
     JSON.stringify(payload)
