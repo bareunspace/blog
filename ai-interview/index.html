@@ -93,6 +93,16 @@ script_version: 20260806-24
           <button type="button" class="btn-outline" data-aii-device-start>카메라·마이크 켜기</button>
           <button type="button" class="btn-outline" data-aii-device-stop disabled>장비 끄기</button>
         </div>
+        <div class="aii-actions">
+          <button type="button" class="btn-outline" data-aii-record-start disabled>녹화 시작</button>
+          <button type="button" class="btn-outline" data-aii-record-stop disabled>녹화 종료</button>
+          <button type="button" class="btn-outline" data-aii-record-download disabled>영상 저장</button>
+        </div>
+        <label class="aii-record-pref">
+          <input type="checkbox" data-aii-record-autosave checked />
+          녹화 종료 시 자동 저장
+        </label>
+        <p class="aii-record-note">녹화 영상은 서버로 업로드되지 않고 현재 기기에만 저장됩니다.</p>
         <p class="aii-device-status" data-aii-device-status>장비 대기 중</p>
         <video class="aii-video" data-aii-video playsinline autoplay muted></video>
         <div class="aii-meter-wrap" aria-label="마이크 입력 레벨">
@@ -231,6 +241,9 @@ script_version: 20260806-24
   .aii-device-copy { margin: 0; color: #4b5e54; }
   .aii-device-status { margin: 0; font-weight: 700; color: #2a3d33; }
   .aii-device-card .aii-actions { align-items: flex-start; }
+  .aii-record-pref { display: inline-flex; align-items: center; gap: .35rem; color: #355745; font-size: .82rem; font-weight: 600; }
+  .aii-record-pref input[type='checkbox'] { accent-color: #2d6a4f; }
+  .aii-record-note { margin: -0.2rem 0 0; color: #4b5e54; font-size: .76rem; line-height: 1.35; }
   .aii-video { width: 100%; max-width: 760px; border-radius: 12px; border: 1px solid #d4dfd7; background: #0b1110; aspect-ratio: 16 / 9; object-fit: cover; }
   .aii-meter-wrap { display: grid; gap: .35rem; color: #355745; font-size: .92rem; }
   .aii-meter-track { width: 100%; max-width: 760px; height: 10px; border-radius: 999px; background: #dce8e1; overflow: hidden; }
@@ -241,7 +254,7 @@ script_version: 20260806-24
   .aii-question-fit { border: 1px solid #deebe3; border-radius: 12px; padding: .55rem .65rem; background: #f8fcfa; display: grid; gap: .4rem; }
   .aii-question-fit-label { margin: 0; color: #355745; font-size: .82rem; font-weight: 700; }
   .aii-question-fit-actions { display: flex; gap: .42rem; flex-wrap: wrap; }
-  .aii-question-fit-actions .btn-outline { min-height: 30px; padding: .24rem .52rem; font-size: .74rem; }
+  .aii-question-fit-actions .btn-outline { min-height: 26px; padding: .16rem .48rem; font-size: .74rem; }
   .aii-question-fit-actions .btn-outline.is-selected { background: #1f6a46; color: #fff; border-color: #1f6a46; }
   .aii-question-fit-status { margin: 0; color: #4b5e54; font-size: .78rem; }
   .aii-voice-status { margin: 0; color: #355745; font-size: .9rem; font-weight: 700; }
@@ -392,11 +405,15 @@ script_version: 20260806-24
     const openWindowButton = document.querySelector('[data-aii-open-window]');
     const deviceStartButton = document.querySelector('[data-aii-device-start]');
     const deviceStopButton = document.querySelector('[data-aii-device-stop]');
+    const recordStartButton = document.querySelector('[data-aii-record-start]');
+    const recordStopButton = document.querySelector('[data-aii-record-stop]');
+    const recordDownloadButton = document.querySelector('[data-aii-record-download]');
+    const recordAutoSaveNode = document.querySelector('[data-aii-record-autosave]');
     const deviceStatusNode = document.querySelector('[data-aii-device-status]');
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !questionFitYesButton || !questionFitNoButton || !questionFitStatusNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !practiceModeNode || !interviewTypeNode || !interviewTypeLabelNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !questionFitYesButton || !questionFitNoButton || !questionFitStatusNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !practiceModeNode || !interviewTypeNode || !interviewTypeLabelNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !recordStartButton || !recordStopButton || !recordDownloadButton || !recordAutoSaveNode || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
 
@@ -641,6 +658,9 @@ script_version: 20260806-24
       index: -1
     };
     let mediaStream = null;
+    let mediaRecorder = null;
+    let recordingChunks = [];
+    let recordedBlob = null;
     let audioContext = null;
     let analyserNode = null;
     let meterAnimation = null;
@@ -697,6 +717,98 @@ script_version: 20260806-24
 
     const setDeviceStatus = (message) => {
       deviceStatusNode.textContent = message;
+    };
+
+    const getRecordingMimeType = () => {
+      if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') {
+        return '';
+      }
+      const candidates = [
+        'video/webm;codecs=vp9,opus',
+        'video/webm;codecs=vp8,opus',
+        'video/webm',
+        'video/mp4'
+      ];
+      return candidates.find((type) => MediaRecorder.isTypeSupported(type)) || '';
+    };
+
+    const updateRecordingButtons = () => {
+      const hasStream = Boolean(mediaStream);
+      const isRecording = Boolean(mediaRecorder && mediaRecorder.state === 'recording');
+      recordStartButton.disabled = !hasStream || isRecording;
+      recordStopButton.disabled = !hasStream || !isRecording;
+      recordDownloadButton.disabled = !(recordedBlob instanceof Blob);
+    };
+
+    const downloadRecordedVideo = () => {
+      if (!(recordedBlob instanceof Blob)) {
+        return;
+      }
+      const ext = recordedBlob.type.includes('mp4') ? 'mp4' : 'webm';
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const fileName = `ai-interview-recording-${stamp}.${ext}`;
+      const url = URL.createObjectURL(recordedBlob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = fileName;
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+    };
+
+    const stopRecording = () => {
+      if (!mediaRecorder || mediaRecorder.state !== 'recording') {
+        return;
+      }
+      mediaRecorder.stop();
+      setDeviceStatus('녹화를 종료하는 중입니다...');
+      updateRecordingButtons();
+    };
+
+    const startRecording = () => {
+      if (!mediaStream || (mediaRecorder && mediaRecorder.state === 'recording')) {
+        return;
+      }
+      if (typeof MediaRecorder === 'undefined') {
+        setDeviceStatus('이 브라우저는 영상 녹화를 지원하지 않습니다.');
+        return;
+      }
+
+      try {
+        recordedBlob = null;
+        recordingChunks = [];
+        const mimeType = getRecordingMimeType();
+        mediaRecorder = mimeType
+          ? new MediaRecorder(mediaStream, { mimeType })
+          : new MediaRecorder(mediaStream);
+
+        mediaRecorder.ondataavailable = (event) => {
+          if (event.data && event.data.size > 0) {
+            recordingChunks.push(event.data);
+          }
+        };
+        mediaRecorder.onstop = () => {
+          recordedBlob = recordingChunks.length > 0
+            ? new Blob(recordingChunks, { type: mediaRecorder?.mimeType || 'video/webm' })
+            : null;
+          recordingChunks = [];
+          setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 저장 버튼으로 다운로드하세요.' : '녹화 데이터가 없어 저장할 수 없습니다.');
+          updateRecordingButtons();
+          if (recordedBlob && recordAutoSaveNode.checked) {
+            downloadRecordedVideo();
+          }
+        };
+
+        mediaRecorder.start(200);
+        setDeviceStatus('녹화 중... 면접 화면이 로컬 영상으로 저장됩니다.');
+        updateRecordingButtons();
+      } catch (_error) {
+        setDeviceStatus('녹화를 시작하지 못했습니다. 브라우저 권한/코덱을 확인해 주세요.');
+        mediaRecorder = null;
+        recordingChunks = [];
+        updateRecordingButtons();
+      }
     };
 
     const setVoiceStatus = (message) => {
@@ -1922,6 +2034,12 @@ script_version: 20260806-24
     };
 
     const stopDevice = () => {
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+      }
+      mediaRecorder = null;
+      recordingChunks = [];
+      recordedBlob = null;
       if (meterAnimation) {
         cancelAnimationFrame(meterAnimation);
         meterAnimation = null;
@@ -1940,6 +2058,7 @@ script_version: 20260806-24
       deviceStartButton.disabled = false;
       deviceStopButton.disabled = true;
       setDeviceStatus('장비 대기 중');
+      updateRecordingButtons();
     };
 
     const startMeter = () => {
@@ -1991,6 +2110,7 @@ script_version: 20260806-24
         deviceStartButton.disabled = true;
         deviceStopButton.disabled = false;
         setDeviceStatus('카메라·마이크 연결 완료');
+        updateRecordingButtons();
       } catch (error) {
         stopDevice();
         setDeviceStatus('장비 권한이 필요합니다. 브라우저에서 카메라/마이크를 허용해 주세요.');
@@ -2336,6 +2456,9 @@ script_version: 20260806-24
 
     deviceStartButton.addEventListener('click', startDevice);
     deviceStopButton.addEventListener('click', stopDevice);
+    recordStartButton.addEventListener('click', startRecording);
+    recordStopButton.addEventListener('click', stopRecording);
+    recordDownloadButton.addEventListener('click', downloadRecordedVideo);
     window.addEventListener('beforeunload', () => {
       stopAnswerListening();
       if (window.speechSynthesis) {
@@ -2361,6 +2484,7 @@ script_version: 20260806-24
     renderInterviewTypeOptionsByMode('인성면접');
     syncSetupFieldByMode();
     renderVoiceOptions();
+    updateRecordingButtons();
     restoreSetupDraft();
 
     syncView();
