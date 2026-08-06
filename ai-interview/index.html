@@ -9,7 +9,7 @@ og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
 og_image_alt: 바른자리 AI 모의면접 데모 화면
 preload_image: images/interview-prep-checklist-cover.jpg
 css_version: 20260806-19
-script_version: 20260806-21
+script_version: 20260806-23
 ---
 
 <main class="about-page aii-page">
@@ -542,6 +542,16 @@ script_version: 20260806-21
       voiceStatusNode.textContent = message;
     };
 
+    const trackInterviewEvent = (eventName, params = {}) => {
+      if (typeof window.gtag !== 'function') {
+        return;
+      }
+      window.gtag('event', eventName, {
+        page: 'ai-interview',
+        ...params
+      });
+    };
+
     const clampScore = (value) => {
       const numeric = Number(value);
       if (!Number.isFinite(numeric)) {
@@ -1042,6 +1052,10 @@ script_version: 20260806-21
       feedbackNode.hidden = false;
     };
 
+    const hasEvidenceSignal = (text) => /\d|결과|성과|개선|달성|수치|기간|impact|result|metric|kpi|data/i.test(text);
+
+    const hasStructureSignal = (text) => /결론|먼저|핵심|이유|결과|상황|행동|배운 점|first|to conclude|in summary|situation|action|result|lesson/i.test(text);
+
     const scoreAnswer = (answer) => {
       const text = String(answer || '').trim();
       if (!text) {
@@ -1057,10 +1071,13 @@ script_version: 20260806-21
       if (/\d/.test(text)) {
         score += 10;
       }
-      if (/결과|성과|개선|달성|문제|해결/.test(text)) {
+      if (/결과|성과|개선|달성|문제|해결|impact|result|solve|resolved/i.test(text)) {
         score += 9;
       }
-      if (/저는|제가|경험|협업|고객|팀/.test(text)) {
+      if (/저는|제가|경험|협업|고객|팀|i|my|experience|team|customer/i.test(text)) {
+        score += 6;
+      }
+      if (hasStructureSignal(text)) {
         score += 6;
       }
       score = Math.max(0, Math.min(100, score));
@@ -1077,26 +1094,39 @@ script_version: 20260806-21
       const answeredCount = normalizedAnswers.filter(Boolean).length;
       const totalLength = normalizedAnswers.reduce((sum, answer) => sum + answer.length, 0);
       const avgLength = answeredCount ? Math.round(totalLength / answeredCount) : 0;
+      const answeredRows = normalizedAnswers.filter(Boolean);
+      const evidenceCount = answeredRows.filter((answer) => hasEvidenceSignal(answer)).length;
+      const structureCount = answeredRows.filter((answer) => hasStructureSignal(answer)).length;
+      const evidenceRatio = answeredRows.length > 0 ? evidenceCount / answeredRows.length : 0;
+      const structureRatio = answeredRows.length > 0 ? structureCount / answeredRows.length : 0;
 
       const strengths = [];
       if (answeredCount === state.answers.length && state.answers.length > 0) {
         strengths.push('모든 질문에 답변을 완료해 면접 흐름을 끝까지 유지했습니다.');
       }
-      if (avgLength >= 70) {
+      if (avgLength >= 95) {
         strengths.push('답변 분량이 충분해 전달 메시지가 비교적 명확합니다.');
+      }
+      if (evidenceRatio >= 0.6) {
+        strengths.push('다수 답변에 수치/결과 근거가 포함되어 신뢰도가 높습니다.');
+      }
+      if (structureRatio >= 0.6) {
+        strengths.push('결론과 근거를 나누는 구조가 보여 전달력이 좋습니다.');
       }
       if (normalizedAnswers.some((answer) => /협업|팀|동료|고객/.test(answer))) {
         strengths.push('협업 관점 키워드를 포함해 실무 적합성을 보여줬습니다.');
       }
 
       const improvements = [];
-      if (avgLength < 70) {
+      if (avgLength < 95) {
         improvements.push('답변이 짧은 편이므로 상황-행동-결과 구조로 2~3문장 확장해 보세요.');
       }
-      if (!normalizedAnswers.some((answer) => /\d/.test(answer))) {
+      if (evidenceRatio < 0.6) {
         improvements.push('수치나 기간 등 측정 가능한 근거를 넣으면 신뢰도가 올라갑니다.');
       }
-      improvements.push('질문 첫 10초 안에 결론을 먼저 말하고 근거를 뒤에 붙여 보세요.');
+      if (structureRatio < 0.6) {
+        improvements.push('질문 첫 10초 안에 결론을 먼저 말하고 근거를 뒤에 붙여 보세요.');
+      }
 
       const questionReviews = state.questions.map((question, index) => {
         const evaluation = scoreAnswer(normalizedAnswers[index]);
@@ -1106,17 +1136,27 @@ script_version: 20260806-21
           comment: evaluation.comment
         };
       });
-      const clarity = normalizeScore(avgLength >= 120 ? 82 : avgLength >= 70 ? 74 : 63, 70);
-      const specificity = normalizeScore(normalizedAnswers.some((answer) => /\d/.test(answer)) ? 79 : 66, 70);
-      const structure = normalizeScore(normalizedAnswers.some((answer) => /결론|먼저|핵심|결과/.test(answer)) ? 77 : 69, 70);
+      const clarity = normalizeScore(avgLength >= 120 ? 84 : avgLength >= 95 ? 77 : avgLength >= 70 ? 72 : 63, 70);
+      const specificity = normalizeScore(Math.round(64 + (evidenceRatio * 24)), 70);
+      const structure = normalizeScore(Math.round(66 + (structureRatio * 20)), 70);
       const overall = normalizeScore(Math.round((clarity + specificity + structure) / 3), 70);
+
+      while (strengths.length < 3) {
+        strengths.push('한 문장 결론을 먼저 말한 뒤 근거를 붙이는 흐름을 잘 지켰습니다.');
+      }
+      while (improvements.length < 3) {
+        improvements.push('답변 끝 문장에 직무 기여 포인트를 한 번 더 강조해 보세요.');
+      }
+
+      const weakestReview = [...questionReviews].sort((a, b) => a.score - b.score)[0];
+      const weakestQuestion = weakestReview?.question || '가장 어려웠던 질문';
 
       return {
         summary: `총 ${state.answers.length}개 질문 중 ${answeredCount}개 답변을 작성했습니다. 2회차에서는 답변 길이와 근거를 보강하면 더 좋아집니다.`,
         strengths: strengths.slice(0, 3),
         improvements: improvements.slice(0, 3),
         nextQuestions: [
-          '방금 답변 중 가장 자신 있는 사례를 45초 버전으로 다시 말해 주세요.',
+          `${weakestQuestion}에 대해 결론-근거-결과 3문장으로 다시 답해 주세요.`,
           '같은 답변에 정량 근거 1개를 넣어 60초로 다시 답해 주세요.'
         ],
         scoreCard: {
@@ -1147,16 +1187,77 @@ script_version: 20260806-21
       questionCount
     });
 
+    const requestTimeoutMs = 15000;
+    const minRemoteQuestionQuality = 72;
+
+    const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+    const isRetryableError = (error) => {
+      const name = String(error?.name || '');
+      const message = String(error?.message || error || '').toLowerCase();
+      if (name === 'AbortError') {
+        return true;
+      }
+      return /timeout|network|failed to fetch|http 5\d\d|temporarily unavailable/.test(message);
+    };
+
+    const withRetry = async (task, maxAttempts = 2) => {
+      let lastError = null;
+      for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+        try {
+          return await task();
+        } catch (error) {
+          lastError = error;
+          if (attempt >= maxAttempts || !isRetryableError(error)) {
+            break;
+          }
+          await wait(220 * attempt);
+        }
+      }
+      throw lastError || new Error('request_failed');
+    };
+
+    const normalizeQuestionKey = (text) => {
+      return String(text || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9가-힣\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const dedupeQuestions = (rows, maxItems) => {
+      const kept = [];
+      const keys = [];
+      rows.forEach((row) => {
+        if (kept.length >= maxItems) {
+          return;
+        }
+        const value = String(row || '').trim();
+        const key = normalizeQuestionKey(value);
+        if (!value || !key) {
+          return;
+        }
+        const duplicated = keys.some((saved) => saved === key || saved.includes(key) || key.includes(saved));
+        if (duplicated) {
+          return;
+        }
+        kept.push(value);
+        keys.push(key);
+      });
+      return kept;
+    };
+
     const normalizeGeneratedQuestions = (questions, maxItems, useEnglishOnly) => {
       if (!Array.isArray(questions)) {
         return [];
       }
-      return Array.from(new Set(
+      return dedupeQuestions(
         questions
           .map((item) => String(item || '').replace(/\s+/g, ' ').trim())
           .filter((item) => (useEnglishOnly ? isEnglishSentence(item) : true))
-          .filter((item) => item.length >= 12)
-      )).slice(0, maxItems);
+          .filter((item) => item.length >= 12),
+        maxItems
+      );
     };
 
     const fetchRemoteQuestions = async (questionCount) => {
@@ -1168,44 +1269,55 @@ script_version: 20260806-21
       }
 
       const endpoint = `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/ai-interview-feedback`;
-      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeoutId = controller ? window.setTimeout(() => controller.abort(), 12000) : null;
+      const request = async () => {
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timeoutId = controller ? window.setTimeout(() => controller.abort(), requestTimeoutMs) : null;
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': supabaseAnonKey,
+              'Authorization': `Bearer ${supabaseAnonKey}`
+            },
+            body: JSON.stringify(buildQuestionGenerationPayload(questionCount)),
+            signal: controller ? controller.signal : undefined
+          });
 
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`
-          },
-          body: JSON.stringify(buildQuestionGenerationPayload(questionCount)),
-          signal: controller ? controller.signal : undefined
-        });
-
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          const message = String(data?.error || '').trim() || `HTTP ${response.status}`;
-          throw new Error(message);
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            const message = String(data?.error || '').trim() || `HTTP ${response.status}`;
+            throw new Error(message);
+          }
+          return data;
+        } finally {
+          if (timeoutId) {
+            window.clearTimeout(timeoutId);
+          }
         }
+      };
 
-        const questions = normalizeGeneratedQuestions(data?.questions, questionCount, useEnglishOnly);
-        if (data?.fallback || questions.length === 0) {
-          throw new Error(String(data?.reason || '트렌드 질문 생성에 실패했습니다.'));
-        }
+      const data = await withRetry(request, 2);
+      let questions = normalizeGeneratedQuestions(data?.questions, questionCount, useEnglishOnly);
+      if (data?.fallback || questions.length === 0) {
+        throw new Error(String(data?.reason || '트렌드 질문 생성에 실패했습니다.'));
+      }
 
-        if (questions.length < questionCount) {
-          const fallbackExtra = pickQuestions(interviewSetup.interviewType, questionCount * 2);
-          const merged = normalizeGeneratedQuestions([...questions, ...fallbackExtra], questionCount, useEnglishOnly);
-          return merged;
-        }
+      if (questions.length < questionCount) {
+        const fallbackExtra = pickQuestions(interviewSetup.interviewType, questionCount * 2);
+        questions = normalizeGeneratedQuestions([...questions, ...fallbackExtra], questionCount, useEnglishOnly);
+      }
 
-        return questions;
-      } finally {
-        if (timeoutId) {
-          window.clearTimeout(timeoutId);
+      const quality = evaluateQuestionQuality(questions, interviewSetup);
+      if (quality < minRemoteQuestionQuality) {
+        const fallbackExtra = pickQuestions(interviewSetup.interviewType, questionCount * 2);
+        const boosted = normalizeGeneratedQuestions([...questions, ...fallbackExtra], questionCount, useEnglishOnly);
+        if (boosted.length >= questions.length) {
+          questions = boosted;
         }
       }
+
+      return questions;
     };
 
     const fetchRemoteFeedback = async () => {
@@ -1216,38 +1328,42 @@ script_version: 20260806-21
       }
 
       const endpoint = `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/ai-interview-feedback`;
-      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeoutId = controller ? window.setTimeout(() => controller.abort(), 12000) : null;
+      const request = async () => {
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timeoutId = controller ? window.setTimeout(() => controller.abort(), requestTimeoutMs) : null;
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': supabaseAnonKey,
+              'Authorization': `Bearer ${supabaseAnonKey}`
+            },
+            body: JSON.stringify(buildFeedbackPayload()),
+            signal: controller ? controller.signal : undefined
+          });
 
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`
-          },
-          body: JSON.stringify(buildFeedbackPayload()),
-          signal: controller ? controller.signal : undefined
-        });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            const message = String(data?.error || '').trim() || `HTTP ${response.status}`;
+            throw new Error(message);
+          }
+          return data;
+        } finally {
+          if (timeoutId) {
+            window.clearTimeout(timeoutId);
+          }
+        }
+      };
 
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          const message = String(data?.error || '').trim() || `HTTP ${response.status}`;
-          throw new Error(message);
-        }
-        if (data?.fallback || !data?.feedback) {
-          throw new Error(String(data?.reason || 'AI 피드백을 생성하지 못했습니다.'));
-        }
-        return {
-          feedback: data.feedback,
-          qualityAudit: data.qualityAudit || null
-        };
-      } finally {
-        if (timeoutId) {
-          window.clearTimeout(timeoutId);
-        }
+      const data = await withRetry(request, 2);
+      if (data?.fallback || !data?.feedback) {
+        throw new Error(String(data?.reason || 'AI 피드백을 생성하지 못했습니다.'));
       }
+      return {
+        feedback: data.feedback,
+        qualityAudit: data.qualityAudit || null
+      };
     };
 
     const renderResult = () => {
@@ -1499,6 +1615,14 @@ script_version: 20260806-21
       nextButton.textContent = '분석 중...';
       setVoiceStatus('모의면접이 완료되었습니다. 요약을 확인해 주세요.');
       updateStage();
+
+      trackInterviewEvent('ai_interview_completed', {
+        company: interviewSetup.company,
+        role: interviewSetup.role,
+        interview_type: interviewSetup.interviewType,
+        question_count: state.questions.length,
+        answered_count: state.answers.filter((answer) => String(answer || '').trim().length > 0).length
+      });
     };
 
     const resetInterviewSession = () => {
@@ -1540,16 +1664,34 @@ script_version: 20260806-21
       renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 3), 10);
+      trackInterviewEvent('ai_interview_started', {
+        company: interviewSetup.company,
+        role: interviewSetup.role,
+        interview_type: interviewSetup.interviewType,
+        question_count: selectedCount
+      });
       stageQuality.setup = evaluateSetupQuality(interviewSetup, selectedCount);
       stageQuality.voice = evaluateVoiceQuality();
       setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
       try {
         state.questions = await fetchRemoteQuestions(selectedCount);
         stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+        trackInterviewEvent('ai_interview_questions_ready', {
+          source: 'ai',
+          interview_type: interviewSetup.interviewType,
+          question_count: state.questions.length,
+          question_quality: stageQuality.question
+        });
         setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
       } catch (_error) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
         stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+        trackInterviewEvent('ai_interview_questions_ready', {
+          source: 'local_fallback',
+          interview_type: interviewSetup.interviewType,
+          question_count: state.questions.length,
+          question_quality: stageQuality.question
+        });
         setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
       }
       state.answers = new Array(selectedCount).fill('');
@@ -1570,8 +1712,19 @@ script_version: 20260806-21
         try {
           const remoteFeedback = await fetchRemoteFeedback();
           renderFeedback(remoteFeedback.feedback, 'AI 피드백 생성 완료', remoteFeedback.qualityAudit);
+          trackInterviewEvent('ai_interview_feedback_ready', {
+            source: 'ai',
+            interview_type: interviewSetup.interviewType,
+            question_count: state.questions.length,
+            feedback_overall: Number(remoteFeedback?.feedback?.scoreCard?.overall || 0)
+          });
         } catch (error) {
           renderFeedback(buildLocalFeedback(), '무료 API 응답이 없어 로컬 피드백으로 안내합니다.');
+          trackInterviewEvent('ai_interview_feedback_ready', {
+            source: 'local_fallback',
+            interview_type: interviewSetup.interviewType,
+            question_count: state.questions.length
+          });
         }
         nextButton.textContent = '완료됨';
         return;
