@@ -10,21 +10,26 @@
   {{ content }}
 
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
-    <section class="post-footer-cta" aria-label="관심 등록 안내">
-      <div class="section-inner">
-        {% if page.category == '면접준비' %}
-          <div class="post-footer-cta-card">
-            <p class="post-footer-cta-copy">같이 면접 연습할 사람을 찾고 있나요?</p>
-            <a href="/community/#forms-needed" class="post-footer-cta-btn">같이 준비할 사람 찾기</a>
-          </div>
-        {% else %}
-          <div class="post-footer-cta-card">
-            <p class="post-footer-cta-copy">직접 소모임을 열어보고 싶나요?</p>
-            <a href="/community/#forms-needed" class="post-footer-cta-btn">소모임 제안하기</a>
-          </div>
-        {% endif %}
-      </div>
-    </section>
+    {% if page.category == '면접준비' %}
+      {% assign community_cta_label = '같이 준비할 사람 찾기' %}
+    {% else %}
+      {% assign community_cta_label = '소모임 제안하기' %}
+    {% endif %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var heroButtons = document.querySelector('main .hero-btns');
+        if (!heroButtons || heroButtons.querySelector('[data-community-cta]')) {
+          return;
+        }
+
+        var link = document.createElement('a');
+        link.href = '/community/#forms-needed';
+        link.className = 'btn-outline post-inline-community-btn';
+        link.textContent = {{ community_cta_label | jsonify }};
+        link.setAttribute('data-community-cta', 'true');
+        heroButtons.appendChild(link);
+      });
+    </script>
   {% endif %}
 
   {% if page.category %}

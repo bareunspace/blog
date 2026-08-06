@@ -202,43 +202,11 @@ nav {
 }
 .nav-cta:hover { background: var(--primary-light); }
 
-/* ── Post Footer CTA ── */
-.post-footer-cta {
-  padding: .8rem 1.5rem 2rem;
-}
-.post-footer-cta .section-inner {
-  max-width: 860px;
-}
-.post-footer-cta-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+/* ── Inline Community CTA ── */
+.post-inline-community-btn {
+  border-style: dashed;
+  border-color: rgba(45,106,79,.55);
   background: rgba(45,106,79,.04);
-  border: 1px solid rgba(45,106,79,.12);
-  border-radius: 14px;
-  padding: .85rem 1rem;
-}
-.post-footer-cta-copy {
-  font-size: .95rem;
-  font-weight: 600;
-  color: var(--text);
-}
-.post-footer-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: #fff;
-  border-radius: 999px;
-  padding: .55rem .95rem;
-  font-size: .9rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.post-footer-cta-btn:hover,
-.post-footer-cta-btn:focus-visible {
-  background: var(--primary-light);
 }
 
 /* ── Breadcrumb ── */
