@@ -209,11 +209,12 @@ script_version: 20260806-21
   .aii-live-toolbar { display: flex; gap: .45rem; flex-wrap: wrap; margin: 0 0 .55rem; }
   .aii-live-toolbar .btn-outline { min-height: 36px; padding: .44rem .75rem; font-size: .84rem; }
   .aii-live-layout { display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr); gap: .78rem; align-items: start; }
-  .aii-card { border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.25rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.06); }
-  .aii-device-card { margin-top: 0; border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.2rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.05); }
+  .aii-card { border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.25rem; display: grid; gap: .95rem; align-content: start; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.06); }
+  .aii-device-card { margin-top: 0; border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.2rem; display: grid; gap: .95rem; align-content: start; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.05); }
   .aii-device-card h3 { margin: 0; color: #173726; }
   .aii-device-copy { margin: 0; color: #4b5e54; }
   .aii-device-status { margin: 0; font-weight: 700; color: #2a3d33; }
+  .aii-device-card .aii-actions { align-items: flex-start; }
   .aii-video { width: 100%; max-width: 760px; border-radius: 12px; border: 1px solid #d4dfd7; background: #0b1110; aspect-ratio: 16 / 9; object-fit: cover; }
   .aii-meter-wrap { display: grid; gap: .35rem; color: #355745; font-size: .92rem; }
   .aii-meter-track { width: 100%; max-width: 760px; height: 10px; border-radius: 999px; background: #dce8e1; overflow: hidden; }
@@ -285,6 +286,7 @@ script_version: 20260806-21
   }
   body.aii-focus-mode .aii-card,
   body.aii-focus-mode .aii-device-card {
+    align-self: start;
     min-height: calc(100vh - 7.2rem);
   }
 
