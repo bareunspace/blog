@@ -140,6 +140,25 @@ const parsePositiveInt = (value: string, fallbackValue: number) => {
   return parsed;
 };
 
+const normalizeCacheText = (value: string, maxLength = 80) => {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .slice(0, maxLength);
+};
+
+const createServiceClient = () => {
+  const supabaseUrl = String(Deno.env.get('SUPABASE_URL') || '').trim();
+  const serviceRoleKey = String(Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '').trim();
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error('supabase_service_not_configured');
+  }
+  return createClient(supabaseUrl, serviceRoleKey, {
+    auth: { persistSession: false }
+  });
+};
+
 const clampScore = (value: number) => {
   if (!Number.isFinite(value)) {
     return 0;
@@ -587,15 +606,7 @@ const runUsageGuards = async (req: Request): Promise<GuardContext> => {
     throw new Error('paid_model_blocked');
   }
 
-  const supabaseUrl = String(Deno.env.get('SUPABASE_URL') || '').trim();
-  const serviceRoleKey = String(Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '').trim();
-  if (!supabaseUrl || !serviceRoleKey) {
-    throw new Error('supabase_service_not_configured');
-  }
-
-  const supabase = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false }
-  });
+  const supabase = createServiceClient();
 
   const dayStartIso = getUtcDayStartIso();
   const { count, error: countError } = await supabase
@@ -627,6 +638,105 @@ const runUsageGuards = async (req: Request): Promise<GuardContext> => {
   return { model, provider };
 };
 
+const readStoredQuestions = async (payload: QuestionGenerationPayload) => {
+  try {
+    const supabase = createServiceClient();
+    const companyKey = normalizeCacheText(payload.company);
+    const roleKey = normalizeCacheText(payload.role);
+    const interviewTypeKey = normalizeCacheText(payload.interviewType, 40);
+    const { data, error } = await supabase
+      .from('ai_interview_question_corpus')
+      .select('id, questions, reuse_count')
+      .eq('interview_type_key', interviewTypeKey)
+      .eq('company_key', companyKey)
+      .eq('role_key', roleKey)
+      .eq('question_count', payload.questionCount)
+      .order('quality_score', { ascending: false })
+      .order('last_used_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (error || !data) {
+      return null;
+    }
+
+    const questions = normalizeQuestionGeneration({ questions: data.questions }, payload.questionCount, payload.interviewType);
+    if (!questions || questions.questions.length < payload.questionCount) {
+      return null;
+    }
+
+    await supabase
+      .from('ai_interview_question_corpus')
+      .update({
+        reuse_count: Number((data as Record<string, unknown>)?.reuse_count || 0) + 1,
+        last_used_at: new Date().toISOString()
+      })
+      .eq('id', (data as Record<string, unknown>).id)
+      .then(() => {})
+      .catch(() => {});
+
+    return questions.questions;
+  } catch (_error) {
+    return null;
+  }
+};
+
+const storeGeneratedQuestions = async (
+  payload: QuestionGenerationPayload,
+  questions: string[],
+  model: string
+) => {
+  try {
+    const supabase = createServiceClient();
+    const quality = evaluateGeneratedQuestionQuality(questions, payload);
+    const row = {
+      interview_type: payload.interviewType,
+      interview_type_key: normalizeCacheText(payload.interviewType, 40),
+      company: payload.company,
+      company_key: normalizeCacheText(payload.company),
+      role: payload.role,
+      role_key: normalizeCacheText(payload.role),
+      question_count: payload.questionCount,
+      questions,
+      quality_score: quality,
+      model,
+      last_used_at: new Date().toISOString(),
+      reuse_count: 0
+    };
+    await supabase.from('ai_interview_question_corpus').insert(row);
+  } catch (_error) {
+    // no-op
+  }
+};
+
+const storeQaCorpus = async (payload: FeedbackPayload) => {
+  try {
+    const supabase = createServiceClient();
+    const rows = payload.qa
+      .map((item) => ({
+        interview_type: payload.interviewType,
+        interview_type_key: normalizeCacheText(payload.interviewType, 40),
+        company: payload.company,
+        company_key: normalizeCacheText(payload.company),
+        role: payload.role,
+        role_key: normalizeCacheText(payload.role),
+        question: item.question,
+        answer: item.answer,
+        answer_length: item.answer.length,
+        is_english: isEnglishSentence(item.question) && isEnglishSentence(item.answer)
+      }))
+      .filter((item) => item.question.length > 0 && item.answer.length > 0);
+
+    if (rows.length === 0) {
+      return;
+    }
+
+    await supabase.from('ai_interview_qa_corpus').insert(rows);
+  } catch (_error) {
+    // no-op
+  }
+};
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
@@ -653,9 +763,18 @@ Deno.serve(async (req) => {
       questionCount
     };
 
+    const storedQuestions = await readStoredQuestions(payload);
+    if (storedQuestions && storedQuestions.length >= questionCount) {
+      return jsonResponse(200, {
+        questions: storedQuestions,
+        source: 'db_cache'
+      });
+    }
+
     try {
       const guardContext = await runUsageGuards(req);
       const generated = await generateQuestionsWithRetry(payload, guardContext.model, guardContext.provider);
+      await storeGeneratedQuestions(payload, generated.questions, guardContext.model);
       return jsonResponse(200, {
         questions: generated.questions,
         source: 'ai'
@@ -694,6 +813,8 @@ Deno.serve(async (req) => {
     interviewType,
     qa
   };
+
+  await storeQaCorpus(payload);
 
   try {
     const guardContext = await runUsageGuards(req);

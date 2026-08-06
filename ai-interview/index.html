@@ -659,6 +659,8 @@ script_version: 20260806-24
     };
     const resumeStoragePrefix = 'aii-resume:';
     const qualityScoreStorageKey = 'aii:last-quality-score';
+    const questionCacheStoragePrefix = 'aii:question-cache:v1:';
+    const questionCacheTtlMs = 1000 * 60 * 60 * 24 * 3;
     const defaultCompanyLabelText = companyLabelNode.textContent || '지원 회사';
     const defaultRoleLabelText = roleLabelNode.textContent || '지원 직무';
     const defaultCompanyPlaceholder = companyInputNode.getAttribute('placeholder') || '예: 대한항공';
@@ -679,6 +681,7 @@ script_version: 20260806-24
     };
     let questionFeedbackVotes = {};
     let currentQuestionSource = 'unknown';
+    let activeQuestionSessionId = 0;
 
     const configNode = document.getElementById('aiInterviewConfig');
     const pageConfig = (() => {
@@ -718,6 +721,12 @@ script_version: 20260806-24
       }
       if (value === 'local_fallback') {
         return 'fallback_local';
+      }
+      if (value === 'cache_reuse') {
+        return 'cached_ai';
+      }
+      if (value === 'ai_background_refresh') {
+        return 'ai_background';
       }
       return 'unknown';
     };
@@ -1474,6 +1483,7 @@ script_version: 20260806-24
     });
 
     const requestTimeoutMs = 15000;
+    const questionRequestTimeoutMs = 4500;
     const minRemoteQuestionQuality = 72;
 
     const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -1571,10 +1581,80 @@ script_version: 20260806-24
       return englishOnly.slice(0, safeCount);
     };
 
-    const fetchRemoteQuestions = async (questionCount) => {
+    const normalizeCacheText = (value, maxLength = 80) => {
+      return String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+        .slice(0, maxLength);
+    };
+
+    const buildQuestionCacheKey = (setup, questionCount) => {
+      const normalizedType = normalizeCacheText(setup?.interviewType || '');
+      const normalizedCompany = normalizeCacheText(setup?.company || '');
+      const normalizedRole = normalizeCacheText(setup?.role || '');
+      const normalizedCount = String(Math.min(Math.max(Number(questionCount) || 1, 1), 10));
+      return `${questionCacheStoragePrefix}${normalizedType}|${normalizedCompany}|${normalizedRole}|${normalizedCount}`;
+    };
+
+    const readCachedQuestions = (setup, questionCount) => {
+      try {
+        const key = buildQuestionCacheKey(setup, questionCount);
+        const raw = localStorage.getItem(key);
+        if (!raw) {
+          return [];
+        }
+        const payload = JSON.parse(raw);
+        const savedAt = Number(payload?.savedAt || 0);
+        if (!Number.isFinite(savedAt) || (Date.now() - savedAt) > questionCacheTtlMs) {
+          localStorage.removeItem(key);
+          return [];
+        }
+        const rows = normalizeQuestionsForInterviewType(
+          String(setup?.interviewType || ''),
+          Array.isArray(payload?.questions) ? payload.questions : [],
+          questionCount
+        );
+        return rows;
+      } catch (_error) {
+        return [];
+      }
+    };
+
+    const writeCachedQuestions = (setup, questionCount, questions, source = 'ai') => {
+      try {
+        const normalizedCount = Math.min(Math.max(Number(questionCount) || 1, 1), 10);
+        const rows = normalizeQuestionsForInterviewType(
+          String(setup?.interviewType || ''),
+          Array.isArray(questions) ? questions : [],
+          normalizedCount
+        );
+        if (rows.length < normalizedCount) {
+          return false;
+        }
+        const key = buildQuestionCacheKey(setup, normalizedCount);
+        localStorage.setItem(key, JSON.stringify({
+          savedAt: Date.now(),
+          source: String(source || 'ai'),
+          questionCount: normalizedCount,
+          questions: rows
+        }));
+        return true;
+      } catch (_error) {
+        return false;
+      }
+    };
+
+    const fetchRemoteQuestions = async (questionCount, options = {}) => {
       const supabaseUrl = String(pageConfig.supabaseUrl || '').trim();
       const supabaseAnonKey = String(pageConfig.supabaseAnonKey || '').trim();
       const useEnglishOnly = isEnglishInterviewMode();
+      const timeoutMs = Number(options?.timeoutMs);
+      const maxAttemptsRaw = Number(options?.maxAttempts);
+      const effectiveTimeoutMs = Number.isFinite(timeoutMs) && timeoutMs > 0 ? timeoutMs : questionRequestTimeoutMs;
+      const effectiveAttempts = Number.isFinite(maxAttemptsRaw) && maxAttemptsRaw >= 1
+        ? Math.round(maxAttemptsRaw)
+        : 1;
       if (!supabaseUrl || !supabaseAnonKey) {
         throw new Error('Supabase 설정이 비어 있습니다.');
       }
@@ -1582,7 +1662,7 @@ script_version: 20260806-24
       const endpoint = `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/ai-interview-feedback`;
       const request = async () => {
         const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-        const timeoutId = controller ? window.setTimeout(() => controller.abort(), requestTimeoutMs) : null;
+        const timeoutId = controller ? window.setTimeout(() => controller.abort(), effectiveTimeoutMs) : null;
         try {
           const response = await fetch(endpoint, {
             method: 'POST',
@@ -1608,7 +1688,7 @@ script_version: 20260806-24
         }
       };
 
-      const data = await withRetry(request, 2);
+      const data = await withRetry(request, effectiveAttempts);
       let questions = normalizeGeneratedQuestions(data?.questions, questionCount, useEnglishOnly);
       if (data?.fallback || questions.length === 0) {
         throw new Error(String(data?.reason || '트렌드 질문 생성에 실패했습니다.'));
@@ -1628,7 +1708,11 @@ script_version: 20260806-24
         }
       }
 
-      return questions;
+      const source = String(data?.source || 'ai').trim() || 'ai';
+      return {
+        questions,
+        source
+      };
     };
 
     const fetchRemoteFeedback = async () => {
@@ -1946,6 +2030,7 @@ script_version: 20260806-24
       stageQuality = { setup: null, question: null, voice: null };
       currentQuestionSource = 'unknown';
       questionFeedbackVotes = {};
+      activeQuestionSessionId += 1;
       state = { questions: [], answers: [], index: -1 };
       form.reset();
       renderInterviewTypeOptionsByMode('인성면접');
@@ -1990,6 +2075,11 @@ script_version: 20260806-24
       renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 1), 10);
+      const setupSnapshot = {
+        company: interviewSetup.company,
+        role: interviewSetup.role,
+        interviewType: interviewSetup.interviewType
+      };
       trackInterviewEvent('ai_interview_started', {
         company: interviewSetup.company,
         role: interviewSetup.role,
@@ -2000,6 +2090,8 @@ script_version: 20260806-24
       stageQuality.voice = evaluateVoiceQuality();
       questionFeedbackVotes = {};
       currentQuestionSource = 'unknown';
+      activeQuestionSessionId += 1;
+      const sessionId = activeQuestionSessionId;
       if (isDailyEnglish) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
         currentQuestionSource = 'local_daily_faststart';
@@ -2013,31 +2105,105 @@ script_version: 20260806-24
         });
         setVoiceStatus(`데일리 영어 즉시 시작 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
       } else {
-        setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
-        try {
-          state.questions = await fetchRemoteQuestions(selectedCount);
-          currentQuestionSource = 'ai';
+        const cachedQuestions = readCachedQuestions(setupSnapshot, selectedCount);
+        if (cachedQuestions.length >= selectedCount) {
+          state.questions = cachedQuestions;
+          currentQuestionSource = 'cache_reuse';
           stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
           trackInterviewEvent('ai_interview_questions_ready', {
-            source: 'ai',
-            source_group: getSourceGroup('ai'),
+            source: 'cache_reuse',
+            source_group: getSourceGroup('cache_reuse'),
             interview_type: interviewSetup.interviewType,
             question_count: state.questions.length,
             question_quality: stageQuality.question
           });
-          setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
-        } catch (_error) {
-          state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
-          currentQuestionSource = 'local_fallback';
-          stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
-          trackInterviewEvent('ai_interview_questions_ready', {
-            source: 'local_fallback',
-            source_group: getSourceGroup('local_fallback'),
-            interview_type: interviewSetup.interviewType,
-            question_count: state.questions.length,
-            question_quality: stageQuality.question
-          });
-          setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
+          setVoiceStatus(`AI 캐시 질문으로 즉시 시작합니다 (${stageQuality.question}점).`);
+        } else {
+          setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
+          try {
+            const remoteResult = await fetchRemoteQuestions(selectedCount, {
+              timeoutMs: questionRequestTimeoutMs,
+              maxAttempts: 1
+            });
+            state.questions = remoteResult.questions;
+            currentQuestionSource = remoteResult.source === 'db_cache' ? 'cache_reuse' : 'ai';
+            writeCachedQuestions(setupSnapshot, selectedCount, state.questions, 'ai');
+            stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+            trackInterviewEvent('ai_interview_questions_ready', {
+              source: currentQuestionSource,
+              source_group: getSourceGroup(currentQuestionSource),
+              interview_type: interviewSetup.interviewType,
+              question_count: state.questions.length,
+              question_quality: stageQuality.question
+            });
+            if (currentQuestionSource === 'cache_reuse') {
+              setVoiceStatus(`서버 캐시 질문으로 즉시 시작합니다 (${stageQuality.question}점).`);
+            } else {
+              setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
+            }
+          } catch (_error) {
+            state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+            currentQuestionSource = 'local_fallback';
+            stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+            trackInterviewEvent('ai_interview_questions_ready', {
+              source: currentQuestionSource,
+              source_group: getSourceGroup(currentQuestionSource),
+              interview_type: interviewSetup.interviewType,
+              question_count: state.questions.length,
+              question_quality: stageQuality.question
+            });
+            setVoiceStatus(`트렌드 질문 생성 지연으로 기본 질문을 먼저 시작합니다 (${stageQuality.question}점). 백그라운드에서 AI 질문을 다시 생성합니다.`);
+
+            (async () => {
+              try {
+                const refreshedResult = await fetchRemoteQuestions(selectedCount, {
+                  timeoutMs: requestTimeoutMs,
+                  maxAttempts: 2
+                });
+                const refreshedQuestions = refreshedResult.questions;
+                const cached = writeCachedQuestions(setupSnapshot, selectedCount, refreshedQuestions, 'ai_background_refresh');
+                if (cached) {
+                  trackInterviewEvent('ai_interview_questions_cached', {
+                    source: 'ai_background_refresh',
+                    source_group: getSourceGroup('ai_background_refresh'),
+                    question_count: refreshedQuestions.length
+                  });
+                }
+
+                if (activeQuestionSessionId !== sessionId || isComplete) {
+                  return;
+                }
+                const hasStartedAnswering = Array.isArray(state.answers)
+                  && state.answers.some((answer) => String(answer || '').trim().length > 0);
+                if (state.index > 0 || hasStartedAnswering) {
+                  return;
+                }
+
+                const nextQuestions = normalizeQuestionsForInterviewType(setupSnapshot.interviewType, refreshedQuestions, selectedCount);
+                if (nextQuestions.length < selectedCount) {
+                  return;
+                }
+
+                state.questions = nextQuestions;
+                state.answers = new Array(nextQuestions.length).fill('');
+                state.index = 0;
+                currentQuestionSource = 'ai_background_refresh';
+                stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+                syncView();
+                speakCurrentQuestion();
+                setVoiceStatus(`AI 맞춤 질문 준비가 완료되어 자동 전환했습니다 (${stageQuality.question}점).`);
+                trackInterviewEvent('ai_interview_questions_ready', {
+                  source: 'ai_background_refresh',
+                  source_group: getSourceGroup('ai_background_refresh'),
+                  interview_type: interviewSetup.interviewType,
+                  question_count: state.questions.length,
+                  question_quality: stageQuality.question
+                });
+              } catch (_backgroundError) {
+                // Keep current questions when background regeneration fails.
+              }
+            })();
+          }
         }
       }
       state.questions = normalizeQuestionsForInterviewType(interviewSetup.interviewType, state.questions, selectedCount);
