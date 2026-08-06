@@ -72,6 +72,10 @@ script_version: 20260806-21
     <div class="section-inner aii-flow-shell aii-flow-shell-demo">
       <p class="aii-step-label">2단계 · 진행</p>
       <h2 class="section-title">진행 화면</h2>
+      <div class="aii-live-toolbar">
+        <button type="button" class="btn-outline" data-aii-focus-toggle>집중 모드</button>
+        <a href="/ai-interview/?focus=1#aiDemoSetup" target="_blank" rel="noopener noreferrer" class="btn-outline">새 창 열기</a>
+      </div>
       <div class="aii-live-layout">
       <article class="aii-device-card" aria-live="polite">
         <h3>장비 확인</h3>
@@ -168,14 +172,14 @@ script_version: 20260806-21
 
 <style>
   .aii-page .aii-hero { padding: 2.1rem 0 1.2rem; }
-  .aii-page .aii-hero .section-inner { max-width: 1220px; }
+  .aii-page .aii-hero .section-inner { max-width: 1360px; }
   .aii-page .aii-hero .section-label { margin-bottom: .35rem; font-size: .78rem; }
   .aii-page .aii-hero .section-title { margin: 0 0 .45rem; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.22; }
   .aii-page .aii-hero .hero-subtitle { margin: 0 0 .7rem; font-size: .93rem; line-height: 1.5; max-width: 760px; }
   .aii-page .aii-hero .hero-btns { display: flex; gap: .45rem; flex-wrap: wrap; }
   .aii-page .aii-hero .hero-btns .btn-primary,
   .aii-page .aii-hero .hero-btns .btn-outline { min-height: 38px; padding: .52rem .86rem; font-size: .89rem; }
-  .aii-page .section-inner { max-width: 1220px; }
+  .aii-page .section-inner { max-width: 1360px; }
   .aii-page .aii-block { padding: 2.2rem 0; }
   .aii-page .aii-block-soft { background: #f2f7f4; border-top: 1px solid #dce8e1; border-bottom: 1px solid #dce8e1; }
   .aii-flow-shell { background: linear-gradient(180deg, #f8fcfa 0%, #ffffff 30%); border: 1px solid #dbe7e0; box-shadow: 0 16px 32px rgba(21, 56, 38, 0.08); }
@@ -193,6 +197,8 @@ script_version: 20260806-21
   .aii-form input:focus, .aii-form select:focus, .aii-answer:focus { outline: 2px solid #6abf91; outline-offset: 2px; border-color: #3d8b63; }
   .aii-actions { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
   .aii-form .aii-actions { grid-column: 1 / -1; margin-top: .35rem; }
+  .aii-live-toolbar { display: flex; gap: .45rem; flex-wrap: wrap; margin: 0 0 .55rem; }
+  .aii-live-toolbar .btn-outline { min-height: 36px; padding: .44rem .75rem; font-size: .84rem; }
   .aii-live-layout { display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr); gap: .78rem; align-items: start; }
   .aii-card { border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.25rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.06); }
   .aii-device-card { margin-top: 0; border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.2rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.05); }
@@ -242,6 +248,28 @@ script_version: 20260806-21
   #aiInterviewHubLink .guide-summary-card p { margin: 0; color: #4b5563; font-size: .86rem; line-height: 1.55; }
   #aiInterviewHubLink .guide-summary-card .btn-outline { margin-top: auto; align-self: flex-start; min-height: 40px; }
 
+  body.aii-focus-mode .aii-hero,
+  body.aii-focus-mode nav[aria-label='페이지 경로'],
+  body.aii-focus-mode #aiDemoSetup,
+  body.aii-focus-mode #aiInterviewHubLink,
+  body.aii-focus-mode footer,
+  body.aii-focus-mode #mobileStickyCta {
+    display: none !important;
+  }
+  body.aii-focus-mode .aii-page .aii-block {
+    padding: .65rem 0;
+  }
+  body.aii-focus-mode .aii-page .section-inner {
+    max-width: min(100vw - .9rem, 1720px);
+  }
+  body.aii-focus-mode .aii-live-layout {
+    grid-template-columns: minmax(360px, .86fr) minmax(0, 1.14fr);
+  }
+  body.aii-focus-mode .aii-card,
+  body.aii-focus-mode .aii-device-card {
+    min-height: calc(100vh - 7.2rem);
+  }
+
   @media (max-width: 760px) {
     .aii-page .aii-hero { padding: 1.35rem 0 .8rem; }
     .aii-page .aii-hero .section-title { margin-bottom: .35rem; font-size: 1.34rem; }
@@ -260,6 +288,10 @@ script_version: 20260806-21
     .aii-card, .aii-device-card { padding: .95rem; gap: .7rem; }
     .aii-answer-meta { flex-direction: column; }
     .aii-voice-controls { grid-template-columns: 1fr; }
+    .aii-live-toolbar { margin-bottom: .45rem; }
+    body.aii-focus-mode .aii-live-layout { grid-template-columns: 1fr; }
+    body.aii-focus-mode .aii-card,
+    body.aii-focus-mode .aii-device-card { min-height: auto; }
     #aiInterviewHubLink .guide-summary-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -297,13 +329,14 @@ script_version: 20260806-21
     const feedbackStrengthsNode = document.querySelector('[data-aii-feedback-strengths]');
     const feedbackImprovementsNode = document.querySelector('[data-aii-feedback-improvements]');
     const feedbackNextQuestionsNode = document.querySelector('[data-aii-feedback-next-questions]');
+    const focusToggleButton = document.querySelector('[data-aii-focus-toggle]');
     const deviceStartButton = document.querySelector('[data-aii-device-start]');
     const deviceStopButton = document.querySelector('[data-aii-device-stop]');
     const deviceStatusNode = document.querySelector('[data-aii-device-status]');
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !focusToggleButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
 
@@ -314,8 +347,59 @@ script_version: 20260806-21
       '실패 경험에서 무엇을 배웠는지 이야기해 주세요.',
       '입사 후 6개월 안에 만들고 싶은 성과는 무엇인가요?',
       '이 회사와 직무를 선택한 이유를 구체적으로 말해 주세요.',
-      '면접관에게 마지막으로 전하고 싶은 메시지가 있다면 말해 주세요.'
+      '면접관에게 마지막으로 전하고 싶은 메시지가 있다면 말해 주세요.',
+      '최근 가장 몰입했던 프로젝트와 역할을 설명해 주세요.',
+      '압박 상황에서 우선순위를 정했던 사례를 말해 주세요.',
+      '새로운 업무를 빠르게 익혔던 방법을 설명해 주세요.'
     ];
+    const questionBankByType = {
+      '인성면접': [
+        '본인을 세 단어로 표현하고 이유를 말해 주세요.',
+        '가치관이 충돌했던 상황에서 어떤 선택을 했는지 설명해 주세요.',
+        '실수 후 신뢰를 회복했던 경험을 말해 주세요.',
+        '가장 자랑스러운 성취와 그 이유를 말해 주세요.'
+      ],
+      '직무면접': [
+        '이 직무에서 가장 중요한 역량 2가지를 꼽고 근거를 말해 주세요.',
+        '성과를 만들기 위해 사용했던 업무 방식이나 도구를 설명해 주세요.',
+        '데이터나 지표를 바탕으로 개선했던 경험을 말해 주세요.',
+        '입사 후 90일 계획을 간단히 설명해 주세요.'
+      ],
+      '영어면접': [
+        'Please introduce yourself in English within one minute.',
+        'What is your biggest strength for this role?',
+        'Tell me about a challenge you solved in a team.',
+        'Why do you want to join this company?'
+      ],
+      '승무원면접': [
+        '고객 불만 상황에서 응대했던 경험을 구체적으로 말해 주세요.',
+        '안전과 서비스가 충돌할 때 어떤 기준으로 판단하시겠어요?',
+        '팀 크루와 협업하며 문제를 해결한 경험을 말해 주세요.',
+        '장시간 비행 중 컨디션 관리를 어떻게 하시나요?'
+      ],
+      '일반 모의면접': [
+        '최근 1년 내 가장 크게 성장한 순간을 말해 주세요.',
+        '본인의 약점을 어떻게 관리하고 있는지 설명해 주세요.',
+        '같이 일하고 싶은 동료 유형과 이유를 말해 주세요.',
+        '이번 면접에서 꼭 전달하고 싶은 한 가지를 말해 주세요.'
+      ]
+    };
+
+    const shuffleArray = (items) => {
+      const cloned = [...items];
+      for (let i = cloned.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cloned[i], cloned[j]] = [cloned[j], cloned[i]];
+      }
+      return cloned;
+    };
+
+    const pickQuestions = (interviewType, count) => {
+      const typePool = Array.isArray(questionBankByType[interviewType]) ? questionBankByType[interviewType] : [];
+      const mergedPool = [...typePool, ...baseQuestions];
+      const uniquePool = Array.from(new Set(mergedPool.map((item) => String(item || '').trim()).filter(Boolean)));
+      return shuffleArray(uniquePool).slice(0, count);
+    };
 
     let state = {
       questions: [],
@@ -358,6 +442,34 @@ script_version: 20260806-21
 
     const setVoiceStatus = (message) => {
       voiceStatusNode.textContent = message;
+    };
+
+    const setFocusMode = (enabled) => {
+      document.body.classList.toggle('aii-focus-mode', Boolean(enabled));
+      focusToggleButton.textContent = enabled ? '기본 모드' : '집중 모드';
+    };
+
+    const toggleFocusMode = async () => {
+      const isEnabled = document.body.classList.contains('aii-focus-mode');
+      if (!isEnabled && document.documentElement.requestFullscreen && !document.fullscreenElement) {
+        try {
+          await document.documentElement.requestFullscreen();
+        } catch (_error) {
+          // Some browsers block fullscreen; focus mode still works without it.
+        }
+        setFocusMode(true);
+        return;
+      }
+
+      if (isEnabled && document.fullscreenElement && document.exitFullscreen) {
+        try {
+          await document.exitFullscreen();
+        } catch (_error) {
+          // Ignore and still exit focus mode in layout.
+        }
+      }
+
+      setFocusMode(!isEnabled);
     };
 
     const getVoicePriority = (voice) => {
@@ -866,7 +978,7 @@ script_version: 20260806-21
       };
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 3), 7);
-      state.questions = baseQuestions.slice(0, selectedCount);
+      state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
       state.answers = new Array(selectedCount).fill('');
       state.index = 0;
       syncView();
@@ -926,6 +1038,12 @@ script_version: 20260806-21
         speakCurrentQuestion();
       }
     });
+    focusToggleButton.addEventListener('click', toggleFocusMode);
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        setFocusMode(false);
+      }
+    });
 
     deviceStartButton.addEventListener('click', startDevice);
     deviceStopButton.addEventListener('click', stopDevice);
@@ -941,6 +1059,11 @@ script_version: 20260806-21
       answerStartButton.disabled = true;
       answerStopButton.disabled = true;
       setVoiceStatus('이 브라우저는 음성 인식을 지원하지 않아 텍스트 입력으로 진행합니다.');
+    }
+
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get('focus') === '1') {
+      setFocusMode(true);
     }
 
     if (window.speechSynthesis && typeof window.speechSynthesis.addEventListener === 'function') {
