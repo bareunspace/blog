@@ -549,12 +549,15 @@ script_version: 20260806-24
 
     const pickQuestions = (interviewType, count) => {
       const typePool = Array.isArray(questionBankByType[interviewType]) ? questionBankByType[interviewType] : [];
-      const isEnglishType = interviewType === '영어면접';
+      const isEnglishType = interviewType === '영어면접' || interviewType === '데일리영어';
       const mergedPool = isEnglishType
         ? [...typePool, ...baseQuestionsEnglish]
         : [...typePool, ...baseQuestions];
       const uniquePool = Array.from(new Set(mergedPool.map((item) => String(item || '').trim()).filter(Boolean)));
-      return shuffleArray(uniquePool).slice(0, count);
+      const languageFilteredPool = isEnglishType
+        ? uniquePool.filter((item) => isEnglishSentence(item))
+        : uniquePool;
+      return shuffleArray(languageFilteredPool).slice(0, count);
     };
 
     const isEnglishSentence = (text) => {
@@ -1831,27 +1834,39 @@ script_version: 20260806-24
       });
       stageQuality.setup = evaluateSetupQuality(interviewSetup, selectedCount);
       stageQuality.voice = evaluateVoiceQuality();
-      setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
-      try {
-        state.questions = await fetchRemoteQuestions(selectedCount);
-        stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
-        trackInterviewEvent('ai_interview_questions_ready', {
-          source: 'ai',
-          interview_type: interviewSetup.interviewType,
-          question_count: state.questions.length,
-          question_quality: stageQuality.question
-        });
-        setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
-      } catch (_error) {
+      if (isDailyEnglish) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
         stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
         trackInterviewEvent('ai_interview_questions_ready', {
-          source: 'local_fallback',
+          source: 'local_daily_faststart',
           interview_type: interviewSetup.interviewType,
           question_count: state.questions.length,
           question_quality: stageQuality.question
         });
-        setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
+        setVoiceStatus(`데일리 영어 즉시 시작 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
+      } else {
+        setVoiceStatus(`설정 검증 ${stageQuality.setup}점 · 음성 준비 ${stageQuality.voice}점 · 트렌드 질문 생성 중...`);
+        try {
+          state.questions = await fetchRemoteQuestions(selectedCount);
+          stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+          trackInterviewEvent('ai_interview_questions_ready', {
+            source: 'ai',
+            interview_type: interviewSetup.interviewType,
+            question_count: state.questions.length,
+            question_quality: stageQuality.question
+          });
+          setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
+        } catch (_error) {
+          state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+          stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
+          trackInterviewEvent('ai_interview_questions_ready', {
+            source: 'local_fallback',
+            interview_type: interviewSetup.interviewType,
+            question_count: state.questions.length,
+            question_quality: stageQuality.question
+          });
+          setVoiceStatus(`트렌드 질문 생성 실패, 기본 질문 사용 (${stageQuality.question}점).`);
+        }
       }
       state.answers = new Array(selectedCount).fill('');
       state.index = 0;
