@@ -74,7 +74,7 @@ script_version: 20260806-21
       <h2 class="section-title">진행 화면</h2>
       <div class="aii-live-toolbar">
         <button type="button" class="btn-outline" data-aii-focus-toggle>집중 모드</button>
-        <a href="/ai-interview/?focus=1#aiDemoSetup" target="_blank" rel="noopener noreferrer" class="btn-outline">새 창 열기</a>
+        <button type="button" class="btn-outline" data-aii-open-window>새 창 열기</button>
       </div>
       <div class="aii-live-layout">
       <article class="aii-device-card" aria-live="polite">
@@ -330,13 +330,14 @@ script_version: 20260806-21
     const feedbackImprovementsNode = document.querySelector('[data-aii-feedback-improvements]');
     const feedbackNextQuestionsNode = document.querySelector('[data-aii-feedback-next-questions]');
     const focusToggleButton = document.querySelector('[data-aii-focus-toggle]');
+    const openWindowButton = document.querySelector('[data-aii-open-window]');
     const deviceStartButton = document.querySelector('[data-aii-device-start]');
     const deviceStopButton = document.querySelector('[data-aii-device-stop]');
     const deviceStatusNode = document.querySelector('[data-aii-device-status]');
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !focusToggleButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
 
@@ -423,6 +424,7 @@ script_version: 20260806-21
       role: '',
       interviewType: ''
     };
+    const resumeStoragePrefix = 'aii-resume:';
 
     const configNode = document.getElementById('aiInterviewConfig');
     const pageConfig = (() => {
@@ -575,6 +577,104 @@ script_version: 20260806-21
         return;
       }
       stageNode.textContent = `질문 진행 ${state.index + 1}/${state.questions.length}`;
+    };
+
+    const buildResumeSnapshot = () => {
+      return {
+        savedAt: Date.now(),
+        interviewSetup,
+        state,
+        isComplete,
+        selectedVoiceName,
+        voiceRate: String(voiceRateNode.value || '0.95')
+      };
+    };
+
+    const openInNewWindow = () => {
+      const baseUrl = `${window.location.origin}/ai-interview/?focus=1`;
+      let targetUrl = `${baseUrl}#aiDemoSetup`;
+
+      try {
+        const key = `${resumeStoragePrefix}${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        const snapshot = buildResumeSnapshot();
+        localStorage.setItem(key, JSON.stringify(snapshot));
+        targetUrl = `${baseUrl}&resume=${encodeURIComponent(key)}#aiDemoSetup`;
+      } catch (_error) {
+        // If storage fails, still open focus page without resume data.
+      }
+
+      window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    };
+
+    const tryRestoreFromSnapshot = () => {
+      const params = new URLSearchParams(window.location.search);
+      const resumeKey = String(params.get('resume') || '').trim();
+      if (!resumeKey) {
+        return;
+      }
+
+      try {
+        const raw = localStorage.getItem(resumeKey);
+        if (!raw) {
+          return;
+        }
+        const snapshot = JSON.parse(raw);
+        const restoredSetup = snapshot?.interviewSetup && typeof snapshot.interviewSetup === 'object' ? snapshot.interviewSetup : {};
+        const restoredState = snapshot?.state && typeof snapshot.state === 'object' ? snapshot.state : {};
+
+        interviewSetup = {
+          company: String(restoredSetup.company || ''),
+          role: String(restoredSetup.role || ''),
+          interviewType: String(restoredSetup.interviewType || '')
+        };
+
+        state = {
+          questions: Array.isArray(restoredState.questions) ? restoredState.questions.map((q) => String(q || '')) : [],
+          answers: Array.isArray(restoredState.answers) ? restoredState.answers.map((a) => String(a || '')) : [],
+          index: Number.isInteger(restoredState.index) ? restoredState.index : -1
+        };
+
+        isComplete = Boolean(snapshot?.isComplete);
+        selectedVoiceName = String(snapshot?.selectedVoiceName || '');
+        voiceSelectNode.value = selectedVoiceName;
+        voiceRateNode.value = String(snapshot?.voiceRate || '0.95');
+
+        form.company.value = interviewSetup.company;
+        form.role.value = interviewSetup.role;
+        if (interviewSetup.interviewType) {
+          form.interview_type.value = interviewSetup.interviewType;
+        }
+        if (state.questions.length >= 3 && state.questions.length <= 7) {
+          form.question_count.value = String(state.questions.length);
+        }
+
+        if (state.index >= state.questions.length) {
+          state.index = state.questions.length - 1;
+        }
+        if (state.index < 0 && state.questions.length > 0) {
+          state.index = 0;
+        }
+
+        syncView();
+        if (isComplete) {
+          renderResult();
+          answerStartButton.disabled = true;
+          answerStopButton.disabled = true;
+          speakQuestionButton.disabled = true;
+          nextButton.disabled = true;
+          prevButton.disabled = true;
+          setVoiceStatus('모의면접이 완료되었습니다. 요약을 확인해 주세요.');
+          updateStage();
+        }
+      } catch (_error) {
+        // Ignore invalid snapshot.
+      } finally {
+        try {
+          localStorage.removeItem(resumeKey);
+        } catch (_error) {
+          // no-op
+        }
+      }
     };
 
     const clearResult = () => {
@@ -1038,6 +1138,7 @@ script_version: 20260806-21
         speakCurrentQuestion();
       }
     });
+    openWindowButton.addEventListener('click', openInNewWindow);
     focusToggleButton.addEventListener('click', toggleFocusMode);
     document.addEventListener('fullscreenchange', () => {
       if (!document.fullscreenElement) {
@@ -1072,5 +1173,6 @@ script_version: 20260806-21
     renderVoiceOptions();
 
     syncView();
+    tryRestoreFromSnapshot();
   })();
 </script>
