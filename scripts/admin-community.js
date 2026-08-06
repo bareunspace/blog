@@ -253,12 +253,31 @@
       .slice(0, COMMUNITY_IMAGE_MAX_FILES);
   };
 
-  const renderGroupEditImageList = (imagePaths) => {
+  const getPendingRemovedImagePaths = () => {
+    if (!groupEditForm) {
+      return [];
+    }
+    try {
+      return normalizeImagePaths(JSON.parse(groupEditForm.dataset.removedImagePaths || '[]'));
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const setPendingRemovedImagePaths = (paths) => {
+    if (!groupEditForm) {
+      return;
+    }
+    groupEditForm.dataset.removedImagePaths = JSON.stringify(normalizeImagePaths(paths));
+  };
+
+  const renderGroupEditImageList = (imagePaths, removedImagePaths = []) => {
     if (!groupEditImageListWrap || !groupEditImageList) {
       return;
     }
 
     const normalized = normalizeImagePaths(imagePaths);
+    const removedSet = new Set(normalizeImagePaths(removedImagePaths));
     if (!normalized.length) {
       groupEditImageListWrap.hidden = true;
       groupEditImageList.innerHTML = '';
@@ -267,11 +286,9 @@
 
     groupEditImageListWrap.hidden = false;
     groupEditImageList.innerHTML = normalized.map((path, index) => `
-      <li class="admin-image-edit-item">
-        <label>
-          <input type="checkbox" name="remove_image_paths" value="${escapeHtml(path)}" />
-          <span>${index + 1}번 이미지 삭제</span>
-        </label>
+      <li class="admin-image-edit-item ${removedSet.has(path) ? 'is-pending-remove' : ''}">
+        <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-image-remove-toggle data-image-path="${escapeHtml(path)}">${removedSet.has(path) ? '삭제 취소' : '삭제'}</button>
+        <span class="admin-image-edit-label">${removedSet.has(path) ? '삭제 예정' : `${index + 1}번 이미지`}</span>
         <span class="admin-image-edit-url">${escapeHtml(path)}</span>
       </li>
     `).join('');
@@ -684,6 +701,8 @@
     }
     if (groupEditForm) {
       groupEditForm.reset();
+      groupEditForm.dataset.imagePaths = '[]';
+      groupEditForm.dataset.removedImagePaths = '[]';
     }
     if (groupEditImageListWrap) {
       groupEditImageListWrap.hidden = true;
@@ -740,7 +759,8 @@
     groupEditForm.elements.image_path.value = group.image_path || '';
     const initialImagePaths = normalizeImagePaths(Array.isArray(group.image_paths) ? group.image_paths : (group.image_path ? [group.image_path] : []));
     groupEditForm.dataset.imagePaths = JSON.stringify(initialImagePaths);
-    renderGroupEditImageList(initialImagePaths);
+    groupEditForm.dataset.removedImagePaths = '[]';
+    renderGroupEditImageList(initialImagePaths, []);
     groupEditForm.elements.image_file.value = '';
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
@@ -766,9 +786,7 @@
         ? currentGroup.image_paths
         : (persistedImagePath ? [persistedImagePath] : [])
     );
-    const removedImagePaths = Array.from(groupEditForm.querySelectorAll('input[name="remove_image_paths"]:checked'))
-      .map((node) => String(node.value || '').trim())
-      .filter(Boolean);
+    const removedImagePaths = getPendingRemovedImagePaths();
     const removedSet = new Set(removedImagePaths);
     const imageFiles = Array.from(groupEditForm.elements.image_file?.files || []);
     let nextImagePaths = persistedImagePaths.filter((path) => !removedSet.has(path));
@@ -1256,6 +1274,36 @@
       return;
     }
     updateGroupStatus(select.closest('[data-group-id]'), select.value);
+  });
+
+  groupEditImageList?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-image-remove-toggle]');
+    if (!button || !groupEditForm) {
+      return;
+    }
+
+    const imagePath = String(button.dataset.imagePath || '').trim();
+    if (!imagePath) {
+      return;
+    }
+
+    const allImagePaths = normalizeImagePaths(JSON.parse(groupEditForm.dataset.imagePaths || '[]'));
+    const removedSet = new Set(getPendingRemovedImagePaths());
+    if (removedSet.has(imagePath)) {
+      removedSet.delete(imagePath);
+    } else {
+      removedSet.add(imagePath);
+    }
+
+    const removedList = normalizeImagePaths(Array.from(removedSet));
+    setPendingRemovedImagePaths(removedList);
+    renderGroupEditImageList(allImagePaths, removedList);
+
+    const currentPath = String(groupEditForm.elements.image_path.value || '').trim();
+    if (currentPath && removedSet.has(currentPath)) {
+      const nextRepresentative = allImagePaths.find((path) => !removedSet.has(path)) || '';
+      groupEditForm.elements.image_path.value = nextRepresentative;
+    }
   });
 
   groupsListNode?.addEventListener('click', (event) => {

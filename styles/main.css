@@ -7493,19 +7493,21 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   background: #fff;
   padding: .55rem .65rem;
 }
-.admin-image-edit-item label {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  min-width: 0;
-  font-size: .86rem;
-  color: #2a3d33;
+.admin-image-edit-item.is-pending-remove {
+  border-color: #e5b4b4;
+  background: #fff5f5;
 }
-.admin-image-edit-item input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+.admin-image-edit-label {
+  flex: 0 0 auto;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #355745;
+}
+.admin-image-edit-item.is-pending-remove .admin-image-edit-label {
+  color: #8c2f2f;
 }
 .admin-image-edit-url {
+  flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
