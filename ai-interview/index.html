@@ -706,6 +706,22 @@ script_version: 20260806-21
       return voices.find((voice) => String(voice.name) === String(name)) || null;
     };
 
+    const hasVoiceForLangPrefix = (voices, langPrefix) => {
+      return Array.isArray(voices)
+        && voices.some((voice) => String(voice?.lang || '').toLowerCase().startsWith(langPrefix));
+    };
+
+    const findEnglishFallbackVoice = (voices) => {
+      if (!Array.isArray(voices) || voices.length === 0) {
+        return null;
+      }
+      const byName = voices.find((voice) => {
+        const name = String(voice?.name || '').toLowerCase();
+        return name.includes('english') || name.includes('united states') || name.includes('united kingdom') || name.includes('us english');
+      });
+      return byName || null;
+    };
+
     const getPreferredVoice = () => {
       if (!window.speechSynthesis) {
         return null;
@@ -724,7 +740,7 @@ script_version: 20260806-21
         return localized[0];
       }
       if (isEnglishInterviewMode()) {
-        return null;
+        return findEnglishFallbackVoice(voices);
       }
       const sortedAll = sortVoices(voices, langPrefix);
       return sortedAll[0] || null;
@@ -1257,15 +1273,25 @@ script_version: 20260806-21
       return `${a} ${b}`;
     };
 
-    const speakCurrentQuestion = () => {
+    const speakCurrentQuestion = (retryCount = 0) => {
       if (!window.speechSynthesis || state.index < 0 || !state.questions[state.index]) {
         return;
       }
+
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (isEnglishInterviewMode() && !hasVoiceForLangPrefix(voices, 'en') && voices.length === 0 && retryCount < 3) {
+        setVoiceStatus('영어 음성 엔진을 불러오는 중입니다...');
+        window.setTimeout(() => speakCurrentQuestion(retryCount + 1), 250);
+        return;
+      }
+
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(state.questions[state.index]);
       const preferredVoice = getPreferredVoice();
       if (preferredVoice) {
         utterance.voice = preferredVoice;
+      } else if (isEnglishInterviewMode()) {
+        setVoiceStatus('기기에서 영어 음성을 찾지 못했습니다. 영어 음성 설치 시 더 정확하게 재생됩니다.');
       }
       utterance.lang = getRecognitionLang();
       utterance.rate = Number(voiceRateNode.value || '0.95');
