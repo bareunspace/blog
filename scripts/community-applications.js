@@ -2,12 +2,11 @@
   const configNode = document.getElementById('communityApplicationConfig');
   const forms = Array.from(document.querySelectorAll('[data-community-application-form]'));
   const liveGroupsNode = document.querySelector('[data-community-live-groups]');
-  const topicGroupsNode = document.querySelector('[data-community-topic-groups]');
   const ownerLookupForm = document.querySelector('[data-community-owner-lookup-form]');
   const ownerStatusNode = document.querySelector('[data-community-owner-status]');
   const ownerListNode = document.querySelector('[data-community-owner-list]');
 
-  if (!configNode || (!forms.length && !liveGroupsNode && !topicGroupsNode && !ownerLookupForm)) {
+  if (!configNode || (!forms.length && !liveGroupsNode && !ownerLookupForm)) {
     return;
   }
 
@@ -282,57 +281,6 @@
     `;
   };
 
-  const renderTopicGroups = (groups) => {
-    if (!topicGroupsNode) {
-      return;
-    }
-
-    if (!groups.length) {
-      topicGroupsNode.innerHTML = `
-        <div class="community-live-empty">
-          <strong>준비 중인 관심 주제가 아직 없습니다.</strong>
-          <span>아래 폼에서 먼저 신청해 주시면 다음 모임 후보로 검토합니다.</span>
-        </div>
-      `;
-      return;
-    }
-
-    topicGroupsNode.innerHTML = groups.map((group, index) => `
-      <article class="community-group-card${index === 0 ? ' community-group-card-featured' : ''}">
-        <div class="community-group-topline">
-          <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
-          <span class="community-status">🟢 관심 등록</span>
-        </div>
-        <h3>${escapeHtml(group.title)}</h3>
-        ${group.description ? `<p>${escapeHtml(group.description)}</p>` : '<p>아직 상세 소개를 정리 중입니다. 먼저 신청해 주시면 운영 우선순위를 확인해 빠르게 안내드립니다.</p>'}
-        <dl class="community-group-meta">
-          <div>
-            <dt>희망 일정</dt>
-            <dd>${escapeHtml(group.schedule_text || '참가자 일정 확인 후 결정')}</dd>
-          </div>
-          <div>
-            <dt>인원</dt>
-            <dd>${escapeHtml(group.capacity ? `${group.capacity}명` : '협의')}</dd>
-          </div>
-          <div>
-            <dt>참여 상태</dt>
-            <dd>${escapeHtml(formatInterestText(interestCounts.groups[group.id]))}</dd>
-          </div>
-        </dl>
-        <div class="community-card-actions">
-          <button
-            class="${index === 0 ? 'btn-primary' : 'btn-outline'} community-card-btn"
-            type="button"
-            data-community-group-join
-            data-group-id="${escapeHtml(group.id)}"
-            data-group-key="${escapeHtml(group.group_key)}"
-            data-group-title="${escapeHtml(group.title)}"
-          >${escapeHtml(group.title)} 신청하기</button>
-        </div>
-      </article>
-    `).join('');
-  };
-
   const renderOwnerApplications = (applications) => {
     if (!ownerListNode) {
       return;
@@ -451,7 +399,7 @@
   };
 
   const loadLiveGroups = async () => {
-    if (!liveGroupsNode && !topicGroupsNode) {
+    if (!liveGroupsNode) {
       return;
     }
 
@@ -460,23 +408,16 @@
     const { data, error } = await client
       .from('community_groups')
       .select('id, group_key, title, description, status, host_name, schedule_text, capacity')
-      .in('status', ['draft', 'recruiting', 'scheduled'])
+      .in('status', ['recruiting', 'scheduled'])
       .order('created_at', { ascending: false })
-      .limit(24);
+      .limit(12);
 
     if (error) {
-      if (liveGroupsNode) {
-        liveGroupsNode.innerHTML = '';
-      }
-      if (topicGroupsNode) {
-        topicGroupsNode.innerHTML = '';
-      }
+      liveGroupsNode.innerHTML = '';
       return;
     }
 
-    const groups = data || [];
-    renderLiveGroups(groups.filter((group) => ['recruiting', 'scheduled'].includes(group.status)));
-    renderTopicGroups(groups.filter((group) => group.status === 'draft'));
+    renderLiveGroups(data || []);
   };
 
   const renderTopicCounts = () => {
