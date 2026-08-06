@@ -18,6 +18,8 @@
   const editForm = applicationsRoot.querySelector('[data-community-edit-form]');
   const groupEditPanel = groupsRoot?.querySelector('[data-community-group-edit-panel]');
   const groupEditForm = groupsRoot?.querySelector('[data-community-group-edit-form]');
+  const groupEditImageListWrap = groupsRoot?.querySelector('[data-group-edit-image-list-wrap]');
+  const groupEditImageList = groupsRoot?.querySelector('[data-group-edit-image-list]');
   const groupCreatePanel = groupsRoot?.querySelector('[data-community-group-create-panel]');
   const groupCreateToggle = groupsRoot?.querySelector('[data-community-group-create-toggle]');
   const groupCreateCancelButtons = groupsRoot?.querySelectorAll('[data-community-group-create-cancel]') || [];
@@ -239,6 +241,40 @@
       uploaded.push(result.publicUrl);
     }
     return uploaded.filter(Boolean);
+  };
+
+  const normalizeImagePaths = (value) => {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value
+      .map((item) => String(item || '').trim())
+      .filter(Boolean)
+      .slice(0, COMMUNITY_IMAGE_MAX_FILES);
+  };
+
+  const renderGroupEditImageList = (imagePaths) => {
+    if (!groupEditImageListWrap || !groupEditImageList) {
+      return;
+    }
+
+    const normalized = normalizeImagePaths(imagePaths);
+    if (!normalized.length) {
+      groupEditImageListWrap.hidden = true;
+      groupEditImageList.innerHTML = '';
+      return;
+    }
+
+    groupEditImageListWrap.hidden = false;
+    groupEditImageList.innerHTML = normalized.map((path, index) => `
+      <li class="admin-image-edit-item">
+        <label>
+          <input type="checkbox" name="remove_image_paths" value="${escapeHtml(path)}" />
+          <span>${index + 1}번 이미지 삭제</span>
+        </label>
+        <span class="admin-image-edit-url">${escapeHtml(path)}</span>
+      </li>
+    `).join('');
   };
 
   const renderEmpty = () => {
@@ -649,6 +685,12 @@
     if (groupEditForm) {
       groupEditForm.reset();
     }
+    if (groupEditImageListWrap) {
+      groupEditImageListWrap.hidden = true;
+    }
+    if (groupEditImageList) {
+      groupEditImageList.innerHTML = '';
+    }
   };
 
   const openEditPanel = (item) => {
@@ -696,7 +738,9 @@
     groupEditForm.elements.host_name.value = group.host_name || '';
     groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
     groupEditForm.elements.image_path.value = group.image_path || '';
-    groupEditForm.dataset.imagePaths = JSON.stringify(Array.isArray(group.image_paths) ? group.image_paths : (group.image_path ? [group.image_path] : []));
+    const initialImagePaths = normalizeImagePaths(Array.isArray(group.image_paths) ? group.image_paths : (group.image_path ? [group.image_path] : []));
+    groupEditForm.dataset.imagePaths = JSON.stringify(initialImagePaths);
+    renderGroupEditImageList(initialImagePaths);
     groupEditForm.elements.image_file.value = '';
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
@@ -717,49 +761,51 @@
 
     const currentGroup = allGroups.find((entry) => String(entry.id) === String(id));
     const persistedImagePath = String(currentGroup?.image_path || '').trim() || null;
-    const persistedImagePaths = Array.isArray(currentGroup?.image_paths)
-      ? currentGroup.image_paths.filter((path) => typeof path === 'string' && path.trim())
-      : (persistedImagePath ? [persistedImagePath] : []);
+    const persistedImagePaths = normalizeImagePaths(
+      Array.isArray(currentGroup?.image_paths)
+        ? currentGroup.image_paths
+        : (persistedImagePath ? [persistedImagePath] : [])
+    );
+    const removedImagePaths = Array.from(groupEditForm.querySelectorAll('input[name="remove_image_paths"]:checked'))
+      .map((node) => String(node.value || '').trim())
+      .filter(Boolean);
+    const removedSet = new Set(removedImagePaths);
     const requestedImagePath = groupEditForm.elements.image_path.value.trim() || null;
     const imageFiles = Array.from(groupEditForm.elements.image_file?.files || []);
-    let nextImagePath = requestedImagePath;
-    let nextImagePaths = requestedImagePath ? [requestedImagePath] : [];
+    let nextImagePaths = persistedImagePaths.filter((path) => !removedSet.has(path));
 
     if (imageFiles.length) {
+      if (nextImagePaths.length + imageFiles.length > COMMUNITY_IMAGE_MAX_FILES) {
+        showGroupsStatus(`현재 유지 이미지와 새 업로드 합계는 최대 ${COMMUNITY_IMAGE_MAX_FILES}장까지 가능합니다.`, 'error');
+        return;
+      }
       try {
         showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
         const uploadedUrls = await uploadCommunityImages(client, imageFiles, groupEditForm.elements.title.value || 'group-image');
-        nextImagePaths = uploadedUrls;
-        nextImagePath = uploadedUrls[0] || null;
-
-        const removablePaths = persistedImagePaths
-          .map((value) => extractStorageObjectPath(value))
-          .filter(Boolean);
-        if (removablePaths.length) {
-          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove(removablePaths);
-        }
+        nextImagePaths = [...nextImagePaths, ...uploadedUrls].slice(0, COMMUNITY_IMAGE_MAX_FILES);
       } catch (error) {
         showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
         return;
       }
-    } else if (persistedImagePaths.length && !requestedImagePath) {
-      const removablePaths = persistedImagePaths
-        .map((value) => extractStorageObjectPath(value))
-        .filter(Boolean);
-      if (removablePaths.length) {
-        try {
-          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove(removablePaths);
-          nextImagePaths = [];
-        } catch (error) {
-          // If deletion fails, keep DB path as-is to avoid broken references.
-          nextImagePath = persistedImagePath;
-          nextImagePaths = persistedImagePaths;
-        }
+    }
+
+    if (requestedImagePath) {
+      nextImagePaths = [requestedImagePath, ...nextImagePaths.filter((path) => path !== requestedImagePath)]
+        .slice(0, COMMUNITY_IMAGE_MAX_FILES);
+    }
+
+    const nextImagePath = nextImagePaths[0] || null;
+    const removablePaths = persistedImagePaths
+      .filter((path) => !nextImagePaths.includes(path))
+      .map((value) => extractStorageObjectPath(value))
+      .filter(Boolean);
+    if (removablePaths.length) {
+      try {
+        await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove(removablePaths);
+      } catch (error) {
+        showGroupsStatus('선택한 이미지를 삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
+        return;
       }
-    } else if (!imageFiles.length && requestedImagePath) {
-      const rest = persistedImagePaths.filter((path) => path !== requestedImagePath);
-      nextImagePaths = [requestedImagePath, ...rest].slice(0, COMMUNITY_IMAGE_MAX_FILES);
-      nextImagePath = nextImagePaths[0] || null;
     }
 
     const values = {

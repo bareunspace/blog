@@ -7477,6 +7477,41 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-form-row-full {
   grid-column: 1 / -1;
 }
+.admin-image-edit-list {
+  list-style: none;
+  display: grid;
+  gap: .45rem;
+  margin: 0;
+  padding: 0;
+}
+.admin-image-edit-item {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid #d8e1db;
+  border-radius: 10px;
+  background: #fff;
+  padding: .55rem .65rem;
+}
+.admin-image-edit-item label {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-width: 0;
+  font-size: .86rem;
+  color: #2a3d33;
+}
+.admin-image-edit-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.admin-image-edit-url {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #55645c;
+}
 .admin-group-form {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
