@@ -945,6 +945,73 @@ script_version: 20260806-21
       }))
     });
 
+    const buildQuestionGenerationPayload = (questionCount) => ({
+      action: 'generate_questions',
+      company: interviewSetup.company,
+      role: interviewSetup.role,
+      interviewType: interviewSetup.interviewType,
+      questionCount
+    });
+
+    const normalizeGeneratedQuestions = (questions, maxItems) => {
+      if (!Array.isArray(questions)) {
+        return [];
+      }
+      return Array.from(new Set(
+        questions
+          .map((item) => String(item || '').replace(/\s+/g, ' ').trim())
+          .filter((item) => item.length >= 12)
+      )).slice(0, maxItems);
+    };
+
+    const fetchRemoteQuestions = async (questionCount) => {
+      const supabaseUrl = String(pageConfig.supabaseUrl || '').trim();
+      const supabaseAnonKey = String(pageConfig.supabaseAnonKey || '').trim();
+      if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error('Supabase 설정이 비어 있습니다.');
+      }
+
+      const endpoint = `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/ai-interview-feedback`;
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timeoutId = controller ? window.setTimeout(() => controller.abort(), 12000) : null;
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': supabaseAnonKey,
+            'Authorization': `Bearer ${supabaseAnonKey}`
+          },
+          body: JSON.stringify(buildQuestionGenerationPayload(questionCount)),
+          signal: controller ? controller.signal : undefined
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const message = String(data?.error || '').trim() || `HTTP ${response.status}`;
+          throw new Error(message);
+        }
+
+        const questions = normalizeGeneratedQuestions(data?.questions, questionCount);
+        if (data?.fallback || questions.length === 0) {
+          throw new Error(String(data?.reason || '트렌드 질문 생성에 실패했습니다.'));
+        }
+
+        if (questions.length < questionCount) {
+          const fallbackExtra = pickQuestions(interviewSetup.interviewType, questionCount * 2);
+          const merged = normalizeGeneratedQuestions([...questions, ...fallbackExtra], questionCount);
+          return merged;
+        }
+
+        return questions;
+      } finally {
+        if (timeoutId) {
+          window.clearTimeout(timeoutId);
+        }
+      }
+    };
+
     const fetchRemoteFeedback = async () => {
       const supabaseUrl = String(pageConfig.supabaseUrl || '').trim();
       const supabaseAnonKey = String(pageConfig.supabaseAnonKey || '').trim();
@@ -1251,7 +1318,7 @@ script_version: 20260806-21
       updateAnswerCount();
     };
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       stopAnswerListening();
       isComplete = false;
@@ -1265,7 +1332,14 @@ script_version: 20260806-21
       renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 3), 10);
-      state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+      setVoiceStatus('최신 트렌드 기반 맞춤 질문을 생성 중입니다...');
+      try {
+        state.questions = await fetchRemoteQuestions(selectedCount);
+        setVoiceStatus('AI 맞춤 질문 생성 완료. 바로 답변을 시작해 주세요.');
+      } catch (_error) {
+        state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
+        setVoiceStatus('트렌드 질문 생성에 실패해 기본 질문으로 시작합니다.');
+      }
       state.answers = new Array(selectedCount).fill('');
       state.index = 0;
       syncView();

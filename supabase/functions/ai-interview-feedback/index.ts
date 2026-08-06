@@ -18,6 +18,13 @@ type FeedbackPayload = {
   qa: QaItem[];
 };
 
+type QuestionGenerationPayload = {
+  company: string;
+  role: string;
+  interviewType: string;
+  questionCount: number;
+};
+
 type FeedbackResult = {
   summary: string;
   strengths: string[];
@@ -34,6 +41,10 @@ type FeedbackResult = {
     score: number;
     comment: string;
   }>;
+};
+
+type QuestionGenerationResult = {
+  questions: string[];
 };
 
 type GuardContext = {
@@ -73,6 +84,25 @@ const stringifyUnknown = (value: unknown) => {
     }
   }
   return String(value ?? '');
+};
+
+const extractModelContent = (value: unknown) => {
+  if (!value || typeof value !== 'object') {
+    return '';
+  }
+  const choices = (value as { choices?: unknown }).choices;
+  if (!Array.isArray(choices) || choices.length === 0) {
+    return '';
+  }
+  const first = choices[0];
+  if (!first || typeof first !== 'object') {
+    return '';
+  }
+  const message = (first as { message?: unknown }).message;
+  if (!message || typeof message !== 'object') {
+    return '';
+  }
+  return String((message as { content?: unknown }).content || '').trim();
 };
 
 const parsePositiveInt = (value: string, fallbackValue: number) => {
@@ -192,6 +222,24 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
   };
 };
 
+const normalizeQuestionGeneration = (value: unknown, maxItems: number): QuestionGenerationResult | null => {
+  if (!value || typeof value !== 'object') {
+    return null;
+  }
+
+  const record = value as Record<string, unknown>;
+  const questions = normalizeArray(record.questions, maxItems)
+    .map((item) => item.replace(/\s+/g, ' ').trim())
+    .filter((item) => item.length >= 12)
+    .slice(0, maxItems);
+
+  if (questions.length === 0) {
+    return null;
+  }
+
+  return { questions };
+};
+
 const buildPrompt = (payload: FeedbackPayload) => {
   return [
     '당신은 한국어 면접 코치입니다.',
@@ -206,6 +254,28 @@ const buildPrompt = (payload: FeedbackPayload) => {
     '- questionReviews: 각 질문에 대해 { question, score, comment } 배열 (최대 7개)',
     '- 모든 문장은 한국어 존댓말',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
+    '',
+    JSON.stringify(payload)
+  ].join('\n');
+};
+
+const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
+  const languageRule = payload.interviewType === '영어면접'
+    ? '질문은 모두 자연스러운 영어로 작성하세요.'
+    : '질문은 모두 자연스러운 한국어 존댓말로 작성하세요.';
+
+  return [
+    '당신은 채용 트렌드 기반 면접 질문 설계자입니다.',
+    '반드시 JSON 객체만 반환하세요.',
+    '필수 키: questions',
+    `questions는 ${payload.questionCount}개 문자열 배열이어야 합니다.`,
+    '질문 설계 규칙:',
+    '- 회사명/직무/면접유형을 반영해 구체적으로 작성',
+    '- 최근 트렌드(실행력, 데이터 기반 판단, AI 활용, 협업 커뮤니케이션, 고객 중심, 문제 해결력, 변화 적응력)를 반영',
+    '- 서로 중복되지 않게 작성',
+    '- 한 질문은 1~2문장 이내',
+    '- 마크다운 금지, 코드블록 금지, 설명문 금지',
+    `- ${languageRule}`,
     '',
     JSON.stringify(payload)
   ].join('\n');
@@ -272,9 +342,80 @@ const callAiProvider = async (
     throw new Error(message);
   }
 
-  const content = String((result as Record<string, unknown>)?.choices?.[0]?.message?.content || '').trim();
+  const content = extractModelContent(result);
   const parsed = extractJsonObject(content);
   const normalized = normalizeFeedback(parsed);
+  if (!normalized) {
+    throw new Error('invalid_provider_response');
+  }
+
+  return normalized;
+};
+
+const callAiProviderForQuestions = async (
+  payload: QuestionGenerationPayload,
+  model: string,
+  provider: 'openrouter' | 'openai' | 'compatible'
+): Promise<QuestionGenerationResult> => {
+  const apiKey = String(Deno.env.get('AI_INTERVIEW_API_KEY') || '').trim()
+    || (provider === 'openai'
+      ? String(Deno.env.get('OPENAI_API_KEY') || '').trim()
+      : String(Deno.env.get('OPENROUTER_API_KEY') || Deno.env.get('OPENAI_API_KEY') || '').trim());
+
+  if (!apiKey) {
+    throw new Error('api_not_configured');
+  }
+
+  const defaultApiUrl = provider === 'openai'
+    ? 'https://api.openai.com/v1/chat/completions'
+    : 'https://openrouter.ai/api/v1/chat/completions';
+  const apiUrl = String(Deno.env.get('AI_INTERVIEW_API_URL') || defaultApiUrl).trim();
+  const origin = String(Deno.env.get('AI_INTERVIEW_ORIGIN') || 'https://bareunjari.com').trim();
+
+  const headers: Record<string, string> = {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json'
+  };
+  if (provider === 'openrouter') {
+    headers['HTTP-Referer'] = origin;
+    headers['X-Title'] = 'bareunjari-ai-interview-demo';
+  }
+
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      model,
+      temperature: 0.7,
+      max_tokens: 900,
+      messages: [
+        {
+          role: 'system',
+          content: 'Return only strict JSON. No markdown or explanations.'
+        },
+        {
+          role: 'user',
+          content: buildQuestionPrompt(payload)
+        }
+      ]
+    })
+  });
+
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const errorField = (result as Record<string, unknown>)?.error;
+    const nestedMessage = errorField && typeof errorField === 'object'
+      ? String((errorField as Record<string, unknown>)?.message || (errorField as Record<string, unknown>)?.code || '').trim()
+      : '';
+    const topMessage = String((result as Record<string, unknown>)?.message || '').trim();
+    const rawError = stringifyUnknown(errorField).trim();
+    const message = nestedMessage || topMessage || rawError || `provider_http_${response.status}`;
+    throw new Error(message);
+  }
+
+  const content = extractModelContent(result);
+  const parsed = extractJsonObject(content);
+  const normalized = normalizeQuestionGeneration(parsed, payload.questionCount);
   if (!normalized) {
     throw new Error('invalid_provider_response');
   }
@@ -358,6 +499,40 @@ Deno.serve(async (req) => {
   }
 
   const body = await req.json().catch(() => ({}));
+  const action = String((body as Record<string, unknown>)?.action || 'feedback').trim().toLowerCase();
+
+  if (action === 'generate_questions') {
+    const company = String((body as Record<string, unknown>)?.company || '').trim().slice(0, 120);
+    const role = String((body as Record<string, unknown>)?.role || '').trim().slice(0, 120);
+    const interviewType = String((body as Record<string, unknown>)?.interviewType || '').trim().slice(0, 40);
+    const questionCountRaw = Number((body as Record<string, unknown>)?.questionCount || 10);
+    const questionCount = Math.min(10, Math.max(3, Number.isFinite(questionCountRaw) ? Math.round(questionCountRaw) : 10));
+
+    const payload: QuestionGenerationPayload = {
+      company,
+      role,
+      interviewType,
+      questionCount
+    };
+
+    try {
+      const guardContext = await runUsageGuards(req);
+      const generated = await callAiProviderForQuestions(payload, guardContext.model, guardContext.provider);
+      return jsonResponse(200, {
+        questions: generated.questions,
+        source: 'ai'
+      });
+    } catch (error) {
+      const reason = error instanceof Error
+        ? String(error.message || 'unknown_error')
+        : stringifyUnknown(error) || 'unknown_error';
+      return jsonResponse(200, {
+        fallback: true,
+        reason
+      });
+    }
+  }
+
   const company = String((body as Record<string, unknown>)?.company || '').trim();
   const role = String((body as Record<string, unknown>)?.role || '').trim();
   const interviewType = String((body as Record<string, unknown>)?.interviewType || '').trim();
