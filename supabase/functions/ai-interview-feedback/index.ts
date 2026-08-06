@@ -202,7 +202,34 @@ const evaluateGeneratedQuestionQuality = (
     ? Math.round((contextHits / questions.length) * 100)
     : 70;
 
-  return clampScore(Math.round((languageScore * 0.35) + (uniqueScore * 0.25) + (trendScore * 0.25) + (contextScore * 0.15)));
+  const depthSignals = isEnglishPracticeMode(payload.interviewType)
+    ? ['tell me about', 'describe', 'explain', 'what did', 'how did', 'result', 'impact', 'example']
+    : ['경험', '사례', '구체', '설명', '근거', '결과', '성과', '어떻게'];
+  const shortAnswerPatterns = isEnglishPracticeMode(payload.interviewType)
+    ? [/^what is /i, /^who is /i, /^when is /i, /^where is /i, /^do you /i, /^are you /i]
+    : [/^무엇/i, /^언제/i, /^어디/i, /^누구/i, /^있나요\?/i, /^인가요\?/i];
+  const depthHits = questions.filter((item) => {
+    const lower = item.toLowerCase();
+    return depthSignals.some((signal) => lower.includes(signal));
+  }).length;
+  const shortFormHits = questions.filter((item) => {
+    const text = String(item || '').trim();
+    if (text.length <= 22) {
+      return true;
+    }
+    return shortAnswerPatterns.some((pattern) => pattern.test(text));
+  }).length;
+  const depthScore = clampScore(Math.round((depthHits / questions.length) * 100));
+  const shortPenaltyScore = clampScore(100 - Math.round((shortFormHits / questions.length) * 100));
+
+  return clampScore(Math.round(
+    (languageScore * 0.28)
+    + (uniqueScore * 0.2)
+    + (trendScore * 0.2)
+    + (contextScore * 0.12)
+    + (depthScore * 0.12)
+    + (shortPenaltyScore * 0.08)
+  ));
 };
 
 const buildFeedbackQualityAudit = (payload: FeedbackPayload, feedback: FeedbackResult): FeedbackQualityAudit => {
@@ -421,7 +448,10 @@ const buildQuestionPrompt = (payload: QuestionGenerationPayload) => {
     '- 회사명/직무/면접유형을 반영해 구체적으로 작성',
     '- 최근 트렌드(실행력, 데이터 기반 판단, AI 활용, 협업 커뮤니케이션, 고객 중심, 문제 해결력, 변화 적응력)를 반영',
     '- 서로 중복되지 않게 작성',
-    '- 한 질문은 1~2문장 이내',
+    '- 단답형(예/아니오, 정의형, 한 단어 답변 유도) 질문 금지',
+    '- 각 질문은 경험/상황 기반으로 작성하고, 역할·행동·결과 중 최소 2요소를 포함',
+    '- 각 질문은 1~2문장으로 구성하되, 가능하면 2문장으로 작성해 꼬리질문을 포함',
+    '- 수치, 기간, 지표, 영향 등 검증 가능한 근거를 말하게 유도',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
     ...practiceRule,
     `- ${languageRule}`,
