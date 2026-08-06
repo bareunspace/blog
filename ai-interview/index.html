@@ -377,38 +377,86 @@ script_version: 20260806-21
       '면접관에게 마지막으로 전하고 싶은 메시지가 있다면 말해 주세요.',
       '최근 가장 몰입했던 프로젝트와 역할을 설명해 주세요.',
       '압박 상황에서 우선순위를 정했던 사례를 말해 주세요.',
-      '새로운 업무를 빠르게 익혔던 방법을 설명해 주세요.'
+      '새로운 업무를 빠르게 익혔던 방법을 설명해 주세요.',
+      '짧은 시간 안에 목표를 달성해야 했던 경험을 말해 주세요.',
+      '의사소통이 잘되지 않았던 상황을 어떻게 풀었는지 설명해 주세요.',
+      '예상치 못한 변화에 대응했던 경험을 이야기해 주세요.',
+      '본인이 받은 피드백 중 가장 크게 바뀐 점은 무엇인가요?',
+      '시간 관리가 어려웠던 프로젝트에서 어떤 기준으로 일했나요?',
+      '동료를 도와 성과를 낸 경험이 있다면 말해 주세요.'
+    ];
+    const baseQuestionsEnglish = [
+      'Could you introduce yourself in one minute?',
+      'What are your key strengths for this role?',
+      'Tell me about a time you resolved a conflict in a team.',
+      'What did you learn from a failure experience?',
+      'What result do you want to deliver in your first six months?',
+      'Why did you choose this company and role?',
+      'What final message would you like to leave with the interviewer?',
+      'Describe the project you were most engaged in recently and your role.',
+      'Share an example of how you prioritized work under pressure.',
+      'How do you quickly learn a new task or tool?',
+      'Tell me about a deadline you had to meet with limited resources.',
+      'How do you handle feedback that you do not agree with at first?',
+      'Describe a situation where you adapted to a major change.',
+      'What value can you add to our team in your first three months?',
+      'How do you organize your day when multiple tasks are urgent?'
     ];
     const questionBankByType = {
       '인성면접': [
         '본인을 세 단어로 표현하고 이유를 말해 주세요.',
         '가치관이 충돌했던 상황에서 어떤 선택을 했는지 설명해 주세요.',
         '실수 후 신뢰를 회복했던 경험을 말해 주세요.',
-        '가장 자랑스러운 성취와 그 이유를 말해 주세요.'
+        '가장 자랑스러운 성취와 그 이유를 말해 주세요.',
+        '최근에 스스로 동기부여를 했던 순간을 설명해 주세요.',
+        '스트레스를 관리하는 본인만의 방법이 있나요?',
+        '어려운 사람과 협업했던 경험을 구체적으로 말해 주세요.',
+        '본인의 약점을 인정하고 개선한 사례를 이야기해 주세요.',
+        '팀 분위기를 좋게 만들기 위해 했던 행동이 있나요?'
       ],
       '직무면접': [
         '이 직무에서 가장 중요한 역량 2가지를 꼽고 근거를 말해 주세요.',
         '성과를 만들기 위해 사용했던 업무 방식이나 도구를 설명해 주세요.',
         '데이터나 지표를 바탕으로 개선했던 경험을 말해 주세요.',
-        '입사 후 90일 계획을 간단히 설명해 주세요.'
+        '입사 후 90일 계획을 간단히 설명해 주세요.',
+        '우선순위가 충돌하는 업무를 어떻게 조정했는지 말해 주세요.',
+        '품질과 속도 중 균형을 잡았던 경험이 있나요?',
+        '실수를 줄이기 위해 만든 체크리스트나 루틴이 있나요?',
+        '관련 툴을 처음 도입해 성과를 낸 사례를 설명해 주세요.',
+        '업무 성과를 측정하는 기준을 어떻게 정하나요?'
       ],
       '영어면접': [
         'Please introduce yourself in English within one minute.',
         'What is your biggest strength for this role?',
         'Tell me about a challenge you solved in a team.',
-        'Why do you want to join this company?'
+        'Why do you want to join this company?',
+        'Can you describe a time you handled customer feedback?',
+        'What motivates you to do your best work?',
+        'How do you stay organized during busy periods?',
+        'Tell me about a mistake and how you fixed it.',
+        'What are your short-term and long-term career goals?'
       ],
       '승무원면접': [
         '고객 불만 상황에서 응대했던 경험을 구체적으로 말해 주세요.',
         '안전과 서비스가 충돌할 때 어떤 기준으로 판단하시겠어요?',
         '팀 크루와 협업하며 문제를 해결한 경험을 말해 주세요.',
-        '장시간 비행 중 컨디션 관리를 어떻게 하시나요?'
+        '장시간 비행 중 컨디션 관리를 어떻게 하시나요?',
+        '다문화 승객 응대에서 중요하다고 생각하는 점은 무엇인가요?',
+        '비정상 상황에서 침착함을 유지했던 경험을 설명해 주세요.',
+        '서비스 기준을 지키면서도 유연하게 대응한 사례가 있나요?',
+        '브리핑 이후 현장에서 정보를 공유했던 방법을 말해 주세요.',
+        '승객 안전 안내 시 가장 중요하게 생각하는 원칙은 무엇인가요?'
       ],
       '일반 모의면접': [
         '최근 1년 내 가장 크게 성장한 순간을 말해 주세요.',
         '본인의 약점을 어떻게 관리하고 있는지 설명해 주세요.',
         '같이 일하고 싶은 동료 유형과 이유를 말해 주세요.',
-        '이번 면접에서 꼭 전달하고 싶은 한 가지를 말해 주세요.'
+        '이번 면접에서 꼭 전달하고 싶은 한 가지를 말해 주세요.',
+        '일이 계획대로 되지 않았을 때 어떻게 복구하나요?',
+        '새로운 팀에 합류했을 때 가장 먼저 하는 행동은 무엇인가요?',
+        '빠르게 신뢰를 얻기 위해 어떤 노력을 하나요?',
+        '본인의 업무 스타일을 한 문장으로 표현해 주세요.',
+        '최근 배운 것을 실제 업무에 적용한 사례를 말해 주세요.'
       ]
     };
 
@@ -423,7 +471,10 @@ script_version: 20260806-21
 
     const pickQuestions = (interviewType, count) => {
       const typePool = Array.isArray(questionBankByType[interviewType]) ? questionBankByType[interviewType] : [];
-      const mergedPool = [...typePool, ...baseQuestions];
+      const isEnglishType = interviewType === '영어면접';
+      const mergedPool = isEnglishType
+        ? [...typePool, ...baseQuestionsEnglish]
+        : [...typePool, ...baseQuestions];
       const uniquePool = Array.from(new Set(mergedPool.map((item) => String(item || '').trim()).filter(Boolean)));
       return shuffleArray(uniquePool).slice(0, count);
     };
@@ -500,11 +551,17 @@ script_version: 20260806-21
       setFocusMode(!isEnabled);
     };
 
-    const getVoicePriority = (voice) => {
+    const isEnglishInterviewMode = () => interviewSetup.interviewType === '영어면접';
+
+    const getRecognitionLang = () => {
+      return isEnglishInterviewMode() ? 'en-US' : 'ko-KR';
+    };
+
+    const getVoicePriority = (voice, preferredLangPrefix) => {
       const name = String(voice?.name || '').toLowerCase();
       const lang = String(voice?.lang || '').toLowerCase();
       let score = 0;
-      if (lang.startsWith('ko')) {
+      if (lang.startsWith(preferredLangPrefix)) {
         score += 50;
       }
       if (name.includes('premium') || name.includes('neural') || name.includes('enhanced')) {
@@ -519,8 +576,8 @@ script_version: 20260806-21
       return score;
     };
 
-    const sortVoices = (voices) => {
-      return [...voices].sort((a, b) => getVoicePriority(b) - getVoicePriority(a));
+    const sortVoices = (voices, preferredLangPrefix) => {
+      return [...voices].sort((a, b) => getVoicePriority(b, preferredLangPrefix) - getVoicePriority(a, preferredLangPrefix));
     };
 
     const findVoiceByName = (voices, name) => {
@@ -542,11 +599,12 @@ script_version: 20260806-21
       if (explicit) {
         return explicit;
       }
-      const korean = sortVoices(voices.filter((voice) => String(voice.lang || '').toLowerCase().startsWith('ko')));
-      if (korean.length > 0) {
-        return korean[0];
+      const langPrefix = isEnglishInterviewMode() ? 'en' : 'ko';
+      const localized = sortVoices(voices.filter((voice) => String(voice.lang || '').toLowerCase().startsWith(langPrefix)), langPrefix);
+      if (localized.length > 0) {
+        return localized[0];
       }
-      const sortedAll = sortVoices(voices);
+      const sortedAll = sortVoices(voices, langPrefix);
       return sortedAll[0] || null;
     };
 
@@ -556,23 +614,37 @@ script_version: 20260806-21
         return;
       }
       const voices = window.speechSynthesis.getVoices();
-      const koreanVoices = sortVoices(voices.filter((voice) => String(voice.lang || '').toLowerCase().startsWith('ko')));
+      const langPrefix = isEnglishInterviewMode() ? 'en' : 'ko';
+      const localizedVoices = sortVoices(
+        voices.filter((voice) => String(voice.lang || '').toLowerCase().startsWith(langPrefix)),
+        langPrefix
+      );
 
       voiceSelectNode.innerHTML = '';
       const autoOption = document.createElement('option');
       autoOption.value = '';
-      autoOption.textContent = koreanVoices.length > 0 ? `자동 추천 (${koreanVoices[0].name})` : '자동 추천';
+      autoOption.textContent = localizedVoices.length > 0 ? `자동 추천 (${localizedVoices[0].name})` : '자동 추천';
       voiceSelectNode.appendChild(autoOption);
 
-      koreanVoices.forEach((voice) => {
+      localizedVoices.forEach((voice) => {
         const option = document.createElement('option');
         option.value = String(voice.name || '');
         option.textContent = `${voice.name} (${voice.lang})`;
         voiceSelectNode.appendChild(option);
       });
 
-      if (koreanVoices.length === 0) {
-        setVoiceStatus('한글 음성을 찾지 못해 기본 음성으로 재생합니다.');
+      if (localizedVoices.length === 0) {
+        setVoiceStatus(isEnglishInterviewMode() ? '영어 음성을 찾지 못해 기본 음성으로 재생합니다.' : '한글 음성을 찾지 못해 기본 음성으로 재생합니다.');
+      }
+
+      if (selectedVoiceName && !findVoiceByName(localizedVoices, selectedVoiceName)) {
+        selectedVoiceName = '';
+      }
+      voiceSelectNode.value = selectedVoiceName;
+
+      if (selectedVoiceName && !voiceSelectNode.value) {
+        selectedVoiceName = '';
+        voiceSelectNode.value = '';
       }
     };
 
@@ -662,7 +734,6 @@ script_version: 20260806-21
 
         isComplete = Boolean(snapshot?.isComplete);
         selectedVoiceName = String(snapshot?.selectedVoiceName || '');
-        voiceSelectNode.value = selectedVoiceName;
         voiceRateNode.value = String(snapshot?.voiceRate || '0.95');
 
         form.company.value = interviewSetup.company;
@@ -670,6 +741,7 @@ script_version: 20260806-21
         if (interviewSetup.interviewType) {
           form.interview_type.value = interviewSetup.interviewType;
         }
+        renderVoiceOptions();
         if (state.questions.length >= 3 && state.questions.length <= 10) {
           form.question_count.value = String(state.questions.length);
         }
@@ -944,9 +1016,9 @@ script_version: 20260806-21
       const preferredVoice = getPreferredVoice();
       if (preferredVoice) {
         utterance.voice = preferredVoice;
-        utterance.lang = String(preferredVoice.lang || 'ko-KR');
+        utterance.lang = String(preferredVoice.lang || getRecognitionLang());
       } else {
-        utterance.lang = 'ko-KR';
+        utterance.lang = getRecognitionLang();
       }
       utterance.rate = Number(voiceRateNode.value || '0.95');
       utterance.pitch = 1.02;
@@ -965,7 +1037,7 @@ script_version: 20260806-21
         return;
       }
       recognition = new speechRecognitionClass();
-      recognition.lang = 'ko-KR';
+      recognition.lang = getRecognitionLang();
       recognition.continuous = true;
       recognition.interimResults = true;
 
@@ -1026,6 +1098,7 @@ script_version: 20260806-21
       if (!recognition || isListening) {
         return;
       }
+      recognition.lang = getRecognitionLang();
       recognitionBaseText = String(answerNode.value || '').trim();
       recognitionFinalText = '';
       try {
@@ -1188,6 +1261,8 @@ script_version: 20260806-21
         role: String(formData.get('role') || '').trim(),
         interviewType: String(formData.get('interview_type') || '').trim()
       };
+      selectedVoiceName = '';
+      renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
       const selectedCount = Math.min(Math.max(questionCount, 3), 10);
       state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
@@ -1249,6 +1324,11 @@ script_version: 20260806-21
       if (state.index >= 0 && !isComplete) {
         speakCurrentQuestion();
       }
+    });
+    form.interview_type.addEventListener('change', () => {
+      interviewSetup.interviewType = String(form.interview_type.value || '').trim();
+      selectedVoiceName = '';
+      renderVoiceOptions();
     });
     openWindowButton.addEventListener('click', openInNewWindow);
     focusToggleButton.addEventListener('click', toggleFocusMode);
