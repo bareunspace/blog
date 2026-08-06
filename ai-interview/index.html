@@ -57,6 +57,7 @@ script_version: 20260806-21
             <option value="3">3개</option>
             <option value="5">5개</option>
             <option value="7">7개</option>
+            <option value="10">10개</option>
           </select>
         </label>
         <div class="aii-actions">
@@ -131,6 +132,12 @@ script_version: 20260806-21
           <section class="aii-feedback" data-aii-feedback hidden>
             <h5 class="aii-feedback-title">피드백</h5>
             <p class="aii-feedback-status" data-aii-feedback-status>피드백을 준비 중입니다.</p>
+            <div class="aii-score-grid" data-aii-score-grid>
+              <p><span>전달력</span><strong data-aii-score-clarity>0</strong></p>
+              <p><span>구체성</span><strong data-aii-score-specificity>0</strong></p>
+              <p><span>구조화</span><strong data-aii-score-structure>0</strong></p>
+              <p><span>종합</span><strong data-aii-score-overall>0</strong></p>
+            </div>
             <p class="aii-feedback-summary" data-aii-feedback-summary></p>
             <p class="aii-feedback-label">강점</p>
             <ul class="aii-feedback-list" data-aii-feedback-strengths></ul>
@@ -138,6 +145,8 @@ script_version: 20260806-21
             <ul class="aii-feedback-list" data-aii-feedback-improvements></ul>
             <p class="aii-feedback-label">다음 연습 질문</p>
             <ul class="aii-feedback-list" data-aii-feedback-next-questions></ul>
+            <p class="aii-feedback-label">질문별 분석</p>
+            <ul class="aii-feedback-list" data-aii-feedback-question-reviews></ul>
           </section>
           <div class="aii-actions">
             <a href="/interview/" class="btn-outline">면접준비 허브 이동</a>
@@ -172,14 +181,14 @@ script_version: 20260806-21
 
 <style>
   .aii-page .aii-hero { padding: 2.1rem 0 1.2rem; }
-  .aii-page .aii-hero .section-inner { max-width: 1360px; }
+  .aii-page .aii-hero .section-inner { max-width: min(96vw, 1600px); }
   .aii-page .aii-hero .section-label { margin-bottom: .35rem; font-size: .78rem; }
   .aii-page .aii-hero .section-title { margin: 0 0 .45rem; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.22; }
   .aii-page .aii-hero .hero-subtitle { margin: 0 0 .7rem; font-size: .93rem; line-height: 1.5; max-width: 760px; }
   .aii-page .aii-hero .hero-btns { display: flex; gap: .45rem; flex-wrap: wrap; }
   .aii-page .aii-hero .hero-btns .btn-primary,
   .aii-page .aii-hero .hero-btns .btn-outline { min-height: 38px; padding: .52rem .86rem; font-size: .89rem; }
-  .aii-page .section-inner { max-width: 1360px; }
+  .aii-page .section-inner { max-width: min(96vw, 1600px); }
   .aii-page .aii-block { padding: 2.2rem 0; }
   .aii-page .aii-block-soft { background: #f2f7f4; border-top: 1px solid #dce8e1; border-bottom: 1px solid #dce8e1; }
   .aii-flow-shell { background: linear-gradient(180deg, #f8fcfa 0%, #ffffff 30%); border: 1px solid #dbe7e0; box-shadow: 0 16px 32px rgba(21, 56, 38, 0.08); }
@@ -232,6 +241,10 @@ script_version: 20260806-21
   .aii-feedback { border: 1px solid #dce8e1; border-radius: 12px; padding: .75rem .85rem; background: #f8fcfa; display: grid; gap: .45rem; }
   .aii-feedback-title { margin: 0; color: #173726; }
   .aii-feedback-status { margin: 0; color: #355745; font-size: .9rem; font-weight: 700; }
+  .aii-score-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; }
+  .aii-score-grid p { margin: 0; border: 1px solid #dce8e1; border-radius: 10px; background: #fff; padding: .38rem .45rem; display: grid; gap: .14rem; }
+  .aii-score-grid span { font-size: .72rem; color: #4b5e54; font-weight: 700; }
+  .aii-score-grid strong { font-size: .95rem; color: #173726; }
   .aii-feedback-summary { margin: 0; color: #2a3d33; }
   .aii-feedback-label { margin: .2rem 0 0; color: #173726; font-weight: 700; }
   .aii-feedback-list { margin: 0; padding-left: 1.1rem; color: #2a3d33; display: grid; gap: .2rem; }
@@ -259,11 +272,16 @@ script_version: 20260806-21
   body.aii-focus-mode .aii-page .aii-block {
     padding: .65rem 0;
   }
+  body.aii-focus-mode .aii-page {
+    align-items: flex-start;
+  }
   body.aii-focus-mode .aii-page .section-inner {
     max-width: min(100vw - .9rem, 1720px);
+    margin-top: 0;
   }
   body.aii-focus-mode .aii-live-layout {
     grid-template-columns: minmax(360px, .86fr) minmax(0, 1.14fr);
+    align-items: flex-start;
   }
   body.aii-focus-mode .aii-card,
   body.aii-focus-mode .aii-device-card {
@@ -288,6 +306,7 @@ script_version: 20260806-21
     .aii-card, .aii-device-card { padding: .95rem; gap: .7rem; }
     .aii-answer-meta { flex-direction: column; }
     .aii-voice-controls { grid-template-columns: 1fr; }
+    .aii-score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .aii-live-toolbar { margin-bottom: .45rem; }
     body.aii-focus-mode .aii-live-layout { grid-template-columns: 1fr; }
     body.aii-focus-mode .aii-card,
@@ -329,6 +348,11 @@ script_version: 20260806-21
     const feedbackStrengthsNode = document.querySelector('[data-aii-feedback-strengths]');
     const feedbackImprovementsNode = document.querySelector('[data-aii-feedback-improvements]');
     const feedbackNextQuestionsNode = document.querySelector('[data-aii-feedback-next-questions]');
+    const feedbackQuestionReviewsNode = document.querySelector('[data-aii-feedback-question-reviews]');
+    const scoreClarityNode = document.querySelector('[data-aii-score-clarity]');
+    const scoreSpecificityNode = document.querySelector('[data-aii-score-specificity]');
+    const scoreStructureNode = document.querySelector('[data-aii-score-structure]');
+    const scoreOverallNode = document.querySelector('[data-aii-score-overall]');
     const focusToggleButton = document.querySelector('[data-aii-focus-toggle]');
     const openWindowButton = document.querySelector('[data-aii-open-window]');
     const deviceStartButton = document.querySelector('[data-aii-device-start]');
@@ -337,7 +361,7 @@ script_version: 20260806-21
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
 
@@ -644,7 +668,7 @@ script_version: 20260806-21
         if (interviewSetup.interviewType) {
           form.interview_type.value = interviewSetup.interviewType;
         }
-        if (state.questions.length >= 3 && state.questions.length <= 7) {
+        if (state.questions.length >= 3 && state.questions.length <= 10) {
           form.question_count.value = String(state.questions.length);
         }
 
@@ -689,6 +713,19 @@ script_version: 20260806-21
       feedbackStrengthsNode.innerHTML = '';
       feedbackImprovementsNode.innerHTML = '';
       feedbackNextQuestionsNode.innerHTML = '';
+      feedbackQuestionReviewsNode.innerHTML = '';
+      scoreClarityNode.textContent = '0';
+      scoreSpecificityNode.textContent = '0';
+      scoreStructureNode.textContent = '0';
+      scoreOverallNode.textContent = '0';
+    };
+
+    const normalizeScore = (value, fallbackValue) => {
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) {
+        return fallbackValue;
+      }
+      return Math.max(0, Math.min(100, Math.round(numeric)));
     };
 
     const appendListItems = (target, items) => {
@@ -705,13 +742,66 @@ script_version: 20260806-21
       const strengths = Array.isArray(feedback?.strengths) ? feedback.strengths.map((item) => String(item || '').trim()).filter(Boolean) : [];
       const improvements = Array.isArray(feedback?.improvements) ? feedback.improvements.map((item) => String(item || '').trim()).filter(Boolean) : [];
       const nextQuestions = Array.isArray(feedback?.nextQuestions) ? feedback.nextQuestions.map((item) => String(item || '').trim()).filter(Boolean) : [];
+      const questionReviews = Array.isArray(feedback?.questionReviews)
+        ? feedback.questionReviews
+          .map((item) => {
+            const q = String(item?.question || '').trim();
+            const c = String(item?.comment || '').trim();
+            const s = normalizeScore(item?.score, 0);
+            if (!q || !c) {
+              return '';
+            }
+            return `${q} (${s}점): ${c}`;
+          })
+          .filter(Boolean)
+        : [];
+      const scoreCard = feedback?.scoreCard || {};
+      const clarity = normalizeScore(scoreCard.clarity, 72);
+      const specificity = normalizeScore(scoreCard.specificity, 70);
+      const structure = normalizeScore(scoreCard.structure, 73);
+      const overall = normalizeScore(scoreCard.overall, Math.round((clarity + specificity + structure) / 3));
 
+      scoreClarityNode.textContent = String(clarity);
+      scoreSpecificityNode.textContent = String(specificity);
+      scoreStructureNode.textContent = String(structure);
+      scoreOverallNode.textContent = String(overall);
       feedbackSummaryNode.textContent = summary;
       appendListItems(feedbackStrengthsNode, strengths.length ? strengths : ['핵심 메시지를 문장 첫 부분에 잘 배치했습니다.']);
       appendListItems(feedbackImprovementsNode, improvements.length ? improvements : ['답변마다 수치/기간 같은 근거를 1개씩 추가해 보세요.']);
       appendListItems(feedbackNextQuestionsNode, nextQuestions.length ? nextQuestions : ['방금 답변에서 가장 아쉬운 점을 한 문장으로 다시 말해 주세요.']);
+      appendListItems(feedbackQuestionReviewsNode, questionReviews.length ? questionReviews : ['질문별 코멘트가 없어 전체 피드백을 우선 참고해 주세요.']);
       feedbackStatusNode.textContent = statusText;
       feedbackNode.hidden = false;
+    };
+
+    const scoreAnswer = (answer) => {
+      const text = String(answer || '').trim();
+      if (!text) {
+        return { score: 20, comment: '답변이 비어 있어 핵심 문장을 먼저 채워주세요.' };
+      }
+      let score = 55;
+      if (text.length >= 100) {
+        score += 12;
+      }
+      if (text.length >= 160) {
+        score += 6;
+      }
+      if (/\d/.test(text)) {
+        score += 10;
+      }
+      if (/결과|성과|개선|달성|문제|해결/.test(text)) {
+        score += 9;
+      }
+      if (/저는|제가|경험|협업|고객|팀/.test(text)) {
+        score += 6;
+      }
+      score = Math.max(0, Math.min(100, score));
+      const comment = score >= 80
+        ? '핵심과 근거가 비교적 균형 잡혀 있습니다.'
+        : score >= 65
+          ? '핵심은 전달되며, 수치/결과 근거를 더 보강하면 좋습니다.'
+          : '답변 구조를 결론-근거-결과 순으로 다시 정리해 보세요.';
+      return { score, comment };
     };
 
     const buildLocalFeedback = () => {
@@ -740,6 +830,19 @@ script_version: 20260806-21
       }
       improvements.push('질문 첫 10초 안에 결론을 먼저 말하고 근거를 뒤에 붙여 보세요.');
 
+      const questionReviews = state.questions.map((question, index) => {
+        const evaluation = scoreAnswer(normalizedAnswers[index]);
+        return {
+          question,
+          score: evaluation.score,
+          comment: evaluation.comment
+        };
+      });
+      const clarity = normalizeScore(avgLength >= 120 ? 82 : avgLength >= 70 ? 74 : 63, 70);
+      const specificity = normalizeScore(normalizedAnswers.some((answer) => /\d/.test(answer)) ? 79 : 66, 70);
+      const structure = normalizeScore(normalizedAnswers.some((answer) => /결론|먼저|핵심|결과/.test(answer)) ? 77 : 69, 70);
+      const overall = normalizeScore(Math.round((clarity + specificity + structure) / 3), 70);
+
       return {
         summary: `총 ${state.answers.length}개 질문 중 ${answeredCount}개 답변을 작성했습니다. 2회차에서는 답변 길이와 근거를 보강하면 더 좋아집니다.`,
         strengths: strengths.slice(0, 3),
@@ -747,7 +850,14 @@ script_version: 20260806-21
         nextQuestions: [
           '방금 답변 중 가장 자신 있는 사례를 45초 버전으로 다시 말해 주세요.',
           '같은 답변에 정량 근거 1개를 넣어 60초로 다시 답해 주세요.'
-        ]
+        ],
+        scoreCard: {
+          clarity,
+          specificity,
+          structure,
+          overall
+        },
+        questionReviews
       };
     };
 
@@ -1077,7 +1187,7 @@ script_version: 20260806-21
         interviewType: String(formData.get('interview_type') || '').trim()
       };
       const questionCount = Number(formData.get('question_count') || 3);
-      const selectedCount = Math.min(Math.max(questionCount, 3), 7);
+      const selectedCount = Math.min(Math.max(questionCount, 3), 10);
       state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
       state.answers = new Array(selectedCount).fill('');
       state.index = 0;
