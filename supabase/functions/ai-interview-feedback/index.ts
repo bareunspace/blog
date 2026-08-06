@@ -50,6 +50,20 @@ const normalizeArray = (value: unknown, maxItems: number) => {
     .slice(0, maxItems);
 };
 
+const stringifyUnknown = (value: unknown) => {
+  if (typeof value === 'string') {
+    return value;
+  }
+  if (value && typeof value === 'object') {
+    try {
+      return JSON.stringify(value);
+    } catch (_error) {
+      return String(value);
+    }
+  }
+  return String(value ?? '');
+};
+
 const parsePositiveInt = (value: string, fallbackValue: number) => {
   const parsed = Number.parseInt(String(value || ''), 10);
   if (!Number.isFinite(parsed) || parsed <= 0) {
@@ -197,7 +211,13 @@ const callAiProvider = async (
 
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const message = String((result as Record<string, unknown>)?.error || '').trim() || `provider_http_${response.status}`;
+    const errorField = (result as Record<string, unknown>)?.error;
+    const nestedMessage = errorField && typeof errorField === 'object'
+      ? String((errorField as Record<string, unknown>)?.message || (errorField as Record<string, unknown>)?.code || '').trim()
+      : '';
+    const topMessage = String((result as Record<string, unknown>)?.message || '').trim();
+    const rawError = stringifyUnknown(errorField).trim();
+    const message = nestedMessage || topMessage || rawError || `provider_http_${response.status}`;
     throw new Error(message);
   }
 
@@ -316,7 +336,9 @@ Deno.serve(async (req) => {
     const feedback = await callAiProvider(payload, guardContext.model, guardContext.provider);
     return jsonResponse(200, { feedback });
   } catch (error) {
-    const reason = String((error as Error)?.message || 'unknown_error');
+    const reason = error instanceof Error
+      ? String(error.message || 'unknown_error')
+      : stringifyUnknown(error) || 'unknown_error';
     return jsonResponse(200, {
       fallback: true,
       reason

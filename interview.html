@@ -337,3 +337,39 @@ script_version: 20260711-4
     </div>
   </section>
 </main>
+
+<style>
+  #prep-flow .guide-summary-grid.interview-flow-grid {
+    align-items: stretch;
+  }
+
+  #prep-flow .guide-summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-height: 0;
+  }
+
+  #prep-flow .guide-summary-card > span {
+    margin-bottom: .1rem;
+    flex: 0 0 auto;
+  }
+
+  #prep-flow .guide-summary-card h2,
+  #prep-flow .guide-summary-card p {
+    margin: 0;
+  }
+
+  #prep-flow .guide-summary-card .btn-outline {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    #prep-flow .guide-summary-card {
+      gap: .42rem;
+    }
+  }
+</style>

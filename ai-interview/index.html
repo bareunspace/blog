@@ -64,9 +64,18 @@ script_version: 20260806-21
           <button type="button" class="btn-outline" data-aii-reset>새 사용자 시작</button>
         </div>
       </form>
+      {% include ai-interview-disclaimer.html %}
+    </div>
+  </section>
+
+  <section class="aii-block aii-block-demo">
+    <div class="section-inner aii-flow-shell aii-flow-shell-demo">
+      <p class="aii-step-label">2단계 · 진행</p>
+      <h2 class="section-title">진행 화면</h2>
+      <div class="aii-live-layout">
       <article class="aii-device-card" aria-live="polite">
         <h3>장비 확인</h3>
-        <p class="aii-device-copy">면접 시작 전 카메라와 마이크를 켜서 위치와 음성 입력을 확인하세요.</p>
+        <p class="aii-device-copy">카메라와 마이크 상태를 확인한 뒤 바로 답변을 진행하세요.</p>
         <div class="aii-actions">
           <button type="button" class="btn-outline" data-aii-device-start>카메라·마이크 켜기</button>
           <button type="button" class="btn-outline" data-aii-device-stop disabled>장비 끄기</button>
@@ -80,14 +89,6 @@ script_version: 20260806-21
           </div>
         </div>
       </article>
-      {% include ai-interview-disclaimer.html %}
-    </div>
-  </section>
-
-  <section class="aii-block aii-block-demo">
-    <div class="section-inner aii-flow-shell aii-flow-shell-demo">
-      <p class="aii-step-label">2단계 · 진행</p>
-      <h2 class="section-title">진행 화면</h2>
       <article class="aii-card" data-aii-card aria-live="polite">
         <p class="aii-stage" data-aii-stage>대기 중</p>
         <p class="aii-progress" data-aii-progress>질문 0 / 0</p>
@@ -140,6 +141,7 @@ script_version: 20260806-21
           </div>
         </section>
       </article>
+      </div>
     </div>
   </section>
 
@@ -191,8 +193,9 @@ script_version: 20260806-21
   .aii-form input:focus, .aii-form select:focus, .aii-answer:focus { outline: 2px solid #6abf91; outline-offset: 2px; border-color: #3d8b63; }
   .aii-actions { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
   .aii-form .aii-actions { grid-column: 1 / -1; margin-top: .35rem; }
+  .aii-live-layout { display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr); gap: .78rem; align-items: start; }
   .aii-card { border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.25rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.06); }
-  .aii-device-card { margin-top: .65rem; border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.2rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.05); }
+  .aii-device-card { margin-top: 0; border: 1px solid #dbe4de; border-radius: 18px; background: #fff; padding: 1.2rem; display: grid; gap: .95rem; box-shadow: 0 10px 24px rgba(30, 64, 44, 0.05); }
   .aii-device-card h3 { margin: 0; color: #173726; }
   .aii-device-copy { margin: 0; color: #4b5e54; }
   .aii-device-status { margin: 0; font-weight: 700; color: #2a3d33; }
@@ -253,6 +256,7 @@ script_version: 20260806-21
     .aii-page .aii-block-demo { padding-top: 0; }
     .aii-flow-shell-setup { border-radius: 16px 16px 0 0; padding: .72rem .85rem .2rem; }
     .aii-flow-shell-demo { border-radius: 0 0 16px 16px; padding: .2rem .85rem .78rem; }
+    .aii-live-layout { grid-template-columns: 1fr; gap: .7rem; }
     .aii-card, .aii-device-card { padding: .95rem; gap: .7rem; }
     .aii-answer-meta { flex-direction: column; }
     .aii-voice-controls { grid-template-columns: 1fr; }
