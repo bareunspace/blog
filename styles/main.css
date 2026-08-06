@@ -378,27 +378,6 @@ main.about-page #home .post-inline-community-note {
   backdrop-filter: blur(2px);
 }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-.community-hero-cta-note {
-  margin: .85rem 0 0;
-  color: rgba(255,255,255,.9);
-  font-size: .96rem;
-  line-height: 1.55;
-}
-.community-hero-cta-note a {
-  display: inline-flex;
-  align-items: center;
-  padding: .18rem .55rem;
-  margin-left: .18rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,.14);
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-.community-hero-cta-note a:hover,
-.community-hero-cta-note a:focus-visible {
-  background: rgba(255,255,255,.22);
-}
 .hero-assurance {
   margin-top: .85rem;
   color: rgba(255,255,255,.78);
