@@ -174,6 +174,7 @@ Deno.serve(async (req) => {
           schedule_text: String(application.schedule_text || application.availability || existingGroup?.schedule_text || '').trim() || null,
           capacity: existingGroup?.capacity ?? null,
           open_chat_url: String(application.open_chat_url || existingGroup?.open_chat_url || '').trim() || null,
+          image_path: String(application.image_path || existingGroup?.image_path || '').trim() || null,
           source_application_id: sourceApplicationId
         };
 
@@ -548,6 +549,7 @@ Deno.serve(async (req) => {
           'capacity',
           'host_name',
           'open_chat_url',
+          'image_path',
           'description',
           'source_application_id'
         ]);
@@ -599,6 +601,7 @@ Deno.serve(async (req) => {
           'capacity',
           'host_name',
           'open_chat_url',
+          'image_path',
           'description'
         ]);
         const fields = Object.entries(values).reduce<Record<string, unknown>>((acc, [key, value]) => {

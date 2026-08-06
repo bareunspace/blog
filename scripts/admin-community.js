@@ -280,6 +280,7 @@
 
     groupsListNode.innerHTML = groups.map((group) => `
       <article class="admin-community-item admin-group-item" data-group-id="${group.id}">
+        ${group.image_path ? `<p class="admin-community-subcopy">이미지: ${escapeHtml(group.image_path)}</p>` : ''}
         <div class="admin-community-item-head">
           <div>
             <p class="admin-community-eyebrow">${escapeHtml(labels[group.group_key] || group.group_key)} · ${escapeHtml(labels[group.status] || group.status)}</p>
@@ -293,6 +294,7 @@
           <div><dt>정원</dt><dd>${escapeHtml(group.capacity || '-')}</dd></div>
           <div><dt>모임장</dt><dd>${escapeHtml(group.host_name || '-')}</dd></div>
           <div><dt>오픈채팅</dt><dd>${group.open_chat_url ? '저장됨' : '-'}</dd></div>
+          <div><dt>대표 이미지</dt><dd>${group.image_path ? '저장됨' : '-'}</dd></div>
           <div><dt>생성일</dt><dd>${escapeHtml(formatDate(group.created_at))}</dd></div>
           <div><dt>신청 ID</dt><dd>${escapeHtml(group.source_application_id || '-')}</dd></div>
         </dl>
@@ -577,6 +579,7 @@
     groupEditForm.elements.capacity.value = group.capacity || '';
     groupEditForm.elements.host_name.value = group.host_name || '';
     groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
+    groupEditForm.elements.image_path.value = group.image_path || '';
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
     groupEditPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -602,6 +605,7 @@
       capacity: groupEditForm.elements.capacity.value ? Number(groupEditForm.elements.capacity.value) : null,
       host_name: groupEditForm.elements.host_name.value.trim(),
       open_chat_url: groupEditForm.elements.open_chat_url.value.trim(),
+      image_path: groupEditForm.elements.image_path.value.trim(),
       description: groupEditForm.elements.description.value.trim()
     };
 
@@ -887,6 +891,7 @@
     groupForm.elements.host_name.value = row.application_type === 'host' ? row.applicant_name : '';
     groupForm.elements.schedule_text.value = row.availability || '';
     groupForm.elements.open_chat_url.value = '';
+    groupForm.elements.image_path.value = '';
     groupForm.elements.description.value = [row.existing_group_summary, row.message].filter(Boolean).join('\n\n');
     groupForm.elements.source_application_id.value = row.id;
     switchWorkspace('groups');
@@ -917,6 +922,7 @@
       capacity: capacityValue ? Number(capacityValue) : null,
       host_name: String(formData.get('host_name') || '').trim() || null,
       open_chat_url: String(formData.get('open_chat_url') || '').trim() || null,
+      image_path: String(formData.get('image_path') || '').trim() || null,
       description: String(formData.get('description') || '').trim() || null,
       source_application_id: sourceApplicationId ? Number(sourceApplicationId) : null
     };

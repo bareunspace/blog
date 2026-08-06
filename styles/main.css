@@ -4483,6 +4483,15 @@ main.community-page .community-group-card {
   background: #fff;
   box-shadow: 0 16px 34px rgba(17,24,39,.07);
 }
+main.community-page .community-group-image {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: .85rem;
+  border: 1px solid #e2ebe5;
+  background: #f3f4f6;
+}
 main.community-page .community-group-card-featured {
   border-color: rgba(45,106,79,.32);
   background: linear-gradient(160deg, #ffffff 0%, #f2fbf5 52%, #edf8f2 100%);

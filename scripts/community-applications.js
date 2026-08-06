@@ -232,6 +232,7 @@
       <div class="community-group-grid community-live-grid">
         ${groups.map((group) => `
           <article class="community-group-card community-live-card">
+            ${group.image_path ? `<img src="${escapeHtml(group.image_path)}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
             <div class="community-group-topline">
               <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
               <span class="community-status">${escapeHtml(statusLabels[group.status] || group.status)}</span>
@@ -296,6 +297,7 @@
 
     topicGroupsNode.innerHTML = groups.map((group, index) => `
       <article class="community-group-card${index === 0 ? ' community-group-card-featured' : ''}">
+        ${group.image_path ? `<img src="${escapeHtml(group.image_path)}" alt="${escapeHtml(group.title)} 대표 이미지" loading="lazy" class="community-group-image" />` : ''}
         <div class="community-group-topline">
           <span class="community-category">${escapeHtml(groupShortLabels[group.group_key] || group.group_key)}</span>
           <span class="community-status">🟢 관심 등록</span>
@@ -456,7 +458,7 @@
 
     const { data, error } = await client
       .from('community_groups')
-      .select('id, group_key, title, description, status, host_name, schedule_text, capacity')
+      .select('id, group_key, title, description, status, host_name, schedule_text, capacity, image_path')
       .in('status', ['draft', 'recruiting', 'scheduled'])
       .order('created_at', { ascending: false })
       .limit(24);
