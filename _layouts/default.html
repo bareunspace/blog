@@ -12,8 +12,10 @@
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
       {% assign community_cta_label = '같이 면접 연습할 사람을 찾고 있나요?' %}
+      {% assign community_cta_note = '모의면접, 답변 연습, 피드백 모임에 관심이 있다면 신청해 주세요.' %}
     {% else %}
       {% assign community_cta_label = '소모임 제안하기' %}
+      {% assign community_cta_note = '독서, 영어회화, 발표 연습처럼 열고 싶은 모임 주제를 남겨 주세요.' %}
     {% endif %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -28,6 +30,12 @@
         link.textContent = {{ community_cta_label | jsonify }};
         link.setAttribute('data-community-cta', 'true');
         heroButtons.appendChild(link);
+
+        var helper = document.createElement('p');
+        helper.className = 'post-inline-community-note';
+        helper.textContent = {{ community_cta_note | jsonify }};
+        helper.setAttribute('data-community-cta-note', 'true');
+        heroButtons.insertAdjacentElement('afterend', helper);
       });
     </script>
   {% endif %}

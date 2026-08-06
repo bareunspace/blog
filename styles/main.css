@@ -209,6 +209,12 @@ nav {
   background: rgba(45,106,79,.04);
   white-space: nowrap;
 }
+.post-inline-community-note {
+  margin-top: .6rem;
+  color: #4b5563;
+  font-size: .93rem;
+  line-height: 1.5;
+}
 
 /* ── Breadcrumb ── */
 .breadcrumb-wrap {
