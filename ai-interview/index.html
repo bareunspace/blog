@@ -760,6 +760,7 @@ script_version: 20260806-24
     let questionFeedbackVotes = {};
     let currentQuestionSource = 'unknown';
     let activeQuestionSessionId = 0;
+    let isStartingInterview = false;
 
     const configNode = document.getElementById('aiInterviewConfig');
     const pageConfig = (() => {
@@ -2294,6 +2295,16 @@ script_version: 20260806-24
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (isStartingInterview) {
+        return;
+      }
+      isStartingInterview = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = '질문 준비 중...';
+      }
+
+      try {
       stopAnswerListening();
       isComplete = false;
       saveSetupDraft();
@@ -2363,6 +2374,9 @@ script_version: 20260806-24
               timeoutMs: questionRequestTimeoutMs,
               maxAttempts: 1
             });
+            if (activeQuestionSessionId !== sessionId) {
+              return;
+            }
             state.questions = remoteResult.questions;
             currentQuestionSource = remoteResult.source === 'db_cache' ? 'cache_reuse' : 'ai';
             writeCachedQuestions(setupSnapshot, selectedCount, state.questions, 'ai');
@@ -2380,6 +2394,9 @@ script_version: 20260806-24
               setVoiceStatus(`AI 맞춤 질문 생성 완료 (${stageQuality.question}점). 바로 답변을 시작해 주세요.`);
             }
           } catch (_error) {
+            if (activeQuestionSessionId !== sessionId) {
+              return;
+            }
             state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
             currentQuestionSource = 'local_fallback';
             stageQuality.question = evaluateQuestionQuality(state.questions, interviewSetup);
@@ -2444,6 +2461,9 @@ script_version: 20260806-24
           }
         }
       }
+      if (activeQuestionSessionId !== sessionId) {
+        return;
+      }
       state.questions = normalizeQuestionsForInterviewType(interviewSetup.interviewType, state.questions, selectedCount);
       if (state.questions.length < selectedCount) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
@@ -2454,6 +2474,13 @@ script_version: 20260806-24
       syncView();
       speakCurrentQuestion();
       answerNode.focus();
+      } finally {
+        isStartingInterview = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = getStartActionText();
+        }
+      }
     });
 
     nextButton.addEventListener('click', async () => {
