@@ -34,6 +34,13 @@ script_version: 20260806-24
       <h2 class="section-title">데모 설정</h2>
       <form class="aii-form" data-aii-form>
         <label>
+          <span>연습 모드</span>
+          <select name="practice_mode" data-aii-mode required>
+            <option value="interview">AI 모의면접</option>
+            <option value="daily_english">데일리 영어</option>
+          </select>
+        </label>
+        <label>
           <span data-aii-company-label>지원 회사</span>
           <input name="company" data-aii-company-input type="text" placeholder="예: 대한항공" required />
         </label>
@@ -42,12 +49,11 @@ script_version: 20260806-24
           <input name="role" data-aii-role-input type="text" placeholder="예: 객실승무원" required />
         </label>
         <label>
-          <span>면접 유형</span>
-          <select name="interview_type" required>
+          <span data-aii-type-label>면접 유형</span>
+          <select name="interview_type" data-aii-type-select required>
             <option value="인성면접">인성면접</option>
             <option value="직무면접">직무면접</option>
             <option value="영어면접">영어면접</option>
-            <option value="데일리영어">데일리영어</option>
             <option value="승무원면접">승무원면접</option>
             <option value="일반 모의면접">일반 모의면접</option>
           </select>
@@ -55,6 +61,7 @@ script_version: 20260806-24
         <label>
           <span>질문 수</span>
           <select name="question_count" required>
+            <option value="1">1개 (하루 1개)</option>
             <option value="3">3개</option>
             <option value="5">5개</option>
             <option value="7">7개</option>
@@ -356,6 +363,9 @@ script_version: 20260806-24
     const scoreSpecificityNode = document.querySelector('[data-aii-score-specificity]');
     const scoreStructureNode = document.querySelector('[data-aii-score-structure]');
     const scoreOverallNode = document.querySelector('[data-aii-score-overall]');
+    const practiceModeNode = document.querySelector('[data-aii-mode]');
+    const interviewTypeNode = document.querySelector('[data-aii-type-select]');
+    const interviewTypeLabelNode = document.querySelector('[data-aii-type-label]');
     const companyLabelNode = document.querySelector('[data-aii-company-label]');
     const roleLabelNode = document.querySelector('[data-aii-role-label]');
     const companyInputNode = document.querySelector('[data-aii-company-input]');
@@ -368,9 +378,61 @@ script_version: 20260806-24
     const videoNode = document.querySelector('[data-aii-video]');
     const meterFillNode = document.querySelector('[data-aii-meter-fill]');
 
-    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
+    if (!form || !questionNode || !progressNode || !answerNode || !nextButton || !prevButton || !resetButton || !speakQuestionButton || !answerStartButton || !answerStopButton || !voiceSelectNode || !voiceRateNode || !voiceStatusNode || !stageNode || !answerCountNode || !resultNode || !resultListNode || !restartButton || !feedbackNode || !feedbackStatusNode || !feedbackSummaryNode || !feedbackStrengthsNode || !feedbackImprovementsNode || !feedbackNextQuestionsNode || !feedbackQuestionReviewsNode || !scoreClarityNode || !scoreSpecificityNode || !scoreStructureNode || !scoreOverallNode || !practiceModeNode || !interviewTypeNode || !interviewTypeLabelNode || !companyLabelNode || !roleLabelNode || !companyInputNode || !roleInputNode || !focusToggleButton || !openWindowButton || !deviceStartButton || !deviceStopButton || !deviceStatusNode || !videoNode || !meterFillNode) {
       return;
     }
+
+    const setupDraftStorageKey = 'aii-setup-draft-v1';
+
+    const getSetupDraft = () => ({
+      practiceMode: String(practiceModeNode.value || 'interview').trim(),
+      company: String(companyInputNode.value || form.company.value || '').trim(),
+      role: String(roleInputNode.value || form.role.value || '').trim(),
+      interviewType: String(interviewTypeNode.value || form.interview_type.value || '인성면접').trim(),
+      questionCount: String(form.question_count.value || '3').trim()
+    });
+
+    const saveSetupDraft = () => {
+      try {
+        localStorage.setItem(setupDraftStorageKey, JSON.stringify(getSetupDraft()));
+      } catch (_error) {
+        // no-op
+      }
+    };
+
+    const restoreSetupDraft = () => {
+      try {
+        const raw = localStorage.getItem(setupDraftStorageKey);
+        if (!raw) {
+          return false;
+        }
+        const draft = JSON.parse(raw);
+        if (!draft || typeof draft !== 'object') {
+          return false;
+        }
+
+        const practiceMode = ['interview', 'daily_english'].includes(String(draft.practiceMode || '').trim())
+          ? String(draft.practiceMode || '').trim()
+          : 'interview';
+        const interviewType = String(draft.interviewType || '인성면접').trim();
+        const company = String(draft.company || '').trim();
+        const role = String(draft.role || '').trim();
+        const questionCount = String(draft.questionCount || '3').trim();
+
+        practiceModeNode.value = practiceMode;
+        renderInterviewTypeOptionsByMode(interviewType);
+        companyInputNode.value = company;
+        roleInputNode.value = role;
+        form.company.value = company;
+        form.role.value = role;
+        form.interview_type.value = interviewType;
+        form.question_count.value = questionCount;
+        syncSetupFieldByMode();
+        return true;
+      } catch (_error) {
+        return false;
+      }
+    };
 
     const baseQuestions = [
       '본인을 1분 이내로 소개해 주세요.',
@@ -536,6 +598,15 @@ script_version: 20260806-24
     const defaultRoleLabelText = roleLabelNode.textContent || '지원 직무';
     const defaultCompanyPlaceholder = companyInputNode.getAttribute('placeholder') || '예: 대한항공';
     const defaultRolePlaceholder = roleInputNode.getAttribute('placeholder') || '예: 객실승무원';
+    const defaultTypeLabelText = interviewTypeLabelNode.textContent || '면접 유형';
+    const interviewModeTypes = [
+      '인성면접',
+      '직무면접',
+      '영어면접',
+      '승무원면접',
+      '일반 모의면접'
+    ];
+    const dailyModeTypes = ['데일리영어'];
     let stageQuality = {
       setup: null,
       question: null,
@@ -712,6 +783,28 @@ script_version: 20260806-24
     };
 
     const isEnglishInterviewMode = () => ['영어면접', '데일리영어'].includes(interviewSetup.interviewType);
+
+    const renderInterviewTypeOptionsByMode = (preferredType = '') => {
+      const mode = String(practiceModeNode.value || 'interview');
+      const options = mode === 'daily_english' ? dailyModeTypes : interviewModeTypes;
+      const selectedType = options.includes(preferredType)
+        ? preferredType
+        : options.includes(String(interviewTypeNode.value || '').trim())
+          ? String(interviewTypeNode.value || '').trim()
+          : options[0];
+
+      interviewTypeNode.innerHTML = '';
+      options.forEach((type) => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        interviewTypeNode.appendChild(option);
+      });
+      interviewTypeNode.value = selectedType;
+
+      interviewTypeLabelNode.textContent = mode === 'daily_english' ? '연습 스타일' : defaultTypeLabelText;
+      interviewSetup.interviewType = selectedType;
+    };
 
     const syncSetupFieldByMode = () => {
       const isDailyEnglish = String(form.interview_type.value || '').trim() === '데일리영어';
@@ -937,11 +1030,14 @@ script_version: 20260806-24
 
         form.company.value = interviewSetup.company;
         form.role.value = interviewSetup.role;
+        practiceModeNode.value = interviewSetup.interviewType === '데일리영어' ? 'daily_english' : 'interview';
+        renderInterviewTypeOptionsByMode(interviewSetup.interviewType);
+        syncSetupFieldByMode();
         if (interviewSetup.interviewType) {
           form.interview_type.value = interviewSetup.interviewType;
         }
         renderVoiceOptions();
-        if (state.questions.length >= 3 && state.questions.length <= 10) {
+        if (state.questions.length >= 1 && state.questions.length <= 10) {
           form.question_count.value = String(state.questions.length);
         }
 
@@ -1685,6 +1781,8 @@ script_version: 20260806-24
       stageQuality = { setup: null, question: null, voice: null };
       state = { questions: [], answers: [], index: -1 };
       form.reset();
+      renderInterviewTypeOptionsByMode('인성면접');
+      syncSetupFieldByMode();
       stopDevice();
       setVoiceStatus('음성 답변 대기 중');
       clearResult();
@@ -1701,10 +1799,14 @@ script_version: 20260806-24
       updateAnswerCount();
     };
 
+    form.addEventListener('input', saveSetupDraft);
+    form.addEventListener('change', saveSetupDraft);
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       stopAnswerListening();
       isComplete = false;
+      saveSetupDraft();
       const formData = new FormData(form);
       const interviewTypeValue = String(formData.get('interview_type') || '').trim();
       const isDailyEnglish = interviewTypeValue === '데일리영어';
@@ -1720,7 +1822,7 @@ script_version: 20260806-24
       selectedVoiceName = '';
       renderVoiceOptions();
       const questionCount = Number(formData.get('question_count') || 3);
-      const selectedCount = Math.min(Math.max(questionCount, 3), 10);
+      const selectedCount = Math.min(Math.max(questionCount, 1), 10);
       trackInterviewEvent('ai_interview_started', {
         company: interviewSetup.company,
         role: interviewSetup.role,
@@ -1827,6 +1929,13 @@ script_version: 20260806-24
       syncSetupFieldByMode();
       renderVoiceOptions();
     });
+    practiceModeNode.addEventListener('change', () => {
+      const preferredType = String(form.interview_type.value || '').trim();
+      renderInterviewTypeOptionsByMode(preferredType);
+      selectedVoiceName = '';
+      syncSetupFieldByMode();
+      renderVoiceOptions();
+    });
     openWindowButton.addEventListener('click', openInNewWindow);
     focusToggleButton.addEventListener('click', toggleFocusMode);
     document.addEventListener('fullscreenchange', () => {
@@ -1859,8 +1968,10 @@ script_version: 20260806-24
     if (window.speechSynthesis && typeof window.speechSynthesis.addEventListener === 'function') {
       window.speechSynthesis.addEventListener('voiceschanged', renderVoiceOptions);
     }
+    renderInterviewTypeOptionsByMode('인성면접');
     syncSetupFieldByMode();
     renderVoiceOptions();
+    restoreSetupDraft();
 
     syncView();
     tryRestoreFromSnapshot();
