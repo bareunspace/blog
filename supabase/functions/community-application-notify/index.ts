@@ -296,7 +296,7 @@ Deno.serve(async (req) => {
 
         await getOwnedApplication(id, contactEmail, contactPhone);
 
-        const allowedFields = new Set(['group_title', 'availability', 'message']);
+        const allowedFields = new Set(['group_title', 'availability', 'message', 'image_path']);
         const incomingFields = body.fields || {};
         const fields = Object.entries(incomingFields).reduce<Record<string, unknown>>((acc, [key, value]) => {
           if (allowedFields.has(key)) {
@@ -689,6 +689,7 @@ Deno.serve(async (req) => {
           'availability',
           'existing_group_summary',
           'message',
+          'image_path',
           'status',
           'admin_note',
           'group_title',

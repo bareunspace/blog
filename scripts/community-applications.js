@@ -56,6 +56,92 @@
   };
   let ownerApplications = [];
 
+  const COMMUNITY_IMAGE_BUCKET = 'community-images';
+  const COMMUNITY_IMAGE_PREFIX = 'images/community';
+  const COMMUNITY_IMAGE_MAX_BYTES = 500000;
+  const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
+
+  const slugify = (value) => String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'community-group';
+
+  const loadImageFromFile = (file) => new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('이미지 파일을 읽지 못했습니다.'));
+    };
+    image.src = url;
+  });
+
+  const canvasToBlob = (canvas, type, quality) => new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('이미지를 변환하지 못했습니다.'));
+        return;
+      }
+      resolve(blob);
+    }, type, quality);
+  });
+
+  const convertToWebpBlob = async (file) => {
+    if (!String(file?.type || '').startsWith('image/')) {
+      throw new Error('이미지 파일만 업로드할 수 있습니다.');
+    }
+    if (Number(file.size || 0) > 15 * 1024 * 1024) {
+      throw new Error('원본 이미지는 15MB 이하만 업로드할 수 있습니다.');
+    }
+
+    const image = await loadImageFromFile(file);
+    const ratio = Math.min(1, COMMUNITY_IMAGE_MAX_WIDTH / Math.max(image.width, image.height));
+    const width = Math.max(1, Math.round(image.width * ratio));
+    const height = Math.max(1, Math.round(image.height * ratio));
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      throw new Error('이미지 변환용 캔버스를 준비하지 못했습니다.');
+    }
+    ctx.drawImage(image, 0, 0, width, height);
+
+    const qualities = [0.86, 0.82, 0.78, 0.74, 0.7, 0.66, 0.62, 0.58, 0.54];
+    for (const quality of qualities) {
+      const blob = await canvasToBlob(canvas, 'image/webp', quality);
+      if (blob.size <= COMMUNITY_IMAGE_MAX_BYTES) {
+        return blob;
+      }
+    }
+
+    throw new Error('이미지가 너무 큽니다. 더 작은 이미지를 선택해 주세요.');
+  };
+
+  const uploadCommunityImage = async (file, baseName) => {
+    const blob = await convertToWebpBlob(file);
+    const objectPath = `${COMMUNITY_IMAGE_PREFIX}/${Date.now()}-${slugify(baseName)}.webp`;
+
+    const { error: uploadError } = await client.storage.from(COMMUNITY_IMAGE_BUCKET).upload(objectPath, blob, {
+      contentType: 'image/webp',
+      upsert: false,
+      cacheControl: '31536000'
+    });
+
+    if (uploadError) {
+      throw new Error(`이미지 업로드 실패: ${uploadError.message || '알 수 없는 오류'}`);
+    }
+
+    const { data: publicUrlData } = client.storage.from(COMMUNITY_IMAGE_BUCKET).getPublicUrl(objectPath);
+    return publicUrlData?.publicUrl || null;
+  };
+
   const groupLabels = {
     interview: '면접 준비',
     reading: '소모임',
@@ -605,6 +691,7 @@
       const targetGroupId = getValue(form, 'target_group_id');
       const targetGroupTitle = getValue(form, 'target_group_title');
       const customGroupTitle = getValue(form, 'custom_group_title');
+      const imageFile = form.elements.image_file?.files?.[0] || null;
       const privacyConsent = Boolean(new FormData(form).get('privacy_consent'));
 
       if (!applicationType || !groupKey || !customGroupTitle || !applicantName || !contactEmail || !contactPhone || !message || !privacyConsent) {
@@ -624,10 +711,25 @@
 
       const resolvedGroupTitle = customGroupTitle || targetGroupTitle || groupLabels[groupKey] || '기타 목적';
 
+      let uploadedImagePath = null;
+
+      if (imageFile) {
+        setSubmitting(form, true);
+        showStatus(form, '대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
+        try {
+          uploadedImagePath = await uploadCommunityImage(imageFile, resolvedGroupTitle || imageFile.name);
+        } catch (error) {
+          setSubmitting(form, false);
+          showStatus(form, error.message || '대표 이미지를 업로드하지 못했습니다.');
+          return;
+        }
+      }
+
       const payload = {
         application_type: applicationType,
         group_key: groupKey,
         group_title: resolvedGroupTitle,
+        image_path: uploadedImagePath,
         target_group_id: targetGroupId ? Number(targetGroupId) : null,
         applicant_name: applicantName,
         contact_email: contactEmail,

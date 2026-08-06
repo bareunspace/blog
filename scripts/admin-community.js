@@ -126,6 +126,103 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const COMMUNITY_IMAGE_BUCKET = 'community-images';
+  const COMMUNITY_IMAGE_PREFIX = 'images/community';
+  const COMMUNITY_IMAGE_MAX_BYTES = 500000;
+  const COMMUNITY_IMAGE_MAX_WIDTH = 1600;
+
+  const slugify = (value) => String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'community-group';
+
+  const loadImageFromFile = (file) => new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('이미지 파일을 읽지 못했습니다.'));
+    };
+    image.src = url;
+  });
+
+  const canvasToBlob = (canvas, type, quality) => new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('이미지를 변환하지 못했습니다.'));
+        return;
+      }
+      resolve(blob);
+    }, type, quality);
+  });
+
+  const convertToWebpBlob = async (file) => {
+    if (!String(file?.type || '').startsWith('image/')) {
+      throw new Error('이미지 파일만 업로드할 수 있습니다.');
+    }
+    if (Number(file.size || 0) > 15 * 1024 * 1024) {
+      throw new Error('원본 이미지는 15MB 이하만 업로드할 수 있습니다.');
+    }
+
+    const image = await loadImageFromFile(file);
+    const ratio = Math.min(1, COMMUNITY_IMAGE_MAX_WIDTH / Math.max(image.width, image.height));
+    const width = Math.max(1, Math.round(image.width * ratio));
+    const height = Math.max(1, Math.round(image.height * ratio));
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      throw new Error('이미지 변환용 캔버스를 준비하지 못했습니다.');
+    }
+    ctx.drawImage(image, 0, 0, width, height);
+
+    const qualities = [0.86, 0.82, 0.78, 0.74, 0.7, 0.66, 0.62, 0.58, 0.54];
+    for (const quality of qualities) {
+      const blob = await canvasToBlob(canvas, 'image/webp', quality);
+      if (blob.size <= COMMUNITY_IMAGE_MAX_BYTES) {
+        return blob;
+      }
+    }
+
+    throw new Error('이미지가 너무 큽니다. 더 작은 이미지를 선택해 주세요.');
+  };
+
+  const extractStorageObjectPath = (value) => {
+    const marker = `/storage/v1/object/public/${COMMUNITY_IMAGE_BUCKET}/`;
+    if (!value || !value.includes(marker)) {
+      return null;
+    }
+    return decodeURIComponent(value.split(marker)[1].split('?')[0]);
+  };
+
+  const uploadCommunityImage = async (client, file, baseName) => {
+    const blob = await convertToWebpBlob(file);
+    const objectPath = `${COMMUNITY_IMAGE_PREFIX}/${Date.now()}-${slugify(baseName)}.webp`;
+
+    const { error: uploadError } = await client.storage.from(COMMUNITY_IMAGE_BUCKET).upload(objectPath, blob, {
+      contentType: 'image/webp',
+      upsert: false,
+      cacheControl: '31536000'
+    });
+
+    if (uploadError) {
+      throw new Error(`이미지 업로드 실패: ${uploadError.message || '알 수 없는 오류'}`);
+    }
+
+    const { data: publicUrlData } = client.storage.from(COMMUNITY_IMAGE_BUCKET).getPublicUrl(objectPath);
+    return {
+      objectPath,
+      publicUrl: publicUrlData?.publicUrl || null
+    };
+  };
+
   const renderEmpty = () => {
     if (!listNode) {
       return;
@@ -580,6 +677,7 @@
     groupEditForm.elements.host_name.value = group.host_name || '';
     groupEditForm.elements.open_chat_url.value = group.open_chat_url || '';
     groupEditForm.elements.image_path.value = group.image_path || '';
+    groupEditForm.elements.image_file.value = '';
     groupEditForm.elements.description.value = group.description || '';
     groupEditPanel.hidden = false;
     groupEditPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -597,6 +695,26 @@
       return;
     }
 
+    const currentImagePath = groupEditForm.elements.image_path.value.trim() || null;
+    const imageFile = groupEditForm.elements.image_file?.files?.[0] || null;
+    let nextImagePath = currentImagePath;
+
+    if (imageFile) {
+      try {
+        showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
+        const uploaded = await uploadCommunityImage(client, imageFile, groupEditForm.elements.title.value || imageFile.name);
+        nextImagePath = uploaded.publicUrl;
+
+        const oldObjectPath = extractStorageObjectPath(currentImagePath);
+        if (oldObjectPath) {
+          await client.storage.from(COMMUNITY_IMAGE_BUCKET).remove([oldObjectPath]);
+        }
+      } catch (error) {
+        showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
+        return;
+      }
+    }
+
     const values = {
       title: groupEditForm.elements.title.value.trim(),
       group_key: groupEditForm.elements.group_key.value.trim(),
@@ -605,7 +723,7 @@
       capacity: groupEditForm.elements.capacity.value ? Number(groupEditForm.elements.capacity.value) : null,
       host_name: groupEditForm.elements.host_name.value.trim(),
       open_chat_url: groupEditForm.elements.open_chat_url.value.trim(),
-      image_path: groupEditForm.elements.image_path.value.trim(),
+      image_path: nextImagePath,
       description: groupEditForm.elements.description.value.trim()
     };
 
@@ -914,6 +1032,20 @@
     const formData = new FormData(groupForm);
     const capacityValue = String(formData.get('capacity') || '').trim();
     const sourceApplicationId = String(formData.get('source_application_id') || '').trim();
+    let imagePathValue = String(formData.get('image_path') || '').trim() || null;
+    const imageFile = formData.get('image_file');
+
+    if (imageFile instanceof File && imageFile.size > 0) {
+      try {
+        showGroupsStatus('대표 이미지를 WebP로 변환하고 업로드하는 중입니다.', 'success');
+        const uploaded = await uploadCommunityImage(client, imageFile, formData.get('title') || imageFile.name);
+        imagePathValue = uploaded.publicUrl;
+      } catch (error) {
+        showGroupsStatus(error.message || '대표 이미지를 업로드하지 못했습니다.', 'error');
+        return;
+      }
+    }
+
     const payload = {
       title: String(formData.get('title') || '').trim(),
       group_key: String(formData.get('group_key') || 'other').trim(),
@@ -922,7 +1054,7 @@
       capacity: capacityValue ? Number(capacityValue) : null,
       host_name: String(formData.get('host_name') || '').trim() || null,
       open_chat_url: String(formData.get('open_chat_url') || '').trim() || null,
-      image_path: String(formData.get('image_path') || '').trim() || null,
+      image_path: imagePathValue,
       description: String(formData.get('description') || '').trim() || null,
       source_application_id: sourceApplicationId ? Number(sourceApplicationId) : null
     };
