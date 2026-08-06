@@ -737,7 +737,7 @@ script_version: 20260806-24
     };
     const resumeStoragePrefix = 'aii-resume:';
     const qualityScoreStorageKey = 'aii:last-quality-score';
-    const questionCacheStoragePrefix = 'aii:question-cache:v1:';
+    const questionCacheStoragePrefix = 'aii:question-cache:v2:';
     const questionCacheTtlMs = 1000 * 60 * 60 * 24 * 3;
     const defaultCompanyLabelText = companyLabelNode.textContent || '지원 회사';
     const defaultRoleLabelText = roleLabelNode.textContent || '지원 직무';
@@ -1813,6 +1813,19 @@ script_version: 20260806-24
       return `${questionCacheStoragePrefix}${normalizedType}|${normalizedCompany}|${normalizedRole}|${normalizedCount}`;
     };
 
+    const clearQuestionCaches = () => {
+      try {
+        const keys = Object.keys(localStorage);
+        keys.forEach((key) => {
+          if (key.startsWith('aii:question-cache:')) {
+            localStorage.removeItem(key);
+          }
+        });
+      } catch (_error) {
+        // Ignore storage access issues.
+      }
+    };
+
     const readCachedQuestions = (setup, questionCount) => {
       try {
         const key = buildQuestionCacheKey(setup, questionCount);
@@ -2256,6 +2269,7 @@ script_version: 20260806-24
       questionFeedbackVotes = {};
       activeQuestionSessionId += 1;
       state = { questions: [], answers: [], index: -1 };
+      clearQuestionCaches();
       form.reset();
       renderInterviewTypeOptionsByMode('인성면접');
       syncSetupFieldByMode();
