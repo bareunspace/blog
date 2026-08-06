@@ -644,7 +644,7 @@ Deno.serve(async (req) => {
     const role = String((body as Record<string, unknown>)?.role || '').trim().slice(0, 120);
     const interviewType = String((body as Record<string, unknown>)?.interviewType || '').trim().slice(0, 40);
     const questionCountRaw = Number((body as Record<string, unknown>)?.questionCount || 10);
-    const questionCount = Math.min(10, Math.max(3, Number.isFinite(questionCountRaw) ? Math.round(questionCountRaw) : 10));
+    const questionCount = Math.min(10, Math.max(1, Number.isFinite(questionCountRaw) ? Math.round(questionCountRaw) : 10));
 
     const payload: QuestionGenerationPayload = {
       company,
