@@ -47,6 +47,19 @@ type QuestionGenerationResult = {
   questions: string[];
 };
 
+const isEnglishSentence = (value: string) => {
+  const text = String(value || '').trim();
+  if (!text) {
+    return false;
+  }
+  const letters = text.match(/[A-Za-z]/g) || [];
+  const hangul = text.match(/[가-힣]/g) || [];
+  if (letters.length < 6) {
+    return false;
+  }
+  return letters.length >= hangul.length * 2;
+};
+
 type GuardContext = {
   model: string;
   provider: 'openrouter' | 'openai' | 'compatible';
@@ -222,14 +235,20 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
   };
 };
 
-const normalizeQuestionGeneration = (value: unknown, maxItems: number): QuestionGenerationResult | null => {
+const normalizeQuestionGeneration = (
+  value: unknown,
+  maxItems: number,
+  interviewType: string
+): QuestionGenerationResult | null => {
   if (!value || typeof value !== 'object') {
     return null;
   }
 
   const record = value as Record<string, unknown>;
+  const useEnglishOnly = interviewType === '영어면접';
   const questions = normalizeArray(record.questions, maxItems)
     .map((item) => item.replace(/\s+/g, ' ').trim())
+    .filter((item) => (useEnglishOnly ? isEnglishSentence(item) : true))
     .filter((item) => item.length >= 12)
     .slice(0, maxItems);
 
@@ -415,7 +434,7 @@ const callAiProviderForQuestions = async (
 
   const content = extractModelContent(result);
   const parsed = extractJsonObject(content);
-  const normalized = normalizeQuestionGeneration(parsed, payload.questionCount);
+  const normalized = normalizeQuestionGeneration(parsed, payload.questionCount, payload.interviewType);
   if (!normalized) {
     throw new Error('invalid_provider_response');
   }
