@@ -23,6 +23,17 @@ type FeedbackResult = {
   strengths: string[];
   improvements: string[];
   nextQuestions: string[];
+  scoreCard: {
+    clarity: number;
+    specificity: number;
+    structure: number;
+    overall: number;
+  };
+  questionReviews: Array<{
+    question: string;
+    score: number;
+    comment: string;
+  }>;
 };
 
 type GuardContext = {
@@ -130,6 +141,42 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
   const strengths = normalizeArray(record.strengths, 3);
   const improvements = normalizeArray(record.improvements, 3);
   const nextQuestions = normalizeArray(record.nextQuestions, 2);
+  const scoreCardRaw = (record.scoreCard && typeof record.scoreCard === 'object')
+    ? record.scoreCard as Record<string, unknown>
+    : {};
+  const toScore = (score: unknown, fallbackValue: number) => {
+    const numeric = Number(score);
+    if (!Number.isFinite(numeric)) {
+      return fallbackValue;
+    }
+    return Math.max(0, Math.min(100, Math.round(numeric)));
+  };
+  const scoreCard = {
+    clarity: toScore(scoreCardRaw.clarity, 72),
+    specificity: toScore(scoreCardRaw.specificity, 70),
+    structure: toScore(scoreCardRaw.structure, 73),
+    overall: toScore(scoreCardRaw.overall, 72)
+  };
+  const questionReviewsRaw = Array.isArray(record.questionReviews) ? record.questionReviews : [];
+  const questionReviews = questionReviewsRaw
+    .map((item) => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+      const row = item as Record<string, unknown>;
+      const question = String(row.question || '').trim();
+      const comment = String(row.comment || '').trim();
+      if (!question || !comment) {
+        return null;
+      }
+      return {
+        question,
+        comment,
+        score: toScore(row.score, 70)
+      };
+    })
+    .filter((item): item is { question: string; score: number; comment: string } => Boolean(item))
+    .slice(0, 7);
 
   if (!summary || strengths.length === 0 || improvements.length === 0 || nextQuestions.length === 0) {
     return null;
@@ -139,7 +186,9 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
     summary,
     strengths,
     improvements,
-    nextQuestions
+    nextQuestions,
+    scoreCard,
+    questionReviews
   };
 };
 
@@ -147,12 +196,14 @@ const buildPrompt = (payload: FeedbackPayload) => {
   return [
     '당신은 한국어 면접 코치입니다.',
     '아래 QA를 읽고 반드시 JSON 객체만 반환하세요.',
-    '필수 키: summary, strengths, improvements, nextQuestions',
+    '필수 키: summary, strengths, improvements, nextQuestions, scoreCard, questionReviews',
     '제약:',
     '- summary: 1~2문장',
     '- strengths: 3개 배열',
     '- improvements: 3개 배열',
     '- nextQuestions: 2개 배열',
+    '- scoreCard: { clarity, specificity, structure, overall } (0~100 정수)',
+    '- questionReviews: 각 질문에 대해 { question, score, comment } 배열 (최대 7개)',
     '- 모든 문장은 한국어 존댓말',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
     '',
