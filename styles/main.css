@@ -5696,6 +5696,36 @@ main.about-page .guide-summary-grid {
   line-height: 1.7;
   word-break: keep-all;
 }
+.guide-table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(17,24,39,.05);
+}
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+.guide-table th,
+.guide-table td {
+  padding: .72rem .78rem;
+  border-bottom: 1px solid #e5ece8;
+  text-align: left;
+  vertical-align: top;
+  font-size: .84rem;
+  line-height: 1.6;
+}
+.guide-table th {
+  background: #f4faf6;
+  color: #234536;
+  font-weight: 800;
+}
+.guide-table tbody tr:last-child td {
+  border-bottom: 0;
+}
 main.cabin-crew-english-page .english-response-panel {
   margin-top: 1.1rem;
   padding: clamp(1rem, 2.6vw, 1.45rem);
