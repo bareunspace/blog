@@ -37,7 +37,7 @@ script_version: 20260711-4
       <p class="section-desc">개강과 하반기 일정이 가까워지는 8월, 새로운 계획보다 중요한 것은 이미 시작한 준비를 하나씩 끝내는 일입니다. 방해받지 않는 2시간으로 결과 하나를 남기는 현실적인 방법을 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#two-hour-plan" class="btn-primary">2시간 플랜 바로 보기</a>
-        <a href="{{ site.data.location.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-outline">집중 공간 예약 확인하기</a>
+        <a href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer" class="btn-outline">집중 공간 예약 확인하기</a>
       </div>
     </div>
   </section>
@@ -267,7 +267,7 @@ script_version: 20260711-4
           <strong>8월의 남은 시간을 실제 결과로 바꿔보세요.</strong><br />
           방해받지 않고 사용할 수 있는 시간을 확인해 보세요.
         </p>
-        <a href="{{ site.data.location.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약 가능 시간 확인하기</a>
+        <a href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 예약 가능 시간 확인하기</a>
       </div>
     </div>
   </section>
