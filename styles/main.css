@@ -204,26 +204,41 @@ nav {
 
 /* ── Post Footer CTA ── */
 .post-footer-cta {
-  padding: 1rem 1.5rem 2.5rem;
+  padding: .8rem 1.5rem 2rem;
 }
 .post-footer-cta .section-inner {
   max-width: 860px;
 }
 .post-footer-cta-card {
-  background: linear-gradient(135deg, rgba(45,106,79,.05), rgba(82,183,136,.03));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(45,106,79,.04);
   border: 1px solid rgba(45,106,79,.12);
-  border-radius: 18px;
-  padding: 1.2rem 1.25rem;
-  box-shadow: 0 6px 20px rgba(17,43,32,.06);
+  border-radius: 14px;
+  padding: .85rem 1rem;
 }
-.post-footer-cta-card .section-title {
-  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
-  margin-bottom: .45rem;
-}
-.post-footer-cta-card .section-desc {
+.post-footer-cta-copy {
   font-size: .95rem;
-  max-width: 680px;
-  margin-bottom: .9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.post-footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  padding: .55rem .95rem;
+  font-size: .9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.post-footer-cta-btn:hover,
+.post-footer-cta-btn:focus-visible {
+  background: var(--primary-light);
 }
 
 /* ── Breadcrumb ── */
