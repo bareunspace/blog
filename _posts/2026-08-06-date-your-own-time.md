@@ -112,13 +112,25 @@ script_version: 20260711-4
       <h2 class="section-title">함께 있는데도 둘만의 시간 같지 않을 때</h2>
       <p class="section-desc">카페에 마주 앉아 있어도 주변을 계속 의식하게 되는 순간이 있습니다. 옆자리와 거리가 가까워 대화가 들릴까 목소리를 낮추고, 손님이 많아지면 오래 머물러도 되는지 신경 쓰입니다.</p>
       <p>조금 진지한 이야기를 시작하려다가도 주변을 한번 둘러보게 되고, 여행 계획을 세우려고 노트북이나 태블릿을 펼쳤는데 테이블이 좁을 수도 있습니다. 대화가 한창 이어지는 동안 자리를 옮겨야 하기도 합니다.</p>
-      <p>둘이 만나고 있지만 생각보다 많은 것을 신경 씁니다.</p>
-      <ul class="guide-list">
-        <li>옆 사람이 듣지는 않을까</li>
-        <li>너무 오래 앉아 있는 것은 아닐까</li>
-        <li>다음에는 어디로 가야 할까</li>
-        <li>무엇을 해야 지루하지 않을까</li>
-      </ul>
+      <p><strong>둘이 함께 있어도, 생각보다 많은 것을 신경 쓰게 됩니다.</strong></p>
+      <div class="about-principle-grid" aria-label="카페에서 자주 신경 쓰는 것들">
+        <article class="about-principle-item" data-step="01">
+          <h3>옆 사람이 듣지는 않을까</h3>
+          <p>조용히 말해야 할 것 같아 자연스럽게 대화의 속도가 느려집니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>너무 오래 앉아 있는 것은 아닐까</h3>
+          <p>머무는 시간 자체를 계속 의식하게 되면 편하게 쉬기가 어렵습니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>다음에는 어디로 가야 할까</h3>
+          <p>대화보다 동선이 먼저 떠오르면 지금의 시간을 충분히 즐기기 어렵습니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="04">
+          <h3>무엇을 해야 지루하지 않을까</h3>
+          <p>계속 뭔가를 해야 한다는 압박이 있으면 편안한 데이트가 금방 바빠집니다.</p>
+        </article>
+      </div>
       <p>카페가 나쁜 것은 아닙니다. 다만 어떤 날에는 여러 장소를 돌아다니기보다 <strong>둘만 편하게 머물 수 있는 공간</strong>이 더 잘 맞습니다.</p>
     </div>
   </section>
