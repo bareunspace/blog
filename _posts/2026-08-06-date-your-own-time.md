@@ -305,12 +305,6 @@ script_version: 20260711-4
           </div>
         </details>
         <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <summary itemprop="name">완전히 방음되는 공간인가요?</summary>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">완전 방음을 보장하는 공간은 아닙니다. 일반적인 대화와 소규모 활동에 적합하며, 큰 소리나 과도한 소음이 발생하는 활동은 제한됩니다.</p>
-          </div>
-        </details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary itemprop="name">몇 시간을 예약하면 좋나요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text">간단한 대화나 계획을 위한 이용은 1~2시간부터 시작할 수 있습니다. 조금 더 여유롭게 머물고 싶다면 일정과 하고 싶은 일에 맞춰 시간을 선택해 주세요.</p>
