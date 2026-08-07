@@ -2,7 +2,7 @@
 layout: default
 title: 사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?
 description: 사무실 없이 일하는 1인사업자와 프리랜서가 고객을 만나야 할 때 어디서 미팅해야 할까요? 부천 신중동에서 필요한 시간만 예약해 사용하는 프라이빗 업무공간을 소개합니다.
-category: 미팅상담
+category: 미팅·상담
 keywords: 사업자미팅장소,부천미팅룸,신중동미팅룸,1인사업자사무실,프리랜서미팅장소,고객미팅장소,시간제사무실,부천업무공간,신중동공유오피스,부천1인사무실
 tags:
   - 1인사업자
@@ -342,6 +342,18 @@ script_version: 20260711-4
           <summary itemprop="name">첫 미팅 전에 무엇을 가장 먼저 확인하면 좋을까요?</summary>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text">소음, 동선, 의자와 테이블 높이, 화상회의용 인터넷 상태를 먼저 보세요. 고객 미팅은 작은 불편이 전체 인상에 바로 영향을 줍니다.</p>
+          </div>
+        </details>
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">이용 요금은 어떻게 계산되나요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">현재 안내 요금은 1시간 10,000원입니다. 미팅 시간에 맞춰 필요한 만큼만 예약하면 되므로, 월 단위 사무실보다 비용 구조를 훨씬 가볍게 가져갈 수 있습니다.</p>
+          </div>
+        </details>
+        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">고객 미팅에 가져가면 좋은 준비물이 있나요?</summary>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">노트북, 충전기, 설명할 자료, 메모할 필기구 정도면 충분합니다. 미팅 성격에 따라 제안서나 포트폴리오 파일을 미리 정리해두면 더 매끄럽게 진행할 수 있습니다.</p>
           </div>
         </details>
       </div>
