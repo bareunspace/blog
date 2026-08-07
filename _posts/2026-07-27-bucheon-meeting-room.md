@@ -5,7 +5,7 @@ description: 고객 미팅, 소규모 회의, 화상회의를 위한 조용한 �
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 3
+hub_order: 4
 hub_label: 고객 미팅
 hub_kicker: 조용한 미팅룸이 필요한 순간 정리
 hub_title: 부천 조용한 미팅룸 예약, 신중동역 1분 바른자리

@@ -10,12 +10,12 @@ og_image_alt: 노트북과 체크리스트가 놓인 면접 준비 장면
 og_image_width: 1536
 og_image_height: 1024
 preload_image: images/interview-prep-checklist-cover.jpg
-css_version: 20260729-1
+css_version: 20260807-1
 script_version: 20260711-4
 ---
 
 <main class="about-page blog-hub interview-hub">
-  <section id="home">
+  <section id="home" class="interview-hero">
     <div class="section-inner">
       <p class="section-label">Interview Prep Series</p>
       <h1 class="section-title">면접준비 가이드</h1>
@@ -25,6 +25,20 @@ script_version: 20260711-4
         <a href="#interview-series" class="btn-primary">시리즈 보기</a>
         <a href="/ai-interview/" class="btn-outline">AI 모의면접 데모</a>
         <a href="/community/#forms-needed" class="btn-outline">함께 준비해요</a>
+      </div>
+      <div class="interview-hero-metrics" aria-label="면접준비 핵심 안내">
+        <article class="interview-metric-card">
+          <p class="interview-metric-value">30~60분</p>
+          <p class="interview-metric-label">실전 답변 점검 추천 시간</p>
+        </article>
+        <article class="interview-metric-card">
+          <p class="interview-metric-value">화상면접 대응</p>
+          <p class="interview-metric-label">소음·배경·조명 동시 점검</p>
+        </article>
+        <article class="interview-metric-card">
+          <p class="interview-metric-value">신중동역 1분</p>
+          <p class="interview-metric-label">당일 이동 부담 최소화</p>
+        </article>
       </div>
     </div>
   </section>
@@ -41,7 +55,7 @@ script_version: 20260711-4
     </div>
   </nav>
 
-  <section id="prep-flow" class="guide-summary-section" aria-label="면접준비 흐름 요약">
+  <section id="prep-flow" class="guide-summary-section interview-surface" aria-label="면접준비 흐름 요약">
     <div class="section-inner">
       <div class="interview-flow-heading">
         <p class="section-label">Preparation Route</p>
@@ -71,10 +85,16 @@ script_version: 20260711-4
           <a class="btn-outline" href="/ai-interview/">데모 페이지 열기</a>
         </article>
       </div>
+      <div class="interview-situation-chips" aria-label="면접준비 빠른 이동">
+        <a href="#interview-series">대표 시리즈 보기</a>
+        <a href="#video-interview">화상면접 체크</a>
+        <a href="/ai-interview/">AI 모의면접 데모</a>
+        <a href="#booking">바로 예약하기</a>
+      </div>
     </div>
   </section>
 
-  <section id="interview-series" class="blog-guides-section">
+  <section id="interview-series" class="blog-guides-section interview-surface-soft">
     <div class="section-inner">
       <div class="blog-section-heading">
         <div>
@@ -156,8 +176,8 @@ script_version: 20260711-4
             </div>
           </div>
         </article>
-        <article class="blog-guide-card interview-series-card interview-series-card-archive">
-          <a class="blog-guide-image" href="/posts/interview-answer-practice/" tabindex="-1" aria-hidden="true">
+        <article class="blog-guide-card interview-series-card interview-series-card-archive interview-answer-card">
+          <a class="blog-guide-image blog-guide-image-contain" href="/posts/interview-answer-practice/" tabindex="-1" aria-hidden="true">
             <img src="/images/interview-answer-practice.webp" alt="" loading="lazy" />
           </a>
           <div class="blog-guide-content">
@@ -269,7 +289,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="upcoming-series">
+  <section id="upcoming-series" class="interview-surface">
     <div class="section-inner">
       <div class="blog-section-heading">
         <div>
@@ -299,7 +319,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="video-interview">
+  <section id="video-interview" class="interview-surface-soft">
     <div class="section-inner">
       <h2 class="section-title">화상면접은 답변과 환경을 함께 준비하세요</h2>
       <p class="section-desc">답변을 잘 준비해도 소음, 어두운 조명, 불안정한 인터넷 때문에 전달력이 흔들릴 수 있습니다. 화상면접은 말할 내용과 화면에 보이는 환경을 함께 고정하는 것이 좋습니다.</p>
@@ -320,7 +340,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="booking" class="blog-conversion-section">
+  <section id="booking" class="blog-conversion-section interview-booking-highlight">
     <div class="section-inner">
       <div class="blog-conversion-panel">
         <div>
@@ -331,6 +351,7 @@ script_version: 20260711-4
         </div>
         <div class="blog-conversion-actions">
           <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="interview_prep_hub_booking">면접 시간 예약하기</a>
+          <a href="/ai-interview/" class="btn-outline">AI 모의면접 해보기</a>
           <a href="/index.html#gallery" class="btn-outline">공간 사진 확인하기</a>
         </div>
       </div>

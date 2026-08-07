@@ -1861,6 +1861,17 @@ main.about-page.blog-hub #home .section-inner {
   font-size: .72rem;
   min-height: 1.72rem;
 }
+.interview-series-editorial-grid .interview-answer-card .blog-guide-image {
+  background: #eef3f8;
+}
+.interview-series-editorial-grid .interview-answer-card .blog-guide-image::after {
+  display: none;
+}
+.interview-series-editorial-grid .interview-answer-card .blog-guide-image img {
+  object-fit: contain;
+  object-position: center;
+  padding: .35rem;
+}
 .meeting-series-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.35rem;
@@ -2003,6 +2014,579 @@ main.about-page.blog-hub #home .section-inner {
 .meeting-series-grid .meeting-series-card-archive h3 {
   font-size: 1.06rem;
 }
+.meeting-series-pillar-grid {
+  margin-bottom: 1.1rem;
+}
+.meeting-series-pillar-grid .meeting-series-card-hero {
+  align-items: stretch;
+}
+.meeting-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+  min-height: 340px;
+}
+
+/* Meeting Hub UI Refresh */
+main.about-page.meeting-hub #home.meeting-hero {
+  position: relative;
+  background:
+    linear-gradient(115deg, rgba(17, 52, 38, .72), rgba(45, 106, 79, .46)),
+    radial-gradient(circle at 8% 15%, rgba(166, 207, 183, .24), transparent 28%),
+    radial-gradient(circle at 88% 16%, rgba(125, 174, 148, .22), transparent 34%),
+    url('/images/bucheon-meeting-room.webp') center / cover no-repeat;
+}
+main.about-page.meeting-hub #home.meeting-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 72px;
+  background: linear-gradient(180deg, rgba(247,250,248,0) 0%, rgba(247,250,248,.8) 100%);
+  pointer-events: none;
+}
+main.about-page.meeting-hub #home.meeting-hero .section-title {
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .28);
+}
+main.about-page.meeting-hub #home.meeting-hero .section-label,
+main.about-page.meeting-hub #home.meeting-hero .hero-subtitle {
+  color: rgba(255, 255, 255, .95);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .24);
+}
+main.about-page.meeting-hub #home.meeting-hero .section-label {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+}
+main.about-page.meeting-hub #home.meeting-hero .btn-outline {
+  border-color: rgba(255,255,255,.62);
+  color: #fff;
+}
+main.about-page.meeting-hub #home.meeting-hero .btn-outline:hover,
+main.about-page.meeting-hub #home.meeting-hero .btn-outline:focus-visible {
+  background: #fff;
+  color: var(--primary);
+}
+.meeting-hero-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+.meeting-metric-card {
+  position: relative;
+  padding: .82rem .9rem .88rem;
+  border: 1px solid rgba(177, 205, 190, .72);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(245,251,247,.96));
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
+}
+.meeting-metric-value {
+  margin: 0;
+  color: #1d4b38;
+  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+.meeting-metric-label {
+  margin: .25rem 0 0;
+  color: #4f665a;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.meeting-surface {
+  position: relative;
+  border-top: 1px solid rgba(208, 222, 214, .7);
+  border-bottom: 1px solid rgba(208, 222, 214, .7);
+  background: linear-gradient(180deg, rgba(249,252,250,.9) 0%, rgba(255,255,255,.96) 100%);
+}
+.meeting-surface-soft {
+  background:
+    radial-gradient(circle at 90% 12%, rgba(206, 229, 215, .22), transparent 34%),
+    linear-gradient(180deg, rgba(250,252,250,.85) 0%, rgba(247,251,248,.72) 100%);
+}
+.meeting-situation-chips {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .52rem;
+}
+.meeting-situation-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 35px;
+  padding: .36rem .8rem;
+  border: 1px solid rgba(143, 181, 160, .48);
+  border-radius: 999px;
+  background: #fff;
+  color: #234537;
+  font-size: .79rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
+}
+.meeting-situation-chips a:hover,
+.meeting-situation-chips a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(45,106,79,.56);
+  background: #edf7f1;
+  color: #1f5c43;
+}
+.meeting-hub #related-problems .about-highlight-card,
+.meeting-hub #other-hubs .about-highlight-card {
+  border-radius: 16px;
+  padding: 1.02rem 1.08rem;
+}
+.meeting-booking-highlight .blog-conversion-panel {
+  border-color: rgba(45,106,79,.24);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(181, 220, 197, .22), transparent 34%),
+    linear-gradient(140deg, #fbfdfb 0%, #eef6f1 100%);
+  box-shadow: 0 18px 38px rgba(26, 67, 47, .12);
+  color: #183d2e;
+}
+.meeting-booking-highlight .blog-conversion-panel h2 {
+  color: #183d2e;
+}
+.meeting-booking-highlight .blog-conversion-panel p:not(.section-label) {
+  color: #365446;
+}
+.meeting-booking-highlight .blog-conversion-panel .section-label.soft {
+  color: #4d6e5d;
+}
+.meeting-booking-highlight .blog-conversion-actions .btn-outline {
+  border-color: #c8dbcf;
+  background: #fff;
+  color: var(--primary);
+}
+
+/* Private Hub UI Refresh */
+main.about-page.private-hub #home.private-hero {
+  position: relative;
+  background:
+    linear-gradient(110deg, rgba(28, 41, 35, .66), rgba(58, 80, 68, .42)),
+    radial-gradient(circle at 10% 15%, rgba(213, 225, 216, .2), transparent 30%),
+    radial-gradient(circle at 88% 14%, rgba(170, 190, 177, .2), transparent 34%),
+    url('/images/a-place-for-quiet-recovery.webp') center / cover no-repeat;
+}
+main.about-page.private-hub #home.private-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 72px;
+  background: linear-gradient(180deg, rgba(249, 250, 248, 0) 0%, rgba(249, 250, 248, .8) 100%);
+  pointer-events: none;
+}
+main.about-page.private-hub #home.private-hero .section-title {
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.12;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .28);
+}
+main.about-page.private-hub #home.private-hero .section-label,
+main.about-page.private-hub #home.private-hero .hero-subtitle {
+  color: rgba(255, 255, 255, .95);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .24);
+}
+main.about-page.private-hub #home.private-hero .section-label {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+}
+main.about-page.private-hub #home.private-hero .btn-outline {
+  border-color: rgba(255,255,255,.62);
+  color: #fff;
+}
+main.about-page.private-hub #home.private-hero .btn-outline:hover,
+main.about-page.private-hub #home.private-hero .btn-outline:focus-visible {
+  background: #fff;
+  color: var(--primary);
+}
+.private-hero-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+.private-metric-card {
+  padding: .82rem .9rem .88rem;
+  border: 1px solid rgba(216, 228, 220, .72);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(248,251,249,.95));
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
+}
+.private-metric-value {
+  margin: 0;
+  color: #274336;
+  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+.private-metric-label {
+  margin: .25rem 0 0;
+  color: #5d6f64;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.private-surface {
+  position: relative;
+  border-top: 1px solid rgba(220, 227, 223, .72);
+  border-bottom: 1px solid rgba(220, 227, 223, .72);
+  background: linear-gradient(180deg, rgba(252, 252, 251, .92) 0%, rgba(255, 255, 255, .98) 100%);
+}
+.private-surface-soft {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(223, 233, 227, .22), transparent 34%),
+    linear-gradient(180deg, rgba(251, 252, 250, .86) 0%, rgba(247, 249, 247, .72) 100%);
+}
+.private-situation-chips {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .52rem;
+}
+.private-situation-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 35px;
+  padding: .36rem .8rem;
+  border: 1px solid rgba(181, 197, 188, .56);
+  border-radius: 999px;
+  background: #fff;
+  color: #31463d;
+  font-size: .79rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
+}
+.private-situation-chips a:hover,
+.private-situation-chips a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(96, 125, 110, .58);
+  background: #f2f6f3;
+  color: #244134;
+}
+.private-series-pillar-grid {
+  margin-bottom: 1.1rem;
+}
+.private-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+  min-height: 340px;
+}
+.private-hub #related-needs .about-highlight-card,
+.private-hub #other-hubs .about-highlight-card {
+  border-radius: 16px;
+  padding: 1.02rem 1.08rem;
+}
+.private-booking-highlight .blog-conversion-panel {
+  border-color: rgba(130, 156, 141, .24);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(225, 236, 229, .26), transparent 34%),
+    linear-gradient(140deg, #fcfdfa 0%, #eff4f0 100%);
+  box-shadow: 0 18px 38px rgba(47, 65, 55, .1);
+  color: #2c3f35;
+}
+.private-booking-highlight .blog-conversion-panel h2 {
+  color: #2c3f35;
+}
+.private-booking-highlight .blog-conversion-panel p:not(.section-label) {
+  color: #55695e;
+}
+.private-booking-highlight .blog-conversion-panel .section-label.soft {
+  color: #728378;
+}
+.private-booking-highlight .blog-conversion-actions .btn-outline {
+  border-color: #d1ddd5;
+  background: #fff;
+  color: #325041;
+}
+
+/* Interview Hub UI Refresh */
+.interview-hero-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+.interview-metric-card {
+  padding: .82rem .9rem .88rem;
+  border: 1px solid rgba(200, 213, 227, .74);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(245,249,253,.95));
+  box-shadow: 0 10px 24px rgba(17,24,39,.08);
+}
+.interview-metric-value {
+  margin: 0;
+  color: #1e4569;
+  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+.interview-metric-label {
+  margin: .25rem 0 0;
+  color: #5d7083;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.interview-surface {
+  position: relative;
+  border-top: 1px solid rgba(214, 222, 232, .72);
+  border-bottom: 1px solid rgba(214, 222, 232, .72);
+  background: linear-gradient(180deg, rgba(250, 252, 255, .9) 0%, rgba(255, 255, 255, .98) 100%);
+}
+.interview-surface-soft {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(220, 231, 242, .24), transparent 36%),
+    linear-gradient(180deg, rgba(248, 251, 255, .84) 0%, rgba(244, 248, 253, .72) 100%);
+}
+.interview-situation-chips {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .52rem;
+}
+.interview-situation-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 35px;
+  padding: .36rem .8rem;
+  border: 1px solid rgba(168, 188, 210, .56);
+  border-radius: 999px;
+  background: #fff;
+  color: #2b4761;
+  font-size: .79rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
+}
+.interview-situation-chips a:hover,
+.interview-situation-chips a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(74, 110, 146, .58);
+  background: #eef4fa;
+  color: #1f3d59;
+}
+.interview-booking-highlight .blog-conversion-panel {
+  border-color: rgba(94, 124, 156, .24);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(216, 229, 242, .24), transparent 34%),
+    linear-gradient(140deg, #fbfdff 0%, #edf3fa 100%);
+  box-shadow: 0 18px 38px rgba(37, 64, 94, .12);
+  color: #253f57;
+}
+.interview-booking-highlight .blog-conversion-panel h2 {
+  color: #253f57;
+}
+.interview-booking-highlight .blog-conversion-panel p:not(.section-label) {
+  color: #526b82;
+}
+.interview-booking-highlight .blog-conversion-panel .section-label.soft {
+  color: #6e8297;
+}
+.interview-booking-highlight .blog-conversion-actions .btn-outline {
+  border-color: #cedbea;
+  background: #fff;
+  color: #2f4f70;
+}
+
+/* Study Hub UI Refresh */
+main.about-page.study-hub #home.study-hero {
+  position: relative;
+  background:
+    linear-gradient(114deg, rgba(18, 44, 61, .68), rgba(34, 84, 112, .42)),
+    radial-gradient(circle at 8% 15%, rgba(188, 214, 231, .24), transparent 30%),
+    radial-gradient(circle at 88% 14%, rgba(140, 177, 204, .22), transparent 34%),
+    url('/images/private-space-for-study-groups.webp') center / cover no-repeat;
+}
+main.about-page.study-hub #home.study-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 72px;
+  background: linear-gradient(180deg, rgba(249, 250, 248, 0) 0%, rgba(249, 250, 248, .8) 100%);
+  pointer-events: none;
+}
+main.about-page.study-hub #home.study-hero .section-title {
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.12;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .28);
+}
+main.about-page.study-hub #home.study-hero .section-label,
+main.about-page.study-hub #home.study-hero .hero-subtitle {
+  color: rgba(255, 255, 255, .95);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .24);
+}
+main.about-page.study-hub #home.study-hero .section-label {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+}
+main.about-page.study-hub #home.study-hero .btn-outline {
+  border-color: rgba(255,255,255,.62);
+  color: #fff;
+}
+main.about-page.study-hub #home.study-hero .btn-outline:hover,
+main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
+  background: #fff;
+  color: #1f4d69;
+}
+.study-hero-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+.study-metric-card {
+  padding: .82rem .9rem .88rem;
+  border: 1px solid rgba(188, 209, 223, .74);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(243,248,252,.95));
+  box-shadow: 0 10px 24px rgba(17,24,39,.08);
+}
+.study-metric-value {
+  margin: 0;
+  color: #1f4d69;
+  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+.study-metric-label {
+  margin: .25rem 0 0;
+  color: #5a7284;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.study-surface {
+  position: relative;
+  border-top: 1px solid rgba(205, 220, 230, .72);
+  border-bottom: 1px solid rgba(205, 220, 230, .72);
+  background: linear-gradient(180deg, rgba(249, 252, 255, .9) 0%, rgba(255, 255, 255, .98) 100%);
+}
+.study-surface-soft {
+  background:
+    radial-gradient(circle at 90% 12%, rgba(210, 228, 240, .24), transparent 36%),
+    linear-gradient(180deg, rgba(248, 252, 255, .84) 0%, rgba(243, 249, 253, .72) 100%);
+}
+.study-situation-chips {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .52rem;
+}
+.study-situation-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 35px;
+  padding: .36rem .8rem;
+  border: 1px solid rgba(161, 187, 206, .56);
+  border-radius: 999px;
+  background: #fff;
+  color: #234a63;
+  font-size: .79rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
+}
+.study-situation-chips a:hover,
+.study-situation-chips a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(66, 116, 147, .58);
+  background: #eef5fa;
+  color: #1f4760;
+}
+.study-booking-highlight .blog-conversion-panel {
+  border-color: rgba(95, 137, 166, .24);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(217, 231, 241, .24), transparent 34%),
+    linear-gradient(140deg, #fbfdff 0%, #edf4fa 100%);
+  box-shadow: 0 18px 38px rgba(35, 76, 103, .11);
+  color: #22485f;
+}
+.study-booking-highlight .blog-conversion-panel h2 {
+  color: #22485f;
+}
+.study-booking-highlight .blog-conversion-panel p:not(.section-label) {
+  color: #537086;
+}
+.study-booking-highlight .blog-conversion-panel .section-label.soft {
+  color: #6f879b;
+}
+.study-booking-highlight .blog-conversion-actions .btn-outline {
+  border-color: #c9dcec;
+  background: #fff;
+  color: #285673;
+}
+
+@media (max-width: 900px) {
+  .meeting-hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .private-hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .interview-hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .study-hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .meeting-hero-metrics {
+    grid-template-columns: 1fr;
+  }
+  .meeting-metric-card {
+    padding: .75rem .82rem .8rem;
+  }
+  .meeting-situation-chips {
+    gap: .45rem;
+  }
+  .meeting-situation-chips a {
+    min-height: 32px;
+    font-size: .75rem;
+  }
+  .private-hero-metrics {
+    grid-template-columns: 1fr;
+  }
+  .private-metric-card {
+    padding: .75rem .82rem .8rem;
+  }
+  .private-situation-chips {
+    gap: .45rem;
+  }
+  .private-situation-chips a {
+    min-height: 32px;
+    font-size: .75rem;
+  }
+  .interview-hero-metrics {
+    grid-template-columns: 1fr;
+  }
+  .interview-metric-card {
+    padding: .75rem .82rem .8rem;
+  }
+  .interview-situation-chips {
+    gap: .45rem;
+  }
+  .interview-situation-chips a {
+    min-height: 32px;
+    font-size: .75rem;
+  }
+  .study-hero-metrics {
+    grid-template-columns: 1fr;
+  }
+  .study-metric-card {
+    padding: .75rem .82rem .8rem;
+  }
+  .study-situation-chips {
+    gap: .45rem;
+  }
+  .study-situation-chips a {
+    min-height: 32px;
+    font-size: .75rem;
+  }
+}
+
 .guide-compare-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2081,6 +2665,12 @@ main.about-page.blog-hub #home .section-inner {
   }
   .meeting-series-grid .meeting-series-card-hero {
     grid-template-columns: minmax(240px, .95fr) minmax(0, 1fr);
+  }
+  .meeting-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+    min-height: 300px;
+  }
+  .private-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+    min-height: 300px;
   }
   .guide-compare-grid {
     grid-template-columns: 1fr;
@@ -7174,6 +7764,28 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   .blog-guide-card {
     grid-template-columns: 1fr;
+  }
+  .meeting-series-pillar-grid .meeting-series-card-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .meeting-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+  .meeting-series-pillar-grid .meeting-series-card-hero .blog-guide-content {
+    padding: 1.25rem 1.2rem 1.2rem;
+  }
+  .private-series-pillar-grid .meeting-series-card-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .private-series-pillar-grid .meeting-series-card-hero .blog-guide-image {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+  .private-series-pillar-grid .meeting-series-card-hero .blog-guide-content {
+    padding: 1.25rem 1.2rem 1.2rem;
   }
   .interview-hub #home {
     background-position: 58% center;

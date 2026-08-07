@@ -5,7 +5,7 @@ description: 사무실 없이 일하는 1인사업자와 프리랜서가 고객�
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 4
+hub_order: 2
 hub_label: 고객 미팅
 hub_kicker: 사무실 없이 일하는 1인사업자의 미팅 공간
 hub_title: 사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?

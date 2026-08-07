@@ -5,7 +5,7 @@ description: 같은 요일과 시간대에 공간을 반복 예약해 안정적�
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 2
+hub_order: 3
 hub_label: 정기 운영
 hub_kicker: 정기 상담 리듬을 만드는 운영 글
 hub_title: 프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법
