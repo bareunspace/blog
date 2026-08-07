@@ -10,7 +10,7 @@ og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 부천 신중동 바른자리 프라이빗룸 메인 공간 이미지
 preload_image: images/main.webp
 naver_site_verification: 46b51cdf33b64778f7ae6e7dd0dabcb6890be955
-css_version: 20260719-1
+css_version: 20260807-1
 script_version: 20260719-1
 ---
   <main id="mainContent">
@@ -104,369 +104,55 @@ script_version: 20260719-1
           <a href="#about" class="space-gallery-context-link" data-cta="space_gallery_pricing">요금 먼저 보기</a>
         </div>
       </div>
-      {% assign interview_card_post = site.posts | where_exp: "item", "item.url contains '/posts/cabin-crew-interview-practice/'" | first %}
-      {% assign online_exam_card_post = site.posts | where_exp: "item", "item.url contains '/posts/study-space-for-presentation-discussion-project/'" | first %}
-      {% assign private_office_card_post = site.posts | where_exp: "item", "item.url contains '/posts/recurring-space-booking-for-freelance-counselors/'" | first %}
-      {% assign consulting_card_post = site.posts | where_exp: "item", "item.url contains '/posts/freelance-counselor-office/'" | first %}
-      {% assign date_card_post = site.posts | where_exp: "item", "item.url contains '/posts/alone-time-is-recovery/'" | first %}
-      {% assign popup_card_post = site.posts | where_exp: "item", "item.url contains '/posts/summer-hotday-date-at-bareunjari/'" | first %}
       <div class="features-grid">
-        <div class="feature-card feature-toggle feature-card-primary" id="videoInterviewToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="videoInterviewPanel">
+        <article class="feature-card feature-card-primary">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
-          <h3>화상면접 · 온라인회의 <span class="feature-priority" aria-label="주력 서비스">추천</span></h3>
-          <p>화면 인상과 전달력이 중요한 일정에 맞춘 밝은 배경과 조용한 독립 공간입니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="화상면접 활용 포인트">
+          <h3>면접준비 허브 <span class="feature-priority" aria-label="주력 허브">추천</span></h3>
+          <p>자기소개, 답변 연습, 화상면접 환경 점검까지 면접 준비 흐름을 한 번에 확인할 수 있습니다.</p>
+          <ul class="feature-quick-list" aria-label="면접준비 허브 포인트">
             <li>추천 2시간</li>
-            <li>면접 · PT</li>
-            <li>초고속 와이파이</li>
+            <li>답변 루틴</li>
+            <li>AI 모의면접</li>
           </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="videoInterviewPanel" hidden>
-          <p class="private-office-lead">화면 인상과 전달력이 중요한 일정에 맞춰 배경, 조명, 소음 변수를 줄인 독립 환경입니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>추천 상황과 환경 포인트 <span class="use-time-badge">2시간</span></h3>
-              <ul class="private-office-summary">
-                <li>채용 화상면접, 온라인 PT, AI 면접, 화상 미팅에 추천</li>
-                <li>밝고 하얀 배경으로 화면 인상 정리에 유리</li>
-                <li>조용한 독립 공간과 초고속 와이파이로 음성 전달 안정화</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>예약 팁 <span class="use-time-badge">사전 30분</span></h3>
-              <ul class="private-office-summary">
-                <li>면접 시작 30분 전 입실 권장</li>
-                <li>카메라 각도, 시선 높이, 마이크 볼륨 먼저 점검</li>
-                <li>화면 공유까지 미리 테스트하면 실전 안정감이 높아짐</li>
-              </ul>
-            </article>
-            <article class="private-office-card" aria-label="화상면접 관련 블로그 글">
-              <h3><a href="{{ '/interview/' | relative_url }}">면접준비 블로그</a></h3>
-              {% assign interview_category_posts = site.posts | where: "category", "면접준비" %}
-              {% assign video_meeting_title_posts = site.posts | where_exp: "item", "item.title contains '화상면접' or item.title contains '온라인회의' or item.title contains 'AI 면접' or item.title contains '온라인 PT' or item.title contains 'PT 면접'" %}
-              {% assign video_meeting_description_posts = site.posts | where_exp: "item", "item.description contains '화상면접' or item.description contains '온라인회의' or item.description contains 'AI 면접' or item.description contains '온라인 PT' or item.description contains 'PT 면접'" %}
-              {% assign video_meeting_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '화상면접' or item.keywords contains '온라인회의' or item.keywords contains 'AI면접' or item.keywords contains '온라인PT' or item.keywords contains 'PT면접'" %}
-              {% assign priority_post_url = '/posts/cabin-crew-interview-practice/' %}
-              {% assign interview_posts = interview_category_posts | concat: video_meeting_title_posts | concat: video_meeting_description_posts | concat: video_meeting_keyword_posts | uniq %}
-              {% assign priority_interview_posts = interview_posts | where: "url", priority_post_url %}
-              {% assign regular_interview_posts = interview_posts | where_exp: "item", "item.url != priority_post_url" %}
-              {% assign interview_posts = priority_interview_posts | concat: regular_interview_posts %}
-              {% if interview_posts.size > 0 %}
-                <ul class="related-post-list">
-                  {% for post in interview_posts limit: 5 %}
-                    <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <p>아직 등록된 면접 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
-                <p class="related-post-more"><a href="{{ '/blog.html' | relative_url }}#blog-onsite">사이트 발행 글 확인하기</a></p>
-              {% endif %}
-            </article>
-          </div>
-          <div class="about-cta-row" role="group" aria-label="화상면접 추천 액션">
-            <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="video_interview_panel_booking">화상면접 · 회의 예약하기</a>
-            <a href="{{ '/ai-interview/' | relative_url }}" class="about-cta about-cta-secondary" data-cta="video_interview_panel_ai_demo">AI 모의면접 바로가기</a>
-          </div>
-        </div>
-        <div class="feature-card feature-toggle" id="onlineExamToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="onlineExamPanel">
-          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-clipboard"></use></svg></div>
-          <h3>온라인 시험장소 · 자격증</h3>
-          <p>감독형 온라인 시험과 자격증 응시에 필요한 집중 환경을 빠르게 확보할 수 있습니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="온라인 시험 활용 포인트">
-            <li>추천 2~3시간</li>
-            <li>감독형 시험</li>
-            <li>사전점검 가능</li>
-          </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="onlineExamPanel" hidden>
-          <p class="private-office-lead">온라인 시험에 필요한 집중력과 연결 안정성을 확보하기 쉬운 독립 응시 환경입니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>이런 시험에 추천해요 <span class="use-time-badge">2~3시간</span></h3>
-              <ul class="private-office-summary">
-                <li>토플 홈에디션, 온라인 자격증, 감독형 비대면 시험에 적합</li>
-                <li>모의응시나 사전점검처럼 리허설 용도로도 활용 가능</li>
-                <li>소음과 연결 불안이 점수에 영향 주는 시험에 특히 유리</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>시험 집중 환경 포인트 <span class="use-time-badge">2~3시간</span></h3>
-              <ul class="private-office-summary">
-                <li>독립된 실내 환경으로 시험 화면과 응시에 집중 가능</li>
-                <li>초고속 와이파이와 넉넉한 책상 공간 확보</li>
-                <li>장시간 응시에도 자세를 정리하기 쉬운 좌석 동선</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>응시 전 준비 팁 <span class="use-time-badge">사전 30분</span></h3>
-              <ul class="private-office-summary">
-                <li>시험 시작 20~30분 전 입실 권장</li>
-                <li>카메라, 마이크, 네트워크, 신분증 먼저 확인</li>
-                <li>감독 프로그램 요구사항 점검으로 시작 지연 위험 감소</li>
-              </ul>
-            </article>
-          </div>
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="online_exam_panel_booking">온라인 시험장소 예약하기</a>
-        </div>
-        <div class="feature-card feature-toggle" id="privateOfficeToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="privateOfficePanel">
+          <a href="{{ '/interview/' | relative_url }}" class="feature-hub-link" data-cta="home_hub_interview">면접준비 허브 바로가기 <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="feature-card">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
-          <h3>집중업무 · 원격근무 · 스터디</h3>
-          <p>재택 대신 몰입이 필요한 업무 시간을 단독 공간으로 확보하는 용도에 잘 맞습니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="집중업무 활용 포인트">
-            <li>추천 3~4시간</li>
-            <li>원격근무</li>
-            <li>시간 단위 예약</li>
+          <h3>미팅·업무 허브</h3>
+          <p>고객 미팅, 상담, 화상회의, 집중 업무까지 필요한 시간만 예약하는 실전 흐름입니다.</p>
+          <ul class="feature-quick-list" aria-label="미팅업무 허브 포인트">
+            <li>고객 미팅</li>
+            <li>상담</li>
+            <li>집중 업무</li>
           </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="privateOfficePanel" hidden>
-          <p class="private-office-lead">재택의 한계와 외부 소음을 줄이고, 필요한 시간만 단독으로 몰입 시간을 확보하는 업무형 이용 방식입니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>추천 고객과 활용 용도 <span class="use-time-badge">3~4시간</span></h3>
-              <ul class="private-office-summary">
-                <li>재택근무 직장인, 프리랜서, 1인 사업자, 상담사, 온라인 강사에 적합</li>
-                <li>집중업무, 원격근무, 비대면 상담, 화상회의, 콘텐츠 제작 활용 가능</li>
-                <li>조용한 집중 구역이 필요한 일정에 안정적으로 대응</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>정기 예약 상품 <span class="use-time-badge">정기 이용</span></h3>
-              <ul class="private-office-summary">
-                <li>매주 같은 요일과 시간대로 반복 예약하는 방식</li>
-                <li>예: 매주 화요일 09:00~12:00, 주 1회 3시간</li>
-                <li>주 1~3회까지 상담 후 일정 확정 가능</li>
-              </ul>
-            </article>
-            <article class="private-office-card" aria-label="집중업무와 스터디룸 관련 글">
-              <h3>집중업무 · 스터디룸 관련 글</h3>
-              <ul class="related-post-list">
-                {% assign study_space_posts = site.posts | where: "category", "스터디룸" %}
-                {% for post in study_space_posts limit: 3 %}
-                  <li class="related-post-item">
-                    <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 34 }}</a>
-                    <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                  </li>
-                {% endfor %}
-                {% for mapping in site.data.blog_mappings.naver_posts %}
-                  {% if mapping.featured_space contains 'private-office' %}
-                    {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
-                    {% for post in mapped_naver_posts %}
-                      <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
-                        <span class="related-post-date">{{ post.date }}</span>
-                      </li>
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            </article>
-          </div>
-          <a href="#contact" class="about-cta" data-cta="private_office_panel_contact">예약형 프라이빗 오피스 예약하기</a>
-        </div>
-        <div class="feature-card feature-toggle" id="consultingMeetupToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="consultingMeetupPanel">
+          <a href="{{ '/meeting/' | relative_url }}" class="feature-hub-link" data-cta="home_hub_meeting">미팅·업무 허브 바로가기 <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="feature-card">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-users"></use></svg></div>
-          <h3>상담 · 컨설팅 · 소모임 <span class="feature-priority" aria-label="주력 서비스">추천</span></h3>
-          <p>민감한 대화와 집중 토론이 필요한 1:1 상담, 컨설팅, 소규모 모임에 적합합니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="상담 소모임 활용 포인트">
-            <li>추천 2~4시간</li>
-            <li>1:1 상담</li>
-            <li>스터디 가능</li>
+          <h3>스터디·소모임 허브</h3>
+          <p>혼자 집중 학습부터 발표, 면접, 그룹 스터디까지 공부 목적에 맞춘 활용 가이드입니다.</p>
+          <ul class="feature-quick-list" aria-label="스터디 허브 포인트">
+            <li>스터디</li>
+            <li>발표 연습</li>
+            <li>소모임</li>
           </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="consultingMeetupPanel" hidden>
-          <p class="private-office-lead">민감한 대화와 집중 토론이 필요한 상담, 컨설팅, 소규모 모임에 맞춘 차분한 독립 공간입니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>추천 활동과 진행 포인트 <span class="use-time-badge">2~4시간</span></h3>
-              <ul class="private-office-summary">
-                <li>1:1 상담, 코칭, 컨설팅 미팅, 소규모 스터디, 고객 인터뷰에 적합</li>
-                <li>대화 밀도와 프라이버시가 중요한 일정에 잘 맞음</li>
-                <li>외부 소음이 적고 시선이 분리돼 반복 미팅에도 분위기 유지 용이</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>운영 팁 <span class="use-time-badge">정기 이용</span></h3>
-              <ul class="private-office-summary">
-                <li>참석 인원과 진행 목적 기준으로 2~4시간 이용 추천</li>
-                <li>사전 아젠다와 자료를 준비하면 진행 효율이 높아짐</li>
-                <li>같은 요일과 시간대로 반복 예약하면 운영이 더 안정적</li>
-              </ul>
-            </article>
-            <article class="private-office-card" aria-label="상담 컨설팅 소모임 관련 블로그 글">
-              <h3><a href="{{ '/meeting/' | relative_url }}">미팅 · 상담 관련 글</a></h3>
-              <ul class="related-post-list">
-                {% assign meeting_counseling_posts = site.posts | where: "category", "미팅·상담" %}
-                {% for post in meeting_counseling_posts limit: 3 %}
-                  <li class="related-post-item">
-                    <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 34 }}</a>
-                    <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                  </li>
-                {% endfor %}
-                {% for mapping in site.data.blog_mappings.naver_posts %}
-                  {% if mapping.featured_space contains 'meetup' %}
-                    {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
-                    {% for post in mapped_naver_posts %}
-                      <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
-                        <span class="related-post-date">{{ post.date }}</span>
-                      </li>
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            </article>
-          </div>
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="consulting_meetup_panel_booking">상담 · 컨설팅 · 소모임 · 스터디 예약하기</a>
-        </div>
-        <div class="feature-card feature-toggle" id="dateAnniversaryToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="dateAnniversaryPanel">
+          <a href="{{ '/study/' | relative_url }}" class="feature-hub-link" data-cta="home_hub_study">스터디·소모임 허브 바로가기 <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="feature-card">
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></div>
-          <h3>혼자만의 시간 · 데이트 · 가족 기념일</h3>
-          <p>카페보다 조용한 실내에서 혼자 쉬거나, 연인과 함께, 가족과 함께 의미 있는 시간을 보내고 싶은 일정에 어울립니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="데이트 활용 포인트">
+          <h3>프라이빗시간 허브</h3>
+          <p>혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트를 위한 프라이빗 활용 흐름입니다.</p>
+          <ul class="feature-quick-list" aria-label="프라이빗시간 허브 포인트">
             <li>추천 2시간</li>
-            <li>휴식 · 데이트</li>
-            <li>프라이빗 대화</li>
+            <li>혼자 회복</li>
+            <li>실내 데이트</li>
           </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="dateAnniversaryPanel" hidden>
-          <p class="private-office-lead">카페보다 조용한 독립 공간에서 혼자만의 휴식부터 연인·가족과의 소중한 시간까지, 외부 시선과 소음 부담 없이 개인적인 일정을 보내기 좋습니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>혼자 쉬는 시간 <span class="use-time-badge">2시간</span></h3>
-              <ul class="private-office-summary">
-                <li>독서, 음악 감상, 멍때리기, 낮잠처럼 짧은 회복 시간에 추천</li>
-                <li>이어폰이나 책을 챙기면 더 편하게 나만의 페이스 유지 가능</li>
-                <li>공백 시간을 조용히 정리하고 싶은 일정에 잘 맞음</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>데이트와 기념일 <span class="use-time-badge">2시간</span></h3>
-              <ul class="private-office-summary">
-                <li>폭염 피서 데이트, 가족·연인과의 기념일 대화, 조용한 실내 휴식에 적합</li>
-                <li>서로에게 집중하고 싶은 일정에 프라이빗한 분위기 제공</li>
-                <li>음료나 함께 볼 콘텐츠를 준비하면 더 편하게 머물 수 있음</li>
-              </ul>
-            </article>
-            <article class="private-office-card" aria-label="프라이빗시간 관련 블로그 글">
-              <h3>프라이빗시간 관련 블로그 글</h3>
-              {% assign date_category_posts = site.posts | where: "category", "프라이빗시간" %}
-              {% assign date_title_posts = site.posts | where_exp: "item", "item.title contains '데이트'" %}
-              {% assign date_description_posts = site.posts | where_exp: "item", "item.description contains '데이트'" %}
-              {% assign date_keyword_posts = site.posts | where_exp: "item", "item.keywords contains '데이트'" %}
-              {% assign date_posts = date_category_posts | concat: date_title_posts | concat: date_description_posts | concat: date_keyword_posts | uniq %}
-              {% if date_posts.size > 0 %}
-                <ul class="related-post-list">
-                  {% for post in date_posts limit: 5 %}
-                    <li class="related-post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
-                  {% endfor %}
-                </ul>
-                <p class="related-post-more"><a href="{{ '/private/' | relative_url }}">프라이빗시간 관련 글 더 보기</a></p>
-              {% else %}
-                <p>아직 등록된 프라이빗시간 관련 글이 없습니다. 첫 글을 발행하면 이 영역에 자동으로 노출됩니다.</p>
-                <p class="related-post-more"><a href="{{ '/private/' | relative_url }}">프라이빗시간 허브 보기</a></p>
-              {% endif %}
-            </article>
-          </div>
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="date_anniversary_panel_booking">혼자만의 시간 · 데이트 · 가족 기념일 예약하기</a>
-        </div>
-        <div class="feature-card feature-toggle" id="popupExhibitToggle" role="button" tabindex="0" aria-expanded="false" aria-controls="popupExhibitPanel">
-          <div class="feature-icon"><svg aria-hidden="true"><use href="#i-bag"></use></svg></div>
-          <h3>팝업 · 전시 · 대관</h3>
-          <p>브랜드 팝업, 쇼룸, 소규모 전시처럼 종일 운영이 필요한 일정도 상담 후 진행 가능합니다.</p>
-          <div class="feature-card-preview" aria-hidden="true">
-            <div class="feature-card-preview-bar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="feature-card-preview-tags"></div>
-          </div>
-          <ul class="feature-quick-list" aria-label="팝업 전시 활용 포인트">
-            <li>종일 대관</li>
-            <li>사전 상담</li>
-            <li>브랜드 운영</li>
-          </ul>
-          <div class="feature-card-actions" hidden></div>
-          <span class="feature-toggle-hint" aria-hidden="true"></span>
-        </div>
-        <div class="private-office-panel" id="popupExhibitPanel" hidden>
-          <p class="private-office-lead">브랜드 톤과 방문 동선에 맞춘 소규모 팝업, 쇼룸, 전시 운영을 상담부터 일정 조율까지 함께 준비합니다.</p>
-          <div class="private-office-grid">
-            <article class="private-office-card">
-              <h3>추천 운영과 진행 포인트 <span class="use-time-badge">종일</span></h3>
-              <ul class="private-office-summary">
-                <li>브랜드 팝업, 셀렉트 쇼룸, 소규모 전시, 신제품 공개에 적합</li>
-                <li>방문자 경험과 체류 동선 설계가 중요한 운영에 유리</li>
-                <li>분위기, 진열 동선, 촬영과 홍보 일정까지 함께 검토 가능</li>
-              </ul>
-            </article>
-            <article class="private-office-card">
-              <h3>문의 후 확정 <span class="use-time-badge">사전 상담</span></h3>
-              <ul class="private-office-summary">
-                <li>운영 목적, 기간, 필요한 세팅을 먼저 공유</li>
-                <li>가능 일정과 권장 이용 방식, 준비 체크포인트 안내</li>
-                <li>필요 사항 확인 후 최종 일정 확정</li>
-              </ul>
-            </article>
-            <article class="private-office-card" aria-label="팝업 전시 관련 네이버 블로그 글">
-              <h3>팝업 · 전시 이용 사례</h3>
-              <ul class="related-post-list">
-                {% for mapping in site.data.blog_mappings.naver_posts %}
-                  {% if mapping.featured_space contains 'popup' %}
-                    {% assign mapped_naver_posts = site.data.naver_blog.posts | where: "url", mapping.url %}
-                    {% for post in mapped_naver_posts %}
-                      <li class="related-post-item">
-                        <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그에서 {{ post.title }} 읽기 (새 창)">{{ post.title | remove: "[공간 이용 사례] " | truncate: 34 }}</a>
-                        <span class="related-post-date">{{ post.date }}</span>
-                      </li>
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            </article>
-          </div>
-          <a href="#contact" class="about-cta" data-cta="popup_exhibit_panel_contact">팝업 · 전시 문의하기</a>
-        </div>
+          <a href="{{ '/private/' | relative_url }}" class="feature-hub-link" data-cta="home_hub_private">프라이빗시간 허브 바로가기 <span aria-hidden="true">→</span></a>
+        </article>
       </div>
-      <div class="feature-detail-stack" id="featureDetailStack"></div>
     </div>
   </section>
 
@@ -703,10 +389,6 @@ script_version: 20260719-1
             <summary>Q. 주차 등록은 어떻게 하나요?</summary>
             <p>주차는 매장 내 비치된 패드를 이용해 자동차 번호를 입력한 뒤 2시간 주차권을 부여받는 셀프 등록 방식으로 진행됩니다.</p>
           </details>
-          <details>
-            <summary>Q. 운영 파트너(프랜차이즈/지점 제안) 문의도 가능한가요?</summary>
-            <p>가능합니다. 문의 내용에 운영 제안 목적, 희망 지역, 운영 형태를 남겨주시면 확인 후 순차적으로 안내드립니다.</p>
-          </details>
         </div>
         <div class="contact-form-wrap">
           <form id="contactForm" class="contact-form" action="https://formsubmit.co/f7ed0ce03c8dd0b9b5b294cf0002adfa" method="POST">
@@ -733,7 +415,6 @@ script_version: 20260719-1
                 <select id="contactInquiryType" name="문의유형" required>
                   <option value="일반 문의" selected>일반 문의</option>
                   <option value="예약/이용 문의">예약/이용 문의</option>
-                  <option value="운영 파트너 제안">운영 파트너 제안</option>
                 </select>
               </div>
               <div>
