@@ -116,19 +116,19 @@ script_version: 20260711-4
       <div class="about-principle-grid" aria-label="카페에서 자주 신경 쓰는 것들">
         <article class="about-principle-item" data-step="01">
           <h3>옆 사람이 듣지는 않을까</h3>
-          <p>조용히 말해야 할 것 같아 자연스럽게 대화의 속도가 느려집니다.</p>
+          <p>목소리를 조금 낮추게 되고, 하고 싶은 말을 편하게 꺼내기 어려워집니다.</p>
         </article>
         <article class="about-principle-item" data-step="02">
           <h3>너무 오래 앉아 있는 것은 아닐까</h3>
-          <p>머무는 시간 자체를 계속 의식하게 되면 편하게 쉬기가 어렵습니다.</p>
+          <p>머무는 시간까지 신경 쓰이기 시작하면, 편하게 쉬는 마음이 조금씩 줄어듭니다.</p>
         </article>
         <article class="about-principle-item" data-step="03">
           <h3>다음에는 어디로 가야 할까</h3>
-          <p>대화보다 동선이 먼저 떠오르면 지금의 시간을 충분히 즐기기 어렵습니다.</p>
+          <p>지금의 시간을 즐기기도 전에 다음 동선부터 떠오르면 데이트의 여유가 줄어듭니다.</p>
         </article>
         <article class="about-principle-item" data-step="04">
           <h3>무엇을 해야 지루하지 않을까</h3>
-          <p>계속 뭔가를 해야 한다는 압박이 있으면 편안한 데이트가 금방 바빠집니다.</p>
+          <p>계속 뭔가를 채워야 한다는 압박이 생기면, 편안해야 할 시간이 금세 바빠집니다.</p>
         </article>
       </div>
       <p>카페가 나쁜 것은 아닙니다. 다만 어떤 날에는 여러 장소를 돌아다니기보다 <strong>둘만 편하게 머물 수 있는 공간</strong>이 더 잘 맞습니다.</p>
