@@ -54,7 +54,9 @@
   {% endif %}
 
   {% if page.category %}
-    {% include related-posts.html %}
+    {% unless content contains 'class="post-related"' %}
+      {% include related-posts.html %}
+    {% endunless %}
   {% endif %}
 
   {% include footer.html %}
