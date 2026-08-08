@@ -1,0 +1,29 @@
+{% unless page.robots contains 'noindex' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ page.schema_type | default: 'WebPage' }}",
+  "@id": {{ page.canonical | append: '#webpage' | jsonify }},
+  "url": {{ page.canonical | jsonify }},
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "inLanguage": "ko-KR",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://bareunjari.com/#website",
+    "url": "https://bareunjari.com/",
+    "name": "바른자리"
+  },
+  "about": {
+    "@type": "LocalBusiness",
+    "@id": "https://bareunjari.com/#localbusiness",
+    "name": "바른자리"
+  }{% if page.og_image %},
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": {{ page.og_image | jsonify }},
+    "caption": {{ page.og_image_alt | default: page.title | jsonify }}
+  }{% endif %}
+}
+</script>
+{% endunless %}
