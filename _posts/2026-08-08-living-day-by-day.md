@@ -14,9 +14,9 @@ tags:
 canonical: https://bareunjari.com/posts/living-day-by-day/
 permalink: /posts/living-day-by-day/
 date: 2026-08-08 15:00:00 +0900
-og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
+og_image: https://bareunjari.com/images/bareunjari-day-by-day.webp
 og_image_alt: 하루하루를 살아내며 자신의 일상으로 돌아가는 시간을 표현한 바른자리 이미지
-preload_image: images/bareunjari-blog-default.webp
+preload_image: images/bareunjari-day-by-day.webp
 css_version: 20260808-2
 script_version: 20260711-4
 ---
@@ -56,7 +56,7 @@ script_version: 20260711-4
 </div></section>
 
 {% include breadcrumb.html %}
-{% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/bareunjari-blog-default.webp' image_alt='하루하루를 살아내며 자신의 일상으로 돌아가는 시간을 표현한 바른자리 이미지' image_loading='eager' image_caption='다시 자신의 자리로 돌아와 오늘의 하루를 살아가는 시간.' %}
+{% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/bareunjari-day-by-day.webp' image_alt='하루하루를 살아내며 자신의 일상으로 돌아가는 시간을 표현한 바른자리 이미지' image_loading='eager' image_caption='다시 자신의 자리로 돌아와 오늘의 하루를 살아가는 시간.' %}
 
 <section id="return"><div class="section-inner">
 <p class="essay-step">Prologue · Return</p><h2 class="section-title">여름이 지나가고, 우리는 다시 각자의 자리로 돌아갑니다</h2>
