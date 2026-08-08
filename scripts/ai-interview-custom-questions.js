@@ -5,6 +5,7 @@
   const practiceMode = form.querySelector('[data-aii-mode]');
   const questionCount = form.querySelector('select[name="question_count"]');
   const interviewType = form.querySelector('[data-aii-type-select]');
+  const speakQuestionButton = document.querySelector('[data-aii-speak-question]');
   if (!practiceMode || !questionCount || !interviewType) return;
 
   const sourceLabel = document.createElement('label');
@@ -52,6 +53,7 @@
   document.head.appendChild(style);
 
   let customQuestionsForNextRequest = [];
+  let restoreInterviewType = '';
   const originalFetch = window.fetch.bind(window);
 
   const parseCustomQuestions = () => {
@@ -60,6 +62,18 @@
       .map((row) => row.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, '').trim())
       .filter(Boolean);
     return Array.from(new Set(rows)).slice(0, 10);
+  };
+
+  const ensureQuestionCountOption = (count) => {
+    const value = String(Math.min(Math.max(Number(count) || 1, 1), 10));
+    if (!Array.from(questionCount.options).some((option) => option.value === value)) {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = `${value}개`;
+      option.setAttribute('data-aii-custom-count-option', 'true');
+      questionCount.appendChild(option);
+    }
+    questionCount.value = value;
   };
 
   const syncCustomMode = () => {
@@ -71,13 +85,13 @@
     customTextarea.required = isCustom;
     if (isCustom) {
       const rows = parseCustomQuestions();
-      if (rows.length) questionCount.value = String(rows.length);
+      if (rows.length) ensureQuestionCountOption(rows.length);
     }
   };
 
   customTextarea.addEventListener('input', () => {
     const rows = parseCustomQuestions();
-    if (rows.length) questionCount.value = String(rows.length);
+    if (rows.length) ensureQuestionCountOption(rows.length);
     statusNode.textContent = rows.length
       ? `${rows.length}개 질문이 준비되었습니다. 입력한 문장을 그대로 사용합니다.`
       : '입력한 질문 문장을 그대로 사용하고, 답변은 기존 AI 피드백으로 분석합니다.';
@@ -99,7 +113,7 @@
     }
 
     customQuestionsForNextRequest = rows;
-    questionCount.value = String(customQuestionsForNextRequest.length);
+    ensureQuestionCountOption(rows.length);
 
     try {
       Object.keys(localStorage).forEach((key) => {
@@ -107,6 +121,25 @@
       });
     } catch (_error) {
       // Storage is optional.
+    }
+
+    // The original interview code applies extra length/depth filters to some
+    // interview types. Temporarily use an unfiltered type only while the
+    // question array is accepted, then restore the user's actual type before
+    // they begin answering. This keeps custom questions exactly as entered.
+    restoreInterviewType = String(interviewType.value || '').trim();
+    if (restoreInterviewType && restoreInterviewType !== '직무면접') {
+      interviewType.value = '직무면접';
+      window.setTimeout(() => {
+        if (!restoreInterviewType) return;
+        const originalType = restoreInterviewType;
+        restoreInterviewType = '';
+        interviewType.value = originalType;
+        interviewType.dispatchEvent(new Event('change', { bubbles: true }));
+        if (speakQuestionButton && !speakQuestionButton.disabled) {
+          speakQuestionButton.click();
+        }
+      }, 0);
     }
   }, true);
 
