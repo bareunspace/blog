@@ -5,8 +5,10 @@
   const practiceMode = form.querySelector('[data-aii-mode]');
   const questionCount = form.querySelector('select[name="question_count"]');
   const interviewType = form.querySelector('[data-aii-type-select]');
-  const speakQuestionButton = document.querySelector('[data-aii-speak-question]');
-  if (!practiceMode || !questionCount || !interviewType) return;
+  const questionNode = document.querySelector('[data-aii-question]');
+  const progressNode = document.querySelector('[data-aii-progress]');
+  const resultListNode = document.querySelector('[data-aii-result-list]');
+  if (!practiceMode || !questionCount || !interviewType || !questionNode || !progressNode) return;
 
   const sourceLabel = document.createElement('label');
   sourceLabel.className = 'aii-custom-source';
@@ -28,11 +30,8 @@
   `;
 
   const firstLabel = form.querySelector('label');
-  if (firstLabel && firstLabel.nextSibling) {
-    form.insertBefore(sourceLabel, firstLabel.nextSibling);
-  } else {
-    form.prepend(sourceLabel);
-  }
+  if (firstLabel && firstLabel.nextSibling) form.insertBefore(sourceLabel, firstLabel.nextSibling);
+  else form.prepend(sourceLabel);
 
   const actionRow = form.querySelector('.aii-actions');
   form.insertBefore(customLabel, actionRow || null);
@@ -52,17 +51,17 @@
   `;
   document.head.appendChild(style);
 
-  let customQuestionsForNextRequest = [];
-  let restoreInterviewType = '';
+  let activeCustomQuestions = [];
+  let customModeActive = false;
   const originalFetch = window.fetch.bind(window);
+  const NativeUtterance = window.SpeechSynthesisUtterance;
 
-  const parseCustomQuestions = () => {
-    const rows = String(customTextarea.value || '')
+  const parseCustomQuestions = () => Array.from(new Set(
+    String(customTextarea.value || '')
       .split(/\n+/)
       .map((row) => row.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, '').trim())
-      .filter(Boolean);
-    return Array.from(new Set(rows)).slice(0, 10);
-  };
+      .filter(Boolean)
+  )).slice(0, 10);
 
   const ensureQuestionCountOption = (count) => {
     const value = String(Math.min(Math.max(Number(count) || 1, 1), 10));
@@ -74,6 +73,38 @@
       questionCount.appendChild(option);
     }
     questionCount.value = value;
+  };
+
+  const getCurrentIndex = () => {
+    const match = String(progressNode.textContent || '').match(/질문\s*(\d+)\s*\/\s*(\d+)/);
+    return match ? Math.max(0, Number(match[1]) - 1) : 0;
+  };
+
+  const paintCustomQuestion = () => {
+    if (!customModeActive || !activeCustomQuestions.length) return;
+    const index = getCurrentIndex();
+    const custom = activeCustomQuestions[index];
+    if (custom && questionNode.textContent !== custom) questionNode.textContent = custom;
+  };
+
+  const paintResultQuestions = () => {
+    if (!customModeActive || !resultListNode || !activeCustomQuestions.length) return;
+    const rows = resultListNode.querySelectorAll('li');
+    rows.forEach((li, index) => {
+      const custom = activeCustomQuestions[index];
+      if (!custom) return;
+      const text = String(li.textContent || '');
+      const answerPart = text.includes(' / A.') ? text.slice(text.indexOf(' / A.')) : '';
+      li.textContent = `Q${index + 1}. ${custom}${answerPart}`;
+    });
+  };
+
+  const makeInternalQuestions = (count, type) => {
+    const isEnglish = type === '영어면접';
+    return Array.from({ length: count }, (_, index) => isEnglish
+      ? `Custom interview question ${index + 1}. Please explain your answer with one concrete example, your action, and the result.`
+      : `사용자 직접 입력 질문 ${index + 1}입니다. 구체적인 경험이나 사례를 바탕으로 본인의 행동과 결과까지 함께 설명해 주세요.`
+    );
   };
 
   const syncCustomMode = () => {
@@ -101,7 +132,11 @@
   practiceMode.addEventListener('change', syncCustomMode);
 
   form.addEventListener('submit', (event) => {
-    if (sourceSelect.value !== 'custom' || String(practiceMode.value || '') !== 'interview') return;
+    if (sourceSelect.value !== 'custom' || String(practiceMode.value || '') !== 'interview') {
+      customModeActive = false;
+      activeCustomQuestions = [];
+      return;
+    }
 
     const rows = parseCustomQuestions();
     if (!rows.length) {
@@ -112,57 +147,68 @@
       return;
     }
 
-    customQuestionsForNextRequest = rows;
+    activeCustomQuestions = rows;
+    customModeActive = true;
     ensureQuestionCountOption(rows.length);
 
     try {
       Object.keys(localStorage).forEach((key) => {
         if (key.startsWith('aii:question-cache:')) localStorage.removeItem(key);
       });
-    } catch (_error) {
-      // Storage is optional.
-    }
+    } catch (_error) {}
 
-    // The original interview code applies extra length/depth filters to some
-    // interview types. Temporarily use an unfiltered type only while the
-    // question array is accepted, then restore the user's actual type before
-    // they begin answering. This keeps custom questions exactly as entered.
-    restoreInterviewType = String(interviewType.value || '').trim();
-    if (restoreInterviewType && restoreInterviewType !== '직무면접') {
-      interviewType.value = '직무면접';
-      window.setTimeout(() => {
-        if (!restoreInterviewType) return;
-        const originalType = restoreInterviewType;
-        restoreInterviewType = '';
-        interviewType.value = originalType;
-        interviewType.dispatchEvent(new Event('change', { bubbles: true }));
-        if (speakQuestionButton && !speakQuestionButton.disabled) {
-          speakQuestionButton.click();
-        }
-      }, 0);
-    }
+    window.setTimeout(paintCustomQuestion, 0);
+    window.setTimeout(paintCustomQuestion, 150);
+    window.setTimeout(paintCustomQuestion, 500);
   }, true);
+
+  const observer = new MutationObserver(() => {
+    paintCustomQuestion();
+    paintResultQuestions();
+  });
+  observer.observe(progressNode, { childList: true, subtree: true, characterData: true });
+  observer.observe(questionNode, { childList: true, subtree: true, characterData: true });
+  if (resultListNode) observer.observe(resultListNode, { childList: true, subtree: true, characterData: true });
+
+  if (NativeUtterance) {
+    window.SpeechSynthesisUtterance = function(text) {
+      if (customModeActive && activeCustomQuestions.length) {
+        const custom = activeCustomQuestions[getCurrentIndex()];
+        return new NativeUtterance(custom || text);
+      }
+      return new NativeUtterance(text);
+    };
+    window.SpeechSynthesisUtterance.prototype = NativeUtterance.prototype;
+  }
 
   window.fetch = async (input, init) => {
     try {
       const url = typeof input === 'string' ? input : String(input?.url || '');
       const body = init?.body ? JSON.parse(String(init.body)) : null;
-      if (
-        customQuestionsForNextRequest.length > 0 &&
-        url.includes('/functions/v1/ai-interview-feedback') &&
-        body?.action === 'generate_questions'
-      ) {
-        const requested = Math.min(Math.max(Number(body.questionCount) || customQuestionsForNextRequest.length, 1), 10);
-        const questions = customQuestionsForNextRequest.slice(0, requested);
-        customQuestionsForNextRequest = [];
-        return new Response(JSON.stringify({ questions, source: 'ai' }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' }
-        });
+
+      if (customModeActive && activeCustomQuestions.length && url.includes('/functions/v1/ai-interview-feedback')) {
+        if (body?.action === 'generate_questions') {
+          const questions = makeInternalQuestions(activeCustomQuestions.length, String(interviewType.value || ''));
+          return new Response(JSON.stringify({ questions, source: 'ai' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+
+        if (!body?.action && Array.isArray(body?.qa)) {
+          body.qa = body.qa.map((item, index) => ({
+            ...item,
+            question: activeCustomQuestions[index] || item.question
+          }));
+          init = { ...init, body: JSON.stringify(body) };
+        }
+
+        if (body?.action === 'question_feedback') {
+          body.question = activeCustomQuestions[getCurrentIndex()] || body.question;
+          init = { ...init, body: JSON.stringify(body) };
+        }
       }
-    } catch (_error) {
-      // Fall through to the original request.
-    }
+    } catch (_error) {}
     return originalFetch(input, init);
   };
 
