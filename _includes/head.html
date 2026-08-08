@@ -1,6 +1,7 @@
-{% assign seo_title = page.title | default: site.title %}
-{% assign seo_description = page.description | default: site.description %}
-{% assign seo_keywords = page.keywords %}
+{% assign seo_override = site.data.seo_posts[page.url] %}
+{% assign seo_title = seo_override.title | default: page.title | default: site.title %}
+{% assign seo_description = seo_override.description | default: page.description | default: site.description %}
+{% assign seo_keywords = seo_override.keywords | default: page.keywords %}
 {% if page.page_id == 'interview' %}
   {% assign seo_title = '부천 면접준비·면접연습 가이드 | 1분 자기소개·답변·화상면접 | 바른자리' %}
   {% assign seo_description = '부천 신중동에서 면접을 준비할 때 필요한 1분 자기소개, 답변 말하기, 녹화 점검, 화상면접 장소와 실전 리허설 가이드를 모았습니다. 바른자리는 면접 코칭이 아닌 프라이빗 연습 공간입니다.' %}
@@ -105,7 +106,7 @@
 </script>
 {% if site.meta_pixel_id and site.meta_pixel_id != '' %}
 <script>
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=l.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '{{ site.meta_pixel_id }}');
   fbq('track', 'PageView');
 </script>
