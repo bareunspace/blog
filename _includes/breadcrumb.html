@@ -23,6 +23,8 @@
             <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "프라이빗시간" %}
             <a href="{{ '/private/' | relative_url }}">{{ page.category }}</a>
+          {% elsif page.category == "시간·공간" %}
+            <a href="{{ '/time-space/' | relative_url }}">{{ page.category }}</a>
           {% else %}
             <span>{{ page.category }}</span>
           {% endif %}
@@ -52,6 +54,11 @@
         <a href="{{ '/blog.html' | relative_url }}">Blog</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">프라이빗시간</span>
+      {% elsif page.page_id == "time_space" %}
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+        <span aria-current="page">시간·공간</span>
       {% else %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">{{ page.title }}</span>
