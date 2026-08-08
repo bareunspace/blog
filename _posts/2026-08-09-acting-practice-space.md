@@ -16,11 +16,11 @@ tags:
 canonical: https://bareunjari.com/posts/acting-practice-space/
 permalink: /posts/acting-practice-space/
 date: 2026-08-09 09:00:00 +0900
-og_image: https://bareunjari.com/images/01.webp
-og_image_alt: 독백과 대사 연습에 활용할 수 있는 바른자리 신중동 실제 공간
+og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
+og_image_alt: 바른자리 블로그 기본 대표 이미지
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/01.webp
+preload_image: images/bareunjari-blog-default.webp
 css_version: 20260809-1
 script_version: 20260711-4
 ---
@@ -42,8 +42,8 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/01.webp'
-    image_alt='독백과 대사 연습에 활용할 수 있는 바른자리 신중동 실제 공간'
+    image_src='/images/bareunjari-blog-default.webp'
+    image_alt='바른자리 블로그 기본 대표 이미지'
     image_width='1536'
     image_height='1024'
     image_loading='eager'
