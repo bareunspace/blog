@@ -124,6 +124,8 @@ script_version: 20260716-4
                   {% assign category_url = '/meeting/' %}
                 {% when '프라이빗시간' %}
                   {% assign category_url = '/private/' %}
+                {% when '시간·공간' %}
+                  {% assign category_url = '/time-space/' %}
               {% endcase %}
               <section class="blog-guide-category-group" data-category="{{ category_name }}">
                 <div class="blog-guide-category-header">
