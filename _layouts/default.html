@@ -34,10 +34,6 @@
     </script>
   {% endif %}
 
-  {% if page.page_id == "ai_interview" %}
-    <script src="{{ '/scripts/ai-interview-custom-questions.js' | relative_url }}?v=20260808-4"></script>
-  {% endif %}
-
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
       {% assign ai_demo_cta_label = 'AI 모의면접 데모' %}
