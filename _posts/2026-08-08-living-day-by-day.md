@@ -13,7 +13,7 @@ tags:
   - 시간·공간
 canonical: https://bareunjari.com/posts/living-day-by-day/
 permalink: /posts/living-day-by-day/
-date: 2026-08-08 15:00:00 +0900
+date: 2026-08-08 14:00:00 +0900
 og_image: https://bareunjari.com/images/bareunjari-day-by-day.webp
 og_image_alt: 하루하루를 살아내며 자신의 일상으로 돌아가는 시간을 표현한 바른자리 이미지
 preload_image: images/bareunjari-day-by-day.webp
