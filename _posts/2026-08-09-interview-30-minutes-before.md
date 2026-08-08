@@ -15,7 +15,7 @@ tags:
   - 취업준비
 canonical: https://bareunjari.com/posts/interview-30-minutes-before/
 permalink: /posts/interview-30-minutes-before/
-date: 2026-08-09 09:00:00 +0900
+date: 2026-08-09 07:00:00 +0900
 og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
 og_image_alt: 노트북과 체크리스트가 놓인 면접 준비 장면
 og_image_width: 1536
