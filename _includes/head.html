@@ -1,5 +1,23 @@
 {% assign seo_title = page.title | default: site.title %}
 {% assign seo_description = page.description | default: site.description %}
+{% assign seo_keywords = page.keywords %}
+{% if page.page_id == 'interview' %}
+  {% assign seo_title = '부천 면접준비·면접연습 가이드 | 1분 자기소개·답변·화상면접 | 바른자리' %}
+  {% assign seo_description = '부천 신중동에서 면접을 준비할 때 필요한 1분 자기소개, 답변 말하기, 녹화 점검, 화상면접 장소와 실전 리허설 가이드를 모았습니다. 바른자리는 면접 코칭이 아닌 프라이빗 연습 공간입니다.' %}
+  {% assign seo_keywords = '부천면접준비,부천면접연습,신중동면접연습,면접연습공간,면접답변연습,1분자기소개,화상면접준비,화상면접장소,면접리허설' %}
+{% elsif page.page_id == 'meeting' %}
+  {% assign seo_title = '부천 미팅룸·회의실·시간제 업무공간 | 프리랜서·1인사업자 | 바른자리' %}
+  {% assign seo_description = '부천 신중동역에서 고객 미팅, 상담, 화상회의, 프리랜서·1인사업자의 집중 업무가 필요할 때 이용하는 프라이빗 시간제 업무공간. 필요한 시간만 예약하고 현재 안내 요금은 1시간 10,000원입니다.' %}
+  {% assign seo_keywords = '부천미팅룸,신중동미팅룸,부천회의실,신중동회의실,부천업무공간,시간제사무실,프리랜서업무공간,1인사업자미팅,부천화상회의,부천상담공간' %}
+{% elsif page.page_id == 'study' %}
+  {% assign seo_title = '부천 스터디룸·소모임 공간 | 발표·토론·팀프로젝트 연습 | 바른자리' %}
+  {% assign seo_description = '부천 신중동에서 혼자 공부하거나 그룹 스터디, 발표·토론·팀프로젝트, 영어·면접 말하기 연습, 소모임을 준비할 때 활용할 수 있는 프라이빗 스터디룸 가이드입니다.' %}
+  {% assign seo_keywords = '부천스터디룸,신중동스터디룸,부천소모임공간,부천그룹스터디,발표연습공간,토론공간,팀프로젝트공간,영어말하기연습,면접연습공간,부천공간대여' %}
+{% elsif page.page_id == 'private' %}
+  {% assign seo_title = '부천 프라이빗 공간 | 혼자 있는 시간·조용한 실내 데이트 | 바른자리' %}
+  {% assign seo_description = '부천 신중동에서 혼자 회복하고 생각을 정리하거나 둘만의 대화와 조용한 실내 데이트가 필요할 때 이용하는 프라이빗 시간제 공간 가이드입니다. 필요한 개인시간을 예약하세요.' %}
+  {% assign seo_keywords = '부천프라이빗공간,신중동프라이빗공간,부천개인공간,혼자있는공간,나만의시간,부천실내데이트,신중동데이트,조용한데이트,개인시간,프라이버시' %}
+{% endif %}
 {% assign canonical_url = page.canonical | default: page.url | absolute_url %}
 {% assign seo_image = page.og_image | default: site.og_image %}
 {% assign seo_image_alt = page.og_image_alt | default: seo_title %}
@@ -9,8 +27,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{{ seo_title }}</title>
 <meta name="description" content="{{ seo_description }}" />
-{% if page.keywords %}
-<meta name="keywords" content="{{ page.keywords }}" />
+{% if seo_keywords %}
+<meta name="keywords" content="{{ seo_keywords }}" />
 {% endif %}
 <meta name="robots" content="{{ seo_robots }}" />
 <meta name="googlebot" content="{{ seo_robots }}" />
