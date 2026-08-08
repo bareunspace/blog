@@ -15,11 +15,11 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-to-let-go/
 permalink: /posts/one-hour-to-let-go/
 date: 2026-08-08 12:30:00 +0900
-og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
+og_image: https://bareunjari.com/images/bareunjari-let-go.webp
 og_image_alt: 시간을 비우고 마음을 비우며 나를 내려놓는 개인시간을 표현한 바른자리 이미지
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/bareunjari-blog-default.webp
+preload_image: images/bareunjari-let-go.webp
 css_version: 20260808-2
 script_version: 20260711-4
 ---
@@ -67,7 +67,7 @@ script_version: 20260711-4
   </div></section>
 
   {% include breadcrumb.html %}
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/bareunjari-blog-default.webp' image_alt='시간을 비우고 마음을 비우며 나를 내려놓는 개인시간을 표현한 바른자리 이미지' image_width='1536' image_height='1024' image_loading='eager' image_caption='무언가를 더 채우지 않아도 괜찮은 시간. 잠시 내려놓는 것만으로도 충분할 수 있습니다.' %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/bareunjari-let-go.webp' image_alt='시간을 비우고 마음을 비우며 나를 내려놓는 개인시간을 표현한 바른자리 이미지' image_width='1536' image_height='1024' image_loading='eager' image_caption='무언가를 더 채우지 않아도 괜찮은 시간. 잠시 내려놓는 것만으로도 충분할 수 있습니다.' %}
 
   <section id="too-full"><div class="section-inner">
     <p class="letting-step">Prologue · Too Full</p><h2 class="section-title">우리는 비어 있는 시간을 그냥 두지 못합니다</h2><p class="section-desc">하루 종일 메시지가 옵니다. 해야 할 일은 줄지 않고, 새로운 정보는 계속 들어옵니다.</p>
