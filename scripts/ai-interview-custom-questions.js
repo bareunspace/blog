@@ -23,7 +23,7 @@
   customLabel.innerHTML = `
     <span>내 질문 <small>(한 줄에 하나, 최대 10개)</small></span>
     <textarea data-aii-custom-questions rows="6" placeholder="예: 자기소개 해주세요.\n왜 이 회사에 지원했나요?\n갈등을 해결한 경험을 말해주세요."></textarea>
-    <small data-aii-custom-status>입력한 질문으로 그대로 연습하고, 답변은 기존 AI 피드백으로 분석합니다.</small>
+    <small data-aii-custom-status>입력한 질문 문장을 그대로 사용하고, 답변은 기존 AI 피드백으로 분석합니다.</small>
   `;
 
   const firstLabel = form.querySelector('label');
@@ -62,22 +62,6 @@
     return Array.from(new Set(rows)).slice(0, 10);
   };
 
-  const adaptQuestionForExistingFlow = (question, type) => {
-    const value = String(question || '').trim();
-    if (!value) return '';
-    if (type === '영어면접') {
-      const hasDepth = /(tell me about|describe|explain|how would|what would|include|example|why|follow-up|support|process|result|action)/i.test(value);
-      if (value.length >= 52 && hasDepth) return value;
-      return `${value} Please explain your answer with one concrete example, your action, and the result.`;
-    }
-    if (type === '승무원면접' || type === '일반 모의면접') {
-      const hasDepth = /(경험|사례|구체|설명|이유|결과|성과|어떻게|행동|기준|과정|영향)/.test(value);
-      if (value.length >= 32 && hasDepth) return value;
-      return `${value} 구체적인 경험이나 사례를 바탕으로 본인의 행동과 결과까지 함께 설명해 주세요.`;
-    }
-    return value;
-  };
-
   const syncCustomMode = () => {
     const isInterview = String(practiceMode.value || '') === 'interview';
     sourceLabel.hidden = !isInterview;
@@ -95,8 +79,8 @@
     const rows = parseCustomQuestions();
     if (rows.length) questionCount.value = String(rows.length);
     statusNode.textContent = rows.length
-      ? `${rows.length}개 질문이 준비되었습니다. 최대 10개까지 사용할 수 있습니다.`
-      : '입력한 질문으로 그대로 연습하고, 답변은 기존 AI 피드백으로 분석합니다.';
+      ? `${rows.length}개 질문이 준비되었습니다. 입력한 문장을 그대로 사용합니다.`
+      : '입력한 질문 문장을 그대로 사용하고, 답변은 기존 AI 피드백으로 분석합니다.';
   });
 
   sourceSelect.addEventListener('change', syncCustomMode);
@@ -114,8 +98,7 @@
       return;
     }
 
-    const type = String(interviewType.value || '').trim();
-    customQuestionsForNextRequest = rows.map((q) => adaptQuestionForExistingFlow(q, type)).filter(Boolean);
+    customQuestionsForNextRequest = rows;
     questionCount.value = String(customQuestionsForNextRequest.length);
 
     try {
