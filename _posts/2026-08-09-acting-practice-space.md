@@ -15,7 +15,7 @@ tags:
   - 리허설
 canonical: https://bareunjari.com/posts/acting-practice-space/
 permalink: /posts/acting-practice-space/
-date: 2026-08-09 09:00:00 +0900
+date: 2026-08-08 20:55:00 +0900
 og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
 og_image_alt: 바른자리 블로그 기본 대표 이미지
 og_image_width: 1536
