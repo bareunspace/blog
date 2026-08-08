@@ -9,6 +9,8 @@ home:
   - label: 블로그
     href: "blog.html"
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -32,6 +34,8 @@ about:
   - label: 블로그
     href: "blog.html"
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -56,6 +60,8 @@ blog:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
         current: true
@@ -81,6 +87,8 @@ interview:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -108,6 +116,8 @@ ai_interview:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -135,6 +145,8 @@ meeting:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -160,6 +172,8 @@ study:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -178,6 +192,8 @@ private:
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
       - label: 면접
@@ -199,11 +215,39 @@ private:
     href: "#space-fit"
   - label: 공간 예약
     href: "#booking"
+time_space:
+  - label: 블로그
+    href: "blog.html"
+    current: true
+    children:
+      - label: 시간·공간
+        href: "time-space/"
+        current: true
+      - label: 전체 보기
+        href: "blog.html"
+      - label: 면접
+        href: "interview/"
+      - label: 미팅·상담
+        href: "meeting/"
+      - label: 스터디
+        href: "study/"
+      - label: 프라이빗시간
+        href: "private/"
+  - label: 바른자리의 생각
+    href: "#philosophy"
+  - label: 새로운 시간
+    href: "#whats-new"
+  - label: 저널
+    href: "#journal"
+  - label: 시간 예약
+    href: "#booking"
 post:
   - label: 블로그
     href: "blog.html"
     current: true
     children:
+      - label: 시간·공간
+        href: "time-space/"
       - label: 전체 보기
         href: "blog.html"
         current: true
