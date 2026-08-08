@@ -1,9 +1,11 @@
 title: 바른자리
+description: "부천 신중동역 1분, 면접·스터디·미팅·상담·집중 업무와 개인시간을 위한 1~6인 프라이빗 공간대여."
 url: "https://bareunjari.com"
 baseurl: ""
-asset_version: 20260807-1
+asset_version: 20260808-2
 language: ko-KR
 og_locale: ko_KR
+og_image: https://bareunjari.com/images/main.webp
 permalink: pretty
 markdown: kramdown
 ga_measurement_id: G-ECYS2XKQ4H
@@ -20,8 +22,8 @@ defaults:
       type: "pages"
     values:
       layout: default
-      og_image: https://bareunjari.com/images/main.jpeg
-      og_image_alt: 바른자리 대표 이미지
+      og_image: https://bareunjari.com/images/main.webp
+      og_image_alt: 부천 신중동 바른자리 프라이빗 공간
       preload_image: images/main.webp
       css_version: 20260710-3
       script_version: 20260711-3
@@ -30,9 +32,9 @@ defaults:
       type: "posts"
     values:
       layout: default
-      og_image: https://bareunjari.com/images/main.jpeg
-      og_image_alt: 바른자리 대표 이미지
-      preload_image: images/main.webp
+      og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
+      og_image_alt: 바른자리 개인시간과 공간 활용 가이드
+      preload_image: images/bareunjari-blog-default.webp
       css_version: 20260710-3
       script_version: 20260711-3
 exclude:
