@@ -27,11 +27,11 @@ canonical: https://bareunjari.com/posts/focus-workspace-reset/
 permalink: /posts/focus-workspace-reset/
 date: 2026-08-08 11:00:00 +0900
 editor_pick: true
-og_image: https://bareunjari.com/images/10.webp
+og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
 og_image_alt: 부천 신중동 바른자리에서 두 시간 집중 업무를 위한 프라이빗 업무공간
-og_image_width: 1600
-og_image_height: 901
-preload_image: images/10.webp
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/bareunjari-blog-default.webp
 css_version: 20260809-1
 script_version: 20260711-4
 ---
@@ -53,10 +53,10 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/10.webp'
+    image_src='/images/bareunjari-blog-default.webp'
     image_alt='부천 신중동 바른자리의 실제 공간을 활용한 집중 업무용 시간제 프라이빗 공간'
-    image_width='1600'
-    image_height='901'
+    image_width='1536'
+    image_height='1024'
     image_loading='eager'
     image_caption='집중이 안 되는 날에는 더 오래 앉아 있기보다, 필요한 시간만 따로 떼어 쓰는 방법도 있습니다.'
   %}
