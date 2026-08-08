@@ -1,73 +1,15 @@
 {% assign seo_override = site.data.seo_posts[page.url] %}
 {% assign time_space_override = site.data.seo_time_space[page.url] %}
-{% assign seo_title = time_space_override.title | default: seo_override.title | default: page.title | default: site.title %}
-{% assign seo_description = time_space_override.description | default: seo_override.description | default: page.description | default: site.description %}
-{% assign seo_keywords = time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
-{% if page.page_id == 'interview' %}
-  {% assign seo_title = '부천 면접준비·면접연습 가이드 | 1분 자기소개·답변·화상면접 | 바른자리' %}
-  {% assign seo_description = '부천 신중동에서 면접을 준비할 때 필요한 1분 자기소개, 답변 말하기, 녹화 점검, 화상면접 장소와 실전 리허설 가이드를 모았습니다. 바른자리는 면접 코칭이 아닌 프라이빗 연습 공간입니다.' %}
-  {% assign seo_keywords = '부천면접준비,부천면접연습,신중동면접연습,면접연습공간,면접답변연습,1분자기소개,화상면접준비,화상면접장소,면접리허설' %}
-{% elsif page.page_id == 'meeting' %}
-  {% assign seo_title = '부천 미팅룸·회의실·시간제 업무공간 | 프리랜서·1인사업자 | 바른자리' %}
-  {% assign seo_description = '부천 신중동역에서 고객 미팅, 상담, 화상회의, 프리랜서·1인사업자의 집중 업무가 필요할 때 이용하는 프라이빗 시간제 업무공간. 필요한 시간만 예약하고 현재 안내 요금은 1시간 10,000원입니다.' %}
-  {% assign seo_keywords = '부천미팅룸,신중동미팅룸,부천회의실,신중동회의실,부천업무공간,시간제사무실,프리랜서업무공간,1인사업자미팅,부천화상회의,부천상담공간' %}
-{% elsif page.page_id == 'study' %}
-  {% assign seo_title = '부천 스터디룸·소모임 공간 | 발표·토론·팀프로젝트 연습 | 바른자리' %}
-  {% assign seo_description = '부천 신중동에서 혼자 공부하거나 그룹 스터디, 발표·토론·팀프로젝트, 영어·면접 말하기 연습, 소모임을 준비할 때 활용할 수 있는 프라이빗 스터디룸 가이드입니다.' %}
-  {% assign seo_keywords = '부천스터디룸,신중동스터디룸,부천소모임공간,부천그룹스터디,발표연습공간,토론공간,팀프로젝트공간,영어말하기연습,면접연습공간,부천공간대여' %}
-{% elsif page.page_id == 'private' %}
-  {% assign seo_title = '부천 프라이빗 공간 | 혼자 있는 시간·조용한 실내 데이트 | 바른자리' %}
-  {% assign seo_description = '부천 신중동에서 혼자 회복하고 생각을 정리하거나 둘만의 대화와 조용한 실내 데이트가 필요할 때 이용하는 프라이빗 시간제 공간 가이드입니다. 필요한 개인시간을 예약하세요.' %}
-  {% assign seo_keywords = '부천프라이빗공간,신중동프라이빗공간,부천개인공간,혼자있는공간,나만의시간,부천실내데이트,신중동데이트,조용한데이트,개인시간,프라이버시' %}
-{% endif %}
-{% assign canonical_url = page.canonical | default: page.url | absolute_url %}
-{% assign seo_image = page.og_image | default: site.og_image %}
-{% assign seo_image_alt = page.og_image_alt | default: seo_title %}
-{% assign seo_robots = page.robots | default: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' %}
-{% assign og_ext = seo_image | split: '.' | last | downcase %}
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{{ seo_title }}</title>
-<meta name="description" content="{{ seo_description }}" />
-{% if seo_keywords %}<meta name="keywords" content="{{ seo_keywords }}" />{% endif %}
-<meta name="robots" content="{{ seo_robots }}" />
-<meta name="googlebot" content="{{ seo_robots }}" />
-{% if page.theme_color %}<meta name="theme-color" content="{{ page.theme_color }}" />{% endif %}
-<link rel="canonical" href="{{ canonical_url }}" />
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-{% if page.preload_image %}{% if page.preload_image contains '://' %}<link rel="preload" as="image" href="{{ page.preload_image }}" fetchpriority="high" />{% else %}<link rel="preload" as="image" href="{{ '/' | append: page.preload_image | relative_url }}" fetchpriority="high" />{% endif %}{% endif %}
-{% if page.collection == 'posts' %}<meta property="og:type" content="article" />{% else %}<meta property="og:type" content="website" />{% endif %}
-<meta property="og:site_name" content="{{ site.title }}" />
-<meta property="og:locale" content="{{ site.og_locale | default: 'ko_KR' }}" />
-<meta property="og:title" content="{{ page.og_title | default: seo_title }}" />
-<meta property="og:description" content="{{ page.og_description | default: seo_description }}" />
-<meta property="og:url" content="{{ canonical_url }}" />
-<meta property="og:image" content="{{ seo_image }}" />
-<meta property="og:image:secure_url" content="{{ seo_image }}" />
-{% if og_ext == 'webp' %}<meta property="og:image:type" content="image/webp" />{% elsif og_ext == 'png' %}<meta property="og:image:type" content="image/png" />{% else %}<meta property="og:image:type" content="image/jpeg" />{% endif %}
-<meta property="og:image:width" content="{{ page.og_image_width | default: 1200 }}" />
-<meta property="og:image:height" content="{{ page.og_image_height | default: 630 }}" />
-<meta property="og:image:alt" content="{{ seo_image_alt }}" />
-{% if page.collection == 'posts' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" /><meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" />{% if page.category %}<meta property="article:section" content="{{ page.category }}" />{% endif %}{% endif %}
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ page.twitter_title | default: seo_title }}" />
-<meta name="twitter:description" content="{{ page.twitter_description | default: seo_description }}" />
-<meta name="twitter:url" content="{{ canonical_url }}" />
-<meta name="twitter:image" content="{{ seo_image }}" />
-<meta name="twitter:image:alt" content="{{ seo_image_alt }}" />
-{% if page.naver_site_verification %}<meta name="naver-site-verification" content="{{ page.naver_site_verification }}" />{% endif %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}');</script>
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","{{ site.clarity_id | default: 'xfmtyp5w3b' }}");</script>
-{% if site.meta_pixel_id and site.meta_pixel_id != '' %}<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{{ site.meta_pixel_id }}');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ site.meta_pixel_id }}&ev=PageView&noscript=1" alt="" /></noscript>{% endif %}
-{% if page.page_id == 'home' %}{% include jsonld-home.html %}{% elsif page.page_id == 'about' %}{% include jsonld-about.html %}{% elsif page.collection == 'posts' %}{% include jsonld-post.html %}{% else %}{% include jsonld-page.html %}{% endif %}
-{% include jsonld-breadcrumb.html %}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="{{ '/styles/main.css' | relative_url }}?v={{ site.asset_version | default: page.css_version | default: '20260720-1' }}" />
+{% assign page_override = site.data.seo_pages[page.url] %}
+{% assign seo_title = page_override.title | default: time_space_override.title | default: seo_override.title | default: page.title | default: site.title %}
+{% assign seo_description = page_override.description | default: time_space_override.description | default: seo_override.description | default: page.description | default: site.description %}
+{% assign seo_keywords = page_override.keywords | default: time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
+{% if page.page_id == 'interview' %}{% assign seo_title = '부천 면접준비·면접연습 가이드 | 1분 자기소개·답변·화상면접 | 바른자리' %}{% assign seo_description = '부천 신중동에서 면접을 준비할 때 필요한 1분 자기소개, 답변 말하기, 녹화 점검, 화상면접 장소와 실전 리허설 가이드를 모았습니다. 바른자리는 면접 코칭이 아닌 프라이빗 연습 공간입니다.' %}{% assign seo_keywords = '부천면접준비,부천면접연습,신중동면접연습,면접연습공간,면접답변연습,1분자기소개,화상면접준비,화상면접장소,면접리허설' %}{% elsif page.page_id == 'meeting' %}{% assign seo_title = '부천 미팅룸·회의실·시간제 업무공간 | 프리랜서·1인사업자 | 바른자리' %}{% assign seo_description = '부천 신중동역에서 고객 미팅, 상담, 화상회의, 프리랜서·1인사업자의 집중 업무가 필요할 때 이용하는 프라이빗 시간제 업무공간. 필요한 시간만 예약하고 현재 안내 요금은 1시간 10,000원입니다.' %}{% assign seo_keywords = '부천미팅룸,신중동미팅룸,부천회의실,신중동회의실,부천업무공간,시간제사무실,프리랜서업무공간,1인사업자미팅,부천화상회의,부천상담공간' %}{% elsif page.page_id == 'study' %}{% assign seo_title = '부천 스터디룸·소모임 공간 | 발표·토론·팀프로젝트 연습 | 바른자리' %}{% assign seo_description = '부천 신중동에서 혼자 공부하거나 그룹 스터디, 발표·토론·팀프로젝트, 영어·면접 말하기 연습, 소모임을 준비할 때 활용할 수 있는 프라이빗 스터디룸 가이드입니다.' %}{% assign seo_keywords = '부천스터디룸,신중동스터디룸,부천소모임공간,부천그룹스터디,발표연습공간,토론공간,팀프로젝트공간,영어말하기연습,면접연습공간,부천공간대여' %}{% elsif page.page_id == 'private' %}{% assign seo_title = '부천 프라이빗 공간 | 혼자 있는 시간·조용한 실내 데이트 | 바른자리' %}{% assign seo_description = '부천 신중동에서 혼자 회복하고 생각을 정리하거나 둘만의 대화와 조용한 실내 데이트가 필요할 때 이용하는 프라이빗 시간제 공간 가이드입니다. 필요한 개인시간을 예약하세요.' %}{% assign seo_keywords = '부천프라이빗공간,신중동프라이빗공간,부천개인공간,혼자있는공간,나만의시간,부천실내데이트,신중동데이트,조용한데이트,개인시간,프라이버시' %}{% endif %}
+{% assign canonical_url = page.canonical | default: page.url | absolute_url %}{% assign seo_image = page.og_image | default: site.og_image %}{% assign seo_image_alt = page.og_image_alt | default: seo_title %}{% assign seo_robots = page.robots | default: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' %}{% assign og_ext = seo_image | split: '.' | last | downcase %}
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>{{ seo_title }}</title><meta name="description" content="{{ seo_description }}" />{% if seo_keywords %}<meta name="keywords" content="{{ seo_keywords }}" />{% endif %}<meta name="robots" content="{{ seo_robots }}" /><meta name="googlebot" content="{{ seo_robots }}" />{% if page.theme_color %}<meta name="theme-color" content="{{ page.theme_color }}" />{% endif %}<link rel="canonical" href="{{ canonical_url }}" />
+<link rel="icon" href="/favicon.ico" sizes="any" /><link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" /><link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" /><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" /><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" /><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />{% if page.preload_image %}{% if page.preload_image contains '://' %}<link rel="preload" as="image" href="{{ page.preload_image }}" fetchpriority="high" />{% else %}<link rel="preload" as="image" href="{{ '/' | append: page.preload_image | relative_url }}" fetchpriority="high" />{% endif %}{% endif %}
+{% if page.collection == 'posts' %}<meta property="og:type" content="article" />{% else %}<meta property="og:type" content="website" />{% endif %}<meta property="og:site_name" content="{{ site.title }}" /><meta property="og:locale" content="{{ site.og_locale | default: 'ko_KR' }}" /><meta property="og:title" content="{{ page.og_title | default: seo_title }}" /><meta property="og:description" content="{{ page.og_description | default: seo_description }}" /><meta property="og:url" content="{{ canonical_url }}" /><meta property="og:image" content="{{ seo_image }}" /><meta property="og:image:secure_url" content="{{ seo_image }}" />{% if og_ext == 'webp' %}<meta property="og:image:type" content="image/webp" />{% elsif og_ext == 'png' %}<meta property="og:image:type" content="image/png" />{% else %}<meta property="og:image:type" content="image/jpeg" />{% endif %}<meta property="og:image:width" content="{{ page.og_image_width | default: 1200 }}" /><meta property="og:image:height" content="{{ page.og_image_height | default: 630 }}" /><meta property="og:image:alt" content="{{ seo_image_alt }}" />{% if page.collection == 'posts' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" /><meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" />{% if page.category %}<meta property="article:section" content="{{ page.category }}" />{% endif %}{% endif %}
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="{{ page.twitter_title | default: seo_title }}" /><meta name="twitter:description" content="{{ page.twitter_description | default: seo_description }}" /><meta name="twitter:url" content="{{ canonical_url }}" /><meta name="twitter:image" content="{{ seo_image }}" /><meta name="twitter:image:alt" content="{{ seo_image_alt }}" />{% if page.naver_site_verification %}<meta name="naver-site-verification" content="{{ page.naver_site_verification }}" />{% endif %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga_measurement_id | default: 'G-ECYS2XKQ4H' }}');</script><script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","{{ site.clarity_id | default: 'xfmtyp5w3b' }}");</script>{% if site.meta_pixel_id and site.meta_pixel_id != '' %}<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{{ site.meta_pixel_id }}');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ site.meta_pixel_id }}&ev=PageView&noscript=1" alt="" /></noscript>{% endif %}
+{% if page.page_id == 'home' %}{% include jsonld-home.html %}{% elsif page.page_id == 'about' %}{% include jsonld-about.html %}{% elsif page.collection == 'posts' %}{% include jsonld-post.html %}{% else %}{% include jsonld-page.html %}{% endif %}{% include jsonld-breadcrumb.html %}
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" /><link rel="stylesheet" href="{{ '/styles/main.css' | relative_url }}?v={{ site.asset_version | default: page.css_version | default: '20260720-1' }}" />
