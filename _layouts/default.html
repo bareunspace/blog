@@ -9,6 +9,31 @@
 
   {{ content }}
 
+  {% if page.page_id == "home" %}
+    <script>
+      (function () {
+        var filters = document.getElementById('homeGuideFilters');
+        if (!filters || filters.querySelector('[data-category="시간·공간"]')) {
+          return;
+        }
+
+        var allButton = filters.querySelector('[data-category="all"]');
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'blog-guide-filter';
+        button.setAttribute('data-category', '시간·공간');
+        button.setAttribute('aria-pressed', 'false');
+        button.textContent = '시간·공간';
+
+        if (allButton && allButton.nextSibling) {
+          filters.insertBefore(button, allButton.nextSibling);
+        } else {
+          filters.appendChild(button);
+        }
+      })();
+    </script>
+  {% endif %}
+
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
       {% assign ai_demo_cta_label = 'AI 모의면접 데모' %}
