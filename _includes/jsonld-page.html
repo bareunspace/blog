@@ -3,6 +3,7 @@
 {% assign schema_description = page.description %}
 {% assign schema_keywords = page.keywords %}
 {% assign schema_about = '바른자리' %}
+{% assign schema_type = page.schema_type | default: 'WebPage' %}
 {% if page.page_id == 'interview' %}
   {% assign schema_name = '부천 면접준비·면접연습 가이드 | 바른자리' %}
   {% assign schema_description = '부천 신중동에서 1분 자기소개, 면접 답변 말하기, 녹화 점검, 화상면접과 실전 리허설을 준비하는 방법을 모은 면접준비 허브입니다.' %}
@@ -23,11 +24,17 @@
   {% assign schema_description = '부천 신중동에서 혼자 회복하고 생각을 정리하거나 둘만의 대화와 조용한 실내 데이트를 위한 개인시간을 보내는 프라이빗 공간 허브입니다.' %}
   {% assign schema_keywords = '부천프라이빗공간, 신중동프라이빗공간, 부천개인공간, 혼자있는공간, 나만의시간, 부천실내데이트, 개인시간, 프라이버시' %}
   {% assign schema_about = '개인시간, 프라이버시, 혼자 있는 시간과 조용한 대화' %}
+{% elsif page.page_id == 'time_space' %}
+  {% assign schema_type = 'CollectionPage' %}
+  {% assign schema_name = '시간·공간 저널 | 개인시간·집중·회복과 목적별 공간 활용 | 바른자리' %}
+  {% assign schema_description = '집중하는 시간, 내려놓는 시간, 다시 시작하는 시간을 다루는 바른자리 저널입니다. 개인시간과 프라이버시, 집중 작업, 면접·스터디·미팅 등 목적별 공간 활용 콘텐츠를 4대 허브와 연결합니다.' %}
+  {% assign schema_keywords = '개인시간,시간공간,프라이버시,집중시간,회복시간,공간활용,면접준비,스터디소모임,미팅업무,부천공간대여' %}
+  {% assign schema_about = '개인시간, 집중, 회복과 목적별 공간 활용' %}
 {% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{{ page.schema_type | default: 'WebPage' }}",
+  "@type": "{{ schema_type }}",
   "@id": {{ page.canonical | append: '#webpage' | jsonify }},
   "url": {{ page.canonical | jsonify }},
   "name": {{ schema_name | jsonify }},
@@ -40,22 +47,16 @@
     "name": "바른자리"
   },
   "about": [
-    {
-      "@type": "Thing",
-      "name": {{ schema_about | jsonify }}
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://bareunjari.com/#localbusiness",
-      "name": "바른자리"
-    }
+    {"@type": "Thing", "name": {{ schema_about | jsonify }}},
+    {"@type": "LocalBusiness", "@id": "https://bareunjari.com/#localbusiness", "name": "바른자리"}{% if page.page_id == 'time_space' %},
+    {"@type":"Thing","name":"면접준비","url":"https://bareunjari.com/interview/"},
+    {"@type":"Thing","name":"스터디·소모임","url":"https://bareunjari.com/study/"},
+    {"@type":"Thing","name":"미팅·업무","url":"https://bareunjari.com/meeting/"},
+    {"@type":"Thing","name":"프라이빗시간","url":"https://bareunjari.com/private/"}{% endif %}
   ]{% if schema_keywords %},
   "keywords": {{ schema_keywords | jsonify }}{% endif %}{% if page.og_image %},
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": {{ page.og_image | jsonify }},
-    "caption": {{ page.og_image_alt | default: schema_name | jsonify }}
-  }{% endif %}
+  "primaryImageOfPage": {"@type": "ImageObject", "url": {{ page.og_image | jsonify }}, "caption": {{ page.og_image_alt | default: schema_name | jsonify }}}
+  {% endif %}
 }
 </script>
 {% endunless %}
