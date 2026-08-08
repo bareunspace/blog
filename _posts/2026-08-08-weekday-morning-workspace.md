@@ -28,11 +28,11 @@ canonical: https://bareunjari.com/posts/weekday-morning-workspace/
 permalink: /posts/weekday-morning-workspace/
 date: 2026-08-08 09:00:00 +0900
 editor_pick: true
-og_image: https://bareunjari.com/images/10.webp
+og_image: https://bareunjari.com/images/bareunjari-morning-workspace.webp
 og_image_alt: 부천 신중동 바른자리에서 평일 오전 혼자 집중 업무를 하는 시간제 프라이빗 업무공간
-og_image_width: 1600
-og_image_height: 901
-preload_image: images/10.webp
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/bareunjari-morning-workspace.webp
 css_version: 20260808-1
 script_version: 20260711-4
 ---
@@ -54,10 +54,10 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/10.webp'
+    image_src='/images/bareunjari-morning-workspace.webp'
     image_alt='부천 신중동 바른자리의 실제 공간을 활용한 평일 오전 프리랜서와 1인사업자 업무공간'
-    image_width='1600'
-    image_height='901'
+    image_width='1536'
+    image_height='1024'
     image_loading='eager'
     image_caption='매일 사무실이 필요한 것이 아니라면, 오늘 필요한 업무시간만 따로 확보하는 방법도 있습니다.'
   %}
