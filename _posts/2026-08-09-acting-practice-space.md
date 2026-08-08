@@ -16,11 +16,11 @@ tags:
 canonical: https://bareunjari.com/posts/acting-practice-space/
 permalink: /posts/acting-practice-space/
 date: 2026-08-08 20:55:00 +0900
-og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
-og_image_alt: 바른자리 블로그 기본 대표 이미지
+og_image: https://bareunjari.com/images/acting-practice-space.webp
+og_image_alt: 독백 대사 오디션 셀프테이프 연습을 위한 바른자리 프라이빗 연습 공간
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/bareunjari-blog-default.webp
+preload_image: images/acting-practice-space.webp
 css_version: 20260809-4
 script_version: 20260711-4
 ---
@@ -109,8 +109,8 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/bareunjari-blog-default.webp'
-    image_alt='바른자리 블로그 기본 대표 이미지'
+    image_src='/images/acting-practice-space.webp'
+    image_alt='독백 대사 오디션 셀프테이프 연습을 위한 바른자리 프라이빗 연습 공간'
     image_width='1536'
     image_height='1024'
     image_loading='eager'
