@@ -36,7 +36,7 @@ script_version: 20260719-1
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='rainy-visual' image_src='/images/10.webp' image_alt='비 오는 날에도 편하게 머물 수 있는 바른자리 소파 라운지 실제 공간' image_width='4000' image_height='3000' image_loading='eager' image_caption='실제 바른자리 공간입니다. 비 오는 날에는 여러 곳을 이동하기보다 한곳에 머물며 시간을 보내는 선택이 더 편할 수 있습니다.' %}
+  {% include post-media-carousel.html image_section_id='rainy-visual' image_src='/images/bareunjari-blog-default.webp' image_alt='바른자리 개인시간과 공간 활용 가이드' image_loading='eager' image_caption='비 오는 날, 밖을 돌아다니기보다 한 공간에 머물며 내 방식대로 시간을 보내는 방법을 소개합니다.' %}
 
   <section id="rainy-day-choice">
     <div class="section-inner">
