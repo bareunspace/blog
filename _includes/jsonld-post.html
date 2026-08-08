@@ -1,95 +1,42 @@
-{% assign post_hub_url = '' %}
-{% assign post_hub_name = '' %}
-{% if page.category == '면접준비' %}
-  {% assign post_hub_url = 'https://bareunjari.com/interview/' %}
-  {% assign post_hub_name = '면접준비 허브' %}
-{% elsif page.category == '스터디룸' %}
-  {% assign post_hub_url = 'https://bareunjari.com/study/' %}
-  {% assign post_hub_name = '스터디·소모임 허브' %}
-{% elsif page.category == '미팅·상담' %}
-  {% assign post_hub_url = 'https://bareunjari.com/meeting/' %}
-  {% assign post_hub_name = '미팅·업무 허브' %}
-{% elsif page.category == '프라이빗시간' or page.category == '시간·공간' %}
-  {% assign post_hub_url = 'https://bareunjari.com/private/' %}
-  {% assign post_hub_name = '프라이빗시간 허브' %}
+{% assign interview_hub = false %}{% assign study_hub = false %}{% assign meeting_hub = false %}{% assign private_hub = false %}{% assign time_space_hub = false %}
+{% if page.category == '면접준비' %}{% assign interview_hub = true %}{% endif %}
+{% if page.category == '스터디룸' %}{% assign study_hub = true %}{% endif %}
+{% if page.category == '미팅·상담' %}{% assign meeting_hub = true %}{% endif %}
+{% if page.category == '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
+{% if page.category == '시간·공간' %}{% assign time_space_hub = true %}{% endif %}
+{% if page.hubs %}
+  {% if page.hubs contains '면접준비' %}{% assign interview_hub = true %}{% endif %}
+  {% if page.hubs contains '스터디·소모임' %}{% assign study_hub = true %}{% endif %}
+  {% if page.hubs contains '회의·미팅' or page.hubs contains '미팅·업무' %}{% assign meeting_hub = true %}{% endif %}
+  {% if page.hubs contains '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
 {% endif %}
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "@id": {{ page.canonical | append: '#article' | jsonify }},
-  "headline": {{ page.title | jsonify }},
-  "description": {{ page.description | jsonify }},
-  "url": {{ page.canonical | jsonify }},
-  "image": {
-    "@type": "ImageObject",
-    "url": {{ page.og_image | jsonify }},
-    "caption": {{ page.og_image_alt | default: page.title | jsonify }}{% if page.og_image_width %},
-    "width": {{ page.og_image_width }}{% endif %}{% if page.og_image_height %},
-    "height": {{ page.og_image_height }}{% endif %}
-  },
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-  "inLanguage": "ko-KR",
-  "articleSection": {{ page.category | jsonify }},
-  "keywords": {{ page.keywords | jsonify }},
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": {{ page.canonical | append: '#webpage' | jsonify }},
-    "url": {{ page.canonical | jsonify }}
-  },
-  "author": {
-    "@type": "Organization",
-    "@id": "https://bareunjari.com/#organization",
-    "name": "바른자리",
-    "url": "https://bareunjari.com/about/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "@id": "https://bareunjari.com/#organization",
-    "name": "바른자리",
-    "url": "https://bareunjari.com/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://bareunjari.com/images/favicon-512.png"
-    }
-  },
-  "about": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://bareunjari.com/#localbusiness",
-      "name": "바른자리"
-    }{% if post_hub_url != '' %},
-    {
-      "@type": "Thing",
-      "name": {{ post_hub_name | jsonify }},
-      "url": {{ post_hub_url | jsonify }}
-    }{% endif %}
-  ]{% if post_hub_url != '' %},
-  "isPartOf": {
-    "@type": "CollectionPage",
-    "name": {{ post_hub_name | jsonify }},
-    "url": {{ post_hub_url | jsonify }}
-  }{% endif %}
-}
-</script>
-{% if page.faq %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for item in page.faq %}
-    {
-      "@type": "Question",
-      "name": {{ item.question | jsonify }},
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": {{ item.answer | jsonify }}
-      }
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "@id":{{ page.canonical | append: '#article' | jsonify }},
+  "headline":{{ page.title | jsonify }},
+  "description":{{ page.description | jsonify }},
+  "url":{{ page.canonical | jsonify }},
+  "image":{"@type":"ImageObject","url":{{ page.og_image | jsonify }},"caption":{{ page.og_image_alt | default: page.title | jsonify }}},
+  "datePublished":"{{ page.date | date_to_xmlschema }}",
+  "dateModified":"{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "inLanguage":"ko-KR",
+  "articleSection":{{ page.category | jsonify }},
+  "keywords":{{ page.keywords | jsonify }},
+  "mainEntityOfPage":{"@type":"WebPage","@id":{{ page.canonical | jsonify }}},
+  "author":{"@type":"Organization","name":"바른자리","url":"https://bareunjari.com/about/"},
+  "publisher":{"@type":"Organization","name":"바른자리","url":"https://bareunjari.com/"},
+  "isPartOf":[
+    {"@type":"WebSite","name":"바른자리","url":"https://bareunjari.com/"}{% if time_space_hub %},
+    {"@type":"CollectionPage","name":"시간·공간 저널","url":"https://bareunjari.com/time-space/"}{% endif %}{% if interview_hub %},
+    {"@type":"CollectionPage","name":"면접준비 허브","url":"https://bareunjari.com/interview/"}{% endif %}{% if study_hub %},
+    {"@type":"CollectionPage","name":"스터디·소모임 허브","url":"https://bareunjari.com/study/"}{% endif %}{% if meeting_hub %},
+    {"@type":"CollectionPage","name":"미팅·업무 허브","url":"https://bareunjari.com/meeting/"}{% endif %}{% if private_hub %},
+    {"@type":"CollectionPage","name":"프라이빗시간 허브","url":"https://bareunjari.com/private/"}{% endif %}
   ]
 }
 </script>
+{% if page.faq %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in page.faq %}{"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}</script>
 {% endif %}
