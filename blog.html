@@ -18,7 +18,7 @@ script_version: 20260716-4
   {% if featured_posts.size == 0 %}
     {% assign featured_posts = onsite_posts | sort: "date" | reverse %}
   {% endif %}
-  {% assign featured_posts = featured_posts | sort: "date" | reverse | slice: 0, 4 %}
+  {% assign featured_posts = featured_posts | sort: "date" | reverse %}
 
   <section id="featured-guide" class="blog-featured-section practical-guides-layout">
     <div class="section-inner">
