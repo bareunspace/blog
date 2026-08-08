@@ -20,9 +20,6 @@
   let baseText = '';
   let finalText = '';
   let lastInterim = '';
-  let restartTimer = null;
-  let startedAt = 0;
-  let restartCount = 0;
 
   const join = (a, b) => {
     const left = String(a || '').trim();
@@ -35,7 +32,7 @@
     return ['영어면접', '데일리영어'].includes(type) ? 'en-US' : 'ko-KR';
   };
 
-  const commitToTextarea = (interim = '') => {
+  const commit = (interim = '') => {
     answer.value = join(join(baseText, finalText), interim);
     answer.dispatchEvent(new Event('input', { bubbles: true }));
   };
@@ -43,11 +40,6 @@
   const setButtons = (listening) => {
     startButton.disabled = listening;
     stopButton.disabled = !listening;
-  };
-
-  const cleanupTimer = () => {
-    if (restartTimer) window.clearTimeout(restartTimer);
-    restartTimer = null;
   };
 
   const createRecognition = () => {
@@ -59,7 +51,6 @@
 
     instance.onstart = () => {
       active = true;
-      startedAt = Date.now();
       setButtons(true);
       status.textContent = '음성 인식 중... 답변을 말해 주세요.';
     };
@@ -69,15 +60,11 @@
       for (let i = event.resultIndex; i < event.results.length; i += 1) {
         const text = String(event.results[i][0]?.transcript || '').trim();
         if (!text) continue;
-        if (event.results[i].isFinal) {
-          finalText = join(finalText, text);
-          lastInterim = '';
-        } else {
-          interim = join(interim, text);
-          lastInterim = interim;
-        }
+        if (event.results[i].isFinal) finalText = join(finalText, text);
+        else interim = join(interim, text);
       }
-      commitToTextarea(interim);
+      lastInterim = interim;
+      commit(interim);
     };
 
     instance.onerror = (event) => {
@@ -89,7 +76,7 @@
         stopping = true;
         status.textContent = '마이크를 사용할 수 없습니다. 다른 앱의 마이크 사용을 종료한 뒤 다시 시도해 주세요.';
       } else if (code === 'network') {
-        status.textContent = '음성 인식 연결이 잠시 끊겼습니다. 다시 연결합니다.';
+        status.textContent = '음성 인식 연결이 끊겼습니다. 답변 시작을 다시 눌러 주세요.';
       } else if (code !== 'aborted' && code !== 'no-speech') {
         status.textContent = `음성 인식 오류(${code}). 답변 시작을 다시 눌러 주세요.`;
       }
@@ -97,23 +84,7 @@
 
     instance.onend = () => {
       active = false;
-      commitToTextarea(lastInterim);
-      const shouldRestart = !stopping && (Date.now() - startedAt < 55000) && restartCount < 4;
-      if (shouldRestart) {
-        restartCount += 1;
-        status.textContent = '음성 인식을 이어서 듣는 중...';
-        cleanupTimer();
-        restartTimer = window.setTimeout(() => {
-          try {
-            instance.lang = language();
-            instance.start();
-          } catch (_error) {
-            setButtons(false);
-            status.textContent = '음성 답변 대기 중';
-          }
-        }, 250);
-        return;
-      }
+      commit(lastInterim);
       setButtons(false);
       if (!stopping) status.textContent = '음성 답변 대기 중';
     };
@@ -123,19 +94,16 @@
 
   const start = () => {
     if (active) return;
-    cleanupTimer();
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     stopping = false;
-    restartCount = 0;
     baseText = String(answer.value || '').trim();
     finalText = '';
     lastInterim = '';
     recognition = createRecognition();
     status.textContent = '마이크를 준비 중입니다...';
     window.setTimeout(() => {
-      try {
-        recognition.start();
-      } catch (_error) {
+      try { recognition.start(); }
+      catch (_error) {
         setButtons(false);
         status.textContent = '마이크를 시작하지 못했습니다. 잠시 후 다시 시도해 주세요.';
       }
@@ -143,13 +111,12 @@
   };
 
   const stop = () => {
-    cleanupTimer();
     stopping = true;
     if (recognition && active) {
       try { recognition.stop(); } catch (_error) {}
     }
     active = false;
-    commitToTextarea(lastInterim);
+    commit(lastInterim);
     setButtons(false);
     status.textContent = '음성 답변 대기 중';
   };
@@ -167,9 +134,7 @@
   }, true);
 
   [nextButton, prevButton, resetButton].filter(Boolean).forEach((button) => {
-    button.addEventListener('click', () => {
-      if (active) stop();
-    }, true);
+    button.addEventListener('click', () => { if (active) stop(); }, true);
   });
 
   document.addEventListener('visibilitychange', () => {
