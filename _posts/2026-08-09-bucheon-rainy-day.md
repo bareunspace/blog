@@ -14,11 +14,9 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-rainy-day/
 permalink: /posts/bucheon-rainy-day/
 date: 2026-08-09 09:00:00 +0900
-og_image: https://bareunjari.com/images/10.webp
-og_image_alt: 비 오는 날에도 편하게 머물 수 있는 바른자리 소파 라운지 실제 공간
-og_image_width: 4000
-og_image_height: 3000
-preload_image: images/10.webp
+og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
+og_image_alt: 바른자리 개인시간과 공간 활용 가이드
+preload_image: images/bareunjari-blog-default.webp
 css_version: 20260809-1
 script_version: 20260719-1
 ---
