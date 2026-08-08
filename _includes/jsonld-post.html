@@ -7,17 +7,22 @@
   "image": {{ page.og_image | jsonify }},
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "inLanguage": "ko-KR",
+  "articleSection": {{ page.category | jsonify }},
+  "keywords": {{ page.keywords | jsonify }},
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": {{ page.canonical | jsonify }}
   },
   "author": {
     "@type": "Organization",
-    "name": "바른자리"
+    "name": "바른자리",
+    "url": "{{ site.url }}/about/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "바른자리",
+    "url": "{{ site.url }}/",
     "logo": {
       "@type": "ImageObject",
       "url": "{{ site.url }}/images/favicon-512.png"
@@ -25,3 +30,23 @@
   }
 }
 </script>
+{% if page.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in page.faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.question | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
