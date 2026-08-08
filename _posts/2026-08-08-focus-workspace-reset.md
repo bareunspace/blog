@@ -31,7 +31,7 @@ og_image: https://bareunjari.com/images/focus-workspace-reset.webp
 og_image_alt: 부천 신중동 바른자리에서 두 시간 집중 업무를 위한 프라이빗 업무공간
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/bareunjari-blog-default.webp
+preload_image: images/focus-workspace-reset.webp
 css_version: 20260809-1
 script_version: 20260711-4
 ---
@@ -53,7 +53,7 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/bareunjari-blog-default.webp'
+    image_src='/images/focus-workspace-reset.webp'
     image_alt='부천 신중동 바른자리의 실제 공간을 활용한 집중 업무용 시간제 프라이빗 공간'
     image_width='1536'
     image_height='1024'
