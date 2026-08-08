@@ -59,18 +59,9 @@ script_version: 20260711-4
       <h2 class="section-title">여름에 실내 데이트가 만족도가 높은 이유</h2>
       <p class="section-desc">데이트가 즐거우려면 체력 소모를 줄이고, 서로의 대화에 집중할 수 있어야 합니다.</p>
       <div class="about-highlight-grid" aria-label="실내 피서 데이트 장점">
-        <article class="about-highlight-card">
-          <h3>더위 스트레스 감소</h3>
-          <p>이동 중 땀과 열기로 지치지 않으니 표정과 텐션이 훨씬 편안하게 유지됩니다.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>대화 밀도 증가</h3>
-          <p>시끄러운 외부 소음이 적어 서로의 이야기에 더 집중할 수 있고, 긴 대화도 부담이 적습니다.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>시간 운영이 유연</h3>
-          <p>비가 오거나 갑자기 더워져도 계획이 크게 흔들리지 않아 하루 흐름을 안정적으로 가져갈 수 있습니다.</p>
-        </article>
+        <article class="about-highlight-card"><h3>더위 스트레스 감소</h3><p>이동 중 땀과 열기로 지치지 않으니 표정과 텐션이 훨씬 편안하게 유지됩니다.</p></article>
+        <article class="about-highlight-card"><h3>대화 밀도 증가</h3><p>시끄러운 외부 소음이 적어 서로의 이야기에 더 집중할 수 있고, 긴 대화도 부담이 적습니다.</p></article>
+        <article class="about-highlight-card"><h3>시간 운영이 유연</h3><p>비가 오거나 갑자기 더워져도 계획이 크게 흔들리지 않아 하루 흐름을 안정적으로 가져갈 수 있습니다.</p></article>
       </div>
     </div>
   </section>
@@ -80,18 +71,9 @@ script_version: 20260711-4
       <h2 class="section-title">바른자리 여름 데이트 추천 플로우</h2>
       <p class="section-desc">부천 신중동에서 가볍게 즐기기 좋은 3단계 코스입니다.</p>
       <div class="about-principle-grid" aria-label="여름 데이트 코스 3단계">
-        <article class="about-principle-item" data-step="01">
-          <h3>입실 후 10분, 온도 세팅</h3>
-          <p>도착하면 먼저 에어컨 온도와 바람 방향을 둘이 편한 기준으로 맞춰주세요. 첫 10분의 쾌적함이 전체 만족도를 좌우합니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3>음료와 간식으로 쉬는 시간</h3>
-          <p>차갑게 마실 음료와 간단한 간식을 두고, 바깥 더위에서 식히는 시간부터 시작하면 분위기가 자연스럽게 풀립니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3>대화 + 콘텐츠 + 휴식</h3>
-          <p>근황 이야기, 같이 보고 싶은 영상, 다음 데이트 계획까지 편하게 이어가며 둘만의 리듬으로 시간을 보내세요.</p>
-        </article>
+        <article class="about-principle-item" data-step="01"><h3>입실 후 10분, 온도 세팅</h3><p>도착하면 먼저 에어컨 온도와 바람 방향을 둘이 편한 기준으로 맞춰주세요. 첫 10분의 쾌적함이 전체 만족도를 좌우합니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>음료와 간식으로 쉬는 시간</h3><p>차갑게 마실 음료와 간단한 간식을 두고, 바깥 더위에서 식히는 시간부터 시작하면 분위기가 자연스럽게 풀립니다.</p></article>
+        <article class="about-principle-item" data-step="03"><h3>대화 + 콘텐츠 + 휴식</h3><p>근황 이야기, 같이 보고 싶은 영상, 다음 데이트 계획까지 편하게 이어가며 둘만의 리듬으로 시간을 보내세요.</p></article>
       </div>
     </div>
   </section>
@@ -101,19 +83,18 @@ script_version: 20260711-4
       <h2 class="section-title">더 만족스러운 여름 데이트를 위한 팁</h2>
       <p class="section-desc">작은 준비 몇 가지로 체감 퀄리티가 크게 올라갑니다.</p>
       <div class="about-principle-grid" aria-label="실내 데이트 준비 팁">
-        <article class="about-principle-item" data-step="01">
-          <h3>얇은 겉옷 챙기기</h3>
-          <p>에어컨을 시원하게 틀면 체감 온도가 빠르게 내려가니, 가벼운 겉옷 하나를 준비하면 좋습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3>보고 싶은 콘텐츠 미리 저장</h3>
-          <p>재생 목록을 미리 정해두면 "뭐 볼지" 고민하는 시간을 줄이고 더 여유롭게 보낼 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3>퇴실 전 사진 한 컷</h3>
-          <p>그날의 분위기를 남겨두면 다음 데이트를 계획할 때도 좋은 기준이 됩니다.</p>
-        </article>
+        <article class="about-principle-item" data-step="01"><h3>얇은 겉옷 챙기기</h3><p>에어컨을 시원하게 틀면 체감 온도가 빠르게 내려가니, 가벼운 겉옷 하나를 준비하면 좋습니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>보고 싶은 콘텐츠 미리 저장</h3><p>재생 목록을 미리 정해두면 "뭐 볼지" 고민하는 시간을 줄이고 더 여유롭게 보낼 수 있습니다.</p></article>
+        <article class="about-principle-item" data-step="03"><h3>퇴실 전 사진 한 컷</h3><p>그날의 분위기를 남겨두면 다음 데이트를 계획할 때도 좋은 기준이 됩니다.</p></article>
       </div>
+    </div>
+  </section>
+
+  <section id="rainy-day-related">
+    <div class="section-inner">
+      <h2 class="section-title">더위가 아니라 비 때문에 실내를 찾고 있다면</h2>
+      <p class="section-desc">비 오는 날에는 여러 장소를 옮겨 다니기보다 한곳에서 오래 머무는 방식이 더 편할 수 있습니다.</p>
+      <p><a href="/posts/bucheon-rainy-day/"><strong>부천 비 오는 날 갈만한 곳｜밖을 돌아다니지 않고 보내는 실내 하루</strong></a>에서 연인, 친구, 혼자 보내는 방법을 함께 확인해 보세요.</p>
     </div>
   </section>
 
