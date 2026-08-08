@@ -9,6 +9,9 @@
   {% elsif page.category == "미팅·상담" %}
     {% assign related_more_url = '/meeting/' %}
     {% assign related_more_label = '미팅·업무 허브에서 전체 가이드 보기' %}
+  {% elsif page.category == "시간·공간" %}
+    {% assign related_more_url = '/time-space/' %}
+    {% assign related_more_label = '시간·공간 저널에서 전체 글 보기' %}
   {% else %}
     {% assign related_more_url = '/private/' %}
     {% assign related_more_label = '프라이빗시간 허브에서 전체 가이드 보기' %}
