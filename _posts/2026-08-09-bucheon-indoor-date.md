@@ -16,12 +16,12 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-indoor-date/
 permalink: /posts/bucheon-indoor-date/
 date: 2026-08-09 00:05:00 +0900
-last_modified_at: 2026-08-09 00:28:00 +0900
+last_modified_at: 2026-08-09 00:35:00 +0900
 editor_pick: true
 og_image: https://bareunjari.com/images/bucheon-indoor-date.webp
 og_image_alt: 부천 신중동 바른자리의 소파가 있는 프라이빗 실내 데이트 공간
 preload_image: images/bucheon-indoor-date.webp
-css_version: 20260809-2
+css_version: 20260809-3
 script_version: 20260711-4
 booking_url: https://m.place.naver.com/place/2041312316/ticket
 ---
@@ -55,18 +55,50 @@ booking_url: https://m.place.naver.com/place/2041312316/ticket
     border-top: 1px solid #dde5df;
   }
   .indoor-date-page .date-faq-item {
-    padding: 1.25rem 0;
     border-bottom: 1px solid #dde5df;
   }
-  .indoor-date-page .date-faq-item h3 {
-    margin-bottom: .4rem;
+  .indoor-date-page .date-faq-item summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 68px;
+    padding: 1.15rem 3rem 1.15rem 0;
     color: var(--primary);
     font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.55;
+    cursor: pointer;
+    list-style: none;
   }
-  .indoor-date-page .date-faq-item p {
-    margin: 0;
+  .indoor-date-page .date-faq-item summary::-webkit-details-marker { display: none; }
+  .indoor-date-page .date-faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: .2rem;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 1px solid #cfded4;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .indoor-date-page .date-faq-item[open] summary::after {
+    content: "−";
+    background: #eef5f0;
+  }
+  .indoor-date-page .date-faq-answer {
+    padding: 0 3rem 1.3rem 0;
     color: var(--muted);
+    line-height: 1.8;
   }
+  .indoor-date-page .date-faq-answer p { margin: 0; }
   .indoor-date-page #booking .blog-conversion-panel-soft {
     border-color: #cfded4;
     background: linear-gradient(135deg,#f7faf8 0%,#eef5f0 100%);
@@ -77,6 +109,8 @@ booking_url: https://m.place.naver.com/place/2041312316/ticket
   @media (max-width:640px) {
     .indoor-date-page #home .hero-highlights { gap:.42rem; margin-bottom:1.15rem; }
     .indoor-date-page #home .hero-highlights span { font-size:.74rem; padding:.34rem .62rem; }
+    .indoor-date-page .date-faq-item summary { min-height:62px; padding-right:2.65rem; font-size:.97rem; }
+    .indoor-date-page .date-faq-answer { padding-right:.25rem; }
   }
 </style>
 
@@ -203,13 +237,32 @@ booking_url: https://m.place.naver.com/place/2041312316/ticket
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">부천 실내데이트 자주 묻는 질문</h2>
+      <p class="section-desc">궁금한 질문을 눌러 답변을 확인하세요.</p>
       <div class="date-faq-list">
-        <article class="date-faq-item"><h3>부천에서 둘만 있을 수 있는 실내 데이트 장소가 있나요?</h3><p>예약한 시간 동안 이용하는 프라이빗 공간이 있습니다. 바른자리는 부천 신중동에서 1~6인이 예약해 이용할 수 있으며, 두 사람이 대화하거나 함께 시간을 보내는 용도로도 이용할 수 있습니다.</p></article>
-        <article class="date-faq-item"><h3>신중동에서 카페 말고 데이트할 곳을 찾는다면?</h3><p>체험이 목적이라면 체험형 장소가 더 잘 맞습니다. 오래 이야기하고 함께 먹고 보고 쉬는 것이 목적이라면 프라이빗 공간도 선택지가 될 수 있습니다.</p></article>
-        <article class="date-faq-item"><h3>조용하게 이야기할 커플 데이트 장소로 이용할 수 있나요?</h3><p>네. 두 사람이 대화를 나누는 용도로 이용할 수 있습니다. 다만 완전한 방음 공간으로 안내하지는 않습니다.</p></article>
-        <article class="date-faq-item"><h3>비 오는 날에도 이용할 수 있나요?</h3><p>실내 공간이라 날씨와 관계없이 이용할 수 있습니다. 한여름이나 추운 겨울처럼 야외 활동이 부담스러운 날에도 이용할 수 있습니다.</p></article>
-        <article class="date-faq-item"><h3>음식은 먹을 수 있나요?</h3><p>간단한 음식이나 포장·배달 음식 등을 이용할 수 있습니다. 다음 이용자를 위해 이용 후 정리를 부탁드립니다.</p></article>
-        <article class="date-faq-item"><h3>이용요금은 얼마인가요?</h3><p>현재 안내 요금은 1시간 10,000원입니다. 필요한 시간만 예약해서 이용할 수 있습니다.</p></article>
+        <details class="date-faq-item">
+          <summary>부천에서 둘만 있을 수 있는 실내 데이트 장소가 있나요?</summary>
+          <div class="date-faq-answer"><p>예약한 시간 동안 이용하는 프라이빗 공간이 있습니다. 바른자리는 부천 신중동에서 1~6인이 예약해 이용할 수 있으며, 두 사람이 대화하거나 함께 시간을 보내는 용도로도 이용할 수 있습니다.</p></div>
+        </details>
+        <details class="date-faq-item">
+          <summary>신중동에서 카페 말고 데이트할 곳을 찾는다면?</summary>
+          <div class="date-faq-answer"><p>체험이 목적이라면 체험형 장소가 더 잘 맞습니다. 오래 이야기하고 함께 먹고 보고 쉬는 것이 목적이라면 프라이빗 공간도 선택지가 될 수 있습니다.</p></div>
+        </details>
+        <details class="date-faq-item">
+          <summary>조용하게 이야기할 커플 데이트 장소로 이용할 수 있나요?</summary>
+          <div class="date-faq-answer"><p>네. 두 사람이 대화를 나누는 용도로 이용할 수 있습니다. 다만 완전한 방음 공간으로 안내하지는 않습니다.</p></div>
+        </details>
+        <details class="date-faq-item">
+          <summary>비 오는 날에도 이용할 수 있나요?</summary>
+          <div class="date-faq-answer"><p>실내 공간이라 날씨와 관계없이 이용할 수 있습니다. 한여름이나 추운 겨울처럼 야외 활동이 부담스러운 날에도 이용할 수 있습니다.</p></div>
+        </details>
+        <details class="date-faq-item">
+          <summary>음식은 먹을 수 있나요?</summary>
+          <div class="date-faq-answer"><p>간단한 음식이나 포장·배달 음식 등을 이용할 수 있습니다. 다음 이용자를 위해 이용 후 정리를 부탁드립니다.</p></div>
+        </details>
+        <details class="date-faq-item">
+          <summary>이용요금은 얼마인가요?</summary>
+          <div class="date-faq-answer"><p>현재 안내 요금은 1시간 10,000원입니다. 필요한 시간만 예약해서 이용할 수 있습니다.</p></div>
+        </details>
       </div>
     </div>
   </section>
