@@ -13,7 +13,7 @@ tags:
   - 프라이빗시간
 canonical: https://bareunjari.com/posts/bucheon-rainy-day/
 permalink: /posts/bucheon-rainy-day/
-date: 2026-08-09 09:00:00 +0900
+date: 2026-08-09 06:30:00 +0900
 og_image: https://bareunjari.com/images/bareunjari-blog-default.webp
 og_image_alt: 바른자리 개인시간과 공간 활용 가이드
 preload_image: images/bareunjari-blog-default.webp
