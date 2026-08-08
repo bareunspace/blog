@@ -1,12 +1,37 @@
 {% unless page.robots contains 'noindex' %}
+{% assign schema_name = page.title %}
+{% assign schema_description = page.description %}
+{% assign schema_keywords = page.keywords %}
+{% assign schema_about = '바른자리' %}
+{% if page.page_id == 'interview' %}
+  {% assign schema_name = '부천 면접준비·면접연습 가이드 | 바른자리' %}
+  {% assign schema_description = '부천 신중동에서 1분 자기소개, 면접 답변 말하기, 녹화 점검, 화상면접과 실전 리허설을 준비하는 방법을 모은 면접준비 허브입니다.' %}
+  {% assign schema_keywords = '부천면접준비, 부천면접연습, 신중동면접연습, 면접연습공간, 1분자기소개, 면접답변연습, 화상면접' %}
+  {% assign schema_about = '면접 준비와 실전 말하기 연습' %}
+{% elsif page.page_id == 'meeting' %}
+  {% assign schema_name = '부천 미팅룸·회의실·시간제 업무공간 | 바른자리' %}
+  {% assign schema_description = '부천 신중동에서 고객 미팅, 상담, 화상회의, 프리랜서와 1인사업자의 집중 업무에 활용하는 프라이빗 시간제 업무공간 허브입니다.' %}
+  {% assign schema_keywords = '부천미팅룸, 신중동미팅룸, 부천회의실, 부천업무공간, 시간제사무실, 프리랜서업무공간, 1인사업자미팅' %}
+  {% assign schema_about = '미팅, 회의, 상담과 시간제 업무공간' %}
+{% elsif page.page_id == 'study' %}
+  {% assign schema_name = '부천 스터디룸·소모임 공간 가이드 | 바른자리' %}
+  {% assign schema_description = '부천 신중동에서 개인 공부, 그룹 스터디, 발표와 토론, 팀프로젝트, 영어·면접 말하기 연습과 소모임에 활용하는 프라이빗 스터디룸 허브입니다.' %}
+  {% assign schema_keywords = '부천스터디룸, 신중동스터디룸, 부천소모임공간, 그룹스터디, 발표연습, 토론공간, 팀프로젝트공간' %}
+  {% assign schema_about = '스터디, 소모임, 발표, 토론과 팀프로젝트' %}
+{% elsif page.page_id == 'private' %}
+  {% assign schema_name = '부천 프라이빗 공간·개인시간 가이드 | 바른자리' %}
+  {% assign schema_description = '부천 신중동에서 혼자 회복하고 생각을 정리하거나 둘만의 대화와 조용한 실내 데이트를 위한 개인시간을 보내는 프라이빗 공간 허브입니다.' %}
+  {% assign schema_keywords = '부천프라이빗공간, 신중동프라이빗공간, 부천개인공간, 혼자있는공간, 나만의시간, 부천실내데이트, 개인시간, 프라이버시' %}
+  {% assign schema_about = '개인시간, 프라이버시, 혼자 있는 시간과 조용한 대화' %}
+{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "{{ page.schema_type | default: 'WebPage' }}",
   "@id": {{ page.canonical | append: '#webpage' | jsonify }},
   "url": {{ page.canonical | jsonify }},
-  "name": {{ page.title | jsonify }},
-  "description": {{ page.description | jsonify }},
+  "name": {{ schema_name | jsonify }},
+  "description": {{ schema_description | jsonify }},
   "inLanguage": "ko-KR",
   "isPartOf": {
     "@type": "WebSite",
@@ -14,15 +39,22 @@
     "url": "https://bareunjari.com/",
     "name": "바른자리"
   },
-  "about": {
-    "@type": "LocalBusiness",
-    "@id": "https://bareunjari.com/#localbusiness",
-    "name": "바른자리"
-  }{% if page.og_image %},
+  "about": [
+    {
+      "@type": "Thing",
+      "name": {{ schema_about | jsonify }}
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://bareunjari.com/#localbusiness",
+      "name": "바른자리"
+    }
+  ]{% if schema_keywords %},
+  "keywords": {{ schema_keywords | jsonify }}{% endif %}{% if page.og_image %},
   "primaryImageOfPage": {
     "@type": "ImageObject",
     "url": {{ page.og_image | jsonify }},
-    "caption": {{ page.og_image_alt | default: page.title | jsonify }}
+    "caption": {{ page.og_image_alt | default: schema_name | jsonify }}
   }{% endif %}
 }
 </script>
