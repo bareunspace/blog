@@ -21,11 +21,75 @@ og_image_alt: 바른자리 블로그 기본 대표 이미지
 og_image_width: 1536
 og_image_height: 1024
 preload_image: images/bareunjari-blog-default.webp
-css_version: 20260809-3
+css_version: 20260809-4
 script_version: 20260711-4
 ---
 
-<main class="about-page">
+<style>
+  .acting-practice-page #practice-loop,
+  .acting-practice-page #fit {
+    background: var(--bg-alt);
+  }
+  .acting-practice-page #ninety-minutes .about-principle-item {
+    background: linear-gradient(145deg, #fff, #f6fbf8);
+    border-color: #dfe9e2;
+  }
+  .acting-practice-page #ninety-minutes .about-principle-item:hover,
+  .acting-practice-page #practice-loop .about-principle-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(45,106,79,.09);
+  }
+  .acting-practice-page #audition .guide-summary-card {
+    border-color: rgba(45,106,79,.18);
+    box-shadow: 0 10px 26px rgba(45,106,79,.06);
+  }
+  .acting-practice-page .acting-note {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: .86rem;
+    line-height: 1.65;
+  }
+  .acting-practice-page .acting-faq-list {
+    max-width: 860px;
+    margin-top: 1.4rem;
+    border-top: 1px solid #dde5df;
+  }
+  .acting-practice-page .acting-faq-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #dde5df;
+  }
+  .acting-practice-page .acting-faq-item h3 {
+    margin-bottom: .4rem;
+    color: var(--primary);
+    font-size: 1.02rem;
+  }
+  .acting-practice-page .acting-faq-item p {
+    margin: 0;
+    color: var(--muted);
+  }
+  .acting-practice-page #booking .blog-conversion-panel-soft {
+    border-color: #cfded4;
+    background: linear-gradient(135deg, #f7faf8 0%, #eef5f0 100%);
+  }
+  .acting-practice-page #booking .btn-primary {
+    box-shadow: 0 10px 24px rgba(45,106,79,.2);
+  }
+  @media (max-width: 640px) {
+    .acting-practice-page #home .hero-highlights {
+      gap: .42rem;
+      margin-bottom: 1.15rem;
+    }
+    .acting-practice-page #home .hero-highlights span {
+      font-size: .74rem;
+      padding: .34rem .62rem;
+    }
+    .acting-practice-page .about-quote {
+      margin-top: 1.3rem;
+    }
+  }
+</style>
+
+<main class="about-page acting-practice-page">
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Acting Practice & Rehearsal</p>
@@ -129,7 +193,7 @@ script_version: 20260711-4
         <article class="guide-summary-card"><span>촬영</span><h2>셀프테이프 연습</h2><p>제출용 영상 전에 연습 촬영과 확인을 반복하는 용도로 활용할 수 있습니다.</p></article>
       </div>
       <div class="about-quote"><p>실전 직전에는 중간에 다시 시작하지 않고<br /><strong>처음부터 끝까지 한 번 이어가는 연습</strong>도 해보세요.</p></div>
-      <p><small>※ 실제 오디션 제출 영상은 제작사 또는 공고에서 안내하는 촬영 규격과 제출 기준을 우선 확인하세요.</small></p>
+      <p class="acting-note">※ 실제 오디션 제출 영상은 제작사 또는 공고에서 안내하는 촬영 규격과 제출 기준을 우선 확인하세요.</p>
     </div>
   </section>
 
@@ -159,10 +223,11 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">연기 연습 공간 이용 전에 많이 궁금한 점</h2>
-      <div class="about-highlight-grid" aria-label="연기 연습 FAQ">
-        <article class="about-highlight-card"><h3>연기학원이나 전문 연습실인가요?</h3><p>아닙니다. 바른자리는 코칭이나 수업을 제공하지 않는 프라이빗 공간대여 서비스입니다.</p></article>
-        <article class="about-highlight-card"><h3>독백을 소리 내어 연습해도 되나요?</h3><p>일반적인 대사·독백 연습은 가능하지만 전문 방음 공간은 아니므로 지속적인 고성이나 큰 소음은 피해주세요.</p></article>
-        <article class="about-highlight-card"><h3>휴대폰으로 촬영해도 되나요?</h3><p>개인 연습을 위한 휴대폰 촬영에 활용할 수 있습니다. 전문 촬영 장비나 스튜디오 설비를 제공하는 공간은 아닙니다.</p></article>
+      <div class="acting-faq-list" aria-label="연기 연습 FAQ">
+        <article class="acting-faq-item"><h3>연기학원이나 전문 연습실인가요?</h3><p>아닙니다. 바른자리는 코칭이나 수업을 제공하지 않는 프라이빗 공간대여 서비스입니다.</p></article>
+        <article class="acting-faq-item"><h3>독백을 소리 내어 연습해도 되나요?</h3><p>일반적인 대사·독백 연습은 가능하지만 전문 방음 공간은 아니므로 지속적인 고성이나 큰 소음은 피해주세요.</p></article>
+        <article class="acting-faq-item"><h3>휴대폰으로 촬영해도 되나요?</h3><p>개인 연습을 위한 휴대폰 촬영에 활용할 수 있습니다. 전문 촬영 장비나 스튜디오 설비를 제공하는 공간은 아닙니다.</p></article>
+        <article class="acting-faq-item"><h3>몇 시간 정도 예약하면 좋나요?</h3><p>처음이라면 1~2시간 정도가 현실적입니다. 이 글에서는 한 번의 연습 사이클을 만들 수 있도록 90분 루틴을 예시로 제안했습니다.</p></article>
       </div>
     </div>
   </section>
@@ -172,7 +237,7 @@ script_version: 20260711-4
       <div class="blog-conversion-panel blog-conversion-panel-soft">
         <div>
           <p class="section-label">Bareunjari Guide</p>
-          <h2>오늘 대본을 충분히 읽었다면, 이제 실제로 해볼 차례입니다</h2>
+          <h2>오늘 대본을 충분히 읽었다면,<br />이제 실제로 해볼 차례입니다</h2>
           <p>바른자리는 부천 신중동에 있는 프라이빗 공간대여 공간입니다. 혼자 말하고, 촬영하고, 확인하고, 다시 해보는 시간을 예약해보세요.</p>
         </div>
         <div class="blog-conversion-actions">
