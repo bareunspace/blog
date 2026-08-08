@@ -1,0 +1,154 @@
+(() => {
+  const form = document.querySelector('[data-aii-form]');
+  if (!form) return;
+
+  const practiceMode = form.querySelector('[data-aii-mode]');
+  const questionCount = form.querySelector('select[name="question_count"]');
+  const interviewType = form.querySelector('[data-aii-type-select]');
+  if (!practiceMode || !questionCount || !interviewType) return;
+
+  const sourceLabel = document.createElement('label');
+  sourceLabel.className = 'aii-custom-source';
+  sourceLabel.innerHTML = `
+    <span>질문 방식</span>
+    <select name="question_source" data-aii-question-source>
+      <option value="ai">AI 추천 질문</option>
+      <option value="custom">내 질문 직접 입력</option>
+    </select>
+  `;
+
+  const customLabel = document.createElement('label');
+  customLabel.className = 'aii-custom-questions';
+  customLabel.hidden = true;
+  customLabel.innerHTML = `
+    <span>내 질문 <small>(한 줄에 하나, 최대 10개)</small></span>
+    <textarea data-aii-custom-questions rows="6" placeholder="예: 자기소개 해주세요.\n왜 이 회사에 지원했나요?\n갈등을 해결한 경험을 말해주세요."></textarea>
+    <small data-aii-custom-status>입력한 질문으로 그대로 연습하고, 답변은 기존 AI 피드백으로 분석합니다.</small>
+  `;
+
+  const firstLabel = form.querySelector('label');
+  if (firstLabel && firstLabel.nextSibling) {
+    form.insertBefore(sourceLabel, firstLabel.nextSibling);
+  } else {
+    form.prepend(sourceLabel);
+  }
+
+  const actionRow = form.querySelector('.aii-actions');
+  form.insertBefore(customLabel, actionRow || null);
+
+  const sourceSelect = sourceLabel.querySelector('[data-aii-question-source]');
+  const customTextarea = customLabel.querySelector('[data-aii-custom-questions]');
+  const statusNode = customLabel.querySelector('[data-aii-custom-status]');
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .aii-form .aii-custom-questions{grid-column:1/-1;display:grid;gap:.4rem}
+    .aii-form .aii-custom-questions[hidden]{display:none}
+    .aii-form .aii-custom-questions textarea{width:100%;min-height:150px;border:1px solid #ced7d1;border-radius:12px;padding:.8rem .9rem;font:inherit;line-height:1.6;resize:vertical;background:#fff}
+    .aii-form .aii-custom-questions textarea:focus{outline:2px solid #6abf91;outline-offset:2px;border-color:#3d8b63}
+    .aii-form .aii-custom-questions small{font-weight:500;color:#64746b;line-height:1.45}
+    .aii-form .aii-custom-questions span small{font-size:.78em}
+  `;
+  document.head.appendChild(style);
+
+  let customQuestionsForNextRequest = [];
+  const originalFetch = window.fetch.bind(window);
+
+  const parseCustomQuestions = () => {
+    const rows = String(customTextarea.value || '')
+      .split(/\n+/)
+      .map((row) => row.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, '').trim())
+      .filter(Boolean);
+    return Array.from(new Set(rows)).slice(0, 10);
+  };
+
+  const adaptQuestionForExistingFlow = (question, type) => {
+    const value = String(question || '').trim();
+    if (!value) return '';
+    if (type === '영어면접') {
+      const hasDepth = /(tell me about|describe|explain|how would|what would|include|example|why|follow-up|support|process|result|action)/i.test(value);
+      if (value.length >= 52 && hasDepth) return value;
+      return `${value} Please explain your answer with one concrete example, your action, and the result.`;
+    }
+    if (type === '승무원면접' || type === '일반 모의면접') {
+      const hasDepth = /(경험|사례|구체|설명|이유|결과|성과|어떻게|행동|기준|과정|영향)/.test(value);
+      if (value.length >= 32 && hasDepth) return value;
+      return `${value} 구체적인 경험이나 사례를 바탕으로 본인의 행동과 결과까지 함께 설명해 주세요.`;
+    }
+    return value;
+  };
+
+  const syncCustomMode = () => {
+    const isInterview = String(practiceMode.value || '') === 'interview';
+    sourceLabel.hidden = !isInterview;
+    if (!isInterview) sourceSelect.value = 'ai';
+    const isCustom = isInterview && sourceSelect.value === 'custom';
+    customLabel.hidden = !isCustom;
+    customTextarea.required = isCustom;
+    if (isCustom) {
+      const rows = parseCustomQuestions();
+      if (rows.length) questionCount.value = String(rows.length);
+    }
+  };
+
+  customTextarea.addEventListener('input', () => {
+    const rows = parseCustomQuestions();
+    if (rows.length) questionCount.value = String(rows.length);
+    statusNode.textContent = rows.length
+      ? `${rows.length}개 질문이 준비되었습니다. 최대 10개까지 사용할 수 있습니다.`
+      : '입력한 질문으로 그대로 연습하고, 답변은 기존 AI 피드백으로 분석합니다.';
+  });
+
+  sourceSelect.addEventListener('change', syncCustomMode);
+  practiceMode.addEventListener('change', syncCustomMode);
+
+  form.addEventListener('submit', (event) => {
+    if (sourceSelect.value !== 'custom' || String(practiceMode.value || '') !== 'interview') return;
+
+    const rows = parseCustomQuestions();
+    if (!rows.length) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      customTextarea.focus();
+      statusNode.textContent = '질문을 1개 이상 입력해 주세요.';
+      return;
+    }
+
+    const type = String(interviewType.value || '').trim();
+    customQuestionsForNextRequest = rows.map((q) => adaptQuestionForExistingFlow(q, type)).filter(Boolean);
+    questionCount.value = String(customQuestionsForNextRequest.length);
+
+    try {
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith('aii:question-cache:')) localStorage.removeItem(key);
+      });
+    } catch (_error) {
+      // Storage is optional.
+    }
+  }, true);
+
+  window.fetch = async (input, init) => {
+    try {
+      const url = typeof input === 'string' ? input : String(input?.url || '');
+      const body = init?.body ? JSON.parse(String(init.body)) : null;
+      if (
+        customQuestionsForNextRequest.length > 0 &&
+        url.includes('/functions/v1/ai-interview-feedback') &&
+        body?.action === 'generate_questions'
+      ) {
+        const requested = Math.min(Math.max(Number(body.questionCount) || customQuestionsForNextRequest.length, 1), 10);
+        const questions = customQuestionsForNextRequest.slice(0, requested);
+        customQuestionsForNextRequest = [];
+        return new Response(JSON.stringify({ questions, source: 'ai' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+    } catch (_error) {
+      // Fall through to the original request.
+    }
+    return originalFetch(input, init);
+  };
+
+  syncCustomMode();
+})();
