@@ -1,29 +1,35 @@
+{% assign seo_override = site.data.seo_posts[page.url] %}
+{% assign time_space_override = site.data.seo_time_space[page.url] %}
+{% assign article_title = time_space_override.title | default: seo_override.title | default: page.title %}
+{% assign article_description = time_space_override.description | default: seo_override.description | default: page.description %}
+{% assign article_keywords = time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
 {% assign interview_hub = false %}{% assign study_hub = false %}{% assign meeting_hub = false %}{% assign private_hub = false %}{% assign time_space_hub = false %}
 {% if page.category == '면접준비' %}{% assign interview_hub = true %}{% endif %}
 {% if page.category == '스터디룸' %}{% assign study_hub = true %}{% endif %}
 {% if page.category == '미팅·상담' %}{% assign meeting_hub = true %}{% endif %}
 {% if page.category == '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
 {% if page.category == '시간·공간' %}{% assign time_space_hub = true %}{% endif %}
-{% if page.hubs %}
-  {% if page.hubs contains '면접준비' %}{% assign interview_hub = true %}{% endif %}
-  {% if page.hubs contains '스터디·소모임' %}{% assign study_hub = true %}{% endif %}
-  {% if page.hubs contains '회의·미팅' or page.hubs contains '미팅·업무' %}{% assign meeting_hub = true %}{% endif %}
-  {% if page.hubs contains '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
+{% assign effective_hubs = page.hubs | default: time_space_override.hubs %}
+{% if effective_hubs %}
+  {% if effective_hubs contains '면접준비' %}{% assign interview_hub = true %}{% endif %}
+  {% if effective_hubs contains '스터디·소모임' %}{% assign study_hub = true %}{% endif %}
+  {% if effective_hubs contains '회의·미팅' or effective_hubs contains '미팅·업무' %}{% assign meeting_hub = true %}{% endif %}
+  {% if effective_hubs contains '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
 {% endif %}
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"BlogPosting",
   "@id":{{ page.canonical | append: '#article' | jsonify }},
-  "headline":{{ page.title | jsonify }},
-  "description":{{ page.description | jsonify }},
+  "headline":{{ article_title | jsonify }},
+  "description":{{ article_description | jsonify }},
   "url":{{ page.canonical | jsonify }},
-  "image":{"@type":"ImageObject","url":{{ page.og_image | jsonify }},"caption":{{ page.og_image_alt | default: page.title | jsonify }}},
+  "image":{"@type":"ImageObject","url":{{ page.og_image | jsonify }},"caption":{{ page.og_image_alt | default: article_title | jsonify }}},
   "datePublished":"{{ page.date | date_to_xmlschema }}",
   "dateModified":"{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
   "inLanguage":"ko-KR",
   "articleSection":{{ page.category | jsonify }},
-  "keywords":{{ page.keywords | jsonify }},
+  "keywords":{{ article_keywords | jsonify }},
   "mainEntityOfPage":{"@type":"WebPage","@id":{{ page.canonical | jsonify }}},
   "author":{"@type":"Organization","name":"바른자리","url":"https://bareunjari.com/about/"},
   "publisher":{"@type":"Organization","name":"바른자리","url":"https://bareunjari.com/"},
