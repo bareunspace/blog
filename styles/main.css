@@ -9153,3 +9153,18 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
 
 }
+
+main.blog-home #blog-latest .blog-field-groups {
+  gap: 0;
+}
+
+main.blog-home #blog-latest section.blog-field-category-group {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+main.blog-home #blog-latest section.blog-field-category-group + section.blog-field-category-group {
+  margin-top: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid #edf2ee;
+}
