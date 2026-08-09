@@ -4,15 +4,15 @@
       <a href="{{ '/index.html' | relative_url }}">Home</a>
       {% if page.page_id == "blog" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <span aria-current="page">Blog</span>
+        <span aria-current="page">가이드</span>
       {% elsif page.page_id == "interview-prep" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">면접준비</span>
       {% elsif page.collection == "posts" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         {% if page.category %}
           <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
           {% if page.category == "면접준비" %}
@@ -36,27 +36,27 @@
         <span aria-current="page">브랜드 스토리</span>
       {% elsif page.page_id == "interview" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">면접준비</span>
       {% elsif page.page_id == "study" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">스터디룸</span>
       {% elsif page.page_id == "meeting" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">미팅·상담</span>
       {% elsif page.page_id == "private" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">프라이빗시간</span>
       {% elsif page.page_id == "time_space" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">시간·공간</span>
       {% else %}
