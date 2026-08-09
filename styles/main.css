@@ -9152,20 +9152,4 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: center;
   }
 
-  main.blog-home #tags .section-title {
-    margin-bottom: 1.1rem;
-  }
-
-  main.blog-home .tag-group {
-    margin-bottom: 1.25rem;
-  }
-
-  main.blog-home .tags {
-    gap: .4rem;
-  }
-
-  main.blog-home .tag {
-    padding: .42rem .68rem;
-    font-size: .75rem;
-  }
 }
