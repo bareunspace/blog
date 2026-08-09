@@ -1,4 +1,5 @@
 {% assign visible_tags = page.display_tags | default: page.tags %}
+{% unless page.hide_tags %}
 {% if visible_tags %}
   <section class="post-tags" aria-label="글 태그">
     <div class="post-tags-inner">
@@ -11,6 +12,7 @@
     </div>
   </section>
 {% endif %}
+{% endunless %}
 
 {% if page.collection == "posts" %}
   <section class="post-reactions" aria-label="게시글 반응 남기기" data-post-reaction data-post-key="{{ page.url | default: page.permalink | default: page.slug }}" data-post-title="{{ page.title | escape }}">
