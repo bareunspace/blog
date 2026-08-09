@@ -15,11 +15,11 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-before-appointment/
 permalink: /posts/one-hour-before-appointment/
 date: 2026-08-09 16:01:00 +0900
-og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.jpg
+og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.png
 og_image_alt: 바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/one-hour-before-appointment-scene.jpg
+preload_image: images/one-hour-before-appointment-scene.png
 css_version: 20260809-6
 script_version: 20260711-4
 ---
@@ -92,7 +92,7 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/one-hour-before-appointment-scene.jpg'
+    image_src='/images/one-hour-before-appointment-scene.png'
     image_alt='바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습'
     image_width='1536'
     image_height='1024'
