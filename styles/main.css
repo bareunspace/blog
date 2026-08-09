@@ -9165,5 +9165,11 @@ main.blog-home #blog-latest section.blog-field-category-group {
 
 main.blog-home #blog-latest section.blog-field-category-group + section.blog-field-category-group {
   margin-top: 0;
-  padding-top: 1.25rem;
+  padding-top: 2.25rem;
+}
+
+@media (max-width: 640px) {
+  main.blog-home #blog-latest section.blog-field-category-group + section.blog-field-category-group {
+    padding-top: 2rem;
+  }
 }
