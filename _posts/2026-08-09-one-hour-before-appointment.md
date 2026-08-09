@@ -5,7 +5,7 @@ description: 약속이나 면접, 미팅 전에 한 시간 먼저 나와 독립�
 category: 프라이빗시간
 hub_series: private
 hub_section: recommended
-keywords: 약속전시간보내기,한시간시간보내기,신중동시간보낼곳,부천시간보낼곳,신중동쉴곳,부천쉴곳,낮시간휴식공간,잠깐쉴곳,약속전대기,신중동역공간대여,프라이빗공간,바른자리
+keywords: 약속전시간보내기,한시간시간보내기,신중동시간보낼곳,부천시간보낼곳,신중동쉴곳,부천쉴곳,낮시간휴식공간,더운날쉴곳,약속전옷매무새,잠깐쉴곳,약속전대기,신중동역공간대여,프라이빗공간,바른자리
 tags:
   - 약속전시간
   - 한시간휴식
@@ -209,7 +209,7 @@ script_version: 20260711-4
         <p class="everyday-trigger">약속까지 한 시간 남았는데 카페에 또 들어가기는 싫다.</p>
         <p class="everyday-trigger">병원 진료는 끝났고 다음 일정까지 시간이 애매하게 비었다.</p>
         <p class="everyday-trigger">쇼핑한 짐은 무겁고, 잠깐 앉아서 쉬고 싶다.</p>
-        <p class="everyday-trigger">친구를 만나기 전에 화장과 옷매무새를 천천히 정리하고 싶다.</p>
+        <p class="everyday-trigger">덥고 땀이 나서, 약속 전에 몸을 식히고 옷매무새를 가다듬고 싶다.</p>
         <p class="everyday-trigger">멀리서 왔으니 늦을 걱정 없이 먼저 도착해 있고 싶다.</p>
         <p class="everyday-trigger">오늘은 다음 약속 전에 30분이라도 눈을 붙이고 싶다.</p>
       </div>
@@ -251,7 +251,7 @@ script_version: 20260711-4
       <div class="about-highlight-grid">
         <article class="about-highlight-card"><h3>소파에서 잠깐 눈 붙이기</h3><p>알람을 맞추고 잠시 쉬어도 됩니다. 이동 중 쌓인 피로를 덜고 다음 일정을 시작할 수 있습니다.</p></article>
         <article class="about-highlight-card"><h3>휴대폰과 나도 충전하기</h3><p>배터리를 충전하는 동안 짐을 내려놓고 앉아 있거나, 이어폰으로 음악을 들으며 쉬어보세요.</p></article>
-        <article class="about-highlight-card"><h3>다음 일정만 가볍게 확인하기</h3><p>약속 장소, 준비물과 전달할 내용을 확인하되 남은 시간을 또 다른 업무로 가득 채우지 않아도 됩니다.</p></article>
+        <article class="about-highlight-card"><h3>땀 식히고 옷매무새 가다듬기</h3><p>더운 날 밖을 걸어왔다면 시원한 실내에서 몸의 열기를 식히고, 거울을 보며 얼굴·머리·옷을 천천히 정리해보세요.</p></article>
       </div>
       <p class="rest-note">바른자리는 숙박시설이나 수면실이 아닙니다. 예약한 시간 안에 소파에서 잠시 쉬는 것은 가능하며, 퇴실 시간을 놓치지 않도록 알람을 설정하고 귀중품은 직접 관리해 주세요.</p>
     </div>
@@ -264,7 +264,7 @@ script_version: 20260711-4
       <div class="guide-summary-grid">
         <article class="guide-summary-card"><span>약속 전</span><h2>멀리서 이동해 일찍 도착한 날</h2><p>다시 집에 갈 수는 없고 카페에 들어가기도 애매할 때 잠시 머물 수 있습니다.</p></article>
         <article class="guide-summary-card"><span>일정 사이</span><h2>두 일정 사이 시간이 빈 날</h2><p>무거운 짐을 들고 돌아다니지 않고 다음 일정 전까지 조용히 시간을 보낼 수 있습니다.</p></article>
-        <article class="guide-summary-card"><span>중요한 날</span><h2>급한 모습으로 도착하고 싶지 않은 날</h2><p>면접, 상담, 미팅이나 중요한 만남 전에 몸과 마음을 정돈할 수 있습니다.</p></article>
+        <article class="guide-summary-card"><span>더운 날</span><h2>땀난 채로 약속에 가고 싶지 않은 날</h2><p>이동하며 오른 열기를 식히고 얼굴과 옷매무새를 정리한 뒤 한결 편한 모습으로 나갈 수 있습니다.</p></article>
         <article class="guide-summary-card"><span>병원·관공서</span><h2>예상보다 일정이 일찍 끝난 날</h2><p>다음 약속을 당길 수 없을 때 이동을 반복하지 않고 가까운 곳에서 쉬어갈 수 있습니다.</p></article>
         <article class="guide-summary-card"><span>쇼핑 후</span><h2>짐을 내려놓고 쉬고 싶은 날</h2><p>계속 돌아다니기보다 예약한 방에서 가방을 곁에 두고 편한 자세로 쉴 수 있습니다.</p></article>
         <article class="guide-summary-card"><span>일부러</span><h2>한 시간의 여유를 먼저 만든 날</h2><p>우연히 시간이 남지 않아도 괜찮습니다. 다음 일정 전에 쉴 시간을 계획해서 만들 수 있습니다.</p></article>
