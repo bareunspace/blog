@@ -8502,3 +8502,85 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
 }
 
+@media (max-width: 640px) {
+  .interview-hub #home .section-inner {
+    text-align: left;
+  }
+
+  .interview-hub #home .section-title {
+    max-width: 8.2ch;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .interview-hub #home .hero-subtitle {
+    max-width: 29ch;
+    margin-left: 0;
+    margin-right: 0;
+    line-height: 1.58;
+  }
+
+  .interview-hub #home .hero-btns {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .interview-hub #home .hero-btns .btn-primary,
+  .interview-hub #home .hero-btns .btn-outline {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .interview-hub .guide-toc {
+    padding-left: .85rem;
+    padding-right: .85rem;
+  }
+
+  .interview-hub .guide-toc-inner {
+    gap: .45rem;
+    justify-content: flex-start;
+  }
+
+  .interview-hub .guide-toc a {
+    padding: .58rem .9rem;
+    font-size: .86rem;
+    white-space: nowrap;
+  }
+
+  .interview-hub .interview-flow-grid .guide-summary-card {
+    padding: 1rem .95rem;
+  }
+
+  .interview-hub .interview-series-editorial-grid {
+    gap: 1rem;
+  }
+
+  .interview-hub .interview-series-editorial-grid .interview-series-card .blog-guide-content,
+  .interview-hub .interview-series-editorial-grid .interview-series-card-hero .blog-guide-content,
+  .interview-hub .interview-series-editorial-grid .interview-series-card-archive .blog-guide-content {
+    padding: 1.15rem 1rem 1.1rem;
+  }
+
+  .interview-hub .interview-series-editorial-grid .interview-series-card h3 {
+    line-height: 1.34;
+  }
+
+  .interview-hub .interview-series-editorial-grid .interview-series-card-archive p {
+    font-size: .9rem;
+    line-height: 1.56;
+  }
+
+  .interview-hub .blog-conversion-panel {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .interview-hub .blog-conversion-actions {
+    width: 100%;
+  }
+
+  .interview-hub .blog-conversion-actions .btn-primary,
+  .interview-hub .blog-conversion-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
