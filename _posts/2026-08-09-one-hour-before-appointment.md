@@ -33,8 +33,6 @@ faq:
     answer: 네. 다음 일정까지 남은 시간과 이동 시간을 계산해 필요한 시간만 예약할 수 있습니다.
   - question: 예약 시간보다 일찍 들어갈 수 있나요?
     answer: 앞 예약과 공간 정비가 있을 수 있으므로 예약한 이용 시간에 맞춰 입실해 주세요.
-  - question: 짐만 먼저 맡겨둘 수 있나요?
-    answer: 짐 보관 서비스는 제공하지 않습니다. 소지품은 예약 시간 동안 직접 관리하고 퇴실할 때 모두 가져가 주세요.
 ---
 
 <style>
@@ -282,7 +280,6 @@ faq:
         <details class="faq-item"><summary>소파에서 잠깐 자도 되나요?</summary><div class="faq-answer"><p>네. 예약한 시간 안에는 소파에 기대어 잠시 눈을 붙여도 됩니다. 숙박시설이나 수면실은 아니므로 퇴실 시간을 놓치지 않게 알람을 맞춰주세요.</p></div></details>
         <details class="faq-item"><summary>한 시간만 예약해도 되나요?</summary><div class="faq-answer"><p>네. 다음 일정까지 남은 시간과 이동 시간을 계산해 필요한 시간만 예약할 수 있습니다.</p></div></details>
         <details class="faq-item"><summary>예약 시간보다 일찍 들어갈 수 있나요?</summary><div class="faq-answer"><p>앞 예약과 공간 정비가 있을 수 있으므로 예약한 이용 시간에 맞춰 입실해 주세요.</p></div></details>
-        <details class="faq-item"><summary>짐만 먼저 맡겨둘 수 있나요?</summary><div class="faq-answer"><p>짐 보관 서비스는 제공하지 않습니다. 소지품은 예약 시간 동안 직접 관리하고 퇴실할 때 모두 가져가 주세요.</p></div></details>
       </div>
     </div>
   </section>
