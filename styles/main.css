@@ -8723,3 +8723,142 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: center;
   }
 }
+
+@media (max-width: 640px) {
+  .study-hub #home .section-inner {
+    text-align: left;
+  }
+
+  .study-hub #home .section-title {
+    max-width: 11ch;
+    font-size: clamp(1.9rem, 9vw, 2.25rem);
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .study-hub #home .hero-subtitle {
+    max-width: 31ch;
+    margin-left: 0;
+    margin-right: 0;
+    line-height: 1.6;
+  }
+
+  .study-hub #home .hero-btns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: .55rem;
+  }
+
+  .study-hub #home .hero-btns .btn-primary {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .study-hub #home .hero-btns .btn-outline {
+    width: 100%;
+    min-width: 0;
+    padding-left: .55rem;
+    padding-right: .55rem;
+    font-size: .84rem;
+  }
+
+  .study-hub .study-hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .4rem;
+  }
+
+  .study-hub .study-metric-card {
+    min-width: 0;
+    padding: .68rem .38rem .7rem;
+    text-align: center;
+  }
+
+  .study-hub .study-metric-value {
+    font-size: .84rem;
+    line-height: 1.3;
+    word-break: keep-all;
+  }
+
+  .study-hub .study-metric-label {
+    margin-top: .18rem;
+    font-size: .64rem;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  .study-hub .guide-toc {
+    padding-left: .85rem;
+    padding-right: .85rem;
+  }
+
+  .study-hub .guide-toc-inner {
+    gap: .45rem;
+    justify-content: flex-start;
+  }
+
+  .study-hub .guide-toc a {
+    padding: .58rem .9rem;
+    font-size: .86rem;
+    white-space: nowrap;
+  }
+
+  .study-hub .interview-flow-heading .section-title,
+  .study-hub .blog-section-heading .section-title,
+  .study-hub #space-fit .section-title {
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .study-hub .interview-flow-grid .guide-summary-card {
+    padding: 1rem .95rem;
+  }
+
+  .study-hub .study-situation-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .study-hub .study-situation-chips a {
+    justify-content: center;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .study-hub .meeting-series-grid {
+    gap: 1rem;
+  }
+
+  .study-hub .meeting-series-grid .meeting-series-card .blog-guide-content,
+  .study-hub .meeting-series-grid .meeting-series-card-hero .blog-guide-content {
+    padding: 1.15rem 1rem 1.1rem;
+  }
+
+  .study-hub .meeting-series-grid .meeting-series-card h3 {
+    line-height: 1.34;
+  }
+
+  .study-hub .meeting-series-meta {
+    gap: .35rem;
+  }
+
+  .study-hub .meeting-series-meta span {
+    min-height: 1.7rem;
+    padding: .18rem .55rem;
+    font-size: .7rem;
+  }
+
+  .study-hub .blog-conversion-panel {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .study-hub .blog-conversion-actions {
+    width: 100%;
+  }
+
+  .study-hub .blog-conversion-actions .btn-primary,
+  .study-hub .blog-conversion-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
