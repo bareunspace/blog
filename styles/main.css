@@ -3751,11 +3751,12 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .35rem; }
 .tag {
   background: var(--bg-alt); color: var(--primary);
-  padding: .35rem .85rem; border-radius: 50px;
-  font-size: .82rem; font-weight: 500;
+  padding: .28rem .72rem; border-radius: 50px;
+  font-size: .78rem; font-weight: 500;
+  line-height: 1.2;
   border: 1px solid #d1fae5;
   transition: background var(--transition);
 }
@@ -3764,14 +3765,14 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
 .post-tags {
   background: rgba(255,255,255,.78);
   border-top: 1px solid #e5eee8;
-  padding: 1.25rem 1.5rem;
+  padding: .95rem 1.5rem;
 }
 .post-tags-inner {
   max-width: 940px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  gap: .8rem 1rem;
+  align-items: flex-start;
+  gap: .55rem .8rem;
   flex-wrap: wrap;
 }
 .post-tags-label {
@@ -3783,7 +3784,7 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
 
 main.about-page .post-tags {
   background: rgba(255,255,255,.78);
-  padding: 1.25rem 1.5rem;
+  padding: .95rem 1.5rem;
 }
 
 .post-share-btn {
