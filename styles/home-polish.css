@@ -1,0 +1,82 @@
+/* Homepage micro-polish: hierarchy, contrast, conversion */
+body:has(main#mainContent) { background:#fbfcfa; }
+main#mainContent { overflow-x:clip; }
+
+/* Hero: cleaner visual hierarchy */
+main#mainContent #home { min-height:clamp(560px,76vh,740px); padding-top:4.5rem; padding-bottom:4.5rem; }
+main#mainContent #home::after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(8,28,19,.05),rgba(8,28,19,.18)); }
+main#mainContent #home > * { z-index:2; }
+main#mainContent .hero-title { font-size:clamp(2.35rem,5.6vw,4rem); letter-spacing:-.045em; font-weight:800; }
+main#mainContent .hero-subtitle { max-width:720px; margin-bottom:1rem; color:rgba(255,255,255,.94); font-weight:500; line-height:1.65; }
+main#mainContent .hero-desc { max-width:700px; margin-bottom:.85rem; }
+main#mainContent .hero-highlights { margin:.15rem 0 .75rem; }
+main#mainContent .hero-highlights span { background:rgba(8,32,22,.28); border-color:rgba(255,255,255,.34); }
+main#mainContent .hero-price { display:inline-flex; align-items:center; padding:.38rem .85rem; margin:.1rem 0 .8rem; border-radius:999px; background:rgba(255,255,255,.92); color:#173f2e; text-shadow:none; font-size:1rem; }
+main#mainContent .hero-points { margin-bottom:1.25rem; }
+main#mainContent .hero-points li { background:rgba(8,32,22,.3); border-color:rgba(255,255,255,.3); }
+main#mainContent #home .btn-primary { background:#fff; color:#17412e; box-shadow:0 10px 28px rgba(0,0,0,.16); }
+main#mainContent #home .btn-outline { border-color:rgba(255,255,255,.75); color:#fff; background:rgba(8,32,22,.2); }
+main#mainContent .hero-assurance { color:rgba(255,255,255,.9); font-weight:500; }
+
+/* Section rhythm */
+main#mainContent > section:not(#home) { padding-top:clamp(4rem,7vw,6rem); padding-bottom:clamp(4rem,7vw,6rem); }
+main#mainContent .section-label { font-weight:800; letter-spacing:.055em; }
+main#mainContent .section-title { letter-spacing:-.035em; line-height:1.35; color:#173f2e; }
+main#mainContent .section-desc { color:#58665f; line-height:1.8; }
+
+/* Space section: make the first decision clearer */
+main#mainContent #space { background:#fbfcfa; }
+main#mainContent #space .space-gallery { margin-top:1.8rem; }
+main#mainContent .space-gallery-context { margin-top:1rem; padding:1rem 1.1rem; border:1px solid #d7e3db; border-radius:16px; background:#f4f8f5; }
+main#mainContent .space-gallery-context-actions { gap:.8rem; }
+main#mainContent .space-gallery-context-link { font-weight:800; color:#285f45; }
+
+/* Four hubs: equal weight, but keep interview as subtle primary */
+main#mainContent .features-grid { gap:1rem; margin-top:2rem; }
+main#mainContent .feature-card { border:1px solid #dbe5de; box-shadow:0 8px 24px rgba(28,67,48,.055); transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
+main#mainContent .feature-card:hover { transform:translateY(-3px); border-color:#b9d1c1; box-shadow:0 15px 34px rgba(28,67,48,.09); }
+main#mainContent .feature-card-primary { border-color:#a9cbb5; background:linear-gradient(180deg,#f7fbf8,#fff); }
+main#mainContent .feature-card h3 { color:#214b36; }
+main#mainContent .feature-card p { color:#5d6963; }
+main#mainContent .feature-quick-list li { background:#edf5f0; color:#315f49; }
+main#mainContent .feature-hub-link { font-weight:800; }
+
+/* Pricing: distinguish standard and overnight without visual noise */
+main#mainContent #about { background:#f1f5f2; }
+main#mainContent #about .section-inner { max-width:1040px; }
+main#mainContent #about .pricing-card,
+main#mainContent #about .price-card { border-color:#d2e0d7; box-shadow:0 10px 30px rgba(29,67,49,.06); }
+
+/* Practical guides: reduce dense feed feeling */
+main#mainContent #guides .section-desc { max-width:720px; }
+main#mainContent #guides .guide-filter,
+main#mainContent #guides .blog-filter { margin-top:1.3rem; }
+main#mainContent #guides article { border-color:#dde6e0; }
+
+/* Contact/FAQ: stronger ending and readable controls */
+main#mainContent #contact { background:#eef4f0; }
+main#mainContent #contact .section-inner { max-width:980px; }
+main#mainContent #contact .section-title { color:#153d2b; }
+main#mainContent #contact input,
+main#mainContent #contact select,
+main#mainContent #contact textarea { background:#fff; border-color:#cbd9d0; }
+main#mainContent #contact input:focus,
+main#mainContent #contact select:focus,
+main#mainContent #contact textarea:focus { border-color:#4d8666; box-shadow:0 0 0 3px rgba(45,106,79,.1); outline:none; }
+
+/* Sticky booking CTA: clearer but less shouty */
+.sticky-booking-cta { box-shadow:0 -6px 24px rgba(20,55,39,.1); }
+
+@media(max-width:760px){
+  main#mainContent #home { min-height:620px; padding:3.8rem 1rem; }
+  main#mainContent .hero-title { font-size:clamp(2.2rem,11vw,3.1rem); }
+  main#mainContent .hero-subtitle { font-size:1rem; }
+  main#mainContent .hero-desc { font-size:.91rem; }
+  main#mainContent .hero-points { gap:.42rem; }
+  main#mainContent .hero-points li { font-size:.74rem; }
+  main#mainContent #home .hero-btns { width:100%; gap:.65rem; }
+  main#mainContent #home .btn-primary,main#mainContent #home .btn-outline { width:100%; }
+  main#mainContent > section:not(#home) { padding-top:3.6rem; padding-bottom:3.6rem; }
+  main#mainContent .space-gallery-context { padding:.9rem; }
+  main#mainContent .space-gallery-context-actions { width:100%; }
+}
