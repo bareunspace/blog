@@ -18,7 +18,7 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-before-appointment/
 permalink: /posts/one-hour-before-appointment/
 date: 2026-08-09 16:01:00 +0900
-last_modified_at: 2026-08-09 16:30:00 +0900
+last_modified_at: 2026-08-09 16:40:00 +0900
 og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.png
 og_image_alt: 바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습
 og_image_width: 1536
@@ -36,6 +36,9 @@ faq:
 ---
 
 <style>
+  .appointment-buffer-page > section[id]:not(#home) {
+    scroll-margin-top: 132px;
+  }
   .appointment-buffer-page #one-hour-plan,
   .appointment-buffer-page #rest-options {
     background: var(--bg-alt);
@@ -133,6 +136,16 @@ faq:
     font-weight: 900;
   }
   @media (max-width: 720px) {
+    .appointment-buffer-page #home {
+      min-height: 580px;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .appointment-buffer-page #home .section-title {
+      font-size: clamp(1.85rem, 8vw, 2.2rem);
+      line-height: 1.35;
+      word-break: keep-all;
+    }
     .appointment-buffer-page .buffer-timeline,
     .appointment-buffer-page .appointment-check-grid {
       grid-template-columns: 1fr;
@@ -202,7 +215,7 @@ faq:
         <p class="everyday-trigger">쇼핑한 짐은 무겁고, 잠깐 앉아서 쉬고 싶다.</p>
         <p class="everyday-trigger">덥고 땀이 나서, 약속 전에 몸을 식히고 옷매무새를 가다듬고 싶다.</p>
         <p class="everyday-trigger">멀리서 왔으니 늦을 걱정 없이 먼저 도착해 있고 싶다.</p>
-        <p class="everyday-trigger">오늘은 다음 약속 전에 30분이라도 눈을 붙이고 싶다.</p>
+        <p class="everyday-trigger">휴대폰 배터리는 얼마 남지 않았고, 연락을 놓칠까 마음까지 불안하다.</p>
       </div>
     </div>
   </section>
