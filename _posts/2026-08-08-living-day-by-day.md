@@ -120,5 +120,4 @@ script_version: 20260711-4
 </div></section>
 
 {% include post-tags.html %}
-{% include related-posts.html %}
 </main>
