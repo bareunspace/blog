@@ -9166,5 +9166,4 @@ main.blog-home #blog-latest section.blog-field-category-group {
 main.blog-home #blog-latest section.blog-field-category-group + section.blog-field-category-group {
   margin-top: 0;
   padding-top: 1.25rem;
-  border-top: 1px solid #edf2ee;
 }
