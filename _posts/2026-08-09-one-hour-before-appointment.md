@@ -77,7 +77,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">One Hour Before</p>
       <h1 class="section-title">약속보다 한 시간 먼저 나왔습니다<br />서두르지 않고 쉬었다 가는 방법</h1>
-      <p class="section-desc">늦을까 봐 마음 졸이며 출발하는 대신, 오늘은 한 시간 먼저 나와도 됩니다. 독립된 프라이빗 룸의 문을 닫고 짐을 내려놓은 뒤, 내 집에 잠깐 들른 것처럼 쉬었다가 다음 일정을 시작하는 것입니다.</p>
+      <p class="section-desc">늦을까 봐 마음 졸이며 출발하는 대신, 오늘은 한 시간 먼저 나와보세요. 독립된 프라이빗 룸의 문을 닫고 짐을 내려놓으면, 밖에 나온 날에도 내 집에 잠깐 들른 것처럼 편히 쉬었다가 다음 일정을 시작할 수 있습니다.</p>
       <div class="hero-highlights" aria-label="약속 전 한 시간 활용 방법">
         <span>잠깐 눈 붙이기</span><span>휴대폰 충전</span><span>짐 내려놓기</span><span>옷매무새 정리</span><span>마음 가라앉히기</span>
       </div>
@@ -97,7 +97,7 @@ script_version: 20260711-4
     image_width='1536'
     image_height='1024'
     image_loading='eager'
-    image_caption='바른자리의 독립된 공간에서 내 집처럼 잠깐 쉬었다 가는 장면을 표현했습니다.'
+    image_caption='약속보다 조금 일찍 나온 날, 바른자리의 독립된 공간에서 내 집처럼 잠깐 쉬었다 가세요.'
   %}
 
   <nav class="guide-toc" aria-label="약속 전 한 시간 가이드 목차">
@@ -175,7 +175,7 @@ script_version: 20260711-4
         <div>
           <p class="section-label">Bareunjari Guide</p>
           <h2>다음 약속을 위한 여유까지<br />미리 예약해두세요</h2>
-          <p>한 시간 먼저 나와 독립된 방의 문을 닫고, 내 집처럼 잠깐 쉬었다 가는 방법도 있습니다. 바른자리에서 서두르지 않는 하루를 시작해보세요.</p>
+          <p>한 시간 먼저 나와 독립된 방의 문을 닫고 짐을 내려놓으세요. 소파에 기대어 잠깐 쉬고 나면, 다음 약속으로 향하는 마음에도 여유가 생깁니다.</p>
         </div>
         <div class="blog-conversion-actions">
           <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">1시간 10,000원 · 예약하기</a>
