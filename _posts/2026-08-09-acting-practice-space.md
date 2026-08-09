@@ -242,7 +242,7 @@ script_version: 20260711-4
         </div>
         <div class="blog-conversion-actions">
           <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">1시간 10,000원 · 예약하기</a>
-          <a href="/posts/practice-speaking-space/" class="blog-conversion-text-link">말하기 연습 가이드도 보기 →</a>
+          <a href="/posts/audition-self-tape-checklist/" class="blog-conversion-text-link">셀프테이프 촬영 체크리스트 보기 →</a>
         </div>
       </div>
     </div>
