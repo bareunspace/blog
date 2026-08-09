@@ -6,7 +6,7 @@ home:
         href: "about.html"
   - label: 요금·예약
     href: "#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     children:
       - label: 시간·공간
@@ -31,7 +31,7 @@ about:
     href: "index.html#space"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     children:
       - label: 시간·공간
@@ -56,7 +56,7 @@ blog:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -83,7 +83,7 @@ interview:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -112,7 +112,7 @@ ai_interview:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -141,7 +141,7 @@ meeting:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -168,7 +168,7 @@ study:
         href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -188,7 +188,7 @@ study:
   - label: 오시는 길
     href: "index.html#contact"
 private:
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -216,7 +216,7 @@ private:
   - label: 공간 예약
     href: "#booking"
 time_space:
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
@@ -242,7 +242,7 @@ time_space:
   - label: 시간 예약
     href: "#booking"
 post:
-  - label: 블로그
+  - label: 가이드
     href: "blog.html"
     current: true
     children:
