@@ -15,11 +15,11 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-before-appointment/
 permalink: /posts/one-hour-before-appointment/
 date: 2026-08-09 16:01:00 +0900
-og_image: https://bareunjari.com/images/07.webp
-og_image_alt: 소파와 테이블이 마련된 실제 바른자리 프라이빗 공간 내부
-og_image_width: 2200
-og_image_height: 1650
-preload_image: images/07.webp
+og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.jpg
+og_image_alt: 바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/one-hour-before-appointment-scene.jpg
 css_version: 20260809-6
 script_version: 20260711-4
 ---
@@ -92,12 +92,12 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/07.webp'
-    image_alt='소파와 테이블이 마련된 실제 바른자리 프라이빗 공간 내부'
-    image_width='2200'
-    image_height='1650'
+    image_src='/images/one-hour-before-appointment-scene.jpg'
+    image_alt='바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습'
+    image_width='1536'
+    image_height='1024'
     image_loading='eager'
-    image_caption='실제 바른자리 내부입니다. 독립된 공간의 소파에서 내 집처럼 잠깐 쉬었다 갈 수 있습니다.'
+    image_caption='바른자리의 독립된 공간에서 내 집처럼 잠깐 쉬었다 가는 장면을 표현했습니다.'
   %}
 
   <nav class="guide-toc" aria-label="약속 전 한 시간 가이드 목차">
