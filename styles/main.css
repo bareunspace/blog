@@ -2956,6 +2956,16 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
   margin-top: 0;
   margin-bottom: .38rem;
 }
+.feature-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+.feature-title-link:hover,
+.feature-title-link:focus-visible {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .feature-card p {
   font-size: .9rem;
   color: var(--muted);
