@@ -22,6 +22,12 @@ tags:
   - 프리랜서
   - 1인사업자
   - 업무공간
+display_tags:
+  - 초단기
+  - 시간제
+  - 프리랜서
+  - 1인사업자
+  - 업무공간
 canonical: https://bareunjari.com/posts/short-term-office-rental/
 permalink: /posts/short-term-office-rental/
 date: 2026-08-09 11:00:00 +0900

@@ -1,9 +1,10 @@
-{% if page.tags %}
+{% assign visible_tags = page.display_tags | default: page.tags %}
+{% if visible_tags %}
   <section class="post-tags" aria-label="글 태그">
     <div class="post-tags-inner">
       <p class="post-tags-label">관련 주제</p>
       <div class="tags">
-        {% for tag in page.tags %}
+        {% for tag in visible_tags %}
           <span class="tag">#{{ tag }}</span>
         {% endfor %}
       </div>
