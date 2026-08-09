@@ -478,6 +478,20 @@ section { padding: 5rem 1.5rem; }
   outline: 2px solid rgba(45,106,79,.45);
   outline-offset: 2px;
 }
+.home-section-label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: .5rem;
+}
+.home-section-label-row .section-label {
+  margin-bottom: 0;
+}
+.home-section-label-row .blog-guide-category-link {
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+}
 .section-title {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 700; color: var(--primary);
