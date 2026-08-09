@@ -1,0 +1,53 @@
+/* Homepage FAQ final surface: white cards, Barunjari green hierarchy */
+main#mainContent #contact .contact-faq {
+  background:#ffffff !important;
+  color:#1f3227 !important;
+  border:1px solid #c4d7ca !important;
+}
+main#mainContent #contact .contact-faq-title {
+  color:#123426 !important;
+}
+main#mainContent #contact .contact-faq-lead {
+  color:#4b5d53 !important;
+}
+main#mainContent #contact .contact-faq details,
+main#mainContent #contact .contact-faq details[open] {
+  background:#ffffff !important;
+  color:#25382d !important;
+  border:1px solid #cfddd4 !important;
+}
+main#mainContent #contact .contact-faq details:hover {
+  border-color:#a9c7b5 !important;
+}
+main#mainContent #contact .contact-faq details[open] {
+  border-color:#8fb59d !important;
+  box-shadow:0 7px 18px rgba(27,67,48,.07) !important;
+}
+main#mainContent #contact .contact-faq summary {
+  background:#ffffff !important;
+  color:#173d2a !important;
+  opacity:1 !important;
+}
+main#mainContent #contact .contact-faq details[open] summary {
+  background:#ffffff !important;
+  color:#102f20 !important;
+  border-bottom:1px solid #dce6df !important;
+}
+main#mainContent #contact .contact-faq summary::after {
+  background:#e7f1ea !important;
+  color:#245f43 !important;
+}
+main#mainContent #contact .contact-faq details[open] summary::after {
+  background:#d9e9df !important;
+  color:#18472f !important;
+}
+main#mainContent #contact .contact-faq details p {
+  background:#ffffff !important;
+  color:#3f5147 !important;
+  opacity:1 !important;
+}
+main#mainContent #contact .contact-faq summary:focus-visible {
+  outline:3px solid rgba(45,106,79,.2);
+  outline-offset:-3px;
+  border-radius:12px;
+}
