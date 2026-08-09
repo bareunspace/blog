@@ -27,11 +27,11 @@ tags:
 canonical: https://bareunjari.com/posts/one-person-study-room/
 permalink: /posts/one-person-study-room/
 date: 2026-08-10 09:00:00 +0900
-og_image: https://bareunjari.com/images/01.webp
+og_image: https://bareunjari.com/images/one-person-study-room.webp
 og_image_alt: 부천 신중동에서 혼자 단독으로 이용할 수 있는 바른자리 공간
-og_image_width: 1672
-og_image_height: 941
-preload_image: images/01.webp
+og_image_width: 1535
+og_image_height: 1024
+preload_image: images/one-person-study-room.webp
 css_version: 20260729-3
 script_version: 20260711-4
 ---
@@ -53,7 +53,7 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/01.webp" alt="부천 신중동에서 혼자 단독으로 이용할 수 있는 바른자리 공간" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/one-person-study-room.webp" alt="부천 신중동에서 혼자 단독으로 이용할 수 있는 바른자리 공간" loading="eager" width="1535" height="1024" />
         <figcaption>혼자 쓰는 자리와 혼자 쓰는 공간은 다릅니다. 말하고, 연습하고, 집중해야 하는 시간에는 단독 공간이 더 잘 맞을 수 있습니다.</figcaption>
       </figure>
     </div>
