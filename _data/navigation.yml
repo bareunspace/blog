@@ -215,6 +215,13 @@ private:
   - label: 오시는 길
     href: "index.html#contact"
 time_space:
+  - label: 공간
+    href: "index.html#space"
+    children:
+      - label: 브랜드 스토리
+        href: "about.html"
+  - label: 요금·예약
+    href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
@@ -232,14 +239,8 @@ time_space:
         href: "study/"
       - label: 프라이빗시간
         href: "private/"
-  - label: 바른자리의 생각
-    href: "#philosophy"
-  - label: 새로운 시간
-    href: "#whats-new"
-  - label: 저널
-    href: "#journal"
-  - label: 시간 예약
-    href: "#booking"
+  - label: 오시는 길
+    href: "index.html#contact"
 post:
   - label: 가이드
     href: "blog.html"
