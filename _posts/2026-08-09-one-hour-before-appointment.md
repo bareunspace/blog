@@ -312,4 +312,6 @@ faq:
       </div>
     </div>
   </section>
+
+  {% include post-tags.html %}
 </main>

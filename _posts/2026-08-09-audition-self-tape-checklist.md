@@ -195,4 +195,6 @@ script_version: 20260711-4
       </div>
     </div>
   </section>
+
+  {% include post-tags.html %}
 </main>

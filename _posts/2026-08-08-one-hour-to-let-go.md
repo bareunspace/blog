@@ -91,5 +91,6 @@ script_version: 20260711-4
 
   <section id="bareunjari"><div class="section-inner"><p class="letting-step">Bareunjari</p><h2 class="section-title">바른자리는 무엇을 해야 하는 공간을 정하지 않습니다</h2><p class="section-desc">면접을 연습할 수도 있고, 일을 할 수도 있고, 공부하거나 대화를 나눌 수도 있습니다.</p><p>하지만 반드시 무언가를 해야 하는 것은 아닙니다.</p><p>기도해도 좋고, 묵상해도 좋고, 책을 읽어도 좋습니다. 그냥 앉아 있어도 됩니다.</p><p><strong>예약한 시간 동안 무엇을 할지는 바른자리가 아니라 그 시간을 예약한 사람이 정합니다.</strong></p><p>어쩌면 공간을 예약한다는 것은 방 하나를 빌리는 것만을 의미하지 않을지도 모릅니다.</p><p>그 시간 동안 다른 사람의 시선과 일정에서 잠시 벗어나 <strong>내 시간을 내가 결정할 수 있는 권리</strong>를 예약하는 것일 수도 있습니다.</p><div class="about-quote"><p>바른자리는 시간을 채우는 곳이 아니라,<br /><strong>잠시 내려놓을 수 있는 시간을 만드는 곳이고 싶습니다.</strong></p></div><p>더 많이 하기 위해서가 아니라, 조금 덜어내기 위해서.</p><p>더 많이 가지기 위해서가 아니라, 잠시 내려놓음으로써 더 풍요로워지기 위해서.</p><p><strong>시간을 비우고,<br />마음을 비우고,<br />나를 내려놓는 한 시간.</strong></p><p>그 한 시간만큼은 누구의 시간도 아닌, 당신의 시간이면 됩니다.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">나만의 시간을 예약하세요</a><a href="/posts/privacy-is-worth-paying-for/" class="btn-outline">프라이버시의 가치 읽기</a></div></div></section>
 
+  {% include post-tags.html %}
   {% include related-posts.html %}
 </main>

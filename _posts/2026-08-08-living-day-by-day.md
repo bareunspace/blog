@@ -119,5 +119,6 @@ script_version: 20260711-4
 <div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">나만의 시간을 예약하세요</a><a href="/posts/one-hour-to-let-go/" class="btn-outline">내려놓는 한 시간 읽기</a></div>
 </div></section>
 
+{% include post-tags.html %}
 {% include related-posts.html %}
 </main>
