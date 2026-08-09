@@ -4015,6 +4015,10 @@ main.about-page .post-reactions {
 .ci-icon {
   width: 15px;
   height: 15px;
+  min-width: 15px;
+  min-height: 15px;
+  display: block;
+  overflow: visible;
   stroke: #fff;
   stroke-width: 1.9;
   fill: none;
