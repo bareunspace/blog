@@ -3551,11 +3551,15 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-.testimonial-card .author { font-size: .85rem; font-weight: 600; color: var(--primary); }
 .testimonial-meta {
-  margin-top: .35rem;
+  margin-top: 0;
+  margin-bottom: .6rem;
   font-size: .8rem;
   color: var(--muted);
+}
+.testimonial-meta strong {
+  font-weight: 700;
+  color: #1f2937;
 }
 .rss-status {
   margin-bottom: 1rem;

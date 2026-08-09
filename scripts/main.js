@@ -1993,7 +1993,7 @@
         const imageUrl = toPreferredNaverRepresentativeImageUrl(item.imageUrl || extractImageFromHtml(item.description));
         const proxyImageUrl = toProxyImageUrl(imageUrl);
         const contentType = item.contentType || classifyUseCaseType(item);
-        const badgeLabel = contentType === '이용안내' ? 'Guide' : 'Case';
+        const badgeLabel = contentType === '이용안내' ? '이용안내' : '이용사례';
         const fallbackSeed = `${title}::${link}`;
 
         return `
@@ -2001,9 +2001,8 @@
             ${imageUrl ? `<a href="${escapeHtml(link)}" class="testimonial-thumb-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} 이미지 포함 글 보기"><img class="testimonial-thumb" src="${escapeHtml(imageUrl)}" width="960" height="540" data-original-src="${escapeHtml(imageUrl)}" data-proxy-src="${escapeHtml(proxyImageUrl)}" data-fallback-seed="${escapeHtml(fallbackSeed)}" alt="${escapeHtml(title)} 대표 이미지" loading="lazy" decoding="async"></a>` : ''}
             <div class="stars">${escapeHtml(badgeLabel)}</div>
             <h3 class="testimonial-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(title)}</a></h3>
+            <p class="testimonial-meta"><strong>${escapeHtml(date)}</strong></p>
             <p class="testimonial-summary">${escapeHtml(summary)}</p>
-            <span class="author">— ${escapeHtml(contentType)}</span>
-            <p class="testimonial-meta">${escapeHtml(date)}</p>
           </article>
         `;
       }).join('');
