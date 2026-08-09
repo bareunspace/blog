@@ -5,6 +5,7 @@ description: 약속이나 면접, 미팅 전에 한 시간 먼저 나와 독립�
 category: 프라이빗시간
 hub_series: private
 hub_section: recommended
+editor_pick: true
 keywords: 약속전시간보내기,한시간시간보내기,신중동시간보낼곳,부천시간보낼곳,신중동쉴곳,부천쉴곳,낮시간휴식공간,더운날쉴곳,약속전옷매무새,잠깐쉴곳,약속전대기,신중동역공간대여,프라이빗공간,바른자리
 tags:
   - 약속전시간
@@ -17,6 +18,7 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-before-appointment/
 permalink: /posts/one-hour-before-appointment/
 date: 2026-08-09 16:01:00 +0900
+last_modified_at: 2026-08-09 16:30:00 +0900
 og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.png
 og_image_alt: 바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습
 og_image_width: 1536
@@ -24,6 +26,15 @@ og_image_height: 1024
 preload_image: images/one-hour-before-appointment-scene.png
 css_version: 20260809-7
 script_version: 20260711-4
+faq:
+  - question: 소파에서 잠깐 자도 되나요?
+    answer: 예약한 시간 안에는 소파에 기대어 잠시 눈을 붙여도 됩니다. 숙박시설이나 수면실은 아니므로 퇴실 시간을 놓치지 않게 알람을 맞춰주세요.
+  - question: 한 시간만 예약해도 되나요?
+    answer: 네. 다음 일정까지 남은 시간과 이동 시간을 계산해 필요한 시간만 예약할 수 있습니다.
+  - question: 예약 시간보다 일찍 들어갈 수 있나요?
+    answer: 앞 예약과 공간 정비가 있을 수 있으므로 예약한 이용 시간에 맞춰 입실해 주세요.
+  - question: 짐만 먼저 맡겨둘 수 있나요?
+    answer: 짐 보관 서비스는 제공하지 않습니다. 소지품은 예약 시간 동안 직접 관리하고 퇴실할 때 모두 가져가 주세요.
 ---
 
 <style>
@@ -122,24 +133,6 @@ script_version: 20260711-4
     color: var(--primary);
     font-size: .75rem;
     font-weight: 900;
-  }
-  .appointment-buffer-page .acting-faq-list {
-    max-width: 860px;
-    margin-top: 1.4rem;
-    border-top: 1px solid #dde5df;
-  }
-  .appointment-buffer-page .acting-faq-item {
-    padding: 1.15rem 0;
-    border-bottom: 1px solid #dde5df;
-  }
-  .appointment-buffer-page .acting-faq-item h3 {
-    margin-bottom: .4rem;
-    color: var(--primary);
-    font-size: 1rem;
-  }
-  .appointment-buffer-page .acting-faq-item p {
-    margin: 0;
-    color: var(--muted);
   }
   @media (max-width: 720px) {
     .appointment-buffer-page .buffer-timeline,
@@ -285,11 +278,11 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">잠깐 쉬었다 가기 전에 궁금한 점</h2>
-      <div class="acting-faq-list" aria-label="약속 전 한 시간 이용 FAQ">
-        <article class="acting-faq-item"><h3>소파에서 잠깐 자도 되나요?</h3><p>네. 예약한 시간 안에는 소파에 기대어 잠시 눈을 붙여도 됩니다. 숙박시설이나 수면실은 아니므로 퇴실 시간을 놓치지 않게 알람을 맞춰주세요.</p></article>
-        <article class="acting-faq-item"><h3>한 시간만 예약해도 되나요?</h3><p>네. 다음 일정까지 남은 시간과 이동 시간을 계산해 필요한 시간만 예약할 수 있습니다.</p></article>
-        <article class="acting-faq-item"><h3>예약 시간보다 일찍 들어갈 수 있나요?</h3><p>앞 예약과 공간 정비가 있을 수 있으므로 예약한 이용 시간에 맞춰 입실해 주세요.</p></article>
-        <article class="acting-faq-item"><h3>짐만 먼저 맡겨둘 수 있나요?</h3><p>짐 보관 서비스는 제공하지 않습니다. 소지품은 예약 시간 동안 직접 관리하고 퇴실할 때 모두 가져가 주세요.</p></article>
+      <div class="faq-list" aria-label="약속 전 한 시간 이용 FAQ">
+        <details class="faq-item"><summary>소파에서 잠깐 자도 되나요?</summary><div class="faq-answer"><p>네. 예약한 시간 안에는 소파에 기대어 잠시 눈을 붙여도 됩니다. 숙박시설이나 수면실은 아니므로 퇴실 시간을 놓치지 않게 알람을 맞춰주세요.</p></div></details>
+        <details class="faq-item"><summary>한 시간만 예약해도 되나요?</summary><div class="faq-answer"><p>네. 다음 일정까지 남은 시간과 이동 시간을 계산해 필요한 시간만 예약할 수 있습니다.</p></div></details>
+        <details class="faq-item"><summary>예약 시간보다 일찍 들어갈 수 있나요?</summary><div class="faq-answer"><p>앞 예약과 공간 정비가 있을 수 있으므로 예약한 이용 시간에 맞춰 입실해 주세요.</p></div></details>
+        <details class="faq-item"><summary>짐만 먼저 맡겨둘 수 있나요?</summary><div class="faq-answer"><p>짐 보관 서비스는 제공하지 않습니다. 소지품은 예약 시간 동안 직접 관리하고 퇴실할 때 모두 가져가 주세요.</p></div></details>
       </div>
     </div>
   </section>
