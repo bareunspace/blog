@@ -9002,3 +9002,170 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: center;
   }
 }
+
+@media (max-width: 640px) {
+  main.blog-home section:not(#home) {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  main.blog-home #featured-guide {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  main.blog-home .blog-section-heading {
+    gap: .45rem;
+    margin-bottom: 1rem;
+  }
+
+  main.blog-home .blog-section-heading .section-title {
+    margin-bottom: .15rem;
+    font-size: clamp(1.65rem, 7.5vw, 2rem);
+    line-height: 1.25;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  main.blog-home .blog-section-heading > p {
+    max-width: 31ch;
+    font-size: .92rem;
+    line-height: 1.62;
+  }
+
+  main.blog-home .blog-guide-category-group,
+  main.blog-home #blog-onsite .blog-guide-category-group {
+    gap: .65rem;
+  }
+
+  main.blog-home #blog-onsite .blog-guide-groups,
+  main.blog-home .blog-field-groups {
+    gap: 1.5rem;
+  }
+
+  main.blog-home .blog-guide-category-header {
+    gap: .55rem;
+  }
+
+  main.blog-home .blog-guide-category-title-row {
+    gap: .35rem;
+  }
+
+  main.blog-home .blog-guide-category-header h3 {
+    font-size: 1.02rem;
+  }
+
+  main.blog-home .blog-guide-category-link {
+    width: 34px;
+    height: 34px;
+  }
+
+  main.blog-home .blog-guide-category-controls {
+    gap: .3rem;
+  }
+
+  main.blog-home .blog-guide-category-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+
+  main.blog-home .blog-guide-category-list,
+  main.blog-home .blog-field-category-list {
+    grid-auto-columns: minmax(260px, 86%);
+    gap: .7rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: .35rem;
+    scroll-padding-left: 1rem;
+  }
+
+  main.blog-home .blog-guide-card,
+  main.blog-home .blog-field-card {
+    scroll-snap-align: start;
+  }
+
+  main.blog-home .blog-guide-image,
+  main.blog-home .blog-field-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+  }
+
+  main.blog-home .blog-guide-content,
+  main.blog-home .blog-field-content {
+    padding-top: .7rem;
+  }
+
+  main.blog-home .blog-guide-content h3,
+  main.blog-home .blog-field-content h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-bottom: .35rem;
+    font-size: 1rem;
+    line-height: 1.42;
+    word-break: keep-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  main.blog-home .blog-guide-content > p,
+  main.blog-home .blog-field-content > p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: .86rem;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  main.blog-home .blog-card-footer {
+    gap: .25rem;
+    margin-bottom: .25rem;
+  }
+
+  main.blog-home .blog-guide-demo-link {
+    height: 28px;
+    padding: 0 .6rem;
+    font-size: .72rem;
+  }
+
+  main.blog-home .blog-conversion-panel {
+    gap: 1.15rem;
+    padding: 1.35rem 1.1rem;
+  }
+
+  main.blog-home .blog-conversion-panel h2 {
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  main.blog-home .blog-conversion-actions {
+    width: 100%;
+  }
+
+  main.blog-home .blog-conversion-actions .btn-primary,
+  main.blog-home .blog-conversion-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  main.blog-home #tags .section-title {
+    margin-bottom: 1.1rem;
+  }
+
+  main.blog-home .tag-group {
+    margin-bottom: 1.25rem;
+  }
+
+  main.blog-home .tags {
+    gap: .4rem;
+  }
+
+  main.blog-home .tag {
+    padding: .42rem .68rem;
+    font-size: .75rem;
+  }
+}
