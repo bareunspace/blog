@@ -2861,7 +2861,7 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
   display: flex;
   align-items: center;
   gap: .85rem;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 .space-gallery-context-actions .btn-primary {
   padding: .82rem 1.35rem;
@@ -7455,7 +7455,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     align-items: stretch;
     flex-direction: column;
     gap: .55rem;
-    margin-top: .82rem;
+    margin-top: 0;
   }
   .space-gallery-context-actions .btn-primary,
   .space-gallery-context-link {
