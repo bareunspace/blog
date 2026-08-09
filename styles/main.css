@@ -3988,6 +3988,11 @@ main.about-page .post-reactions {
   padding: 1rem .75rem;
   border: 1px solid rgba(255,255,255,.15);
   backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
 }
 .contact-item:hover,
@@ -3999,16 +4004,18 @@ main.about-page .post-reactions {
 }
 .contact-item .ci-label {
   font-size: .74rem;
-  opacity: .72;
+  opacity: 1;
+  color: rgba(255,255,255,.82);
   margin-bottom: .22rem;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: .28rem;
 }
 .ci-icon {
-  width: 14px;
-  height: 14px;
-  stroke: rgba(255,255,255,.92);
+  width: 15px;
+  height: 15px;
+  stroke: #fff;
   stroke-width: 1.9;
   fill: none;
   stroke-linecap: round;
