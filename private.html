@@ -10,7 +10,7 @@ og_image_alt: 혼자 회복과 조용한 대화를 위한 프라이빗시간 공
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/a-place-for-quiet-recovery.webp
-css_version: 20260809-1
+css_version: 20260809-2
 script_version: 20260711-4
 ---
 
@@ -126,7 +126,9 @@ script_version: 20260711-4
         <p>대표 Pillar 글을 먼저 읽고, 지금의 감정과 상황에 맞는 글로 이어서 확인해 보세요.</p>
       </div>
       {% assign private_posts = site.posts | where: "category", "프라이빗시간" %}
-      {% assign private_pillar = private_posts | first %}
+      {% assign private_pillar_posts = private_posts | where: "permalink", "/posts/alone-time-is-recovery/" %}
+      {% assign private_pillar = private_pillar_posts | first %}
+      {% assign private_recommended_posts = private_posts | where_exp: "item", "item.permalink != '/posts/alone-time-is-recovery/'" %}
       {% if private_pillar %}
         {% assign pillar_image = private_pillar.preload_image | default: private_pillar.og_image | default: '/images/main.jpeg' %}
         <div class="blog-guide-grid meeting-series-grid private-series-pillar-grid" aria-label="프라이빗시간 대표 가이드">
@@ -153,7 +155,7 @@ script_version: 20260711-4
       {% endif %}
 
       <div class="blog-guide-grid interview-series-grid meeting-series-grid" aria-label="프라이빗시간 추천 글 목록">
-        {% for post in private_posts offset:1 limit:6 %}
+        {% for post in private_recommended_posts limit:6 %}
           {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
           {% assign card_index = forloop.index | prepend: '0' %}
           <article class="blog-guide-card meeting-series-card{% if forloop.index <= 3 %} meeting-series-card-support{% else %} meeting-series-card-archive{% endif %}">
