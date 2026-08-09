@@ -23,6 +23,8 @@
             <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "프라이빗시간" %}
             <a href="{{ '/private/' | relative_url }}">{{ page.category }}</a>
+          {% elsif page.category == "연습·리허설" %}
+            <a href="{{ '/blog.html#practice-rehearsal-guides' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "시간·공간" %}
             <a href="{{ '/time-space/' | relative_url }}">{{ page.category }}</a>
           {% else %}
