@@ -53,16 +53,65 @@ main#mainContent #guides .guide-filter,
 main#mainContent #guides .blog-filter { margin-top:1.3rem; }
 main#mainContent #guides article { border-color:#dde6e0; }
 
-/* Contact/FAQ: stronger ending and readable controls */
-main#mainContent #contact { background:#eef4f0; }
+/* FAQ & contact: explicit backgrounds and text contrast */
+main#mainContent #contact {
+  background:linear-gradient(180deg,#e7f0ea 0%,#dce9e1 100%) !important;
+  color:#17291f !important;
+}
 main#mainContent #contact .section-inner { max-width:980px; }
-main#mainContent #contact .section-title { color:#153d2b; }
+main#mainContent #contact .section-label,
+main#mainContent #contact .section-title,
+main#mainContent #contact .section-desc { opacity:1 !important; }
+main#mainContent #contact .section-label { color:#2e6549 !important; }
+main#mainContent #contact .section-title { color:#123426 !important; }
+main#mainContent #contact .section-desc { color:#3f5147 !important; }
+main#mainContent #contact .contact-grid { gap:.8rem; }
+main#mainContent #contact .contact-item {
+  background:#ffffff !important;
+  color:#20372a !important;
+  border:1px solid #c7d8cd !important;
+  box-shadow:0 8px 22px rgba(20,58,40,.06);
+}
+main#mainContent #contact .ci-label { color:#52665a !important; }
+main#mainContent #contact .ci-value,
+main#mainContent #contact .ci-value a { color:#18452f !important; font-weight:800; }
+main#mainContent #contact .contact-support-layout { align-items:start; }
+main#mainContent #contact .contact-faq,
+main#mainContent #contact .contact-form-wrap {
+  background:#ffffff !important;
+  color:#1f3227 !important;
+  border:1px solid #c4d7ca !important;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(20,58,40,.07);
+}
+main#mainContent #contact .contact-faq { padding:1.25rem; }
+main#mainContent #contact .contact-form-wrap { padding:1.25rem; }
+main#mainContent #contact .contact-faq-title { color:#123426 !important; }
+main#mainContent #contact .contact-faq-lead { color:#4b5d53 !important; }
+main#mainContent #contact .contact-faq details {
+  background:#f7faf8 !important;
+  border:1px solid #d5e2da !important;
+  color:#25382d !important;
+}
+main#mainContent #contact .contact-faq summary { color:#183d2a !important; font-weight:800; }
+main#mainContent #contact .contact-faq details p { color:#46584e !important; }
+main#mainContent #contact .contact-form label { color:#263c30 !important; font-weight:700; }
 main#mainContent #contact input,
 main#mainContent #contact select,
-main#mainContent #contact textarea { background:#fff; border-color:#cbd9d0; }
+main#mainContent #contact textarea {
+  background:#fff !important;
+  color:#1f2f27 !important;
+  border-color:#bdcec3 !important;
+}
+main#mainContent #contact input::placeholder,
+main#mainContent #contact textarea::placeholder { color:#819086 !important; opacity:1; }
 main#mainContent #contact input:focus,
 main#mainContent #contact select:focus,
 main#mainContent #contact textarea:focus { border-color:#4d8666; box-shadow:0 0 0 3px rgba(45,106,79,.1); outline:none; }
+main#mainContent #contact .submit-btn { background:#245f43 !important; color:#fff !important; }
+main#mainContent #contact .contact-help-note,
+main#mainContent #contact .contact-rate-note,
+main#mainContent #contact .contact-submit-status { color:#55675d !important; }
 
 /* Sticky booking CTA: clearer but less shouty */
 .sticky-booking-cta { box-shadow:0 -6px 24px rgba(20,55,39,.1); }
@@ -79,4 +128,6 @@ main#mainContent #contact textarea:focus { border-color:#4d8666; box-shadow:0 0 
   main#mainContent > section:not(#home) { padding-top:3.6rem; padding-bottom:3.6rem; }
   main#mainContent .space-gallery-context { padding:.9rem; }
   main#mainContent .space-gallery-context-actions { width:100%; }
+  main#mainContent #contact .contact-faq,
+  main#mainContent #contact .contact-form-wrap { padding:1rem; border-radius:16px; }
 }
