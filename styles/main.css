@@ -2930,6 +2930,18 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
   font-weight: 700;
   line-height: 1.2;
 }
+.feature-chip-link {
+  position: relative;
+  z-index: 3;
+  color: inherit;
+  text-decoration: none;
+}
+.feature-chip-link:hover,
+.feature-chip-link:focus-visible {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .feature-icon {
   width: 42px;
   height: 42px;
