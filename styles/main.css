@@ -8584,3 +8584,142 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: center;
   }
 }
+
+@media (max-width: 640px) {
+  .meeting-hub #home .section-inner {
+    text-align: left;
+  }
+
+  .meeting-hub #home .section-title {
+    max-width: 12ch;
+    font-size: clamp(1.85rem, 8.8vw, 2.2rem);
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .meeting-hub #home .hero-subtitle {
+    max-width: 31ch;
+    margin-left: 0;
+    margin-right: 0;
+    line-height: 1.6;
+  }
+
+  .meeting-hub #home .hero-btns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: .55rem;
+  }
+
+  .meeting-hub #home .hero-btns .btn-primary {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+  }
+
+  .meeting-hub #home .hero-btns .btn-outline {
+    width: 100%;
+    min-width: 0;
+    padding-left: .6rem;
+    padding-right: .6rem;
+    font-size: .84rem;
+  }
+
+  .meeting-hub .meeting-hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .4rem;
+  }
+
+  .meeting-hub .meeting-metric-card {
+    min-width: 0;
+    padding: .68rem .4rem .7rem;
+    text-align: center;
+  }
+
+  .meeting-hub .meeting-metric-value {
+    font-size: .86rem;
+    line-height: 1.3;
+    word-break: keep-all;
+  }
+
+  .meeting-hub .meeting-metric-label {
+    margin-top: .18rem;
+    font-size: .65rem;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  .meeting-hub .guide-toc {
+    padding-left: .85rem;
+    padding-right: .85rem;
+  }
+
+  .meeting-hub .guide-toc-inner {
+    gap: .45rem;
+    justify-content: flex-start;
+  }
+
+  .meeting-hub .guide-toc a {
+    padding: .58rem .9rem;
+    font-size: .86rem;
+    white-space: nowrap;
+  }
+
+  .meeting-hub .interview-flow-heading .section-title,
+  .meeting-hub #time-needed .section-title {
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .meeting-hub .interview-flow-grid .guide-summary-card {
+    padding: 1rem .95rem;
+  }
+
+  .meeting-hub .meeting-situation-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .meeting-hub .meeting-situation-chips a {
+    justify-content: center;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .meeting-hub .meeting-series-grid {
+    gap: 1rem;
+  }
+
+  .meeting-hub .meeting-series-grid .meeting-series-card .blog-guide-content,
+  .meeting-hub .meeting-series-grid .meeting-series-card-hero .blog-guide-content {
+    padding: 1.15rem 1rem 1.1rem;
+  }
+
+  .meeting-hub .meeting-series-grid .meeting-series-card h3 {
+    line-height: 1.34;
+  }
+
+  .meeting-hub .meeting-series-meta {
+    gap: .35rem;
+  }
+
+  .meeting-hub .meeting-series-meta span {
+    min-height: 1.7rem;
+    padding: .18rem .55rem;
+    font-size: .7rem;
+  }
+
+  .meeting-hub .blog-conversion-panel {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .meeting-hub .blog-conversion-actions {
+    width: 100%;
+  }
+
+  .meeting-hub .blog-conversion-actions .btn-primary,
+  .meeting-hub .blog-conversion-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
