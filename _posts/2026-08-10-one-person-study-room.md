@@ -26,7 +26,7 @@ tags:
   - 개인작업
 canonical: https://bareunjari.com/posts/one-person-study-room/
 permalink: /posts/one-person-study-room/
-date: 2026-08-10 09:00:00 +0900
+date: 2026-08-10 07:00:00 +0900
 og_image: https://bareunjari.com/images/one-person-study-room.webp
 og_image_alt: 부천 신중동에서 혼자 단독으로 이용할 수 있는 바른자리 공간
 og_image_width: 1535
