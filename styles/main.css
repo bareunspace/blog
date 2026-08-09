@@ -974,7 +974,7 @@ main.about-page.blog-hub #home .section-inner {
   padding: clamp(2rem, 4vw, 3.5rem);
 }
 .blog-card-eyebrow {
-  margin-bottom: .8rem;
+  margin-bottom: .52rem;
   color: var(--primary);
   font-size: .78rem;
   font-weight: 800;
@@ -1364,7 +1364,7 @@ main.about-page.blog-hub #home .section-inner {
 }
 #practical-guides .blog-guide-content,
 .practical-guides-layout .blog-guide-content {
-  padding: .34rem .06rem 0;
+  padding: .18rem .06rem 0;
 }
 #practical-guides .blog-guide-content h3,
 .practical-guides-layout .blog-guide-content h3 {
