@@ -966,6 +966,7 @@ main.about-page.blog-hub #home .section-inner {
 .practical-guides-layout .blog-guide-image.blog-guide-image-contain img {
   object-fit: contain;
   padding: 0;
+  object-position: center 42%;
 }
 .blog-featured-content {
   display: flex;
