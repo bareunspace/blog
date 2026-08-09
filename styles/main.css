@@ -3002,6 +3002,10 @@ main.about-page.study-hub #home.study-hero .btn-outline:focus-visible {
 }
 .feature-card-primary {
   border: 1px solid rgba(45,106,79,.28);
+  background: #ffffff;
+}
+.feature-card-primary:hover,
+.feature-card-primary:focus-within {
   background: linear-gradient(160deg, #ffffff 0%, #f4faf6 100%);
 }
 .feature-card-primary .feature-icon {
