@@ -4,35 +4,13 @@
 {% assign seo_title = page_override.title | default: time_space_override.title | default: seo_override.title | default: page.title | default: site.title %}
 {% assign seo_description = page_override.description | default: time_space_override.description | default: seo_override.description | default: page.description | default: site.description %}
 {% assign seo_keywords = page_override.keywords | default: time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
-{% if page.page_id == 'home' %}
-  {% assign seo_title = '부천 신중동역 프라이빗 공간대여 | 면접·미팅·스터디·개인시간 | 바른자리' %}
-  {% assign seo_description = '부천 신중동역 1분. 면접, 미팅·업무, 스터디·소모임, 프라이빗시간과 연습·리허설까지 필요한 시간만 예약하는 1~6인 프라이빗 공간입니다.' %}
-  {% assign seo_keywords = '부천공간대여,신중동공간대여,부천프라이빗공간,부천면접공간,부천미팅룸,부천스터디룸,부천소모임,부천연습공간,신중동공간대여' %}
-{% elsif page.page_id == 'interview' %}
-  {% assign seo_title = '면접 | 자기소개·답변 연습·화상면접 가이드 | 부천 바른자리' %}
-  {% assign seo_description = '면접 자기소개와 답변 정리부터 실제 말하기, 휴대폰 녹화 점검, 화상면접 환경과 면접 당일 확인까지 단계별로 모은 바른자리 면접 허브입니다.' %}
-  {% assign seo_keywords = '부천면접,부천면접연습,신중동면접연습,면접연습공간,면접답변연습,1분자기소개,화상면접준비,화상면접장소,면접리허설' %}
-{% elsif page.page_id == 'meeting' %}
-  {% assign seo_title = '미팅·업무 | 부천 미팅룸·시간제 업무공간 | 바른자리' %}
-  {% assign seo_description = '부천 신중동역에서 고객 미팅, 상담, 화상회의, 프리랜서·1인사업자의 집중 업무가 필요할 때 필요한 시간만 예약하는 미팅·업무 허브입니다.' %}
-  {% assign seo_keywords = '부천미팅룸,신중동미팅룸,부천회의실,신중동회의실,부천업무공간,시간제사무실,프리랜서업무공간,1인사업자미팅,부천화상회의,부천상담공간' %}
-{% elsif page.page_id == 'study' %}
-  {% assign seo_title = '스터디·소모임 | 부천 팀플·그룹스터디·1인 스터디룸 | 바른자리' %}
-  {% assign seo_description = '부천 신중동에서 대학생 팀플·프로젝트, 그룹 스터디, 소모임, 1인 집중 학습을 준비할 때 목적에 맞는 공간 선택과 활용법을 안내하는 스터디·소모임 허브입니다.' %}
-  {% assign seo_keywords = '부천스터디룸,신중동스터디룸,부천소모임공간,대학생팀플장소,부천팀플장소,부천그룹스터디,팀프로젝트공간,1인스터디룸,부천공간대여' %}
-{% elsif page.page_id == 'practice' %}
-  {% assign seo_title = '연습·리허설 | 독백·대사·오디션·셀프테이프 공간 가이드 | 바른자리' %}
-  {% assign seo_description = '독백·대사·오디션처럼 실제로 말하고 움직이며 반복하거나 셀프테이프를 촬영·확인해야 할 때 필요한 연습·리허설 가이드를 모았습니다.' %}
-  {% assign seo_keywords = '부천연습공간,신중동연습공간,연기연습공간,독백연습,대사연습,오디션연습,셀프테이프촬영,셀프테이프공간,부천공간대여' %}
-{% elsif page.page_id == 'private' %}
-  {% assign seo_title = '프라이빗시간 | 개인시간·프라이버시·둘만의 시간 | 부천 바른자리' %}
-  {% assign seo_description = '혼자 쉬고 생각을 정리하는 시간, 둘만의 대화와 조용한 데이트처럼 방해받지 않는 개인시간과 프라이버시의 가치를 안내하는 바른자리 프라이빗시간 허브입니다.' %}
-  {% assign seo_keywords = '부천프라이빗공간,신중동프라이빗공간,부천개인공간,혼자있는공간,나만의시간,부천실내데이트,신중동데이트,개인시간,프라이버시' %}
-{% elsif page.page_id == 'time_space' %}
-  {% assign seo_title = '시간·공간 저널 | 바른자리 운영 관찰·상품 실험·공간 사용 기록' %}
-  {% assign seo_description = '바른자리 운영에서 발견한 실제 사용 변화, 시간대 수요, 새로운 상품과 예약 방식 실험, 공간 사용법과 배운 점을 기록하는 시간·공간 저널입니다.' %}
-  {% assign seo_keywords = '바른자리저널,공간운영,공간대여운영,시간제공간,상품실험,운영회고,공간사용법,시간활용' %}
-{% endif %}
+{% if page.page_id == 'home' %}{% assign seo_title = '부천 공간대여·신중동 스터디룸·미팅룸 | 1~6인 프라이빗 공간 바른자리' %}{% assign seo_description = '부천 신중동역 1분. 평일 오전 집중업무·상담부터 화상면접, 팀플·스터디, 소모임, 개인시간까지 1~6인이 필요한 시간만 단독 예약하는 프라이빗 공간입니다.' %}{% assign seo_keywords = '부천공간대여,신중동공간대여,부천스터디룸,신중동스터디룸,부천미팅룸,부천회의실,부천면접공간,부천프라이빗공간,시간제사무실,부천소모임' %}
+{% elsif page.page_id == 'interview' %}{% assign seo_title = '부천 면접 연습 공간·화상면접 장소 | 말하기·녹화 리허설 | 바른자리' %}{% assign seo_description = '부천 신중동에서 자기소개·면접 답변을 소리 내어 말하고 휴대폰으로 녹화하며 반복 연습할 수 있는 프라이빗 공간. 화상면접 환경과 당일 점검 가이드도 확인하세요.' %}{% assign seo_keywords = '부천면접연습,신중동면접연습,면접연습공간,부천화상면접장소,면접답변연습,1분자기소개,화상면접준비,면접리허설' %}
+{% elsif page.page_id == 'meeting' %}{% assign seo_title = '부천 미팅룸·시간제 사무실 | 프리랜서·1인사업자 업무공간 | 바른자리' %}{% assign seo_description = '부천 신중동역에서 평일 오전 집중 업무, 고객 미팅, 상담, 화상회의가 필요할 때 쓰는 시간제 프라이빗 업무공간. 고정 사무실 없이 필요한 시간만 예약하세요.' %}{% assign seo_keywords = '부천미팅룸,신중동미팅룸,부천회의실,신중동회의실,부천업무공간,시간제사무실,프리랜서업무공간,1인사업자미팅,부천화상회의,부천상담공간' %}
+{% elsif page.page_id == 'study' %}{% assign seo_title = '부천 스터디룸·팀플 장소 | 대학생 프로젝트·발표·소모임 | 바른자리' %}{% assign seo_description = '부천 신중동에서 대학생 팀플·프로젝트, 발표·토론, 그룹 스터디와 1인 집중 학습에 활용하는 프라이빗 스터디 공간. 필요한 시간만 단독 예약하세요.' %}{% assign seo_keywords = '부천스터디룸,신중동스터디룸,부천팀플장소,대학생팀플장소,대학생프로젝트공간,부천소모임공간,부천그룹스터디,1인스터디룸' %}
+{% elsif page.page_id == 'practice' %}{% assign seo_title = '부천 연습실·셀프테이프 촬영 공간 | 독백·대사·오디션 리허설 | 바른자리' %}{% assign seo_description = '부천 신중동에서 독백·대사·오디션을 실제로 말하고 움직이며 반복하거나 셀프테이프를 촬영·확인할 때 활용하는 프라이빗 연습 공간입니다.' %}{% assign seo_keywords = '부천연습공간,신중동연습공간,연기연습공간,독백연습,대사연습,오디션연습,셀프테이프촬영,셀프테이프공간' %}
+{% elsif page.page_id == 'private' %}{% assign seo_title = '부천 프라이빗 공간·개인시간 | 둘만의 대화·조용한 실내 공간 | 바른자리' %}{% assign seo_description = '프라이버시는 이제 돈으로 사는 가치입니다. 부천 신중동에서 혼자 쉬고 생각을 정리하거나 둘만의 대화를 나누는 방해받지 않는 개인시간을 예약하세요.' %}{% assign seo_keywords = '부천프라이빗공간,신중동프라이빗공간,부천개인공간,혼자있는공간,나만의시간,부천실내데이트,신중동데이트,개인시간,프라이버시' %}
+{% elsif page.page_id == 'time_space' %}{% assign seo_title = '시간·공간 저널 | 바른자리 운영 관찰·상품 실험·공간 사용 기록' %}{% assign seo_description = '바른자리 운영에서 발견한 실제 사용 변화, 시간대 수요, 새로운 상품과 예약 방식 실험, 공간 사용법과 배운 점을 기록하는 시간·공간 저널입니다.' %}{% assign seo_keywords = '바른자리저널,공간운영,공간대여운영,시간제공간,상품실험,운영회고,공간사용법,시간활용' %}{% endif %}
 {% assign canonical_url = page.canonical | default: page.url | absolute_url %}{% assign seo_image = page.og_image | default: site.og_image %}{% assign seo_image_alt = page.og_image_alt | default: seo_title %}{% assign seo_robots = page.robots | default: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' %}{% assign og_ext = seo_image | split: '.' | last | downcase %}
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>{{ seo_title }}</title><meta name="description" content="{{ seo_description }}" />{% if seo_keywords %}<meta name="keywords" content="{{ seo_keywords }}" />{% endif %}<meta name="robots" content="{{ seo_robots }}" /><meta name="googlebot" content="{{ seo_robots }}" />{% if page.theme_color %}<meta name="theme-color" content="{{ page.theme_color }}" />{% endif %}<link rel="canonical" href="{{ canonical_url }}" />
 <link rel="icon" href="/favicon.ico" sizes="any" /><link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" /><link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" /><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" /><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" /><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />{% if page.preload_image %}{% if page.preload_image contains '://' %}<link rel="preload" as="image" href="{{ page.preload_image }}" fetchpriority="high" />{% else %}<link rel="preload" as="image" href="{{ '/' | append: page.preload_image | relative_url }}" fetchpriority="high" />{% endif %}{% endif %}
