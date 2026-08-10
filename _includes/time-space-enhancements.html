@@ -1,0 +1,67 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.time-space-hub');
+  if (!hub) return;
+
+  var heroLabel = hub.querySelector('#home .section-label');
+  var heroTitle = hub.querySelector('#home .section-title');
+  var heroSubtitle = hub.querySelector('#home .hero-subtitle');
+  var heroButtons = hub.querySelector('#home .hero-btns');
+
+  if (heroLabel) heroLabel.textContent = 'Bareunjari Journal';
+  if (heroTitle) heroTitle.innerHTML = '바른자리가 관찰하고 실험한<br />시간과 공간의 기록';
+  if (heroSubtitle) heroSubtitle.textContent = '새로운 이용 방식, 운영에서 발견한 패턴, 상품 실험, 시간 사용법과 실제 변화들을 기록합니다. 개인시간과 프라이버시의 브랜드 철학은 프라이빗시간 허브에서 더 깊게 다룹니다.';
+  if (heroButtons) heroButtons.innerHTML = '<a href="#whats-new" class="btn-primary">최근 기록 보기</a><a href="#journal" class="btn-outline">저널 글 보기</a><a href="/private/" class="btn-outline">프라이빗시간 철학 보기</a>';
+
+  var philosophy = document.getElementById('philosophy');
+  if (philosophy) {
+    var label = philosophy.querySelector('.section-label');
+    var title = philosophy.querySelector('.section-title');
+    var desc = philosophy.querySelector('.ts-intro p:last-child');
+    if (label) label.textContent = 'What We Observe';
+    if (title) title.innerHTML = '운영하면서 발견한<br />시간 사용의 패턴을 기록합니다.';
+    if (desc) desc.innerHTML = '시간·공간 저널은 바른자리의 철학을 반복해서 설명하는 페이지가 아닙니다. 실제 예약과 운영에서 발견한 사용 방식, 새로운 상품을 만든 이유, 어떤 시간대와 상황에서 공간의 가치가 커지는지를 기록하는 <strong>운영 저널</strong>에 가깝습니다.';
+
+    var cards = philosophy.querySelectorAll('.ts-philosophy-card');
+    if (cards.length >= 3) {
+      cards[0].innerHTML = '<span>01 · Observe</span><h3>어떤 순간에 공간이 필요한가</h3><p>면접, 미팅, 팀플, 연습, 개인시간처럼 실제 사용 상황에서 반복되는 불편과 선택 기준을 기록합니다.</p>';
+      cards[1].innerHTML = '<span>02 · Test</span><h3>어떤 상품과 시간대가 맞는가</h3><p>평일 오전, 올나잇, 반복 예약처럼 운영 과정에서 시험하는 새로운 이용 방식과 이유를 정리합니다.</p>';
+      cards[2].innerHTML = '<span>03 · Learn</span><h3>무엇을 배웠고 다음에 무엇을 바꿀까</h3><p>예약 흐름, 고객 반응, 운영상의 시행착오와 다음 개선 방향을 저널처럼 남깁니다.</p>';
+    }
+  }
+
+  var featured = document.getElementById('featured-stories');
+  if (featured) {
+    var featuredTitle = featured.querySelector('.section-title');
+    var featuredDesc = featured.querySelector('.section-desc');
+    if (featuredTitle) featuredTitle.textContent = '지금 바른자리에서 가장 중요하게 보고 있는 변화';
+    if (featuredDesc) featuredDesc.textContent = '브랜드 철학보다 현재 실제로 관찰하고 있는 사용 변화와 운영 실험을 중심으로 읽어보세요.';
+  }
+
+  var whatsNew = document.getElementById('whats-new');
+  if (whatsNew) {
+    var wnLabel = whatsNew.querySelector('.section-label');
+    var wnTitle = whatsNew.querySelector('.section-title');
+    var wnDesc = whatsNew.querySelector('.section-desc');
+    if (wnLabel) wnLabel.textContent = 'Experiments & Updates';
+    if (wnTitle) wnTitle.textContent = '새로운 상품과 운영 실험';
+    if (wnDesc) wnDesc.textContent = '새 상품, 시간대 운영, 예약 방식과 공간 활용 실험을 왜 시작했는지와 무엇을 확인하려는지 기록합니다.';
+  }
+
+  var choose = document.getElementById('choose-time');
+  if (choose) {
+    var chooseTitle = choose.querySelector('.section-title');
+    var chooseDesc = choose.querySelector('.section-desc');
+    if (chooseTitle) chooseTitle.textContent = '목적별 공간 선택은 각 허브에서 더 자세히';
+    if (chooseDesc) chooseDesc.textContent = '면접, 미팅·업무, 스터디·소모임, 연습·리허설, 프라이빗시간처럼 목적이 이미 정해졌다면 각 전용 허브에서 더 빠르게 필요한 정보를 찾을 수 있습니다.';
+  }
+
+  if (!document.getElementById('time-space-role-note')) {
+    var note = document.createElement('section');
+    note.id = 'time-space-role-note';
+    note.className = 'guide-summary-section';
+    note.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Journal vs Private Time</p><h2 class="section-title">시간·공간과 프라이빗시간은 역할이 다릅니다</h2><p><strong>시간·공간</strong>은 바른자리의 운영 관찰, 상품 실험, 새로운 사용법과 배운 점을 기록하는 저널입니다. <strong>프라이빗시간</strong>은 방해받지 않는 개인시간과 프라이버시라는 브랜드 철학을 설명하는 목적형 허브입니다.</p></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/private/" class="btn-outline">프라이빗시간 허브</a><a href="/blog.html" class="btn-outline">전체 가이드</a></div></div>';
+    if (whatsNew && whatsNew.parentNode) whatsNew.parentNode.insertBefore(note, whatsNew);
+  }
+});
+</script>
