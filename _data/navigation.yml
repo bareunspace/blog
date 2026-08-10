@@ -9,20 +9,20 @@ home:
   - label: 가이드
     href: "blog.html"
     children: &guide_children
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
       - label: 면접
         href: "interview/"
-      - label: 미팅·상담
+      - label: 미팅·업무
         href: "meeting/"
-      - label: 스터디
+      - label: 스터디·소모임
         href: "study/"
       - label: 연습·리허설
         href: "practice/"
       - label: 프라이빗시간
         href: "private/"
+      - label: 시간·공간 저널
+        href: "time-space/"
+      - label: 전체 가이드
+        href: "blog.html"
   - label: 오시는 길
     href: "#contact"
 
