@@ -18,7 +18,7 @@ tags:
 canonical: https://bareunjari.com/posts/one-hour-before-appointment/
 permalink: /posts/one-hour-before-appointment/
 date: 2026-08-09 16:01:00 +0900
-last_modified_at: 2026-08-09 16:40:00 +0900
+last_modified_at: 2026-08-11 07:00:00 +0900
 og_image: https://bareunjari.com/images/one-hour-before-appointment-scene.png
 og_image_alt: 바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습
 og_image_width: 1536
@@ -26,6 +26,9 @@ og_image_height: 1024
 preload_image: images/one-hour-before-appointment-scene.png
 css_version: 20260809-7
 script_version: 20260711-4
+youtube_id: qeBDnkbJu6A
+youtube_title: 약속 전 한 시간을 여유롭게 보내는 바른자리 영상
+youtube_caption: 약속이나 다음 일정 전에 바른자리에서 잠깐 쉬어가는 모습을 10초 영상으로 확인해보세요.
 faq:
   - question: 소파에서 잠깐 자도 되나요?
     answer: 예약한 시간 안에는 소파에 기대어 잠시 눈을 붙여도 됩니다. 숙박시설이나 수면실은 아니므로 퇴실 시간을 놓치지 않게 알람을 맞춰주세요.
@@ -181,6 +184,11 @@ faq:
   {% include breadcrumb.html %}
 
   {% include post-media-carousel.html
+    youtube_id=page.youtube_id
+    youtube_title=page.youtube_title
+    youtube_caption=page.youtube_caption
+    video_section_id='video-first'
+    video_aria_label='영상과 대표 이미지 보기'
     image_section_id='guide-visual'
     image_src='/images/one-hour-before-appointment-scene.png'
     image_alt='바른자리 프라이빗 공간의 소파에서 약속 전 잠깐 쉬는 모습'
@@ -193,6 +201,7 @@ faq:
   <nav class="guide-toc" aria-label="약속 전 한 시간 가이드 목차">
     <div class="guide-toc-inner">
       <span class="guide-toc-label">빠르게 보기</span>
+      {% if page.youtube_id %}<a href="#video-first">10초 영상 보기</a>{% endif %}
       <a href="#sounds-familiar">내 상황 찾기</a>
       <a href="#why-early">왜 먼저 나올까</a>
       <a href="#one-hour-plan">60분 사용법</a>
