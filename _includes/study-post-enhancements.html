@@ -1,0 +1,42 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var main = document.querySelector('main.about-page');
+  if (!main) return;
+  var path = window.location.pathname;
+  var studyPaths = [
+    '/posts/college-team-project-space/',
+    '/posts/study-space-for-presentation-discussion-project/',
+    '/posts/private-space-for-study-groups/',
+    '/posts/one-person-study-room/',
+    '/posts/tutoring-space-guide-for-teachers/',
+    '/posts/bucheon-small-group-space/'
+  ];
+  if (studyPaths.indexOf(path) === -1) return;
+
+  if (!document.getElementById('study-series-links')) {
+    var section = document.createElement('section');
+    section.id = 'study-series-links';
+    section.className = 'guide-summary-section';
+    section.setAttribute('aria-label', '스터디·소모임 이어서 보기');
+    section.innerHTML = [
+      '<div class="section-inner">',
+      '<div class="interview-flow-heading">',
+      '<p class="section-label">Study Series</p>',
+      '<h2 class="section-title">공부 방식에 맞는 다음 가이드</h2>',
+      '<p>스터디·소모임 허브는 팀플·프로젝트, 그룹 스터디, 1인 집중 학습을 서로 다른 사용 상황으로 나눠 안내합니다.</p>',
+      '</div>',
+      '<div class="about-highlight-grid">',
+      '<article class="about-highlight-card"><h3>대학생 팀플·프로젝트</h3><p>학교·카페·스터디카페·프라이빗 스터디룸을 비교하고 팀 프로젝트 장소를 고르는 기준입니다.</p><p><a href="/posts/college-team-project-space/">팀플 장소 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>함께 공부하기</h3><p>두 명 이상이 질문하고 설명하고 자료를 함께 정리하는 그룹 스터디 상황을 다룹니다.</p><p><a href="/posts/private-space-for-study-groups/">그룹 스터디 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>혼자 집중하기</h3><p>공용 좌석보다 혼자 단독으로 공부하거나 과제·자료 정리에 집중할 방이 필요한 경우입니다.</p><p><a href="/posts/one-person-study-room/">1인 스터디룸 가이드 →</a></p></article>',
+      '</div>',
+      '<div class="hero-btns" style="margin-top:1.5rem;">',
+      '<a href="/study/" class="btn-outline">스터디·소모임 허브</a>',
+      '<a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">스터디 시간 확인하기</a>',
+      '</div>',
+      '</div>'
+    ].join('');
+    main.appendChild(section);
+  }
+});
+</script>
