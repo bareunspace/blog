@@ -78,6 +78,10 @@
     </script>
   {% endif %}
 
+  {% if page.collection == 'posts' and page.hub_series == 'meeting' %}
+    {% include meeting-workspace-series.html %}
+  {% endif %}
+
   {% if page.category %}
     {% unless content contains 'class="post-related"' %}
       {% include related-posts.html %}
