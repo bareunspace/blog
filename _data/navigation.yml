@@ -8,7 +8,7 @@ home:
     href: "#about"
   - label: 가이드
     href: "blog.html"
-    children:
+    children: &guide_children
       - label: 시간·공간
         href: "time-space/"
       - label: 전체 보기
@@ -19,10 +19,13 @@ home:
         href: "meeting/"
       - label: 스터디
         href: "study/"
+      - label: 연습·리허설
+        href: "practice/"
       - label: 프라이빗시간
         href: "private/"
   - label: 오시는 길
     href: "#contact"
+
 about:
   - label: 브랜드 스토리
     href: "#about-story"
@@ -33,239 +36,115 @@ about:
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 blog:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-        current: true
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 interview:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-        current: true
-      - label: AI 모의면접 데모
-        href: "ai-interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 ai_interview:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: AI 모의면접 데모
-        href: "ai-interview/"
-        current: true
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 meeting:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-        current: true
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 study:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-        current: true
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
+practice:
+  - label: 공간
+    href: "index.html#space"
+  - label: 요금·예약
+    href: "index.html#about"
+  - label: 가이드
+    href: "blog.html"
+    current: true
+    children: *guide_children
+  - label: 오시는 길
+    href: "index.html#contact"
+
 private:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
-        current: true
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 time_space:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-        current: true
-      - label: 전체 보기
-        href: "blog.html"
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
+
 post:
   - label: 공간
     href: "index.html#space"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "index.html#about"
   - label: 가이드
     href: "blog.html"
     current: true
-    children:
-      - label: 시간·공간
-        href: "time-space/"
-      - label: 전체 보기
-        href: "blog.html"
-        current: true
-      - label: 면접
-        href: "interview/"
-      - label: 미팅·상담
-        href: "meeting/"
-      - label: 스터디
-        href: "study/"
-      - label: 프라이빗시간
-        href: "private/"
+    children: *guide_children
   - label: 오시는 길
     href: "index.html#contact"
 
