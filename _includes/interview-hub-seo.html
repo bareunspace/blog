@@ -1,0 +1,44 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.interview-hub');
+  if (!hub) return;
+  var flow = document.getElementById('prep-flow');
+  if (flow && !document.getElementById('interview-quick-answer')) {
+    var quick = document.createElement('section');
+    quick.id = 'interview-quick-answer';
+    quick.className = 'guide-summary-section interview-surface-soft';
+    quick.setAttribute('aria-label', '면접 연습 공간 빠른 답변');
+    quick.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Quick Answer</p><h2 class="section-title">면접 답변 연습은 어떻게 해야 할까요?</h2><p><strong>준비한 답변은 눈으로 읽는 것과 실제 질문에 소리 내어 답하는 것이 다릅니다.</strong> 자기소개와 핵심 질문 몇 개를 실제처럼 말하고 휴대폰으로 녹화해 목소리, 속도, 시선을 확인한 뒤 다시 답해보세요. 바른자리는 면접 코칭 서비스가 아니라 이런 연습을 혼자 반복할 수 있는 프라이빗 공간대여 서비스입니다.</p></div></div>';
+    flow.parentNode.insertBefore(quick, flow);
+  }
+
+  var faq = document.querySelector('#faq .contact-faq, #faq');
+  if (faq && !document.getElementById('interview-faq-practice')) {
+    var wrap = faq.classList && faq.classList.contains('contact-faq') ? faq : faq.querySelector('.contact-faq');
+    if (wrap) {
+      var q = document.createElement('details');
+      q.id = 'interview-faq-practice';
+      q.setAttribute('itemscope', ''); q.setAttribute('itemprop', 'mainEntity'); q.setAttribute('itemtype', 'https://schema.org/Question');
+      q.innerHTML = '<summary itemprop="name">바른자리에서 면접 코칭이나 모의면접을 해주나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아닙니다. 바른자리는 면접 학원이나 코칭 서비스가 아니라 준비한 답변을 소리 내어 말하고 휴대폰으로 녹화하며 혼자 반복 연습할 수 있는 프라이빗 공간대여 서비스입니다.</p></div>';
+      wrap.appendChild(q);
+    }
+  }
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"면접준비 실전 가이드",
+  "url":"https://bareunjari.com/interview/",
+  "numberOfItems":6,
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"1분 자기소개 예시와 작성법","url":"https://bareunjari.com/posts/1-minute-self-introduction-guide/"},
+    {"@type":"ListItem","position":2,"name":"면접 답변 연습 방법","url":"https://bareunjari.com/posts/interview-answer-practice/"},
+    {"@type":"ListItem","position":3,"name":"화상면접 장비와 배경 세팅법","url":"https://bareunjari.com/posts/video-interview-setup/"},
+    {"@type":"ListItem","position":4,"name":"면접 당일 30분 전 체크리스트","url":"https://bareunjari.com/posts/interview-30-minutes-before/"},
+    {"@type":"ListItem","position":5,"name":"면접 역질문 추천 20개","url":"https://bareunjari.com/posts/interview-questions-to-ask/"},
+    {"@type":"ListItem","position":6,"name":"부천 화상면접 장소 가이드","url":"https://bareunjari.com/posts/bucheon-video-interview-place-guide/"}
+  ]
+}
+</script>
