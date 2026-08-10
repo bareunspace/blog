@@ -13,6 +13,19 @@
 document.addEventListener('DOMContentLoaded', function () {
   var main = document.getElementById('mainContent');
   if (!main) return;
+
+  var heroSubtitle = main.querySelector('#home .hero-subtitle');
+  if (heroSubtitle) heroSubtitle.textContent = '면접, 미팅·업무, 스터디·소모임부터 방해받지 않는 개인시간까지. 필요한 시간만 예약하는 프라이빗 공간입니다.';
+
+  var heroPoints = main.querySelector('#home .hero-points');
+  if (heroPoints) heroPoints.innerHTML = '<li>화상면접 · 고객 미팅 · 상담에 활용</li><li>소규모 스터디와 개인 집중 모두 가능</li><li>예약 후 입실 비밀번호 사전 안내</li>';
+
+  var spaceTitle = main.querySelector('#space .section-title');
+  var spaceDescs = main.querySelectorAll('#space .section-desc');
+  if (spaceTitle) spaceTitle.textContent = '면접·미팅·스터디·개인시간, 이런 순간에 필요한 프라이빗 공간';
+  if (spaceDescs.length > 0) spaceDescs[0].textContent = '면접 연습, 고객 미팅, 팀플·스터디, 혼자 집중할 시간이 필요할 때 목적에 맞게 사용할 수 있는 공간입니다.';
+  if (spaceDescs.length > 1) spaceDescs[1].textContent = '부천 신중동역 가까이에서 1~6인이 예약 시간 동안 단독으로 이용할 수 있습니다.';
+
   var grid = main.querySelector('.features-grid');
   if (!grid) return;
   var cards = grid.querySelectorAll('.feature-card');
@@ -43,8 +56,33 @@ document.addEventListener('DOMContentLoaded', function () {
     var note = document.createElement('div');
     note.id = 'home-practice-entry';
     note.className = 'home-practice-entry';
-    note.innerHTML = '<p><strong>직접 해보고 촬영하며 반복해야 하나요?</strong> 독백·대사·오디션·셀프테이프는 <a href="/practice/">연습·리허설 허브 →</a>에서 따로 안내합니다.</p>';
+    note.innerHTML = '<p><strong>직접 말하고 촬영하며 반복하는 연습이 필요한가요?</strong> 독백·대사·오디션·셀프테이프는 <a href="/practice/">연습·리허설 허브 →</a>에서 따로 안내합니다.</p>';
     grid.insertAdjacentElement('afterend', note);
   }
+
+  var filterLabels = {
+    '면접준비': '면접',
+    '스터디룸': '스터디·소모임',
+    '미팅·상담': '미팅·업무',
+    '프라이빗시간': '프라이빗시간',
+    '연습·리허설': '연습·리허설',
+    '시간·공간': '시간·공간 저널'
+  };
+  main.querySelectorAll('#homeGuideFilters [data-category]').forEach(function (button) {
+    var key = button.getAttribute('data-category');
+    if (filterLabels[key]) button.textContent = filterLabels[key];
+  });
+
+  var useCaseTitle = main.querySelector('#testimonials .section-title');
+  var useCaseDesc = main.querySelector('#testimonials .section-desc');
+  if (useCaseTitle) useCaseTitle.textContent = '활용 예시 · 이용안내';
+  if (useCaseDesc) useCaseDesc.textContent = '면접, 스터디, 미팅, 개인시간처럼 바른자리를 활용할 수 있는 대표 상황과 이용 안내를 소개합니다. 최신 실제 이용사례는 공식 네이버 블로그에서 확인할 수 있습니다.';
+
+  main.querySelectorAll('#useCasesGrid .testimonial-card').forEach(function (card) {
+    var badge = card.querySelector('.stars');
+    var meta = card.querySelector('.testimonial-meta strong');
+    if (badge) badge.textContent = '활용 예시';
+    if (meta) meta.textContent = '대표 활용 상황';
+  });
 });
 </script>
