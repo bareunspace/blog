@@ -83,6 +83,11 @@
     {% include meeting-hub-seo.html %}
   {% endif %}
 
+  {% if page.page_id == 'study' %}
+    {% include study-hub-enhancements.html %}
+    {% include study-hub-seo.html %}
+  {% endif %}
+
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}
     {% include meeting-workspace-series.html %}
   {% endif %}
