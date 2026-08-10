@@ -1,0 +1,33 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.study-hub');
+  if (!hub) return;
+
+  var flow = document.getElementById('study-flow');
+  if (flow && !document.getElementById('study-quick-answer')) {
+    var quick = document.createElement('section');
+    quick.id = 'study-quick-answer';
+    quick.className = 'guide-summary-section study-surface';
+    quick.setAttribute('aria-label', '부천 스터디룸 빠른 답변');
+    quick.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Quick Answer</p><h2 class="section-title">부천에서 팀플·발표·말하기가 가능한 스터디룸이 필요하다면?</h2><p><strong>바른자리는 부천 신중동에서 대학생 팀 프로젝트, 발표·토론 연습, 영어 스피킹, 1인 집중 학습처럼 말하고 협업해야 하는 시간을 위해 예약하는 프라이빗 공간입니다.</strong> 스터디카페처럼 조용히 공부하는 목적뿐 아니라 실제로 대화하고 결과물을 만들어야 하는 일정에 활용할 수 있습니다.</p></div></div>';
+    flow.parentNode.insertBefore(quick, flow);
+  }
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "부천 스터디룸 활용 가이드",
+  "url": "https://bareunjari.com/study/",
+  "numberOfItems": 5,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"발표·토론·팀 프로젝트가 늘어나는 시대, 공부하는 공간도 달라져야 합니다","url":"https://bareunjari.com/posts/study-space-for-presentation-discussion-project/"},
+    {"@type":"ListItem","position":2,"name":"영어·면접·발표 연습할 조용한 공간","url":"https://bareunjari.com/posts/practice-speaking-space/"},
+    {"@type":"ListItem","position":3,"name":"1인 스터디룸이 필요한 순간 | 혼자인데 굳이 방을 빌리는 이유","url":"https://bareunjari.com/posts/one-person-study-room/"},
+    {"@type":"ListItem","position":4,"name":"집 말고 집중해서 공부할 공간이 필요하다면","url":"https://bareunjari.com/posts/study-space-guide/"},
+    {"@type":"ListItem","position":5,"name":"2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간","url":"https://bareunjari.com/posts/private-space-for-study-groups/"}
+  ]
+}
+</script>
