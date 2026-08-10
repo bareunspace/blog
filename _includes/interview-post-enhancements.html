@@ -2,6 +2,23 @@
 document.addEventListener('DOMContentLoaded', function () {
   var main = document.querySelector('main.about-page');
   if (!main) return;
+  var path = window.location.pathname;
+  var hero = main.querySelector('#home .section-inner');
+  if (hero && !hero.querySelector('[data-hub-role-note]')) {
+    var role = document.createElement('p');
+    role.setAttribute('data-hub-role-note', 'true');
+    role.className = 'section-desc';
+    role.style.marginTop = '1rem';
+    if (path === '/posts/interview-answer-practice/') role.innerHTML = '<strong>이 글의 역할:</strong> 준비한 면접 답변을 실제 질문에 맞춰 소리 내어 말하고 녹화하며 점검하는 실전 가이드입니다. 일반적인 독백·대사·오디션 연습은 <a href="/practice/">연습·리허설 허브</a>에서 분리해 다룹니다.';
+    else if (path === '/posts/video-interview-setup/') role.innerHTML = '<strong>이 글의 역할:</strong> 화상면접의 카메라 높이, 조명, 마이크, 배경처럼 화면과 소리 환경을 점검하는 가이드입니다.';
+    else if (path === '/posts/interview-30-minutes-before/') role.innerHTML = '<strong>이 글의 역할:</strong> 면접 직전 새 답변을 만들기보다 자기소개·핵심 경험·목소리·시선·환경을 마지막으로 확인하는 체크리스트입니다.';
+    else if (path === '/posts/1-minute-self-introduction-guide/') role.innerHTML = '<strong>이 글의 역할:</strong> 면접에서 실제로 꺼내 말할 1분 자기소개 내용을 정리하는 답변 설계 가이드입니다.';
+    if (role.innerHTML) {
+      var buttons = hero.querySelector('.hero-btns');
+      if (buttons) buttons.insertAdjacentElement('beforebegin', role); else hero.appendChild(role);
+    }
+  }
+
   if (!document.getElementById('interview-series-links')) {
     var section = document.createElement('section');
     section.id = 'interview-series-links';
