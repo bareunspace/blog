@@ -1,0 +1,74 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.private-hub');
+  if (!hub) return;
+
+  var label = hub.querySelector('#home .section-label');
+  if (label) label.textContent = 'Personal Time';
+
+  var title = hub.querySelector('#home .section-title');
+  if (title) title.innerHTML = '프라이빗시간은 공간보다<br />방해받지 않는 시간을 예약하는 일입니다';
+
+  var subtitle = hub.querySelector('#home .hero-subtitle');
+  if (subtitle) subtitle.textContent = '혼자 쉬고 생각을 정리하는 시간, 둘만의 대화, 조용한 데이트처럼 다른 사람의 시선과 일정에서 잠시 벗어나고 싶은 순간을 위한 허브입니다.';
+
+  var metrics = hub.querySelectorAll('.private-hero-metrics .private-metric-card');
+  if (metrics.length >= 3) {
+    metrics[0].querySelector('.private-metric-value').textContent = '1시간 10,000원';
+    metrics[0].querySelector('.private-metric-label').textContent = '현재 안내 요금';
+    metrics[1].querySelector('.private-metric-value').textContent = '필요한 시간만';
+    metrics[1].querySelector('.private-metric-label').textContent = '목적에 맞춰 예약';
+    metrics[2].querySelector('.private-metric-value').textContent = '한 팀 단독';
+    metrics[2].querySelector('.private-metric-label').textContent = '예약 시간 동안 프라이빗 이용';
+  }
+
+  var selector = document.getElementById('situation-selector');
+  if (selector) {
+    var heading = selector.querySelector('h2');
+    var desc = selector.querySelector('.interview-flow-heading p:last-child');
+    if (heading) heading.textContent = '오늘 어떤 개인시간이 필요한가요?';
+    if (desc) desc.textContent = '장소를 고르기 전에 내가 왜 혼자 또는 둘만의 시간이 필요한지부터 골라보세요.';
+
+    var cards = selector.querySelectorAll('.guide-summary-card');
+    if (cards.length >= 4) {
+      cards[0].querySelector('h2').textContent = '혼자 있고 싶을 때';
+      cards[0].querySelector('p').textContent = '아무에게도 반응하지 않고 쉬거나 생각을 정리하고 싶은 시간.';
+      cards[0].insertAdjacentHTML('beforeend', '<p><a href="/posts/alone-time-is-recovery/">혼자 있는 시간 가이드 →</a></p>');
+
+      cards[1].querySelector('h2').textContent = '둘만의 시간이 필요할 때';
+      cards[1].querySelector('p').textContent = '사람 많은 카페보다 서로에게 집중해서 편하게 대화하고 싶은 시간.';
+      cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/date-your-own-time/">부천 프라이빗 데이트 가이드 →</a></p>');
+
+      cards[2].querySelector('h2').textContent = '방해받고 싶지 않을 때';
+      cards[2].querySelector('p').textContent = '전화, 메시지, 주변 시선에서 잠시 벗어나 온전히 내 시간을 확보하고 싶은 순간.';
+      cards[2].insertAdjacentHTML('beforeend', '<p><a href="/posts/privacy-is-worth-paying-for/">프라이버시의 가치 읽기 →</a></p>');
+
+      cards[3].querySelector('h2').textContent = '조용히 머물고 싶을 때';
+      cards[3].querySelector('p').textContent = '무언가를 꼭 하지 않아도 되고, 나만의 방식으로 시간을 보내고 싶은 날.';
+    }
+
+    var chips = selector.querySelector('.private-situation-chips');
+    if (chips) chips.innerHTML = '<a href="/posts/alone-time-is-recovery/">혼자 있는 시간</a><a href="/posts/date-your-own-time/">둘만의 시간</a><a href="/posts/privacy-is-worth-paying-for/">프라이버시</a><a href="#booking">예약</a>';
+  }
+
+  var series = document.getElementById('private-series');
+  if (series && !document.getElementById('private-brand-focus')) {
+    var focus = document.createElement('section');
+    focus.id = 'private-brand-focus';
+    focus.className = 'guide-summary-section private-surface-soft';
+    focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Why Private Time</p><h2 class="section-title">프라이버시는 이제 돈으로 사는 가치입니다</h2><p>바른자리가 말하는 프라이빗시간은 특별한 이벤트가 아니라 방해받지 않는 개인시간을 스스로 확보하는 선택에 가깝습니다. 혼자 쉬는 시간도, 둘만의 대화도 결국 다른 사람의 시선과 일정에서 벗어나 내 시간을 지키는 일입니다.</p></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/privacy-is-worth-paying-for/" class="btn-primary">프라이버시의 가치 읽기</a><a href="/posts/alone-time-is-recovery/" class="btn-outline">혼자 있는 시간 가이드</a><a href="/posts/date-your-own-time/" class="btn-outline">둘만의 시간 가이드</a></div></div>';
+    series.parentNode.insertBefore(focus, series);
+  }
+
+  var seriesTitle = series ? series.querySelector('.section-title') : null;
+  if (seriesTitle) seriesTitle.textContent = '프라이빗시간 가이드';
+
+  ['moment-needed', 'use-scenario', 'related-needs'].forEach(function (id) {
+    var section = document.getElementById(id);
+    if (section) section.style.display = 'none';
+  });
+
+  var toc = hub.querySelector('.guide-toc-inner');
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">프라이빗시간 허브 탐색 순서</span><a href="#situation-selector">상황 선택</a><a href="#private-brand-focus">개인시간과 프라이버시</a><a href="#private-series">관련 가이드</a><a href="#price">가격 안내</a><a href="#faq">FAQ</a><a href="#booking">예약</a>';
+});
+</script>
