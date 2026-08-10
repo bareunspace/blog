@@ -37,8 +37,8 @@ about:
   - label: 가이드
     href: "blog.html"
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 blog:
   - label: 공간
@@ -49,8 +49,8 @@ blog:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 interview:
   - label: 공간
@@ -61,8 +61,8 @@ interview:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 ai_interview:
   - label: 공간
@@ -73,8 +73,8 @@ ai_interview:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 meeting:
   - label: 공간
@@ -85,8 +85,8 @@ meeting:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 study:
   - label: 공간
@@ -97,8 +97,8 @@ study:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 practice:
   - label: 공간
@@ -109,8 +109,8 @@ practice:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 private:
   - label: 공간
@@ -121,8 +121,8 @@ private:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 time_space:
   - label: 공간
@@ -133,8 +133,8 @@ time_space:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
 
 post:
   - label: 공간
@@ -145,8 +145,21 @@ post:
     href: "blog.html"
     current: true
     children: *guide_children
-  - label: 오시는 길
-    href: "index.html#contact"
+  - label: 문의·오시는 길
+    href: "contact.html"
+
+contact:
+  - label: 예약
+    href: "https://m.place.naver.com/place/2041312316/ticket"
+  - label: 빠른 상담
+    href: "https://talk.naver.com/profile/w1pp89m"
+  - label: FAQ
+    href: "#contactSupportTitle"
+    current: true
+  - label: 기타 문의
+    href: "#inquiry-form"
+  - label: 지도
+    href: "https://map.naver.com/p/entry/place/2041312316"
 
 community:
   - label: 커뮤니티
