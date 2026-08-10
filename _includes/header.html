@@ -1,77 +1,36 @@
 <header>
   <nav>
     {% assign show_current_nav = false %}
-    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.page_id == "ai_interview" or page.page_id == "meeting" or page.page_id == "study" or page.page_id == "private" or page.page_id == "time_space" or page.page_id == "community" or page.collection == "posts" %}
+    {% if page.page_id == "about" or page.page_id == "blog" or page.page_id == "interview" or page.page_id == "ai_interview" or page.page_id == "meeting" or page.page_id == "study" or page.page_id == "private" or page.page_id == "time_space" or page.page_id == "contact" or page.page_id == "community" or page.collection == "posts" %}
       {% assign show_current_nav = true %}
     {% endif %}
-    <a href="{{ '/' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span class="logo-text">바른자리</span>
-    </a>
+    <a href="{{ '/' | relative_url }}#home" class="nav-logo" aria-label="바른자리 홈으로 이동"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">바른자리</span></a>
 
-    {% if page.page_id == "about" %}
-      {% assign nav_items = site.data.navigation.about %}
-    {% elsif page.page_id == "blog" %}
-      {% assign nav_items = site.data.navigation.blog %}
-    {% elsif page.page_id == "interview" %}
-      {% assign nav_items = site.data.navigation.interview %}
-    {% elsif page.page_id == "ai_interview" %}
-      {% assign nav_items = site.data.navigation.ai_interview %}
-    {% elsif page.page_id == "meeting" %}
-      {% assign nav_items = site.data.navigation.meeting %}
-    {% elsif page.page_id == "study" %}
-      {% assign nav_items = site.data.navigation.study %}
-    {% elsif page.page_id == "private" %}
-      {% assign nav_items = site.data.navigation.private %}
-    {% elsif page.page_id == "time_space" %}
-      {% assign nav_items = site.data.navigation.time_space %}
-    {% elsif page.page_id == "community" %}
-      {% assign nav_items = site.data.navigation.community %}
-    {% elsif page.collection == "posts" %}
-      {% assign nav_items = site.data.navigation.post %}
-    {% else %}
-      {% assign nav_items = site.data.navigation.home %}
-    {% endif %}
+    {% if page.page_id == "about" %}{% assign nav_items = site.data.navigation.about %}
+    {% elsif page.page_id == "blog" %}{% assign nav_items = site.data.navigation.blog %}
+    {% elsif page.page_id == "interview" %}{% assign nav_items = site.data.navigation.interview %}
+    {% elsif page.page_id == "ai_interview" %}{% assign nav_items = site.data.navigation.ai_interview %}
+    {% elsif page.page_id == "meeting" %}{% assign nav_items = site.data.navigation.meeting %}
+    {% elsif page.page_id == "study" %}{% assign nav_items = site.data.navigation.study %}
+    {% elsif page.page_id == "private" %}{% assign nav_items = site.data.navigation.private %}
+    {% elsif page.page_id == "time_space" %}{% assign nav_items = site.data.navigation.time_space %}
+    {% elsif page.page_id == "contact" %}{% assign nav_items = site.data.navigation.contact %}
+    {% elsif page.page_id == "community" %}{% assign nav_items = site.data.navigation.community %}
+    {% elsif page.collection == "posts" %}{% assign nav_items = site.data.navigation.post %}
+    {% else %}{% assign nav_items = site.data.navigation.home %}{% endif %}
     <ul class="nav-links" id="primaryNav">
       {% for item in nav_items %}
-        {% assign href_value = item.href %}
-        {% assign first_char = href_value | slice: 0, 1 %}
-        <li class="nav-item{% if item.children %} nav-item-has-children{% endif %}">
-          <div class="nav-primary-row">
-          {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}
-            <a href="{{ href_value }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
-          {% elsif first_char == '/' %}
-            <a href="{{ href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
-          {% else %}
-            <a href="{{ '/' | append: href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
-          {% endif %}
-          {% if item.children %}
-            <button type="button" class="nav-submenu-toggle" data-menu-label="{{ item.label }}" aria-expanded="false" aria-controls="navSubmenu{{ forloop.index }}" aria-label="{{ item.label }} 하위 메뉴 열기">
-              <span aria-hidden="true">⌄</span>
-            </button>
-          {% endif %}
-          </div>
-          {% if item.children %}
-            <ul class="nav-submenu" id="navSubmenu{{ forloop.index }}">
-              {% for child in item.children %}
-                {% assign child_href = child.href %}
-                {% assign child_first_char = child_href | slice: 0, 1 %}
-                <li>
-                  {% if child_first_char == '#' or child_href contains '://' or child_href contains 'mailto:' or child_href contains 'tel:' %}
-                    <a href="{{ child_href }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
-                  {% elsif child_first_char == '/' %}
-                    <a href="{{ child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
-                  {% else %}
-                    <a href="{{ '/' | append: child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>
-                  {% endif %}
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
+        {% assign href_value = item.href %}{% assign first_char = href_value | slice: 0, 1 %}
+        <li class="nav-item{% if item.children %} nav-item-has-children{% endif %}"><div class="nav-primary-row">
+          {% if first_char == '#' or href_value contains '://' or href_value contains 'mailto:' or href_value contains 'tel:' %}<a href="{{ href_value }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+          {% elsif first_char == '/' %}<a href="{{ href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>
+          {% else %}<a href="{{ '/' | append: href_value | relative_url }}" class="{% if item.children %}nav-link-with-menu{% endif %}" {% if item.children %}aria-haspopup="true"{% endif %} {% if show_current_nav and item.current %}aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="nav-caret" aria-hidden="true">⌄</span>{% endif %}</a>{% endif %}
+          {% if item.children %}<button type="button" class="nav-submenu-toggle" data-menu-label="{{ item.label }}" aria-expanded="false" aria-controls="navSubmenu{{ forloop.index }}" aria-label="{{ item.label }} 하위 메뉴 열기"><span aria-hidden="true">⌄</span></button>{% endif %}
+        </div>
+        {% if item.children %}<ul class="nav-submenu" id="navSubmenu{{ forloop.index }}">{% for child in item.children %}{% assign child_href = child.href %}{% assign child_first_char = child_href | slice: 0, 1 %}<li>{% if child_first_char == '#' or child_href contains '://' or child_href contains 'mailto:' or child_href contains 'tel:' %}<a href="{{ child_href }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>{% elsif child_first_char == '/' %}<a href="{{ child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>{% else %}<a href="{{ '/' | append: child_href | relative_url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.label }}</a>{% endif %}</li>{% endfor %}</ul>{% endif %}
         </li>
       {% endfor %}
     </ul>
-
     <button type="button" class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primaryNav">☰</button>
     <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">지금 예약</a>
   </nav>
