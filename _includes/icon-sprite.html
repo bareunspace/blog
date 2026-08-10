@@ -1,17 +1,33 @@
 <style>
-  .ci-icon {
+  #contact .ci-label {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+  }
+  #contact .ci-icon {
+    display: none !important;
+  }
+  #contact .contact-item .ci-label::before {
+    content: "";
     display: inline-block;
-    width: 1.15rem;
-    height: 1.15rem;
-    margin-right: .4rem;
-    flex: 0 0 auto;
-    vertical-align: -0.2em;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    overflow: visible;
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 1.1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  #contact .contact-item:nth-child(1) .ci-label::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d6a4f' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='6' width='16' height='14' rx='2'/%3E%3Cpath d='M8 4v4M16 4v4M4 10h16'/%3E%3C/svg%3E");
+  }
+  #contact .contact-item:nth-child(2) .ci-label::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d6a4f' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 7h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H10l-4 3v-3H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z'/%3E%3C/svg%3E");
+  }
+  #contact .contact-item:nth-child(3) .ci-label::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d6a4f' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 4h8l4 4v12H7z'/%3E%3Cpath d='M15 4v4h4M10 13h6M10 17h6'/%3E%3C/svg%3E");
+  }
+  #contact .contact-item:nth-child(4) .ci-label::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d6a4f' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s6-5.3 6-10a6 6 0 1 0-12 0c0 4.7 6 10 6 10z'/%3E%3Ccircle cx='12' cy='11' r='2.2'/%3E%3C/svg%3E");
   }
 </style>
 <svg aria-hidden="true" focusable="false" width="0" height="0" class="icon-sprite">
