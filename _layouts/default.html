@@ -78,6 +78,10 @@
     </script>
   {% endif %}
 
+  {% if page.page_id == 'meeting' %}
+    {% include meeting-hub-enhancements.html %}
+  {% endif %}
+
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}
     {% include meeting-workspace-series.html %}
   {% endif %}
