@@ -1,0 +1,52 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.body || !document.querySelector('.meeting-hub')) return;
+
+  var cards = document.querySelectorAll('#situation-selector .guide-summary-card');
+  if (cards.length >= 4) {
+    var clientCard = cards[1];
+    if (clientCard && !clientCard.querySelector('a')) {
+      var clientLink = document.createElement('p');
+      clientLink.innerHTML = '<a href="/posts/solopreneur-client-meeting-space/">1인사업자 고객 미팅 가이드 보기 →</a>';
+      clientCard.appendChild(clientLink);
+    }
+
+    var counselingCard = cards[2];
+    if (counselingCard && !counselingCard.querySelector('a')) {
+      var counselingLink = document.createElement('p');
+      counselingLink.innerHTML = '<a href="/posts/freelance-counselor-office/">프리랜서 상담 공간 운영 가이드 보기 →</a>';
+      counselingCard.appendChild(counselingLink);
+    }
+
+    var videoCard = cards[3];
+    if (videoCard && !videoCard.querySelector('a')) {
+      var videoLink = document.createElement('p');
+      videoLink.innerHTML = '<a href="/posts/bucheon-meeting-room/">부천 미팅룸·화상회의 가이드 보기 →</a>';
+      videoCard.appendChild(videoLink);
+    }
+  }
+
+  var meetingSeries = document.getElementById('meeting-series');
+  if (meetingSeries && !document.getElementById('office-free-series-intro')) {
+    var intro = document.createElement('section');
+    intro.id = 'office-free-series-intro';
+    intro.className = 'guide-summary-section meeting-surface-soft';
+    intro.setAttribute('aria-label', '사무실 없이 일하는 사람들 시리즈');
+    intro.innerHTML = [
+      '<div class="section-inner">',
+      '<div class="interview-flow-heading">',
+      '<p class="section-label">사무실 없이 일하는 사람들</p>',
+      '<h2 class="section-title">평일 낮, 필요한 이유부터 고르세요</h2>',
+      '<p>매일 사무실을 쓰는 사람이 아니라도 고객을 만나고, 상담하고, 집중해서 일해야 하는 시간은 생깁니다. 바른자리는 그 몇 시간을 목적별로 예약해 쓰는 방식에 초점을 맞춥니다.</p>',
+      '</div>',
+      '<div class="about-highlight-grid" aria-label="평일 낮 업무공간 사용 목적">',
+      '<article class="about-highlight-card"><h3>고객을 만나야 할 때</h3><p>계약, 제안, 설명처럼 카페보다 독립된 대화 공간이 필요한 경우.</p><p><a href="/posts/solopreneur-client-meeting-space/">고객 미팅 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>상담 일정이 있을 때</h3><p>고정 사무실 없이 필요한 시간만 상담 공간을 확보하고 싶은 경우.</p><p><a href="/posts/freelance-counselor-office/">상담 공간 운영 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>혼자 집중해서 일할 때</h3><p>집이나 카페보다 문을 닫고 한두 시간 업무에 집중하고 싶은 경우.</p><p><a href="/posts/weekday-morning-workspace/">오전 업무공간 가이드 →</a></p></article>',
+      '</div>',
+      '</div>'
+    ].join('');
+    meetingSeries.parentNode.insertBefore(intro, meetingSeries);
+  }
+});
+</script>
