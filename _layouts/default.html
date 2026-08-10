@@ -59,6 +59,7 @@
       })();
     </script>
   {% endif %}
+  {% if page.page_id == 'blog' %}{% include blog-hub-enhancements.html %}{% endif %}
 
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
