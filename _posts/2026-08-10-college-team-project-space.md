@@ -27,12 +27,12 @@ permalink: /posts/college-team-project-space/
 canonical: https://bareunjari.com/posts/college-team-project-space/
 date: 2026-08-10 13:00:00 +0900
 editor_pick: true
-og_image: https://bareunjari.com/images/college-team-project-space.webp
+og_image: https://bareunjari.com/images/college-team-project-space-v2.webp
 og_image_alt: 부천 신중동 바른자리에서 대학생 팀 프로젝트를 진행하는 프라이빗 팀플 공간
 og_image_width: 1600
 og_image_height: 900
-preload_image: images/college-team-project-space.webp
-css_version: 20260810-2
+preload_image: images/college-team-project-space-v2.webp
+css_version: 20260810-3
 script_version: 20260711-4
 ---
 
@@ -53,7 +53,7 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/college-team-project-space.webp'
+    image_src='/images/college-team-project-space-v2.webp'
     image_alt='노트북과 자료를 펼치고 대화하며 팀 프로젝트를 진행할 수 있는 부천 신중동 바른자리 프라이빗 공간'
     image_width='1600'
     image_height='900'
