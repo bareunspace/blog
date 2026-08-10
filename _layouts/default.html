@@ -102,6 +102,10 @@
     {% include meeting-workspace-series.html %}
   {% endif %}
 
+  {% if page.collection == 'posts' and page.category == '프라이빗시간' %}
+    {% include private-time-post-enhancements.html %}
+  {% endif %}
+
   {% if page.category %}
     {% unless content contains 'class="post-related"' %}
       {% include related-posts.html %}
