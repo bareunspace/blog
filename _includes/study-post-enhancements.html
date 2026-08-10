@@ -13,6 +13,27 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
   if (studyPaths.indexOf(path) === -1) return;
 
+  var hero = main.querySelector('#home .section-inner');
+  if (hero && !hero.querySelector('[data-hub-role-note]')) {
+    var role = document.createElement('p');
+    role.setAttribute('data-hub-role-note', 'true');
+    role.className = 'section-desc';
+    role.style.marginTop = '1rem';
+    if (path === '/posts/college-team-project-space/') {
+      role.innerHTML = '<strong>이 글의 역할:</strong> 대학생 팀플 장소를 고르는 비교형 가이드입니다. 프로젝트형 학습 자체가 궁금하다면 토론·프로젝트 가이드로 이어집니다.';
+    } else if (path === '/posts/study-space-for-presentation-discussion-project/') {
+      role.innerHTML = '<strong>이 글의 역할:</strong> 발표·토론을 포함한 프로젝트형 학습의 공간 사용법을 설명합니다. 발표 자체를 반복 연습하는 목적은 연습·리허설 허브에서 따로 다룹니다.';
+    } else if (path === '/posts/private-space-for-study-groups/' || path === '/posts/bucheon-small-group-space/') {
+      role.innerHTML = '<strong>이 글의 역할:</strong> 두 명 이상이 함께 공부하고 자료를 나누는 그룹 스터디·소모임 상황을 다룹니다.';
+    } else if (path === '/posts/one-person-study-room/') {
+      role.innerHTML = '<strong>이 글의 역할:</strong> 혼자 단독으로 공부·과제·자료정리에 집중할 공간을 고르는 가이드입니다. 면접은 <a href="/interview/">면접 허브</a>, 독백·대사·셀프테이프 같은 반복 연습은 <a href="/practice/">연습·리허설 허브</a>에서 더 자세히 다룹니다.';
+    } else if (path === '/posts/tutoring-space-guide-for-teachers/') {
+      role.innerHTML = '<strong>이 글의 역할:</strong> 교사·튜터가 소규모 수업이나 설명 중심 학습을 진행할 공간을 고르는 활용형 가이드입니다.';
+    }
+    var buttons = hero.querySelector('.hero-btns');
+    if (buttons) buttons.insertAdjacentElement('beforebegin', role); else hero.appendChild(role);
+  }
+
   if (!document.getElementById('study-series-links')) {
     var section = document.createElement('section');
     section.id = 'study-series-links';
