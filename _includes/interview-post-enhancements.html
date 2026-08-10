@@ -1,0 +1,31 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var main = document.querySelector('main.about-page');
+  if (!main) return;
+  if (!document.getElementById('interview-series-links')) {
+    var section = document.createElement('section');
+    section.id = 'interview-series-links';
+    section.className = 'guide-summary-section';
+    section.setAttribute('aria-label', '면접 가이드 이어서 보기');
+    section.innerHTML = [
+      '<div class="section-inner">',
+      '<div class="interview-flow-heading">',
+      '<p class="section-label">Interview Guide</p>',
+      '<h2 class="section-title">현재 면접 단계에서 다음으로 확인할 것</h2>',
+      '<p>면접 허브는 답변 정리, 실제 말하기와 녹화 점검, 화상면접 환경, 면접 직전 확인을 단계별로 연결합니다.</p>',
+      '</div>',
+      '<div class="about-highlight-grid">',
+      '<article class="about-highlight-card"><h3>답변 정리</h3><p>1분 자기소개와 핵심 경험처럼 실제 면접에서 꺼낼 내용을 먼저 정리합니다.</p><p><a href="/posts/1-minute-self-introduction-guide/">1분 자기소개 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>실제로 말해보기</h3><p>준비한 답변을 소리 내어 말하고 휴대폰으로 녹화하며 전달 방식을 확인합니다.</p><p><a href="/posts/interview-answer-practice/">답변 연습 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>면접 환경·당일 점검</h3><p>화상면접 세팅과 면접 30분 전 마지막 확인을 각각 점검합니다.</p><p><a href="/posts/video-interview-setup/">화상면접 세팅 →</a> · <a href="/posts/interview-30-minutes-before/">면접 직전 체크 →</a></p></article>',
+      '</div>',
+      '<div class="hero-btns" style="margin-top:1.5rem;">',
+      '<a href="/interview/" class="btn-outline">면접 허브</a>',
+      '<a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">면접 연습 시간 확인하기</a>',
+      '</div>',
+      '</div>'
+    ].join('');
+    main.appendChild(section);
+  }
+});
+</script>
