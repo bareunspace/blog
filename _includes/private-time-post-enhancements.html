@@ -6,31 +6,43 @@ document.addEventListener('DOMContentLoaded', function () {
   var hero = main.querySelector('#home .section-inner');
   if (!hero) return;
 
+  var roleText = '';
   if (path === '/posts/privacy-is-worth-paying-for/') {
     var desc = hero.querySelector('.section-desc');
     if (desc) desc.textContent = '바른자리가 말하는 프라이버시는 넓은 방이나 화려한 시설이 아니라, 다른 사람의 시선과 일정에서 잠시 벗어나 온전히 내 시간을 확보하는 가치에 가깝습니다.';
+    roleText = '<strong>이 글의 역할:</strong> 프라이빗시간 허브의 브랜드 Pillar로, 왜 방해받지 않는 개인시간 자체가 비용을 지불할 가치가 되는지 설명합니다.';
   }
-
   if (path === '/posts/alone-time-is-recovery/') {
     var aloneDesc = hero.querySelector('.section-desc');
     if (aloneDesc) aloneDesc.textContent = '혼자 있고 싶은 날에는 특별한 활동보다 아무에게도 반응하지 않아도 되는 시간이 필요할 수 있습니다. 이 글은 혼자 쉬고 생각을 정리할 공간이 필요한 구체적인 순간을 다룹니다.';
+    roleText = '<strong>이 글의 역할:</strong> 프라이버시 철학 전체를 반복하기보다, 혼자 쉬고 생각을 정리하고 싶은 구체적인 사용 상황에 집중합니다.';
   }
-
   if (path === '/posts/date-your-own-time/') {
     var dateDesc = hero.querySelector('.section-desc');
     if (dateDesc) dateDesc.textContent = '사람이 많은 카페보다 서로에게 집중하고 싶은 날이 있습니다. 이 글은 부천·신중동에서 둘만의 시간을 편하게 보내고 싶은 경우의 장소 선택을 다룹니다.';
+    roleText = '<strong>이 글의 역할:</strong> 부천·신중동의 둘만의 시간과 실내데이트 검색 의도에 집중하고, 개인시간·프라이버시 철학은 <a href="/private/">프라이빗시간 허브</a>로 연결합니다.';
   }
-
   if (path === '/posts/bucheon-rainy-day/') {
     var rainDesc = hero.querySelector('.section-desc');
     if (rainDesc) rainDesc.textContent = '비 오는 날에는 여러 곳을 옮겨 다니기보다 한 공간에 머물며 혼자, 친구와, 연인과 내 방식대로 시간을 보내는 선택도 있습니다.';
+    roleText = '<strong>이 글의 역할:</strong> “부천 비 오는 날 갈만한 곳”이라는 상황·지역 검색에 답하는 글입니다. 브랜드 철학을 길게 반복하지 않고 필요한 경우 <a href="/private/">프라이빗시간 허브</a>로 이어집니다.';
   }
-
   if (path === '/posts/summer-hotday-date-at-bareunjari/') {
     var summerTitle = hero.querySelector('.section-title');
     var summerDesc = hero.querySelector('.section-desc');
     if (summerTitle) summerTitle.innerHTML = '부천 여름 실내데이트<br />더운 날엔 한 공간에서 편하게';
     if (summerDesc) summerDesc.textContent = '한여름에 여러 장소를 옮겨 다니기보다 시원한 실내에서 편하게 대화하고 쉬고 싶은 날을 위한 부천·신중동 실내데이트 가이드입니다.';
+    roleText = '<strong>이 글의 역할:</strong> 여름·더운 날·부천 실내데이트라는 계절 검색에 집중하는 Satellite 글입니다. 둘만의 시간에 대한 기본 가이드는 <a href="/posts/date-your-own-time/">실내데이트 가이드</a>로 이어집니다.';
+  }
+
+  if (roleText && !hero.querySelector('[data-hub-role-note]')) {
+    var role = document.createElement('p');
+    role.setAttribute('data-hub-role-note', 'true');
+    role.className = 'section-desc';
+    role.style.marginTop = '1rem';
+    role.innerHTML = roleText;
+    var buttons = hero.querySelector('.hero-btns');
+    if (buttons) buttons.insertAdjacentElement('beforebegin', role); else hero.appendChild(role);
   }
 
   if (!document.getElementById('private-time-series-links')) {
@@ -43,12 +55,12 @@ document.addEventListener('DOMContentLoaded', function () {
       '<div class="interview-flow-heading">',
       '<p class="section-label">Private Time Series</p>',
       '<h2 class="section-title">방해받지 않는 시간을 다른 상황에서도 이어서 보세요</h2>',
-      '<p>프라이빗시간 허브는 개인시간과 프라이버시를 중심으로 혼자 있는 시간, 둘만의 시간, 계절·상황형 활용을 나눠 설명합니다.</p>',
+      '<p>프라이빗시간 허브는 브랜드 철학, 혼자 있는 시간, 둘만의 시간, 계절·상황 검색 콘텐츠의 역할을 나눠 연결합니다.</p>',
       '</div>',
       '<div class="about-highlight-grid">',
-      '<article class="about-highlight-card"><h3>프라이버시의 가치</h3><p>왜 사람들이 공간보다 방해받지 않는 시간에 비용을 지불하는지 설명합니다.</p><p><a href="/posts/privacy-is-worth-paying-for/">브랜드 Pillar 읽기 →</a></p></article>',
-      '<article class="about-highlight-card"><h3>혼자 있는 시간</h3><p>아무에게도 반응하지 않고 쉬거나 생각을 정리하고 싶은 순간을 다룹니다.</p><p><a href="/posts/alone-time-is-recovery/">혼자 있는 시간 가이드 →</a></p></article>',
-      '<article class="about-highlight-card"><h3>둘만의 시간</h3><p>카페보다 서로에게 집중할 수 있는 조용한 실내데이트 상황을 다룹니다.</p><p><a href="/posts/date-your-own-time/">둘만의 시간 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>프라이버시의 가치</h3><p>왜 사람들이 공간보다 방해받지 않는 시간에 비용을 지불하는지 설명하는 브랜드 Pillar입니다.</p><p><a href="/posts/privacy-is-worth-paying-for/">프라이버시의 가치 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>혼자 있는 시간</h3><p>아무에게도 반응하지 않고 쉬거나 생각을 정리하고 싶은 구체적인 순간을 다룹니다.</p><p><a href="/posts/alone-time-is-recovery/">혼자 있는 시간 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>둘만의 시간</h3><p>카페보다 서로에게 집중할 수 있는 부천·신중동 실내데이트 상황을 다룹니다.</p><p><a href="/posts/date-your-own-time/">둘만의 시간 가이드 →</a></p></article>',
       '</div>',
       '<div class="hero-btns" style="margin-top:1.5rem;">',
       '<a href="/private/" class="btn-outline">프라이빗시간 허브</a>',
