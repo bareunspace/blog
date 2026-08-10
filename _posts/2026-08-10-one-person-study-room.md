@@ -30,7 +30,7 @@ tags:
 canonical: https://bareunjari.com/posts/one-person-study-room/
 permalink: /posts/one-person-study-room/
 date: 2026-08-10 07:00:00 +0900
-last_modified_at: 2026-08-10 07:45:00 +0900
+last_modified_at: 2026-08-10 16:33:00 +0900
 og_image: https://bareunjari.com/images/one-person-study-room.webp
 og_image_alt: 1인 스터디룸에서 노트북과 태블릿으로 혼자 공부하고 작업하는 모습
 og_image_width: 1535
@@ -47,9 +47,76 @@ faq:
     answer: 네. 바른자리 신중동점은 1인부터 예약할 수 있고, 예약한 시간 동안 공간을 단독으로 사용하는 시간제 공간대여 서비스입니다.
   - question: 바른자리 1인 이용 요금은 얼마인가요?
     answer: 현재 안내 요금은 1시간 10,000원입니다. 화상회의 1시간, 면접 연습 2시간, 개인 작업 2~3시간처럼 필요한 시간을 선택해 이용할 수 있습니다.
-css_version: 20260729-3
+css_version: 20260810-1
 script_version: 20260711-4
 ---
+
+<style>
+  .one-person-fit-check {
+    margin-top: 1.8rem;
+    padding: clamp(1.1rem, 3vw, 1.75rem);
+    border: 1px solid #d9e8dd;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at top right, rgba(82, 183, 136, .13), transparent 34%),
+      #f7fbf8;
+  }
+  .one-person-fit-check__eyebrow {
+    margin: 0 0 .75rem;
+    color: var(--primary);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .one-person-fit-check__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .one-person-fit-check__item {
+    display: flex;
+    align-items: center;
+    min-height: 62px;
+    padding: .8rem .9rem;
+    border: 1px solid #deebe2;
+    border-radius: 14px;
+    background: #fff;
+    color: #294c3a;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .one-person-fit-check__item::before {
+    content: '✓';
+    display: grid;
+    flex: 0 0 1.35rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-right: .6rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #e3f2e8;
+    color: var(--primary);
+    font-size: .76rem;
+    font-weight: 900;
+  }
+  .one-person-fit-check__result {
+    margin: 1rem 0 0;
+    padding: .95rem 1rem;
+    border-radius: 14px;
+    background: var(--primary);
+    color: #fff;
+    line-height: 1.65;
+  }
+  .one-person-fit-check__result strong { color: #fff; }
+  @media (max-width: 760px) {
+    .one-person-fit-check__list { grid-template-columns: 1fr; gap: .55rem; }
+    .one-person-fit-check__item { min-height: 0; padding: .72rem .8rem; font-size: .94rem; }
+  }
+</style>
 
 <main class="about-page">
   <section id="home">
@@ -182,18 +249,21 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">나에게 1인 스터디룸이 필요한지 확인해보세요</h2>
       <p class="section-desc">모든 사람에게 1인 스터디룸이 필요한 것은 아닙니다. 조용히 책을 읽는 것이 목적이라면 스터디카페가 더 잘 맞고, 집에서 충분히 집중할 수 있다면 굳이 밖으로 나올 이유도 없습니다.</p>
-      <ul>
-        <li>혼자 이용할 예정이다.</li>
-        <li>한동안 계속 말을 해야 한다.</li>
-        <li>화상회의나 화상면접이 있다.</li>
-        <li>영어 스피킹이나 발표를 반복해서 연습해야 한다.</li>
-        <li>중요한 통화를 해야 한다.</li>
-        <li>휴대폰으로 말하는 모습을 촬영하고 싶다.</li>
-        <li>카페의 주변 소음이나 시선이 신경 쓰인다.</li>
-        <li>여러 명용 스터디룸까지는 필요하지 않다.</li>
-        <li>하루 종일이 아니라 1~2시간 정도만 공간이 필요하다.</li>
-      </ul>
-      <p>여러 항목이 해당된다면 필요한 것은 여러 사람이 모이는 스터디룸보다 <strong>혼자 사용할 수 있는 시간제 공간</strong>에 더 가깝습니다.</p>
+      <div class="one-person-fit-check" aria-label="1인 스터디룸 필요 여부 체크리스트">
+        <p class="one-person-fit-check__eyebrow">Check your moment</p>
+        <ul class="one-person-fit-check__list">
+          <li class="one-person-fit-check__item">혼자 이용할 예정이다.</li>
+          <li class="one-person-fit-check__item">한동안 계속 말을 해야 한다.</li>
+          <li class="one-person-fit-check__item">화상회의나 화상면접이 있다.</li>
+          <li class="one-person-fit-check__item">영어 스피킹이나 발표를 반복해서 연습해야 한다.</li>
+          <li class="one-person-fit-check__item">중요한 통화를 해야 한다.</li>
+          <li class="one-person-fit-check__item">휴대폰으로 말하는 모습을 촬영하고 싶다.</li>
+          <li class="one-person-fit-check__item">카페의 주변 소음이나 시선이 신경 쓰인다.</li>
+          <li class="one-person-fit-check__item">여러 명용 스터디룸까지는 필요하지 않다.</li>
+          <li class="one-person-fit-check__item">하루 종일이 아니라 1~2시간 정도만 공간이 필요하다.</li>
+        </ul>
+        <p class="one-person-fit-check__result">여러 항목이 해당된다면 필요한 것은 여러 사람이 모이는 스터디룸보다 <strong>혼자 사용할 수 있는 시간제 공간</strong>에 더 가깝습니다.</p>
+      </div>
     </div>
   </section>
 
