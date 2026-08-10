@@ -1,0 +1,62 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var main = document.querySelector('main.about-page');
+  if (!main) return;
+  var path = window.location.pathname;
+  var hero = main.querySelector('#home .section-inner');
+  if (!hero) return;
+
+  if (path === '/posts/privacy-is-worth-paying-for/') {
+    var desc = hero.querySelector('.section-desc');
+    if (desc) desc.textContent = '바른자리가 말하는 프라이버시는 넓은 방이나 화려한 시설이 아니라, 다른 사람의 시선과 일정에서 잠시 벗어나 온전히 내 시간을 확보하는 가치에 가깝습니다.';
+  }
+
+  if (path === '/posts/alone-time-is-recovery/') {
+    var aloneDesc = hero.querySelector('.section-desc');
+    if (aloneDesc) aloneDesc.textContent = '혼자 있고 싶은 날에는 특별한 활동보다 아무에게도 반응하지 않아도 되는 시간이 필요할 수 있습니다. 이 글은 혼자 쉬고 생각을 정리할 공간이 필요한 구체적인 순간을 다룹니다.';
+  }
+
+  if (path === '/posts/date-your-own-time/') {
+    var dateDesc = hero.querySelector('.section-desc');
+    if (dateDesc) dateDesc.textContent = '사람이 많은 카페보다 서로에게 집중하고 싶은 날이 있습니다. 이 글은 부천·신중동에서 둘만의 시간을 편하게 보내고 싶은 경우의 장소 선택을 다룹니다.';
+  }
+
+  if (path === '/posts/bucheon-rainy-day/') {
+    var rainDesc = hero.querySelector('.section-desc');
+    if (rainDesc) rainDesc.textContent = '비 오는 날에는 여러 곳을 옮겨 다니기보다 한 공간에 머물며 혼자, 친구와, 연인과 내 방식대로 시간을 보내는 선택도 있습니다.';
+  }
+
+  if (path === '/posts/summer-hotday-date-at-bareunjari/') {
+    var summerTitle = hero.querySelector('.section-title');
+    var summerDesc = hero.querySelector('.section-desc');
+    if (summerTitle) summerTitle.innerHTML = '부천 여름 실내데이트<br />더운 날엔 한 공간에서 편하게';
+    if (summerDesc) summerDesc.textContent = '한여름에 여러 장소를 옮겨 다니기보다 시원한 실내에서 편하게 대화하고 쉬고 싶은 날을 위한 부천·신중동 실내데이트 가이드입니다.';
+  }
+
+  if (!document.getElementById('private-time-series-links')) {
+    var section = document.createElement('section');
+    section.id = 'private-time-series-links';
+    section.className = 'guide-summary-section';
+    section.setAttribute('aria-label', '프라이빗시간 이어서 보기');
+    section.innerHTML = [
+      '<div class="section-inner">',
+      '<div class="interview-flow-heading">',
+      '<p class="section-label">Private Time Series</p>',
+      '<h2 class="section-title">방해받지 않는 시간을 다른 상황에서도 이어서 보세요</h2>',
+      '<p>프라이빗시간 허브는 개인시간과 프라이버시를 중심으로 혼자 있는 시간, 둘만의 시간, 계절·상황형 활용을 나눠 설명합니다.</p>',
+      '</div>',
+      '<div class="about-highlight-grid">',
+      '<article class="about-highlight-card"><h3>프라이버시의 가치</h3><p>왜 사람들이 공간보다 방해받지 않는 시간에 비용을 지불하는지 설명합니다.</p><p><a href="/posts/privacy-is-worth-paying-for/">브랜드 Pillar 읽기 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>혼자 있는 시간</h3><p>아무에게도 반응하지 않고 쉬거나 생각을 정리하고 싶은 순간을 다룹니다.</p><p><a href="/posts/alone-time-is-recovery/">혼자 있는 시간 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>둘만의 시간</h3><p>카페보다 서로에게 집중할 수 있는 조용한 실내데이트 상황을 다룹니다.</p><p><a href="/posts/date-your-own-time/">둘만의 시간 가이드 →</a></p></article>',
+      '</div>',
+      '<div class="hero-btns" style="margin-top:1.5rem;">',
+      '<a href="/private/" class="btn-outline">프라이빗시간 허브</a>',
+      '<a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">필요한 시간 예약하기</a>',
+      '</div>',
+      '</div>'
+    ].join('');
+    main.appendChild(section);
+  }
+});
+</script>
