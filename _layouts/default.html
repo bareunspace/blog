@@ -93,6 +93,11 @@
     {% include interview-hub-seo.html %}
   {% endif %}
 
+  {% if page.page_id == 'private' %}
+    {% include private-hub-enhancements.html %}
+    {% include private-hub-seo.html %}
+  {% endif %}
+
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}
     {% include meeting-workspace-series.html %}
   {% endif %}
