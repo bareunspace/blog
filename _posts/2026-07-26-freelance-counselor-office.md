@@ -7,7 +7,7 @@ hub_series: meeting
 hub_section: core
 hub_order: 1
 hub_label: 대표 가이드
-hub_kicker: 상담 운영의 기준을 먼저 잡는 글
+hub_kicker: 사무실 없이 일하는 사람들 · 운영편
 hub_title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
 hub_description: 월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.
 hub_tags:
@@ -38,9 +38,9 @@ script_version: 20260711-4
 <main class="about-page">
   <section id="home">
     <div class="section-inner">
-      <p class="section-label">Counselor Space Guide</p>
+      <p class="section-label">사무실 없이 일하는 사람들 · 운영편</p>
       <h1 class="section-title">프리랜서 상담사가 고정 사무실 없이<br />전문적으로 운영하는 법</h1>
-      <p class="section-desc">상담 건수는 아직 많지 않은데 매달 고정 임대료가 부담스럽다면, 공간 운영 방식부터 다시 볼 필요가 있습니다. 시간제 상담 공간을 활용해 비용 부담은 낮추고 고객 경험은 지키는 방법을 정리했습니다.</p>
+      <p class="section-desc">상담 건수는 아직 많지 않은데 매달 고정 임대료가 부담스럽다면, 공간 운영 방식부터 다시 볼 필요가 있습니다. 이 글은 ‘사무실 없이 일하는 사람들’ 시리즈의 운영편으로, 프리랜서 상담사가 시간제 상담 공간을 활용해 고정비 부담은 낮추고 필요한 상담 환경은 유지하는 방법을 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#cost-structure" class="btn-primary">운영 방식 비교하기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">상담 공간 예약하기</a>
@@ -48,6 +48,16 @@ script_version: 20260711-4
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="series-guide">
+    <div class="section-inner">
+      <div class="about-highlight-card">
+        <p class="section-label">사무실 없이 일하는 사람들</p>
+        <h2>이 글은 ‘운영 방법’을 다룹니다</h2>
+        <p>고정 사무실을 계약할지, 필요한 시간만 공간을 예약할지 고민하는 프리랜서 상담사를 위한 글입니다. 실제로 부천에서 상담할 장소를 찾는 사람을 위한 지역·장소 가이드는 별도 글로 나누어, 서로 다른 검색 질문에 답하는 시리즈로 이어갑니다.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="guide-visual">
     <div class="section-inner">
