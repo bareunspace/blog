@@ -88,6 +88,11 @@
     {% include study-hub-seo.html %}
   {% endif %}
 
+  {% if page.page_id == 'interview' %}
+    {% include interview-hub-enhancements.html %}
+    {% include interview-hub-seo.html %}
+  {% endif %}
+
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}
     {% include meeting-workspace-series.html %}
   {% endif %}
