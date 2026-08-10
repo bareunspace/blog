@@ -3,17 +3,17 @@
   .home-practice-entry p,.home-time-demand p { margin:0;color:var(--muted);line-height:1.7; }
   .home-practice-entry a,.home-time-demand a { font-weight:800; }
   .home-time-demand h2 { margin:0 0 .45rem;font-size:clamp(1.15rem,2vw,1.45rem); }
-  .home-time-demand-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-top:.9rem; }
+  .home-time-demand-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.65rem;margin-top:.9rem; }
   .home-time-demand-card { display:block;padding:.9rem;border-radius:14px;background:#fff;border:1px solid rgba(45,106,79,.12);text-decoration:none; }
   .home-time-demand-card strong { display:block;margin-bottom:.2rem; }
   .home-time-demand-card span { color:var(--muted);font-size:.92rem;line-height:1.5; }
-  @media(max-width:760px){.home-time-demand-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:900px){.home-time-demand-grid{grid-template-columns:1fr 1fr}}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var main=document.getElementById('mainContent'); if(!main)return;
   var heroTitle=main.querySelector('#home .hero-title'),heroSubtitle=main.querySelector('#home .hero-subtitle'),heroDesc=main.querySelector('#home .hero-desc'),heroPrimary=main.querySelector('#home .btn-primary');
-  if(heroTitle)heroTitle.textContent='오늘 필요한 시간을, 방해받지 않게 예약하세요.';
+  if(heroTitle)heroTitle.textContent='나만의 시간을 예약하세요.';
   if(heroSubtitle)heroSubtitle.textContent='부천 신중동에서 면접, 미팅·업무, 팀플·스터디, 개인시간까지. 1~6인이 필요한 시간만 단독으로 쓰는 프라이빗 공간입니다.';
   if(heroDesc)heroDesc.innerHTML='<strong>공간을 빌리는 이유보다, 그 시간에 끝내야 할 일을 먼저 생각합니다.</strong> 오전 집중 업무부터 저녁 면접·모임, 늦은 시간의 개인 작업까지 목적에 맞게 예약하세요.';
   if(heroPrimary)heroPrimary.textContent='오늘 빈 시간 확인하기';
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setCard(cards[1],'미팅·업무','사무실이 없는 프리랜서·1인사업자도 오전 집중 업무, 고객 미팅, 상담, 화상회의에 필요한 몇 시간만 예약할 수 있습니다.',['평일 오전','고객 미팅','집중 업무'],'미팅·업무 허브 바로가기');
   setCard(cards[2],'스터디·소모임','대학생 팀플과 프로젝트, 발표·토론, 그룹 스터디처럼 함께 말하고 협업하는 학습에 맞춘 공간 활용 가이드입니다.',['팀플·프로젝트','발표·토론','그룹 스터디'],'스터디·소모임 허브 바로가기');
   setCard(cards[3],'프라이빗시간','혼자 쉬고 생각을 정리하거나 둘만의 대화를 나누는, 방해받지 않는 개인시간을 위한 활용 흐름입니다.',['혼자 있는 시간','둘만의 시간','프라이버시'],'프라이빗시간 허브 바로가기');
-  if(!document.getElementById('home-time-demand')){var time=document.createElement('section');time.id='home-time-demand';time.className='home-time-demand';time.innerHTML='<h2>언제 비어 있느냐보다, 언제 필요한 사람이 있느냐를 연결합니다.</h2><p>운영시간 07:00~23:00. 시간대마다 바른자리를 찾는 이유가 다릅니다.</p><div class="home-time-demand-grid"><a class="home-time-demand-card" href="/meeting/"><strong>07:00~12:00 · 업무</strong><span>프리랜서·1인사업자 집중업무, 상담, 화상회의</span></a><a class="home-time-demand-card" href="/interview/"><strong>12:00~17:00 · 준비</strong><span>화상면접, 발표·스피킹, 온라인 일정</span></a><a class="home-time-demand-card" href="/study/"><strong>17:00~21:00 · 협업</strong><span>대학생 팀플, 프로젝트, 스터디·소모임</span></a><a class="home-time-demand-card" href="/private/"><strong>21:00~23:00 · 개인시간</strong><span>조용한 대화, 정리, 독서와 개인 작업</span></a></div>';grid.insertAdjacentElement('afterend',time);}
+  if(!document.getElementById('home-time-demand')){var time=document.createElement('section');time.id='home-time-demand';time.className='home-time-demand';time.innerHTML='<h2>언제 비어 있느냐보다, 언제 필요한 사람이 있느냐를 연결합니다.</h2><p>일반 운영시간 07:00~24:00. 별도 올나잇 상품은 00:00~06:00에 이용할 수 있습니다. 시간대마다 바른자리를 찾는 이유가 다릅니다.</p><div class="home-time-demand-grid"><a class="home-time-demand-card" href="/meeting/"><strong>07:00~12:00 · 업무</strong><span>프리랜서·1인사업자 집중업무, 상담, 화상회의</span></a><a class="home-time-demand-card" href="/interview/"><strong>12:00~17:00 · 준비</strong><span>화상면접, 발표·스피킹, 온라인 일정</span></a><a class="home-time-demand-card" href="/study/"><strong>17:00~21:00 · 협업</strong><span>대학생 팀플, 프로젝트, 스터디·소모임</span></a><a class="home-time-demand-card" href="/private/"><strong>21:00~24:00 · 개인시간</strong><span>조용한 대화, 정리, 독서와 개인 작업</span></a><a class="home-time-demand-card" href="/posts/all-night-focus-space/"><strong>00:00~06:00 · 올나잇</strong><span>과제·보고서 마감, 포트폴리오, 편집·디자인, 해외 화상회의 등 6시간 연속 집중</span></a></div>';grid.insertAdjacentElement('afterend',time);}
   if(!document.getElementById('home-practice-entry')){var note=document.createElement('div');note.id='home-practice-entry';note.className='home-practice-entry';note.innerHTML='<p><strong>직접 말하고 촬영하며 반복하는 연습이 필요한가요?</strong> 독백·대사·오디션·셀프테이프는 <a href="/practice/">연습·리허설 허브 →</a>에서 안내합니다.</p>';document.getElementById('home-time-demand').insertAdjacentElement('afterend',note);}
   var filterLabels={'면접준비':'면접','스터디룸':'스터디·소모임','미팅·상담':'미팅·업무','프라이빗시간':'프라이빗시간','연습·리허설':'연습·리허설','시간·공간':'시간·공간 저널'};main.querySelectorAll('#homeGuideFilters [data-category]').forEach(function(button){var key=button.getAttribute('data-category');if(filterLabels[key])button.textContent=filterLabels[key];});
   var useCaseTitle=main.querySelector('#testimonials .section-title'),useCaseDesc=main.querySelector('#testimonials .section-desc');if(useCaseTitle)useCaseTitle.textContent='활용 예시 · 이용안내';if(useCaseDesc)useCaseDesc.textContent='면접, 스터디, 미팅, 개인시간처럼 실제 목적별 활용 방식을 확인하고, 최신 현장 소식과 이용사례는 공식 네이버 블로그에서 확인하세요.';main.querySelectorAll('#useCasesGrid .testimonial-card').forEach(function(card){var badge=card.querySelector('.stars'),meta=card.querySelector('.testimonial-meta strong');if(badge)badge.textContent='활용 예시';if(meta)meta.textContent='대표 활용 상황';});
