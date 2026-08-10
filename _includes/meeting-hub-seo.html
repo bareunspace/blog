@@ -1,0 +1,81 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.meeting-hub');
+  if (!hub) return;
+
+  var quick = hub.querySelector('.guide-summary-section[aria-label="부천 미팅룸 빠른 답변"] .interview-flow-heading');
+  if (quick) {
+    var heading = quick.querySelector('h2');
+    var answer = quick.querySelector('p:last-child');
+    if (heading) heading.textContent = '부천에서 고객 미팅이나 시간제 업무공간이 필요하다면?';
+    if (answer) answer.innerHTML = '<strong>바른자리는 부천 신중동에서 고객 미팅, 상담, 화상회의, 집중 업무를 위해 필요한 시간만 예약해 사용하는 프라이빗 공간입니다.</strong> 매일 사용하는 공유오피스나 고정 사무실보다 특정 일정에 공간이 필요한 프리랜서·1인사업자에게 맞는 방식이며, 현재 안내 요금은 1시간 10,000원입니다.';
+  }
+
+  var faq = document.querySelector('#faq .contact-faq');
+  if (faq && !document.getElementById('meeting-faq-cafe')) {
+    var cafe = document.createElement('details');
+    cafe.id = 'meeting-faq-cafe';
+    cafe.setAttribute('itemscope', '');
+    cafe.setAttribute('itemprop', 'mainEntity');
+    cafe.setAttribute('itemtype', 'https://schema.org/Question');
+    cafe.innerHTML = '<summary itemprop="name">카페 대신 미팅룸이 더 잘 맞는 경우는 언제인가요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">계약, 제안, 상담, 자료 설명처럼 주변 대화와 시선을 덜 의식하고 한두 시간 집중해서 이야기해야 할 때는 독립된 미팅룸이 더 편할 수 있습니다.</p></div>';
+    faq.appendChild(cafe);
+
+    var compare = document.createElement('details');
+    compare.id = 'meeting-faq-coworking';
+    compare.setAttribute('itemscope', '');
+    compare.setAttribute('itemprop', 'mainEntity');
+    compare.setAttribute('itemtype', 'https://schema.org/Question');
+    compare.innerHTML = '<summary itemprop="name">시간제 업무공간과 공유오피스는 어떻게 다른가요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">공유오피스는 장기적으로 업무 거점을 두는 용도에 더 가깝고, 바른자리는 고객 미팅이나 상담, 집중 업무처럼 특정 일정에 필요한 시간만 예약해 사용하는 프라이빗 공간입니다.</p></div>';
+    faq.appendChild(compare);
+  }
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "사무실 없이 일하는 사람들 - 미팅·업무 가이드",
+  "url": "https://bareunjari.com/meeting/",
+  "numberOfItems": 6,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?",
+      "url": "https://bareunjari.com/posts/solopreneur-client-meeting-space/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법",
+      "url": "https://bareunjari.com/posts/freelance-counselor-office/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "사무실 없이, 오전 2시간만 일하고 싶을 때",
+      "url": "https://bareunjari.com/posts/weekday-morning-workspace/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "프리랜서 상담사, 고정 사무실 없이 매주 같은 공간에서 상담하는 방법",
+      "url": "https://bareunjari.com/posts/recurring-space-booking-for-freelance-counselors/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "초단기 사무실 임대, 필요한 시간만 사무실을 빌리는 방법",
+      "url": "https://bareunjari.com/posts/short-term-office-rental/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "부천 조용한 미팅룸 예약 | 신중동역 1분 바른자리",
+      "url": "https://bareunjari.com/posts/bucheon-meeting-room/"
+    }
+  ]
+}
+</script>
