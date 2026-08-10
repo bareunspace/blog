@@ -1,0 +1,50 @@
+<style>
+  .home-practice-entry {
+    margin-top: 1.15rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(45,106,79,.16);
+    border-radius: 16px;
+    background: #f7faf8;
+  }
+  .home-practice-entry p { margin: 0; color: var(--muted); line-height: 1.7; }
+  .home-practice-entry a { font-weight: 800; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var main = document.getElementById('mainContent');
+  if (!main) return;
+  var grid = main.querySelector('.features-grid');
+  if (!grid) return;
+  var cards = grid.querySelectorAll('.feature-card');
+  if (cards.length < 4) return;
+
+  function setCard(card, title, desc, bullets, ariaLabel) {
+    var h3 = card.querySelector('.feature-title-row h3');
+    var hit = card.querySelector('.feature-card-hitarea');
+    var arrow = card.querySelector('.blog-guide-category-link');
+    var p = card.querySelector('p');
+    var ul = card.querySelector('.feature-quick-list');
+    if (h3) h3.textContent = title;
+    if (hit) hit.setAttribute('aria-label', ariaLabel);
+    if (arrow) arrow.setAttribute('aria-label', ariaLabel);
+    if (p) p.textContent = desc;
+    if (ul) {
+      ul.setAttribute('aria-label', title + ' 허브 포인트');
+      ul.innerHTML = bullets.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+    }
+  }
+
+  setCard(cards[0], '면접', '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 화상면접 환경과 당일 확인까지 면접 전체 흐름을 안내합니다.', ['답변 정리', '말하기·녹화', '화상면접'], '면접 허브 바로가기');
+  setCard(cards[1], '미팅·업무', '고객 미팅, 상담, 화상회의, 집중 업무처럼 사무실이 필요한 몇 시간을 목적에 맞게 활용하는 가이드입니다.', ['고객 미팅', '상담', '집중 업무'], '미팅·업무 허브 바로가기');
+  setCard(cards[2], '스터디·소모임', '대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.', ['팀플·프로젝트', '그룹 스터디', '1인 집중'], '스터디·소모임 허브 바로가기');
+  setCard(cards[3], '프라이빗시간', '혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.', ['혼자 있는 시간', '둘만의 시간', '프라이버시'], '프라이빗시간 허브 바로가기');
+
+  if (!document.getElementById('home-practice-entry')) {
+    var note = document.createElement('div');
+    note.id = 'home-practice-entry';
+    note.className = 'home-practice-entry';
+    note.innerHTML = '<p><strong>직접 해보고 촬영하며 반복해야 하나요?</strong> 독백·대사·오디션·셀프테이프는 <a href="/practice/">연습·리허설 허브 →</a>에서 따로 안내합니다.</p>';
+    grid.insertAdjacentElement('afterend', note);
+  }
+});
+</script>
