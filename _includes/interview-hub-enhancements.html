@@ -1,0 +1,72 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.interview-hub');
+  if (!hub) return;
+
+  var heroLabel = hub.querySelector('#home .section-label');
+  if (heroLabel) heroLabel.textContent = '면접 답변을 실제 말하기로 바꾸는 시간';
+
+  var heroTitle = hub.querySelector('#home .section-title');
+  if (heroTitle) heroTitle.textContent = '면접 준비, 읽는 것에서 끝내지 말고 실제로 말해보세요';
+
+  var heroSubtitle = hub.querySelector('#home .hero-subtitle');
+  if (heroSubtitle) heroSubtitle.textContent = '1분 자기소개와 예상 답변을 정리한 뒤 소리 내어 말하고, 휴대폰으로 녹화해 전달 방식을 확인하고, 화상면접이라면 화면 환경까지 점검하는 실전 준비 가이드입니다.';
+
+  var metrics = hub.querySelectorAll('.interview-hero-metrics .interview-metric-card');
+  if (metrics.length >= 3) {
+    metrics[0].querySelector('.interview-metric-value').textContent = '60분';
+    metrics[0].querySelector('.interview-metric-label').textContent = '말하기·녹화 점검 예시';
+    metrics[1].querySelector('.interview-metric-value').textContent = '직접 말하기';
+    metrics[1].querySelector('.interview-metric-label').textContent = '읽기보다 실제 답변 연습';
+    metrics[2].querySelector('.interview-metric-value').textContent = '화상면접';
+    metrics[2].querySelector('.interview-metric-label').textContent = '카메라·조명·배경 함께 점검';
+  }
+
+  var flow = document.getElementById('prep-flow');
+  if (flow) {
+    var flowHeading = flow.querySelector('h2');
+    var flowDesc = flow.querySelector('.interview-flow-heading p:last-child');
+    if (flowHeading) flowHeading.textContent = '지금 면접 준비가 어디까지 왔나요?';
+    if (flowDesc) flowDesc.textContent = '새로운 정보를 계속 찾기보다 현재 단계에 맞는 준비를 골라 실제 답변으로 연결하세요.';
+
+    var cards = flow.querySelectorAll('.guide-summary-card');
+    if (cards.length >= 4) {
+      cards[0].querySelector('h2').textContent = '답변 정리';
+      cards[0].querySelector('p').textContent = '1분 자기소개, 지원 동기, 경험 사례와 역질문처럼 면접에서 꺼낼 핵심 내용을 정리합니다.';
+      cards[0].insertAdjacentHTML('beforeend', '<p><a href="/posts/1-minute-self-introduction-guide/">1분 자기소개 가이드 →</a></p>');
+
+      cards[1].querySelector('h2').textContent = '소리 내어 연습';
+      cards[1].querySelector('p').textContent = '준비한 문장을 읽는 데서 끝내지 않고 실제 질문을 받은 것처럼 말하고 휴대폰으로 녹화해 확인합니다.';
+      cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/interview-answer-practice/">면접 답변 연습 가이드 →</a></p>');
+
+      cards[2].querySelector('h2').textContent = '면접 환경 점검';
+      cards[2].querySelector('p').textContent = '화상면접이라면 카메라 높이, 조명, 배경, 마이크와 인터넷 환경을 미리 고정합니다.';
+      cards[2].insertAdjacentHTML('beforeend', '<p><a href="/posts/video-interview-setup/">화상면접 세팅 가이드 →</a></p>');
+
+      cards[3].querySelector('h2').textContent = '당일 마지막 점검';
+      cards[3].querySelector('p').textContent = '면접 30분 전에는 새 답변을 만들기보다 자기소개와 핵심 경험을 다시 말하고 목소리·시선·환경을 확인합니다.';
+      var demo = cards[3].querySelector('a');
+      if (demo) demo.remove();
+      cards[3].insertAdjacentHTML('beforeend', '<p><a href="/posts/interview-30-minutes-before/">면접 30분 전 체크리스트 →</a></p>');
+    }
+
+    var chips = flow.querySelector('.interview-situation-chips');
+    if (chips) chips.innerHTML = '<a href="/posts/1-minute-self-introduction-guide/">자기소개</a><a href="/posts/interview-answer-practice/">답변 연습</a><a href="/posts/video-interview-setup/">화상면접</a><a href="/posts/interview-30-minutes-before/">면접 직전</a><a href="#booking">예약</a>';
+  }
+
+  var series = document.getElementById('interview-series');
+  if (series && !document.getElementById('interview-practice-focus')) {
+    var focus = document.createElement('section');
+    focus.id = 'interview-practice-focus';
+    focus.className = 'guide-summary-section interview-surface';
+    focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Practice Loop</p><h2 class="section-title">답변을 만들었다면, 이제 실제로 꺼내는 연습이 필요합니다</h2><p>면접 준비의 마지막 단계는 문장을 더 고치는 것이 아니라 질문을 듣고 답변을 소리 내어 말해보는 것입니다. 한 번 말하고, 녹화해 확인하고, 다시 말하는 짧은 반복으로 준비한 내용을 실제 답변에 가깝게 만들어보세요.</p></div><div class="about-principle-grid"><article class="about-principle-item" data-step="01"><h3>질문을 정합니다</h3><p>자기소개와 지원 동기, 핵심 경험처럼 반드시 말해볼 질문 몇 개를 고릅니다.</p></article><article class="about-principle-item" data-step="02"><h3>소리 내어 답합니다</h3><p>원고를 읽지 않고 실제 면접처럼 질문에 답하면서 막히는 부분을 확인합니다.</p></article><article class="about-principle-item" data-step="03"><h3>녹화하고 다시 말합니다</h3><p>휴대폰 녹화로 목소리, 속도, 시선과 불필요한 반복 표현을 확인한 뒤 한 번 더 답합니다.</p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/interview-answer-practice/" class="btn-primary">60분 답변 연습 가이드</a><a href="/ai-interview/" class="btn-outline">AI 모의면접 데모</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">면접 연습 시간 확인</a></div></div>';
+    series.parentNode.insertBefore(focus, series);
+  }
+
+  var upcoming = document.getElementById('upcoming-series');
+  if (upcoming) upcoming.style.display = 'none';
+
+  var toc = hub.querySelector('.guide-toc-inner');
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접준비 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">관련 가이드</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
+});
+</script>
