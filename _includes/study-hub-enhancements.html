@@ -1,0 +1,61 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var hub = document.querySelector('.study-hub');
+  if (!hub) return;
+
+  var label = hub.querySelector('#home .section-label');
+  if (label) label.textContent = '같이 준비하고 결과를 만드는 시간';
+
+  var title = hub.querySelector('#home .section-title');
+  if (title) title.textContent = '조용히 앉아 있기보다, 함께 말하고 만들어야 할 때';
+
+  var subtitle = hub.querySelector('#home .hero-subtitle');
+  if (subtitle) subtitle.textContent = '대학생 팀플과 프로젝트, 발표·토론, 영어 스피킹, 1인 집중 학습까지. 공부 방식에 따라 필요한 공간도 달라집니다. 부천 신중동에서 목적에 맞는 스터디룸 활용법을 골라보세요.';
+
+  var flow = document.getElementById('study-flow');
+  if (flow) {
+    var flowHeading = flow.querySelector('h2');
+    var flowDesc = flow.querySelector('.interview-flow-heading p:last-child');
+    if (flowHeading) flowHeading.textContent = '오늘 무엇을 준비하나요?';
+    if (flowDesc) flowDesc.textContent = '스터디룸이라는 장소보다 오늘 해야 할 일을 먼저 고르세요. 팀플·프로젝트, 말하기 연습, 혼자 집중하기처럼 목적에 맞는 가이드로 바로 이어집니다.';
+
+    var cards = flow.querySelectorAll('.guide-summary-card');
+    if (cards.length >= 3) {
+      cards[0].querySelector('span').textContent = '01';
+      cards[0].querySelector('h2').textContent = '팀플·프로젝트';
+      cards[0].querySelector('p').textContent = '자료를 펼치고 의견을 나누며 발표나 결과물을 함께 만들어야 하는 대학생 프로젝트 시간.';
+      cards[0].insertAdjacentHTML('beforeend', '<p><a href="/posts/study-space-for-presentation-discussion-project/">발표·토론·팀 프로젝트 가이드 →</a></p>');
+
+      cards[1].querySelector('span').textContent = '02';
+      cards[1].querySelector('h2').textContent = '말하기 연습';
+      cards[1].querySelector('p').textContent = '영어회화, 스피킹 시험, 발표처럼 실제로 소리 내어 반복해야 하는 시간.';
+      cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/practice-speaking-space/">말하기 연습 가이드 →</a></p>');
+
+      cards[2].querySelector('span').textContent = '03';
+      cards[2].querySelector('h2').textContent = '혼자 집중하기';
+      cards[2].querySelector('p').textContent = '스터디카페에서는 말하기 어렵거나, 혼자 단독으로 공부·작업할 방이 필요한 시간.';
+      cards[2].insertAdjacentHTML('beforeend', '<p><a href="/posts/one-person-study-room/">1인 스터디룸 가이드 →</a></p>');
+    }
+
+    var chips = flow.querySelector('.study-situation-chips');
+    if (chips) chips.innerHTML = '<a href="/posts/study-space-for-presentation-discussion-project/">팀플·프로젝트</a><a href="/posts/practice-speaking-space/">말하기 연습</a><a href="/posts/one-person-study-room/">1인 스터디</a><a href="#booking">바로 예약하기</a>';
+  }
+
+  var series = document.getElementById('study-series');
+  if (series && !document.getElementById('study-project-focus')) {
+    var focus = document.createElement('section');
+    focus.id = 'study-project-focus';
+    focus.className = 'guide-summary-section study-surface-soft';
+    focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Project Study</p><h2 class="section-title">대학생 팀플, 공간이 필요한 순간은 따로 있습니다</h2><p>각자 자료를 읽는 시간보다 의견을 맞추고, 노트북 화면을 함께 보고, 발표를 맞춰보고, 결과물을 완성해야 할 때 독립된 공간의 가치가 커집니다.</p></div><div class="about-principle-grid"><article class="about-principle-item" data-step="01"><h3>아이디어 정리</h3><p>과제 요구사항과 역할을 함께 확인하고 방향을 맞춥니다.</p></article><article class="about-principle-item" data-step="02"><h3>결과물 만들기</h3><p>자료, 노트북, 문서를 펼쳐 놓고 발표자료나 프로젝트 결과물을 함께 완성합니다.</p></article><article class="about-principle-item" data-step="03"><h3>발표 리허설</h3><p>실제로 말해보고 서로 피드백하면서 발표 흐름을 마지막으로 점검합니다.</p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/study-space-for-presentation-discussion-project/" class="btn-primary">팀플·프로젝트 가이드 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디 시간 확인하기</a></div></div>';
+    series.parentNode.insertBefore(focus, series);
+  }
+
+  ['related-series', 'upcoming-series'].forEach(function (id) {
+    var section = document.getElementById(id);
+    if (section) section.style.display = 'none';
+  });
+
+  var toc = hub.querySelector('.guide-toc-inner');
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">스터디룸 허브 탐색 순서</span><a href="#study-flow">목적 선택</a><a href="#study-project-focus">팀플·프로젝트</a><a href="#study-series">관련 가이드</a><a href="#space-fit">공간 활용</a><a href="#booking">예약</a>';
+});
+</script>
