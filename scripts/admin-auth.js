@@ -271,7 +271,10 @@
           });
 
           if (resetError) {
-            showAccountStatus('리셋 메일을 보내지 못했습니다. 이메일 주소와 Supabase Auth 설정을 확인해 주세요.');
+            const resetErrorMessage = resetError.message
+              ? ` Supabase 오류: ${resetError.message}`
+              : '';
+            showAccountStatus(`리셋 메일을 보내지 못했습니다. 이메일 주소와 Supabase Auth 설정을 확인해 주세요.${resetErrorMessage}`);
             return;
           }
 
