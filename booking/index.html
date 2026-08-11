@@ -2,143 +2,18 @@
 layout: default
 page_id: booking
 title: 바른자리 예약 | 신중동역 프라이빗 공간
-description: 바른자리 이용 목적을 확인하고 신중동점의 빈 시간을 예약하세요. 이용시간은 네이버 예약에서 필요한 만큼 자유롭게 선택할 수 있습니다.
+description: 신중동점 바른자리의 빈 시간을 확인하고 필요한 만큼 자유롭게 예약하세요. 첫 네이버 예약 10% 할인 혜택을 확인할 수 있습니다.
 canonical: https://bareunjari.com/booking/
 robots: noindex,follow
 theme_color: "#2d6a4f"
 ---
-
 <style>
-  .booking-page { background: #f7f8f5; min-height: 100vh; padding: 48px 20px 96px; }
-  .booking-wrap { width: min(920px, 100%); margin: 0 auto; }
-  .booking-hero { text-align: center; padding: 20px 0 24px; }
-  .booking-kicker { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 7px 12px; border-radius: 999px; background: #e9f2ec; color: #2d6a4f; font-size: 14px; font-weight: 700; }
-  .booking-hero h1 { margin: 0; font-size: clamp(32px, 6vw, 50px); line-height: 1.12; letter-spacing: -0.04em; color: #18231d; }
-  .booking-hero p { max-width: 640px; margin: 14px auto 0; color: #5f6963; font-size: 16px; line-height: 1.65; }
-  .booking-promo { max-width: 640px; margin: 16px auto 0; padding: 13px 16px; border: 1px solid #cfe1d5; border-radius: 14px; background: #eef7f1; color: #285c42; font-weight: 800; }
-  .booking-promo span { display: block; margin-top: 3px; font-size: 13px; font-weight: 500; color: #577064; }
-  .booking-hero-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; margin-top: 14px; padding: 0 22px; border-radius: 14px; background: #2d6a4f; color: #fff; text-decoration: none; font-weight: 800; box-shadow: 0 8px 18px rgba(45,106,79,.18); }
-  .booking-hero-cta:hover { background: #255a43; }
-  .booking-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 22px; }
-  .booking-progress span { padding: 9px 8px; border-radius: 10px; background: #fff; border: 1px solid #e3e7e2; text-align: center; color: #657069; font-size: 13px; font-weight: 700; }
-  .booking-progress strong { color: #2d6a4f; margin-right: 4px; }
-  .booking-section { background: #fff; border: 1px solid #e3e7e2; border-radius: 20px; padding: 24px; margin-top: 16px; box-shadow: 0 10px 30px rgba(31,55,40,.04); }
-  .booking-section-head { margin-bottom: 17px; }
-  .booking-step { margin: 0 0 6px; color: #2d6a4f; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-  .booking-section h2 { margin: 0; color: #1d2a22; font-size: 23px; letter-spacing: -0.03em; }
-  .booking-section-desc { margin: 7px 0 0; color: #6a746e; line-height: 1.6; font-size: 15px; }
-  .branch-card { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 17px 18px; border: 2px solid #2d6a4f; border-radius: 15px; background: #f8fbf9; }
-  .branch-card h3 { margin: 0 0 5px; color: #1d2a22; font-size: 19px; }
-  .branch-card p { margin: 0; color: #68736c; line-height: 1.5; font-size: 14px; }
-  .branch-selected { flex: 0 0 auto; padding: 7px 10px; border-radius: 999px; background: #2d6a4f; color: #fff; font-size: 12px; font-weight: 800; }
-  .purpose-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; }
-  .purpose-card { appearance: none; width: 100%; border: 1px solid #dde3de; background: #fff; border-radius: 15px; padding: 16px; text-align: left; cursor: pointer; transition: .18s ease; color: inherit; font: inherit; }
-  .purpose-card:hover { border-color: #94b4a0; transform: translateY(-1px); }
-  .purpose-card.is-active { border: 2px solid #2d6a4f; background: #f5faf7; }
-  .purpose-title { display: block; color: #1d2a22; font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-  .purpose-copy { display: block; color: #6b756f; font-size: 13px; line-height: 1.5; }
-  .time-free-note { margin: 14px 0 0; padding: 11px 13px; border-radius: 12px; background: #f5f7f4; color: #526058; font-size: 13px; line-height: 1.5; }
-  .booking-final { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-  .booking-selection { color: #667169; font-size: 14px; line-height: 1.55; }
-  .booking-selection strong { color: #253229; }
-  .booking-price-note { margin: 7px 0 0; color: #68736c; font-size: 13px; line-height: 1.55; }
-  .booking-action { flex: 0 0 auto; min-width: 245px; }
-  .booking-action a { display: flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 20px; border-radius: 14px; background: #2d6a4f; color: #fff; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 8px 18px rgba(45,106,79,.18); }
-  .booking-action a:hover { background: #255a43; }
-  .booking-action small { display: block; margin-top: 8px; color: #79827d; text-align: center; line-height: 1.45; }
-  .booking-discount-note { color: #2d6a4f !important; font-weight: 700; }
-  .booking-info { display: grid; grid-template-columns: repeat(3,1fr); gap: 11px; margin-top: 16px; }
-  .booking-info-card { padding: 16px; border-radius: 15px; background: #fff; border: 1px solid #e3e7e2; }
-  .booking-info-card strong { display: block; margin-bottom: 5px; color: #26332b; }
-  .booking-info-card span { color: #6c766f; font-size: 13px; line-height: 1.5; }
-  .booking-mobile-bar { display: none; }
-  @media (max-width:720px) {
-    .booking-page { padding: 20px 14px 116px; }
-    .booking-hero { padding: 10px 0 18px; text-align: left; }
-    .booking-kicker { margin-bottom: 9px; }
-    .booking-hero h1 { font-size: 34px; }
-    .booking-hero p { margin: 10px 0 0; font-size: 15px; line-height: 1.55; }
-    .booking-promo { margin: 12px 0 0; padding: 11px 13px; }
-    .booking-promo span { display: none; }
-    .booking-hero-cta { width: 100%; margin-top: 10px; min-height: 50px; }
-    .booking-progress { display: none; }
-    .booking-section { padding: 18px 16px; border-radius: 17px; margin-top: 12px; }
-    .booking-section-head { margin-bottom: 13px; }
-    .booking-step { display: none; }
-    .booking-section h2 { font-size: 20px; }
-    .booking-section-desc { font-size: 13px; line-height: 1.5; }
-    .branch-card { padding: 13px 14px; gap: 12px; }
-    .branch-card h3 { font-size: 17px; margin-bottom: 3px; }
-    .branch-card p { font-size: 12px; }
-    .branch-selected { font-size: 11px; padding: 6px 8px; }
-    .purpose-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
-    .purpose-card { min-height: 76px; padding: 13px 11px; text-align: center; display: flex; align-items: center; justify-content: center; }
-    .purpose-title { margin: 0; font-size: 14px; line-height: 1.35; }
-    .purpose-copy { display: none; }
-    .time-free-note { margin-top: 10px; padding: 9px 11px; font-size: 12px; }
-    .booking-final { display: block; }
-    .booking-selection { font-size: 13px; }
-    .booking-action { min-width: 0; margin-top: 13px; }
-    .booking-action a { min-height: 50px; }
-    .booking-info { grid-template-columns: 1fr; gap: 8px; }
-    .booking-info-card { padding: 13px 14px; }
-    .booking-mobile-bar { position: fixed; z-index: 50; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); border-top: 1px solid #e2e7e3; backdrop-filter: blur(12px); box-shadow: 0 -8px 24px rgba(31,55,40,.08); }
-    .booking-mobile-bar span { flex: 1; color: #506057; font-size: 12px; line-height: 1.35; }
-    .booking-mobile-bar strong { display: block; color: #2d6a4f; font-size: 13px; }
-    .booking-mobile-bar a { flex: 0 0 auto; min-height: 46px; display: inline-flex; align-items: center; justify-content: center; padding: 0 17px; border-radius: 12px; background: #2d6a4f; color: #fff; text-decoration: none; font-size: 14px; font-weight: 800; }
-  }
+.booking-page{background:#f7f8f5;min-height:100vh;padding:48px 20px 96px}.booking-wrap{width:min(920px,100%);margin:0 auto}.booking-hero{text-align:center;padding:20px 0 24px}.booking-kicker{display:inline-flex;margin:0 0 12px;padding:7px 12px;border-radius:999px;background:#e9f2ec;color:#2d6a4f;font-size:14px;font-weight:700}.booking-hero h1{margin:0;font-size:clamp(32px,6vw,50px);line-height:1.12;letter-spacing:-.04em;color:#18231d}.booking-hero p{max-width:640px;margin:14px auto 0;color:#5f6963;font-size:16px;line-height:1.65}.booking-promo{max-width:640px;margin:16px auto 0;padding:13px 16px;border:1px solid #cfe1d5;border-radius:14px;background:#eef7f1;color:#285c42;font-weight:800}.booking-promo span{display:block;margin-top:3px;font-size:13px;font-weight:500;color:#577064}.booking-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;margin-top:14px;padding:0 22px;border-radius:14px;background:#2d6a4f;color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 18px rgba(45,106,79,.18)}.booking-cta:hover{background:#255a43}.booking-section{background:#fff;border:1px solid #e3e7e2;border-radius:20px;padding:24px;margin-top:16px;box-shadow:0 10px 30px rgba(31,55,40,.04)}.booking-section h2{margin:0;color:#1d2a22;font-size:23px;letter-spacing:-.03em}.booking-section-desc{margin:7px 0 0;color:#6a746e;line-height:1.6;font-size:15px}.branch-card{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-top:16px;padding:17px 18px;border:2px solid #2d6a4f;border-radius:15px;background:#f8fbf9}.branch-card h3{margin:0 0 5px;color:#1d2a22;font-size:19px}.branch-card p{margin:0;color:#68736c;line-height:1.5;font-size:14px}.branch-selected{flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#2d6a4f;color:#fff;font-size:12px;font-weight:800}.use-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:17px}.use-card{padding:16px 12px;border:1px solid #e1e6e2;border-radius:14px;background:#fafbf9;text-align:center}.use-card strong{display:block;color:#253229;font-size:14px}.use-card span{display:block;margin-top:5px;color:#707a74;font-size:12px;line-height:1.45}.booking-final{display:flex;align-items:center;justify-content:space-between;gap:20px}.booking-final-copy strong{display:block;color:#253229;font-size:18px}.booking-final-copy span{display:block;margin-top:5px;color:#68736c;font-size:13px;line-height:1.55}.booking-action{flex:0 0 auto;min-width:245px}.booking-action .booking-cta{display:flex;margin:0}.booking-action small{display:block;margin-top:8px;color:#2d6a4f;text-align:center;font-size:12px;font-weight:700}.booking-info{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:16px}.booking-info-card{padding:16px;border-radius:15px;background:#fff;border:1px solid #e3e7e2}.booking-info-card strong{display:block;margin-bottom:5px;color:#26332b}.booking-info-card span{color:#6c766f;font-size:13px;line-height:1.5}.booking-mobile-bar{display:none}@media(max-width:720px){.booking-page{padding:20px 14px 116px}.booking-hero{padding:10px 0 14px;text-align:left}.booking-kicker{margin-bottom:9px}.booking-hero h1{font-size:34px}.booking-hero p{margin:10px 0 0;font-size:15px;line-height:1.55}.booking-promo{margin:12px 0 0;padding:11px 13px}.booking-promo span{display:none}.booking-hero .booking-cta{display:flex;width:100%;margin-top:10px;min-height:50px}.booking-section{padding:17px 15px;border-radius:17px;margin-top:11px}.booking-section h2{font-size:20px}.booking-section-desc{font-size:13px;line-height:1.5}.branch-card{margin-top:12px;padding:13px 14px;gap:12px}.branch-card h3{font-size:17px;margin-bottom:3px}.branch-card p{font-size:12px}.branch-selected{font-size:11px;padding:6px 8px}.use-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-top:13px}.use-card{padding:13px 8px}.use-card strong{font-size:13px}.use-card span{display:none}.booking-final{display:block}.booking-final-copy strong{font-size:16px}.booking-action{min-width:0;margin-top:13px}.booking-action .booking-cta{min-height:50px}.booking-info{grid-template-columns:1fr;gap:8px}.booking-info-card{padding:13px 14px}.booking-mobile-bar{position:fixed;z-index:50;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #e2e7e3;backdrop-filter:blur(12px);box-shadow:0 -8px 24px rgba(31,55,40,.08)}.booking-mobile-bar span{flex:1;color:#506057;font-size:12px;line-height:1.35}.booking-mobile-bar strong{display:block;color:#2d6a4f;font-size:13px}.booking-mobile-bar a{flex:0 0 auto;min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0 17px;border-radius:12px;background:#2d6a4f;color:#fff;text-decoration:none;font-size:14px;font-weight:800}}
 </style>
-
-<main class="booking-page" id="mainContent">
-  <div class="booking-wrap">
-    <header class="booking-hero">
-      <span class="booking-kicker">바른자리 예약</span>
-      <h1>필요한 시간을 예약하세요.</h1>
-      <p>신중동점의 실제 빈 시간을 확인하고, 이용시간은 필요한 만큼 자유롭게 선택하세요.</p>
-      <div class="booking-promo">네이버 예약 첫 예약 10% 할인<span>처음 바른자리를 이용한다면 네이버 예약에서 할인 혜택을 확인하세요.</span></div>
-      <a class="booking-hero-cta" href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_hero_naver">지금 빈 시간 확인하기 →</a>
-    </header>
-
-    <div class="booking-progress" aria-label="예약 진행 순서"><span><strong>1</strong> 지점 선택</span><span><strong>2</strong> 이용 목적 선택</span><span><strong>3</strong> 빈 시간 예약</span></div>
-
-    <section class="booking-section" aria-labelledby="booking-branch-title">
-      <div class="booking-section-head"><p class="booking-step">Step 1</p><h2 id="booking-branch-title">지점</h2></div>
-      <div class="branch-card"><div><h3>신중동점</h3><p>신중동역 1분 · 1~6인 · 단독 이용</p></div><span class="branch-selected">선택됨</span></div>
-    </section>
-
-    <section class="booking-section" aria-labelledby="booking-purpose-title">
-      <div class="booking-section-head"><p class="booking-step">Step 2</p><h2 id="booking-purpose-title">오늘 무엇을 하려고 하나요?</h2><p class="booking-section-desc">목적은 예약을 돕기 위한 선택입니다. 이용시간은 목적과 관계없이 자유롭게 정할 수 있습니다.</p></div>
-      <div class="purpose-grid" id="purposeGrid">
-        <button class="purpose-card is-active" type="button" data-purpose="면접·발표 연습" aria-pressed="true"><span class="purpose-title">면접·발표 연습</span><span class="purpose-copy">답변 정리, 실제 말하기, 녹화와 반복 연습.</span></button>
-        <button class="purpose-card" type="button" data-purpose="미팅·상담·업무" aria-pressed="false"><span class="purpose-title">미팅·상담·업무</span><span class="purpose-copy">고객 미팅, 화상회의, 상담, 집중 업무.</span></button>
-        <button class="purpose-card" type="button" data-purpose="스터디·팀플·소모임" aria-pressed="false"><span class="purpose-title">스터디·팀플·소모임</span><span class="purpose-copy">토론, 발표, 프로젝트와 그룹 스터디.</span></button>
-        <button class="purpose-card" type="button" data-purpose="프라이빗시간" aria-pressed="false"><span class="purpose-title">프라이빗시간</span><span class="purpose-copy">혼자 있는 시간, 둘만의 대화와 개인시간.</span></button>
-      </div>
-      <p class="time-free-note"><strong>1시간부터 필요한 만큼.</strong> 실제 이용시간은 네이버 예약에서 직접 선택합니다.</p>
-    </section>
-
-    <section class="booking-section" aria-labelledby="booking-final-title">
-      <div class="booking-section-head"><p class="booking-step">Step 3</p><h2 id="booking-final-title">빈 시간 확인하고 예약하기</h2></div>
-      <div class="booking-final">
-        <div>
-          <div class="booking-selection"><strong>신중동점</strong> · <strong id="selectedPurpose">면접·발표 연습</strong> · 1시간부터 자유롭게</div>
-          <p class="booking-price-note">기본 1시간 10,000원부터 · 실제 예약 가능 시간과 결제 금액은 네이버 예약에서 확인</p>
-        </div>
-        <div class="booking-action"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_final_naver">빈 시간 확인하기 →</a><small class="booking-discount-note">첫 예약 10% 할인 혜택 확인</small></div>
-      </div>
-    </section>
-
-    <div class="booking-info" aria-label="이용 핵심 안내">
-      <div class="booking-info-card"><strong>단독 이용</strong><span>예약 시간 동안 1~6인이 공간을 단독으로 이용합니다.</span></div>
-      <div class="booking-info-card"><strong>입실 안내</strong><span>예약 확정 후 입실에 필요한 안내를 확인해 주세요.</span></div>
-      <div class="booking-info-card"><strong>주차</strong><span>등록 시 주차 2시간 무료 안내를 확인할 수 있습니다.</span></div>
-    </div>
-  </div>
-
-  <div class="booking-mobile-bar" aria-label="모바일 빠른 예약">
-    <span><strong>첫 예약 10% 할인</strong>신중동점 · 1시간부터</span>
-    <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_mobile_sticky_naver">빈 시간 확인</a>
-  </div>
-</main>
-
-<script>(function(){var cards=document.querySelectorAll('.purpose-card');var purpose=document.getElementById('selectedPurpose');cards.forEach(function(card){card.addEventListener('click',function(){cards.forEach(function(item){item.classList.remove('is-active');item.setAttribute('aria-pressed','false');});card.classList.add('is-active');card.setAttribute('aria-pressed','true');purpose.textContent=card.getAttribute('data-purpose');});});})();</script>
+<main class="booking-page" id="mainContent"><div class="booking-wrap">
+<header class="booking-hero"><span class="booking-kicker">바른자리 예약</span><h1>필요한 시간을 예약하세요.</h1><p>신중동점의 실제 빈 시간을 확인하고, 1시간부터 필요한 만큼 자유롭게 선택하세요.</p><div class="booking-promo">네이버 예약 첫 예약 10% 할인<span>처음 바른자리를 이용한다면 네이버 예약에서 할인 혜택을 확인하세요.</span></div><a class="booking-cta" href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_hero_naver">빈 시간 확인하고 예약하기 →</a></header>
+<section class="booking-section" aria-labelledby="branch-title"><h2 id="branch-title">예약 지점</h2><div class="branch-card"><div><h3>신중동점</h3><p>신중동역 1분 · 1~6인 · 단독 이용</p></div><span class="branch-selected">현재 예약 가능</span></div></section>
+<section class="booking-section" aria-labelledby="uses-title"><h2 id="uses-title">이런 시간에 이용할 수 있어요</h2><p class="booking-section-desc">목적을 따로 선택할 필요는 없습니다. 필요한 시간만 예약하세요.</p><div class="use-grid"><div class="use-card"><strong>면접·발표</strong><span>말하기·녹화·리허설</span></div><div class="use-card"><strong>미팅·업무</strong><span>화상회의·상담·집중업무</span></div><div class="use-card"><strong>스터디·팀플</strong><span>토론·발표·프로젝트</span></div><div class="use-card"><strong>프라이빗시간</strong><span>혼자 또는 둘만의 시간</span></div></div></section>
+<section class="booking-section" aria-labelledby="final-title"><div class="booking-final"><div class="booking-final-copy"><strong id="final-title">신중동점 · 1시간 10,000원부터</strong><span>이용시간은 고정하지 않습니다. 실제 빈 시간과 결제 금액은 네이버 예약에서 확인하세요.</span></div><div class="booking-action"><a class="booking-cta" href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_final_naver">빈 시간 확인하기 →</a><small>첫 예약 10% 할인 혜택 확인</small></div></div></section>
+<div class="booking-info" aria-label="이용 핵심 안내"><div class="booking-info-card"><strong>단독 이용</strong><span>예약 시간 동안 1~6인이 공간을 단독으로 이용합니다.</span></div><div class="booking-info-card"><strong>입실 안내</strong><span>예약 확정 후 입실에 필요한 안내를 확인해 주세요.</span></div><div class="booking-info-card"><strong>주차</strong><span>등록 시 주차 2시간 무료 안내를 확인할 수 있습니다.</span></div></div>
+</div><div class="booking-mobile-bar" aria-label="모바일 빠른 예약"><span><strong>첫 예약 10% 할인</strong>신중동점 · 1시간부터</span><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_mobile_sticky_naver">빈 시간 확인</a></div></main>
