@@ -1,11 +1,11 @@
 home:
   - label: 공간
-    href: "#space"
+    href: "about.html"
     children:
       - label: 브랜드 스토리
         href: "about.html"
   - label: 요금·예약
-    href: "#about"
+    href: "/booking/"
   - label: 가이드
     href: "blog.html"
     children: &guide_children
@@ -24,7 +24,7 @@ home:
       - label: 전체 가이드
         href: "blog.html"
   - label: 오시는 길
-    href: "#contact"
+    href: "contact.html"
 
 about:
   - label: 브랜드 스토리
