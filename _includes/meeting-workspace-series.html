@@ -1,72 +1,146 @@
 {% if page.hub_series == "meeting" %}
-<section class="guide-summary-section" aria-label="사무실 없이 일하는 사람들 시리즈">
-  <div class="section-inner">
-    <div class="interview-flow-heading">
-      <p class="section-label">사무실 없이 일하는 사람들</p>
-      <h2 class="section-title">지금 필요한 업무 상황으로 이어서 보기</h2>
-      <p>매일 사무실을 계약하기보다 필요한 시간과 목적에 맞춰 공간을 사용하는 방법을 상황별로 정리했습니다. 현재 글과 다른 질문이 있다면 아래 가이드에서 이어서 확인해보세요.</p>
+  {% unless content contains 'post-tags.html' %}
+    {% include post-tags.html %}
+  {% endunless %}
+
+  <section class="post-related meeting-situation-related" aria-labelledby="meeting-situation-related-title">
+    <div class="section-inner">
+      <div class="post-related-carousel" data-related-carousel>
+        <div class="post-related-head">
+          <div class="post-related-head-row">
+            <div class="post-related-title-row">
+              <div>
+                <p class="section-label">사무실 없이 일하는 사람들</p>
+                <h2 class="section-title" id="meeting-situation-related-title">지금 필요한 업무 상황으로 이어서 보기</h2>
+              </div>
+              <a class="post-related-title-link" href="/meeting/" aria-label="미팅·업무 허브 전체 보기">→</a>
+            </div>
+            <div class="post-related-controls" aria-label="업무 상황 추천 글 넘기기">
+              <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 추천 글 보기">‹</button>
+              <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 추천 글 보기">›</button>
+            </div>
+          </div>
+          <p class="meeting-situation-related__lead">매일 사무실을 계약하기보다 필요한 시간과 목적에 맞춰 공간을 사용하는 방법을 상황별로 정리했습니다.</p>
+        </div>
+
+        <div class="post-related-grid meeting-situation-related__track" data-related-track tabindex="0" aria-label="업무 상황별 추천 글 목록">
+          {% unless page.permalink == "/posts/weekday-morning-workspace/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">01</span>
+              <h3><a href="/posts/weekday-morning-workspace/">혼자 일하기</a></h3>
+              <p>평일 오전 한두 시간 동안 집중 업무, 자료 정리, 화상회의가 필요한 프리랜서·1인사업자를 위한 가이드입니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/weekday-morning-workspace/">오전 업무공간 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+
+          {% unless page.permalink == "/posts/solopreneur-client-meeting-space/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">02</span>
+              <h3><a href="/posts/solopreneur-client-meeting-space/">고객 만나기</a></h3>
+              <p>사무실 없이 일하다가 고객과 계약, 제안, 자료 설명을 위해 독립된 미팅 공간이 필요한 순간을 다룹니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/solopreneur-client-meeting-space/">고객 미팅 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+
+          {% unless page.permalink == "/posts/freelance-counselor-office/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">03</span>
+              <h3><a href="/posts/freelance-counselor-office/">상담하기</a></h3>
+              <p>프리랜서 상담사가 고정 사무실 없이 상담 일정에 맞춰 시간제 공간을 운영하는 방법을 정리했습니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/freelance-counselor-office/">상담 공간 운영 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+
+          {% unless page.permalink == "/posts/recurring-space-booking-for-freelance-counselors/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">04</span>
+              <h3><a href="/posts/recurring-space-booking-for-freelance-counselors/">정기적으로 만나기</a></h3>
+              <p>같은 요일과 시간대에 반복 예약해 정기 상담이나 고객 일정을 안정적으로 운영하는 방법입니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/recurring-space-booking-for-freelance-counselors/">반복 예약 운영 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+
+          {% unless page.permalink == "/posts/short-term-office-rental/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">05</span>
+              <h3><a href="/posts/short-term-office-rental/">시간제 사무실 찾기</a></h3>
+              <p>1시간·2시간·3시간처럼 필요한 업무시간만 확보하는 초단기·시간제 사무실 활용법을 설명합니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/short-term-office-rental/">초단기 사무실 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+
+          {% unless page.permalink == "/posts/bucheon-meeting-room/" %}
+          <article class="post-related-card meeting-situation-card">
+            <div class="post-related-body">
+              <span class="meeting-situation-card__number">06</span>
+              <h3><a href="/posts/bucheon-meeting-room/">부천 미팅룸 찾기</a></h3>
+              <p>부천·신중동에서 고객 미팅, 상담, 화상회의를 위한 장소를 찾을 때 확인할 기준을 정리했습니다.</p>
+              <a class="meeting-situation-card__link" href="/posts/bucheon-meeting-room/">부천 미팅룸 가이드 보기 →</a>
+            </div>
+          </article>
+          {% endunless %}
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="guide-summary-grid">
-      {% unless page.permalink == "/posts/weekday-morning-workspace/" %}
-      <article class="guide-summary-card">
-        <span>01</span>
-        <h2>혼자 일하기</h2>
-        <p>평일 오전 한두 시간 동안 집중 업무, 자료 정리, 화상회의가 필요한 프리랜서·1인사업자를 위한 가이드입니다.</p>
-        <p><a href="/posts/weekday-morning-workspace/">오전 업무공간 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-
-      {% unless page.permalink == "/posts/solopreneur-client-meeting-space/" %}
-      <article class="guide-summary-card">
-        <span>02</span>
-        <h2>고객 만나기</h2>
-        <p>사무실 없이 일하다가 고객과 계약, 제안, 자료 설명을 위해 독립된 미팅 공간이 필요한 순간을 다룹니다.</p>
-        <p><a href="/posts/solopreneur-client-meeting-space/">1인사업자 고객 미팅 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-
-      {% unless page.permalink == "/posts/freelance-counselor-office/" %}
-      <article class="guide-summary-card">
-        <span>03</span>
-        <h2>상담하기</h2>
-        <p>프리랜서 상담사가 고정 사무실 없이 상담 일정에 맞춰 시간제 공간을 운영하는 방법을 정리했습니다.</p>
-        <p><a href="/posts/freelance-counselor-office/">상담 공간 운영 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-
-      {% unless page.permalink == "/posts/recurring-space-booking-for-freelance-counselors/" %}
-      <article class="guide-summary-card">
-        <span>04</span>
-        <h2>정기적으로 만나기</h2>
-        <p>같은 요일과 시간대에 반복 예약해 정기 상담이나 고객 일정을 안정적으로 운영하는 방법입니다.</p>
-        <p><a href="/posts/recurring-space-booking-for-freelance-counselors/">반복 예약 운영 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-
-      {% unless page.permalink == "/posts/short-term-office-rental/" %}
-      <article class="guide-summary-card">
-        <span>05</span>
-        <h2>시간제 사무실 찾기</h2>
-        <p>1시간·2시간·3시간처럼 필요한 업무시간만 확보하는 초단기·시간제 사무실 활용법을 설명합니다.</p>
-        <p><a href="/posts/short-term-office-rental/">초단기 사무실 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-
-      {% unless page.permalink == "/posts/bucheon-meeting-room/" %}
-      <article class="guide-summary-card">
-        <span>06</span>
-        <h2>부천 미팅룸 찾기</h2>
-        <p>부천·신중동에서 고객 미팅, 상담, 화상회의를 위한 장소를 찾을 때 확인할 기준을 정리했습니다.</p>
-        <p><a href="/posts/bucheon-meeting-room/">부천 미팅룸 가이드 보기 →</a></p>
-      </article>
-      {% endunless %}
-    </div>
-
-    <div class="hero-btns" style="margin-top: 2rem;">
-      <a href="/meeting/" class="btn-outline">미팅·업무 허브 전체 보기</a>
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">필요한 시간 예약하기</a>
-    </div>
-  </div>
-</section>
+  <style>
+    .meeting-situation-related__lead {
+      max-width: 760px;
+      margin: .65rem 0 0;
+      color: #5b665f;
+      line-height: 1.7;
+    }
+    .meeting-situation-card {
+      min-height: 250px;
+    }
+    .meeting-situation-card .post-related-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding-top: 1.15rem;
+    }
+    .meeting-situation-card__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      margin-bottom: .85rem;
+      border-radius: 999px;
+      background: rgba(45,106,79,.1);
+      color: var(--primary);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .meeting-situation-card .post-related-body h3 {
+      margin-bottom: .55rem;
+    }
+    .meeting-situation-card .post-related-body > p {
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+    .meeting-situation-card__link {
+      margin-top: auto;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: .88rem;
+    }
+    @media (max-width: 760px) {
+      .meeting-situation-card {
+        min-height: 230px;
+      }
+    }
+  </style>
 {% endif %}
