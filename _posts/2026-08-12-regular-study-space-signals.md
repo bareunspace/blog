@@ -178,4 +178,6 @@ extra_css_version: 20260812-1
       </ul>
     </div>
   </section>
+
+  {% include post-tags.html %}
 </main>
