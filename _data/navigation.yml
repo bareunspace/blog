@@ -1,9 +1,6 @@
 home:
   - label: 공간
     href: "about.html"
-    children:
-      - label: 브랜드 스토리
-        href: "about.html"
   - label: 요금·예약
     href: "/booking/"
   - label: 가이드
