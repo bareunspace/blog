@@ -1834,7 +1834,7 @@
     loadReservations();
   });
 
-  switchWorkspace('applications');
+  switchWorkspace('reservations');
   if (window.barunjariAdmin?.client) {
     loadGroups();
     loadApplications();

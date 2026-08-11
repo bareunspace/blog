@@ -11,7 +11,7 @@ theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
 css_version: 20260811-1
-script_version: 20260811-2
+script_version: 20260811-3
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -116,12 +116,12 @@ script_version: 20260811-2
     </div>
 
     <div class="admin-workspace-tabs" role="tablist" aria-label="관리 작업 전환">
-      <button class="admin-workspace-tab is-active" id="adminWorkspaceTabApplications" type="button" role="tab" aria-selected="true" aria-controls="adminCommunityApplications" data-admin-workspace-tab="applications">신청 검토</button>
+      <button class="admin-workspace-tab" id="adminWorkspaceTabApplications" type="button" role="tab" aria-selected="false" aria-controls="adminCommunityApplications" data-admin-workspace-tab="applications">신청 검토</button>
       <button class="admin-workspace-tab" id="adminWorkspaceTabGroups" type="button" role="tab" aria-selected="false" aria-controls="adminCommunityGroups" data-admin-workspace-tab="groups">모임 운영</button>
-      <button class="admin-workspace-tab" id="adminWorkspaceTabReservations" type="button" role="tab" aria-selected="false" aria-controls="adminReservations" data-admin-workspace-tab="reservations">예약 원장</button>
+      <button class="admin-workspace-tab is-active" id="adminWorkspaceTabReservations" type="button" role="tab" aria-selected="true" aria-controls="adminReservations" data-admin-workspace-tab="reservations">예약 원장</button>
     </div>
 
-    <section class="admin-workspace-panel" id="adminCommunityApplications" aria-labelledby="adminCommunityTitle" role="tabpanel" data-admin-workspace-panel="applications">
+    <section class="admin-workspace-panel" id="adminCommunityApplications" aria-labelledby="adminCommunityTitle" role="tabpanel" data-admin-workspace-panel="applications" hidden>
       <div class="admin-panel-shell">
         <aside class="admin-sidecard" aria-labelledby="adminApplicationsGuideTitle">
           <p class="admin-sidecard-label">Workflow</p>
@@ -455,7 +455,7 @@ script_version: 20260811-2
       </div>
     </section>
 
-    <section class="admin-workspace-panel" id="adminReservations" aria-labelledby="adminReservationsTitle" role="tabpanel" data-admin-workspace-panel="reservations" hidden>
+    <section class="admin-workspace-panel" id="adminReservations" aria-labelledby="adminReservationsTitle" role="tabpanel" data-admin-workspace-panel="reservations">
       <div class="admin-panel-shell">
         <aside class="admin-sidecard" aria-labelledby="adminReservationsGuideTitle">
           <p class="admin-sidecard-label">Reservations</p>
