@@ -58,6 +58,12 @@
 
   <script>
     (function () {
+      var tagBlocks = Array.prototype.slice.call(document.querySelectorAll('.post-tags'));
+      tagBlocks.slice(1).forEach(function (node) { node.remove(); });
+
+      var reactionBlocks = Array.prototype.slice.call(document.querySelectorAll('.post-reactions'));
+      reactionBlocks.slice(1).forEach(function (node) { node.remove(); });
+
       var main = document.querySelector('main');
       if (!main) return;
 
