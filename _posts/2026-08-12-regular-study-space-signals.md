@@ -33,6 +33,8 @@ og_image_height: 941
 preload_image: images/regular-study-space-signals.webp
 css_version: 20260812-1
 script_version: 20260711-4
+extra_css: /styles/regular-study-space-signals.css
+extra_css_version: 20260812-1
 ---
 
 <main class="about-page">
