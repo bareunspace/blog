@@ -56,9 +56,9 @@
   text-align: center;
 }
 
-.guide-toc {
+html body .guide-toc {
   position: sticky;
-  top: calc(var(--study-header-height, 62px) + 20px);
+  top: calc(var(--study-header-height, 62px) + 10px) !important;
   z-index: 90;
   border-top: 1px solid rgba(15, 23, 42, .06);
   border-bottom: 1px solid rgba(15, 23, 42, .08);
@@ -99,7 +99,7 @@
 #compare,
 #two-three-hours,
 #checklist {
-  scroll-margin-top: calc(var(--study-toc-offset, 140px) + 20px);
+  scroll-margin-top: calc(var(--study-toc-offset, 140px) + 10px);
 }
 
 #quick-answer .section-inner {
@@ -304,9 +304,9 @@
     text-align: left;
   }
 
-  .guide-toc {
+  html body .guide-toc {
     position: sticky;
-    top: calc(var(--study-header-height, 62px) + 12px);
+    top: calc(var(--study-header-height, 62px) + 8px) !important;
   }
 
   .guide-toc-inner {
@@ -345,7 +345,7 @@
   #compare,
   #two-three-hours,
   #checklist {
-    scroll-margin-top: calc(var(--study-toc-offset, 140px) + 12px);
+    scroll-margin-top: calc(var(--study-toc-offset, 140px) + 8px);
   }
 
   #quick-answer .section-inner {
