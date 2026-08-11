@@ -1,3 +1,9 @@
+{% if page.collection == "posts" %}
+  {% unless content contains 'post-reactions' %}
+    {% include post-tags.html %}
+  {% endunless %}
+{% endif %}
+
 {% assign related_posts = site.posts | where: "category", page.category %}
 {% if related_posts.size > 1 %}
   {% if page.category == "면접준비" %}
