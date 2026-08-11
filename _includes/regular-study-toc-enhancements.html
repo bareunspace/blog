@@ -1,9 +1,12 @@
 <style>
   .guide-toc {
     position: sticky !important;
-    top: calc(var(--study-header-height, 62px) + 12px) !important;
+    top: calc(var(--study-header-height, 62px) + 24px) !important;
     z-index: 95 !important;
-    width: 100%;
+    width: calc(100% - 32px);
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid rgba(15, 23, 42, .08);
     border-radius: 14px;
     background: rgba(255, 255, 255, .96);
@@ -41,13 +44,14 @@
   #compare,
   #two-three-hours,
   #checklist {
-    scroll-margin-top: var(--study-toc-offset, 157px);
+    scroll-margin-top: var(--study-toc-offset, 169px);
   }
 
   @media (max-width: 760px) {
     .guide-toc {
       position: sticky !important;
-      top: calc(var(--study-header-height, 58px) + 8px) !important;
+      top: calc(var(--study-header-height, 58px) + 16px) !important;
+      width: calc(100% - 20px);
       border-radius: 12px;
     }
 
@@ -84,7 +88,7 @@
     var lastActiveId = '';
 
     function getGap() {
-      return window.matchMedia('(max-width: 760px)').matches ? 8 : 12;
+      return window.matchMedia('(max-width: 760px)').matches ? 16 : 24;
     }
 
     function updateOffsets() {
