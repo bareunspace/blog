@@ -101,5 +101,21 @@
   {% endif %}
 
   {% include footer.html %}
+
+  {% unless page.page_id == 'booking' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var genericBookingUrl = 'https://m.place.naver.com/place/2041312316/ticket';
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        var rawHref = (link.getAttribute('href') || '').trim();
+        if (rawHref === genericBookingUrl || rawHref === genericBookingUrl + '/') {
+          link.setAttribute('href', '/booking/');
+          link.removeAttribute('target');
+          link.removeAttribute('rel');
+        }
+      });
+    });
+  </script>
+  {% endunless %}
 </body>
 </html>
