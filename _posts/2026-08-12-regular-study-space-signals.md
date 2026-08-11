@@ -25,7 +25,7 @@ tags:
   - 신중동
 canonical: https://bareunjari.com/posts/regular-study-space-signals/
 permalink: /posts/regular-study-space-signals/
-date: 2026-08-12 07:00:00 +0900
+date: 2026-08-12 06:50:00 +0900
 og_image: https://bareunjari.com/images/regular-study-space-signals.webp
 og_image_alt: 3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습
 og_image_width: 1672
