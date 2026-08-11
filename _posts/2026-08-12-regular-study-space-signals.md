@@ -26,11 +26,11 @@ tags:
 canonical: https://bareunjari.com/posts/regular-study-space-signals/
 permalink: /posts/regular-study-space-signals/
 date: 2026-08-12 07:00:00 +0900
-og_image: https://bareunjari.com/images/private-space-for-study-groups.webp
+og_image: https://bareunjari.com/images/regular-study-space-signals.webp
 og_image_alt: 3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/private-space-for-study-groups.webp
+preload_image: images/regular-study-space-signals.webp
 css_version: 20260812-1
 script_version: 20260711-4
 ---
@@ -53,7 +53,7 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/private-space-for-study-groups.webp" alt="3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/regular-study-space-signals.webp" alt="3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습" loading="eager" width="1672" height="941" />
         <figcaption>정기 스터디는 한 번 예쁜 공간보다 매주 2~3시간 안정적으로 함께 준비할 수 있는 장소가 더 중요합니다.</figcaption>
       </figure>
     </div>
