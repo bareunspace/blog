@@ -58,7 +58,7 @@
 
 .guide-toc {
   position: sticky;
-  top: var(--study-header-height, 62px);
+  top: calc(var(--study-header-height, 62px) + 20px);
   z-index: 90;
   border-top: 1px solid rgba(15, 23, 42, .06);
   border-bottom: 1px solid rgba(15, 23, 42, .08);
@@ -99,7 +99,7 @@
 #compare,
 #two-three-hours,
 #checklist {
-  scroll-margin-top: var(--study-toc-offset, 140px);
+  scroll-margin-top: calc(var(--study-toc-offset, 140px) + 20px);
 }
 
 #quick-answer .section-inner {
@@ -306,7 +306,7 @@
 
   .guide-toc {
     position: sticky;
-    top: var(--study-header-height, 62px);
+    top: calc(var(--study-header-height, 62px) + 12px);
   }
 
   .guide-toc-inner {
@@ -338,6 +338,14 @@
   .guide-toc-inner a[aria-current="true"] {
     background: #315fa9;
     color: #fff;
+  }
+
+  #quick-answer,
+  #five-signals,
+  #compare,
+  #two-three-hours,
+  #checklist {
+    scroll-margin-top: calc(var(--study-toc-offset, 140px) + 12px);
   }
 
   #quick-answer .section-inner {
