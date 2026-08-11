@@ -1,65 +1,67 @@
-{% if page.collection == "posts" %}
-  {% unless content contains 'post-reactions' %}
-    {% include post-tags.html %}
-  {% endunless %}
-{% endif %}
-
-{% assign related_posts = site.posts | where: "category", page.category %}
-{% if related_posts.size > 1 %}
-  {% if page.category == "면접준비" %}
-    {% assign related_more_url = '/interview/' %}
-    {% assign related_more_label = '면접준비 허브에서 전체 가이드 보기' %}
-  {% elsif page.category == "스터디룸" %}
-    {% assign related_more_url = '/study/' %}
-    {% assign related_more_label = '스터디·소모임 허브에서 전체 가이드 보기' %}
-  {% elsif page.category == "미팅·상담" %}
-    {% assign related_more_url = '/meeting/' %}
-    {% assign related_more_label = '미팅·업무 허브에서 전체 가이드 보기' %}
-  {% elsif page.category == "시간·공간" %}
-    {% assign related_more_url = '/time-space/' %}
-    {% assign related_more_label = '시간·공간 저널에서 전체 글 보기' %}
-  {% else %}
-    {% assign related_more_url = '/private/' %}
-    {% assign related_more_label = '프라이빗시간 허브에서 전체 가이드 보기' %}
+{% unless page.hub_series == "meeting" %}
+  {% if page.collection == "posts" %}
+    {% unless content contains 'post-reactions' %}
+      {% include post-tags.html %}
+    {% endunless %}
   {% endif %}
-  <aside class="post-related" aria-labelledby="post-related-title">
-    <div class="section-inner">
-      <div class="post-related-carousel" data-related-carousel>
-        <div class="post-related-head">
-          <div class="post-related-head-row">
-            <div class="post-related-title-row">
-              <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
-              <a class="post-related-title-link" href="{{ related_more_url | relative_url }}" aria-label="{{ related_more_label }}">→</a>
-            </div>
-            <div class="post-related-controls" aria-label="관련 글 넘기기">
-              <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 관련 글 보기">‹</button>
-              <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 관련 글 보기">›</button>
+
+  {% assign related_posts = site.posts | where: "category", page.category %}
+  {% if related_posts.size > 1 %}
+    {% if page.category == "면접준비" %}
+      {% assign related_more_url = '/interview/' %}
+      {% assign related_more_label = '면접준비 허브에서 전체 가이드 보기' %}
+    {% elsif page.category == "스터디룸" %}
+      {% assign related_more_url = '/study/' %}
+      {% assign related_more_label = '스터디·소모임 허브에서 전체 가이드 보기' %}
+    {% elsif page.category == "미팅·상담" %}
+      {% assign related_more_url = '/meeting/' %}
+      {% assign related_more_label = '미팅·업무 허브에서 전체 가이드 보기' %}
+    {% elsif page.category == "시간·공간" %}
+      {% assign related_more_url = '/time-space/' %}
+      {% assign related_more_label = '시간·공간 저널에서 전체 글 보기' %}
+    {% else %}
+      {% assign related_more_url = '/private/' %}
+      {% assign related_more_label = '프라이빗시간 허브에서 전체 가이드 보기' %}
+    {% endif %}
+    <aside class="post-related" aria-labelledby="post-related-title">
+      <div class="section-inner">
+        <div class="post-related-carousel" data-related-carousel>
+          <div class="post-related-head">
+            <div class="post-related-head-row">
+              <div class="post-related-title-row">
+                <h2 class="section-title" id="post-related-title">{{ page.category }} 관련 글</h2>
+                <a class="post-related-title-link" href="{{ related_more_url | relative_url }}" aria-label="{{ related_more_label }}">→</a>
+              </div>
+              <div class="post-related-controls" aria-label="관련 글 넘기기">
+                <button type="button" class="post-related-nav post-related-prev" data-related-prev aria-label="이전 관련 글 보기">‹</button>
+                <button type="button" class="post-related-nav post-related-next" data-related-next aria-label="다음 관련 글 보기">›</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="post-related-grid" data-related-track tabindex="0" aria-label="{{ page.category }} 관련 글 목록">
-          {% for related_post in related_posts limit: 8 %}
-            {% unless related_post.url == page.url %}
-              {% assign related_image = related_post.preload_image | default: related_post.og_image | default: 'images/main.webp' %}
-              <article class="post-related-card">
-                <a class="post-related-image-link" href="{{ related_post.url | relative_url }}" aria-label="{{ related_post.title }}">
-                  {% if related_image contains '://' %}
-                    <img src="{{ related_image }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
-                  {% else %}
-                    <img src="{{ '/' | append: related_image | relative_url }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
-                  {% endif %}
-                  <span class="post-related-badge">{{ related_post.category }}</span>
-                </a>
-                <div class="post-related-body">
-                  <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
-                  <p class="post-related-date">{{ related_post.date | date: "%Y-%m-%d" }}</p>
-                  <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 82 }}</p>
-                </div>
-              </article>
-            {% endunless %}
-          {% endfor %}
+          <div class="post-related-grid" data-related-track tabindex="0" aria-label="{{ page.category }} 관련 글 목록">
+            {% for related_post in related_posts limit: 8 %}
+              {% unless related_post.url == page.url %}
+                {% assign related_image = related_post.preload_image | default: related_post.og_image | default: 'images/main.webp' %}
+                <article class="post-related-card">
+                  <a class="post-related-image-link" href="{{ related_post.url | relative_url }}" aria-label="{{ related_post.title }}">
+                    {% if related_image contains '://' %}
+                      <img src="{{ related_image }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
+                    {% else %}
+                      <img src="{{ '/' | append: related_image | relative_url }}" alt="{{ related_post.og_image_alt | default: related_post.title }}" loading="lazy" />
+                    {% endif %}
+                    <span class="post-related-badge">{{ related_post.category }}</span>
+                  </a>
+                  <div class="post-related-body">
+                    <h3><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></h3>
+                    <p class="post-related-date">{{ related_post.date | date: "%Y-%m-%d" }}</p>
+                    <p>{{ related_post.description | default: related_post.excerpt | strip_html | truncate: 82 }}</p>
+                  </div>
+                </article>
+              {% endunless %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-    </div>
-  </aside>
-{% endif %}
+    </aside>
+  {% endif %}
+{% endunless %}
