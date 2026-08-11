@@ -10,7 +10,7 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260811-4
+css_version: 20260811-5
 script_version: 20260811-5
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
@@ -96,19 +96,20 @@ script_version: 20260811-5
       </article>
     </div>
 
-    <section class="admin-report-queue" aria-labelledby="adminReportQueueTitle">
-      <div class="admin-section-head">
+    <details class="admin-report-queue" data-community-reports-panel>
+      <summary class="admin-report-summary" aria-labelledby="adminReportQueueTitle">
         <div>
           <p class="admin-label">Reports</p>
           <h3 class="admin-title" id="adminReportQueueTitle">신고 큐</h3>
-          <p class="admin-desc">사용자 신고를 빠르게 확인하고, 필요하면 모임을 즉시 삭제하거나 처리 상태를 변경합니다.</p>
+          <p class="admin-desc">사용자 신고는 필요할 때만 펼쳐 확인합니다.</p>
         </div>
-      </div>
+        <span class="admin-report-toggle-text">열기</span>
+      </summary>
       <p class="admin-status" data-community-reports-status hidden></p>
       <div class="admin-community-list" data-community-reports-list>
         <p class="admin-empty">관리자 인증 후 신고 목록을 불러옵니다.</p>
       </div>
-    </section>
+    </details>
   </section>
 
   <section class="admin-card admin-card-wide admin-workspace" aria-labelledby="adminWorkspaceTitle">

@@ -8496,11 +8496,72 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   min-height: 2.2rem;
 }
 .admin-report-queue {
-  margin: .8rem 0 1rem;
+  margin: .8rem 0 0;
   border: 1px solid #dbe4de;
   border-radius: 14px;
   background: #f9fbfa;
-  padding: .9rem;
+  padding: 0;
+  overflow: hidden;
+}
+.admin-report-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .72rem .85rem;
+  cursor: pointer;
+  list-style: none;
+}
+.admin-report-summary::-webkit-details-marker {
+  display: none;
+}
+.admin-report-summary .admin-label,
+.admin-report-summary .admin-title,
+.admin-report-summary .admin-desc {
+  margin-bottom: 0;
+}
+.admin-report-summary .admin-label {
+  padding: .22rem .56rem;
+  font-size: .68rem;
+}
+.admin-report-summary .admin-title {
+  margin-top: .22rem;
+  font-size: 1rem;
+}
+.admin-report-summary .admin-desc {
+  margin-top: .18rem;
+  font-size: .82rem;
+}
+.admin-report-toggle-text {
+  flex: 0 0 auto;
+  border: 1px solid #becbc2;
+  border-radius: 999px;
+  background: #fff;
+  color: #214936;
+  padding: .42rem .72rem;
+  font-size: .78rem;
+  font-weight: 900;
+}
+.admin-report-queue[open] {
+  padding-bottom: .9rem;
+}
+.admin-report-queue[open] .admin-report-toggle-text {
+  background: #173726;
+  color: #fff;
+}
+.admin-report-queue[open] .admin-report-toggle-text::before {
+  content: "접기";
+}
+.admin-report-queue[open] .admin-report-toggle-text {
+  font-size: 0;
+}
+.admin-report-queue[open] .admin-report-toggle-text::before {
+  font-size: .78rem;
+}
+.admin-report-queue > .admin-status,
+.admin-report-queue > .admin-community-list {
+  margin-left: .9rem;
+  margin-right: .9rem;
 }
 .admin-report-item {
   border-left: 4px solid #d99a16;
