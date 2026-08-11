@@ -36,6 +36,18 @@
     statusNode.classList.add(kind === 'success' ? 'is-success' : 'is-error');
   };
 
+  const getAuthErrorDetail = (error) => {
+    if (!error) {
+      return '';
+    }
+    const detail = [
+      error.message,
+      error.code,
+      error.status ? `status ${error.status}` : ''
+    ].filter(Boolean).join(' / ');
+    return detail ? ` Supabase 오류: ${detail}` : ' Supabase 오류 상세를 불러오지 못했습니다.';
+  };
+
   const isLoginPage = Boolean(document.getElementById('adminLoginRoot'));
   const isDashboardPage = Boolean(document.getElementById('adminDashboardRoot'));
 
@@ -271,10 +283,7 @@
           });
 
           if (resetError) {
-            const resetErrorMessage = resetError.message
-              ? ` Supabase 오류: ${resetError.message}`
-              : '';
-            showAccountStatus(`리셋 메일을 보내지 못했습니다. 이메일 주소와 Supabase Auth 설정을 확인해 주세요.${resetErrorMessage}`);
+            showAccountStatus(`리셋 메일을 보내지 못했습니다. 이메일 주소와 Supabase Auth 설정을 확인해 주세요.${getAuthErrorDetail(resetError)}`);
             return;
           }
 
