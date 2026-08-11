@@ -93,4 +93,6 @@ faq:
   <section id="faq"><div class="section-inner"><h2 class="section-title">자주 묻는 질문</h2><div class="contact-faq" itemscope itemtype="https://schema.org/FAQPage">{% for item in page.faq %}<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">{{ item.question }}</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">{{ item.answer }}</p></div></details>{% endfor %}</div></div></section>
 
   <section class="blog-conversion-section"><div class="section-inner"><div class="blog-conversion-panel"><div><p class="section-label soft">Need a Room for the Call?</p><h2>오늘 회의 때문에<br />몇 시간만 혼자 쓸 공간이 필요하다면</h2><p>카페에서 계속 주변을 의식하기보다, 필요한 시간만 예약하고 회의와 후속 업무에 사용해 보세요.</p></div><div class="blog-conversion-actions"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="video_meeting_bottom_booking">필요한 시간 예약하기</a><a href="/meeting/" class="btn-outline">미팅·업무 가이드 더 보기</a></div></div></div></section>
+
+  {% include post-tags.html %}
 </main>
