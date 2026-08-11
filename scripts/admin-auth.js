@@ -167,6 +167,47 @@
         });
       }
 
+      const accountForm = document.querySelector('[data-admin-password-reset-form]');
+      const accountStatus = document.querySelector('[data-admin-account-status]');
+      const showAccountStatus = (message, kind = 'error') => {
+        if (!accountStatus) {
+          return;
+        }
+        accountStatus.textContent = message;
+        accountStatus.hidden = false;
+        accountStatus.classList.remove('is-error', 'is-success');
+        accountStatus.classList.add(kind === 'success' ? 'is-success' : 'is-error');
+      };
+
+      if (accountForm) {
+        const emailInput = accountForm.querySelector('input[name="email"]');
+        if (emailInput && !emailInput.value) {
+          emailInput.value = currentUser.email || '';
+        }
+
+        accountForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const targetEmail = (emailInput?.value || '').trim().toLowerCase();
+          if (!targetEmail) {
+            showAccountStatus('비밀번호를 재설정할 관리자 이메일을 입력해 주세요.');
+            return;
+          }
+
+          const resetUrl = new URL(loginPath, window.location.origin);
+          const { error: resetError } = await client.auth.resetPasswordForEmail(targetEmail, {
+            redirectTo: resetUrl.toString()
+          });
+
+          if (resetError) {
+            showAccountStatus('리셋 메일을 보내지 못했습니다. 이메일 주소와 Supabase Auth 설정을 확인해 주세요.');
+            return;
+          }
+
+          showAccountStatus(`${targetEmail} 주소로 비밀번호 리셋 메일을 보냈습니다.`, 'success');
+        });
+      }
+
       window.barunjariAdmin = {
         client,
         currentUser,

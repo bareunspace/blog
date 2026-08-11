@@ -8047,6 +8047,40 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-actions-compact {
   margin-top: 0;
 }
+.admin-account-tools {
+  position: relative;
+}
+.admin-account-tools summary {
+  list-style: none;
+  cursor: pointer;
+}
+.admin-account-tools summary::-webkit-details-marker {
+  display: none;
+}
+.admin-account-form {
+  position: absolute;
+  top: calc(100% + .5rem);
+  right: 0;
+  z-index: 30;
+  display: grid;
+  gap: .65rem;
+  width: min(340px, calc(100vw - 2rem));
+  padding: .9rem;
+  border: 1px solid #d9e3dc;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 38px rgba(30, 60, 45, .16);
+}
+.admin-account-field {
+  margin-bottom: 0;
+}
+.admin-account-form .admin-btn {
+  width: 100%;
+}
+.admin-account-form .admin-status {
+  margin: 0;
+  font-size: .8rem;
+}
 .admin-create-panel,
 .admin-community-edit-panel {
   border: 1px solid #dbe4de;

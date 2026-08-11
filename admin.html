@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260811-6
-script_version: 20260811-5
+css_version: 20260811-7
+script_version: 20260811-6
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
   <section class="admin-card admin-session-card" aria-labelledby="adminDashboardTitle">
@@ -22,6 +22,17 @@ script_version: 20260811-5
     </div>
 
     <div class="admin-actions admin-actions-compact">
+      <details class="admin-account-tools">
+        <summary class="admin-btn admin-btn-outline">비밀번호 리셋</summary>
+        <form class="admin-account-form" data-admin-password-reset-form>
+          <label class="admin-field admin-account-field">
+            <span>관리자 이메일</span>
+            <input type="email" name="email" placeholder="관리자 이메일 입력" autocomplete="email" required>
+          </label>
+          <button class="admin-btn" type="submit">비밀번호 리셋 메일 보내기</button>
+          <p class="admin-status" data-admin-account-status hidden></p>
+        </form>
+      </details>
       <button class="admin-btn admin-btn-outline" type="button" id="adminSignOutBtn">로그아웃</button>
       <a class="admin-btn admin-btn-outline" href="{{ '/index.html' | relative_url }}">홈으로</a>
     </div>
