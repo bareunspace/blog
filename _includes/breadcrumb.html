@@ -19,7 +19,7 @@
             <a href="{{ '/interview/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "스터디룸" %}
             <a href="{{ '/study/' | relative_url }}">스터디룸</a>
-          {% elsif page.category == "미팅·상담" %}
+          {% elsif page.category == "미팅·상담" or page.category == "미팅·업무" %}
             <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "프라이빗시간" %}
             <a href="{{ '/private/' | relative_url }}">{{ page.category }}</a>
@@ -50,7 +50,7 @@
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <span aria-current="page">미팅·상담</span>
+        <span aria-current="page">미팅·업무</span>
       {% elsif page.page_id == "private" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">가이드</a>
