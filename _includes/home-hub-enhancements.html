@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (priceCards.length > 0) {
       var hourlyLabel = priceCards[0].querySelector('.price-label');
       var hourlyDescs = priceCards[0].querySelectorAll('.price-desc');
-      if (hourlyLabel) hourlyLabel.textContent = '시간 단위 이용 · 07:00 - 24:00';
+      if (hourlyLabel) hourlyLabel.textContent = '시간 단위 이용 · 06:00 - 24:00';
       if (hourlyDescs.length > 0) hourlyDescs[0].innerHTML = '· 1시간부터 필요한 만큼 이용<br />· 30분 추가 시 5,000원';
       if (hourlyDescs.length > 1) hourlyDescs[1].textContent = '· 면접·미팅·스터디·개인시간 등 일반 이용';
     }
