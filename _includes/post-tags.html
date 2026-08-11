@@ -55,4 +55,96 @@
       <p class="post-reactions-feedback" data-reaction-feedback aria-live="polite"></p>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var main = document.querySelector('main');
+      if (!main) return;
+
+      var curated = main.querySelector(':scope > section.post-related');
+      var reactions = main.querySelector(':scope > section.post-reactions');
+      if (!curated) return;
+
+      if (reactions && curated.nextElementSibling !== reactions) {
+        reactions.insertAdjacentElement('afterend', curated);
+      } else if (reactions && curated.previousElementSibling !== reactions) {
+        reactions.insertAdjacentElement('afterend', curated);
+      }
+
+      var inner = curated.querySelector(':scope > .section-inner');
+      var list = inner && inner.querySelector(':scope > ul');
+      if (!inner || !list || curated.dataset.curatedCardsReady === 'true') return;
+
+      var heading = inner.querySelector(':scope > .section-title');
+      var links = Array.prototype.slice.call(list.querySelectorAll(':scope > li > a'));
+      if (!links.length) return;
+
+      var carousel = document.createElement('div');
+      carousel.className = 'post-related-carousel curated-related-carousel';
+
+      if (heading) {
+        var head = document.createElement('div');
+        head.className = 'post-related-head';
+        var headRow = document.createElement('div');
+        headRow.className = 'post-related-head-row';
+        var titleRow = document.createElement('div');
+        titleRow.className = 'post-related-title-row';
+        titleRow.appendChild(heading);
+        headRow.appendChild(titleRow);
+        head.appendChild(headRow);
+        carousel.appendChild(head);
+      }
+
+      var grid = document.createElement('div');
+      grid.className = 'post-related-grid curated-related-grid';
+      grid.setAttribute('aria-label', '함께 읽으면 좋은 글 목록');
+
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '#';
+        var title = (link.textContent || '').trim();
+        var slugMatch = href.match(/^\/posts\/([^/]+)\/?$/);
+        var imageSrc = slugMatch ? '/images/' + slugMatch[1] + '.webp' : '/images/main.webp';
+
+        var card = document.createElement('article');
+        card.className = 'post-related-card curated-related-card';
+
+        var imageLink = document.createElement('a');
+        imageLink.className = 'post-related-image-link';
+        imageLink.href = href;
+        imageLink.setAttribute('aria-label', title);
+
+        var image = document.createElement('img');
+        image.src = imageSrc;
+        image.alt = title;
+        image.loading = 'lazy';
+        image.addEventListener('error', function () {
+          if (image.src.indexOf('/images/main.webp') === -1) image.src = '/images/main.webp';
+        });
+
+        var badge = document.createElement('span');
+        badge.className = 'post-related-badge';
+        badge.textContent = '추천';
+
+        imageLink.appendChild(image);
+        imageLink.appendChild(badge);
+
+        var body = document.createElement('div');
+        body.className = 'post-related-body';
+        var h3 = document.createElement('h3');
+        var titleLink = document.createElement('a');
+        titleLink.href = href;
+        titleLink.textContent = title;
+        h3.appendChild(titleLink);
+        body.appendChild(h3);
+
+        card.appendChild(imageLink);
+        card.appendChild(body);
+        grid.appendChild(card);
+      });
+
+      carousel.appendChild(grid);
+      list.replaceWith(carousel);
+      curated.dataset.curatedCardsReady = 'true';
+    })();
+  </script>
 {% endif %}
