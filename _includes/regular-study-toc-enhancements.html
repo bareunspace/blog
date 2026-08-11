@@ -68,7 +68,20 @@
 </style>
 <script>
 (function () {
+  function dedupePostMeta() {
+    var main = document.querySelector('main.about-page');
+    if (!main) return;
+
+    var reactionBlocks = Array.prototype.slice.call(main.querySelectorAll(':scope > .post-reactions'));
+    reactionBlocks.slice(1).forEach(function (node) { node.remove(); });
+
+    var tagBlocks = Array.prototype.slice.call(main.querySelectorAll(':scope > .post-tags'));
+    tagBlocks.slice(1).forEach(function (node) { node.remove(); });
+  }
+
   function setupStudyToc() {
+    dedupePostMeta();
+
     var toc = document.querySelector('.guide-toc');
     if (!toc) return;
 
