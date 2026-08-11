@@ -10,24 +10,18 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260811-5
+css_version: 20260811-6
 script_version: 20260811-5
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
-  <section class="admin-card" aria-labelledby="adminDashboardTitle">
-    <p class="admin-label">Admin Dashboard</p>
-    <h1 class="admin-title" id="adminDashboardTitle">관리자 인증 완료</h1>
-    <p class="admin-desc">오늘 처리할 신청과 확정 예약을 먼저 보고, 필요하면 모임 운영까지 이어서 관리하는 화면입니다.</p>
+  <section class="admin-card admin-session-card" aria-labelledby="adminDashboardTitle">
+    <div>
+      <p class="admin-label">Admin Dashboard</p>
+      <h1 class="admin-title" id="adminDashboardTitle">관리자 인증 완료</h1>
+      <p class="admin-status is-success" id="adminUserInfo" hidden></p>
+    </div>
 
-    <p class="admin-status is-success" id="adminUserInfo" hidden></p>
-
-    <ul class="admin-summary" aria-label="관리 작업 안내">
-      <li>먼저 신청을 검토하고, 확정된 네이버 예약은 예약 원장에서 따로 확인합니다.</li>
-      <li>신청과 모임이 연결되어 있으면 서로 바로 열어볼 수 있습니다.</li>
-      <li>관리자 권한 체크는 이메일 허용 목록과 Supabase 로그인 세션을 함께 검증합니다.</li>
-    </ul>
-
-    <div class="admin-actions" style="margin-top:1rem;">
+    <div class="admin-actions admin-actions-compact">
       <button class="admin-btn admin-btn-outline" type="button" id="adminSignOutBtn">로그아웃</button>
       <a class="admin-btn admin-btn-outline" href="{{ '/index.html' | relative_url }}">홈으로</a>
     </div>

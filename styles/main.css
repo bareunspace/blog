@@ -7853,6 +7853,36 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-shell-dashboard {
   justify-content: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+}
+.admin-session-card {
+  width: min(100%, 1180px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .78rem 1rem;
+  border-radius: 16px;
+}
+.admin-session-card .admin-label,
+.admin-session-card .admin-title,
+.admin-session-card .admin-status {
+  margin-bottom: 0;
+}
+.admin-session-card .admin-label {
+  padding: .22rem .56rem;
+  font-size: .68rem;
+}
+.admin-session-card .admin-title {
+  display: inline-flex;
+  margin: .12rem .8rem .12rem 0;
+  font-size: 1rem;
+}
+.admin-session-card #adminUserInfo {
+  display: inline-flex;
+  padding: .38rem .62rem;
+  font-size: .8rem;
 }
 .admin-overview-card,
 .admin-workspace {
