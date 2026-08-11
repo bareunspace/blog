@@ -2,7 +2,7 @@
 layout: default
 page_id: booking
 title: 바른자리 예약 | 신중동역 프라이빗 공간
- description: 바른자리 이용 목적과 추천 시간을 확인하고 신중동점의 빈 시간을 예약하세요. 기존 예약 흐름과 분리된 예약 안내 페이지입니다.
+description: 바른자리 이용 목적과 추천 시간을 확인하고 신중동점의 빈 시간을 예약하세요. 기존 예약 흐름과 분리된 예약 안내 페이지입니다.
 canonical: https://bareunjari.com/booking/
 robots: noindex,follow
 theme_color: "#2d6a4f"
@@ -69,107 +69,12 @@ theme_color: "#2d6a4f"
       <h1>필요한 시간을 고르고<br>빈 시간을 확인하세요.</h1>
       <p>먼저 지점과 이용 목적을 확인한 뒤 네이버 예약에서 실제 가능한 시간을 선택합니다. 현재는 신중동점 예약을 안내합니다.</p>
     </header>
-
-    <div class="booking-progress" aria-label="예약 진행 순서">
-      <span><strong>1</strong> 지점 선택</span>
-      <span><strong>2</strong> 목적·추천시간 확인</span>
-      <span><strong>3</strong> 빈 시간 예약</span>
-    </div>
-
-    <section class="booking-section" aria-labelledby="booking-branch-title">
-      <div class="booking-section-head">
-        <p class="booking-step">Step 1</p>
-        <h2 id="booking-branch-title">이용할 지점을 선택하세요</h2>
-        <p class="booking-section-desc">현재 예약 가능한 지점입니다. 향후 지점이 추가되면 이 단계에서 선택할 수 있도록 확장됩니다.</p>
-      </div>
-      <div class="branch-card">
-        <div>
-          <h3>신중동점</h3>
-          <p>신중동역 1분 · 1~6인 단독 이용 · 프라이빗 공간</p>
-        </div>
-        <span class="branch-selected">선택됨</span>
-      </div>
-    </section>
-
-    <section class="booking-section" aria-labelledby="booking-purpose-title">
-      <div class="booking-section-head">
-        <p class="booking-step">Step 2</p>
-        <h2 id="booking-purpose-title">오늘 무엇을 하려고 하나요?</h2>
-        <p class="booking-section-desc">목적에 맞는 추천 이용시간을 먼저 확인해 보세요. 추천시간은 예약을 돕기 위한 가이드이며 필요한 만큼 자유롭게 선택할 수 있습니다.</p>
-      </div>
-
-      <div class="purpose-grid" id="purposeGrid">
-        <button class="purpose-card is-active" type="button" data-purpose="면접·발표 연습" data-time="2시간 추천" aria-pressed="true">
-          <span class="purpose-title">면접·발표 연습</span>
-          <span class="purpose-meta">추천 2시간</span>
-          <span class="purpose-copy">답변 정리, 실제 말하기, 휴대폰 녹화와 반복 연습까지.</span>
-        </button>
-        <button class="purpose-card" type="button" data-purpose="미팅·상담·업무" data-time="3시간 추천" aria-pressed="false">
-          <span class="purpose-title">미팅·상담·업무</span>
-          <span class="purpose-meta">추천 3시간</span>
-          <span class="purpose-copy">고객 미팅, 화상회의, 상담 또는 혼자 집중해서 처리할 업무에.</span>
-        </button>
-        <button class="purpose-card" type="button" data-purpose="스터디·팀플·소모임" data-time="3시간 추천" aria-pressed="false">
-          <span class="purpose-title">스터디·팀플·소모임</span>
-          <span class="purpose-meta">추천 3시간</span>
-          <span class="purpose-copy">자료를 펼치고 토론하거나 발표하고, 함께 프로젝트를 진행할 때.</span>
-        </button>
-        <button class="purpose-card" type="button" data-purpose="프라이빗시간" data-time="2시간 추천" aria-pressed="false">
-          <span class="purpose-title">프라이빗시간</span>
-          <span class="purpose-meta">추천 2시간</span>
-          <span class="purpose-copy">혼자 있는 시간, 둘만의 대화처럼 다른 사람의 시선에서 벗어나고 싶을 때.</span>
-        </button>
-      </div>
-    </section>
-
-    <section class="booking-section" aria-labelledby="booking-final-title">
-      <div class="booking-section-head">
-        <p class="booking-step">Step 3</p>
-        <h2 id="booking-final-title">실제 빈 시간을 확인하세요</h2>
-      </div>
-
-      <div class="booking-summary">
-        <div>
-          <div class="summary-box" aria-live="polite">
-            <div class="summary-line"><span>지점</span><strong>신중동점</strong></div>
-            <div class="summary-line"><span>이용 목적</span><strong id="selectedPurpose">면접·발표 연습</strong></div>
-            <div class="summary-line"><span>추천 이용시간</span><strong id="selectedTime">2시간 추천</strong></div>
-          </div>
-          <p class="booking-price-note">기본 이용요금은 <strong>1시간 10,000원부터</strong>입니다. 실제 예약 가능 시간과 결제 금액은 네이버 예약 화면에서 최종 확인해 주세요.</p>
-        </div>
-        <div class="booking-action">
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_final_naver">신중동점 빈 시간 확인하기 →</a>
-          <small>네이버 예약으로 이동해 날짜와 시간을 선택합니다.</small>
-        </div>
-      </div>
-    </section>
-
-    <div class="booking-info" aria-label="이용 핵심 안내">
-      <div class="booking-info-card"><strong>단독 이용</strong><span>예약 시간 동안 1~6인이 한 공간을 단독으로 이용합니다.</span></div>
-      <div class="booking-info-card"><strong>입실 안내</strong><span>예약 확정 후 입실에 필요한 안내를 확인해 주세요.</span></div>
-      <div class="booking-info-card"><strong>주차</strong><span>등록 시 주차 2시간 무료 안내를 확인할 수 있습니다.</span></div>
-    </div>
-
+    <div class="booking-progress" aria-label="예약 진행 순서"><span><strong>1</strong> 지점 선택</span><span><strong>2</strong> 목적·추천시간 확인</span><span><strong>3</strong> 빈 시간 예약</span></div>
+    <section class="booking-section" aria-labelledby="booking-branch-title"><div class="booking-section-head"><p class="booking-step">Step 1</p><h2 id="booking-branch-title">이용할 지점을 선택하세요</h2><p class="booking-section-desc">현재 예약 가능한 지점입니다. 향후 지점이 추가되면 이 단계에서 선택할 수 있도록 확장됩니다.</p></div><div class="branch-card"><div><h3>신중동점</h3><p>신중동역 1분 · 1~6인 단독 이용 · 프라이빗 공간</p></div><span class="branch-selected">선택됨</span></div></section>
+    <section class="booking-section" aria-labelledby="booking-purpose-title"><div class="booking-section-head"><p class="booking-step">Step 2</p><h2 id="booking-purpose-title">오늘 무엇을 하려고 하나요?</h2><p class="booking-section-desc">목적에 맞는 추천 이용시간을 먼저 확인해 보세요. 추천시간은 예약을 돕기 위한 가이드이며 필요한 만큼 자유롭게 선택할 수 있습니다.</p></div><div class="purpose-grid" id="purposeGrid"><button class="purpose-card is-active" type="button" data-purpose="면접·발표 연습" data-time="2시간 추천" aria-pressed="true"><span class="purpose-title">면접·발표 연습</span><span class="purpose-meta">추천 2시간</span><span class="purpose-copy">답변 정리, 실제 말하기, 휴대폰 녹화와 반복 연습까지.</span></button><button class="purpose-card" type="button" data-purpose="미팅·상담·업무" data-time="3시간 추천" aria-pressed="false"><span class="purpose-title">미팅·상담·업무</span><span class="purpose-meta">추천 3시간</span><span class="purpose-copy">고객 미팅, 화상회의, 상담 또는 혼자 집중해서 처리할 업무에.</span></button><button class="purpose-card" type="button" data-purpose="스터디·팀플·소모임" data-time="3시간 추천" aria-pressed="false"><span class="purpose-title">스터디·팀플·소모임</span><span class="purpose-meta">추천 3시간</span><span class="purpose-copy">자료를 펼치고 토론하거나 발표하고, 함께 프로젝트를 진행할 때.</span></button><button class="purpose-card" type="button" data-purpose="프라이빗시간" data-time="2시간 추천" aria-pressed="false"><span class="purpose-title">프라이빗시간</span><span class="purpose-meta">추천 2시간</span><span class="purpose-copy">혼자 있는 시간, 둘만의 대화처럼 다른 사람의 시선에서 벗어나고 싶을 때.</span></button></div></section>
+    <section class="booking-section" aria-labelledby="booking-final-title"><div class="booking-section-head"><p class="booking-step">Step 3</p><h2 id="booking-final-title">실제 빈 시간을 확인하세요</h2></div><div class="booking-summary"><div><div class="summary-box" aria-live="polite"><div class="summary-line"><span>지점</span><strong>신중동점</strong></div><div class="summary-line"><span>이용 목적</span><strong id="selectedPurpose">면접·발표 연습</strong></div><div class="summary-line"><span>추천 이용시간</span><strong id="selectedTime">2시간 추천</strong></div></div><p class="booking-price-note">기본 이용요금은 <strong>1시간 10,000원부터</strong>입니다. 실제 예약 가능 시간과 결제 금액은 네이버 예약 화면에서 최종 확인해 주세요.</p></div><div class="booking-action"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="booking_final_naver">신중동점 빈 시간 확인하기 →</a><small>네이버 예약으로 이동해 날짜와 시간을 선택합니다.</small></div></div></section>
+    <div class="booking-info" aria-label="이용 핵심 안내"><div class="booking-info-card"><strong>단독 이용</strong><span>예약 시간 동안 1~6인이 한 공간을 단독으로 이용합니다.</span></div><div class="booking-info-card"><strong>입실 안내</strong><span>예약 확정 후 입실에 필요한 안내를 확인해 주세요.</span></div><div class="booking-info-card"><strong>주차</strong><span>등록 시 주차 2시간 무료 안내를 확인할 수 있습니다.</span></div></div>
     <p class="booking-test-note"><strong>테스트 운영 중</strong> — 이 페이지는 새 예약 동선을 검토하기 위해 먼저 공개한 페이지입니다. 기존 사이트의 예약 버튼과 링크는 아직 변경하지 않았습니다.</p>
   </div>
 </main>
-
-<script>
-  (function () {
-    var cards = document.querySelectorAll('.purpose-card');
-    var purpose = document.getElementById('selectedPurpose');
-    var time = document.getElementById('selectedTime');
-    cards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        cards.forEach(function (item) {
-          item.classList.remove('is-active');
-          item.setAttribute('aria-pressed', 'false');
-        });
-        card.classList.add('is-active');
-        card.setAttribute('aria-pressed', 'true');
-        purpose.textContent = card.getAttribute('data-purpose');
-        time.textContent = card.getAttribute('data-time');
-      });
-    });
-  })();
-</script>
+<script>(function(){var cards=document.querySelectorAll('.purpose-card');var purpose=document.getElementById('selectedPurpose');var time=document.getElementById('selectedTime');cards.forEach(function(card){card.addEventListener('click',function(){cards.forEach(function(item){item.classList.remove('is-active');item.setAttribute('aria-pressed','false');});card.classList.add('is-active');card.setAttribute('aria-pressed','true');purpose.textContent=card.getAttribute('data-purpose');time.textContent=card.getAttribute('data-time');});});})();</script>
