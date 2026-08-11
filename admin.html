@@ -10,8 +10,8 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260811-2
-script_version: 20260811-4
+css_version: 20260811-3
+script_version: 20260811-5
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
@@ -66,9 +66,9 @@ script_version: 20260811-4
         <p>모집 중 또는 일정 확정 상태의 모임입니다.</p>
       </article>
       <article class="admin-dashboard-stat admin-dashboard-stat-reservations">
-        <span>오늘 예약접수</span>
+        <span>오늘 예약신청</span>
         <strong data-admin-overview-today-created-reservations>0</strong>
-        <p>오늘 새로 들어온 네이버 예약입니다.</p>
+        <p>오늘 새로 신청된 네이버 예약입니다.</p>
       </article>
       <article class="admin-dashboard-stat admin-dashboard-stat-usage">
         <span>오늘 이용</span>
@@ -484,7 +484,7 @@ script_version: 20260811-4
                 기간
                 <select data-reservations-range-filter>
                   <option value="usage_today">오늘 이용</option>
-                  <option value="created_today">오늘 예약접수</option>
+                  <option value="created_today">오늘 예약신청</option>
                   <option value="usage_tomorrow">내일 이용</option>
                   <option value="all">전체</option>
                   <option value="custom">날짜 선택</option>

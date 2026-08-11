@@ -720,6 +720,7 @@
       const productName = reservation.product || reservation.product_name || '-';
       const paidAmount = reservation.payment_amount ?? reservation.paid_amount;
       const cancelReason = reservation.cancellation_reason || reservation.cancel_reason || '';
+      const reservationCreatedAt = formatDate(reservation.reservation_created_at || reservation.created_at) || '-';
       return `
         <article class="admin-community-item admin-reservation-item admin-community-item-${escapeHtml(status)}" data-reservation-id="${escapeHtml(reservation.id)}">
           <div class="admin-community-item-head">
@@ -727,11 +728,12 @@
               <p class="admin-community-eyebrow">${escapeHtml(sourceLabel)} 예약 · ${escapeHtml(labels[status] || status)}</p>
               <h3>${escapeHtml(customerName)}</h3>
               <p class="admin-community-subcopy">예약번호 ${escapeHtml(reservation.reservation_number || '-')}</p>
+              <p class="admin-community-subcopy">예약신청 일시: ${escapeHtml(reservationCreatedAt)}</p>
             </div>
             <span class="admin-community-status admin-community-status-${escapeHtml(status)}">${escapeHtml(labels[status] || status)}</span>
           </div>
           <dl class="admin-community-meta admin-reservation-meta">
-            <div><dt>예약접수</dt><dd>${escapeHtml(formatDate(reservation.reservation_created_at || reservation.created_at) || '-')}</dd></div>
+            <div><dt>예약신청 일시</dt><dd>${escapeHtml(reservationCreatedAt)}</dd></div>
             <div><dt>이용일</dt><dd>${escapeHtml(formatDateOnly(reservation.usage_date || reservation.start_at) || '-')}</dd></div>
             <div><dt>시작</dt><dd>${escapeHtml(getReservationStartText(reservation) || '-')}</dd></div>
             <div><dt>종료</dt><dd>${escapeHtml(getReservationEndText(reservation) || '-')}</dd></div>

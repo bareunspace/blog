@@ -7969,16 +7969,14 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-panel-shell {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 .admin-panel-main {
   min-width: 0;
 }
 .admin-sidecard {
-  position: sticky;
-  top: 1.25rem;
-  align-self: start;
+  position: static;
   border: 1px solid #dbe4de;
   border-radius: 18px;
   padding: 1rem;
@@ -7998,11 +7996,21 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font-size: 1rem;
 }
 .admin-sidecard-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .65rem;
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
+  list-style-position: inside;
   color: #516459;
   font-size: .87rem;
   line-height: 1.7;
+}
+.admin-sidecard-list li {
+  border: 1px solid #dfe8e2;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .72);
+  padding: .62rem .72rem;
 }
 .admin-actions-compact {
   margin-top: 0;
@@ -8532,6 +8540,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-dashboard-grid,
   .admin-dashboard-notes,
   .admin-panel-shell,
+  .admin-sidecard-list,
   .admin-community-edit-form {
     grid-template-columns: 1fr;
   }
