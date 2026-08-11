@@ -10,19 +10,19 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260806-18
-script_version: 20260806-18
+css_version: 20260811-1
+script_version: 20260811-1
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
   <section class="admin-card" aria-labelledby="adminDashboardTitle">
     <p class="admin-label">Admin Dashboard</p>
     <h1 class="admin-title" id="adminDashboardTitle">관리자 인증 완료</h1>
-    <p class="admin-desc">오늘 처리할 신청을 먼저 보고, 필요하면 모임으로 전환해 운영까지 이어서 관리하는 화면입니다.</p>
+    <p class="admin-desc">오늘 처리할 신청과 확정 예약을 먼저 보고, 필요하면 모임 운영까지 이어서 관리하는 화면입니다.</p>
 
     <p class="admin-status is-success" id="adminUserInfo" hidden></p>
 
     <ul class="admin-summary" aria-label="관리 작업 안내">
-      <li>먼저 신청을 검토하고, 운영할 건만 모임으로 넘기는 흐름에 맞췄습니다.</li>
+      <li>먼저 신청을 검토하고, 확정된 네이버 예약은 예약 원장에서 따로 확인합니다.</li>
       <li>신청과 모임이 연결되어 있으면 서로 바로 열어볼 수 있습니다.</li>
       <li>관리자 권한 체크는 이메일 허용 목록과 Supabase 로그인 세션을 함께 검증합니다.</li>
     </ul>
@@ -40,7 +40,7 @@ script_version: 20260806-18
       <div>
         <p class="admin-label">Overview</p>
         <h2 class="admin-title" id="adminOverviewTitle">운영 현황 한눈에 보기</h2>
-        <p class="admin-desc">지금 바로 손봐야 할 신청과 운영 중인 모임 수를 먼저 확인합니다.</p>
+        <p class="admin-desc">지금 바로 손봐야 할 신청, 운영 중인 모임, 오늘 예약을 먼저 확인합니다.</p>
       </div>
     </div>
 
@@ -65,6 +65,11 @@ script_version: 20260806-18
         <strong data-admin-overview-active-groups>0</strong>
         <p>모집 중 또는 일정 확정 상태의 모임입니다.</p>
       </article>
+      <article class="admin-dashboard-stat admin-dashboard-stat-reservations">
+        <span>오늘 네이버 예약</span>
+        <strong data-admin-overview-today-reservations>0</strong>
+        <p>취소되지 않은 오늘 확정 예약입니다.</p>
+      </article>
     </div>
 
     <div class="admin-dashboard-notes" aria-label="운영 동선 안내">
@@ -79,6 +84,10 @@ script_version: 20260806-18
       <article class="admin-dashboard-note">
         <h3>3. 운영 정보 정리</h3>
         <p>모임 탭에서 오픈채팅 링크와 상태를 다듬고, 필요하면 원본 신청으로 다시 돌아갑니다.</p>
+      </article>
+      <article class="admin-dashboard-note">
+        <h3>4. 확정 예약 확인</h3>
+        <p>예약 원장 탭에서 네이버 확정/취소 예약과 결제 정보를 시간순으로 확인합니다.</p>
       </article>
     </div>
 
@@ -109,6 +118,7 @@ script_version: 20260806-18
     <div class="admin-workspace-tabs" role="tablist" aria-label="관리 작업 전환">
       <button class="admin-workspace-tab is-active" id="adminWorkspaceTabApplications" type="button" role="tab" aria-selected="true" aria-controls="adminCommunityApplications" data-admin-workspace-tab="applications">신청 검토</button>
       <button class="admin-workspace-tab" id="adminWorkspaceTabGroups" type="button" role="tab" aria-selected="false" aria-controls="adminCommunityGroups" data-admin-workspace-tab="groups">모임 운영</button>
+      <button class="admin-workspace-tab" id="adminWorkspaceTabReservations" type="button" role="tab" aria-selected="false" aria-controls="adminReservations" data-admin-workspace-tab="reservations">예약 원장</button>
     </div>
 
     <section class="admin-workspace-panel" id="adminCommunityApplications" aria-labelledby="adminCommunityTitle" role="tabpanel" data-admin-workspace-panel="applications">
@@ -440,6 +450,64 @@ script_version: 20260806-18
           <p class="admin-status" data-community-groups-status hidden></p>
           <div class="admin-community-list" data-community-groups-list>
             <p class="admin-empty">관리자 인증 후 모임 목록을 불러옵니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-workspace-panel" id="adminReservations" aria-labelledby="adminReservationsTitle" role="tabpanel" data-admin-workspace-panel="reservations" hidden>
+      <div class="admin-panel-shell">
+        <aside class="admin-sidecard" aria-labelledby="adminReservationsGuideTitle">
+          <p class="admin-sidecard-label">Reservations</p>
+          <h3 id="adminReservationsGuideTitle">확정 예약 원장</h3>
+          <ol class="admin-sidecard-list">
+            <li>네이버에서 들어온 확정 예약과 취소 예약을 따로 확인합니다.</li>
+            <li>오늘/내일 예약을 먼저 보고, 전체 또는 날짜별로 좁혀 봅니다.</li>
+            <li>예약번호 검색으로 Zapier 연동 내역을 빠르게 찾습니다.</li>
+          </ol>
+        </aside>
+
+        <div class="admin-panel-main">
+          <div class="admin-section-head">
+            <div>
+              <p class="admin-label">Confirmed Ledger</p>
+              <h3 class="admin-title" id="adminReservationsTitle">확정 예약 원장</h3>
+              <p class="admin-desc">Supabase reservations 테이블의 네이버 예약을 시작시간순으로 조회합니다. 기존 예약 요청은 신청 검토 화면에 그대로 둡니다.</p>
+            </div>
+            <div class="admin-community-tools">
+              <label class="admin-filter">
+                기간
+                <select data-reservations-range-filter>
+                  <option value="today">오늘</option>
+                  <option value="tomorrow">내일</option>
+                  <option value="all">전체</option>
+                  <option value="custom">날짜 선택</option>
+                </select>
+              </label>
+              <label class="admin-filter" data-reservations-date-filter-wrap hidden>
+                날짜
+                <input type="date" data-reservations-date-filter />
+              </label>
+              <label class="admin-filter">
+                상태
+                <select data-reservations-status-filter>
+                  <option value="all">전체</option>
+                  <option value="confirmed">확정</option>
+                  <option value="cancelled">취소</option>
+                </select>
+              </label>
+              <label class="admin-filter">
+                예약번호
+                <input type="search" data-reservations-query-filter placeholder="예약번호 검색" />
+              </label>
+              <button class="admin-btn admin-btn-outline" type="button" data-reservations-refresh>예약 새로고침</button>
+            </div>
+          </div>
+
+          <div class="admin-community-stats" data-reservations-stats aria-label="네이버 예약 요약"></div>
+          <p class="admin-status" data-reservations-status hidden></p>
+          <div class="admin-community-list" data-reservations-list>
+            <p class="admin-empty">관리자 인증 후 예약 원장을 불러옵니다.</p>
           </div>
         </div>
       </div>

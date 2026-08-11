@@ -7,8 +7,9 @@
 
   const applicationsRoot = document.getElementById('adminCommunityApplications');
   const groupsRoot = document.getElementById('adminCommunityGroups');
+  const reservationsRoot = document.getElementById('adminReservations');
 
-  if (!applicationsRoot || !groupsRoot) {
+  if (!applicationsRoot || !groupsRoot || !reservationsRoot) {
     return;
   }
 
@@ -42,15 +43,26 @@
   const groupsListNode = groupsRoot?.querySelector('[data-community-groups-list]');
   const groupsStatusNode = groupsRoot?.querySelector('[data-community-groups-status]');
   const groupsRefreshButton = groupsRoot?.querySelector('[data-community-groups-refresh]');
+  const reservationsListNode = reservationsRoot?.querySelector('[data-reservations-list]');
+  const reservationsStatusNode = reservationsRoot?.querySelector('[data-reservations-status]');
+  const reservationsStatsNode = reservationsRoot?.querySelector('[data-reservations-stats]');
+  const reservationsRangeFilter = reservationsRoot?.querySelector('[data-reservations-range-filter]');
+  const reservationsDateFilter = reservationsRoot?.querySelector('[data-reservations-date-filter]');
+  const reservationsDateFilterWrap = reservationsRoot?.querySelector('[data-reservations-date-filter-wrap]');
+  const reservationsStatusFilter = reservationsRoot?.querySelector('[data-reservations-status-filter]');
+  const reservationsQueryFilter = reservationsRoot?.querySelector('[data-reservations-query-filter]');
+  const reservationsRefreshButton = reservationsRoot?.querySelector('[data-reservations-refresh]');
   const workspaceTabs = Array.from(root.querySelectorAll('[data-admin-workspace-tab]'));
   const workspacePanels = Array.from(root.querySelectorAll('[data-admin-workspace-panel]'));
   const overviewPendingNode = root.querySelector('[data-admin-overview-pending]');
   const overviewNewNode = root.querySelector('[data-admin-overview-new]');
   const overviewGroupsNode = root.querySelector('[data-admin-overview-groups]');
   const overviewActiveGroupsNode = root.querySelector('[data-admin-overview-active-groups]');
+  const overviewTodayReservationsNode = root.querySelector('[data-admin-overview-today-reservations]');
   let allRows = [];
   let allGroups = [];
   let allReports = [];
+  let allReservations = [];
 
   const labels = {
     interest: '참여 관심',
@@ -70,7 +82,10 @@
     scheduled: '일정 확정',
     open: '신고 접수',
     resolved: '처리 완료',
-    dismissed: '반려'
+    dismissed: '반려',
+    confirmed: '확정',
+    cancelled: '취소',
+    naver: '네이버'
   };
 
   const showStatus = (message, kind = 'info') => {
@@ -118,6 +133,21 @@
     }
   };
 
+  const showReservationsStatus = (message, kind = 'info') => {
+    if (!reservationsStatusNode) {
+      return;
+    }
+    reservationsStatusNode.textContent = message;
+    reservationsStatusNode.hidden = false;
+    reservationsStatusNode.classList.remove('is-error', 'is-success');
+    if (kind === 'error') {
+      reservationsStatusNode.classList.add('is-error');
+    }
+    if (kind === 'success') {
+      reservationsStatusNode.classList.add('is-success');
+    }
+  };
+
   const formatDate = (value) => {
     if (!value) {
       return '';
@@ -126,6 +156,96 @@
       dateStyle: 'medium',
       timeStyle: 'short'
     }).format(new Date(value));
+  };
+
+  const formatDateOnly = (value) => {
+    if (!value) {
+      return '';
+    }
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) {
+      const [year, month, day] = value.slice(0, 10).split('-').map(Number);
+      return new Intl.DateTimeFormat('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'short'
+      }).format(new Date(year, month - 1, day));
+    }
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return String(value);
+    }
+    return new Intl.DateTimeFormat('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'short'
+    }).format(date);
+  };
+
+  const formatTimeOnly = (value) => {
+    if (!value) {
+      return '';
+    }
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return String(value);
+    }
+    return new Intl.DateTimeFormat('ko-KR', {
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(date);
+  };
+
+  const toDateKey = (value) => {
+    if (!value) {
+      return '';
+    }
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) {
+      return value.slice(0, 10);
+    }
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return '';
+    }
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const addDays = (date, days) => {
+    const next = new Date(date);
+    next.setDate(next.getDate() + days);
+    return next;
+  };
+
+  const getTodayKey = () => toDateKey(new Date());
+  const getTomorrowKey = () => toDateKey(addDays(new Date(), 1));
+
+  const formatDuration = (minutes) => {
+    const value = Number(minutes || 0);
+    if (!Number.isFinite(value) || value <= 0) {
+      return '-';
+    }
+    const hours = Math.floor(value / 60);
+    const mins = value % 60;
+    if (!hours) {
+      return `${mins}분`;
+    }
+    return mins ? `${hours}시간 ${mins}분` : `${hours}시간`;
+  };
+
+  const formatCurrency = (value) => {
+    const amount = Number(value || 0);
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return '-';
+    }
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+      maximumFractionDigits: 0
+    }).format(amount);
   };
 
   const escapeHtml = (value) => String(value || '')
@@ -365,6 +485,11 @@
     const pendingCount = allRows.filter((row) => row.status === 'new' || row.status === 'reviewing').length;
     const newCount = allRows.filter((row) => row.status === 'new').length;
     const activeGroupCount = allGroups.filter((group) => group.status === 'recruiting' || group.status === 'scheduled').length;
+    const todayKey = getTodayKey();
+    const todayReservationCount = allReservations.filter((reservation) => {
+      const reservationDate = reservation.usage_date || reservation.start_at;
+      return toDateKey(reservationDate) === todayKey && reservation.status !== 'cancelled';
+    }).length;
 
     if (overviewPendingNode) {
       overviewPendingNode.textContent = String(pendingCount);
@@ -377,6 +502,9 @@
     }
     if (overviewActiveGroupsNode) {
       overviewActiveGroupsNode.textContent = String(activeGroupCount);
+    }
+    if (overviewTodayReservationsNode) {
+      overviewTodayReservationsNode.textContent = String(todayReservationCount);
     }
   };
 
@@ -456,6 +584,140 @@
       return;
     }
     showGroupsStatus(`조건에 맞는 모임 ${visibleGroups.length}개를 표시합니다.`, 'success');
+  };
+
+  const normalizeReservationStatus = (value) => {
+    const raw = String(value || '').trim().toLowerCase();
+    if (['cancelled', 'canceled', 'cancel', '취소'].includes(raw)) {
+      return 'cancelled';
+    }
+    return 'confirmed';
+  };
+
+  const getReservationDateKey = (reservation) => {
+    return toDateKey(reservation.usage_date || reservation.start_at);
+  };
+
+  const getVisibleReservations = () => {
+    const selectedRange = reservationsRangeFilter?.value || 'today';
+    const selectedDate = String(reservationsDateFilter?.value || '').trim();
+    const selectedStatus = reservationsStatusFilter?.value || 'all';
+    const query = String(reservationsQueryFilter?.value || '').trim().toLowerCase();
+    const todayKey = getTodayKey();
+    const tomorrowKey = getTomorrowKey();
+
+    return allReservations
+      .filter((reservation) => {
+        const reservationStatus = normalizeReservationStatus(reservation.status);
+        const reservationDate = getReservationDateKey(reservation);
+        const rangeMatched = selectedRange === 'all'
+          || (selectedRange === 'today' && reservationDate === todayKey)
+          || (selectedRange === 'tomorrow' && reservationDate === tomorrowKey)
+          || (selectedRange === 'custom' && selectedDate && reservationDate === selectedDate);
+        const statusMatched = selectedStatus === 'all' || reservationStatus === selectedStatus;
+        const queryMatched = !query || String(reservation.reservation_number || '').toLowerCase().includes(query);
+        return rangeMatched && statusMatched && queryMatched;
+      })
+      .sort((left, right) => {
+        const leftTime = new Date(left.start_at || left.usage_date || 0).getTime();
+        const rightTime = new Date(right.start_at || right.usage_date || 0).getTime();
+        return leftTime - rightTime;
+      });
+  };
+
+  const renderReservationStats = () => {
+    if (!reservationsStatsNode) {
+      return;
+    }
+
+    const todayKey = getTodayKey();
+    const tomorrowKey = getTomorrowKey();
+    const counts = allReservations.reduce((acc, reservation) => {
+      const status = normalizeReservationStatus(reservation.status);
+      const dateKey = getReservationDateKey(reservation);
+      acc.total += 1;
+      acc[status] += 1;
+      if (dateKey === todayKey && status !== 'cancelled') {
+        acc.today += 1;
+      }
+      if (dateKey === tomorrowKey && status !== 'cancelled') {
+        acc.tomorrow += 1;
+      }
+      return acc;
+    }, {
+      total: 0,
+      today: 0,
+      tomorrow: 0,
+      confirmed: 0,
+      cancelled: 0
+    });
+
+    reservationsStatsNode.innerHTML = [
+      ['total', '전체 예약', counts.total],
+      ['new', '오늘 예약', counts.today],
+      ['reviewing', '내일 예약', counts.tomorrow],
+      ['contacted', '확정', counts.confirmed],
+      ['closed', '취소', counts.cancelled]
+    ].map(([key, label, count]) => `
+      <div class="admin-stat admin-stat-${key}">
+        <span>${escapeHtml(label)}</span>
+        <strong>${count}</strong>
+      </div>
+    `).join('');
+  };
+
+  const renderReservations = (reservations) => {
+    if (!reservationsListNode) {
+      return;
+    }
+
+    if (!reservations.length) {
+      reservationsListNode.innerHTML = '<p class="admin-empty">조건에 맞는 네이버 예약이 없습니다.</p>';
+      return;
+    }
+
+    reservationsListNode.innerHTML = reservations.map((reservation) => {
+      const status = normalizeReservationStatus(reservation.status);
+      const source = String(reservation.source || '').trim().toLowerCase();
+      const sourceLabel = labels[source] || source || '외부';
+      return `
+        <article class="admin-community-item admin-reservation-item admin-community-item-${escapeHtml(status)}" data-reservation-id="${escapeHtml(reservation.id)}">
+          <div class="admin-community-item-head">
+            <div>
+              <p class="admin-community-eyebrow">${escapeHtml(sourceLabel)} 예약 · ${escapeHtml(labels[status] || status)}</p>
+              <h3>${escapeHtml(reservation.customer_name || '예약자명 없음')}</h3>
+              <p class="admin-community-subcopy">예약번호 ${escapeHtml(reservation.reservation_number || '-')}</p>
+            </div>
+            <span class="admin-community-status admin-community-status-${escapeHtml(status)}">${escapeHtml(labels[status] || status)}</span>
+          </div>
+          <dl class="admin-community-meta admin-reservation-meta">
+            <div><dt>이용일</dt><dd>${escapeHtml(formatDateOnly(reservation.usage_date || reservation.start_at) || '-')}</dd></div>
+            <div><dt>시작</dt><dd>${escapeHtml(formatTimeOnly(reservation.start_at) || '-')}</dd></div>
+            <div><dt>종료</dt><dd>${escapeHtml(formatTimeOnly(reservation.end_at) || '-')}</dd></div>
+            <div><dt>이용시간</dt><dd>${escapeHtml(formatDuration(reservation.duration_minutes))}</dd></div>
+            <div><dt>상품</dt><dd>${escapeHtml(reservation.product_name || '-')}</dd></div>
+            <div><dt>결제상태</dt><dd>${escapeHtml(reservation.payment_status || '-')}</dd></div>
+            <div><dt>결제금액</dt><dd>${escapeHtml(formatCurrency(reservation.paid_amount))}</dd></div>
+            <div><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div>
+          </dl>
+          ${reservation.cancel_reason ? `<p class="admin-community-message"><strong>취소 사유</strong>${escapeHtml(reservation.cancel_reason)}</p>` : ''}
+        </article>
+      `;
+    }).join('');
+  };
+
+  const renderVisibleReservations = () => {
+    if (reservationsDateFilterWrap) {
+      reservationsDateFilterWrap.hidden = (reservationsRangeFilter?.value || 'today') !== 'custom';
+    }
+    const visibleReservations = getVisibleReservations();
+    renderReservations(visibleReservations);
+    renderReservationStats();
+    if (!allReservations.length) {
+      showReservationsStatus('등록된 네이버 예약이 없습니다.', 'success');
+      return;
+    }
+    showReservationsStatus(`조건에 맞는 네이버 예약 ${visibleReservations.length}건을 표시합니다.`, 'success');
   };
 
   const renderRows = (rows) => {
@@ -677,6 +939,37 @@
     renderOverview();
     renderStats(allRows);
     renderVisibleRows();
+  };
+
+  const loadReservations = async () => {
+    const adminContext = window.barunjariAdmin;
+    const client = adminContext?.client;
+
+    if (!client || !reservationsRoot) {
+      return;
+    }
+
+    showReservationsStatus('네이버 예약 원장을 불러오는 중입니다.', 'success');
+
+    const { data, error } = await client
+      .from('reservations')
+      .select('*')
+      .eq('source', 'naver')
+      .order('start_at', { ascending: true })
+      .limit(500);
+
+    if (error) {
+      console.error('reservations load failed', error);
+      showReservationsStatus(`예약 원장을 불러오지 못했습니다. (${error.message || '알 수 없는 오류'})`, 'error');
+      return;
+    }
+
+    allReservations = Array.isArray(data) ? data.map((reservation) => ({
+      ...reservation,
+      status: normalizeReservationStatus(reservation.status)
+    })) : [];
+    renderOverview();
+    renderVisibleReservations();
   };
 
   const updateStatus = async (item, nextStatus) => {
@@ -1508,6 +1801,11 @@
   groupsRefreshButton?.addEventListener('click', () => {
     loadGroups();
   });
+  reservationsRangeFilter?.addEventListener('change', renderVisibleReservations);
+  reservationsDateFilter?.addEventListener('change', renderVisibleReservations);
+  reservationsStatusFilter?.addEventListener('change', renderVisibleReservations);
+  reservationsQueryFilter?.addEventListener('input', renderVisibleReservations);
+  reservationsRefreshButton?.addEventListener('click', loadReservations);
   workspaceTabs.forEach((button) => {
     button.addEventListener('click', () => {
       switchWorkspace(button.dataset.adminWorkspaceTab || 'applications');
@@ -1517,6 +1815,7 @@
     loadGroups();
     loadApplications();
     loadReports();
+    loadReservations();
   });
 
   switchWorkspace('applications');
@@ -1524,6 +1823,7 @@
     loadGroups();
     loadApplications();
     loadReports();
+    loadReservations();
   }
   updateImageSelectionSummary(groupForm?.elements?.image_file, groupCreateImageSelectionNode);
   updateImageSelectionSummary(groupEditForm?.elements?.image_file, groupEditImageSelectionNode);

@@ -7866,7 +7866,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: .8rem;
   margin-top: 1rem;
 }
@@ -7909,9 +7909,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   border-color: #a9d5cf;
   background: linear-gradient(180deg, #f1fcfb 0%, #e6f8f6 100%);
 }
+.admin-dashboard-stat-reservations {
+  border-color: #d8c7a0;
+  background: linear-gradient(180deg, #fffaf1 0%, #f8f0de 100%);
+}
 .admin-dashboard-notes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .75rem;
   margin-top: 1rem;
 }
@@ -8059,7 +8063,8 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   font-size: .78rem;
   font-weight: 900;
 }
-.admin-filter select {
+.admin-filter select,
+.admin-filter input {
   min-width: 7.8rem;
   border: 1px solid #c9d6ce;
   border-radius: 10px;
@@ -8068,6 +8073,9 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   color: #183929;
   font: inherit;
   font-size: .86rem;
+}
+.admin-filter input[type="search"] {
+  min-width: 11rem;
 }
 .admin-label {
   display: inline-flex;
@@ -8394,6 +8402,14 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   background: #eaf3ff;
   color: #1f5f9f;
 }
+.admin-community-status-confirmed {
+  background: #eef8f2;
+  color: #1f6f3f;
+}
+.admin-community-status-cancelled {
+  background: #fff1f1;
+  color: #9f2f2f;
+}
 .admin-community-status-closed {
   background: #f1f3f2;
   color: #66736a;
@@ -8478,6 +8494,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-community-item-resolved {
   border-left: 4px solid #2d6a4f;
 }
+.admin-community-item-confirmed {
+  border-left: 4px solid #2d6a4f;
+}
+.admin-community-item-cancelled {
+  border-left: 4px solid #b84646;
+  opacity: .82;
+}
 .admin-community-item-dismissed {
   border-left: 4px solid #8a95a2;
 }
@@ -8511,7 +8534,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   .admin-workspace-tabs {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     border-radius: 18px;
   }
   .admin-actions {
@@ -8535,7 +8558,8 @@ main.tutoring-guide .guide-booking-panel .section-desc {
     justify-content: stretch;
   }
   .admin-filter,
-  .admin-filter select {
+  .admin-filter select,
+  .admin-filter input {
     width: 100%;
   }
   .admin-community-stats {
