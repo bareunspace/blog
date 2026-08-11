@@ -1,11 +1,11 @@
 <style>
   .guide-toc {
     position: sticky !important;
-    top: var(--study-header-height, 62px) !important;
+    top: calc(var(--study-header-height, 62px) + 12px) !important;
     z-index: 95 !important;
     width: 100%;
-    border-top: 1px solid rgba(15, 23, 42, .06);
-    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    border: 1px solid rgba(15, 23, 42, .08);
+    border-radius: 14px;
     background: rgba(255, 255, 255, .96);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -41,13 +41,14 @@
   #compare,
   #two-three-hours,
   #checklist {
-    scroll-margin-top: var(--study-toc-offset, 145px);
+    scroll-margin-top: var(--study-toc-offset, 157px);
   }
 
   @media (max-width: 760px) {
     .guide-toc {
       position: sticky !important;
-      top: var(--study-header-height, 58px) !important;
+      top: calc(var(--study-header-height, 58px) + 8px) !important;
+      border-radius: 12px;
     }
 
     .guide-toc-inner {
@@ -82,11 +83,16 @@
     var ticking = false;
     var lastActiveId = '';
 
+    function getGap() {
+      return window.matchMedia('(max-width: 760px)').matches ? 8 : 12;
+    }
+
     function updateOffsets() {
       var headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
       var tocHeight = Math.ceil(toc.getBoundingClientRect().height);
+      var gap = getGap();
       root.style.setProperty('--study-header-height', headerHeight + 'px');
-      root.style.setProperty('--study-toc-offset', (headerHeight + tocHeight + 20) + 'px');
+      root.style.setProperty('--study-toc-offset', (headerHeight + gap + tocHeight + 20) + 'px');
     }
 
     function setActive(item) {
@@ -112,7 +118,7 @@
       ticking = false;
       var headerHeight = header ? header.getBoundingClientRect().height : 0;
       var tocHeight = toc.getBoundingClientRect().height;
-      var marker = headerHeight + tocHeight + 28;
+      var marker = headerHeight + getGap() + tocHeight + 28;
       var active = items[0];
 
       items.forEach(function (item) {
