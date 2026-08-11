@@ -10,7 +10,7 @@ sitemap: false
 theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
-css_version: 20260811-3
+css_version: 20260811-4
 script_version: 20260811-5
 ---
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
@@ -128,16 +128,6 @@ script_version: 20260811-5
 
     <section class="admin-workspace-panel" id="adminCommunityApplications" aria-labelledby="adminCommunityTitle" role="tabpanel" data-admin-workspace-panel="applications" hidden>
       <div class="admin-panel-shell">
-        <aside class="admin-sidecard" aria-labelledby="adminApplicationsGuideTitle">
-          <p class="admin-sidecard-label">Workflow</p>
-          <h3 id="adminApplicationsGuideTitle">신청 검토 순서</h3>
-          <ol class="admin-sidecard-list">
-            <li>새 신청만 골라 현재 확인할 건부터 봅니다.</li>
-            <li>상태를 먼저 바꾸고, 필요한 경우에만 상세 수정 패널을 엽니다.</li>
-            <li>운영할 신청이면 바로 모임 초안 만들기로 넘깁니다.</li>
-          </ol>
-        </aside>
-
         <div class="admin-panel-main">
           <div class="admin-section-head">
             <div>
@@ -145,6 +135,15 @@ script_version: 20260811-5
               <h3 class="admin-title" id="adminCommunityTitle">커뮤니티 신청</h3>
               <p class="admin-desc">사이트에서 들어온 신청을 검토하고, 필요한 경우 운영용 모임으로 전환합니다.</p>
             </div>
+            <aside class="admin-sidecard" aria-labelledby="adminApplicationsGuideTitle">
+              <p class="admin-sidecard-label">Workflow</p>
+              <h3 id="adminApplicationsGuideTitle">신청 검토 순서</h3>
+              <ol class="admin-sidecard-list">
+                <li>새 신청만 골라 현재 확인할 건부터 봅니다.</li>
+                <li>상태를 먼저 바꾸고, 필요한 경우에만 상세 수정 패널을 엽니다.</li>
+                <li>운영할 신청이면 바로 모임 초안 만들기로 넘깁니다.</li>
+              </ol>
+            </aside>
             <div class="admin-community-tools">
               <label class="admin-filter">
                 상태
@@ -266,16 +265,6 @@ script_version: 20260811-5
 
     <section class="admin-workspace-panel" id="adminCommunityGroups" aria-labelledby="adminCommunityGroupsTitle" role="tabpanel" data-admin-workspace-panel="groups" hidden>
       <div class="admin-panel-shell">
-        <aside class="admin-sidecard" aria-labelledby="adminGroupsGuideTitle">
-          <p class="admin-sidecard-label">Operations</p>
-          <h3 id="adminGroupsGuideTitle">모임 운영 순서</h3>
-          <ol class="admin-sidecard-list">
-            <li>운영할 신청만 모임 초안으로 전환합니다.</li>
-            <li>제목, 일정, 오픈채팅 링크를 먼저 채워 공지 가능한 상태로 만듭니다.</li>
-            <li>원본 신청이 필요한 경우 카드에서 바로 다시 엽니다.</li>
-          </ol>
-        </aside>
-
         <div class="admin-panel-main">
           <div class="admin-section-head">
             <div>
@@ -283,6 +272,15 @@ script_version: 20260811-5
               <h3 class="admin-title" id="adminCommunityGroupsTitle">모임 관리</h3>
               <p class="admin-desc">운영할 모임만 모아 일정, 상태, 안내 링크를 정리합니다.</p>
             </div>
+            <aside class="admin-sidecard" aria-labelledby="adminGroupsGuideTitle">
+              <p class="admin-sidecard-label">Operations</p>
+              <h3 id="adminGroupsGuideTitle">모임 운영 순서</h3>
+              <ol class="admin-sidecard-list">
+                <li>운영할 신청만 모임 초안으로 전환합니다.</li>
+                <li>제목, 일정, 오픈채팅 링크를 먼저 채워 공지 가능한 상태로 만듭니다.</li>
+                <li>원본 신청이 필요한 경우 카드에서 바로 다시 엽니다.</li>
+              </ol>
+            </aside>
             <div class="admin-community-tools">
               <label class="admin-filter">
                 상태
@@ -462,16 +460,6 @@ script_version: 20260811-5
 
     <section class="admin-workspace-panel" id="adminReservations" aria-labelledby="adminReservationsTitle" role="tabpanel" data-admin-workspace-panel="reservations">
       <div class="admin-panel-shell">
-        <aside class="admin-sidecard" aria-labelledby="adminReservationsGuideTitle">
-          <p class="admin-sidecard-label">Reservations</p>
-          <h3 id="adminReservationsGuideTitle">확정 예약 원장</h3>
-          <ol class="admin-sidecard-list">
-            <li>네이버에서 들어온 확정 예약과 취소 예약을 따로 확인합니다.</li>
-            <li>오늘/내일 예약을 먼저 보고, 전체 또는 날짜별로 좁혀 봅니다.</li>
-            <li>예약번호 검색으로 Zapier 연동 내역을 빠르게 찾습니다.</li>
-          </ol>
-        </aside>
-
         <div class="admin-panel-main">
           <div class="admin-section-head">
             <div>
@@ -479,6 +467,15 @@ script_version: 20260811-5
               <h3 class="admin-title" id="adminReservationsTitle">확정 예약 원장</h3>
               <p class="admin-desc">Supabase reservations 테이블의 네이버 예약을 시작시간순으로 조회합니다. 기존 예약 요청은 신청 검토 화면에 그대로 둡니다.</p>
             </div>
+            <aside class="admin-sidecard" aria-labelledby="adminReservationsGuideTitle">
+              <p class="admin-sidecard-label">Reservations</p>
+              <h3 id="adminReservationsGuideTitle">확정 예약 원장</h3>
+              <ol class="admin-sidecard-list">
+                <li>네이버에서 들어온 확정 예약과 취소 예약을 따로 확인합니다.</li>
+                <li>오늘/내일 예약을 먼저 보고, 전체 또는 날짜별로 좁혀 봅니다.</li>
+                <li>예약번호 검색으로 Zapier 연동 내역을 빠르게 찾습니다.</li>
+              </ol>
+            </aside>
             <div class="admin-community-tools">
               <label class="admin-filter">
                 기간

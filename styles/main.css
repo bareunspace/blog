@@ -7859,10 +7859,13 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   width: min(100%, 1180px);
 }
 .admin-section-head {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
   align-items: flex-start;
   gap: 1rem;
+}
+.admin-section-head .admin-community-tools {
+  grid-column: 1 / -1;
 }
 .admin-dashboard-grid {
   display: grid;
@@ -7978,39 +7981,38 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-sidecard {
   position: static;
   border: 1px solid #dbe4de;
-  border-radius: 18px;
-  padding: 1rem;
+  border-radius: 14px;
+  padding: .78rem .85rem;
   background: linear-gradient(180deg, #f9fbfa 0%, #f2f6f3 100%);
 }
 .admin-sidecard-label {
-  margin-bottom: .35rem;
+  margin-bottom: .22rem;
   color: #2d6a4f;
-  font-size: .74rem;
+  font-size: .68rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
 .admin-sidecard h3 {
-  margin-bottom: .55rem;
+  margin-bottom: .38rem;
   color: #173726;
-  font-size: 1rem;
+  font-size: .9rem;
 }
 .admin-sidecard-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: .65rem;
+  gap: .24rem;
   margin: 0;
   padding-left: 0;
   list-style-position: inside;
   color: #516459;
-  font-size: .87rem;
-  line-height: 1.7;
+  font-size: .76rem;
+  line-height: 1.5;
 }
 .admin-sidecard-list li {
-  border: 1px solid #dfe8e2;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, .72);
-  padding: .62rem .72rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
 }
 .admin-actions-compact {
   margin-top: 0;
