@@ -59,6 +59,7 @@
   const overviewGroupsNode = root.querySelector('[data-admin-overview-groups]');
   const overviewActiveGroupsNode = root.querySelector('[data-admin-overview-active-groups]');
   const overviewTodayReservationsNode = root.querySelector('[data-admin-overview-today-reservations]');
+  const overviewTodayCreatedReservationsNode = root.querySelector('[data-admin-overview-today-created-reservations]');
   let allRows = [];
   let allGroups = [];
   let allReports = [];
@@ -490,6 +491,9 @@
       const reservationDate = reservation.usage_date || reservation.start_at;
       return toDateKey(reservationDate) === todayKey && reservation.status !== 'cancelled';
     }).length;
+    const todayCreatedReservationCount = allReservations.filter((reservation) => {
+      return toDateKey(reservation.reservation_created_at || reservation.created_at) === todayKey;
+    }).length;
 
     if (overviewPendingNode) {
       overviewPendingNode.textContent = String(pendingCount);
@@ -505,6 +509,9 @@
     }
     if (overviewTodayReservationsNode) {
       overviewTodayReservationsNode.textContent = String(todayReservationCount);
+    }
+    if (overviewTodayCreatedReservationsNode) {
+      overviewTodayCreatedReservationsNode.textContent = String(todayCreatedReservationCount);
     }
   };
 
@@ -598,6 +605,10 @@
     return toDateKey(reservation.usage_date || reservation.start_at);
   };
 
+  const getReservationCreatedDateKey = (reservation) => {
+    return toDateKey(reservation.reservation_created_at || reservation.created_at);
+  };
+
   const getReservationStartText = (reservation) => {
     return reservation.start_time
       ? String(reservation.start_time).slice(0, 5)
@@ -611,7 +622,7 @@
   };
 
   const getVisibleReservations = () => {
-    const selectedRange = reservationsRangeFilter?.value || 'today';
+    const selectedRange = reservationsRangeFilter?.value || 'usage_today';
     const selectedDate = String(reservationsDateFilter?.value || '').trim();
     const selectedStatus = reservationsStatusFilter?.value || 'all';
     const query = String(reservationsQueryFilter?.value || '').trim().toLowerCase();
@@ -622,15 +633,22 @@
       .filter((reservation) => {
         const reservationStatus = normalizeReservationStatus(reservation.status);
         const reservationDate = getReservationDateKey(reservation);
+        const createdDate = getReservationCreatedDateKey(reservation);
         const rangeMatched = selectedRange === 'all'
-          || (selectedRange === 'today' && reservationDate === todayKey)
-          || (selectedRange === 'tomorrow' && reservationDate === tomorrowKey)
+          || (selectedRange === 'usage_today' && reservationDate === todayKey)
+          || (selectedRange === 'created_today' && createdDate === todayKey)
+          || (selectedRange === 'usage_tomorrow' && reservationDate === tomorrowKey)
           || (selectedRange === 'custom' && selectedDate && reservationDate === selectedDate);
         const statusMatched = selectedStatus === 'all' || reservationStatus === selectedStatus;
         const queryMatched = !query || String(reservation.reservation_number || '').toLowerCase().includes(query);
         return rangeMatched && statusMatched && queryMatched;
       })
       .sort((left, right) => {
+        if (selectedRange === 'created_today') {
+          const leftCreatedAt = new Date(left.reservation_created_at || left.created_at || 0).getTime();
+          const rightCreatedAt = new Date(right.reservation_created_at || right.created_at || 0).getTime();
+          return rightCreatedAt - leftCreatedAt;
+        }
         const leftTime = new Date(left.start_at || left.usage_date || 0).getTime();
         const rightTime = new Date(right.start_at || right.usage_date || 0).getTime();
         return leftTime - rightTime;
@@ -647,27 +665,33 @@
     const counts = allReservations.reduce((acc, reservation) => {
       const status = normalizeReservationStatus(reservation.status);
       const dateKey = getReservationDateKey(reservation);
+      const createdDateKey = getReservationCreatedDateKey(reservation);
       acc.total += 1;
       acc[status] += 1;
+      if (createdDateKey === todayKey) {
+        acc.createdToday += 1;
+      }
       if (dateKey === todayKey && status !== 'cancelled') {
-        acc.today += 1;
+        acc.usageToday += 1;
       }
       if (dateKey === tomorrowKey && status !== 'cancelled') {
-        acc.tomorrow += 1;
+        acc.usageTomorrow += 1;
       }
       return acc;
     }, {
       total: 0,
-      today: 0,
-      tomorrow: 0,
+      createdToday: 0,
+      usageToday: 0,
+      usageTomorrow: 0,
       confirmed: 0,
       cancelled: 0
     });
 
     reservationsStatsNode.innerHTML = [
       ['total', '전체 예약', counts.total],
-      ['new', '오늘 예약', counts.today],
-      ['reviewing', '내일 예약', counts.tomorrow],
+      ['new', '오늘 예약접수', counts.createdToday],
+      ['reviewing', '오늘 이용', counts.usageToday],
+      ['interest-ai', '내일 이용', counts.usageTomorrow],
       ['contacted', '확정', counts.confirmed],
       ['closed', '취소', counts.cancelled]
     ].map(([key, label, count]) => `
@@ -707,6 +731,7 @@
             <span class="admin-community-status admin-community-status-${escapeHtml(status)}">${escapeHtml(labels[status] || status)}</span>
           </div>
           <dl class="admin-community-meta admin-reservation-meta">
+            <div><dt>예약접수</dt><dd>${escapeHtml(formatDate(reservation.reservation_created_at || reservation.created_at) || '-')}</dd></div>
             <div><dt>이용일</dt><dd>${escapeHtml(formatDateOnly(reservation.usage_date || reservation.start_at) || '-')}</dd></div>
             <div><dt>시작</dt><dd>${escapeHtml(getReservationStartText(reservation) || '-')}</dd></div>
             <div><dt>종료</dt><dd>${escapeHtml(getReservationEndText(reservation) || '-')}</dd></div>
@@ -724,7 +749,7 @@
 
   const renderVisibleReservations = () => {
     if (reservationsDateFilterWrap) {
-      reservationsDateFilterWrap.hidden = (reservationsRangeFilter?.value || 'today') !== 'custom';
+      reservationsDateFilterWrap.hidden = (reservationsRangeFilter?.value || 'usage_today') !== 'custom';
     }
     const visibleReservations = getVisibleReservations();
     renderReservations(visibleReservations);

@@ -7866,7 +7866,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 }
 .admin-dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: .8rem;
   margin-top: 1rem;
 }
@@ -7912,6 +7912,10 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 .admin-dashboard-stat-reservations {
   border-color: #d8c7a0;
   background: linear-gradient(180deg, #fffaf1 0%, #f8f0de 100%);
+}
+.admin-dashboard-stat-usage {
+  border-color: #9ecfbc;
+  background: linear-gradient(180deg, #effbf6 0%, #e2f5ec 100%);
 }
 .admin-dashboard-notes {
   display: grid;
