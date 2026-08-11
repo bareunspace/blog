@@ -530,6 +530,7 @@ script_version: 20260811-6
   "supabaseUrl": {{ site.supabase_url | jsonify }},
   "supabaseAnonKey": {{ site.supabase_anon_key | jsonify }},
   "allowedAdmins": {{ site.admin_allowed_emails | jsonify }},
+  "siteUrl": {{ site.url | jsonify }},
   "loginPath": {{ '/admin-login.html' | relative_url | jsonify }},
   "dashboardPath": {{ '/admin.html' | relative_url | jsonify }}
 }

@@ -15,6 +15,7 @@
   const config = parseConfig();
   const supabaseUrl = (config.supabaseUrl || '').trim();
   const supabaseAnonKey = (config.supabaseAnonKey || '').trim();
+  const siteUrl = (config.siteUrl || window.location.origin).trim();
   const loginPath = config.loginPath || '/admin-login.html';
   const dashboardPath = config.dashboardPath || '/admin.html';
   const allowedAdmins = Array.isArray(config.allowedAdmins)
@@ -66,6 +67,15 @@
     window.location.replace(path);
   };
 
+  const getRecoveryParams = () => {
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    return {
+      isRecovery: hashParams.get('type') === 'recovery',
+      accessToken: hashParams.get('access_token') || '',
+      refreshToken: hashParams.get('refresh_token') || ''
+    };
+  };
+
   const signOutAndGoLogin = async (message) => {
     await client.auth.signOut();
     const loginUrl = new URL(loginPath, window.location.origin);
@@ -89,6 +99,14 @@
   const boot = async () => {
     syncLoginReason();
 
+    const recoveryParams = getRecoveryParams();
+    if (recoveryParams.isRecovery && recoveryParams.accessToken && recoveryParams.refreshToken) {
+      await client.auth.setSession({
+        access_token: recoveryParams.accessToken,
+        refresh_token: recoveryParams.refreshToken
+      });
+    }
+
     const { data, error } = await client.auth.getUser();
     if (error && isDashboardPage) {
       await signOutAndGoLogin('로그인 세션을 확인할 수 없어 다시 로그인해 주세요.');
@@ -100,12 +118,65 @@
     const authorized = currentUser && isAllowedAdmin(email);
 
     if (isLoginPage) {
+      const form = document.getElementById('adminLoginForm');
+      const resetForm = document.getElementById('adminPasswordResetForm');
+
+      if (recoveryParams.isRecovery && recoveryParams.accessToken) {
+        if (!currentUser) {
+          showStatus('비밀번호 재설정 세션을 확인하지 못했습니다. 리셋 메일을 다시 요청해 주세요.');
+          return;
+        }
+
+        if (!isAllowedAdmin(email)) {
+          await client.auth.signOut();
+          showStatus('관리자 권한이 없는 계정입니다.');
+          return;
+        }
+
+        if (form) {
+          form.hidden = true;
+        }
+        if (resetForm) {
+          resetForm.hidden = false;
+          resetForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const passwordInput = document.getElementById('adminNewPassword');
+            const confirmInput = document.getElementById('adminNewPasswordConfirm');
+            const passwordValue = passwordInput?.value || '';
+            const confirmValue = confirmInput?.value || '';
+
+            if (passwordValue.length < 8) {
+              showStatus('새 비밀번호는 8자 이상으로 입력해 주세요.');
+              return;
+            }
+
+            if (passwordValue !== confirmValue) {
+              showStatus('새 비밀번호와 확인 입력이 일치하지 않습니다.');
+              return;
+            }
+
+            const { error: updateError } = await client.auth.updateUser({
+              password: passwordValue
+            });
+
+            if (updateError) {
+              showStatus('비밀번호를 저장하지 못했습니다. 리셋 링크가 만료되었으면 다시 요청해 주세요.');
+              return;
+            }
+
+            await signOutAndGoLogin('비밀번호가 변경되었습니다. 새 비밀번호로 다시 로그인해 주세요.');
+          });
+        }
+        showStatus('새 비밀번호를 입력해 주세요.', 'success');
+        return;
+      }
+
       if (authorized) {
         goTo(dashboardPath);
         return;
       }
 
-      const form = document.getElementById('adminLoginForm');
       if (!form) {
         return;
       }
@@ -194,7 +265,7 @@
             return;
           }
 
-          const resetUrl = new URL(loginPath, window.location.origin);
+          const resetUrl = new URL(loginPath, siteUrl);
           const { error: resetError } = await client.auth.resetPasswordForEmail(targetEmail, {
             redirectTo: resetUrl.toString()
           });
