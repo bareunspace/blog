@@ -1,10 +1,3 @@
-{% if page.collection == "posts" %}
-  {% unless content contains 'post-reactions' %}
-    {% unless content contains 'post-tags.html' %}
-      {% include post-tags.html %}
-    {% endunless %}
-  {% endunless %}
-{% endif %}
 <footer>
   <a href="{{ '/' | relative_url }}" class="footer-logo-link"><p class="footer-logo"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">바른자리</span></p></a>
   <p class="footer-logo-note">필요할 때 온전히 나에게 집중하는 개인시간 플랫폼 {% if page.page_id == "about" %}<span class="footer-story-link" aria-current="page">브랜드 스토리</span>{% else %}<a href="{{ '/about.html' | relative_url }}" class="footer-story-link">브랜드 스토리</a>{% endif %} · {% if page.page_id == "contact" %}<span class="footer-story-link" aria-current="page">문의·이용안내</span>{% else %}<a href="{{ '/contact.html' | relative_url }}" class="footer-story-link">문의·이용안내</a>{% endif %}</p>
