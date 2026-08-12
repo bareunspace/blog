@@ -24,7 +24,7 @@ tags:
   - 신중동
 permalink: /posts/online-aptitude-test-space/
 canonical: https://bareunjari.com/posts/online-aptitude-test-space/
-date: 2026-08-13 08:35:00 +0900
+date: 2026-08-13 08:25:00 +0900
 ---
 
 <main class="about-page">
