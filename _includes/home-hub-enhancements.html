@@ -74,10 +74,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (priceCards.length > 1) {
-      var allnightLabel = priceCards[1].querySelector('.price-label');
-      var allnightDescs = priceCards[1].querySelectorAll('.price-desc');
-      if (allnightLabel) allnightLabel.textContent = '올나잇 · 00:00 - 06:00';
-      if (allnightDescs.length > 0) allnightDescs[0].innerHTML = '· 자정부터 오전 6시까지 6시간 연속 이용<br />· 과제·마감·편집·야간 집중 작업에 활용';
+      var studyCard = priceCards[1];
+      var studyBadge = studyCard.querySelector('.price-badge');
+      var studyLabel = studyCard.querySelector('.price-label');
+      var studyAmount = studyCard.querySelector('.price-amount');
+      var studyDescs = studyCard.querySelectorAll('.price-desc');
+      if (studyBadge) studyBadge.textContent = '3~6명 추천';
+      if (studyLabel) studyLabel.textContent = '3시간 팀 스터디 · 소모임';
+      if (studyAmount) studyAmount.innerHTML = '30,000<span class="price-unit">원 / 3시간</span>';
+      if (studyDescs.length > 0) studyDescs[0].innerHTML = '· 팀 스터디 · 팀플 · 발표 준비 · 영어 스터디<br />· 말하고 토론하며 함께 준비하는 프라이빗 팀 공간';
+      studyCard.setAttribute('href', 'https://booking.naver.com/booking/10/bizes/1663159/items/7861240');
+      studyCard.setAttribute('data-cta', 'price_study_group');
+      studyCard.setAttribute('aria-label', '스터디·소모임 3시간 30,000원 예약하기');
     }
 
     if (policyCards.length > 0) {
