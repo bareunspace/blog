@@ -26,7 +26,7 @@ tags:
   - 신중동
 canonical: https://bareunjari.com/posts/group-study-3-hours/
 permalink: /posts/group-study-3-hours/
-date: 2026-08-13 05:00:00 +0900
+date: 2026-08-12 19:10:00 +0900
 og_image: https://bareunjari.com/images/bareunjari-group-study-3hours-main.webp
 og_image_alt: 네 명이 테이블에 둘러앉아 노트북과 교재를 펼치고 대화하며 공부하는 그룹 스터디 모습
 og_image_width: 1536
