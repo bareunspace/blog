@@ -38,6 +38,68 @@ document.addEventListener('DOMContentLoaded', function () {
     if (buttons) buttons.insertAdjacentElement('beforebegin', role); else hero.appendChild(role);
   }
 
+  var toc = main.querySelector('.guide-toc');
+  if (toc && path !== '/posts/regular-study-space-signals/') {
+    var tocStyle = document.createElement('style');
+    tocStyle.textContent = '.about-page .guide-toc{position:sticky!important;top:calc(var(--study-header-height,62px) + 10px)!important;z-index:95!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.about-page .guide-toc-inner a.is-active,.about-page .guide-toc-inner a[aria-current="location"]{background:#315fa9!important;color:#fff!important;font-weight:700!important;box-shadow:0 5px 14px rgba(49,95,169,.22)!important}@media(max-width:760px){.about-page .guide-toc{top:calc(var(--study-header-height,62px) + 8px)!important}}';
+    document.head.appendChild(tocStyle);
+
+    var links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    var items = links.map(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      return { link: link, section: document.getElementById(id) };
+    }).filter(function (item) { return item.section; });
+
+    if (items.length) {
+      var root = document.documentElement;
+      var header = document.querySelector('header');
+      var raf = 0;
+      var lastActive = '';
+
+      function gap() { return window.innerWidth <= 760 ? 8 : 10; }
+      function metrics() {
+        var hh = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+        var th = Math.ceil(toc.getBoundingClientRect().height);
+        root.style.setProperty('--study-header-height', hh + 'px');
+        root.style.setProperty('--study-toc-offset', (hh + gap() + th + 18) + 'px');
+      }
+      function activate(item) {
+        if (!item || item.section.id === lastActive) return;
+        lastActive = item.section.id;
+        items.forEach(function (entry) {
+          var on = entry === item;
+          entry.link.classList.toggle('is-active', on);
+          if (on) {
+            entry.link.setAttribute('aria-current', 'location');
+            if (window.innerWidth <= 760) entry.link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            entry.link.removeAttribute('aria-current');
+          }
+        });
+      }
+      function updateActive() {
+        raf = 0;
+        var hh = header ? header.getBoundingClientRect().height : 0;
+        var marker = hh + gap() + toc.getBoundingClientRect().height + 24;
+        var current = items[0];
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].section.getBoundingClientRect().top <= marker) current = items[i];
+          else break;
+        }
+        activate(current);
+      }
+      function schedule() { if (!raf) raf = requestAnimationFrame(updateActive); }
+
+      items.forEach(function (item) {
+        item.link.addEventListener('click', function () { activate(item); });
+      });
+      metrics();
+      updateActive();
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', function () { metrics(); schedule(); });
+    }
+  }
+
   if (!document.getElementById('study-series-links')) {
     var section = document.createElement('section');
     section.id = 'study-series-links';
