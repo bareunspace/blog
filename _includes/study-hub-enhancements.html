@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!stickyToc) return;
 
   var style = document.createElement('style');
-  style.textContent = '.study-hub .guide-toc{position:sticky!important;top:calc(var(--study-header-height,62px) + 10px)!important;z-index:95!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.study-hub .guide-toc-inner a.is-active,.study-hub .guide-toc-inner a[aria-current="location"]{background:#315fa9!important;color:#fff!important;font-weight:700!important;box-shadow:0 5px 14px rgba(49,95,169,.22)!important}@media(max-width:760px){.study-hub .guide-toc{top:calc(var(--study-header-height,62px) + 8px)!important}}';
+  style.textContent = '.study-hub .guide-toc{position:sticky!important;top:calc(var(--study-header-height,62px) + 10px)!important;z-index:95!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.study-hub .guide-toc-inner a.is-active,.study-hub .guide-toc-inner a[aria-current="location"]{background:#2f6b4f!important;color:#fff!important;font-weight:700!important;box-shadow:0 5px 14px rgba(47,107,79,.22)!important}@media(max-width:760px){.study-hub .guide-toc{top:calc(var(--study-header-height,62px) + 8px)!important}}';
   document.head.appendChild(style);
 
   var links = Array.from(stickyToc.querySelectorAll('a[href^="#"]'));
