@@ -1,128 +1,27 @@
-{% if page.url == '/posts/regular-study-space-signals/' %}
-  {% include regular-study-toc-enhancements.html %}
-{% endif %}
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var main = document.querySelector('main.about-page');
   if (!main) return;
   var path = window.location.pathname;
-  var studyPaths = [
-    '/posts/college-team-project-space/',
-    '/posts/study-space-for-presentation-discussion-project/',
-    '/posts/private-space-for-study-groups/',
-    '/posts/one-person-study-room/',
-    '/posts/tutoring-space-guide-for-teachers/',
-    '/posts/bucheon-small-group-space/'
-  ];
+  var studyPaths = ['/posts/college-team-project-space/','/posts/study-space-for-presentation-discussion-project/','/posts/private-space-for-study-groups/','/posts/one-person-study-room/','/posts/tutoring-space-guide-for-teachers/','/posts/bucheon-small-group-space/','/posts/regular-study-space-signals/','/posts/group-study-3-hours/'];
   if (studyPaths.indexOf(path) === -1) return;
 
   var hero = main.querySelector('#home .section-inner');
   if (hero && !hero.querySelector('[data-hub-role-note]')) {
-    var role = document.createElement('p');
-    role.setAttribute('data-hub-role-note', 'true');
-    role.className = 'section-desc';
-    role.style.marginTop = '1rem';
-    if (path === '/posts/college-team-project-space/') {
-      role.innerHTML = '<strong>이 글의 역할:</strong> 대학생 팀플 장소를 고르는 비교형 가이드입니다. 프로젝트형 학습 자체가 궁금하다면 토론·프로젝트 가이드로 이어집니다.';
-    } else if (path === '/posts/study-space-for-presentation-discussion-project/') {
-      role.innerHTML = '<strong>이 글의 역할:</strong> 발표·토론을 포함한 프로젝트형 학습의 공간 사용법을 설명합니다. 발표 자체를 반복 연습하는 목적은 연습·리허설 허브에서 따로 다룹니다.';
-    } else if (path === '/posts/private-space-for-study-groups/' || path === '/posts/bucheon-small-group-space/') {
-      role.innerHTML = '<strong>이 글의 역할:</strong> 두 명 이상이 함께 공부하고 자료를 나누는 그룹 스터디·소모임 상황을 다룹니다.';
-    } else if (path === '/posts/one-person-study-room/') {
-      role.innerHTML = '<strong>이 글의 역할:</strong> 혼자 단독으로 공부·과제·자료정리에 집중할 공간을 고르는 가이드입니다. 면접은 <a href="/interview/">면접 허브</a>, 독백·대사·셀프테이프 같은 반복 연습은 <a href="/practice/">연습·리허설 허브</a>에서 더 자세히 다룹니다.';
-    } else if (path === '/posts/tutoring-space-guide-for-teachers/') {
-      role.innerHTML = '<strong>이 글의 역할:</strong> 교사·튜터가 소규모 수업이나 설명 중심 학습을 진행할 공간을 고르는 활용형 가이드입니다.';
-    }
-    var buttons = hero.querySelector('.hero-btns');
-    if (buttons) buttons.insertAdjacentElement('beforebegin', role); else hero.appendChild(role);
+    var role = document.createElement('p'); role.setAttribute('data-hub-role-note','true'); role.className='section-desc'; role.style.marginTop='1rem';
+    if(path==='/posts/college-team-project-space/') role.innerHTML='<strong>이 글의 역할:</strong> 대학생 팀플·프로젝트를 위해 장소를 비교하고 고르는 기준에 집중합니다. 3시간을 실제로 어떻게 나눠 쓸지는 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법</a>에서 이어서 볼 수 있습니다.';
+    else if(path==='/posts/study-space-for-presentation-discussion-project/') role.innerHTML='<strong>이 글의 역할:</strong> 발표·토론을 포함한 프로젝트형 학습의 공간 사용법을 설명합니다. 발표 자체를 반복 연습하는 목적은 <a href="/practice/">연습·리허설 허브</a>에서 따로 다룹니다.';
+    else if(path==='/posts/private-space-for-study-groups/'||path==='/posts/bucheon-small-group-space/') role.innerHTML='<strong>이 글의 역할:</strong> 두 명 이상이 함께 공부할 때 왜 독립된 공간이 필요한지에 집중합니다. 실제 3시간 운영 흐름은 <a href="/posts/group-study-3-hours/">3시간 그룹 스터디 가이드</a>에서 확인할 수 있습니다.';
+    else if(path==='/posts/one-person-study-room/') role.innerHTML='<strong>이 글의 역할:</strong> 혼자 단독으로 공부·과제·자료정리에 집중할 공간을 고르는 가이드입니다. 팀으로 말하면서 공부한다면 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 가이드</a>가 더 가깝습니다.';
+    else if(path==='/posts/tutoring-space-guide-for-teachers/') role.innerHTML='<strong>이 글의 역할:</strong> 교사·튜터가 소규모 수업이나 설명 중심 학습을 진행할 공간을 고르는 활용형 가이드입니다.';
+    else if(path==='/posts/regular-study-space-signals/') role.innerHTML='<strong>이 글의 역할:</strong> 매주·격주 반복해서 만나는 스터디가 장소를 바꿀 시점을 판단하는 가이드입니다. 모임 당일 3시간 활용법은 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 가이드</a>로 이어집니다.';
+    else if(path==='/posts/group-study-3-hours/') role.innerHTML='<strong>이 글의 역할:</strong> 그룹 스터디의 3시간을 각자 집중 → 설명·토론 → 다음 목표 정리로 실제 활용하는 방법과 비용을 설명합니다. 정기 모임의 장소 선택은 <a href="/posts/regular-study-space-signals/">정기 스터디 장소 가이드</a>에서 따로 다룹니다.';
+    var buttons=hero.querySelector('.hero-btns'); if(buttons) buttons.insertAdjacentElement('beforebegin',role); else hero.appendChild(role);
   }
 
-  var toc = main.querySelector('.guide-toc');
-  if (toc && path !== '/posts/regular-study-space-signals/') {
-    var tocStyle = document.createElement('style');
-    tocStyle.textContent = '.about-page .guide-toc{position:sticky!important;top:calc(var(--study-header-height,62px) + 10px)!important;z-index:95!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.about-page .guide-toc-inner a.is-active,.about-page .guide-toc-inner a[aria-current="location"]{background:#2f6b4f!important;color:#fff!important;font-weight:700!important;box-shadow:0 5px 14px rgba(47,107,79,.22)!important}@media(max-width:760px){.about-page .guide-toc{top:calc(var(--study-header-height,62px) + 8px)!important}}';
-    document.head.appendChild(tocStyle);
-
-    var links = Array.from(toc.querySelectorAll('a[href^="#"]'));
-    var items = links.map(function (link) {
-      var id = link.getAttribute('href').slice(1);
-      return { link: link, section: document.getElementById(id) };
-    }).filter(function (item) { return item.section; });
-
-    if (items.length) {
-      var root = document.documentElement;
-      var header = document.querySelector('header');
-      var raf = 0;
-      var lastActive = '';
-
-      function gap() { return window.innerWidth <= 760 ? 8 : 10; }
-      function metrics() {
-        var hh = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-        var th = Math.ceil(toc.getBoundingClientRect().height);
-        root.style.setProperty('--study-header-height', hh + 'px');
-        root.style.setProperty('--study-toc-offset', (hh + gap() + th + 18) + 'px');
-      }
-      function activate(item) {
-        if (!item || item.section.id === lastActive) return;
-        lastActive = item.section.id;
-        items.forEach(function (entry) {
-          var on = entry === item;
-          entry.link.classList.toggle('is-active', on);
-          if (on) {
-            entry.link.setAttribute('aria-current', 'location');
-            if (window.innerWidth <= 760) entry.link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          } else {
-            entry.link.removeAttribute('aria-current');
-          }
-        });
-      }
-      function updateActive() {
-        raf = 0;
-        var hh = header ? header.getBoundingClientRect().height : 0;
-        var marker = hh + gap() + toc.getBoundingClientRect().height + 24;
-        var current = items[0];
-        for (var i = 0; i < items.length; i++) {
-          if (items[i].section.getBoundingClientRect().top <= marker) current = items[i];
-          else break;
-        }
-        activate(current);
-      }
-      function schedule() { if (!raf) raf = requestAnimationFrame(updateActive); }
-
-      items.forEach(function (item) {
-        item.link.addEventListener('click', function () { activate(item); });
-      });
-      metrics();
-      updateActive();
-      window.addEventListener('scroll', schedule, { passive: true });
-      window.addEventListener('resize', function () { metrics(); schedule(); });
-    }
-  }
-
-  if (!document.getElementById('study-series-links')) {
-    var section = document.createElement('section');
-    section.id = 'study-series-links';
-    section.className = 'guide-summary-section';
-    section.setAttribute('aria-label', '스터디·소모임 이어서 보기');
-    section.innerHTML = [
-      '<div class="section-inner">',
-      '<div class="interview-flow-heading">',
-      '<p class="section-label">Study Series</p>',
-      '<h2 class="section-title">공부 방식에 맞는 다음 가이드</h2>',
-      '<p>스터디·소모임 허브는 팀플·프로젝트, 그룹 스터디, 1인 집중 학습을 서로 다른 사용 상황으로 나눠 안내합니다.</p>',
-      '</div>',
-      '<div class="about-highlight-grid">',
-      '<article class="about-highlight-card"><h3>대학생 팀플·프로젝트</h3><p>학교·카페·스터디카페·프라이빗 스터디룸을 비교하고 팀 프로젝트 장소를 고르는 기준입니다.</p><p><a href="/posts/college-team-project-space/">팀플 장소 가이드 →</a></p></article>',
-      '<article class="about-highlight-card"><h3>함께 공부하기</h3><p>두 명 이상이 질문하고 설명하고 자료를 함께 정리하는 그룹 스터디 상황을 다룹니다.</p><p><a href="/posts/private-space-for-study-groups/">그룹 스터디 가이드 →</a></p></article>',
-      '<article class="about-highlight-card"><h3>혼자 집중하기</h3><p>공용 좌석보다 혼자 단독으로 공부하거나 과제·자료 정리에 집중할 방이 필요한 경우입니다.</p><p><a href="/posts/one-person-study-room/">1인 스터디룸 가이드 →</a></p></article>',
-      '</div>',
-      '<div class="hero-btns" style="margin-top:1.5rem;">',
-      '<a href="/study/" class="btn-outline">스터디·소모임 허브</a>',
-      '<a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">스터디 시간 확인하기</a>',
-      '</div>',
-      '</div>'
-    ].join('');
+  if(!document.getElementById('study-series-links')){
+    var section=document.createElement('section'); section.id='study-series-links'; section.className='guide-summary-section'; section.setAttribute('aria-label','스터디·소모임 이어서 보기');
+    section.innerHTML='<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Study Series</p><h2 class="section-title">지금 상황에 맞는 다음 가이드</h2><p>팀플 장소 선택, 그룹 스터디 3시간 운영, 정기 모임 장소, 1인 집중 학습을 서로 다른 상황으로 나눠 안내합니다.</p></div><div class="about-highlight-grid"><article class="about-highlight-card"><h3>팀플 장소를 고르는 중이라면</h3><p>학교·카페·스터디카페·프라이빗 공간을 비교해 프로젝트 장소를 고르는 기준입니다.</p><p><a href="/posts/college-team-project-space/">대학생 팀플 장소 가이드 →</a></p></article><article class="about-highlight-card"><h3>팀으로 3시간 공부한다면</h3><p>각자 집중하고 질문·설명·토론한 뒤 다음 목표를 정리하는 실제 3시간 흐름입니다.</p><p><a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법 →</a></p></article><article class="about-highlight-card"><h3>매주 반복해서 만난다면</h3><p>장소를 매번 다시 찾거나 대화·테이블 때문에 흐름이 끊길 때 확인할 기준입니다.</p><p><a href="/posts/regular-study-space-signals/">정기 스터디 장소 가이드 →</a></p></article><article class="about-highlight-card"><h3>혼자 집중해야 한다면</h3><p>공용 좌석보다 혼자 단독으로 공부하거나 과제·자료정리에 집중할 방이 필요한 경우입니다.</p><p><a href="/posts/one-person-study-room/">1인 스터디룸 가이드 →</a></p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/study/" class="btn-outline">스터디·소모임 전체 가이드</a><a href="/booking/" class="btn-primary">스터디 시간 확인하기</a></div></div>';
     main.appendChild(section);
   }
 });
