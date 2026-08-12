@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
       cards[1].querySelector('p').textContent = '두 명 이상이 같은 목표를 준비하며 질문하고 설명하고 자료를 함께 정리하는 그룹 스터디 시간.';
       var oldLink1 = cards[1].querySelector('p:last-child a');
       if (oldLink1) oldLink1.parentNode.remove();
-      cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/private-space-for-study-groups/">그룹 스터디 공간 가이드 →</a></p>');
+      cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법 →</a></p>');
 
       cards[2].querySelector('span').textContent = '03';
       cards[2].querySelector('h2').textContent = '혼자 집중하기';
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var chips = flow.querySelector('.study-situation-chips');
-    if (chips) chips.innerHTML = '<a href="/posts/college-team-project-space/">대학생 팀플</a><a href="/posts/study-space-for-presentation-discussion-project/">토론·프로젝트</a><a href="/posts/private-space-for-study-groups/">그룹 스터디</a><a href="/posts/one-person-study-room/">1인 스터디</a><a href="#booking">예약</a>';
+    if (chips) chips.innerHTML = '<a href="/posts/college-team-project-space/">대학생 팀플</a><a href="/posts/study-space-for-presentation-discussion-project/">토론·프로젝트</a><a href="/posts/group-study-3-hours/">3시간 스터디</a><a href="/posts/one-person-study-room/">1인 스터디</a><a href="#booking">예약</a>';
   }
 
   var series = document.getElementById('study-series');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var focus = document.createElement('section');
     focus.id = 'study-project-focus';
     focus.className = 'guide-summary-section study-surface-soft';
-    focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">College Team Project</p><h2 class="section-title">대학생 팀플, 장소를 고르는 것부터 프로젝트의 일부입니다</h2><p>짧은 회의라면 학교나 카페도 충분할 수 있습니다. 하지만 의견을 맞추고, 노트북 화면을 함께 보고, 결과물을 만들어야 한다면 공간 선택 기준이 달라집니다.</p></div><div class="about-principle-grid"><article class="about-principle-item" data-step="01"><h3>장소 고르기</h3><p>학교·카페·스터디카페·프라이빗 스터디룸 중 오늘 해야 할 일에 맞는 곳을 고릅니다.</p></article><article class="about-principle-item" data-step="02"><h3>역할과 방향 맞추기</h3><p>과제 요구사항을 확인하고 팀원별 역할과 결과물의 방향을 함께 정합니다.</p></article><article class="about-principle-item" data-step="03"><h3>결과물 만들기</h3><p>자료와 노트북을 펼쳐 놓고 문서, 조사 결과, 프로젝트 결과물을 함께 완성합니다.</p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/college-team-project-space/" class="btn-primary">대학생 팀플 장소 가이드</a><a href="/posts/study-space-for-presentation-discussion-project/" class="btn-outline">토론·프로젝트 학습 가이드</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디 시간 확인하기</a></div></div>';
+    focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">College Team Project</p><h2 class="section-title">대학생 팀플, 장소를 고르는 것부터 프로젝트의 일부입니다</h2><p>짧은 회의라면 학교나 카페도 충분할 수 있습니다. 하지만 의견을 맞추고, 노트북 화면을 함께 보고, 결과물을 만들어야 한다면 공간 선택 기준이 달라집니다.</p></div><div class="about-principle-grid"><article class="about-principle-item" data-step="01"><h3>장소 고르기</h3><p>학교·카페·스터디카페·프라이빗 스터디룸 중 오늘 해야 할 일에 맞는 곳을 고릅니다.</p></article><article class="about-principle-item" data-step="02"><h3>역할과 방향 맞추기</h3><p>과제 요구사항을 확인하고 팀원별 역할과 결과물의 방향을 함께 정합니다.</p></article><article class="about-principle-item" data-step="03"><h3>결과물 만들기</h3><p>자료와 노트북을 펼쳐 놓고 문서, 조사 결과, 프로젝트 결과물을 함께 완성합니다.</p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/college-team-project-space/" class="btn-primary">대학생 팀플 장소 가이드</a><a href="/posts/group-study-3-hours/" class="btn-outline">3시간 그룹 스터디</a><a href="/posts/study-space-for-presentation-discussion-project/" class="btn-outline">토론·프로젝트 학습 가이드</a></div></div>';
     series.parentNode.insertBefore(focus, series);
   }
 
@@ -62,6 +62,16 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   var toc = hub.querySelector('.guide-toc-inner');
-  if (toc) toc.innerHTML = '<span class="guide-toc-label">스터디룸 허브 탐색 순서</span><a href="#study-flow">목적 선택</a><a href="#study-project-focus">대학생 팀플</a><a href="#study-series">관련 가이드</a><a href="#space-fit">공간 활용</a><a href="#booking">예약</a>';
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">스터디룸 허브 탐색 순서</span><a href="#study-flow">목적 선택</a><a href="#study-project-focus">대학생 팀플</a><a href="/posts/group-study-3-hours/">3시간 스터디</a><a href="#study-series">관련 가이드</a><a href="#space-fit">공간 활용</a><a href="#booking">예약</a>';
+
+  var stickyToc = hub.querySelector('.guide-toc');
+  if (stickyToc) {
+    stickyToc.style.position = 'sticky';
+    stickyToc.style.top = '0';
+    stickyToc.style.zIndex = '40';
+    stickyToc.style.background = 'rgba(255,255,255,0.96)';
+    stickyToc.style.backdropFilter = 'blur(10px)';
+    stickyToc.style.webkitBackdropFilter = 'blur(10px)';
+  }
 });
 </script>
