@@ -4,17 +4,17 @@ title: 그룹 스터디 3시간, 어떻게 활용할까? | 말하면서 공부�
 description: 그룹 스터디 3시간을 어떻게 활용하면 좋을까요? 각자 집중하는 시간부터 문제풀이 설명, 토론, 발표, 다음 목표 정리까지 팀 스터디의 실제 3시간 활용 흐름을 정리했습니다.
 category: 스터디룸
 hub_series: study
-hub_section: related
-hub_order: 5
+hub_section: core
+hub_order: 2
 hub_label: 그룹 스터디 3시간
-hub_kicker: 말하면서 공부하는 팀이라면 3시간을 이렇게 활용해보세요
+hub_kicker: 말하면서 공부하는 팀이라면
 hub_title: 그룹 스터디 3시간, 어떻게 활용할까?
-hub_description: 각자 집중하고 다시 모여 질문하고 설명하고 정리하는 팀 스터디의 3시간 활용법을 소개합니다.
+hub_description: 문제풀이, 토론, 영어회화, 발표, 팀 프로젝트까지. 3시간을 실제로 어떻게 사용할지 흐름으로 정리했습니다.
 hub_tags:
   - 그룹 스터디
   - 3시간 스터디
   - 팀 스터디
-hub_footer: 3시간 활용 가이드
+hub_footer: 추천 이용 3시간
 keywords: 그룹스터디,스터디3시간,팀스터디,부천스터디룸,신중동스터디룸,스터디모임장소,소모임공간,팀플장소,부천공간대여
 tags:
   - 그룹 스터디
