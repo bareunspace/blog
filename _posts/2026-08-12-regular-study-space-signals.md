@@ -68,7 +68,7 @@ extra_css_version: 20260812-2
 
   <section id="booking"><div class="section-inner"><p class="section-label">Next Step</p><h2 class="section-title">이번 모임에서 필요한 시간을 먼저 정해보세요</h2><p class="section-desc">문제 풀이만 할지, 토론과 발표 연습까지 할지 정하면 필요한 시간과 공간을 고르기 쉬워집니다.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">이번 모임 예약하기</a><a href="{{ '/study/' | relative_url }}" class="btn-outline">스터디·소모임 허브</a></div></div></section>
 
-  <section class="post-related" aria-label="함께 읽으면 좋은 글"><div class="section-inner"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul><li><a href="{{ '/posts/private-space-for-study-groups/' | relative_url }}">2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간</a></li><li><a href="{{ '/posts/college-team-project-space/' | relative_url }}">대학생 팀플 장소, 카페에서 하기 어려운 순간</a></li><li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li></ul></div></section>
+  <section class="post-related" aria-label="함께 읽으면 좋은 글"><div class="section-inner"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul><li><a href="{{ '/posts/group-study-3-hours/' | relative_url }}">그룹 스터디 3시간, 어떻게 활용할까?</a></li><li><a href="{{ '/posts/private-space-for-study-groups/' | relative_url }}">2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간</a></li><li><a href="{{ '/posts/college-team-project-space/' | relative_url }}">대학생 팀플 장소, 카페에서 하기 어려운 순간</a></li><li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li></ul></div></section>
 
   {% include post-tags.html %}
 </main>
