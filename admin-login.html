@@ -11,7 +11,7 @@ theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 로그인
 css_version: 20260811-7
-script_version: 20260811-7
+script_version: 20260813-1
 ---
 <style>
   .admin-form[hidden] {
@@ -22,47 +22,29 @@ script_version: 20260811-7
   <section class="admin-card" aria-labelledby="adminLoginTitle">
     <p class="admin-label">Admin Access</p>
     <h1 class="admin-title" id="adminLoginTitle">바른자리 관리자 로그인</h1>
-    <p class="admin-desc">관리자로 등록된 이메일 계정만 접근할 수 있습니다.</p>
+    <p class="admin-desc">Supabase에 관리자로 등록된 이메일 계정만 접근할 수 있습니다.</p>
 
     <form class="admin-form" id="adminLoginForm" novalidate>
-      <div class="admin-form-row">
-        <label for="adminEmail">이메일</label>
-        <input id="adminEmail" name="email" type="email" autocomplete="email" required />
-      </div>
-      <div class="admin-form-row">
-        <label for="adminPassword">비밀번호</label>
-        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
-      </div>
-      <div class="admin-actions">
-        <button class="admin-btn" type="submit">로그인</button>
-      </div>
+      <div class="admin-form-row"><label for="adminEmail">이메일</label><input id="adminEmail" name="email" type="email" autocomplete="email" required /></div>
+      <div class="admin-form-row"><label for="adminPassword">비밀번호</label><input id="adminPassword" name="password" type="password" autocomplete="current-password" required /></div>
+      <div class="admin-actions"><button class="admin-btn" type="submit">로그인</button></div>
     </form>
 
     <form class="admin-form" id="adminPasswordResetForm" novalidate hidden>
-      <div class="admin-form-row">
-        <label for="adminNewPassword">새 비밀번호</label>
-        <input id="adminNewPassword" name="newPassword" type="password" autocomplete="new-password" minlength="8" required />
-      </div>
-      <div class="admin-form-row">
-        <label for="adminNewPasswordConfirm">새 비밀번호 확인</label>
-        <input id="adminNewPasswordConfirm" name="newPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
-      </div>
-      <div class="admin-actions">
-        <button class="admin-btn" type="submit">새 비밀번호 저장</button>
-      </div>
+      <div class="admin-form-row"><label for="adminNewPassword">새 비밀번호</label><input id="adminNewPassword" name="newPassword" type="password" autocomplete="new-password" minlength="8" required /></div>
+      <div class="admin-form-row"><label for="adminNewPasswordConfirm">새 비밀번호 확인</label><input id="adminNewPasswordConfirm" name="newPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required /></div>
+      <div class="admin-actions"><button class="admin-btn" type="submit">새 비밀번호 저장</button></div>
     </form>
 
     <p class="admin-note">일반 이용자 계정은 로그인되어도 관리자 페이지에 접근할 수 없습니다.</p>
     <p class="admin-status" id="adminAuthStatus" hidden></p>
   </section>
 </main>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="adminAuthConfig" type="application/json">
 {
   "supabaseUrl": {{ site.supabase_url | jsonify }},
   "supabaseAnonKey": {{ site.supabase_anon_key | jsonify }},
-  "allowedAdmins": {{ site.admin_allowed_emails | jsonify }},
   "siteUrl": {{ site.url | jsonify }},
   "loginPath": {{ '/admin-login.html' | relative_url | jsonify }},
   "dashboardPath": {{ '/admin.html' | relative_url | jsonify }}
