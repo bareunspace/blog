@@ -83,18 +83,32 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="online-hiring" class="blog-guides-section interview-surface">
+  <section id="online-hiring" class="interview-surface">
     <div class="section-inner">
       <div class="blog-section-heading"><div><p class="section-label">Online Hiring Process</p><h2 class="section-title">온라인 채용 전형 준비</h2></div><p>면접 전후로 이어지는 AI 역량검사와 온라인 인적성검사도 장소와 장비, 방해 없는 시간을 함께 준비해야 할 수 있습니다.</p></div>
-      <div class="blog-guide-grid interview-series-grid" aria-label="온라인 채용 전형 준비 글">
-        <article class="blog-guide-card interview-series-card interview-series-card-support">
-          <a class="blog-guide-image" href="/posts/ai-competency-test-space/" tabindex="-1" aria-hidden="true"><img src="/images/ai-competency-test-space.webp" alt="" loading="lazy" /></a>
-          <div class="blog-guide-content"><p class="blog-card-eyebrow">01 · AI 역량검사</p><p class="interview-series-kicker">카메라·마이크·말하기까지 함께 점검</p><h3><a href="/posts/ai-competency-test-space/">AI 역량검사 어디서 봐야 할까?</a></h3><p>질의응답, 게임, 영상면접이 이어질 수 있는 온라인 역량검사에서 카메라, 마이크, 인터넷, 주변 방해 여부를 확인합니다.</p><div class="interview-series-meta"><span>AI 역량검사</span><span>영상면접</span><span>응시 환경</span></div><div class="blog-card-footer interview-series-footer"><span>온라인 채용 전형</span><a href="/posts/ai-competency-test-space/">읽기 <span aria-hidden="true">→</span></a></div></div>
-        </article>
-        <article class="blog-guide-card interview-series-card interview-series-card-support">
-          <a class="blog-guide-image" href="/posts/online-aptitude-test-space/" tabindex="-1" aria-hidden="true"><img src="/images/online-aptitude-test-space.webp" alt="" loading="lazy" /></a>
-          <div class="blog-guide-content"><p class="blog-card-eyebrow">02 · 온라인 인적성검사</p><p class="interview-series-kicker">독립 공간·PC·스마트폰·인터넷 점검</p><h3><a href="/posts/online-aptitude-test-space/">온라인 인적성검사 어디서 볼까?</a></h3><p>온라인 직무적성검사를 앞두고 독립된 공간, PC와 스마트폰, 사전 환경점검, 검사시간 동안의 집중 환경을 확인합니다.</p><div class="interview-series-meta"><span>온라인 인적성</span><span>GSAT</span><span>집중 환경</span></div><div class="blog-card-footer interview-series-footer"><span>온라인 채용 전형</span><a href="/posts/online-aptitude-test-space/">읽기 <span aria-hidden="true">→</span></a></div></div>
-        </article>
+      <div class="post-related-carousel online-hiring-related" data-related-carousel>
+        <div class="post-related-grid" data-related-track tabindex="0" aria-label="온라인 채용 전형 준비 글">
+          <article class="post-related-card">
+            <a class="post-related-image-link" href="/posts/ai-competency-test-space/" aria-label="AI 역량검사 어디서 봐야 할까?">
+              <img src="/images/ai-competency-test-space.webp" alt="실제 바른자리 공간에서 노트북으로 AI 역량검사를 준비하는 모습" loading="lazy" />
+              <span class="post-related-badge">AI 역량검사</span>
+            </a>
+            <div class="post-related-body">
+              <h3><a href="/posts/ai-competency-test-space/">AI 역량검사 어디서 봐야 할까?</a></h3>
+              <p>카메라·마이크·말하기·인터넷과 주변 방해 여부까지 온라인 역량검사 응시 환경을 점검합니다.</p>
+            </div>
+          </article>
+          <article class="post-related-card">
+            <a class="post-related-image-link" href="/posts/online-aptitude-test-space/" aria-label="온라인 인적성검사 어디서 볼까?">
+              <img src="/images/online-aptitude-test-space.webp" alt="온라인 인적성검사 응시 환경을 준비하는 모습" loading="lazy" />
+              <span class="post-related-badge">온라인 인적성</span>
+            </a>
+            <div class="post-related-body">
+              <h3><a href="/posts/online-aptitude-test-space/">온라인 인적성검사 어디서 볼까?</a></h3>
+              <p>독립된 공간, PC·스마트폰, 사전 환경점검과 검사시간 동안의 집중 환경을 확인합니다.</p>
+            </div>
+          </article>
+        </div>
       </div>
       <p class="section-desc" style="margin-top:1.25rem;">이 영역은 면접준비 허브 안의 보조 주제입니다. 앞으로 온라인 코딩테스트, 채용형 온라인 시험처럼 실제 공간 수요가 확인되는 주제가 쌓이면 별도 채용 전형 묶음으로 확장합니다.</p>
     </div>
@@ -130,5 +144,7 @@ script_version: 20260711-4
   #prep-flow .guide-summary-card > span { margin-bottom: .1rem; flex: 0 0 auto; }
   #prep-flow .guide-summary-card h2, #prep-flow .guide-summary-card p { margin: 0; }
   #prep-flow .guide-summary-card .btn-outline { margin-top: auto; align-self: flex-start; display: inline-flex; white-space: nowrap; }
+  #online-hiring .post-related-grid { padding-bottom: .25rem; }
+  #online-hiring .post-related-card { min-width: min(320px, 82vw); }
   @media (max-width: 760px) { #prep-flow .guide-summary-card { gap: .42rem; } }
 </style>
