@@ -56,8 +56,8 @@ preload_image: images/online-coding-test-place.webp
 <section id="quick-answer" class="guide-summary-section">
   <div class="section-inner">
     <p class="section-label">Quick Answer</p>
-    <h2 class="section-title">집이 조건을 충족한다면 집이 가장 간단합니다.<br />다만 독립성과 연결 상태를 먼저 확인하세요.</h2>
-    <p class="section-desc">온라인 코딩테스트 장소를 고를 때는 장소 이름보다 <strong>시험 안내를 충족하는지, 시험 시간 동안 다른 사람이 들어오지 않는지, 와이파이와 전원이 안정적인지, 노트북과 필요한 장비를 편하게 둘 수 있는지</strong>가 더 중요합니다.</p>
+    <h2 class="section-title">집에서 볼 수 있다면 집도 괜찮습니다.<br />다만 독립성과 연결 상태를 먼저 확인하세요.</h2>
+    <p class="section-desc">온라인 코딩테스트 장소를 고를 때는 장소 이름보다 <strong>시험 안내를 충족하는지, 시험 시간 동안 다른 사람이 들어오지 않는지, 와이파이와 전원이 안정적인지, 노트북과 필요한 장비를 편하게 둘 수 있는지</strong>가 더 중요합니다. 집이 그 조건을 충족한다면 가장 간단한 선택일 수 있습니다.</p>
     <div class="guide-summary-grid">
       <article class="guide-summary-card"><span>01</span><h3>시험 규정</h3><p>카메라, 마이크, 화면 공유, 별도 프로그램, 브라우저 제한부터 먼저 확인합니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h3>독립된 공간</h3><p>시험 도중 출입이나 소음 때문에 흐름이 끊기지 않는 환경인지 살펴봅니다.</p></article>
@@ -74,7 +74,8 @@ preload_image: images/online-coding-test-place.webp
     <a href="#checklist">장소 체크리스트</a>
     <a href="#compare">공간 비교</a>
     <a href="#setup">사전 점검</a>
-    <a href="#bareunjari">외부 공간이 필요하다면</a>
+    <a href="#outside">외부 공간이 필요할 때</a>
+    <a href="#bareunjari">바른자리 이용 안내</a>
     <a href="#faq">FAQ</a>
   </div>
 </nav>
@@ -157,6 +158,15 @@ preload_image: images/online-coding-test-place.webp
   </div>
 </section>
 
+<section id="outside">
+  <div class="section-inner">
+    <h2 class="section-title">집에서 보기 불안하다면<br />공간 이름보다 응시 조건을 먼저 보세요</h2>
+    <p>외부 공간을 찾을 때 가장 먼저 볼 것은 상호나 업종이 아닙니다. 실제 기업이 요구하는 조건을 충족할 수 있는지가 더 중요합니다.</p>
+    <p>한 팀만 사용하는 공간인지, 시험 시간 동안 출입 가능성이 낮은지, 노트북과 충전기를 놓을 책상과 전원이 있는지, 인터넷이 안정적인지, 필요한 경우 카메라를 배치할 수 있는지를 확인해야 합니다.</p>
+    <p>또한 유리문, CCTV, 촬영 범위처럼 기업이나 플랫폼마다 판단이 달라질 수 있는 요소는 공간 운영자의 설명보다 <strong>해당 시험의 안내를 우선</strong>해서 확인하는 편이 안전합니다.</p>
+  </div>
+</section>
+
 <section id="setup">
   <div class="section-inner">
     <h2 class="section-title">시험 당일 처음 세팅하지 말고<br />전날 또는 사전에 실제 환경을 점검하세요</h2>
@@ -206,7 +216,7 @@ preload_image: images/online-coding-test-place.webp
       <div>
         <p class="section-label soft">Before the Test</p>
         <h2>온라인 코딩테스트 당일,<br />장소 때문에 집중을 끊고 싶지 않다면</h2>
-        <p>기업의 응시 안내를 먼저 확인한 뒤 독립성, 와이파이, 전원, 책상, 세팅 시간까지 실제 환경을 미리 점검해보세요. 집에서 조건을 만들기 어렵다면 시험시간 동안만 독립된 공간을 확보하는 방법도 있습니다.</p>
+        <p>기업의 응시 안내를 먼저 확인한 뒤 독립성, 와이파이, 전원, 책상, 세팅 시간까지 실제 환경을 미리 점검해보세요. 집에서 조건을 만들기 어렵다면 시험시간 동안만 독립된 공간을 확보하는 방법도 생각해볼 수 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
