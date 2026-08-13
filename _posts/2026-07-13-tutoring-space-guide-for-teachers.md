@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 집중해서 공부할 조용한 스터디룸 | 신중동역 1분 바른자리
-description: 집이나 카페 대신, 혼자 공부하거나 그룹 스터디하기 좋은 조용한 스터디룸이 필요하신가요? 신중동역 1분 바른자리를 예약해 보세요.
+title: 스터디룸·스터디 장소 고르는 법 | 혼자 공부부터 그룹 스터디까지
+description: 집·카페·스터디카페·프라이빗 공간을 비교해 혼자 공부하거나 그룹 스터디할 장소를 고르는 기준을 정리했습니다. 부천 신중동 스터디룸 선택법과 첫 이용 체크포인트를 확인하세요.
 category: 스터디룸
 hub_series: study
 hub_section: core
 hub_order: 1
 hub_label: 기본 선택 기준
 hub_kicker: 스터디룸을 처음 고를 때 먼저 읽을 글
-hub_title: 집 말고 집중해서 공부할 공간이 필요하다면
-hub_description: 집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 스터디룸 선택 기준과 첫 이용 체크포인트를 정리했습니다.
+hub_title: 스터디룸·스터디 장소, 어디가 좋을까요?
+hub_description: 집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 혼자 공부와 그룹 스터디에 맞는 장소 선택 기준을 정리했습니다.
 hub_tags:
   - 집중 학습
   - 장소 비교
   - 첫 이용
 hub_footer: 스터디룸 기본 가이드
-keywords: 부천스터디룸,신중동스터디룸,스터디룸대여,그룹스터디룸,개인스터디룸,신중동공간대여
+keywords: 부천스터디룸,신중동스터디룸,스터디룸대여,스터디장소,그룹스터디룸,개인스터디룸,혼자공부할곳,스터디모임장소,신중동공간대여
 tags:
   - 신중동 공간대여
   - 스터디룸
@@ -37,16 +37,16 @@ script_version: 20260711-4
 <main class="about-page tutoring-guide">
   <section id="home">
     <div class="section-inner">
-      <p class="section-label">Private Study Room</p>
-      <h1 class="section-title">집 말고 집중해서 공부할 공간이 필요하다면<br />신중동역 1분 바른자리</h1>
-      <p class="section-desc">집에서는 쉽게 흐트러지고 카페는 소음이 신경 쓰인다면, 공부와 그룹 스터디에 맞는 조용한 공간이 필요할 수 있습니다. 필요한 시간만 예약해서 더 안정적으로 집중해 보세요.</p>
+      <p class="section-label">Study Space Guide</p>
+      <h1 class="section-title">스터디룸·스터디 장소,<br />어디가 좋을까요?</h1>
+      <p class="section-desc">혼자 집중할 곳이 필요할 때와 여러 명이 말하며 공부할 때 필요한 환경은 다릅니다. 집·카페·스터디카페·프라이빗 공간을 비교하고, <strong>혼자 공부부터 그룹 스터디까지 목적에 맞는 장소를 고르는 기준</strong>을 확인해 보세요.</p>
       <div class="guide-hero-meta" aria-label="가이드 핵심 내용">
         <span>장소 6종 비교</span>
         <span>선택 기준 6가지</span>
         <span>첫 이용 체크</span>
       </div>
       <div class="hero-btns">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">스터디룸 예약하기</a>
+        <a href="/booking/" class="btn-primary">스터디 시간 확인하기</a>
         <a href="/index.html#gallery" class="btn-outline">실제 공간 사진 보기</a>
       </div>
     </div>
@@ -59,6 +59,7 @@ script_version: 20260711-4
       <a href="#place-comparison">장소 비교</a>
       <a href="#selection-criteria">선택 기준</a>
       <a href="#first-class">첫 이용</a>
+      <a href="#study-by-purpose">목적별 가이드</a>
       <a href="#parent-guide">스터디원 안내</a>
     </div>
   </nav>
@@ -162,7 +163,7 @@ script_version: 20260711-4
         </article>
         <article class="guide-check-item">
           <h3>6. 이용료가 모임 방식에 맞는가</h3>
-          <p>공간대여는 별도로 비용이 발생합니다. 예를 들어 2시간에 1만 원대인 곳도 있고 시간당 요금이 더 높은 곳도 있으니, 한 번 이용할 때의 가격뿐 아니라 매주 이용해도 부담이 없는지, 인원수로 나누면 얼마인지 계산하세요. 일정이 자주 바뀐다면 예약 변경과 취소 규정도 미리 확인해야 합니다.</p>
+          <p>공간대여는 별도로 비용이 발생합니다. 한 번 이용할 때의 가격뿐 아니라 매주 이용해도 부담이 없는지, 인원수로 나누면 얼마인지 계산하세요. 일정이 자주 바뀐다면 예약 변경과 취소 규정도 미리 확인해야 합니다.</p>
         </article>
       </div>
     </div>
@@ -176,6 +177,28 @@ script_version: 20260711-4
         <p>사진만 보고 바로 정기 이용을 결정하기보다 한 번 먼저 모여 보는 것이 좋습니다. 스터디원들이 약속 장소를 쉽게 찾았는지, 마주 앉아 자료를 보기 편했는지, 대화하는 목소리가 부담스럽지 않았는지 확인하세요.</p>
         <p>이용 전후 시간도 실제로 재보세요. 90분 모임이라도 입실 후 자료를 준비하고 마친 뒤 정리하려면 여유 시간이 필요합니다. 예약 종료 시각에 쫓기지 않도록 준비와 정리 시간을 포함해 예약하는 편이 좋습니다.</p>
         <p>첫 모임이 끝난 뒤 스터디원들에게도 장소가 편했는지 물어보세요. 누군가에게 좋은 장소라도 다른 멤버의 이동 시간이 너무 길거나 건물을 찾기 어렵다면 정기 모임 장소로는 맞지 않을 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="study-by-purpose">
+    <div class="section-inner">
+      <p class="guide-kicker">목적별 스터디 가이드</p>
+      <h2 class="section-title">이용 방식이 정해졌다면 더 구체적으로 확인하세요</h2>
+      <p class="section-desc">이 글은 장소를 처음 고르는 기본 가이드입니다. 혼자 이용하는지, 팀으로 3시간을 쓰는지, 매주 반복해서 모이는지에 따라 필요한 기준은 달라집니다.</p>
+      <div class="about-highlight-grid">
+        <article class="about-highlight-card">
+          <h3>혼자 공부하거나 말해야 한다면</h3>
+          <p>화상회의, 스피킹, 발표 연습처럼 혼자지만 소리를 내야 하는 상황은 <a href="/posts/one-person-study-room/">1인 스터디룸 가이드</a>에서 확인하세요.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>팀으로 2~3시간 공부한다면</h3>
+          <p>문제풀이, 토론, 발표, 팀 프로젝트처럼 함께 진행하는 흐름은 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법</a>에서 확인하세요.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>매주 반복해서 만난다면</h3>
+          <p>자리 찾기와 장소 변경이 반복된다면 <a href="/posts/regular-study-space-signals/">정기 스터디 장소 선택 기준</a>을 함께 살펴보세요.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -197,11 +220,11 @@ script_version: 20260711-4
       <p class="guide-kicker">Bareunjari · Sinjung-dong</p>
       <h2 class="section-title">부천 신중동에서 스터디룸을 찾는다면</h2>
       <p class="section-desc">바른자리는 신중동역에서 도보 1분 거리에 있으며, 예약 시간 동안 한 팀이 단독으로 이용하는 프라이빗 개인시간 플랫폼입니다. 테이블과 의자, 와이파이와 콘센트가 준비되어 있어 책과 노트북을 이용한 집중 학습이나 그룹 스터디 시간으로 활용할 수 있습니다.</p>
-      <p class="section-desc">먼저 한 번 예약해 이동 동선과 실제 이용 환경을 확인해 보세요. 반복 이용을 원한다면 희망하는 요일과 시간의 이용 가능 여부를 문의할 수 있습니다. 이용 가격과 규정은 네이버 예약 페이지의 최신 안내를 기준으로 확인해 주세요.</p>
+      <p class="section-desc">먼저 한 번 예약해 이동 동선과 실제 이용 환경을 확인해 보세요. 반복 이용을 원한다면 희망하는 요일과 시간의 이용 가능 여부를 문의할 수 있습니다. 최신 이용 가능 시간과 예약 안내는 예약 페이지에서 확인하세요.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="study_post_booking">스터디 시간 예약 가능 시간 보기</a>
+        <a href="/booking/" class="btn-primary" data-cta="study_post_booking">스터디 시간 확인하기</a>
+        <a href="/study.html" class="btn-outline">스터디·소모임 가이드</a>
         <a href="/index.html#gallery" class="btn-outline">공간 사진 확인하기</a>
-        <a href="/index.html#contact" class="btn-outline">반복 이용 문의하기</a>
       </div>
     </div>
   </section>
