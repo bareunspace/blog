@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var main = document.querySelector('main.about-page');
   if (!main) return;
   var path = window.location.pathname;
+  var shouldShowSeriesLinks =
+    path === '/posts/interview-answer-practice/' ||
+    path === '/posts/video-interview-setup/' ||
+    path === '/posts/interview-30-minutes-before/' ||
+    path === '/posts/1-minute-self-introduction-guide/';
   var hero = main.querySelector('#home .section-inner');
   if (hero && !hero.querySelector('[data-hub-role-note]')) {
     var role = document.createElement('p');
@@ -19,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  if (!document.getElementById('interview-series-links')) {
+  if (shouldShowSeriesLinks && !document.getElementById('interview-series-links')) {
     var section = document.createElement('section');
     section.id = 'interview-series-links';
     section.className = 'guide-summary-section';
