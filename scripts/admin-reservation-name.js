@@ -40,14 +40,14 @@
       editor.className = 'admin-reservation-name-editor';
       editor.dataset.reservationNameEditor = 'true';
       editor.innerHTML = `
-        <div class="admin-form-row admin-reservation-name-row">
-          <label for="reservationCustomerName-${escapeHtml(id)}">관리자 확인 이름</label>
-          <div class="admin-reservation-name-controls">
-            <input id="reservationCustomerName-${escapeHtml(id)}" type="text" data-reservation-customer-name autocomplete="off" placeholder="실명 또는 확인한 이름" value="${escapeHtml(adminName)}" />
-            <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-save-reservation-name>이름 저장</button>
+        <div class="admin-form-row admin-reservation-name-row" style="display:flex;align-items:center;gap:.55rem;flex-wrap:nowrap;">
+          <label for="reservationCustomerName-${escapeHtml(id)}" style="flex:0 0 auto;margin:0;white-space:nowrap;">관리자 확인 이름</label>
+          <div class="admin-reservation-name-controls" style="display:flex;align-items:center;gap:.45rem;flex:1 1 auto;min-width:0;">
+            <input id="reservationCustomerName-${escapeHtml(id)}" type="text" data-reservation-customer-name autocomplete="off" placeholder="실명 또는 확인한 이름" value="${escapeHtml(adminName)}" style="flex:1 1 auto;min-width:0;" />
+            <button class="admin-btn admin-btn-outline admin-btn-small" type="button" data-save-reservation-name style="flex:0 0 auto;white-space:nowrap;">이름 저장</button>
           </div>
-          <p class="admin-community-subcopy" data-reservation-original-name></p>
-        </div>`;
+        </div>
+        <p class="admin-community-subcopy" data-reservation-original-name></p>`;
       const meta = card.querySelector('.admin-reservation-meta');
       if (meta) meta.insertAdjacentElement('beforebegin', editor);
       else card.appendChild(editor);
