@@ -25,7 +25,7 @@ tags:
   - 신중동
 permalink: /posts/online-coding-test-place/
 canonical: https://bareunjari.com/posts/online-coding-test-place/
-date: 2026-08-13 08:40:00 +0900
+date: 2026-08-10 08:40:00 +0900
 og_image: https://bareunjari.com/images/online-coding-test-place.webp
 og_image_alt: "온라인 코딩테스트 장소 선택과 응시 환경 체크리스트"
 preload_image: images/online-coding-test-place.webp
