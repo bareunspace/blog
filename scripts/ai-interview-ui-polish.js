@@ -102,4 +102,29 @@
   if (primaryStart) primaryStart.setAttribute('aria-describedby', 'aiiStartHint');
   const note = document.querySelector('.aii-ux-start-note');
   if (note) note.id = 'aiiStartHint';
+
+  // Keep the AI page focused on interview practice; Daily English remains an optional mode.
+  const heroTitle = document.querySelector('.aii-hero .section-title');
+  if (heroTitle) heroTitle.textContent = 'AI 모의면접 연습';
+  const heroSubtitle = document.querySelector('.aii-hero .hero-subtitle');
+  if (heroSubtitle) heroSubtitle.textContent = '질문을 받고 실제로 말하고, 녹화해 다시 확인하는 면접 연습 도구입니다.';
+
+  document.querySelectorAll('a[href="/interview/"]').forEach((link) => {
+    if (/면접준비 허브/.test(link.textContent)) link.textContent = '면접 허브 보기';
+  });
+  document.querySelectorAll('.aii-result-copy').forEach((copy) => {
+    copy.textContent = copy.textContent.replace('면접준비 허브', '면접 허브');
+  });
+
+  document.querySelectorAll('a[href*="m.place.naver.com/place/2041312316/ticket"]').forEach((link) => {
+    link.href = '/booking/?purpose=interview';
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    if (link.textContent.trim() === '시간 예약') link.textContent = '면접 연습 공간 예약';
+  });
+
+  // Align browser title/description with the page's interview-first positioning.
+  document.title = 'AI 모의면접 연습 | 질문 받고 답하고 녹화하기 | 바른자리';
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
 })();
