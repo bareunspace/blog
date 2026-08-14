@@ -13,8 +13,8 @@ tags:
 hubs:
   - "스터디·소모임"
 description: "대학생 4명이 팀플을 할 때 카페보다 중요한 건 역할분담, 자료정리, 토론, 발표 연습까지 한 흐름으로 이어갈 수 있는 환경입니다. 3시간을 어떻게 쓰면 좋은지 실제 진행 순서와 장소 체크리스트로 정리했습니다."
-permalink: /posts/college-team-project-space/
-canonical: https://bareunjari.com/posts/college-team-project-space/
+permalink: /college-team-project-space/
+canonical: https://bareunjari.com/college-team-project-space/
 og_image: https://bareunjari.com/images/college-team-project-space.webp
 og_image_alt: "대학생 4인 팀플 장소와 3시간 활용법"
 preload_image: images/college-team-project-space.webp
