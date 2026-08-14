@@ -21,6 +21,9 @@ tags:
   - 자격증 시험
   - 개인시간
   - 프라이빗 공간
+hubs:
+  - 시간·공간
+  - 면접준비
 permalink: /posts/online-exam-home-setup/
 canonical: https://bareunjari.com/posts/online-exam-home-setup/
 date: 2026-08-13 07:45:00 +0900
@@ -183,8 +186,8 @@ preload_image: images/online-exam-home-setup.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p>바른자리는 시험 운영기관이나 공식 고사장이 아니며, 시험 응시용 노트북·웹캠·스마트폰 등의 장비를 제공하는 서비스도 아닙니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">시험시간에 맞춰 예약 확인하기</a>
-      <a href="{{ '/time-space/' | relative_url }}" class="btn-outline">시간·공간 글 더 보기</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+      <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
     </div>
   </div>
 </section>
@@ -213,8 +216,8 @@ preload_image: images/online-exam-home-setup.webp
         <p>대청소부터 시작하지 말고 먼저 시험 규정을 확인하세요. 집에서 준비하기 어렵다면 시험에 필요한 몇 시간만 독립된 공간을 확보하는 방법도 비교해볼 수 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
-        <a href="{{ '/time-space/' | relative_url }}" class="btn-outline">시간·공간 글 더 보기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+        <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
       </div>
     </div>
   </div>
