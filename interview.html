@@ -85,7 +85,7 @@ script_version: 20260711-4
 
   <section id="online-hiring" class="interview-surface">
     <div class="section-inner">
-      <div class="blog-section-heading"><div><p class="section-label">Online Hiring Process</p><h2 class="section-title">온라인 채용 전형 준비</h2></div><p>면접 전후로 이어지는 AI 역량검사와 온라인 인적성검사도 장소와 장비, 방해 없는 시간을 함께 준비해야 할 수 있습니다.</p></div>
+      <div class="blog-section-heading"><div><p class="section-label">Online Hiring Process</p><h2 class="section-title">온라인 채용 전형 준비</h2></div><p>면접 전후로 이어지는 AI 역량검사, 온라인 인적성검사, 코딩테스트와 원격감독 시험도 장소와 장비, 방해 없는 시간을 함께 준비해야 할 수 있습니다.</p></div>
       <div class="online-hiring-grid" aria-label="온라인 채용 전형 준비 글">
         <article class="post-related-card">
           <a class="post-related-image-link" href="/posts/ai-competency-test-space/" aria-label="AI 역량검사 어디서 봐야 할까?">
@@ -107,8 +107,28 @@ script_version: 20260711-4
             <p>독립된 공간, PC·스마트폰, 사전 환경점검과 검사시간 동안의 집중 환경을 확인합니다.</p>
           </div>
         </article>
+        <article class="post-related-card">
+          <a class="post-related-image-link" href="/posts/online-coding-test-place/" aria-label="온라인 코딩테스트 어디서 볼까?">
+            <img src="/images/online-coding-test-place.webp" alt="온라인 코딩테스트 장소 선택과 응시 환경 체크리스트" loading="lazy" />
+            <span class="post-related-badge">코딩테스트</span>
+          </a>
+          <div class="post-related-body">
+            <h3><a href="/posts/online-coding-test-place/">온라인 코딩테스트 어디서 볼까?</a></h3>
+            <p>녹화 여부, 와이파이, 전원, 독립 공간과 시험 전 세팅 시간을 함께 점검합니다.</p>
+          </div>
+        </article>
+        <article class="post-related-card">
+          <a class="post-related-image-link" href="/posts/online-exam-home-setup/" aria-label="온라인 시험 집에서 보려면 어디까지 치워야 할까?">
+            <img src="/images/online-exam-home-setup.webp" alt="온라인 감독 시험을 앞두고 책상과 주변을 정리하며 노트북과 스마트폰을 준비하는 모습" loading="lazy" />
+            <span class="post-related-badge">온라인 시험</span>
+          </a>
+          <div class="post-related-body">
+            <h3><a href="/posts/online-exam-home-setup/">온라인 시험, 집에서 보려면 어디까지 치워야 할까?</a></h3>
+            <p>원격감독 시험 전 책상 정리, 카메라 범위, 생활 동선과 장비 조건을 확인합니다.</p>
+          </div>
+        </article>
       </div>
-      <p class="section-desc" style="margin-top:1.25rem;">이 영역은 면접준비 허브 안의 보조 주제입니다. 앞으로 온라인 코딩테스트, 채용형 온라인 시험처럼 실제 공간 수요가 확인되는 주제가 쌓이면 별도 채용 전형 묶음으로 확장합니다.</p>
+      <p class="section-desc" style="margin-top:1.25rem;">이 영역은 면접준비 허브 안의 보조 주제입니다. 면접 대표 글을 중심에 두고, 온라인 시험·취업 전형 글은 응시 환경을 준비하는 하위 묶음으로 연결합니다.</p>
     </div>
   </section>
 
@@ -142,13 +162,20 @@ script_version: 20260711-4
   #prep-flow .guide-summary-card > span { margin-bottom: .1rem; flex: 0 0 auto; }
   #prep-flow .guide-summary-card h2, #prep-flow .guide-summary-card p { margin: 0; }
   #prep-flow .guide-summary-card .btn-outline { margin-top: auto; align-self: flex-start; display: inline-flex; white-space: nowrap; }
-  #online-hiring .online-hiring-grid { display: grid; grid-template-columns: repeat(2, minmax(260px, 300px)); gap: 1.15rem; width: 100%; margin: 0; padding: 0; align-items: start; justify-content: start; }
+  #online-hiring .online-hiring-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; width: 100%; margin: 0; padding: 0; align-items: stretch; }
   #online-hiring .post-related-card { width: 100%; min-width: 0; margin: 0; }
   #online-hiring .post-related-image-link { width: 100%; }
-  #online-hiring .post-related-body { min-width: 0; }
+  #online-hiring .post-related-body { min-width: 0; padding: 1rem; }
+  #online-hiring .post-related-card h3 { font-size: 1rem; line-height: 1.38; }
+  #online-hiring .post-related-card p { font-size: .88rem; line-height: 1.6; }
+  #online-hiring .post-related-image-link { aspect-ratio: 4 / 3; }
+  #online-hiring .post-related-badge { font-size: .72rem; }
+  @media (max-width: 1080px) {
+    #online-hiring .online-hiring-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 0 .35rem; }
+    #online-hiring .post-related-card { flex: 0 0 min(46vw, 300px); scroll-snap-align: start; }
+  }
   @media (max-width: 760px) {
     #prep-flow .guide-summary-card { gap: .42rem; }
-    #online-hiring .online-hiring-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 0 .35rem; }
     #online-hiring .post-related-card { flex: 0 0 min(82vw, 300px); scroll-snap-align: start; }
   }
 </style>

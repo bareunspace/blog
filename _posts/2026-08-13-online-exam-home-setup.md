@@ -14,13 +14,16 @@ hub_tags:
   - 원격감독
   - 개인시간
 hub_footer: 온라인 시험 준비
-keywords: 온라인시험집에서,온라인시험준비,원격감독시험,온라인시험주변정리,온라인시험책상정리,FAT비대면시험,TAT비대면시험,검색광고마케터온라인시험,SNS광고마케터온라인시험,리눅스마스터온라인시험,온라인시험장소,부천프라이빗공간
+keywords: 온라인시험집에서,온라인시험준비,원격감독시험,온라인시험주변정리,온라인시험책상정리,평일낮온라인시험,FAT비대면시험,TAT비대면시험,검색광고마케터온라인시험,SNS광고마케터온라인시험,리눅스마스터온라인시험,대학LMS시험,온라인시험장소,부천프라이빗공간
 tags:
   - 온라인 시험
   - 원격감독
   - 자격증 시험
   - 개인시간
   - 프라이빗 공간
+hubs:
+  - 시간·공간
+  - 면접준비
 permalink: /posts/online-exam-home-setup/
 canonical: https://bareunjari.com/posts/online-exam-home-setup/
 date: 2026-08-13 07:45:00 +0900
@@ -72,6 +75,7 @@ preload_image: images/online-exam-home-setup.webp
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
     <a href="#home-exams">집에서 볼 수 있는 시험</a>
     <a href="#cleanup">왜 주변을 정리해야 하나</a>
+    <a href="#weekday-daytime">평일 낮 변수</a>
     <a href="#checklist">시험 전 정리 체크</a>
     <a href="#people">가족·생활 동선</a>
     <a href="#equipment">장비와 인터넷</a>
@@ -99,6 +103,8 @@ preload_image: images/online-exam-home-setup.webp
     </div>
 
     <p>예를 들어 KAIT의 일부 온라인 시험 안내에서는 <strong>PC 또는 노트북, 웹캠·마이크, 스마트폰 카메라</strong> 등을 준비하도록 하고, 1인 1실이 가능한 자택·기숙사·회사 회의실 등에서 응시하도록 안내합니다.</p>
+    <p>대학 수업에서도 LMS를 통한 온라인 시험이나 원격시험이 진행되는 경우가 있습니다. 모든 학생이 별도 공간을 빌릴 필요는 없지만, 집·기숙사·원룸에서 소음, 인터넷, 카메라 배경, 룸메이트 동선이 불안하다면 시험 시간 동안 방해받지 않는 공간을 따로 확보하는 것도 하나의 선택지가 될 수 있습니다.</p>
+    <p>채용 과정에서 이어지는 온라인 시험이라면 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형 글</a>도 함께 보면 좋습니다. AI 역량검사는 <a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경</a>, 인적성은 <a href="{{ '/posts/online-aptitude-test-space/' | relative_url }}">온라인 인적성검사 장소 기준</a>, 코딩테스트는 <a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 준비 공간</a>에서 따로 정리했습니다.</p>
     <p><strong>중요:</strong> 위 목록은 현재 확인되는 대표 사례입니다. 종목별 시험 방식과 세부 환경 조건은 바뀔 수 있으므로 접수 후 받은 수험자 안내와 공식 공지를 반드시 다시 확인하세요.</p>
   </div>
 </section>
@@ -111,6 +117,16 @@ preload_image: images/online-exam-home-setup.webp
     <p>일부 온라인 시험은 추가 모니터 사용을 제한하고, 응시자가 혼자 있는 공간을 요구하거나, 웹캠과 스마트폰 카메라를 이용해 응시자와 주변 환경을 감독합니다.</p>
     <p>그래서 책상 한쪽만 치우려다가 <strong>카메라에 보이는 범위, 주변 전자기기, 문 주변과 가족 동선까지 손보게 되는 경우</strong>가 생길 수 있습니다.</p>
     <p>시험마다 필요한 정리 범위는 다르지만, 응시자 입장에서는 온라인 시험 한 번을 위해 <strong>사실상 작은 대청소를 하는 것처럼 느껴질 수 있는 이유</strong>입니다.</p>
+  </div>
+</section>
+
+<section id="weekday-daytime">
+  <div class="section-inner">
+    <p class="section-label">Weekday Daytime</p>
+    <h2 class="section-title">평일 낮 시험이<br />오히려 더 애매할 수 있습니다</h2>
+    <p>평일 낮에는 집이 비어 있을 것 같지만, 실제로는 생활 변수가 생기기 쉽습니다. 가족의 재택근무나 통화, 부모님의 생활 동선, 룸메이트의 출입, 택배와 초인종, 청소기 소리, 건물 공사 소음처럼 시험 시간에 맞춰 통제하기 어려운 일이 생길 수 있습니다.</p>
+    <p>기숙사나 원룸처럼 공간이 좁은 환경에서는 책상 주변과 카메라 배경을 분리하기 어렵고, 공용 공간의 소음이나 출입도 신경 쓰일 수 있습니다. 카페는 잠깐 공부하기에는 편해도 온라인 시험에서는 인터넷 안정성, 주변 소음, 카메라 노출, 시험기관의 응시환경 규정 때문에 애매할 수 있습니다.</p>
+    <p>집에서 환경을 안정적으로 만들 수 있다면 집이 가장 편한 선택입니다. 다만 평일 낮 변수까지 계속 신경 써야 한다면, 시험 전체가 아니라 <strong>시험 전 점검과 본시험에 필요한 몇 시간만 방해받지 않는 공간을 확보하는 방법</strong>도 비교해볼 수 있습니다.</p>
   </div>
 </section>
 
@@ -183,8 +199,8 @@ preload_image: images/online-exam-home-setup.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p>바른자리는 시험 운영기관이나 공식 고사장이 아니며, 시험 응시용 노트북·웹캠·스마트폰 등의 장비를 제공하는 서비스도 아닙니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">시험시간에 맞춰 예약 확인하기</a>
-      <a href="{{ '/time-space/' | relative_url }}" class="btn-outline">시간·공간 글 더 보기</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+      <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
     </div>
   </div>
 </section>
@@ -199,6 +215,8 @@ preload_image: images/online-exam-home-setup.webp
       <details><summary>가족이 시험 중 방에 들어오면 문제가 되나요?</summary><p>온라인 감독 시험은 타인이 함께 있는 환경을 제한할 수 있습니다. 시험시간뿐 아니라 신분확인과 환경점검 시간까지 고려해 가족이나 룸메이트에게 미리 알려두는 것이 좋습니다.</p></details>
       <details><summary>CCTV가 있는 외부 공간에서도 시험을 볼 수 있나요?</summary><p>CCTV나 유리벽 등 공간 조건에 대한 기준은 시험마다 다를 수 있습니다. 외부 공간을 사용할 경우 먼저 공간 조건을 확인한 뒤 시험기관의 공식 응시환경 규정과 비교하세요.</p></details>
       <details><summary>FAT·TAT도 집에서 볼 수 있나요?</summary><p>2026년 FAT 1·2급과 TAT 1·2급 시험은 비대면 방식으로 안내되고 있습니다. 다만 시험 방식은 향후 변경될 수 있으므로 실제 응시 회차의 시행계획과 수험자 안내를 다시 확인해야 합니다.</p></details>
+      <details><summary>대학 LMS 원격시험도 외부 공간에서 볼 수 있나요?</summary><p>학교와 과목의 시험 안내에 따라 다릅니다. 집이나 기숙사에서 응시하기 어렵다면 담당 교원이나 LMS 공지의 응시환경 조건을 먼저 확인하고, 필요한 경우 조용한 개인 공간을 비교해볼 수 있습니다.</p></details>
+      <details><summary>평일 낮 온라인 시험은 집에서 보는 게 더 쉽지 않나요?</summary><p>집이 비어 있고 인터넷과 주변 환경을 통제할 수 있다면 집이 가장 편할 수 있습니다. 다만 가족·룸메이트 동선, 택배·초인종, 생활소음, 공사 소음처럼 낮 시간대 변수가 있다면 시험 시간만 독립된 공간을 확보하는 방법도 비교해볼 수 있습니다.</p></details>
       <details><summary>시험시간만큼만 공간을 예약하면 되나요?</summary><p>시험에 따라 본시험 전에 신분확인, 환경점검, 로그인, 장비 확인 시간이 필요합니다. 공식 입실시간과 준비 절차를 확인한 뒤 시험시간보다 여유 있게 공간을 확보하는 편이 좋습니다.</p></details>
     </div>
   </div>
@@ -213,10 +231,24 @@ preload_image: images/online-exam-home-setup.webp
         <p>대청소부터 시작하지 말고 먼저 시험 규정을 확인하세요. 집에서 준비하기 어렵다면 시험에 필요한 몇 시간만 독립된 공간을 확보하는 방법도 비교해볼 수 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
-        <a href="{{ '/time-space/' | relative_url }}" class="btn-outline">시간·공간 글 더 보기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+        <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="exam-cluster">
+  <div class="section-inner">
+    <p class="section-label">함께 볼 글</p>
+    <h2 class="section-title">채용 전형 온라인 시험은<br />장소 기준을 따로 확인하세요</h2>
+    <p class="section-desc">자격시험, 대학 LMS 시험, 채용 전형은 규정이 다를 수 있습니다. 채용 과정의 온라인 전형이라면 아래 글도 함께 확인하세요.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>AI 역량검사</span><h3><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경 체크</a></h3><p>영상답변, 게임, 카메라와 마이크까지 함께 확인해야 하는 온라인 역량검사 준비 글입니다.</p></article>
+      <article class="guide-summary-card"><span>인적성</span><h3><a href="{{ '/posts/online-aptitude-test-space/' | relative_url }}">온라인 인적성검사 장소 체크</a></h3><p>PC와 스마트폰, 독립된 응시 장소, 사전 예비소집을 확인해야 하는 검사라면 참고하세요.</p></article>
+      <article class="guide-summary-card"><span>코딩테스트</span><h3><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 체크</a></h3><p>와이파이, 전원, 책상, 프로그램 실행처럼 시험 흐름을 끊을 수 있는 변수를 정리했습니다.</p></article>
+    </div>
+    <p>전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
   </div>
 </section>
 

@@ -1,0 +1,46 @@
+branch:
+  slug: bucheon-sinjungdong
+  name: 바른자리 신중동점
+  short_name: 신중동점
+  capacity: "1~6인"
+  access: "신중동역 1분"
+  private_use: true
+
+promotion:
+  first_booking_discount_percent: 10
+  label: "네이버 예약 첫 예약 10% 할인"
+
+products:
+  hourly:
+    name: "시간 단위 이용"
+    short_name: "1시간 이용"
+    price: 10000
+    price_label: "10,000원 / 시간"
+    minimum_duration: "1시간"
+    extra_30min_price: 5000
+    extra_30min_label: "30분 추가 5,000원"
+    hours: "06:00~24:00"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
+
+  study_3h:
+    name: "3시간 팀 스터디 · 소모임"
+    short_name: "3시간 스터디·소모임"
+    price: 30000
+    price_label: "30,000원 / 3시간"
+    duration: "3시간"
+    recommended_people: "3~6명"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7963163"
+
+  overnight:
+    name: "올나잇"
+    duration: "6시간"
+    hours: "00:00~06:00"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7928660"
+    lodging: false
+    note: "숙박 상품이 아닌 심야 작업·공부·회의·연습용 공간 상품"
+
+common:
+  parking: "등록 시 주차 2시간 무료"
+  booking_channel: "네이버 예약"
+  entry_guide: "예약 확정 후 입실 안내 확인"
+  private_use_label: "예약 시간 동안 공간 단독 이용"

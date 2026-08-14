@@ -149,7 +149,7 @@ preload_image: images/online-aptitude-test-space.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p><strong>바른자리는 인적성검사 운영기관이나 공식 시험장이 아니며 특정 기업의 검사 응시 가능 여부를 보장하지 않습니다.</strong> 실제 예약 전 해당 기업 또는 검사 플랫폼의 최신 응시 조건과 공간 환경을 직접 비교해 주세요. PC, 스마트폰 등 응시에 필요한 장비도 이용자가 준비해야 합니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">검사시간에 맞춰 예약 확인하기</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 인적성 응시 시간에 맞춰 예약 확인하기</a>
       <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 가이드 더 보기</a>
     </div>
   </div>
@@ -178,10 +178,24 @@ preload_image: images/online-aptitude-test-space.webp
         <p>기업의 응시 안내를 먼저 확인한 뒤 독립성·PC·스마트폰·인터넷·여유시간까지 실제 검사 환경을 미리 점검해보세요.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 인적성 응시 시간에 맞춰 예약 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 글 더 보기</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="exam-cluster">
+  <div class="section-inner">
+    <p class="section-label">함께 볼 글</p>
+    <h2 class="section-title">다른 온라인 전형도<br />장소 기준을 먼저 확인하세요</h2>
+    <p class="section-desc">검사 이름은 달라도 독립된 공간, 장비, 인터넷, 세팅 시간은 공통으로 확인해야 합니다.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>AI 역량검사</span><h3><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경 체크</a></h3><p>영상답변, 게임, 카메라와 마이크까지 함께 확인해야 하는 온라인 역량검사 준비 글입니다.</p></article>
+      <article class="guide-summary-card"><span>코딩테스트</span><h3><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 체크</a></h3><p>노트북, 와이파이, 전원, 프로그램 실행을 실제 시험 전에 어떻게 점검할지 정리했습니다.</p></article>
+      <article class="guide-summary-card"><span>온라인 시험</span><h3><a href="{{ '/posts/online-exam-home-setup/' | relative_url }}">집에서 온라인 시험 볼 때 준비할 것</a></h3><p>방 정리, 카메라 범위, 평일 낮 생활소음처럼 집에서 응시할 때 생길 수 있는 변수를 다룹니다.</p></article>
+    </div>
+    <p>전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
   </div>
 </section>
 
