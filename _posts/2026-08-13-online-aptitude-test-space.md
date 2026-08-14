@@ -185,6 +185,20 @@ preload_image: images/online-aptitude-test-space.webp
   </div>
 </section>
 
+<section id="exam-cluster">
+  <div class="section-inner">
+    <p class="section-label">Related Test Guides</p>
+    <h2 class="section-title">온라인 인적성검사와 함께<br />확인하면 좋은 시험 준비 글</h2>
+    <p class="section-desc">온라인 인적성검사는 채용 전형 안에서 AI 역량검사, 코딩테스트, 원격감독 시험과 이어질 수 있습니다. 각 글은 다른 시험을 다루지만, 장소와 장비 조건을 먼저 확인한다는 기준은 같습니다.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>AI 역량검사</span><h3><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경 체크</a></h3><p>영상답변, 게임, 카메라와 마이크까지 함께 확인해야 하는 온라인 역량검사 준비 글입니다.</p></article>
+      <article class="guide-summary-card"><span>코딩테스트</span><h3><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 체크</a></h3><p>노트북, 와이파이, 전원, 프로그램 실행을 실제 시험 전에 어떻게 점검할지 정리했습니다.</p></article>
+      <article class="guide-summary-card"><span>온라인 시험</span><h3><a href="{{ '/posts/online-exam-home-setup/' | relative_url }}">집에서 온라인 시험 볼 때 준비할 것</a></h3><p>방 정리, 카메라 범위, 평일 낮 생활소음처럼 집에서 응시할 때 생길 수 있는 변수를 다룹니다.</p></article>
+    </div>
+    <p>면접 준비 전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
+  </div>
+</section>
+
 {% include post-tags.html %}
 
 </main>
