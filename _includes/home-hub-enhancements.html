@@ -10,12 +10,13 @@
   #about .about-layout { display:block; }
   #about .about-photo { display:none !important; }
   #about .pricing-cards { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;align-items:stretch;width:100%; }
-  #about .price-card { display:flex;flex-direction:column;height:100%;min-width:0;padding:1.25rem 1.1rem; }
+  #about .price-card { display:flex;flex-direction:column;height:100%;min-width:0;padding:1.35rem 1.15rem; }
   #about .price-card .price-badge { align-self:flex-start; }
-  #about .price-card .price-label { margin-top:.75rem;font-size:1rem;line-height:1.4; }
-  #about .price-card .price-amount { margin-top:.5rem;white-space:nowrap; }
-  #about .price-card .price-desc { margin-top:.65rem;font-size:.84rem;line-height:1.55; }
-  #about .price-card .price-desc + .price-desc { margin-top:.35rem; }
+  #about .price-card .price-label { margin-top:.8rem;font-size:1.05rem;line-height:1.4; }
+  #about .price-card .price-amount { margin-top:.55rem;white-space:nowrap; }
+  #about .price-card .price-desc { margin-top:.75rem;font-size:.86rem;line-height:1.6; }
+  #about .price-card-cta { display:flex;align-items:center;justify-content:center;min-height:42px;margin-top:auto;padding:.65rem .8rem;border-radius:10px;background:#f1f6f3;color:#245f43;font-size:.82rem;font-weight:800; }
+  #about .price-card.featured .price-card-cta { background:#2d6a4f;color:#fff; }
   #contact .contact-support-layout { display:none !important; }
   #contact .contact-grid { margin-bottom:1.2rem; }
   #contact .home-contact-next { max-width:760px;margin:1.25rem auto 0;padding-top:1.15rem;border-top:1px solid rgba(45,106,79,.16); }
@@ -88,25 +89,29 @@ document.addEventListener('DOMContentLoaded', function () {
           <span class="price-badge">기본 이용</span>
           <p class="price-label">1시간부터</p>
           <p class="price-amount">10,000<span class="price-unit">원 / 시간</span></p>
-          <p class="price-desc">30분 단위 추가 · 개인 공부 · 업무 · 미팅 · 프라이빗시간</p>
+          <p class="price-desc">개인 공부 · 집중 업무 · 미팅 · 상담 · 프라이빗시간</p>
+          <span class="price-card-cta">1시간부터 예약하기 →</span>
         </a>
         <a href="{{ interview.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_interview_2h" aria-label="{{ interview.short_name }} {{ interview.price_label }} 예약하기">
           <span class="price-badge">면접·발표 추천</span>
           <p class="price-label">면접·발표 2시간</p>
           <p class="price-amount">20,000<span class="price-unit">원 / 2시간</span></p>
           <p class="price-desc">면접 · 발표 · 스피킹 · 녹화 · 리허설</p>
+          <span class="price-card-cta">2시간 예약하기 →</span>
         </a>
         <a href="{{ study.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_study_3h" aria-label="{{ study.short_name }} {{ study.price_label }} 예약하기">
           <span class="price-badge">팀 이용 추천</span>
           <p class="price-label">스터디·소모임 3시간</p>
           <p class="price-amount">30,000<span class="price-unit">원 / 3시간</span></p>
           <p class="price-desc">스터디 · 팀플 · 토론 · 프로젝트 · 소모임</p>
+          <span class="price-card-cta">3시간 예약하기 →</span>
         </a>
         <a href="{{ overnight.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_overnight" aria-label="{{ overnight.short_name }} {{ overnight.price_label }} 예약하기">
           <span class="price-badge">심야 집중</span>
           <p class="price-label">올나잇 6시간</p>
           <p class="price-amount">30,000<span class="price-unit">원 / 6시간</span></p>
           <p class="price-desc">00:00~06:00 · 과제 · 작업 · 공부 · 해외 화상회의</p>
+          <span class="price-card-cta">올나잇 예약하기 →</span>
         </a>`;
     }
 
