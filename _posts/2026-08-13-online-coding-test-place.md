@@ -190,7 +190,7 @@ preload_image: images/online-coding-test-place.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p><strong>바른자리는 온라인 코딩테스트 전용 시험장이나 공식 응시장소가 아니며, 특정 기업의 응시 가능 여부를 보장하지 않습니다.</strong> 실제 예약 전에는 본인의 시험 규정과 공간 환경을 직접 비교해 주세요. 노트북과 시험에 필요한 장비도 이용자가 준비해야 합니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">시험시간에 맞춰 예약 확인하기</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">코딩테스트 시간에 맞춰 공간 예약 확인하기</a>
       <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 가이드 더 보기</a>
     </div>
   </div>
@@ -219,7 +219,7 @@ preload_image: images/online-coding-test-place.webp
         <p>기업의 응시 안내를 먼저 확인한 뒤 독립성, 와이파이, 전원, 책상, 세팅 시간까지 실제 환경을 미리 점검해보세요. 집에서 조건을 만들기 어렵다면 시험시간 동안만 독립된 공간을 확보하는 방법도 생각해볼 수 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">코딩테스트 시간에 맞춰 공간 예약 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 글 더 보기</a>
       </div>
     </div>
