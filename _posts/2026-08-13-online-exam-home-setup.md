@@ -240,15 +240,15 @@ preload_image: images/online-exam-home-setup.webp
 
 <section id="exam-cluster">
   <div class="section-inner">
-    <p class="section-label">Related Test Guides</p>
-    <h2 class="section-title">온라인 시험과 함께<br />확인하면 좋은 채용 전형 글</h2>
-    <p class="section-desc">집에서 보는 온라인 시험은 자격시험, 대학 LMS 시험, 채용 전형까지 다양합니다. 채용 과정에서 이어지는 시험이라면 아래 글에서 시험별 장소와 장비 기준을 함께 확인할 수 있습니다.</p>
+    <p class="section-label">함께 볼 글</p>
+    <h2 class="section-title">채용 전형 온라인 시험은<br />장소 기준을 따로 확인하세요</h2>
+    <p class="section-desc">자격시험, 대학 LMS 시험, 채용 전형은 규정이 다를 수 있습니다. 채용 과정의 온라인 전형이라면 아래 글도 함께 확인하세요.</p>
     <div class="guide-summary-grid">
       <article class="guide-summary-card"><span>AI 역량검사</span><h3><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경 체크</a></h3><p>영상답변, 게임, 카메라와 마이크까지 함께 확인해야 하는 온라인 역량검사 준비 글입니다.</p></article>
       <article class="guide-summary-card"><span>인적성</span><h3><a href="{{ '/posts/online-aptitude-test-space/' | relative_url }}">온라인 인적성검사 장소 체크</a></h3><p>PC와 스마트폰, 독립된 응시 장소, 사전 예비소집을 확인해야 하는 검사라면 참고하세요.</p></article>
       <article class="guide-summary-card"><span>코딩테스트</span><h3><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 체크</a></h3><p>와이파이, 전원, 책상, 프로그램 실행처럼 시험 흐름을 끊을 수 있는 변수를 정리했습니다.</p></article>
     </div>
-    <p>면접 준비 전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
+    <p>전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
   </div>
 </section>
 
