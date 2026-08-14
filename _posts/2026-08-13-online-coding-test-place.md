@@ -226,6 +226,20 @@ preload_image: images/online-coding-test-place.webp
   </div>
 </section>
 
+<section id="exam-cluster">
+  <div class="section-inner">
+    <p class="section-label">Related Test Guides</p>
+    <h2 class="section-title">온라인 코딩테스트와 함께<br />확인하면 좋은 시험 준비 글</h2>
+    <p class="section-desc">코딩테스트는 문제 풀이가 중심이지만, 실제 당일에는 장소와 장비 문제도 크게 작용할 수 있습니다. 다른 온라인 채용 전형 글과 함께 보면 시험별 체크 기준을 비교하기 쉽습니다.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>AI 역량검사</span><h3><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경 체크</a></h3><p>영상답변, 게임, 말하기까지 포함되는 검사라면 카메라와 마이크 환경을 따로 확인하세요.</p></article>
+      <article class="guide-summary-card"><span>인적성</span><h3><a href="{{ '/posts/online-aptitude-test-space/' | relative_url }}">온라인 인적성검사 장소 체크</a></h3><p>독립된 응시 장소, PC와 스마트폰, 사전 환경점검이 필요한 검사라면 함께 참고할 수 있습니다.</p></article>
+      <article class="guide-summary-card"><span>온라인 시험</span><h3><a href="{{ '/posts/online-exam-home-setup/' | relative_url }}">집에서 온라인 시험 볼 때 준비할 것</a></h3><p>원격감독 시험이나 평일 낮 시험처럼 집 환경을 시험에 맞게 정리해야 하는 경우를 다룹니다.</p></article>
+    </div>
+    <p>면접 준비 전체 흐름은 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형</a>에서 함께 볼 수 있습니다.</p>
+  </div>
+</section>
+
 {% include post-tags.html %}
 
 </main>
