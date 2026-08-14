@@ -42,6 +42,8 @@ products:
   overnight:
     name: "심야 집중 공간대여 - 올나잇 6시간"
     short_name: "올나잇 6시간"
+    price: 30000
+    price_label: "30,000원 / 6시간"
     duration: "6시간"
     hours: "00:00~06:00"
     booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7928660"
