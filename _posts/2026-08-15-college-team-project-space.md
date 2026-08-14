@@ -1,324 +1,57 @@
 ---
 layout: default
-title: "대학생 팀플 장소 어디서 할까? 4명이 자료정리·토론·발표 연습까지 하는 3시간 사용법"
+title: 대학생 팀플 장소, 카페에서 하기 어려운 순간 | 프로젝트 회의 공간 고르는 법
 date: 2026-08-15 08:10:00 +0900
-category: "스터디 공간"
+category: 스터디룸
 tags:
   - 대학생팀플
-  - 팀플장소
-  - 발표준비
-  - 대학생스터디
-  - 프라이빗룸
-  - 부천공간대여
-hubs:
-  - "스터디·소모임"
-description: "대학생 4명이 팀플을 할 때 필요한 건 단순한 좌석보다 역할분담, 자료정리, 토론, PPT 통합, 발표 연습까지 한 흐름으로 이어갈 수 있는 환경입니다. 팀플 3시간 사용법과 장소 체크리스트를 정리했습니다."
-permalink: /college-team-project-space/
+  - 팀프로젝트
+  - 스터디룸
+  - 그룹스터디
+  - 부천스터디룸
+hide_tags: true
+permalink: /posts/college-team-project-space/
 canonical: https://bareunjari.com/college-team-project-space/
+description: "대학생 팀플 장소를 찾을 때 카페, 스터디카페, 프라이빗 스터디룸 중 무엇이 맞을까요? 역할 분담, 자료 수정, 프로젝트 회의와 발표 준비까지 실제 팀플 흐름에 맞춰 공간 선택 기준을 정리했습니다."
 og_image: https://bareunjari.com/images/college-team-project-space.webp
-og_image_alt: "대학생 4인 팀플 장소와 3시간 활용법"
+og_image_alt: 부천 신중동 바른자리에서 대학생 팀 프로젝트를 진행하는 프라이빗 팀플 공간
 preload_image: images/college-team-project-space.webp
+og_image_width: 1672
+og_image_height: 941
+extra_css: /styles/college-team-project.css
+extra_css_version: 20260810-1
+css_version: 20260810-4
+script_version: 20260711-4
 ---
 
-<section class="guide-hero">
-  <div class="guide-hero__inner">
-    <p class="guide-eyebrow">College Team Project Guide</p>
-
-    <h1 class="guide-title">
-      대학생 팀플 장소 어디서 할까?<br>
-      4명이 자료정리·토론·발표 연습까지 하는 3시간 사용법
-    </h1>
-
-    <p class="guide-lead">
-      팀플은 단순히 같이 앉을 자리보다 역할분담, 자료정리, PPT 통합, 토론, 발표 연습까지
-      한 흐름으로 이어갈 수 있는 환경이 중요합니다.
-    </p>
-
-    <div class="guide-meta-pills" aria-label="글 핵심 요약">
-      <span>4인 팀플 기준</span>
-      <span>3시간 활용법</span>
-      <span>발표 연습 포함</span>
+<main class="about-page team-project-guide">
+  <section id="home" class="team-project-hero">
+    <div class="section-inner">
+      <p class="section-label">College Team Project Guide</p>
+      <h1 class="section-title">대학생 팀플 장소,<br />카페에서 하기 어려운 순간</h1>
+      <p class="section-desc">팀플은 조용히 각자 공부하는 시간이 아니라, 같이 말하고 자료를 펼치고 같은 결과물을 계속 수정하는 작업에 가깝습니다. 카페·스터디카페·독립 공간 중 어떤 환경이 프로젝트에 맞는지 실제 팀플 흐름으로 정리했습니다.</p>
+      <div class="hero-btns"><a href="#space-choice" class="btn-primary">팀플 장소 고르는 기준</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">팀플 시간 확인하기</a></div>
     </div>
+  </section>
 
-    <div class="guide-actions">
-      <a href="#team-project-flow" class="btn btn-primary">3시간 사용법 보기</a>
-      <a href="#bareunjari-team-project" class="btn btn-secondary">실제 공간 확인하기</a>
-    </div>
-  </div>
-</section>
+  {% include breadcrumb.html %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/college-team-project-space.webp' image_alt='노트북과 자료를 펼치고 대화하며 팀 프로젝트를 진행할 수 있는 부천 신중동 바른자리 프라이빗 공간' image_width='1672' image_height='941' image_loading='eager' image_caption='팀플은 조용한 자리보다 서로 말하고 같은 결과물을 함께 수정할 수 있는 환경이 더 중요해지는 순간이 있습니다.' %}
 
-<section class="guide-toc" aria-labelledby="guide-toc-title">
-  <p id="guide-toc-title" class="guide-section-label">이 글에서 확인할 내용</p>
-  <div class="guide-toc__links">
-    <a href="#team-project-criteria">장소 선택 기준</a>
-    <a href="#team-project-flow">3시간 사용법</a>
-    <a href="#team-project-compare">장소 비교</a>
-    <a href="#team-project-checklist">예약 체크</a>
-  </div>
-</section>
+  <nav class="guide-toc" aria-label="대학생 팀플 장소 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#team-project-work">팀플이 개인 공부와 다른 점</a><a href="#space-choice">공간별 차이</a><a href="#team-project-checklist">선택 기준</a><a href="#three-hour-plan">3시간 활용법</a><a href="#bareunjari-guide">바른자리 이용</a><a href="#faq">FAQ</a></div></nav>
 
-<section class="guide-keypoints" aria-label="팀플 장소 핵심 포인트">
-  <article class="guide-keypoint">
-    <span class="guide-keypoint__number">01</span>
-    <h2>대화 가능 여부</h2>
-    <p>팀플은 질문, 토론, 역할 조율이 계속 이어지기 때문에 말할 수 있는 환경인지가 중요합니다.</p>
-  </article>
+  <section class="guide-summary-section" aria-label="대학생 팀플 장소 핵심 요약"><div class="section-inner guide-summary-grid"><article class="guide-summary-card"><span>01</span><h2>대화가 가능한가</h2><p>역할 분담, 자료 공유, 문장 수정처럼 팀원끼리 계속 의견을 주고받을 수 있어야 합니다.</p></article><article class="guide-summary-card"><span>02</span><h2>같이 펼칠 수 있는가</h2><p>노트북과 태블릿, 자료를 한 테이블에 놓고 같은 결과물을 보며 수정할 수 있어야 합니다.</p></article><article class="guide-summary-card"><span>03</span><h2>시간을 이어 쓸 수 있는가</h2><p>회의만 하고 끝내기보다 자료를 합치고 정리할 수 있도록 2~3시간 연속 사용이 편한지 확인합니다.</p></article></div></section>
 
-  <article class="guide-keypoint">
-    <span class="guide-keypoint__number">02</span>
-    <h2>작업 흐름 유지</h2>
-    <p>자료정리부터 PPT 수정, 발표 연습까지 같은 자리에서 이어갈 수 있는지 확인하세요.</p>
-  </article>
+  <section id="team-project-work"><div class="section-inner"><p class="section-label">Project Work</p><h2 class="section-title">팀플은 공부보다 ‘같이 만드는 작업’에 가깝습니다</h2><p class="section-desc">개인 공부는 각자 자기 자료에 집중하면 되지만 팀 프로젝트는 작업 중간마다 계속 합의가 필요합니다.</p><div class="about-principle-grid" aria-label="대학생 팀플에서 실제로 하는 일"><article class="about-principle-item" data-step="01"><h3>자료 공유</h3><p>각자 조사한 내용을 설명하고 어떤 자료를 최종 결과물에 넣을지 함께 고릅니다.</p></article><article class="about-principle-item" data-step="02"><h3>역할 조정</h3><p>진행 상황을 확인하면서 조사·작성·디자인·발표 역할을 다시 나눕니다.</p></article><article class="about-principle-item" data-step="03"><h3>공동 수정</h3><p>한 화면을 같이 보며 문장, 슬라이드, 표와 이미지를 바로 고칩니다.</p></article><article class="about-principle-item" data-step="04"><h3>마감 정리</h3><p>발표 순서와 다음 할 일, 담당자와 제출 시점을 정리하고 끝냅니다.</p></article></div><div class="about-quote"><p><strong>팀플 장소의 핵심 질문은 “얼마나 조용한가?”보다 “같이 말하고 수정하고 결정할 수 있는가?”에 가깝습니다.</strong></p></div></div></section>
 
-  <article class="guide-keypoint">
-    <span class="guide-keypoint__number">03</span>
-    <h2>3시간 확보</h2>
-    <p>4명이 모이면 의견 조율과 발표 연습까지 포함해 2~3시간 정도의 연속 시간이 필요할 수 있습니다.</p>
-  </article>
-</section>
+  <section id="space-choice" class="guide-summary-section"><div class="section-inner"><p class="section-label">Compare</p><h2 class="section-title">카페·스터디카페·독립 공간, 무엇이 다를까요?</h2><p class="section-desc">어느 공간이 무조건 더 좋다고 보기보다, 오늘 팀이 해야 할 작업량과 대화량을 기준으로 고르는 편이 현실적입니다.</p><div class="table-wrap"><table><thead><tr><th>공간</th><th>잘 맞는 상황</th><th>확인할 점</th></tr></thead><tbody><tr><td>카페</td><td>첫 만남, 짧은 일정 조정, 가벼운 아이디어 회의</td><td>좌석·테이블 크기, 주변 소음, 장시간 이용 부담</td></tr><tr><td>스터디카페</td><td>각자 집중해서 조사·작성하는 시간이 많은 팀</td><td>대화 가능한 공간인지, 독립실 여부</td></tr><tr><td>독립된 스터디룸</td><td>토론, 공동 수정, 자료 펼치기, 2~3시간 연속 프로젝트 작업</td><td>인원, 테이블, 이용시간, 실제 시설</td></tr></tbody></table></div><div class="about-quote"><p><strong>첫 미팅은 카페가 편할 수 있고, 각자 집중하는 날에는 스터디카페가 더 잘 맞을 수 있습니다. 반대로 팀원끼리 계속 대화하고 같은 결과물을 수정해야 한다면 독립된 공간의 장점이 커집니다.</strong></p></div></div></section>
 
-<section class="guide-section" id="team-project-criteria">
-  <p class="guide-section-label">먼저 확인해 보세요</p>
-  <h2>팀플 장소는 ‘조용한 곳’보다 ‘같이 말할 수 있는 곳’이 중요합니다</h2>
+  <section id="team-project-checklist"><div class="section-inner"><p class="section-label">Checklist</p><h2 class="section-title">팀 프로젝트용 공간에서 확인할 5가지</h2><div class="about-highlight-grid" aria-label="팀플 공간 선택 체크리스트"><article class="about-highlight-card"><h3>한 테이블에 모일 수 있는가</h3><p>화면과 자료를 번갈아 확인해야 하므로 팀원이 서로 떨어져 앉지 않는 편이 편합니다.</p></article><article class="about-highlight-card"><h3>대화가 가능한가</h3><p>토론과 역할 조정이 많은 팀이라면 주변 이용자를 계속 의식해야 하는 환경은 불편할 수 있습니다.</p></article><article class="about-highlight-card"><h3>자료를 펼칠 공간이 있는가</h3><p>노트북, 태블릿, 교재, 충전기까지 올라가면 작은 테이블은 빠르게 좁아집니다.</p></article><article class="about-highlight-card"><h3>2~3시간 연속 이용 가능한가</h3><p>회의 뒤 바로 자료를 수정하는 시간이 실제 팀플에서는 더 길어질 수 있습니다.</p></article><article class="about-highlight-card"><h3>마지막 정리 시간을 남길 수 있는가</h3><p>마지막 20~30분은 다음 할 일과 담당자, 마감 시점을 정하는 데 쓰는 편이 좋습니다.</p></article></div></div></section>
 
-  <p>
-    혼자 공부할 때는 조용한 좌석이 중요하지만 팀플은 다릅니다.
-    팀원끼리 계속 의견을 주고받아야 하고, 발표 과제라면 실제로 소리 내어 말해보는 시간도 필요합니다.
-  </p>
+  <section id="three-hour-plan" class="guide-summary-section"><div class="section-inner"><p class="section-label">3-Hour Project</p><h2 class="section-title">3시간 팀플이라면 이렇게 나눠볼 수 있습니다</h2><p class="section-desc">공간을 빌린 시간이 단순 회의로 끝나지 않도록 결과물을 실제로 진전시키는 흐름으로 나눠보세요.</p><ol class="guide-checklist" aria-label="3시간 팀플 진행 순서"><li><strong>00:00–00:30</strong><span>오늘 끝낼 범위, 역할, 필요한 자료를 정합니다.</span></li><li><strong>00:30–01:40</strong><span>조사·작성·디자인을 진행하면서 필요한 부분만 바로 공유합니다.</span></li><li><strong>01:40–02:30</strong><span>문서와 슬라이드를 한곳에 모으고 표현과 구성을 함께 수정합니다.</span></li><li><strong>02:30–03:00</strong><span>발표 순서, 남은 작업, 담당자와 다음 마감을 확정합니다.</span></li></ol></div></section>
 
-  <p>
-    그래서 팀플 장소를 고를 때는 단순히 “조용한가?”보다
-    <strong>4명이 같은 테이블에 앉아 노트북을 펼치고, 대화와 토론을 하면서 예약한 시간 동안 작업 흐름을 유지할 수 있는가</strong>를 먼저 보는 편이 좋습니다.
-  </p>
+  <section id="bareunjari-guide"><div class="section-inner"><p class="section-label">Bareunjari Guide</p><h2 class="section-title">부천·신중동에서 팀플 장소를 찾는다면</h2><p class="section-desc">바른자리는 팀 프로젝트 방법을 가르치는 학원이나 코칭 서비스가 아니라, 예약한 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간대여 서비스입니다.</p><div class="guide-summary-grid" aria-label="바른자리 팀플 이용 정보"><article class="guide-summary-card"><span>01</span><h2>1~6인 이용</h2><p>소규모 팀이 한 공간에서 노트북과 자료를 펼쳐 사용할 수 있습니다.</p></article><article class="guide-summary-card"><span>02</span><h2>신중동역 인근</h2><p>팀원이 각자 이동해서 모이는 날 역 근처에서 만날 수 있습니다.</p></article><article class="guide-summary-card"><span>03</span><h2>시간 단위 예약</h2><p>현재 안내 요금은 1시간 10,000원이며 필요한 시간만 예약합니다.</p></article></div><p>시설과 예약 가능 시간은 실제 예약 페이지에서 확인해 주세요. 발표 자체를 반복 연습하는 목적이라면 <a href="/practice/">연습·리허설 허브</a>가 더 잘 맞습니다.</p></div></section>
 
-  <figure class="guide-media">
-    <img
-      src="/images/college-team-project-space.webp"
-      alt="대학생 4명이 팀플을 진행할 수 있는 바른자리 프라이빗 공간"
-      loading="lazy">
-  </figure>
+  <section id="faq" class="guide-summary-section"><div class="section-inner"><p class="section-label">FAQ</p><h2 class="section-title">대학생 팀플 장소를 고를 때 자주 묻는 질문</h2><p class="section-desc">팀플 장소와 이용시간을 정할 때 실제로 헷갈리기 쉬운 기준만 짧게 정리했습니다.</p><div class="faq-list"><details class="faq-item"><summary>팀플이면 무조건 스터디룸이 더 좋은가요?</summary><div class="faq-answer"><p>아닙니다. 짧은 일정 조정이나 첫 만남이라면 카페가 더 간단할 수 있습니다. 대화량이 많고 자료를 함께 수정해야 할수록 독립된 공간의 필요성이 커집니다.</p></div></details><details class="faq-item"><summary>몇 시간 정도 예약하는 게 좋나요?</summary><div class="faq-answer"><p>정해진 답은 없습니다. 짧은 회의는 1시간으로도 가능하지만 자료를 합치고 결과물까지 수정한다면 2~3시간 정도의 연속 시간이 필요한 경우가 있습니다.</p></div></details><details class="faq-item"><summary>발표 연습도 팀플 글에 포함되나요?</summary><div class="faq-answer"><p>팀 프로젝트 안에서 발표 순서를 잠깐 확인하는 정도는 자연스럽지만, 발표를 반복해서 실전처럼 연습하는 목적은 <a href="/practice/">연습·리허설 가이드</a>에서 별도로 다룹니다.</p></div></details><details class="faq-item"><summary>바른자리에서 팀플 코칭을 받을 수 있나요?</summary><div class="faq-answer"><p>아니요. 바른자리는 팀플 코칭이나 학습 지도를 제공하지 않으며, 팀이 준비한 작업을 진행할 수 있는 프라이빗 공간을 시간 단위로 대여합니다.</p></div></details></div></div></section>
 
-  <div class="guide-check-cards">
-    <article>
-      <h3>4명이 마주 앉을 수 있는가</h3>
-      <p>각자 노트북과 자료를 펼치고도 서로 화면과 자료를 보기 편한지 확인합니다.</p>
-    </article>
-
-    <article>
-      <h3>대화와 토론이 가능한가</h3>
-      <p>정숙 규정 때문에 목소리를 계속 낮춰야 한다면 팀플 진행이 끊길 수 있습니다.</p>
-    </article>
-
-    <article>
-      <h3>와이파이와 전원을 쓸 수 있는가</h3>
-      <p>공유 문서, 자료 검색, PPT 수정이 이어지므로 인터넷과 충전 환경도 확인해야 합니다.</p>
-    </article>
-  </div>
-</section>
-
-<section class="guide-section" id="team-project-flow">
-  <p class="guide-section-label">3시간 사용법</p>
-  <h2>4명이 모인다면 3시간을 이렇게 나눠보세요</h2>
-
-  <p>
-    팀플은 모이자마자 바로 PPT를 만드는 것보다 먼저 오늘 끝낼 범위를 정하는 편이 효율적입니다.
-    아래 흐름은 자료정리부터 발표 연습까지 한 번에 이어가고 싶은 팀을 위한 예시입니다.
-  </p>
-
-  <div class="guide-steps">
-    <article class="guide-step">
-      <span class="guide-step__time">0~20분</span>
-      <h3>오늘 끝낼 범위 정하기</h3>
-      <p>목차, 역할별 자료 통합, PPT 초안, 발표자 분량, 리허설 중 어디까지 끝낼지 정합니다.</p>
-    </article>
-
-    <article class="guide-step">
-      <span class="guide-step__time">20~80분</span>
-      <h3>자료 확인·정리</h3>
-      <p>각자 조사한 내용을 모두 다시 읽기보다 실제 발표와 제출물에 들어갈 자료를 선별합니다.</p>
-    </article>
-
-    <article class="guide-step">
-      <span class="guide-step__time">80~130분</span>
-      <h3>PPT와 발표 흐름 합치기</h3>
-      <p>목차 순서, 슬라이드 핵심 메시지, 중복 내용, 발표자별 담당 구간을 함께 맞춥니다.</p>
-    </article>
-
-    <article class="guide-step">
-      <span class="guide-step__time">130~160분</span>
-      <h3>실제로 발표해보기</h3>
-      <p>슬라이드 설명 길이, 발표자별 시간 차이, 연결 문장과 어려운 표현을 실제 말하기로 확인합니다.</p>
-    </article>
-
-    <article class="guide-step">
-      <span class="guide-step__time">160~180분</span>
-      <h3>수정하고 다음 할 일 정리</h3>
-      <p>최종 PPT 담당, 제출 파일, 출처 표기, 발표 당일 일정과 마지막 확인 일정을 정합니다.</p>
-    </article>
-  </div>
-</section>
-
-<section class="guide-section" id="team-project-compare">
-  <p class="guide-section-label">장소 유형 비교</p>
-  <h2>카페·스터디카페·독립형 공간은 이렇게 다릅니다</h2>
-
-  <p>
-    팀플 장소에는 정답이 없습니다. 짧게 의견만 맞추는 모임인지, 실제 발표 연습까지 해야 하는지에 따라 적합한 장소가 달라집니다.
-  </p>
-
-  <div class="guide-compare-grid">
-    <article class="guide-compare-card">
-      <h3>카페</h3>
-      <p>
-        별도 예약 없이 만나기 쉽지만 4명이 함께 앉을 자리, 콘센트, 장시간 대화와 발표 연습은 상황에 따라 불편할 수 있습니다.
-      </p>
-    </article>
-
-    <article class="guide-compare-card">
-      <h3>오픈형 스터디카페</h3>
-      <p>
-        개인 공부에는 적합할 수 있지만 대화가 제한된다면 토론과 발표 연습이 필요한 팀플에는 맞지 않을 수 있습니다.
-      </p>
-    </article>
-
-    <article class="guide-compare-card">
-      <h3>프라이빗 공간대여</h3>
-      <p>
-        예약한 시간 동안 한 팀이 독립적으로 이용할 수 있어 자료정리, 토론, PPT 수정, 발표 연습을 한 흐름으로 이어가기 편합니다.
-      </p>
-    </article>
-  </div>
-
-  <p>
-    스터디 공간 자체를 고르는 일반 기준은
-    <a href="/posts/study-space-guide/">스터디 공간 선택 가이드</a>에서 더 자세히 확인할 수 있습니다.
-  </p>
-</section>
-
-<section class="guide-section" id="team-project-checklist">
-  <p class="guide-section-label">예약 전 체크리스트</p>
-  <h2>팀플 장소를 정하기 전에 확인할 7가지</h2>
-
-  <div class="guide-numbered-list">
-    <article>
-      <span>1</span>
-      <div>
-        <h3>팀원 모두 찾아오기 편한가</h3>
-        <p>처음 방문하는 팀원이 있다면 역이나 버스 정류장에서의 이동 동선과 건물 위치를 미리 공유하세요.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>2</span>
-      <div>
-        <h3>4명이 노트북을 펼칠 자리가 있는가</h3>
-        <p>노트북뿐 아니라 출력물, 태블릿, 필기구를 함께 놓았을 때도 불편하지 않은지 확인합니다.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>3</span>
-      <div>
-        <h3>대화와 발표 연습이 가능한가</h3>
-        <p>팀원끼리 평소 목소리로 의견을 주고받고 발표를 연습할 수 있는 이용 규정인지 확인합니다.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>4</span>
-      <div>
-        <h3>와이파이를 사용할 수 있는가</h3>
-        <p>공유 문서, 자료 검색, 온라인 협업 도구를 사용한다면 인터넷 환경이 필요합니다.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>5</span>
-      <div>
-        <h3>충전할 콘센트가 있는가</h3>
-        <p>노트북 여러 대를 오래 사용할 예정이라면 멀티탭과 충전기 준비도 함께 확인하세요.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>6</span>
-      <div>
-        <h3>필요한 시간만큼 예약할 수 있는가</h3>
-        <p>준비와 정리 시간을 포함해 실제 작업 시간이 부족하지 않도록 예약 시간을 잡습니다.</p>
-      </div>
-    </article>
-
-    <article>
-      <span>7</span>
-      <div>
-        <h3>다음 모임에도 반복 이용하기 쉬운가</h3>
-        <p>매주 또는 격주로 이어지는 프로젝트라면 같은 장소를 다시 이용하기 편한지도 확인하세요.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="guide-section">
-  <p class="guide-section-label">진행 팁</p>
-  <h2>장소를 예약했다면 시작 전에 이것만 정하세요</h2>
-
-  <div class="guide-callout">
-    <p><strong>“이번 3시간 동안 무엇을 완성하고 나갈 것인가?”</strong></p>
-  </div>
-
-  <p>
-    역할 분담만 할 것인지, PPT 초안까지 끝낼 것인지, 발표 연습까지 할 것인지 목표를 정하면
-    같은 3시간이라도 사용하는 방식이 달라집니다.
-  </p>
-
-  <p>
-    팀플은 공간만 확보한다고 자동으로 진행되는 일이 아닙니다.
-    하지만 자료를 함께 보고, 서로 질문하고, 발표를 소리 내어 연습해야 한다면
-    예약한 시간 동안 다른 일에 방해받지 않는 환경이 도움이 될 수 있습니다.
-  </p>
-</section>
-
-<section class="guide-section guide-location" id="bareunjari-team-project">
-  <p class="guide-section-label">Bareunjari · Sinjung-dong</p>
-  <h2>부천 신중동에서 대학생 팀플 장소를 찾는다면</h2>
-
-  <p>
-    바른자리는 신중동역에서 도보 1분 거리에 있으며,
-    예약 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간입니다.
-  </p>
-
-  <p>
-    테이블과 의자, 와이파이와 콘센트를 이용할 수 있어
-    3~5명이 자료를 함께 보거나 토론하고, PPT를 수정하거나 발표를 연습하는 팀플 공간으로 사용할 수 있습니다.
-  </p>
-
-  <p>
-    바른자리는 팀플 학원이나 과제 대행 서비스가 아니라
-    <strong>예약한 시간 동안 팀원끼리 사용할 수 있는 공간대여 서비스</strong>입니다.
-  </p>
-
-  <div class="guide-price-note">
-    <strong>현재 안내 요금: 1시간 10,000원</strong>
-    <p>4명이 3시간 이용하면 총 30,000원, 인원별로 나누면 1인당 7,500원입니다.</p>
-  </div>
-
-  <p>
-    처음 이용한다면 한 번 예약해 팀원들의 이동 동선과 실제 작업 환경을 확인해 보세요.
-    반복 모임이라면 희망하는 요일과 시간의 이용 가능 여부도 함께 확인하는 것이 좋습니다.
-  </p>
-
-  <div class="guide-actions">
-    <a href="/" class="btn btn-primary">바른자리 공간 확인하기</a>
-    <a href="/blog.html" class="btn btn-secondary">다른 실전 가이드 보기</a>
-  </div>
-</section>
-
-<section class="guide-related">
-  <p class="guide-section-label">관련 주제</p>
-  <div class="guide-tags">
-    <span>#대학생팀플</span>
-    <span>#팀플장소</span>
-    <span>#발표준비</span>
-    <span>#부천공간대여</span>
-  </div>
-</section>
+  <section id="booking"><div class="section-inner"><p class="section-label">Next Step</p><h2 class="section-title">이번 팀플에서 필요한 시간을 먼저 정해보세요</h2><p class="section-desc">회의만 할지, 자료 수정까지 끝낼지 정하면 필요한 시간과 공간을 고르기 쉬워집니다.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">팀플 시간 확인하기</a><a href="/study/" class="btn-outline">스터디·소모임 허브</a></div></div></section>
+</main>
