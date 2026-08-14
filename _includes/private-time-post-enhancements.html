@@ -21,6 +21,35 @@ document.addEventListener('DOMContentLoaded', function () {
     var dateDesc = hero.querySelector('.section-desc');
     if (dateDesc) dateDesc.textContent = '사람이 많은 카페보다 서로에게 집중하고 싶은 날이 있습니다. 이 글은 부천·신중동에서 둘만의 시간을 편하게 보내고 싶은 경우의 장소 선택을 다룹니다.';
     roleText = '<strong>이 글의 역할:</strong> 부천·신중동의 둘만의 시간과 실내데이트 검색 의도에 집중하고, 개인시간·프라이버시 철학은 <a href="/private/">프라이빗시간 허브</a>로 연결합니다.';
+
+    if (!document.getElementById('private-place-query')) {
+      var privatePlace = document.createElement('section');
+      privatePlace.id = 'private-place-query';
+      privatePlace.innerHTML = [
+        '<div class="section-inner">',
+        '<h2 class="section-title">둘만 있을 수 있는 곳을 찾는다면</h2>',
+        '<p class="section-desc">부천에서 둘만 있을 수 있는 곳을 찾는 이유는 꼭 특별한 이벤트가 필요해서만은 아닙니다. 카페처럼 주변 대화와 시선을 계속 의식하지 않고, 둘이 편하게 이야기하거나 잠시 쉬고 싶은 날도 있습니다.</p>',
+        '<p>신중동처럼 카페와 식당이 많은 지역에서도 완전히 둘만의 흐름을 유지하기는 쉽지 않습니다. 대화가 길어지거나 노트북·태블릿을 함께 보거나, 서로 쉬면서 각자 시간을 보내고 싶다면 예약 시간 동안 단독으로 사용하는 공간이 하나의 선택지가 될 수 있습니다.</p>',
+        '<p><strong>바른자리는 데이트 코스를 대신하는 곳이라기보다, 둘이 방해받지 않고 필요한 시간을 쓰는 공간에 가깝습니다.</strong> 무엇을 꼭 해야 하는 곳이 아니라 대화, 계획 세우기, 콘텐츠 보기, 휴식처럼 그날 원하는 방식으로 시간을 보낼 수 있습니다.</p>',
+        '</div>'
+      ].join('');
+      var summary = main.querySelector('.guide-summary-section');
+      if (summary) summary.insertAdjacentElement('beforebegin', privatePlace);
+      else {
+        var toc = main.querySelector('.guide-toc');
+        if (toc) toc.insertAdjacentElement('afterend', privatePlace);
+      }
+    }
+
+    var faqInner = main.querySelector('#faq .section-inner');
+    if (faqInner && !document.getElementById('faq-private-place')) {
+      var faqItem = document.createElement('article');
+      faqItem.id = 'faq-private-place';
+      faqItem.className = 'about-highlight-card';
+      faqItem.innerHTML = '<h3>부천에서 둘만 있을 수 있는 곳을 찾을 때 어떤 공간이 잘 맞나요?</h3><p>주변 시선을 덜 의식하고 대화하거나 쉬는 시간이 목적이라면, 예약 시간 동안 다른 이용자와 공간을 공유하지 않는 곳이 편할 수 있습니다. 바른자리는 1~6인이 예약 시간 동안 공간 전체를 단독으로 이용하는 방식입니다.</p>';
+      var faqGrid = faqInner.querySelector('.about-highlight-grid, .faq-grid');
+      if (faqGrid) faqGrid.appendChild(faqItem); else faqInner.appendChild(faqItem);
+    }
   }
   if (path === '/posts/bucheon-rainy-day/') {
     var rainDesc = hero.querySelector('.section-desc');
