@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var aboutArrow = about.querySelector('.home-section-label-row .blog-guide-category-link');
     var aboutCta = about.querySelector('.about-cta');
     var priceCards = about.querySelectorAll('.price-card');
-    var policyCards = about.querySelectorAll('.policy-grid .policy-card');
+    var policySummary = about.querySelector('.policy-summary');
+
+    if (policySummary) policySummary.remove();
 
     if (aboutTitle) aboutTitle.textContent = '이용 요금·상품';
     if (aboutDesc) aboutDesc.textContent = '기본 {{ hourly.minimum_duration }}부터 필요한 만큼 예약할 수 있습니다. 이용 가능한 상품과 요금을 확인하고, 어떤 방식으로 예약할지 고민된다면 예약 안내에서 먼저 확인해 보세요.';
@@ -92,11 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
       studyCard.setAttribute('href', '{{ study.booking_url }}');
       studyCard.setAttribute('data-cta', 'price_study_group');
       studyCard.setAttribute('aria-label', '{{ study.short_name }} {{ study.price_label }} 예약하기');
-    }
-
-    if (policyCards.length > 0) {
-      var bookingPolicy = policyCards[0].querySelector('p');
-      if (bookingPolicy) bookingPolicy.textContent = '원하는 상품을 선택한 뒤 {{ ops.common.booking_channel }}에서 날짜와 시간을 확인하고 선결제로 예약을 완료합니다.';
     }
 
     if (aboutCta) {
