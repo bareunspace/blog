@@ -162,13 +162,20 @@ script_version: 20260711-4
   #prep-flow .guide-summary-card > span { margin-bottom: .1rem; flex: 0 0 auto; }
   #prep-flow .guide-summary-card h2, #prep-flow .guide-summary-card p { margin: 0; }
   #prep-flow .guide-summary-card .btn-outline { margin-top: auto; align-self: flex-start; display: inline-flex; white-space: nowrap; }
-  #online-hiring .online-hiring-grid { display: grid; grid-template-columns: repeat(2, minmax(260px, 300px)); gap: 1.15rem; width: 100%; margin: 0; padding: 0; align-items: start; justify-content: start; }
+  #online-hiring .online-hiring-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; width: 100%; margin: 0; padding: 0; align-items: stretch; }
   #online-hiring .post-related-card { width: 100%; min-width: 0; margin: 0; }
   #online-hiring .post-related-image-link { width: 100%; }
-  #online-hiring .post-related-body { min-width: 0; }
+  #online-hiring .post-related-body { min-width: 0; padding: 1rem; }
+  #online-hiring .post-related-card h3 { font-size: 1rem; line-height: 1.38; }
+  #online-hiring .post-related-card p { font-size: .88rem; line-height: 1.6; }
+  #online-hiring .post-related-image-link { aspect-ratio: 4 / 3; }
+  #online-hiring .post-related-badge { font-size: .72rem; }
+  @media (max-width: 1080px) {
+    #online-hiring .online-hiring-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 0 .35rem; }
+    #online-hiring .post-related-card { flex: 0 0 min(46vw, 300px); scroll-snap-align: start; }
+  }
   @media (max-width: 760px) {
     #prep-flow .guide-summary-card { gap: .42rem; }
-    #online-hiring .online-hiring-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 0 .35rem; }
     #online-hiring .post-related-card { flex: 0 0 min(82vw, 300px); scroll-snap-align: start; }
   }
 </style>
