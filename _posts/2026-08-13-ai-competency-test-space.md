@@ -162,7 +162,7 @@ preload_image: images/ai-competency-test-space.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p><strong>바른자리는 AI 역량검사 운영기관이나 공식 시험장이 아니며, 특정 기업의 검사 응시 가능 여부를 보장하지 않습니다.</strong> 실제 응시 전에 기업 또는 검사 플랫폼에서 안내한 장비·공간·네트워크 조건을 직접 확인해 주세요. 노트북, 웹캠 등 검사에 필요한 장비도 응시자가 준비해야 합니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">검사시간에 맞춰 예약 확인하기</a>
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">AI 역량검사 준비 시간 예약 확인하기</a>
       <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 가이드 더 보기</a>
     </div>
   </div>
@@ -192,7 +192,7 @@ preload_image: images/ai-competency-test-space.webp
         <p>응시 안내를 먼저 확인하고 카메라·마이크·인터넷·말하기까지 실제 검사 환경을 미리 점검해보세요. 집에서 조건을 만들기 어렵다면 검사시간 동안만 독립된 공간을 확보하는 방법도 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">AI 역량검사 준비 시간 예약 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 글 더 보기</a>
       </div>
     </div>
