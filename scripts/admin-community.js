@@ -8,7 +8,7 @@
     document.head.appendChild(script);
   });
 
-  loadScript('/scripts/admin-community-core.js?v=20260814-1')
+  loadScript('/scripts/admin-community-core.js?v=20260814-3')
     .then(() => loadScript('/scripts/admin-reservation-name.js?v=20260814-3'))
     .catch((error) => console.error('admin dashboard script load failed', error));
 })();
