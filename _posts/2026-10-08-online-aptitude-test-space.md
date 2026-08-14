@@ -24,7 +24,7 @@ tags:
   - 신중동
 permalink: /posts/online-aptitude-test-space/
 canonical: https://bareunjari.com/posts/online-aptitude-test-space/
-date: 2026-08-13 08:25:00 +0900
+date: 2026-10-08 08:25:00 +0900
 og_image: https://bareunjari.com/images/online-aptitude-test-space.webp
 og_image_alt: 바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습
 preload_image: images/online-aptitude-test-space.webp
