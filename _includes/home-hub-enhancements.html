@@ -1,3 +1,6 @@
+{% assign ops = site.data.operations %}
+{% assign hourly = ops.products.hourly %}
+{% assign study = ops.products.study_3h %}
 <style>
   .home-practice-entry { margin-top:1.15rem;padding:1rem 1.1rem;border:1px solid rgba(45,106,79,.16);border-radius:16px;background:#f7faf8; }
   .home-practice-entry p { margin:0;color:var(--muted);line-height:1.7; }
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var spaceDescs = main.querySelectorAll('#space .section-desc');
   if (spaceTitle) spaceTitle.textContent = '면접·미팅·스터디·개인시간, 이런 순간에 필요한 프라이빗 공간';
   if (spaceDescs.length > 0) spaceDescs[0].textContent = '면접 연습, 고객 미팅, 팀플·스터디, 혼자 집중할 시간이 필요할 때 목적에 맞게 사용할 수 있는 공간입니다.';
-  if (spaceDescs.length > 1) spaceDescs[1].textContent = '부천 신중동역 가까이에서 1~6인이 예약 시간 동안 단독으로 이용할 수 있습니다.';
+  if (spaceDescs.length > 1) spaceDescs[1].textContent = '부천 신중동역 가까이에서 {{ ops.branch.capacity }}이 예약 시간 동안 단독으로 이용할 수 있습니다.';
 
   var grid = main.querySelector('.features-grid');
   if (grid) {
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var policyCards = about.querySelectorAll('.policy-grid .policy-card');
 
     if (aboutTitle) aboutTitle.textContent = '이용 요금·상품';
-    if (aboutDesc) aboutDesc.textContent = '기본 1시간부터 필요한 만큼 예약할 수 있습니다. 이용 가능한 상품과 요금을 확인하고, 어떤 방식으로 예약할지 고민된다면 예약 안내에서 먼저 확인해 보세요.';
+    if (aboutDesc) aboutDesc.textContent = '기본 {{ hourly.minimum_duration }}부터 필요한 만큼 예약할 수 있습니다. 이용 가능한 상품과 요금을 확인하고, 어떤 방식으로 예약할지 고민된다면 예약 안내에서 먼저 확인해 보세요.';
 
     if (aboutArrow) {
       aboutArrow.setAttribute('href', '/booking/');
@@ -67,10 +70,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (priceCards.length > 0) {
       var hourlyLabel = priceCards[0].querySelector('.price-label');
+      var hourlyAmount = priceCards[0].querySelector('.price-amount');
       var hourlyDescs = priceCards[0].querySelectorAll('.price-desc');
-      if (hourlyLabel) hourlyLabel.textContent = '시간 단위 이용 · 06:00 - 24:00';
-      if (hourlyDescs.length > 0) hourlyDescs[0].innerHTML = '· 1시간부터 필요한 만큼 이용<br />· 30분 추가 시 5,000원';
+      if (hourlyLabel) hourlyLabel.textContent = '{{ hourly.name }} · {{ hourly.hours }}';
+      if (hourlyAmount) hourlyAmount.innerHTML = '{{ hourly.price | divided_by: 1000 }},000<span class="price-unit">원 / 시간</span>';
+      if (hourlyDescs.length > 0) hourlyDescs[0].innerHTML = '· {{ hourly.minimum_duration }}부터 필요한 만큼 이용<br />· {{ hourly.extra_30min_label }}';
       if (hourlyDescs.length > 1) hourlyDescs[1].textContent = '· 면접·미팅·스터디·개인시간 등 일반 이용';
+      priceCards[0].setAttribute('href', '{{ hourly.booking_url }}');
     }
 
     if (priceCards.length > 1) {
@@ -79,18 +85,18 @@ document.addEventListener('DOMContentLoaded', function () {
       var studyLabel = studyCard.querySelector('.price-label');
       var studyAmount = studyCard.querySelector('.price-amount');
       var studyDescs = studyCard.querySelectorAll('.price-desc');
-      if (studyBadge) studyBadge.textContent = '3~6명 추천';
-      if (studyLabel) studyLabel.textContent = '3시간 팀 스터디 · 소모임';
-      if (studyAmount) studyAmount.innerHTML = '30,000<span class="price-unit">원 / 3시간</span>';
+      if (studyBadge) studyBadge.textContent = '{{ study.recommended_people }} 추천';
+      if (studyLabel) studyLabel.textContent = '{{ study.name }}';
+      if (studyAmount) studyAmount.innerHTML = '{{ study.price | divided_by: 1000 }},000<span class="price-unit">원 / {{ study.duration }}</span>';
       if (studyDescs.length > 0) studyDescs[0].innerHTML = '· 팀 스터디 · 팀플 · 발표 준비 · 영어 스터디<br />· 말하고 토론하며 함께 준비하는 프라이빗 팀 공간';
-      studyCard.setAttribute('href', 'https://booking.naver.com/booking/10/bizes/1663159/items/7963163');
+      studyCard.setAttribute('href', '{{ study.booking_url }}');
       studyCard.setAttribute('data-cta', 'price_study_group');
-      studyCard.setAttribute('aria-label', '스터디·소모임 3시간 30,000원 예약하기');
+      studyCard.setAttribute('aria-label', '{{ study.short_name }} {{ study.price_label }} 예약하기');
     }
 
     if (policyCards.length > 0) {
       var bookingPolicy = policyCards[0].querySelector('p');
-      if (bookingPolicy) bookingPolicy.textContent = '원하는 상품을 선택한 뒤 네이버 예약에서 날짜와 시간을 확인하고 선결제로 예약을 완료합니다.';
+      if (bookingPolicy) bookingPolicy.textContent = '원하는 상품을 선택한 뒤 {{ ops.common.booking_channel }}에서 날짜와 시간을 확인하고 선결제로 예약을 완료합니다.';
     }
 
     if (aboutCta) {
