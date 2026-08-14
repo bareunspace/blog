@@ -8,6 +8,7 @@
     document.head.appendChild(script);
   });
 
+  // Always request fresh admin modules so saved customer names appear immediately.
   const cacheKey = Date.now();
   loadScript(`/scripts/admin-community-core.js?v=${cacheKey}`)
     .then(() => loadScript(`/scripts/admin-reservation-name.js?v=${cacheKey}`))
