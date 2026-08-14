@@ -1,10 +1,15 @@
 {% assign ops = site.data.operations %}
 {% assign hourly = ops.products.hourly %}
+{% assign interview = ops.products.interview_2h %}
 {% assign study = ops.products.study_3h %}
+{% assign overnight = ops.products.overnight %}
 <style>
   .home-practice-entry { margin-top:1.15rem;padding:1rem 1.1rem;border:1px solid rgba(45,106,79,.16);border-radius:16px;background:#f7faf8; }
   .home-practice-entry p { margin:0;color:var(--muted);line-height:1.7; }
   .home-practice-entry a { font-weight:800; }
+  #about .pricing-cards { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem; }
+  #about .price-card { height:100%; }
+  #about .price-card .price-badge { align-self:flex-start; }
   #contact .contact-support-layout { display:none !important; }
   #contact .contact-grid { margin-bottom:1.2rem; }
   #contact .home-contact-next { max-width:760px;margin:1.25rem auto 0;padding-top:1.15rem;border-top:1px solid rgba(45,106,79,.16); }
@@ -13,7 +18,7 @@
   #contact .home-contact-actions a { display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.7rem 1rem;border-radius:999px;font-weight:800;text-decoration:none; }
   #contact .home-contact-actions .home-contact-book { background:#245f43;color:#fff; }
   #contact .home-contact-actions .home-contact-help { border:1px solid #b8ccbf;background:#fff;color:#245f43; }
-  @media(max-width:640px){#contact .home-contact-actions{display:grid}#contact .home-contact-actions a{width:100%}}
+  @media(max-width:640px){#about .pricing-cards{grid-template-columns:1fr}#contact .home-contact-actions{display:grid}#contact .home-contact-actions a{width:100%}}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -55,50 +60,56 @@ document.addEventListener('DOMContentLoaded', function () {
     var aboutDesc = about.querySelector('.section-desc');
     var aboutArrow = about.querySelector('.home-section-label-row .blog-guide-category-link');
     var aboutCta = about.querySelector('.about-cta');
-    var priceCards = about.querySelectorAll('.price-card');
+    var pricingCards = about.querySelector('.pricing-cards');
     var policySummary = about.querySelector('.policy-summary');
 
     if (policySummary) policySummary.remove();
 
     if (aboutTitle) aboutTitle.textContent = '이용 요금·상품';
-    if (aboutDesc) aboutDesc.textContent = '기본 {{ hourly.minimum_duration }}부터 필요한 만큼 예약할 수 있습니다. 이용 가능한 상품과 요금을 확인하고, 어떤 방식으로 예약할지 고민된다면 예약 안내에서 먼저 확인해 보세요.';
+    if (aboutDesc) aboutDesc.textContent = '기본 1시간부터 면접·발표 2시간, 스터디·소모임 3시간, 올나잇 6시간까지 목적과 필요한 시간에 맞춰 선택하세요.';
 
     if (aboutArrow) {
       aboutArrow.setAttribute('href', '/booking/');
-      aboutArrow.setAttribute('aria-label', '바른자리 예약 안내 보기');
+      aboutArrow.setAttribute('aria-label', '바른자리 예약 상품 전체 보기');
       aboutArrow.removeAttribute('target');
       aboutArrow.removeAttribute('rel');
     }
 
-    if (priceCards.length > 0) {
-      var hourlyLabel = priceCards[0].querySelector('.price-label');
-      var hourlyAmount = priceCards[0].querySelector('.price-amount');
-      var hourlyDescs = priceCards[0].querySelectorAll('.price-desc');
-      if (hourlyLabel) hourlyLabel.textContent = '{{ hourly.name }} · {{ hourly.hours }}';
-      if (hourlyAmount) hourlyAmount.innerHTML = '{{ hourly.price | divided_by: 1000 }},000<span class="price-unit">원 / 시간</span>';
-      if (hourlyDescs.length > 0) hourlyDescs[0].innerHTML = '· {{ hourly.minimum_duration }}부터 필요한 만큼 이용<br />· {{ hourly.extra_30min_label }}';
-      if (hourlyDescs.length > 1) hourlyDescs[1].textContent = '· 면접·미팅·스터디·개인시간 등 일반 이용';
-      priceCards[0].setAttribute('href', '{{ hourly.booking_url }}');
-    }
-
-    if (priceCards.length > 1) {
-      var studyCard = priceCards[1];
-      var studyBadge = studyCard.querySelector('.price-badge');
-      var studyLabel = studyCard.querySelector('.price-label');
-      var studyAmount = studyCard.querySelector('.price-amount');
-      var studyDescs = studyCard.querySelectorAll('.price-desc');
-      if (studyBadge) studyBadge.textContent = '{{ study.recommended_people }} 추천';
-      if (studyLabel) studyLabel.textContent = '{{ study.name }}';
-      if (studyAmount) studyAmount.innerHTML = '{{ study.price | divided_by: 1000 }},000<span class="price-unit">원 / {{ study.duration }}</span>';
-      if (studyDescs.length > 0) studyDescs[0].innerHTML = '· 팀 스터디 · 팀플 · 발표 준비 · 영어 스터디<br />· 말하고 토론하며 함께 준비하는 프라이빗 팀 공간';
-      studyCard.setAttribute('href', '{{ study.booking_url }}');
-      studyCard.setAttribute('data-cta', 'price_study_group');
-      studyCard.setAttribute('aria-label', '{{ study.short_name }} {{ study.price_label }} 예약하기');
+    if (pricingCards) {
+      pricingCards.innerHTML = `
+        <a href="{{ hourly.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card featured" data-cta="price_hourly" aria-label="{{ hourly.short_name }} {{ hourly.price_label }} 예약하기">
+          <span class="price-badge">기본 이용</span>
+          <p class="price-label">{{ hourly.name }}</p>
+          <p class="price-amount">10,000<span class="price-unit">원 / 시간</span></p>
+          <p class="price-desc">30분 단위로 필요한 만큼 추가할 수 있는 가장 자유로운 이용 방식입니다.</p>
+          <p class="price-desc">개인 공부 · 집중 업무 · 미팅 · 상담 · 화상회의 · 프라이빗시간</p>
+        </a>
+        <a href="{{ interview.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_interview_2h" aria-label="{{ interview.short_name }} {{ interview.price_label }} 예약하기">
+          <span class="price-badge">면접·발표 추천</span>
+          <p class="price-label">{{ interview.name }}</p>
+          <p class="price-amount">20,000<span class="price-unit">원 / 2시간</span></p>
+          <p class="price-desc">답변 연습, 촬영, 확인, 반복 연습까지 여유 있게 진행하는 2시간 상품입니다.</p>
+          <p class="price-desc">면접 · 발표 · 스피킹 · 녹화 · 리허설</p>
+        </a>
+        <a href="{{ study.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_study_3h" aria-label="{{ study.short_name }} {{ study.price_label }} 예약하기">
+          <span class="price-badge">팀 이용 추천</span>
+          <p class="price-label">{{ study.name }}</p>
+          <p class="price-amount">30,000<span class="price-unit">원 / 3시간</span></p>
+          <p class="price-desc">스터디, 팀플, 토론, 소모임처럼 함께 준비하는 시간에 맞춘 3시간 상품입니다.</p>
+          <p class="price-desc">스터디 · 팀플 · 토론 · 프로젝트 · 소모임</p>
+        </a>
+        <a href="{{ overnight.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_overnight" aria-label="{{ overnight.short_name }} {{ overnight.price_label }} 예약하기">
+          <span class="price-badge">심야 집중</span>
+          <p class="price-label">{{ overnight.name }}</p>
+          <p class="price-amount">30,000<span class="price-unit">원 / 6시간</span></p>
+          <p class="price-desc">00:00~06:00 동안 과제, 작업, 공부, 회의, 연습에 집중하는 심야 이용 상품입니다.</p>
+          <p class="price-desc">과제 · 보고서 · 개인 작업 · 공부 · 해외 화상회의</p>
+        </a>`;
     }
 
     if (aboutCta) {
       aboutCta.setAttribute('href', '/booking/');
-      aboutCta.textContent = '상품 선택이 어렵다면 예약 안내 보기 →';
+      aboutCta.textContent = '4개 예약 상품 한눈에 보기 →';
       aboutCta.removeAttribute('target');
       aboutCta.removeAttribute('rel');
       aboutCta.setAttribute('data-cta', 'about_booking_guide');
