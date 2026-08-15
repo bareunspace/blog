@@ -63,6 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
       setCard(cards[1],'미팅·업무','고객 미팅, 상담, 화상회의, 집중 업무처럼 사무실이 필요한 몇 시간을 목적에 맞게 활용하는 가이드입니다.',['고객 미팅','상담','집중 업무'],'미팅·업무 허브 바로가기');
       setCard(cards[2],'스터디·소모임','대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.',['팀플·프로젝트','그룹 스터디','1인 집중'],'스터디·소모임 허브 바로가기');
       setCard(cards[3],'프라이빗시간','혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.',['혼자 있는 시간','둘만의 시간','프라이버시'],'프라이빗시간 허브 바로가기');
+      var studyTitleRow = cards[2].querySelector('.feature-title-row');
+      if (studyTitleRow && !studyTitleRow.querySelector('.feature-priority')) {
+        var studyPriority = document.createElement('span');
+        studyPriority.className = 'feature-priority';
+        studyPriority.setAttribute('aria-label', '추천 허브');
+        studyPriority.textContent = '추천';
+        studyTitleRow.appendChild(studyPriority);
+      }
       if(!document.getElementById('home-practice-entry')){var note=document.createElement('div');note.id='home-practice-entry';note.className='home-practice-entry';note.innerHTML='<p><strong>직접 말하고 촬영하며 반복하는 연습이 필요한가요?</strong> 독백·대사·오디션·셀프테이프는 <a href="/practice/">연습·리허설 허브 →</a>에서 따로 안내합니다.</p>';grid.insertAdjacentElement('afterend',note);}
     }
   }
