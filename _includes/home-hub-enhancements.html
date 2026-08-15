@@ -20,6 +20,8 @@
   #about .price-card.recommended .price-label,#about .price-card.recommended .price-amount { color:#245f43; }
   #about .price-card-cta { display:flex;align-items:center;justify-content:center;min-height:42px;margin-top:auto;padding:.65rem .8rem;border-radius:10px;background:#f1f6f3;color:#245f43;font-size:.82rem;font-weight:800; }
   #about .price-card.recommended .price-card-cta { background:#2d6a4f;color:#fff; }
+  #about .about-cta { display:flex;width:max-content;align-items:center;justify-content:flex-start;margin:1rem 0 0;color:#245f43;font-weight:800;text-decoration:none; }
+  #about .about-cta:hover,#about .about-cta:focus-visible { color:#2d6a4f;text-decoration:underline;text-underline-offset:3px; }
   #contact .contact-support-layout { display:none !important; }
   #contact .contact-grid { margin-bottom:1.2rem; }
   #contact .home-contact-next { max-width:760px;margin:1.25rem auto 0;padding-top:1.15rem;border-top:1px solid rgba(45,106,79,.16); }
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (aboutCta) {
       aboutCta.setAttribute('href', '/booking/');
-      aboutCta.textContent = '4개 예약 상품 자세히 보기 →';
+      aboutCta.textContent = '예약하기 →';
       aboutCta.removeAttribute('target');
       aboutCta.removeAttribute('rel');
       aboutCta.setAttribute('data-cta', 'about_booking_guide');
