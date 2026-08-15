@@ -80,65 +80,12 @@ script_version: 20260711-4
     font-size: .9rem;
     font-weight: 800;
   }
-  .about-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(255, 255, 255, .96);
-    border-top: 1px solid #edf1ee;
-    border-bottom: 1px solid #dfe8e2;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .about-sticky-nav__inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .about-sticky-nav__inner::-webkit-scrollbar {
-    display: none;
-  }
-  .about-sticky-nav a {
-    flex: 0 0 auto;
-    display: block;
-    padding: 14px 0 12px;
-    color: #5f6d65;
-    font-size: .9rem;
-    font-weight: 750;
-    line-height: 1.2;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: color .18s ease, border-color .18s ease;
-  }
-  .about-sticky-nav a:hover,
-  .about-sticky-nav a:focus-visible {
-    color: #173d29;
-    border-bottom-color: #285d43;
-  }
-  .about-sticky-nav a:focus-visible {
-    outline: none;
-  }
   main.about-page section[id] {
-    scroll-margin-top: 72px;
+    scroll-margin-top: 132px;
   }
   @media (max-width: 768px) {
-    .about-sticky-nav__inner {
-      padding: 0 16px;
-      gap: 22px;
-    }
-    .about-sticky-nav a {
-      padding: 13px 0 11px;
-      font-size: .84rem;
-    }
     main.about-page section[id] {
-      scroll-margin-top: 64px;
+      scroll-margin-top: 122px;
     }
   }
 </style>
@@ -162,9 +109,9 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
-  <nav class="about-sticky-nav" aria-label="바른자리 소개 페이지 메뉴">
-    <div class="about-sticky-nav__inner">
-      <a href="#home">브랜드 철학</a>
+  <nav class="guide-toc" aria-label="바른자리 소개 페이지 목차">
+    <div class="guide-toc-inner">
+      <span class="guide-toc-label">바른자리 이야기</span>
       <a href="#about-story">개인시간</a>
       <a href="#good-time">좋은 시간</a>
       <a href="#use-cases">이용 목적</a>
