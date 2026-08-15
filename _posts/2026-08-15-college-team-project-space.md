@@ -2,14 +2,26 @@
 layout: default
 title: 대학생 팀플 장소, 카페에서 하기 어려운 순간 | 프로젝트 회의 공간 고르는 법
 date: 2026-08-15 08:10:00 +0900
-category: 스터디룸
+category: 스터디·소모임
+hub_series: study
+hub_section: related
+hub_order: 3
+hub_label: 대학생 팀플
+hub_kicker: 조용한 자리보다 같이 말하고 수정할 환경이 필요할 때
+hub_title: 대학생 팀플 장소, 카페에서 하기 어려운 순간
+hub_description: 역할 분담, 자료 수정, 프로젝트 회의와 발표 준비까지 실제 팀플 흐름에 맞춰 공간 선택 기준을 정리했습니다.
+hub_tags:
+  - 대학생 팀플
+  - 팀 프로젝트
+  - 2~3시간
+hub_footer: 팀플 공간
+keywords: 대학생팀플장소,팀플장소,팀프로젝트장소,팀플하기좋은곳,부천팀플,신중동팀플,부천스터디룸,신중동스터디룸,팀플회의공간
 tags:
   - 대학생팀플
   - 팀프로젝트
   - 스터디룸
   - 그룹스터디
   - 부천스터디룸
-hide_tags: true
 permalink: /posts/college-team-project-space/
 canonical: https://bareunjari.com/posts/college-team-project-space/
 description: "대학생 팀플 장소를 찾을 때 카페, 스터디카페, 프라이빗 스터디룸 중 무엇이 맞을까요? 역할 분담, 자료 수정, 프로젝트 회의와 발표 준비까지 실제 팀플 흐름에 맞춰 공간 선택 기준을 정리했습니다."
@@ -54,4 +66,8 @@ script_version: 20260711-4
   <section id="faq" class="guide-summary-section"><div class="section-inner"><p class="section-label">FAQ</p><h2 class="section-title">대학생 팀플 장소를 고를 때 자주 묻는 질문</h2><p class="section-desc">팀플 장소와 이용시간을 정할 때 실제로 헷갈리기 쉬운 기준만 짧게 정리했습니다.</p><div class="faq-list"><details class="faq-item"><summary>팀플이면 무조건 스터디룸이 더 좋은가요?</summary><div class="faq-answer"><p>아닙니다. 짧은 일정 조정이나 첫 만남이라면 카페가 더 간단할 수 있습니다. 대화량이 많고 자료를 함께 수정해야 할수록 독립된 공간의 필요성이 커집니다.</p></div></details><details class="faq-item"><summary>몇 시간 정도 예약하는 게 좋나요?</summary><div class="faq-answer"><p>정해진 답은 없습니다. 짧은 회의는 1시간으로도 가능하지만 자료를 합치고 결과물까지 수정한다면 2~3시간 정도의 연속 시간이 필요한 경우가 있습니다.</p></div></details><details class="faq-item"><summary>발표 연습도 팀플 글에 포함되나요?</summary><div class="faq-answer"><p>팀 프로젝트 안에서 발표 순서를 잠깐 확인하는 정도는 자연스럽지만, 발표를 반복해서 실전처럼 연습하는 목적은 <a href="/practice/">연습·리허설 가이드</a>에서 별도로 다룹니다.</p></div></details><details class="faq-item"><summary>바른자리에서 팀플 코칭을 받을 수 있나요?</summary><div class="faq-answer"><p>아니요. 바른자리는 팀플 코칭이나 학습 지도를 제공하지 않으며, 팀이 준비한 작업을 진행할 수 있는 프라이빗 공간을 시간 단위로 대여합니다.</p></div></details></div></div></section>
 
   <section id="booking"><div class="section-inner"><p class="section-label">Next Step</p><h2 class="section-title">이번 팀플에서 필요한 시간을 먼저 정해보세요</h2><p class="section-desc">회의만 할지, 자료 수정까지 끝낼지 정하면 필요한 시간과 공간을 고르기 쉬워집니다.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">팀플 시간 확인하기</a><a href="/study/" class="btn-outline">스터디·소모임 허브</a></div></div></section>
+
+  <section class="post-related" aria-label="함께 읽으면 좋은 글"><div class="section-inner"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul><li><a href="{{ '/posts/group-study-3-hours/' | relative_url }}">그룹 스터디 3시간, 어떻게 활용할까?</a></li><li><a href="{{ '/posts/regular-study-space-signals/' | relative_url }}">정기 스터디 장소를 바꿔야 하는 신호 5가지</a></li><li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li></ul></div></section>
+
+  {% include post-tags.html %}
 </main>
