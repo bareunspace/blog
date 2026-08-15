@@ -18,7 +18,7 @@
           {% if page.category == "면접준비" %}
             <a href="{{ '/interview/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "스터디룸" or page.category == "스터디·소모임" %}
-            <a href="{{ '/study/' | relative_url }}">스터디룸</a>
+            <a href="{{ '/study/' | relative_url }}">스터디·소모임</a>
           {% elsif page.category == "미팅·상담" or page.category == "미팅·업무" %}
             <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
           {% elsif page.category == "프라이빗시간" %}
@@ -45,7 +45,7 @@
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">가이드</a>
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-        <span aria-current="page">스터디룸</span>
+        <span aria-current="page">스터디·소모임</span>
       {% elsif page.page_id == "meeting" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <a href="{{ '/blog.html' | relative_url }}">가이드</a>
