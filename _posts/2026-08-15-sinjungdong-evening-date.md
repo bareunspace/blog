@@ -15,9 +15,9 @@ hubs:
 canonical: https://bareunjari.com/posts/sinjungdong-evening-date/
 permalink: /posts/sinjungdong-evening-date/
 date: 2026-08-15 14:00:00 +0900
-og_image: https://bareunjari.com/images/09.webp
-og_image_alt: 신중동역 가까운 바른자리의 밝고 차분한 실제 공간
-preload_image: images/09.webp
+og_image: https://bareunjari.com/images/sinjungdong-evening-date.webp
+og_image_alt: 신중동 저녁 데이트를 위한 바른자리의 차분한 공간
+preload_image: images/sinjungdong-evening-date.webp
 ---
 
 <main class="about-page">
@@ -32,7 +32,7 @@ preload_image: images/09.webp
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/09.webp' image_alt='신중동역 가까운 바른자리 실제 공간의 차분한 내부 모습' image_loading='eager' image_caption='밖에서 충분히 즐긴 뒤, 집에 가기 전 마지막은 조금 차분하게.' %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/sinjungdong-evening-date.webp' image_alt='신중동 저녁 데이트를 위한 바른자리의 차분한 공간' image_loading='eager' image_caption='밖에서 충분히 즐긴 뒤, 집에 가기 전 마지막은 조금 차분하게.' %}
 
   <nav class="guide-toc" aria-label="신중동 저녁 데이트 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#after-dinner">저녁을 먹고 나면 다음이 애매할 때</a><a href="#last-two-hours">집에 가기 전 마지막 2시간</a><a href="#near-station">신중동역 가까이가 중요한 이유</a><a href="#what-to-do">둘이 2시간 동안 뭘 하지?</a><a href="#calm-evening">시끄러운 곳 대신 차분한 저녁</a><a href="#time-choice">2시간과 3시간 중 고르기</a><a href="#faq">자주 묻는 질문</a></div></nav>
 
