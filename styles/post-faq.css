@@ -100,6 +100,42 @@ main.about-page #faq .faq-answer p {
   word-break: keep-all;
 }
 
+/* Sinjungdong evening date: visual rhythm + mobile conversion polish */
+main.about-page:has(#last-two-hours):has(#before-booking) #home .section-inner {
+  max-width: 900px;
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) #home .section-desc {
+  max-width: 720px;
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) .guide-summary-card,
+main.about-page:has(#last-two-hours):has(#before-booking) .about-highlight-card,
+main.about-page:has(#last-two-hours):has(#before-booking) .about-principle-item {
+  height: 100%;
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) #time-choice .guide-summary-card:first-child {
+  border-color: #b8d4c2;
+  background: #f2f8f4;
+  box-shadow: 0 12px 30px rgba(33, 88, 58, .09);
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) #time-choice .guide-summary-card:first-child span {
+  background: #dfeee5;
+  color: #255b3f;
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) #before-booking .about-highlight-card:last-child a {
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+main.about-page:has(#last-two-hours):has(#before-booking) .about-cta-section .section-inner {
+  max-width: 820px;
+}
+
 @media (max-width: 680px) {
   main.about-page #faq .faq-list {
     gap: .58rem;
@@ -132,5 +168,96 @@ main.about-page #faq .faq-answer p {
   main.about-page #faq .faq-answer p {
     font-size: .86rem;
     line-height: 1.68;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #home {
+    padding-bottom: .6rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #home .section-title {
+    font-size: clamp(2rem, 9.4vw, 2.55rem);
+    line-height: 1.16;
+    letter-spacing: -.035em;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #home .section-desc {
+    margin-top: .9rem;
+    font-size: .95rem;
+    line-height: 1.72;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #home .hero-btns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .65rem;
+    margin-top: 1.25rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #home .hero-btns a {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .guide-toc {
+    margin-top: .75rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .guide-toc-inner {
+    gap: .42rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .guide-toc a {
+    padding: .52rem .7rem;
+    font-size: .76rem;
+    line-height: 1.35;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .guide-summary-grid,
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-highlight-grid,
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-principle-grid {
+    gap: .72rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .guide-summary-card,
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-highlight-card,
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-principle-item {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #last-two-hours .about-principle-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #last-two-hours .about-principle-item h3 {
+    font-size: .94rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #last-two-hours .about-principle-item p {
+    font-size: .82rem;
+    line-height: 1.55;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #time-choice .guide-summary-card:first-child {
+    order: -1;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) #before-booking .about-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-cta-section .hero-btns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .65rem;
+  }
+
+  main.about-page:has(#last-two-hours):has(#before-booking) .about-cta-section .hero-btns a {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    justify-content: center;
   }
 }
