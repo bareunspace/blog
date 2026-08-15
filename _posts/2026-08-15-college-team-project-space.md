@@ -10,7 +10,7 @@ tags:
   - 그룹스터디
   - 부천스터디룸
 hide_tags: true
-permalink: /posts/college-team-project-space/
+permalink: /college-team-project-space/
 canonical: https://bareunjari.com/college-team-project-space/
 description: "대학생 팀플 장소를 찾을 때 카페, 스터디카페, 프라이빗 스터디룸 중 무엇이 맞을까요? 역할 분담, 자료 수정, 프로젝트 회의와 발표 준비까지 실제 팀플 흐름에 맞춰 공간 선택 기준을 정리했습니다."
 og_image: https://bareunjari.com/images/college-team-project-space.webp
