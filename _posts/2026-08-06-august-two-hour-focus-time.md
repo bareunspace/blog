@@ -18,8 +18,8 @@ hubs:
   - 면접준비
   - 스터디·소모임
   - 회의·미팅
-canonical: https://bareunjari.com/posts/august-two-hour-focus-time/
-permalink: /posts/august-two-hour-focus-time/
+canonical: https://bareunjari.com/august-two-hour-focus-time/
+permalink: /august-two-hour-focus-time/
 date: 2026-08-06 09:00:00 +0900
 editor_pick: true
 og_image: https://bareunjari.com/images/august-focus-time.webp
