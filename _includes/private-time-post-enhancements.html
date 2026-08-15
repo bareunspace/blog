@@ -41,6 +41,28 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    if (!document.getElementById('evening-date-next-guide')) {
+      var eveningGuide = document.createElement('section');
+      eveningGuide.id = 'evening-date-next-guide';
+      eveningGuide.className = 'guide-summary-section';
+      eveningGuide.setAttribute('aria-label', '신중동 저녁 데이트 이어서 보기');
+      eveningGuide.innerHTML = [
+        '<div class="section-inner">',
+        '<div class="about-overview-panel">',
+        '<div class="about-overview-copy">',
+        '<p class="section-label">Evening Date</p>',
+        '<h2 class="section-title">저녁 식사 뒤 바로 집에 가기 아쉽다면</h2>',
+        '<p class="section-desc">신중동에서 저녁을 먹고 난 뒤 다시 북적이는 곳으로 이동하기보다, 신중동역에서 지하철을 타기 전 1~3시간을 차분하게 보내는 동선을 따로 정리했습니다.</p>',
+        '<div class="hero-btns"><a href="/posts/sinjungdong-evening-date/" class="btn-primary">신중동 저녁 데이트 가이드 보기</a></div>',
+        '</div>',
+        '</div>',
+        '</div>'
+      ].join('');
+      var whyBareunjari = main.querySelector('#why-bareunjari');
+      if (whyBareunjari) whyBareunjari.insertAdjacentElement('afterend', eveningGuide);
+      else main.appendChild(eveningGuide);
+    }
+
     var faqInner = main.querySelector('#faq .section-inner');
     if (faqInner && !document.getElementById('faq-private-place')) {
       var faqItem = document.createElement('article');
@@ -90,10 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
       '<article class="about-highlight-card"><h3>프라이버시의 가치</h3><p>왜 사람들이 공간보다 방해받지 않는 시간에 비용을 지불하는지 설명하는 브랜드 Pillar입니다.</p><p><a href="/posts/privacy-is-worth-paying-for/">프라이버시의 가치 →</a></p></article>',
       '<article class="about-highlight-card"><h3>혼자 있는 시간</h3><p>아무에게도 반응하지 않고 쉬거나 생각을 정리하고 싶은 구체적인 순간을 다룹니다.</p><p><a href="/posts/alone-time-is-recovery/">혼자 있는 시간 가이드 →</a></p></article>',
       '<article class="about-highlight-card"><h3>둘만의 시간</h3><p>카페보다 서로에게 집중할 수 있는 부천·신중동 실내데이트 상황을 다룹니다.</p><p><a href="/posts/date-your-own-time/">둘만의 시간 가이드 →</a></p></article>',
+      '<article class="about-highlight-card"><h3>신중동 저녁 데이트</h3><p>저녁 식사 뒤 바로 집에 가기 아쉬울 때, 신중동역 귀가 동선에 맞춰 마지막 1~3시간을 보내는 방법을 다룹니다.</p><p><a href="/posts/sinjungdong-evening-date/">저녁 데이트 가이드 →</a></p></article>',
       '</div>',
       '<div class="hero-btns" style="margin-top:1.5rem;">',
       '<a href="/private/" class="btn-outline">프라이빗시간 허브</a>',
-      '<a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">필요한 시간 예약하기</a>',
+      '<a href="/booking/" class="btn-primary">필요한 시간 예약하기</a>',
       '</div>',
       '</div>'
     ].join('');
