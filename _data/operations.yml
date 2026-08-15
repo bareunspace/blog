@@ -28,7 +28,7 @@ products:
     price: 20000
     price_label: "20,000원 / 2시간"
     duration: "2시간"
-    booking_url: "https://m.booking.naver.com/booking/10/bizes/1663159/items/7966416"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
 
   study_3h:
     name: "스터디·소모임 - 3시간"
@@ -37,7 +37,7 @@ products:
     price_label: "30,000원 / 3시간"
     duration: "3시간"
     recommended_people: "3~6명"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7963163"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
 
   overnight:
     name: "심야 집중 공간대여 - 올나잇 6시간"
