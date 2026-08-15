@@ -17,7 +17,7 @@
           <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
           {% if page.category == "면접준비" %}
             <a href="{{ '/interview/' | relative_url }}">{{ page.category }}</a>
-          {% elsif page.category == "스터디룸" %}
+          {% elsif page.category == "스터디룸" or page.category == "스터디·소모임" %}
             <a href="{{ '/study/' | relative_url }}">스터디룸</a>
           {% elsif page.category == "미팅·상담" or page.category == "미팅·업무" %}
             <a href="{{ '/meeting/' | relative_url }}">{{ page.category }}</a>
