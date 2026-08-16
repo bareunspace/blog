@@ -1,5 +1,6 @@
 ---
 layout: default
+published: false
 title: SK하이닉스 A!SK 영상면접 준비 | 비대면 영상 인터뷰 전 꼭 연습할 것
 description: 2026년 SK하이닉스 공식 채용 안내와 실제 응시 후기를 바탕으로 A!SK 영상면접의 특징, 후기에서 반복되는 어려움, 녹화 연습법과 2시간 리허설 방법을 정리했습니다.
 category: 면접준비
