@@ -19,11 +19,11 @@ keywords: 부천과외장소,신중동과외장소,과외할곳,보충수업장�
 canonical: https://bareunjari.com/posts/bucheon-tutoring-class-space/
 permalink: /posts/bucheon-tutoring-class-space/
 date: 2026-08-16 09:30:00 +0900
-og_image: https://bareunjari.com/images/14.jpeg
-og_image_alt: 교재와 노트북을 펼쳐 과외와 소규모 수업에 활용할 수 있는 바른자리 공간
-og_image_width: 2200
-og_image_height: 1650
-preload_image: images/14.webp
+og_image: https://bareunjari.com/images/bucheon-tutoring-class-space.webp
+og_image_alt: 바른자리에서 선생님과 학생이 과외 수업을 진행하는 모습
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/bucheon-tutoring-class-space.webp
 script_version: 20260711-4
 ---
 
@@ -38,7 +38,7 @@ script_version: 20260711-4
   </section>
 
   {% include breadcrumb.html %}
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/14.jpeg' image_alt='교재와 노트북을 펼쳐 과외와 소규모 수업에 활용할 수 있는 바른자리 공간' image_width='2200' image_height='1650' image_loading='eager' image_caption='과외 장소에서는 단순히 조용한 자리보다 설명하고 질문하며 자료를 펼칠 수 있는지가 중요합니다.' %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/bucheon-tutoring-class-space.webp' image_alt='바른자리에서 선생님과 학생이 과외 수업을 진행하는 모습' image_width='1536' image_height='1024' image_loading='eager' image_caption='1:1 과외부터 소규모 보충수업까지, 설명하고 질문하며 함께 공부할 수 있는 바른자리 공간입니다.' %}
 
   <section>
     <div class="section-inner">
