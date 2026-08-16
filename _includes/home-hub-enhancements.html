@@ -10,16 +10,21 @@
   #about .about-layout { display:block; }
   #about .about-photo { display:none !important; }
   #about .pricing-cards { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;align-items:stretch;width:100%; }
-  #about .price-card { display:flex;flex-direction:column;height:100%;min-width:0;padding:1.35rem 1.15rem; }
+  #about .price-card { display:flex;flex-direction:column;height:100%;min-width:0;padding:1.35rem 1.15rem;border:1px solid #dce7e0;background:#fff; }
   #about .price-card .price-badge { align-self:flex-start; }
   #about .price-card .price-label { margin-top:.8rem;font-size:1.05rem;line-height:1.4; }
   #about .price-card .price-amount { margin-top:.55rem;white-space:nowrap; }
   #about .price-card .price-desc { margin-top:.75rem;margin-bottom:1rem;font-size:.86rem;line-height:1.6; }
-  #about .price-card.recommended { background:#f1f7f3;border-color:#2d6a4f;box-shadow:0 8px 24px rgba(45,106,79,.10); }
+  #about .price-card.recommended { background:#fff;border:2px solid #2d6a4f;box-shadow:0 12px 28px rgba(45,106,79,.16); }
   #about .price-card.recommended .price-badge { background:#2d6a4f;color:#fff; }
   #about .price-card.recommended .price-label,#about .price-card.recommended .price-amount { color:#245f43; }
+  #about .price-card.recommended .price-amount { font-size:1.95rem;font-weight:900; }
+  #about .price-card.recommended-primary { background:#e7f3eb;border:3px solid #245f43;box-shadow:0 16px 34px rgba(45,106,79,.20); }
+  #about .price-card.recommended-primary .price-badge { background:#1f5a3d;color:#fff; }
+  #about .price-card.recommended-primary .price-label,#about .price-card.recommended-primary .price-amount { color:#1f5a3d; }
   #about .price-card-cta { display:flex;align-items:center;justify-content:center;min-height:42px;margin-top:auto;padding:.65rem .8rem;border-radius:10px;background:#f1f6f3;color:#245f43;font-size:.82rem;font-weight:800; }
   #about .price-card.recommended .price-card-cta { background:#2d6a4f;color:#fff; }
+  #about .price-card.recommended-primary .price-card-cta { background:#1f5a3d;color:#fff; }
   #about .about-cta { display:inline-flex !important;width:max-content;align-items:center;justify-content:flex-start;margin:1rem 0 0;padding:.72rem 1rem;border-radius:10px;background:#245f43 !important;color:#fff !important;font-weight:800;text-decoration:none !important; }
   #about .about-cta:hover,#about .about-cta:focus-visible { background:#2d6a4f !important;color:#fff !important;text-decoration:none !important; }
   #contact .contact-support-layout { display:none !important; }
@@ -112,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p class="price-desc">면접 · 발표 · 스피킹 · 리허설 · 집중 작업</p>
           <span class="price-card-cta">2시간 예약하기 →</span>
         </a>
-        <a href="{{ study.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card recommended" data-cta="price_study_3h" aria-label="3시간 예약하기">
+        <a href="{{ study.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card recommended recommended-primary" data-cta="price_study_3h" aria-label="3시간 예약하기">
           <span class="price-badge">추천 이용시간</span>
           <p class="price-label">3시간 함께 준비</p>
           <p class="price-amount">30,000<span class="price-unit">원 / 3시간</span></p>
