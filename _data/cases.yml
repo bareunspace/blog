@@ -2,6 +2,97 @@ version: 1
 updated_at: 2026-08-17
 
 cases:
+  - id: sk-hynix-2026-08-half-day-interview
+    type: hiring
+    topic: interview
+    job: semiconductor
+    company: SK하이닉스
+    company_slug: sk-hynix
+    title: 2026 신입 수시채용 · 반나절 심층면접 도입
+    summary: 기존 20~30분 면접에서 벗어나 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접이 도입된 사례입니다. 직무 지식을 외우는 것보다 과제의 판단 근거와 문제 해결 과정을 말로 설명하는 연습과 연결됩니다.
+
+    published_at: 2026-07-30
+    verified_at: 2026-08-17
+
+    application:
+      start: "2026-08-20"
+      end: "2026-08-26"
+      period_label: "2026-08-20 ~ 2026-08-26"
+      hiring_size: 주요 직무 신입 수시채용
+      roles: 설계 · 소자 · R&D공정 · 양산기술 등
+
+    selection:
+      process_label: 서류전형 → SKCT 및 A!SK 전형 → 면접전형 → 최종 합격 및 입사
+      interview_focus: 반나절 동안 과제 수행과 인터뷰를 통해 직무 전문성, AI 응용 능력, 인문학적 소양, 논리적 사고력 등을 종합 검증
+      stages:
+        - 서류전형
+        - SKCT 및 A!SK 전형
+        - 반나절 심층면접
+        - 최종 합격 및 입사
+
+    signals:
+      situation_interview: false
+      video_interview: true
+      ai_interview: true
+      task_interview: true
+      deep_interview: true
+      pt_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 채용 자료에서 비대면 영상 인터뷰와 반나절 심층면접이 확인되고, 말하기·녹화·과제 설명·꼬리질문 대응 연습과 직접 연결되는 사례라서 선정했습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - company-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - video-interview
+        - task-explanation
+        - follow-up-response
+      practice_points:
+        - 직무·프로젝트 경험을 결론 → 근거 → 역할 → 결과 순서로 짧게 설명해보기
+        - 과제를 받았다고 가정하고 문제 정의, 판단 기준, 선택 이유를 소리 내어 설명해보기
+        - 예상 꼬리질문을 추가해 첫 답변 뒤에도 논리를 유지하며 이어서 답해보기
+        - A!SK처럼 카메라를 보는 상황을 가정해 노트북이나 휴대폰으로 답변을 녹화하고 시선·속도·답변 길이를 확인하기
+      excluded:
+        - 반도체 직무 지식이나 기술 과제의 정답을 대신 제공하는 전문 코칭
+        - 실제 SK하이닉스 면접 질문을 보유하거나 제공한다는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 2026년 8월 신입 수시채용의 핵심 변화는 기존 20~30분 면접 대신 반나절 심층면접을 도입한 점입니다.
+      - SK하이닉스 Talent Hub의 현재 채용 절차 안내에는 A!SK가 대면면접 전에 진행되는 비대면 영상 인터뷰로 소개되어 있습니다.
+      - 직무에 따라 면접 방식은 달라질 수 있으므로 실제 지원 시 개별 채용 공고와 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: SK hynix Talent Hub
+      title: 스펙 보다 ‘생각 근육’ 본다… AI 시대 맞춤형 인재 선발 SK하이닉스, ‘반나절 심층면접’ 도입
+      url: https://talent.skhynix.com/hub/ko/company/story/197
+      published_at: "2026-07-30"
+
+    references:
+      - publisher: SK hynix Talent Hub
+        title: 채용 절차
+        url: https://talent.skhynix.com/hub/ko/apply/process
+        checked_at: 2026-08-17
+      - publisher: SK hynix Newsroom
+        title: AI 시대에 걸맞는 실력 중심 채용 혁신 · 학력 제한 전면 철폐
+        url: https://news.skhynix.co.kr/ai-talent-recruit-2026/
+        published_at: "2026-06-17"
+
+    related:
+      url: /posts/sk-hynix-ask-video-interview/
+      label: SK하이닉스 면접 준비 가이드 보기
+
   - id: eastar-2026-08-cabin-crew
     type: hiring
     topic: interview
@@ -37,6 +128,16 @@ cases:
       ai_interview: false
       english_interview: null
       physical_test: true
+
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 상황 대처 질문을 실제 목소리로 답하고 반복 리허설하는 사용 상황과 직접 연결되는 검증 사례라서 선정했습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
 
     barunjari:
       relevance: high
