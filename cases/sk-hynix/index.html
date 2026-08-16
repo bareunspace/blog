@@ -1,0 +1,33 @@
+---
+layout: default
+title: SK하이닉스 채용·면접 사례 | 바른자리 사례 DB
+description: SK하이닉스 채용과 면접 사례만 모아 전형 변화, 연습 포인트, 출처와 최종 확인일을 함께 정리합니다.
+permalink: /cases/sk-hynix/
+extra_css: /styles/case-archive.css
+extra_css_version: 20260817-5
+---
+
+<main class="about-page">
+  <section id="home" class="case-archive-hero">
+    <div class="section-inner case-archive-shell">
+      <p class="section-label">SK hynix Cases</p>
+      <h1 class="section-title">SK하이닉스 채용·면접 사례</h1>
+      <p class="section-desc">전체 사례 데이터베이스에서 SK하이닉스 관련 사례만 모았습니다. 공식 채용 자료를 기준으로 A!SK, 심층면접처럼 실제 준비 방식에 영향을 주는 변화를 확인할 수 있습니다.</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ '/posts/sk-hynix-ask-video-interview/' | relative_url }}" class="btn-primary">SK하이닉스 면접 준비 가이드</a>
+        <a href="{{ '/cases/' | relative_url }}" class="btn-outline">전체 사례 DB</a>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  {% include cases-list.html
+    company='sk-hynix'
+    section_id='sk-hynix-cases'
+    eyebrow='SK hynix'
+    title='SK하이닉스 관련 검증 사례'
+    intro='company: sk-hynix로 분류되고 공식 출처와 최종 확인일이 있는 사례만 표시합니다.'
+    open_first=true
+  %}
+</main>
