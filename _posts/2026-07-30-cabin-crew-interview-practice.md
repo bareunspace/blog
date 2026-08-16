@@ -132,7 +132,16 @@ script_version: 20260711-4
     </div>
   </section>
 
-  {% include case-archive-preview.html key="cabin_crew" %}
+  {% include cases-list.html
+    job='cabin-crew'
+    limit=3
+    section_id='case-archive-preview'
+    eyebrow='Recent Cases'
+    title='최근 항공사 객실승무원 채용 사례'
+    intro='항공사별 채용 전형은 달라질 수 있습니다. 최근 사례만 짧게 확인하고, 필요한 항목을 펼쳐 준비 포인트와 출처를 확인할 수 있습니다.'
+    more_url='/cases/cabin-crew/'
+    more_label='승무원 사례 전체 보기'
+  %}
 
   <section id="what-to-record">
     <div class="section-inner">
