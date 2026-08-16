@@ -1,0 +1,41 @@
+{% assign archive = site.data.case_archives[include.key] %}
+{% if archive and archive.cases %}
+<section id="case-archive-preview">
+  <div class="section-inner">
+    <p class="section-label">Recent Cases</p>
+    <h2 class="section-title">{{ archive.title }}</h2>
+    <p class="section-desc">{{ archive.intro }}</p>
+
+    {% assign recent_cases = archive.cases | sort: 'date' | reverse %}
+    <div class="case-archive-list">
+      {% for case in recent_cases limit: 3 %}
+      <details class="case-archive-item">
+        <summary>
+          <strong>{{ case.company }}</strong>
+          <span>{{ case.label }}</span>
+        </summary>
+        <div class="case-archive-body">
+          <p>{{ case.summary }}</p>
+          {% if case.details %}
+          <ul>
+            {% for detail in case.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if case.related_url %}
+          <p><a href="{{ case.related_url | relative_url }}">{{ case.related_label | default: '관련 가이드 보기' }}</a></p>
+          {% endif %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+
+    {% if archive.archive_url %}
+    <div class="hero-btns" style="margin-top: 2rem;">
+      <a href="{{ archive.archive_url | relative_url }}" class="btn-outline">전체 사례 보기</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
