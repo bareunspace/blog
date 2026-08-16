@@ -68,12 +68,22 @@ script_version: 20260711-4
 
   <style>
     @media (min-width: 768px) {
-      #where .guide-compare-grid {
+      #quick-answer .guide-summary-grid,
+      #turning-point .about-principle-grid,
+      #practice-time > .section-inner > .guide-summary-grid,
+      #where .guide-compare-grid,
+      #bareunjari-use .about-highlight-grid,
+      #related-guides .about-highlight-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
     @media (max-width: 767px) {
-      #where .guide-compare-grid {
+      #quick-answer .guide-summary-grid,
+      #turning-point .about-principle-grid,
+      #practice-time > .section-inner > .guide-summary-grid,
+      #where .guide-compare-grid,
+      #bareunjari-use .about-highlight-grid,
+      #related-guides .about-highlight-grid {
         grid-template-columns: 1fr;
       }
     }
