@@ -35,7 +35,7 @@ script_version: 20260711-4
       <p class="section-desc">학생 집에서 수업하기 어렵고 카페에서는 계속 설명하기 부담스럽다면, 필요한 시간만 예약해 선생님과 학생이 함께 사용할 수 있는 공간도 선택지가 됩니다.</p>
       <div class="hero-btns">
         <a href="#quick-answer" class="btn-primary">과외 장소 선택 기준 보기</a>
-        <a href="/study/" class="btn-outline">스터디·소모임 가이드</a>
+        <a href="/booking/" class="btn-outline">이용시간·요금 확인하기</a>
       </div>
     </div>
   </section>
@@ -56,22 +56,22 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Quick Answer</p>
       <h2 class="section-title">과외 장소는 ‘조용한 자리’보다 수업 방식에 맞아야 합니다</h2>
-      <p class="section-desc"><strong>설명하고 질문하고 문제를 풀어야 하는 수업이라면, 말할 수 있는지·자료를 펼칠 수 있는지·필요한 시간만 예약할 수 있는지를 먼저 확인하는 편이 좋습니다.</strong></p>
+      <p class="section-desc"><strong>설명하고 질문하는 수업이라면 말할 수 있는지, 인원에 맞는지, 필요한 시간만 예약할 수 있는지를 먼저 확인해보세요.</strong></p>
       <div class="guide-summary-grid">
         <article class="guide-summary-card">
           <span>01</span>
           <h3>말할 수 있는가</h3>
-          <p>선생님 설명과 학생 질문이 자연스럽게 이어지는 수업인지 확인합니다.</p>
+          <p>설명과 질문이 자연스럽게 이어질 수 있는 환경인지 봅니다.</p>
         </article>
         <article class="guide-summary-card">
           <span>02</span>
           <h3>인원에 맞는가</h3>
-          <p>1:1 과외인지 2~4명 그룹수업인지에 따라 필요한 자리와 테이블이 달라집니다.</p>
+          <p>1:1인지 2~4명 그룹수업인지에 따라 필요한 자리가 달라집니다.</p>
         </article>
         <article class="guide-summary-card">
           <span>03</span>
-          <h3>필요한 시간만 쓰는가</h3>
-          <p>정규 교실이 아니라 특정 날짜에 2~3시간만 필요한 수업도 있습니다.</p>
+          <h3>시간이 맞는가</h3>
+          <p>특정 날짜에 필요한 2~3시간만 이용할 수 있는지 확인합니다.</p>
         </article>
       </div>
     </div>
@@ -81,7 +81,6 @@ script_version: 20260711-4
     <div class="guide-toc-inner">
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
       <a href="#why-space">장소가 애매한 이유</a>
-      <a href="#choose-space">필요한 순간</a>
       <a href="#compare-space">공간 비교</a>
       <a href="#use-cases">수업 활용</a>
       <a href="#time-guide">2·3시간 활용</a>
@@ -105,11 +104,11 @@ script_version: 20260711-4
       <p class="section-label">When You Need It</p>
       <h2 class="section-title">이런 순간에는 별도의 수업 장소가 필요할 수 있습니다</h2>
       <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>학생 집에서 수업하기 어려울 때</h3><p>방문수업이 어렵거나 선생님과 학생이 중간 지점에서 만나야 한다면 서로 이동하기 쉬운 장소를 정하는 편이 단순합니다.</p></article>
-        <article class="about-highlight-card"><h3>카페에서 계속 설명하기 부담스러울 때</h3><p>시험 직전 문제풀이처럼 설명과 질문이 많아지는 수업은 주변 손님과 좌석 상황을 계속 신경 쓰게 될 수 있습니다.</p></article>
-        <article class="about-highlight-card"><h3>2~4명 그룹과외를 할 때</h3><p>학생이 늘어나면 교재, 노트, 태블릿과 노트북까지 펼쳐놓고 함께 문제를 풀 자리가 중요해집니다.</p></article>
-        <article class="about-highlight-card"><h3>시험 전 보충수업을 할 때</h3><p>매주 교실이 필요한 것은 아니지만 이번 주 특정 날짜에 2~3시간만 학생 몇 명을 따로 지도해야 하는 경우가 있습니다.</p></article>
-        <article class="about-highlight-card"><h3>영어처럼 말해야 하는 수업</h3><p>영어회화와 스피킹처럼 선생님이 질문하고 학생이 실제로 답해야 한다면 말할 수 있는 환경인지도 중요합니다.</p></article>
+        <article class="about-highlight-card"><h3>학생 집에서 수업하기 어려울 때</h3><p>방문수업이 어렵거나 선생님과 학생이 중간 지점에서 만나야 한다면 서로 이동하기 쉬운 장소가 편합니다.</p></article>
+        <article class="about-highlight-card"><h3>카페에서 설명하기 부담스러울 때</h3><p>시험 직전 문제풀이처럼 설명과 질문이 많아지면 주변 손님과 좌석 상황을 계속 신경 쓰게 될 수 있습니다.</p></article>
+        <article class="about-highlight-card"><h3>2~4명 그룹과외를 할 때</h3><p>학생이 늘어나면 교재와 노트북을 함께 펼쳐놓고 문제를 풀 수 있는 자리가 중요해집니다.</p></article>
+        <article class="about-highlight-card"><h3>시험 전 보충수업을 할 때</h3><p>매주 교실이 필요한 것은 아니지만 특정 날짜에 2~3시간만 학생 몇 명을 따로 지도해야 하는 경우가 있습니다.</p></article>
+        <article class="about-highlight-card"><h3>영어처럼 말해야 하는 수업</h3><p>영어회화와 스피킹처럼 실제로 답하고 반복해서 말해야 한다면 대화할 수 있는 환경인지도 중요합니다.</p></article>
       </div>
     </div>
   </section>
@@ -169,14 +168,18 @@ script_version: 20260711-4
   <section id="time-guide">
     <div class="section-inner">
       <p class="section-label">2 or 3 Hours</p>
-      <h2 class="section-title">수업은 2~3시간이 필요한 경우도 있습니다</h2>
-      <p class="section-desc">교재를 준비하고 지난 내용을 확인한 뒤 설명, 문제풀이, 오답 정리까지 이어지면 수업 방식에 따라 시간이 길어질 수 있습니다.</p>
+      <h2 class="section-title">수업 방식에 맞춰 2시간 또는 3시간을 선택하세요</h2>
+      <p class="section-desc">교재를 준비하고 지난 내용을 확인한 뒤 설명, 문제풀이, 오답 정리까지 이어지면 수업 방식에 따라 필요한 시간이 달라집니다.</p>
       <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>2시간</h3><p>1:1 과외, 영어회화, 개념 설명과 문제풀이, 시험 범위 일부 집중 정리에 활용할 수 있습니다.</p></article>
-        <article class="about-highlight-card"><h3>3시간</h3><p>2~4명 그룹과외, 시험 전 집중 보충수업, 긴 문제풀이, 모의시험과 오답 정리처럼 여유가 필요한 경우에 활용할 수 있습니다.</p></article>
+        <article class="about-highlight-card"><h3>2시간 · 집중 수업</h3><p>1:1 과외, 영어회화, 개념 설명과 문제풀이처럼 비교적 집중된 수업에 활용할 수 있습니다.</p></article>
+        <article class="about-highlight-card"><h3>3시간 · 여유 있는 수업</h3><p>2~4명 그룹과외, 시험 전 보충수업, 긴 문제풀이와 오답 정리처럼 시간이 필요한 경우에 활용할 수 있습니다.</p></article>
       </div>
       <div class="about-quote"><p><strong>스터디·소모임 3시간 30,000원</strong></p></div>
       <p>별도의 장기 계약 없이 필요한 날짜와 시간을 예약하는 방식입니다. 선생님 없이 구성원끼리 문제를 풀고 토론하는 모임이라면 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법 →</a>도 함께 참고해보세요.</p>
+      <div class="hero-btns">
+        <a href="/booking/" class="btn-primary">2·3시간 이용 확인하기</a>
+        <a href="/study/" class="btn-outline">스터디·소모임 가이드</a>
+      </div>
     </div>
   </section>
 
@@ -233,7 +236,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Bareunjari</p>
       <h2 class="section-title">카페가 애매한 날, 수업할 시간을 예약하세요</h2>
-      <p class="section-desc">학생 집도, 카페도, 고정 강의실도 상황에 따라 좋은 선택지입니다. 하지만 두세 시간 동안 설명하고 질문을 주고받으며 수업에 집중해야 하는 날에는 별도의 시간제 공간도 방법이 될 수 있습니다.</p>
+      <p class="section-desc">학생 집도, 카페도, 고정 강의실도 상황에 따라 좋은 선택지입니다. 하지만 설명하고 질문을 주고받으며 수업에 집중해야 하는 날에는 필요한 시간만 사용할 수 있는 독립 공간도 방법이 될 수 있습니다.</p>
       <div class="about-quote"><p><strong>선생님과 학생이 설명하고, 질문하고, 문제를 풀 수 있는 시간을 예약하세요.</strong></p></div>
       <div class="hero-btns">
         <a href="/study/" class="btn-outline">스터디·소모임 더 알아보기</a>
