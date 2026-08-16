@@ -32,10 +32,11 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">SK hynix Interview Practice Guide</p>
       <h1 class="section-title">SK하이닉스 A!SK 영상면접 준비<br />반나절 심층면접까지 어떻게 연습할까</h1>
-      <p class="section-desc">SK하이닉스는 A!SK를 대면면접 전에 진행하는 비대면 영상 인터뷰로 안내하고 있고, 2026년 신입 수시채용에는 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접을 도입했습니다. 준비한 내용을 머릿속에 갖고 있는 것과 카메라나 면접관 앞에서 판단 근거를 짧게 설명하는 것은 다릅니다.</p>
+      <p class="section-desc">SK하이닉스는 A!SK를 대면면접 전에 진행하는 비대면 영상 인터뷰로 안내하고 있고, 2026년 신입 수시채용에는 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접을 도입했습니다. 핵심은 답을 더 많이 외우는 것보다 <strong>준비한 경험과 판단 근거를 실제로 말해보는 것</strong>입니다.</p>
       <div class="hero-btns">
-        <a href="#verified-case" class="btn-primary">현재 채용 사례 보기</a>
-        <a href="/booking/" class="btn-outline">면접 연습 시간 확인하기</a>
+        <a href="#two-hour-practice" class="btn-primary">2시간 리허설 방법 보기</a>
+        <a href="#verified-case" class="btn-outline">현재 채용 사례 확인</a>
+        <a href="/booking/" class="btn-outline" data-cta="sk_hynix_hero_booking">면접 연습 시간 확인</a>
       </div>
     </div>
   </section>
@@ -61,6 +62,18 @@ script_version: 20260711-4
     open_first=true
   %}
 
+  <section id="practice-bridge" class="guide-summary-section">
+    <div class="section-inner">
+      <h2 class="section-title">이 사례를 보고 실제로 연습해야 할 것은 무엇일까요?</h2>
+      <p class="section-desc">A!SK와 심층면접은 형태는 다르지만 공통점이 있습니다. 머릿속에 있는 내용을 <strong>카메라나 면접관 앞에서 제한된 시간 안에 설명해야 한다는 점</strong>입니다. 그래서 준비가 어느 정도 끝났다면 다음 단계는 새로운 자료를 더 찾는 것보다 실제로 말하고, 녹화하고, 다시 말해보는 것입니다.</p>
+      <div class="about-highlight-grid" aria-label="SK하이닉스 면접 실전 전환 포인트">
+        <article class="about-highlight-card"><h3>카메라 앞 말하기</h3><p>자기소개와 프로젝트 설명을 실제 화면을 보며 말해 시선과 첫 문장을 점검합니다.</p></article>
+        <article class="about-highlight-card"><h3>판단 근거 설명</h3><p>결론만 말하지 않고 왜 그렇게 판단했는지 짧고 논리적으로 이어서 설명합니다.</p></article>
+        <article class="about-highlight-card"><h3>꼬리질문 대응</h3><p>첫 답변 뒤에 이유와 대안을 묻는 질문을 붙여도 답변 흐름이 유지되는지 확인합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
   <section id="official-info">
     <div class="section-inner">
       <h2 class="section-title">A!SK와 심층면접, 공식적으로 확인되는 것은 무엇인가요?</h2>
@@ -84,13 +97,17 @@ script_version: 20260711-4
         <article class="about-principle-item" data-step="04"><h3>꼬리질문을 붙여 다시 답하기</h3><p>첫 답변 뒤에 “왜 그렇게 판단했나요?”, “다른 방법은 없었나요?” 같은 질문을 붙여 답변 논리가 이어지는지 확인하세요.</p></article>
         <article class="about-principle-item" data-step="05"><h3>A!SK처럼 카메라 앞에서 녹화하기</h3><p>노트북이나 휴대폰 카메라를 보고 답변해 시선, 말속도, 답변 길이와 반복 표현을 확인하세요. 실제 질문을 맞히는 것이 아니라 카메라 앞 발화 자체에 익숙해지는 것이 목적입니다.</p></article>
       </div>
+      <div class="hero-btns" style="margin-top:1.75rem;">
+        <a href="#two-hour-practice" class="btn-primary">이 연습을 2시간으로 해보기</a>
+        <a href="/booking/" class="btn-outline" data-cta="sk_hynix_mid_booking">연습 가능한 시간 확인</a>
+      </div>
     </div>
   </section>
 
   <section id="two-hour-practice" class="guide-summary-section">
     <div class="section-inner">
-      <h2 class="section-title">2시간으로 해보는 SK하이닉스 면접 리허설</h2>
-      <p class="section-desc">바른자리는 면접 학원이나 기술 코칭 서비스가 아니라, 준비한 답변과 설명을 소리 내어 말하고 휴대폰이나 노트북으로 녹화하며 반복 연습할 수 있는 프라이빗 공간입니다.</p>
+      <h2 class="section-title">2시간이면 ‘정리 → 말하기 → 녹화 → 수정’까지 한 번 돌릴 수 있습니다</h2>
+      <p class="section-desc">바른자리는 면접 학원이나 기술 코칭 서비스가 아니라, 준비한 답변과 설명을 소리 내어 말하고 휴대폰이나 노트북으로 녹화하며 반복 연습할 수 있는 프라이빗 공간입니다. 집이나 카페에서 반복해서 말하기 어렵다면 아래 순서 그대로 한 번 실행해보세요.</p>
       <div class="guide-summary-grid">
         <article class="guide-summary-card"><span>00–20분</span><h3>답변 재료 정리</h3><p>자기소개, 주요 프로젝트, 지원 직무의 핵심 개념을 키워드로 정리합니다.</p></article>
         <article class="guide-summary-card"><span>20–50분</span><h3>카메라 앞 설명</h3><p>프로젝트와 직무 개념을 30~60초 단위로 말해 첫 녹화를 남깁니다.</p></article>
@@ -98,12 +115,17 @@ script_version: 20260711-4
         <article class="guide-summary-card"><span>80–100분</span><h3>꼬리질문 대응</h3><p>첫 답변의 근거와 대안을 묻는 질문을 추가해 논리가 유지되는지 점검합니다.</p></article>
         <article class="guide-summary-card"><span>100–120분</span><h3>다시 촬영</h3><p>말이 길어진 부분과 시선을 수정한 뒤 같은 내용을 다시 녹화해 비교합니다.</p></article>
       </div>
+      <div class="hero-btns" style="margin-top:1.75rem;">
+        <a href="/booking/" class="btn-primary" data-cta="sk_hynix_two_hour_booking">2시간 면접 연습 시간 확인</a>
+        <a href="/posts/interview-answer-practice/" class="btn-outline">60분 답변 연습법 먼저 보기</a>
+      </div>
+      <p class="section-desc" style="margin-top:1rem;">예약은 공간 이용 시간 확보를 위한 것이며, SK하이닉스 전형 코칭이나 실제 질문 제공은 포함되지 않습니다.</p>
     </div>
   </section>
 
   <section id="related-guides">
     <div class="section-inner">
-      <h2 class="section-title">같이 보면 좋은 면접 준비 가이드</h2>
+      <h2 class="section-title">아직 바로 예약할 단계가 아니라면, 필요한 준비부터 이어가세요</h2>
       <div class="about-highlight-grid">
         <article class="about-highlight-card"><h3>면접 답변 연습</h3><p>준비한 내용을 읽는 단계에서 벗어나 실제로 소리 내어 말하는 60분 연습법을 확인하세요.</p><p><a href="/posts/interview-answer-practice/">면접 답변 연습 방법 보기 →</a></p></article>
         <article class="about-highlight-card"><h3>1분 자기소개</h3><p>첫 답변을 짧고 명확하게 만드는 구조와 반복 연습법을 정리했습니다.</p><p><a href="/posts/1-minute-self-introduction-guide/">1분 자기소개 가이드 보기 →</a></p></article>
@@ -126,12 +148,13 @@ script_version: 20260711-4
 
   <section id="booking-cta" class="guide-summary-section">
     <div class="section-inner">
-      <h2 class="section-title">읽는 준비에서, 설명하는 준비로</h2>
-      <p class="section-desc">카메라나 면접관 앞에서 프로젝트와 판단 근거를 실제로 설명해보면 머릿속에만 있던 답변의 길이와 논리를 확인할 수 있습니다. 준비한 내용을 소리 내어 말하고 녹화하며 반복해보세요.</p>
+      <h2 class="section-title">준비한 답변을 실제로 말해볼 시간이 필요하다면</h2>
+      <p class="section-desc">카메라나 면접관 앞에서 프로젝트와 판단 근거를 실제로 설명해보면 머릿속에만 있던 답변의 길이와 논리를 확인할 수 있습니다. 바른자리에서는 예약한 시간 동안 준비한 내용을 소리 내어 말하고, 녹화하고, 다시 말하는 데 집중할 수 있습니다.</p>
       <div class="hero-btns">
-        <a href="/booking/" class="btn-primary">면접 연습 시간 확인하기</a>
+        <a href="/booking/" class="btn-primary" data-cta="sk_hynix_bottom_booking">면접 연습 시간 확인하기</a>
         <a href="/cases/sk-hynix/" class="btn-outline">SK하이닉스 검증 사례 보기</a>
       </div>
+      <p class="section-desc" style="margin-top:1rem;">바른자리는 면접 코칭이나 합격 보장 서비스가 아니라, 준비한 내용을 실제로 말하고 반복 연습할 수 있는 프라이빗 공간대여 서비스입니다.</p>
     </div>
   </section>
 
