@@ -2,7 +2,16 @@
   <nav class="breadcrumb-wrap" aria-label="페이지 경로">
     <div class="breadcrumb-inner">
       <a href="{{ '/index.html' | relative_url }}">Home</a>
-      {% if page.page_id == "blog" %}
+      {% if page.breadcrumbs %}
+        {% for crumb in page.breadcrumbs %}
+          <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+          {% if crumb.url %}
+            <a href="{{ crumb.url | relative_url }}">{{ crumb.label }}</a>
+          {% else %}
+            <span aria-current="page">{{ crumb.label }}</span>
+          {% endif %}
+        {% endfor %}
+      {% elsif page.page_id == "blog" %}
         <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
         <span aria-current="page">가이드</span>
       {% elsif page.page_id == "interview-prep" %}
