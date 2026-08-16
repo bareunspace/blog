@@ -116,7 +116,7 @@ script_version: 20260711-4
       <div class="about-principle-grid" aria-label="말하기 연습 공간 추천 대상">
         <article class="about-principle-item" data-step="01">
           <h3>OPIc·토익스피킹·영어회화 연습</h3>
-          <p>답변을 여러 번 반복하고 입에 붙을 때까지 연습하고 싶을 때 좋습니다.</p>
+          <p>답변을 여러 번 반복하고 입에 붙을 때까지 연습하고 싶을 때 좋습니다. OPIc·토익스피킹처럼 답변을 녹음해서 점검하는 시험이라면, <a href="/posts/english-speaking-test-recording-practice/">휴대폰으로 녹음 → 다시 듣기 → 수정 → 재녹음하는 영어 말하기 시험 연습법</a>도 함께 확인해보세요.</p>
         </article>
         <article class="about-principle-item" data-step="02">
           <h3>면접 리허설</h3>
