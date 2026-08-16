@@ -1,41 +1,57 @@
 {% assign archive = site.data.case_archives[include.key] %}
 {% if archive and archive.cases %}
 <section id="case-archive-preview">
-  <div class="section-inner">
-    <p class="section-label">Recent Cases</p>
-    <h2 class="section-title">{{ archive.title }}</h2>
-    <p class="section-desc">{{ archive.intro }}</p>
-
+  <div class="section-inner case-archive-shell">
     {% assign recent_cases = archive.cases | sort: 'date' | reverse %}
+    <div class="case-archive-head">
+      <div class="case-archive-head-copy">
+        <p class="case-archive-eyebrow">Recent Cases</p>
+        <h2 class="section-title">{{ archive.title }}</h2>
+        <p class="section-desc">{{ archive.intro }}</p>
+      </div>
+      <span class="case-archive-count">최신 3건</span>
+    </div>
+
     <div class="case-archive-list">
       {% for case in recent_cases limit: 3 %}
       <details class="case-archive-item">
         <summary>
-          <strong>{{ case.company }}</strong>
-          <span>{{ case.label }}</span>
+          <div class="case-archive-title">
+            <div class="case-archive-meta">
+              <span class="case-archive-badge">{{ case.company }}</span>
+              <span class="case-archive-date">{{ case.date }}</span>
+            </div>
+            <h3>{{ case.label }}</h3>
+            <p class="case-archive-summary">{{ case.summary }}</p>
+          </div>
+          <span class="case-archive-chevron" aria-hidden="true">⌄</span>
         </summary>
         <div class="case-archive-body">
-          <p>{{ case.summary }}</p>
-          {% if case.details %}
-          <ul>
-            {% for detail in case.details %}
-            <li>{{ detail }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-          {% if case.related_url %}
-          <p><a href="{{ case.related_url | relative_url }}">{{ case.related_label | default: '관련 가이드 보기' }}</a></p>
-          {% endif %}
+          <div class="case-archive-body-inner">
+            {% if case.details %}
+            <ul>
+              {% for detail in case.details %}
+              <li>{{ detail }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% if case.related_url %}
+            <div class="case-archive-actions">
+              <a href="{{ case.related_url | relative_url }}">{{ case.related_label | default: '관련 가이드 보기' }}</a>
+            </div>
+            {% endif %}
+          </div>
         </div>
       </details>
       {% endfor %}
     </div>
 
     {% if archive.archive_url %}
-    <div class="hero-btns" style="margin-top: 2rem;">
-      <a href="{{ archive.archive_url | relative_url }}" class="btn-outline">전체 사례 보기</a>
+    <div class="case-archive-more">
+      <a href="{{ archive.archive_url | relative_url }}">전체 사례 아카이브 보기</a>
     </div>
     {% endif %}
+    <p class="case-archive-note">채용 전형은 공고 시점과 항공사에 따라 달라질 수 있으므로, 지원 전에는 해당 항공사의 최신 공고를 다시 확인하세요.</p>
   </div>
 </section>
 {% endif %}
