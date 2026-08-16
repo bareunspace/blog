@@ -27,6 +27,22 @@ preload_image: images/bucheon-tutoring-class-space.webp
 script_version: 20260711-4
 ---
 
+<style>
+  .tutoring-compare-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tutoring-compare-grid .guide-compare-card {
+    min-width: 0;
+  }
+
+  @media (max-width: 760px) {
+    .tutoring-compare-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
 <main class="about-page">
   <section id="home">
     <div class="section-inner">
@@ -117,7 +133,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Compare</p>
       <h2 class="section-title">카페, 스터디카페, 시간제 공간은 선택 기준이 다릅니다</h2>
-      <div class="guide-compare-grid" aria-label="과외 장소 유형 비교">
+      <div class="guide-compare-grid tutoring-compare-grid" aria-label="과외 장소 유형 비교">
         <article class="guide-compare-card">
           <p class="guide-compare-label">Cafe</p>
           <h3>카페</h3>
