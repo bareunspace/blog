@@ -79,6 +79,21 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
     </div>
   </nav>
 
+  <style>
+    @media (min-width: 768px) {
+      .all-night-private-workspace-page #guide-overview .guide-summary-grid,
+      .all-night-private-workspace-page #why-space-matters .about-highlight-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 767px) {
+      .all-night-private-workspace-page #guide-overview .guide-summary-grid,
+      .all-night-private-workspace-page #why-space-matters .about-highlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
   <section id="guide-overview" class="guide-summary-section" aria-label="올나잇 상품 요약">
     <div class="section-inner guide-summary-grid">
       <article class="guide-summary-card">
@@ -125,22 +140,10 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
       <h2 class="section-title">이런 상황에 특히 잘 맞습니다</h2>
       <p class="section-desc">올나잇은 잠을 자거나 밤을 보내는 공간이 아니라, 해야 할 일을 끝내기 위해 시간을 확보하는 공간입니다.</p>
       <div class="about-principle-grid" aria-label="올나잇 활용 사례">
-        <article class="about-principle-item" data-step="01">
-          <h3>과제와 보고서 마감</h3>
-          <p>마감 직전에는 짧은 집중보다 흐름을 유지할 수 있는 긴 시간이 필요합니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3>포트폴리오와 자기소개서 완성</h3>
-          <p>자료를 정리하고 문장을 다듬고 전체 내용을 다시 확인하기 좋은 환경입니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3>영상 편집 · 디자인 작업</h3>
-          <p>장비와 파일을 다시 정리하지 않고, 한 흐름으로 작업을 이어갈 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="04">
-          <h3>면접·발표·회의 준비</h3>
-          <p>영어 면접, 발표 연습, 화상회의와 같은 활동을 주변 시선 없이 반복해볼 수 있습니다.</p>
-        </article>
+        <article class="about-principle-item" data-step="01"><h3>과제와 보고서 마감</h3><p>마감 직전에는 짧은 집중보다 흐름을 유지할 수 있는 긴 시간이 필요합니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>포트폴리오와 자기소개서 완성</h3><p>자료를 정리하고 문장을 다듬고 전체 내용을 다시 확인하기 좋은 환경입니다.</p></article>
+        <article class="about-principle-item" data-step="03"><h3>영상 편집 · 디자인 작업</h3><p>장비와 파일을 다시 정리하지 않고, 한 흐름으로 작업을 이어갈 수 있습니다.</p></article>
+        <article class="about-principle-item" data-step="04"><h3>면접·발표·회의 준비</h3><p>영어 면접, 발표 연습, 화상회의와 같은 활동을 주변 시선 없이 반복해볼 수 있습니다.</p></article>
       </div>
     </div>
   </section>
@@ -149,24 +152,8 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
     <div class="section-inner">
       <h2 class="section-title">바른자리 올나잇 이용 안내</h2>
       <div class="guide-compare-grid" aria-label="올나잇 이용 안내">
-        <article class="guide-compare-card">
-          <p class="guide-compare-label">이용 시간</p>
-          <h3>밤 12시부터 아침 6시까지</h3>
-          <ul class="guide-compare-list">
-            <li>총 6시간 동안 공간을 단독으로 이용합니다.</li>
-            <li>예약한 날짜의 오전 0시부터 오전 6시까지 이용합니다.</li>
-            <li>필요한 시간만 이용하고 일찍 퇴실하는 것도 가능합니다.</li>
-          </ul>
-        </article>
-        <article class="guide-compare-card guide-compare-card-featured">
-          <p class="guide-compare-label">준비하면 좋은 것</p>
-          <h3>작업 흐름을 이어갈 수 있는 준비물</h3>
-          <ul class="guide-compare-list">
-            <li>노트북과 충전기, 이어폰 또는 헤드셋</li>
-            <li>개인 촬영 장비나 작업 자료</li>
-            <li>회의가 있다면 인터넷 연결과 음성 상태 확인</li>
-          </ul>
-        </article>
+        <article class="guide-compare-card"><p class="guide-compare-label">이용 시간</p><h3>밤 12시부터 아침 6시까지</h3><ul class="guide-compare-list"><li>총 6시간 동안 공간을 단독으로 이용합니다.</li><li>예약한 날짜의 오전 0시부터 오전 6시까지 이용합니다.</li><li>필요한 시간만 이용하고 일찍 퇴실하는 것도 가능합니다.</li></ul></article>
+        <article class="guide-compare-card guide-compare-card-featured"><p class="guide-compare-label">준비하면 좋은 것</p><h3>작업 흐름을 이어갈 수 있는 준비물</h3><ul class="guide-compare-list"><li>노트북과 충전기, 이어폰 또는 헤드셋</li><li>개인 촬영 장비나 작업 자료</li><li>회의가 있다면 인터넷 연결과 음성 상태 확인</li></ul></article>
       </div>
       <p>올나잇은 숙박 상품이 아니라, 작업·공부·회의·연습을 이어가기 위한 심야 공간 상품입니다. 이용 중에는 건물 공용공간과 주변 점포에 피해가 가지 않도록 소음을 줄여 주세요.</p>
     </div>
@@ -176,22 +163,10 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
     <div class="section-inner">
       <h2 class="section-title">자주 묻는 질문</h2>
       <div class="about-highlight-grid" aria-label="올나잇 FAQ">
-        <article class="about-highlight-card">
-          <h3>잠을 자도 되나요?</h3>
-          <p>바른자리는 숙박시설이 아니므로, 올나잇도 숙박 목적의 상품이 아닙니다. 작업·공부·회의 등 이용 목적에 맞게 예약해 주세요.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>여러 명이 함께 이용할 수 있나요?</h3>
-          <p>소규모 팀 프로젝트나 스터디는 가능합니다. 다만 심야에는 다른 이용자와 주변 점포를 배려해 큰 소리와 소음은 피해주세요.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>새벽에 화상회의를 해도 되나요?</h3>
-          <p>가능합니다. 개인 이어폰이나 헤드셋을 준비하고, 중요한 회의라면 미리 인터넷 연결과 음성을 확인하는 것이 좋습니다.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>예약 날짜는 어떻게 선택하나요?</h3>
-          <p>실제로 이용을 시작하는 날짜를 선택하면 됩니다. 예를 들어 월요일 오전 0시부터 이용하려면 예약 화면에서 월요일 날짜를 선택해 주세요.</p>
-        </article>
+        <article class="about-highlight-card"><h3>잠을 자도 되나요?</h3><p>바른자리는 숙박시설이 아니므로, 올나잇도 숙박 목적의 상품이 아닙니다. 작업·공부·회의 등 이용 목적에 맞게 예약해 주세요.</p></article>
+        <article class="about-highlight-card"><h3>여러 명이 함께 이용할 수 있나요?</h3><p>소규모 팀 프로젝트나 스터디는 가능합니다. 다만 심야에는 다른 이용자와 주변 점포를 배려해 큰 소리와 소음은 피해주세요.</p></article>
+        <article class="about-highlight-card"><h3>새벽에 화상회의를 해도 되나요?</h3><p>가능합니다. 개인 이어폰이나 헤드셋을 준비하고, 중요한 회의라면 미리 인터넷 연결과 음성을 확인하는 것이 좋습니다.</p></article>
+        <article class="about-highlight-card"><h3>예약 날짜는 어떻게 선택하나요?</h3><p>실제로 이용을 시작하는 날짜를 선택하면 됩니다. 예를 들어 월요일 오전 0시부터 이용하려면 예약 화면에서 월요일 날짜를 선택해 주세요.</p></article>
       </div>
     </div>
   </section>
@@ -203,9 +178,7 @@ booking_url: https://booking.naver.com/booking/10/bizes/1663159/items/7928660
           <p class="section-label">Booking</p>
           <h2 class="section-title">끝내야 할 일이 있는 밤,<br />공간부터 바꿔 보세요</h2>
           <p class="section-desc">해야 할 일을 오늘 끝내고 싶다면, 바른자리 올나잇에서 방해받지 않는 6시간을 예약해 보세요.</p>
-          <div class="hero-btns">
-            <a href="{{ page.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 올나잇 예약하기</a>
-          </div>
+          <div class="hero-btns"><a href="{{ page.booking_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary">바른자리 올나잇 예약하기</a></div>
         </div>
       </div>
     </div>
