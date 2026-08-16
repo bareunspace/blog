@@ -19,7 +19,7 @@ tags:
   - 면접준비
 canonical: https://bareunjari.com/posts/sk-hynix-ask-video-interview/
 permalink: /posts/sk-hynix-ask-video-interview/
-date: 2026-08-17 08:45:00 +0900
+date: 2026-08-17 08:30:00 +0900
 og_image: https://bareunjari.com/images/sk-hynix-ask-video-interview.webp
 og_image_alt: SK하이닉스 A!SK 영상면접을 연습할 수 있는 프라이빗 공간
 preload_image: images/sk-hynix-ask-video-interview.webp
