@@ -1,107 +1,24 @@
 ---
 layout: default
-title: 객실승무원 채용 사례 아카이브
-description: 항공사별 객실승무원 채용 전형에서 바른자리의 면접 연습과 연결되는 사례를 날짜와 출처와 함께 정리합니다.
+title: 객실승무원 사례 페이지가 이동했습니다
 permalink: /cabin-crew-hiring-cases/
-extra_css: /styles/case-archive.css
-extra_css_version: 20260817-3
+canonical: https://bareunjari.com/cases/cabin-crew/
+robots: noindex,follow
 ---
 
+<meta http-equiv="refresh" content="0; url={{ '/cases/cabin-crew/' | relative_url }}" />
+<script>window.location.replace("{{ '/cases/cabin-crew/' | relative_url }}");</script>
+
 <main class="about-page">
-  <section id="home" class="case-archive-hero">
-    <div class="section-inner case-archive-shell">
-      <p class="section-label">Cabin Crew Hiring Cases</p>
-      <h1 class="section-title">객실승무원 채용 사례 아카이브</h1>
-      <p class="section-desc">항공사별 채용 공고를 그대로 옮기기보다, 면접 준비와 연결되는 전형 변화와 확인 날짜, 원문 출처를 함께 축적합니다.</p>
-      <div class="hero-btns case-archive-back">
-        <a href="{{ '/posts/cabin-crew-interview-practice/' | relative_url }}" class="btn-primary">승무원 면접 준비 가이드로 돌아가기</a>
+  <section id="home">
+    <div class="section-inner">
+      <p class="section-label">Page Moved</p>
+      <h1 class="section-title">객실승무원 사례 페이지가 이동했습니다</h1>
+      <p class="section-desc">사례 데이터베이스를 범용 구조로 개편해 새 주소에서 계속 관리합니다.</p>
+      <div class="hero-btns">
+        <a href="{{ '/cases/cabin-crew/' | relative_url }}" class="btn-primary">새 승무원 사례 페이지로 이동</a>
+        <a href="{{ '/cases/' | relative_url }}" class="btn-outline">전체 사례 데이터베이스</a>
       </div>
-    </div>
-  </section>
-
-  {% include breadcrumb.html %}
-
-  <section id="cases" class="case-archive-section">
-    <div class="section-inner case-archive-shell">
-      {% assign archive = site.data.case_archives.cabin_crew %}
-      {% assign all_cases = archive.cases | sort: 'date' | reverse %}
-      <div class="case-archive-head">
-        <div class="case-archive-head-copy">
-          <p class="case-archive-eyebrow"><span></span>Hiring Archive</p>
-          <h2 class="section-title">항공사별 최근 사례</h2>
-          <p class="section-desc">공고일, 접수기간, 채용 규모, 전형 절차, 연습 포인트, 출처와 최종 확인일을 함께 확인할 수 있습니다.</p>
-        </div>
-        <span class="case-archive-count">{{ all_cases | size }}건</span>
-      </div>
-
-      <div class="case-archive-list">
-        {% for case in all_cases %}
-        <article class="case-archive-card">
-          <details class="case-archive-item" {% if forloop.first %}open{% endif %}>
-            <summary>
-              <div class="case-archive-title">
-                <div class="case-archive-meta">
-                  <span class="case-archive-badge">{{ case.company }}</span>
-                  <span class="case-archive-date">공고 {{ case.date }}</span>
-                  {% if case.verified_at %}<span class="case-archive-verified">최종 확인 {{ case.verified_at }}</span>{% endif %}
-                </div>
-                <h3>{{ case.label }}</h3>
-                <div class="case-archive-quickfacts" aria-label="채용 핵심 정보">
-                  {% if case.hiring_size %}<span><b>채용</b>{{ case.hiring_size }}</span>{% endif %}
-                  {% if case.application_period %}<span><b>접수</b>{{ case.application_period }}</span>{% endif %}
-                </div>
-                <p class="case-archive-summary">{{ case.summary }}</p>
-                <span class="case-archive-open-label">상세 정보와 출처 보기</span>
-              </div>
-              <span class="case-archive-chevron" aria-hidden="true">⌄</span>
-            </summary>
-
-            <div class="case-archive-body">
-              <div class="case-archive-body-inner">
-                <div class="case-archive-section-title"><span>01</span><h4>채용 정보</h4></div>
-                <dl class="case-archive-facts">
-                  {% if case.application_period %}<div><dt>접수 기간</dt><dd>{{ case.application_period }}</dd></div>{% endif %}
-                  {% if case.hiring_size %}<div><dt>채용 규모</dt><dd>{{ case.hiring_size }}</dd></div>{% endif %}
-                  {% if case.expected_join %}<div><dt>입사 예정</dt><dd>{{ case.expected_join }}</dd></div>{% endif %}
-                  {% if case.process %}<div class="case-archive-fact-wide"><dt>전형 절차</dt><dd>{{ case.process }}</dd></div>{% endif %}
-                  {% if case.interview_focus %}<div class="case-archive-fact-wide case-archive-focus"><dt>면접 핵심</dt><dd>{{ case.interview_focus }}</dd></div>{% endif %}
-                </dl>
-
-                {% if case.practice_points %}
-                <div class="case-archive-section-title"><span>02</span><h4>바른자리에서 이렇게 연습</h4></div>
-                <div class="case-archive-block case-archive-block-practice"><ul>{% for item in case.practice_points %}<li>{{ item }}</li>{% endfor %}</ul></div>
-                {% endif %}
-
-                {% if case.not_for_bareunjari %}
-                <div class="case-archive-section-title"><span>03</span><h4>연결하지 않는 부분</h4></div>
-                <div class="case-archive-block case-archive-block-muted"><ul>{% for item in case.not_for_bareunjari %}<li>{{ item }}</li>{% endfor %}</ul></div>
-                {% endif %}
-
-                {% if case.notes %}
-                <div class="case-archive-section-title"><span>04</span><h4>추가 확인사항</h4></div>
-                <div class="case-archive-block case-archive-block-note"><ul>{% for item in case.notes %}<li>{{ item }}</li>{% endfor %}</ul></div>
-                {% endif %}
-
-                <div class="case-archive-source-card">
-                  <div class="case-archive-source-icon" aria-hidden="true">↗</div>
-                  <div class="case-archive-source-copy">
-                    <span class="case-archive-source-label">SOURCE · 원문 출처</span>
-                    {% if case.source_url %}<a href="{{ case.source_url }}" target="_blank" rel="noopener noreferrer">{{ case.source_name }} · {{ case.source_title }}</a>{% else %}<strong>{{ case.source_name }}</strong>{% endif %}
-                    <div class="case-archive-source-meta">
-                      {% if case.source_published_at %}<span>게시 {{ case.source_published_at }}</span>{% endif %}
-                      {% if case.verified_at %}<span>최종 확인 {{ case.verified_at }}</span>{% endif %}
-                    </div>
-                  </div>
-                </div>
-
-                {% if case.related_url %}<div class="case-archive-actions"><a href="{{ case.related_url | relative_url }}">{{ case.related_label | default: '관련 가이드 보기' }} <span aria-hidden="true">→</span></a></div>{% endif %}
-              </div>
-            </div>
-          </details>
-        </article>
-        {% endfor %}
-      </div>
-      <p class="case-archive-note">채용 전형은 공고 시점과 항공사에 따라 달라질 수 있습니다. 각 사례의 출처와 최종 확인일을 함께 보고, 실제 지원 전에는 해당 항공사의 최신 공고를 반드시 다시 확인하세요.</p>
     </div>
   </section>
 </main>
