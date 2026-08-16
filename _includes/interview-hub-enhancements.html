@@ -1,3 +1,16 @@
+<div id="interview-verified-cases-slot">
+  {% include cases-list.html
+    topic='interview'
+    limit=3
+    section_id='verified-interview-cases'
+    eyebrow='Verified Hiring Cases'
+    title='최근 검증된 면접·채용 사례'
+    intro='기업별 실제 채용 변화 중 바른자리의 말하기·녹화·면접 리허설과 직접 연결되는 사례만 선별해 보여줍니다.'
+    more_url='/cases/'
+    more_label='전체 검증 사례 보기'
+  %}
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var hub = document.querySelector('.interview-hub');
@@ -10,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (heroTitle) heroTitle.textContent = '면접';
 
   var heroSubtitle = hub.querySelector('#home .hero-subtitle');
-  if (heroSubtitle) heroSubtitle.textContent = '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 화상면접 환경, 면접 당일 마지막 확인까지. 면접에 필요한 준비를 단계별로 골라보세요.';
+  if (heroSubtitle) heroSubtitle.textContent = '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 기업별 최신 전형 사례, 화상면접 환경, 면접 당일 마지막 확인까지. 면접에 필요한 준비를 단계별로 골라보세요.';
 
   var metrics = hub.querySelectorAll('.interview-hero-metrics .interview-metric-card');
   if (metrics.length >= 3) {
@@ -18,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     metrics[0].querySelector('.interview-metric-label').textContent = '말하기·녹화 점검 예시';
     metrics[1].querySelector('.interview-metric-value').textContent = '직접 말하기';
     metrics[1].querySelector('.interview-metric-label').textContent = '읽기보다 실제 답변 연습';
-    metrics[2].querySelector('.interview-metric-value').textContent = '화상면접';
-    metrics[2].querySelector('.interview-metric-label').textContent = '카메라·조명·배경 함께 점검';
+    metrics[2].querySelector('.interview-metric-value').textContent = '검증 사례';
+    metrics[2].querySelector('.interview-metric-label').textContent = '출처·확인일 기준 최신 전형';
   }
 
   var flow = document.getElementById('prep-flow');
@@ -27,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var flowHeading = flow.querySelector('h2');
     var flowDesc = flow.querySelector('.interview-flow-heading p:last-child');
     if (flowHeading) flowHeading.textContent = '지금 면접이 어디까지 준비됐나요?';
-    if (flowDesc) flowDesc.textContent = '새로운 정보를 계속 찾기보다 현재 단계에 맞는 가이드를 골라 실제 면접으로 연결하세요.';
+    if (flowDesc) flowDesc.textContent = '새로운 정보를 계속 찾기보다 현재 단계에 맞는 가이드를 고르고, 실제 기업 전형 사례는 출처가 확인된 정보만 참고하세요.';
 
     var cards = flow.querySelectorAll('.guide-summary-card');
     if (cards.length >= 4) {
@@ -39,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
       cards[1].querySelector('p').textContent = '준비한 문장을 읽는 데서 끝내지 않고 실제 질문을 받은 것처럼 말하고 휴대폰으로 녹화해 확인합니다.';
       if (!cards[1].querySelector('a[href="/posts/interview-answer-practice/"]')) cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/interview-answer-practice/">면접 답변 연습 가이드 →</a></p>');
 
-      cards[2].querySelector('h2').textContent = '면접 환경 점검';
-      cards[2].querySelector('p').textContent = '화상면접이라면 카메라 높이, 조명, 배경, 마이크와 인터넷 환경을 미리 고정합니다.';
-      if (!cards[2].querySelector('a[href="/posts/video-interview-setup/"]')) cards[2].insertAdjacentHTML('beforeend', '<p><a href="/posts/video-interview-setup/">화상면접 세팅 가이드 →</a></p>');
+      cards[2].querySelector('h2').textContent = '실제 전형 확인';
+      cards[2].querySelector('p').textContent = '지원 기업의 최신 전형이 영상면접, 상황대처, 과제·심층면접 중 무엇인지 공식 출처와 확인일을 기준으로 확인합니다.';
+      if (!cards[2].querySelector('a[href="#verified-interview-cases"]')) cards[2].insertAdjacentHTML('beforeend', '<p><a href="#verified-interview-cases">최근 검증 사례 보기 →</a></p>');
 
       cards[3].querySelector('h2').textContent = '당일 마지막 점검';
       cards[3].querySelector('p').textContent = '면접 30분 전에는 새 답변을 만들기보다 자기소개와 핵심 경험을 다시 말하고 목소리·시선·환경을 확인합니다.';
@@ -51,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var chips = flow.querySelector('.interview-situation-chips');
-    if (chips) chips.innerHTML = '<a href="/posts/1-minute-self-introduction-guide/">자기소개</a><a href="/posts/interview-answer-practice/">답변 연습</a><a href="/posts/video-interview-setup/">화상면접</a><a href="/posts/interview-30-minutes-before/">면접 직전</a><a href="#booking">예약</a>';
+    if (chips) chips.innerHTML = '<a href="/posts/1-minute-self-introduction-guide/">자기소개</a><a href="/posts/interview-answer-practice/">답변 연습</a><a href="#verified-interview-cases">기업별 사례</a><a href="/posts/video-interview-setup/">화상면접</a><a href="#booking">예약</a>';
   }
 
   var series = document.getElementById('interview-series');
@@ -67,10 +80,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  var caseSlot = document.getElementById('interview-verified-cases-slot');
+  var onlineHiring = document.getElementById('online-hiring');
+  if (caseSlot && onlineHiring) {
+    var caseSection = caseSlot.querySelector('#verified-interview-cases');
+    if (caseSection) onlineHiring.parentNode.insertBefore(caseSection, onlineHiring);
+    caseSlot.remove();
+  }
+
   var upcoming = document.getElementById('upcoming-series');
   if (upcoming) upcoming.style.display = 'none';
 
   var toc = hub.querySelector('.guide-toc-inner');
-  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
 });
 </script>
