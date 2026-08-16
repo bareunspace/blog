@@ -58,7 +58,7 @@ script_version: 20260711-4
       <span class="guide-toc-label">이 글에서 확인할 내용</span>
       <a href="#why-impression-matters">왜 전체 인상이 중요한가</a>
       <a href="#why-memorizing-fails">왜 외운 답변이 흔들리는가</a>
-      <a href="#eastar-situation-interview">실제 채용 사례: 상황 대처 면접</a>
+      <a href="#case-archive-preview">최근 항공사 채용 사례</a>
       <a href="#what-to-record">반드시 촬영해봐야 할 장면</a>
       <a href="#mirror-vs-camera">거울과 카메라 활용법</a>
       <a href="#solo-practice">혼자 하는 실전 연습법</a>
@@ -132,32 +132,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="eastar-situation-interview">
-    <div class="section-inner">
-      <p class="section-label">2026 Cabin Crew Hiring Example</p>
-      <h2 class="section-title">실제 채용 사례로 보면, 상황 대처 면접은 ‘바로 말해보는 연습’이 중요합니다</h2>
-      <p class="section-desc">2026년 이스타항공 신입 객실승무원 채용의 공개 전형에는 서류 평가 뒤 <strong>상황 대처 면접</strong>이 포함돼 있습니다. 이후 체력 시험, 임원 면접, 채용 검진으로 이어지는 구조이며, 공개된 전형 절차에는 영상면접이 별도로 기재되어 있지 않습니다.</p>
-      <p>이런 상황 대처형 면접은 준비한 문장을 그대로 꺼내는 것보다, 질문을 듣고 상황을 판단한 뒤 자신의 기준과 행동을 짧게 설명하는 연습이 더 직접적으로 연결됩니다. 예를 들어 승객의 불만, 동료와의 협업 문제, 안전과 서비스가 충돌하는 상황처럼 정답 하나로 끝나지 않는 질문을 보고 바로 답해보는 방식입니다.</p>
-      <div class="about-highlight-grid" aria-label="상황 대처 면접 연습 포인트">
-        <article class="about-highlight-card">
-          <h3>질문을 읽고 바로 답하기</h3>
-          <p>답변을 미리 완성해두기보다 질문을 처음 본 시점부터 10~20초 안에 핵심 판단을 정리하고 말해봅니다.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>판단 기준을 먼저 말하기</h3>
-          <p>무엇을 하겠다는 결론만 말하기보다 안전, 고객 응대, 협업 등 어떤 기준으로 판단했는지를 함께 설명해봅니다.</p>
-        </article>
-        <article class="about-highlight-card">
-          <h3>휴대폰으로 답변 다시 보기</h3>
-          <p>내용뿐 아니라 목소리 크기, 말의 속도, 표정과 답변 길이를 확인하고 같은 질문에 한 번 더 답해봅니다.</p>
-        </article>
-      </div>
-      <p class="section-desc">체력 시험에는 별도의 준비가 필요하므로 바른자리에서 다루는 범위와는 다릅니다. 이 글에서는 <strong>상황 대처 면접에서 질문을 듣고 실제 목소리로 답하는 연습</strong>에 집중합니다.</p>
-      <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="{{ '/posts/interview-answer-practice/' | relative_url }}" class="btn-outline">면접 답변 60분 연습법 보기</a>
-      </div>
-    </div>
-  </section>
+  {% include case-archive-preview.html key="cabin_crew" %}
 
   <section id="what-to-record">
     <div class="section-inner">
