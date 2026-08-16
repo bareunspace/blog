@@ -29,7 +29,7 @@ tags:
   - 신중동
 canonical: https://bareunjari.com/posts/english-speaking-test-recording-practice/
 permalink: /posts/english-speaking-test-recording-practice/
-date: 2026-08-17 05:00:00 +0900
+date: 2026-08-16 05:00:00 +0900
 og_image: https://bareunjari.com/images/english-speaking-test-recording-practice.webp
 og_image_alt: 프라이빗 공간에서 휴대폰으로 영어 말하기 답변을 녹음하며 연습하는 모습
 og_image_width: 1536
