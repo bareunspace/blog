@@ -57,7 +57,7 @@ script_version: 20260711-4
           {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
           {% assign card_index = forloop.index | prepend: '0' %}
           <article class="blog-guide-card meeting-series-card{% if forloop.first %} meeting-series-card-hero{% elsif forloop.index <= 3 %} meeting-series-card-support{% else %} meeting-series-card-archive{% endif %}">
-            <a class="blog-guide-image{% if forloop.index == 5 %} blog-guide-image-contain{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">{% if post_card_image contains '://' %}<img src="{{ post_card_image }}" alt="" loading="lazy" />{% else %}<img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />{% endif %}</a>
+            <a class="blog-guide-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">{% if post_card_image contains '://' %}<img src="{{ post_card_image }}" alt="" loading="lazy" />{% else %}<img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />{% endif %}</a>
             <div class="blog-guide-content">
               <div class="meeting-series-headline-row"><p class="blog-card-eyebrow">{{ card_index }} · {{ post.hub_label | default: post.category }}</p><span class="meeting-series-index" aria-hidden="true">{{ card_index }}</span></div>
               <p class="meeting-series-kicker">{{ post.hub_kicker | default: "관련 활용 가이드" }}</p>
@@ -113,12 +113,12 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="booking" class="blog-conversion-section study-booking-highlight">
+  <section id="booking" class="about-cta-section study-booking-section">
     <div class="section-inner">
-      <div class="blog-conversion-panel">
-        <div><p class="section-label soft">Ready for Your Study Time?</p><h2>조용한 스터디룸에서<br />집중할 시간을 예약해보세요</h2><p>신중동역 도보 1분, 예약 시간 동안 한 팀만 이용하는 프라이빗 환경에서 혼자 공부하거나 스터디, 영어회화, 발표, 면접 연습 시간을 준비할 수 있습니다.</p></div>
-        <div class="blog-conversion-actions"><a href="/booking/" class="btn-primary" data-cta="study_hub_booking">스터디룸 예약하기</a><a href="/index.html#space" class="btn-outline">공간 사진 보기</a></div>
-      </div>
+      <p class="section-label">Book Your Study Time</p>
+      <h2 class="section-title">공부 방식에 맞는 시간을 예약하세요</h2>
+      <p class="section-desc">혼자 집중하는 일정인지, 함께 말하고 연습하는 일정인지 정리했다면 이제 필요한 시간만 선택하면 됩니다. 스터디룸을 예약해두면 그 시간만큼은 다른 일정에 흔들리지 않고 준비를 이어가기 쉽습니다.</p>
+      <div class="hero-btns"><a href="/booking/" class="btn-primary">스터디룸 예약하기</a><a href="/blog.html" class="btn-outline">전체 가이드 보기</a></div>
     </div>
   </section>
 </main>
