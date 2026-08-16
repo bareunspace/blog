@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20260817-1" />
+<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20260817-2" />
 {% assign archive = site.data.case_archives[include.key] %}
 {% if archive and archive.cases %}
 <section id="case-archive-preview">
@@ -20,7 +20,8 @@
           <div class="case-archive-title">
             <div class="case-archive-meta">
               <span class="case-archive-badge">{{ case.company }}</span>
-              <span class="case-archive-date">{{ case.date }}</span>
+              <span class="case-archive-date">공고 {{ case.date }}</span>
+              {% if case.verified_at %}<span class="case-archive-verified">확인 {{ case.verified_at }}</span>{% endif %}
             </div>
             <h3>{{ case.label }}</h3>
             <p class="case-archive-summary">{{ case.summary }}</p>
@@ -29,13 +30,41 @@
         </summary>
         <div class="case-archive-body">
           <div class="case-archive-body-inner">
-            {% if case.details %}
-            <ul>
-              {% for detail in case.details %}
-              <li>{{ detail }}</li>
-              {% endfor %}
-            </ul>
+            <dl class="case-archive-facts">
+              {% if case.application_period %}<div><dt>접수 기간</dt><dd>{{ case.application_period }}</dd></div>{% endif %}
+              {% if case.hiring_size %}<div><dt>채용 규모</dt><dd>{{ case.hiring_size }}</dd></div>{% endif %}
+              {% if case.expected_join %}<div><dt>입사 예정</dt><dd>{{ case.expected_join }}</dd></div>{% endif %}
+              {% if case.process %}<div><dt>전형 절차</dt><dd>{{ case.process }}</dd></div>{% endif %}
+              {% if case.interview_focus %}<div><dt>면접 핵심</dt><dd>{{ case.interview_focus }}</dd></div>{% endif %}
+            </dl>
+
+            {% if case.practice_points %}
+            <div class="case-archive-block">
+              <h4>바른자리에서 연습할 수 있는 부분</h4>
+              <ul>{% for item in case.practice_points %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
             {% endif %}
+
+            {% if case.not_for_bareunjari %}
+            <div class="case-archive-block case-archive-block-muted">
+              <h4>바른자리에서 다루지 않는 부분</h4>
+              <ul>{% for item in case.not_for_bareunjari %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+
+            {% if case.notes %}
+            <div class="case-archive-block">
+              <h4>추가 확인사항</h4>
+              <ul>{% for item in case.notes %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+
+            <div class="case-archive-source">
+              <span>출처</span>
+              {% if case.source_url %}<a href="{{ case.source_url }}" target="_blank" rel="noopener noreferrer">{{ case.source_name }} · {{ case.source_title }}</a>{% else %}<strong>{{ case.source_name }}</strong>{% endif %}
+              {% if case.source_published_at %}<small>게시 {{ case.source_published_at }}</small>{% endif %}
+            </div>
+
             {% if case.related_url %}
             <div class="case-archive-actions">
               <a href="{{ case.related_url | relative_url }}">{{ case.related_label | default: '관련 가이드 보기' }}</a>
@@ -52,7 +81,7 @@
       <a href="{{ archive.archive_url | relative_url }}">전체 사례 아카이브 보기</a>
     </div>
     {% endif %}
-    <p class="case-archive-note">채용 전형은 공고 시점과 항공사에 따라 달라질 수 있으므로, 지원 전에는 해당 항공사의 최신 공고를 다시 확인하세요.</p>
+    <p class="case-archive-note">채용 전형은 공고 시점과 항공사에 따라 달라질 수 있습니다. 각 사례의 출처와 최종 확인일을 함께 보고, 실제 지원 전에는 해당 항공사의 최신 공고를 다시 확인하세요.</p>
   </div>
 </section>
 {% endif %}
