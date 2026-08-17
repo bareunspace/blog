@@ -140,3 +140,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<style>
+@media (min-width: 900px) {
+  #weekday-client-focus .about-principle-grid,
+  #price .about-principle-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  #weekday-client-focus .about-principle-item,
+  #price .about-principle-item {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+</style>
