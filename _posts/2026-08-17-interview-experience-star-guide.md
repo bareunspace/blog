@@ -35,6 +35,12 @@ preload_image: images/interview-experience-star-guide.webp
   </section>
   {% include breadcrumb.html %}
 
+  <section class="post-feature-image" aria-label="면접 경험 정리 가이드 대표 이미지">
+    <div class="section-inner">
+      <img src="/images/interview-experience-star-guide.webp" alt="면접 경험을 상황, 역할, 판단, 행동, 결과 순서로 정리하는 방법" width="1536" height="1024" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
+    </div>
+  </section>
+
   <section class="guide-summary-section" aria-label="면접 경험 정리 핵심">
     <div class="section-inner guide-summary-grid">
       <article class="guide-summary-card"><span>01</span><h2>경험보다 역할을 분명히</h2><p>팀 전체가 한 일을 설명하기보다 그 안에서 내가 맡은 역할과 행동을 구분합니다.</p></article>
