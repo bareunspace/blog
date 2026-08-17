@@ -8,6 +8,20 @@ document.addEventListener('DOMContentLoaded', function () {
     path === '/posts/video-interview-setup/' ||
     path === '/posts/interview-30-minutes-before/' ||
     path === '/posts/1-minute-self-introduction-guide/';
+
+  if (path === '/posts/interview-experience-star-guide/' && !document.getElementById('star-infographic')) {
+    var fiveParts = document.getElementById('five-parts');
+    var template = document.getElementById('template');
+    if (fiveParts && template) {
+      var infographic = document.createElement('section');
+      infographic.id = 'star-infographic';
+      infographic.className = 'post-feature-image';
+      infographic.setAttribute('aria-label', 'STAR와 판단을 활용한 면접 경험 정리 인포그래픽');
+      infographic.innerHTML = '<div class="section-inner"><figure style="margin:0;"><img src="/images/interview-experience-star-infographic.webp" alt="STAR에 판단을 더한 면접 경험 정리법과 5단계 연습 방법 인포그래픽" width="1536" height="1024" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" /><figcaption style="margin-top:.75rem;text-align:center;font-size:.9rem;opacity:.72;">STAR에 판단(Judgment)을 더해 경험을 정리하는 흐름을 한눈에 확인해보세요.</figcaption></figure></div>';
+      template.parentNode.insertBefore(infographic, template);
+    }
+  }
+
   var hero = main.querySelector('#home .section-inner');
   if (hero && !hero.querySelector('[data-hub-role-note]')) {
     var role = document.createElement('p');
