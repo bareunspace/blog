@@ -41,11 +41,15 @@ preload_image: images/interview-experience-star-guide.webp
     </div>
   </section>
 
-  <section class="guide-summary-section" aria-label="면접 경험 정리 핵심">
-    <div class="section-inner guide-summary-grid">
-      <article class="guide-summary-card"><span>01</span><h2>경험보다 역할을 분명히</h2><p>팀 전체가 한 일을 설명하기보다 그 안에서 내가 맡은 역할과 행동을 구분합니다.</p></article>
-      <article class="guide-summary-card"><span>02</span><h2>행동에는 이유를 붙이기</h2><p>무엇을 했는지만 적지 말고 왜 그 방법을 선택했는지까지 준비합니다.</p></article>
-      <article class="guide-summary-card"><span>03</span><h2>꼬리질문까지 말해보기</h2><p>결과를 외우는 데서 끝내지 않고 다른 선택지와 배운 점까지 소리 내어 답해봅니다.</p></article>
+  <section class="guide-summary-section" aria-label="면접 STAR 경험 정리 핵심 답변">
+    <div class="section-inner">
+      <h2 class="section-title">면접 STAR 경험은 어떻게 정리하면 되나요?</h2>
+      <p class="section-desc"><strong>면접 경험은 상황(Situation) → 역할(Task) → 판단(Judgment) → 행동(Action) → 결과(Result) 순서로 정리하면 좋습니다.</strong> 일반적인 STAR에 ‘왜 그 행동을 선택했는가’를 설명하는 판단 이유를 더하면, 경험의 줄거리만 외우는 것보다 꼬리질문에 대응하기 쉬워집니다. 정리가 끝나면 핵심 키워드만 보고 60~90초 정도로 직접 말해보며 답변이 자연스럽게 이어지는지 확인하세요.</p>
+      <div class="guide-summary-grid">
+        <article class="guide-summary-card"><span>01</span><h2>경험보다 역할을 분명히</h2><p>팀 전체가 한 일을 설명하기보다 그 안에서 내가 맡은 역할과 행동을 구분합니다.</p></article>
+        <article class="guide-summary-card"><span>02</span><h2>행동에는 이유를 붙이기</h2><p>무엇을 했는지만 적지 말고 왜 그 방법을 선택했는지까지 준비합니다.</p></article>
+        <article class="guide-summary-card"><span>03</span><h2>꼬리질문까지 말해보기</h2><p>결과를 외우는 데서 끝내지 않고 다른 선택지와 배운 점까지 소리 내어 답해봅니다.</p></article>
+      </div>
     </div>
   </section>
 
@@ -124,6 +128,7 @@ preload_image: images/interview-experience-star-guide.webp
       <h2 class="section-title">면접 STAR 경험 정리 FAQ</h2>
       <div class="faq-list">
         <details class="faq-item"><summary>STAR 순서를 꼭 그대로 말해야 하나요?</summary><div class="faq-answer"><p>꼭 순서를 기계적으로 읽을 필요는 없습니다. 면접관이 상황을 이해할 만큼 배경을 짧게 설명한 뒤, 본인의 역할·판단·행동·결과가 빠지지 않게 말하는 것이 더 중요합니다.</p></div></details>
+        <details class="faq-item"><summary>면접 STAR 경험 답변은 몇 초 정도가 적당한가요?</summary><div class="faq-answer"><p>질문과 경험에 따라 달라지지만, 첫 답변을 연습할 때는 핵심 내용을 60~90초 안에 설명하는 방식이 실용적입니다. 모든 세부 내용을 첫 답변에 넣기보다 상황과 역할은 짧게, 판단과 행동을 중심으로 말하고 추가 내용은 꼬리질문에서 설명할 수 있게 준비하세요.</p></div></details>
         <details class="faq-item"><summary>성과가 큰 경험만 준비해야 하나요?</summary><div class="faq-answer"><p>그렇지 않습니다. 작은 경험이라도 본인의 역할과 판단이 분명하고, 왜 그렇게 행동했는지 설명할 수 있다면 좋은 면접 소재가 될 수 있습니다.</p></div></details>
         <details class="faq-item"><summary>경험 답변은 몇 개 준비하면 좋나요?</summary><div class="faq-answer"><p>숫자를 고정하기보다 협업·문제 해결·실패·성과·새로운 시도처럼 서로 다른 상황의 경험을 몇 개 골라두고, 하나의 경험을 여러 질문에 억지로 끼워 넣지 않는 것이 좋습니다.</p></div></details>
       </div>
