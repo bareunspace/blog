@@ -41,7 +41,7 @@ date: 2026-08-17 22:10:00 +0900
   <section id="choose-experience">
     <div class="section-inner">
       <h2 class="section-title">먼저 ‘좋아 보이는 경험’보다 설명할 수 있는 경험을 고르세요</h2>
-      <p class="section-desc">큰 프로젝트나 화려한 성과가 반드시 좋은 면접 소재가 되는 것은 아닙니다. 본인의 역할이 अस्पष्ट하거나 실제 판단 과정을 설명하기 어렵다면 꼬리질문에서 답이 얕아질 수 있습니다. 규모가 작더라도 문제와 역할, 선택, 결과를 구체적으로 설명할 수 있는 경험이 면접 답변으로 쓰기 쉽습니다.</p>
+      <p class="section-desc">큰 프로젝트나 화려한 성과가 반드시 좋은 면접 소재가 되는 것은 아닙니다. 본인의 역할이 불분명하거나 실제 판단 과정을 설명하기 어렵다면 꼬리질문에서 답이 얕아질 수 있습니다. 규모가 작더라도 문제와 역할, 선택, 결과를 구체적으로 설명할 수 있는 경험이 면접 답변으로 쓰기 쉽습니다.</p>
       <div class="about-highlight-grid">
         <article class="about-highlight-card"><h3>내 역할이 분명한가</h3><p>팀이 한 일과 내가 직접 한 일을 구분해서 말할 수 있는지 확인합니다.</p></article>
         <article class="about-highlight-card"><h3>선택의 순간이 있었는가</h3><p>문제를 발견하거나 우선순위를 정하고 방법을 선택했던 지점이 있는 경험이 좋습니다.</p></article>
