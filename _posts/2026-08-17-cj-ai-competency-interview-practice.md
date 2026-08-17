@@ -19,6 +19,9 @@ tags:
 canonical: https://bareunjari.com/posts/cj-ai-competency-interview-practice/
 permalink: /posts/cj-ai-competency-interview-practice/
 date: 2026-08-17 21:15:00 +0900
+og_image: https://bareunjari.com/images/cj-ai-competency-interview-practice.webp
+og_image_alt: CJ AI역량검사와 면접을 카메라 앞에서 연습하는 모습
+preload_image: images/cj-ai-competency-interview-practice.webp
 css_version: 20260713-7
 script_version: 20260711-4
 ---
