@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       cards[2].querySelector('h2').textContent = '실제 전형 확인';
       cards[2].querySelector('p').textContent = '지원 기업의 최신 전형이 영상면접, 상황대처, 과제·심층면접 중 무엇인지 공식 출처와 확인일을 기준으로 확인합니다.';
-      if (!cards[2].querySelector('a[href="#verified-interview-cases"]')) cards[2].insertAdjacentHTML('beforeend', '<p class="verified-case-link"><a href="#verified-interview-cases">최근 검증 사례 보기 →</a></p>');
+      if (!cards[2].querySelector('a[href="#verified-interview-cases"]')) cards[2].insertAdjacentHTML('beforeend', '<p><a href="#verified-interview-cases">최근 검증 사례 보기 →</a></p>');
 
       cards[3].querySelector('h2').textContent = '당일 마지막 점검';
       cards[3].querySelector('p').textContent = '면접 30분 전에는 새 답변을 만들기보다 자기소개와 핵심 경험을 다시 말하고 목소리·시선·환경을 확인합니다.';
@@ -73,18 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <style>
-  .guide-summary-card .verified-case-link {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
-    align-self: stretch;
-  }
-
-  .guide-summary-card .verified-case-link > a {
-    margin-left: 0;
-  }
-
   @media (min-width: 901px) {
     #interview-practice-focus .about-principle-grid,
     #video-interview .about-highlight-grid {
