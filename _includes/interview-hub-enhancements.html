@@ -71,3 +71,28 @@ document.addEventListener('DOMContentLoaded', function () {
   if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
 });
 </script>
+
+<style>
+  @media (min-width: 901px) {
+    #interview-practice-focus .about-principle-grid,
+    #video-interview .about-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    #interview-practice-focus .about-principle-item,
+    #video-interview .about-highlight-card {
+      min-width: 0;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    #interview-practice-focus .about-principle-grid,
+    #video-interview .about-highlight-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
