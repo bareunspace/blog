@@ -84,7 +84,35 @@ document.addEventListener('DOMContentLoaded', function () {
   var onlineHiring = document.getElementById('online-hiring');
   if (caseSlot && onlineHiring) {
     var caseSection = caseSlot.querySelector('#verified-interview-cases');
-    if (caseSection) onlineHiring.parentNode.insertBefore(caseSection, onlineHiring);
+    if (caseSection) {
+      onlineHiring.parentNode.insertBefore(caseSection, onlineHiring);
+
+      var shell = caseSection.querySelector('.case-archive-shell');
+      var head = shell && shell.querySelector('.case-archive-head');
+      var list = shell && shell.querySelector('.case-archive-list');
+      if (shell && head && list && !shell.querySelector('.interview-case-accordion')) {
+        var accordion = document.createElement('details');
+        accordion.className = 'interview-case-accordion';
+
+        var summary = document.createElement('summary');
+        summary.setAttribute('aria-label', '최근 검증된 면접·채용 사례 열기');
+        summary.appendChild(head);
+        summary.insertAdjacentHTML('beforeend', '<span class="interview-case-accordion-toggle" aria-hidden="true">⌄</span>');
+        accordion.appendChild(summary);
+
+        var content = document.createElement('div');
+        content.className = 'interview-case-accordion-content';
+        content.appendChild(list);
+
+        var more = shell.querySelector('.case-archive-more');
+        var note = shell.querySelector('.case-archive-note');
+        if (more) content.appendChild(more);
+        if (note) content.appendChild(note);
+
+        accordion.appendChild(content);
+        shell.appendChild(accordion);
+      }
+    }
     caseSlot.remove();
   }
 
