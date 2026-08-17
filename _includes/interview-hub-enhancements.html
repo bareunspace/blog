@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ '/styles/interview-verified-cases.css' | relative_url }}?v=20260817-1" />
 <div id="interview-verified-cases-slot">
   {% include cases-list.html
     topic='interview'
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var summary = document.createElement('summary');
         summary.setAttribute('aria-label', '최근 검증된 면접·채용 사례 열기');
         summary.appendChild(head);
-        summary.insertAdjacentHTML('beforeend', '<span class="interview-case-accordion-toggle" aria-hidden="true">⌄</span>');
+        summary.insertAdjacentHTML('beforeend', '<span class="interview-case-accordion-toggle" aria-hidden="true"></span>');
         accordion.appendChild(summary);
 
         var content = document.createElement('div');
