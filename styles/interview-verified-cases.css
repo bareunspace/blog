@@ -6,410 +6,117 @@
     radial-gradient(circle at 92% 8%, rgba(220, 231, 242, .16), transparent 32%),
     linear-gradient(180deg, rgba(248, 251, 255, .78) 0%, rgba(255, 255, 255, .98) 100%);
 }
-
-.interview-hub #verified-interview-cases .case-archive-shell {
-  max-width: 960px;
-}
-
+.interview-hub #verified-interview-cases .case-archive-shell { max-width: 960px; }
 .interview-hub #verified-interview-cases .interview-case-accordion {
-  border: 1px solid rgba(200, 213, 227, .78);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, .98);
-  box-shadow: 0 8px 24px rgba(17, 24, 39, .055);
-  transition: border-color .2s ease, box-shadow .2s ease;
+  border: 1px solid rgba(200, 213, 227, .78); border-radius: 16px; background: rgba(255, 255, 255, .98);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, .055); transition: border-color .2s ease, box-shadow .2s ease;
 }
-
-.interview-hub #verified-interview-cases .interview-case-accordion[open] {
-  border-color: rgba(188, 204, 220, .9);
-  box-shadow: 0 10px 28px rgba(17, 24, 39, .065);
-}
-
+.interview-hub #verified-interview-cases .interview-case-accordion[open] { border-color: rgba(188, 204, 220, .9); box-shadow: 0 10px 28px rgba(17, 24, 39, .065); }
 .interview-hub #verified-interview-cases .interview-case-accordion > summary {
-  min-height: 112px;
-  padding: 1.28rem 1.4rem;
-  gap: 1rem;
-  align-items: center;
-  background: linear-gradient(145deg, rgba(255,255,255,.99), rgba(247,250,253,.96));
-  transition: background .2s ease;
+  min-height: 112px; padding: 1.28rem 1.4rem; gap: 1rem; align-items: center;
+  background: linear-gradient(145deg, rgba(255,255,255,.99), rgba(247,250,253,.96)); transition: background .2s ease;
 }
-
 .interview-hub #verified-interview-cases .interview-case-accordion > summary:hover,
-.interview-hub #verified-interview-cases .interview-case-accordion > summary:focus-visible {
-  background: linear-gradient(145deg, #fff, #f3f7fb);
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion > summary:focus-visible {
-  outline: 2px solid rgba(67, 94, 122, .22);
-  outline-offset: -2px;
-}
-
-.interview-hub #verified-interview-cases .case-archive-head {
-  align-items: center;
-  gap: .9rem;
-}
-
-.interview-hub #verified-interview-cases .case-archive-head-copy {
-  max-width: 680px;
-}
-
-.interview-hub #verified-interview-cases .case-archive-eyebrow {
-  margin-bottom: .35rem;
-  color: #718194;
-  font-size: .71rem;
-  letter-spacing: .09em;
-}
-
-.interview-hub #verified-interview-cases .case-archive-eyebrow > span {
-  width: 18px;
-  background: #7f92a5;
-}
-
+.interview-hub #verified-interview-cases .interview-case-accordion > summary:focus-visible { background: linear-gradient(145deg, #fff, #f3f7fb); }
+.interview-hub #verified-interview-cases .interview-case-accordion > summary:focus-visible { outline: 2px solid rgba(67, 94, 122, .22); outline-offset: -2px; }
+.interview-hub #verified-interview-cases .case-archive-head { align-items: center; gap: .9rem; }
+.interview-hub #verified-interview-cases .case-archive-head-copy { max-width: 680px; }
+.interview-hub #verified-interview-cases .case-archive-eyebrow { margin-bottom: .35rem; color: #718194; font-size: .71rem; letter-spacing: .09em; }
+.interview-hub #verified-interview-cases .case-archive-eyebrow > span { width: 18px; background: #7f92a5; }
 .interview-hub #verified-interview-cases .case-archive-head .section-title {
-  margin: 0;
-  color: #1f2937;
-  font-size: clamp(1.24rem, 1.05rem + .55vw, 1.58rem);
-  line-height: 1.34;
-  letter-spacing: -.032em;
-  word-break: keep-all;
+  margin: 0; color: #1f2937; font-size: clamp(1.24rem, 1.05rem + .55vw, 1.58rem); line-height: 1.34; letter-spacing: -.032em; word-break: keep-all;
 }
-
-.interview-hub #verified-interview-cases .case-archive-head .section-desc {
-  max-width: 660px;
-  margin: .42rem 0 0;
-  color: #66788a;
-  font-size: .86rem;
-  line-height: 1.66;
-  word-break: keep-all;
-}
-
+.interview-hub #verified-interview-cases .case-archive-head .section-desc { max-width: 660px; margin: .42rem 0 0; color: #66788a; font-size: .86rem; line-height: 1.66; word-break: keep-all; }
 .interview-hub #verified-interview-cases .case-archive-count {
-  min-width: auto;
-  height: 28px;
-  padding: 0 .62rem;
-  border-color: rgba(200, 213, 227, .78);
-  background: #f5f8fb;
-  color: #64778a;
-  font-size: .71rem;
-  font-weight: 700;
-  white-space: nowrap;
+  min-width: auto; height: 28px; padding: 0 .62rem; border-color: rgba(200, 213, 227, .78); background: #f5f8fb; color: #64778a; font-size: .71rem; font-weight: 700; white-space: nowrap;
 }
-
 .interview-hub #verified-interview-cases .interview-case-accordion-toggle {
-  width: auto;
-  min-width: 94px;
-  height: 36px;
-  padding: 0 12px;
-  border: 1px solid rgba(196, 209, 222, .9);
-  border-radius: 999px;
-  background: rgba(255,255,255,.92);
-  color: #4c6277;
-  font-size: 0;
-  font-weight: 800;
-  box-shadow: none;
+  width: auto; min-width: 94px; height: 36px; padding: 0 12px; border: 1px solid rgba(196, 209, 222, .9); border-radius: 999px;
+  background: rgba(255,255,255,.92); color: #4c6277; font-size: 0; font-weight: 800; box-shadow: none;
 }
-
-.interview-hub #verified-interview-cases .interview-case-accordion-toggle::before {
-  content: '펼쳐보기';
-  margin-right: 6px;
-  font-size: .75rem;
-  letter-spacing: -.01em;
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion-toggle::after {
-  content: '⌄';
-  display: inline-block;
-  font-size: .93rem;
-  line-height: 1;
-  transform: translateY(-1px);
-  transition: transform .2s ease;
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle {
-  border-color: rgba(183, 200, 216, .95);
-  background: #edf3f8;
-  color: #3f566c;
-  transform: none;
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle::before {
-  content: '접기';
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle::after {
-  transform: rotate(180deg) translateY(1px);
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion-content {
-  padding: 0 1.35rem 1.35rem;
-  border-top: 1px solid rgba(214, 222, 232, .68);
-  background: #fbfcfe;
-}
-
-.interview-hub #verified-interview-cases .interview-case-accordion-content .case-archive-list {
-  gap: .72rem;
-  padding-top: 1rem;
-}
-
-.interview-hub #verified-interview-cases .case-archive-item {
-  border-color: #dfe7ef;
-  border-radius: 13px;
-  background: #fff;
-  box-shadow: none;
-}
-
-.interview-hub #verified-interview-cases .case-archive-item:hover {
-  border-color: #cbd8e4;
-  box-shadow: 0 6px 16px rgba(17,24,39,.045);
-  transform: none;
-}
-
-.interview-hub #verified-interview-cases .case-archive-item[open] {
-  border-color: #c8d6e2;
-  box-shadow: 0 7px 18px rgba(17,24,39,.05);
-}
-
-.interview-hub #verified-interview-cases .case-archive-item summary {
-  padding: 1rem 1.05rem .95rem;
-  gap: .8rem;
-  background: #fff;
-}
-
-.interview-hub #verified-interview-cases .case-archive-meta {
-  gap: 6px 8px;
-  margin-bottom: 8px;
-}
-
-.interview-hub #verified-interview-cases .case-archive-badge {
-  height: 25px;
-  padding: 0 9px;
-  background: #edf3f8;
-  color: #43586d;
-  font-size: .7rem;
-}
-
+.interview-hub #verified-interview-cases .interview-case-accordion-toggle::before { content: '펼쳐보기'; margin-right: 6px; font-size: .75rem; letter-spacing: -.01em; }
+.interview-hub #verified-interview-cases .interview-case-accordion-toggle::after { content: '⌄'; display: inline-block; font-size: .93rem; line-height: 1; transform: translateY(-1px); transition: transform .2s ease; }
+.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle { border-color: rgba(183, 200, 216, .95); background: #edf3f8; color: #3f566c; transform: none; }
+.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle::before { content: '접기'; }
+.interview-hub #verified-interview-cases .interview-case-accordion[open] .interview-case-accordion-toggle::after { transform: rotate(180deg) translateY(1px); }
+.interview-hub #verified-interview-cases .interview-case-accordion-content { padding: 0 1.35rem 1.35rem; border-top: 1px solid rgba(214, 222, 232, .68); background: #fbfcfe; }
+.interview-hub #verified-interview-cases .interview-case-accordion-content .case-archive-list { gap: .72rem; padding-top: 1rem; }
+.interview-hub #verified-interview-cases .case-archive-item { border-color: #dfe7ef; border-radius: 13px; background: #fff; box-shadow: none; }
+.interview-hub #verified-interview-cases .case-archive-item:hover { border-color: #cbd8e4; box-shadow: 0 6px 16px rgba(17,24,39,.045); transform: none; }
+.interview-hub #verified-interview-cases .case-archive-item[open] { border-color: #c8d6e2; box-shadow: 0 7px 18px rgba(17,24,39,.05); }
+.interview-hub #verified-interview-cases .case-archive-item summary { padding: 1rem 1.05rem .95rem; gap: .8rem; background: #fff; }
+.interview-hub #verified-interview-cases .case-archive-meta { gap: 6px 8px; margin-bottom: 8px; }
+.interview-hub #verified-interview-cases .case-archive-badge { height: 25px; padding: 0 9px; background: #edf3f8; color: #43586d; font-size: .7rem; }
 .interview-hub #verified-interview-cases .case-archive-date,
-.interview-hub #verified-interview-cases .case-archive-verified {
-  font-size: .71rem;
-  color: #81909d;
-}
+.interview-hub #verified-interview-cases .case-archive-verified { font-size: .71rem; color: #81909d; }
+.interview-hub #verified-interview-cases .case-archive-item h3 { font-size: 1.01rem; line-height: 1.45; letter-spacing: -.022em; }
 
-.interview-hub #verified-interview-cases .case-archive-item h3 {
-  font-size: 1.01rem;
-  line-height: 1.45;
-  letter-spacing: -.022em;
-}
-
+/* 채용 · 접수 · 핵심을 하나의 정보 스트립으로 묶는다. */
 .interview-hub #verified-interview-cases .case-archive-quickfacts {
-  gap: 6px;
-  margin-top: 10px;
+  display: flex; flex-wrap: wrap; gap: 0; margin-top: 11px; overflow: hidden;
+  border: 1px solid #e2e8ef; border-radius: 10px; background: #f8fafc;
 }
-
 .interview-hub #verified-interview-cases .case-archive-quickfacts span {
-  min-height: 29px;
-  padding: 5px 8px;
-  border-color: #e2e8ef;
-  border-radius: 8px;
-  background: #f7f9fb;
-  color: #596b7c;
-  font-size: .74rem;
+  position: relative; display: inline-flex; align-items: baseline; gap: 6px; min-height: 34px;
+  padding: 7px 11px; border: 0; border-radius: 0; background: transparent; color: #596b7c;
+  font-size: .74rem; line-height: 1.45;
 }
-
-.interview-hub #verified-interview-cases .case-archive-quickfacts b,
-.interview-hub #verified-interview-cases .case-archive-open-label {
-  color: #59748d;
+.interview-hub #verified-interview-cases .case-archive-quickfacts span + span::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: #dce4ec;
 }
+.interview-hub #verified-interview-cases .case-archive-quickfacts b {
+  flex: 0 0 auto; color: #59748d; font-size: .69rem; font-weight: 800; letter-spacing: -.01em;
+}
+.interview-hub #verified-interview-cases .case-archive-quickfact-focus { flex: 1 1 280px; }
 
 .interview-hub #verified-interview-cases .case-archive-summary {
-  display: -webkit-box;
-  margin-top: 10px;
-  overflow: hidden;
-  color: #66727e;
-  font-size: .84rem;
-  line-height: 1.6;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  display: -webkit-box; margin-top: 10px; overflow: hidden; color: #66727e; font-size: .84rem; line-height: 1.6;
+  -webkit-box-orient: vertical; -webkit-line-clamp: 2;
 }
-
-.interview-hub #verified-interview-cases .case-archive-open-label {
-  margin-top: 10px;
-  font-size: .73rem;
-}
-
-.interview-hub #verified-interview-cases .case-archive-chevron {
-  width: 32px;
-  height: 32px;
-  border-color: #dce5ed;
-  background: #f7f9fb;
-  color: #526b83;
-  font-size: .9rem;
-}
-
-.interview-hub #verified-interview-cases .case-archive-item[open] .case-archive-chevron {
-  border-color: #cbd8e4;
-  background: #edf3f8;
-}
-
-.interview-hub #verified-interview-cases .case-archive-body {
-  padding: 0 1.05rem 1.05rem;
-  border-top-color: #e9eef3;
-}
-
-.interview-hub #verified-interview-cases .case-archive-body-inner {
-  padding-top: 1rem;
-}
-
-.interview-hub #verified-interview-cases .case-archive-section-title {
-  margin-bottom: 9px;
-}
-
-.interview-hub #verified-interview-cases .case-archive-section-title span {
-  background: #edf3f8;
-  color: #536f89;
-}
-
+.interview-hub #verified-interview-cases .case-archive-open-label { margin-top: 10px; font-size: .73rem; color: #59748d; }
+.interview-hub #verified-interview-cases .case-archive-chevron { width: 32px; height: 32px; border-color: #dce5ed; background: #f7f9fb; color: #526b83; font-size: .9rem; }
+.interview-hub #verified-interview-cases .case-archive-item[open] .case-archive-chevron { border-color: #cbd8e4; background: #edf3f8; }
+.interview-hub #verified-interview-cases .case-archive-body { padding: 0 1.05rem 1.05rem; border-top-color: #e9eef3; }
+.interview-hub #verified-interview-cases .case-archive-body-inner { padding-top: 1rem; }
+.interview-hub #verified-interview-cases .case-archive-section-title { margin-bottom: 9px; }
+.interview-hub #verified-interview-cases .case-archive-section-title span { background: #edf3f8; color: #536f89; }
 .interview-hub #verified-interview-cases .case-archive-facts > div,
 .interview-hub #verified-interview-cases .case-archive-block,
-.interview-hub #verified-interview-cases .case-archive-source-card {
-  border-color: #e2e8ef;
-}
-
-.interview-hub #verified-interview-cases .case-archive-more {
-  margin-top: 1rem;
-}
-
+.interview-hub #verified-interview-cases .case-archive-source-card { border-color: #e2e8ef; }
+.interview-hub #verified-interview-cases .case-archive-more { margin-top: 1rem; }
 .interview-hub #verified-interview-cases .case-archive-more a {
-  max-width: 300px;
-  min-height: 44px;
-  border: 1px solid #cbd8e4;
-  border-radius: 12px;
-  background: #fff;
-  color: #40576d;
-  box-shadow: none;
-  font-size: .84rem;
+  max-width: 300px; min-height: 44px; border: 1px solid #cbd8e4; border-radius: 12px; background: #fff; color: #40576d; box-shadow: none; font-size: .84rem;
 }
-
 .interview-hub #verified-interview-cases .case-archive-more a:hover,
-.interview-hub #verified-interview-cases .case-archive-more a:focus-visible {
-  background: #f3f7fb;
-}
-
-.interview-hub #verified-interview-cases .case-archive-note {
-  margin-top: 12px;
-  color: #83919e;
-  font-size: .73rem;
-}
+.interview-hub #verified-interview-cases .case-archive-more a:focus-visible { background: #f3f7fb; }
+.interview-hub #verified-interview-cases .case-archive-note { margin-top: 12px; color: #83919e; font-size: .73rem; }
 
 @media (max-width: 720px) {
-  .interview-hub #verified-interview-cases {
-    padding: 1.05rem .9rem;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion {
-    border-radius: 14px;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion > summary {
-    min-height: 0;
-    grid-template-columns: minmax(0,1fr) auto;
-    padding: 1rem .9rem;
-    gap: .6rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-head {
-    display: block;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-eyebrow {
-    margin-bottom: .28rem;
-    font-size: .67rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-head .section-title {
-    font-size: 1.14rem;
-    line-height: 1.38;
-  }
-
+  .interview-hub #verified-interview-cases { padding: 1.05rem .9rem; }
+  .interview-hub #verified-interview-cases .interview-case-accordion { border-radius: 14px; }
+  .interview-hub #verified-interview-cases .interview-case-accordion > summary { min-height: 0; grid-template-columns: minmax(0,1fr) auto; padding: 1rem .9rem; gap: .6rem; }
+  .interview-hub #verified-interview-cases .case-archive-head { display: block; }
+  .interview-hub #verified-interview-cases .case-archive-eyebrow { margin-bottom: .28rem; font-size: .67rem; }
+  .interview-hub #verified-interview-cases .case-archive-head .section-title { font-size: 1.14rem; line-height: 1.38; }
   .interview-hub #verified-interview-cases .case-archive-head .section-desc {
-    display: -webkit-box;
-    margin-top: .38rem;
-    overflow: hidden;
-    font-size: .79rem;
-    line-height: 1.56;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    display: -webkit-box; margin-top: .38rem; overflow: hidden; font-size: .79rem; line-height: 1.56;
+    -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   }
-
-  .interview-hub #verified-interview-cases .case-archive-count {
-    height: 26px;
-    margin-top: .55rem;
-    padding: 0 .55rem;
-    font-size: .68rem;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion-toggle {
-    min-width: 34px;
-    width: 34px;
-    height: 34px;
-    padding: 0;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion-toggle::before {
-    display: none;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion-toggle::after {
-    margin: 0;
-    font-size: .88rem;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion-content {
-    padding: 0 .65rem .75rem;
-  }
-
-  .interview-hub #verified-interview-cases .interview-case-accordion-content .case-archive-list {
-    gap: .58rem;
-    padding-top: .7rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-item {
-    border-radius: 11px;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-item summary {
-    padding: .82rem .75rem;
-    gap: .55rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-item h3 {
-    font-size: .94rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-quickfacts {
-    gap: 5px;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-quickfacts span {
-    min-height: 27px;
-    padding: 4px 7px;
-    font-size: .7rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-summary {
-    font-size: .79rem;
-    line-height: 1.55;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-chevron {
-    width: 30px;
-    height: 30px;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-body {
-    padding: 0 .75rem .85rem;
-  }
-
-  .interview-hub #verified-interview-cases .case-archive-more a {
-    max-width: none;
-    width: 100%;
-  }
+  .interview-hub #verified-interview-cases .case-archive-count { height: 26px; margin-top: .55rem; padding: 0 .55rem; font-size: .68rem; }
+  .interview-hub #verified-interview-cases .interview-case-accordion-toggle { min-width: 34px; width: 34px; height: 34px; padding: 0; }
+  .interview-hub #verified-interview-cases .interview-case-accordion-toggle::before { display: none; }
+  .interview-hub #verified-interview-cases .interview-case-accordion-toggle::after { margin: 0; font-size: .88rem; }
+  .interview-hub #verified-interview-cases .interview-case-accordion-content { padding: 0 .65rem .75rem; }
+  .interview-hub #verified-interview-cases .interview-case-accordion-content .case-archive-list { gap: .58rem; padding-top: .7rem; }
+  .interview-hub #verified-interview-cases .case-archive-item { border-radius: 11px; }
+  .interview-hub #verified-interview-cases .case-archive-item summary { padding: .82rem .75rem; gap: .55rem; }
+  .interview-hub #verified-interview-cases .case-archive-item h3 { font-size: .94rem; }
+  .interview-hub #verified-interview-cases .case-archive-quickfacts { display: grid; grid-template-columns: 1fr; border-radius: 9px; }
+  .interview-hub #verified-interview-cases .case-archive-quickfacts span { width: 100%; min-height: 31px; padding: 6px 8px; font-size: .71rem; }
+  .interview-hub #verified-interview-cases .case-archive-quickfacts span + span::before { left: 8px; right: 8px; top: 0; bottom: auto; width: auto; height: 1px; }
+  .interview-hub #verified-interview-cases .case-archive-quickfacts b { min-width: 28px; font-size: .67rem; }
+  .interview-hub #verified-interview-cases .case-archive-summary { font-size: .79rem; line-height: 1.55; }
+  .interview-hub #verified-interview-cases .case-archive-chevron { width: 30px; height: 30px; }
+  .interview-hub #verified-interview-cases .case-archive-body { padding: 0 .75rem .85rem; }
+  .interview-hub #verified-interview-cases .case-archive-more a { max-width: none; width: 100%; }
 }
