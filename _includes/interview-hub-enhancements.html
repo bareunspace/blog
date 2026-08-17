@@ -67,6 +67,36 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  var onlineHiring = document.getElementById('online-hiring');
+  if (onlineHiring) {
+    var onlineGrid = onlineHiring.querySelector('.online-hiring-grid');
+    if (onlineGrid && !onlineHiring.querySelector('.online-hiring-carousel-controls')) {
+      var controls = document.createElement('div');
+      controls.className = 'online-hiring-carousel-controls';
+      controls.setAttribute('aria-label', '온라인 채용 전형 카드 이동');
+      controls.innerHTML = '<button type="button" class="online-hiring-arrow online-hiring-prev" aria-label="이전 카드">←</button><button type="button" class="online-hiring-arrow online-hiring-next" aria-label="다음 카드">→</button>';
+
+      var heading = onlineHiring.querySelector('.blog-section-heading');
+      if (heading) heading.insertAdjacentElement('afterend', controls);
+      else onlineGrid.parentNode.insertBefore(controls, onlineGrid);
+
+      function getScrollAmount() {
+        var card = onlineGrid.querySelector('.post-related-card');
+        if (!card) return Math.max(260, onlineGrid.clientWidth * 0.8);
+        var styles = window.getComputedStyle(onlineGrid);
+        var gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      controls.querySelector('.online-hiring-prev').addEventListener('click', function () {
+        onlineGrid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+      controls.querySelector('.online-hiring-next').addEventListener('click', function () {
+        onlineGrid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+    }
+  }
+
   var toc = hub.querySelector('.guide-toc-inner');
   if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
 });
@@ -110,6 +140,38 @@ document.addEventListener('DOMContentLoaded', function () {
       min-width: 0;
       height: 100%;
     }
+  }
+
+  .online-hiring-carousel-controls {
+    display: none;
+    justify-content: flex-end;
+    gap: .55rem;
+    margin: -.25rem 0 .9rem;
+  }
+
+  .online-hiring-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(26, 54, 41, .16);
+    border-radius: 999px;
+    background: #fff;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(26, 54, 41, .08);
+  }
+
+  .online-hiring-arrow:hover,
+  .online-hiring-arrow:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(26, 54, 41, .32);
+  }
+
+  @media (max-width: 1080px) {
+    .online-hiring-carousel-controls { display: flex; }
+    #online-hiring .online-hiring-grid { scrollbar-width: none; }
+    #online-hiring .online-hiring-grid::-webkit-scrollbar { display: none; }
   }
 
   @media (max-width: 900px) {
