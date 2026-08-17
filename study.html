@@ -23,6 +23,38 @@ script_version: 20260711-4
 <section id="booking" class="about-cta-section study-booking-section"><div class="section-inner"><p class="section-label">Book Your Time</p><h2 class="section-title">하려는 일이 정해졌다면, 필요한 시간을 예약하세요</h2><p class="section-desc">혼자 집중하는 시간이든 함께 준비하는 시간이든, 목적에 맞는 시간을 미리 확보해두면 그 시간만큼은 한 가지 일에 집중하기 쉬워집니다.</p><div class="hero-btns"><a href="/booking/" class="btn-primary">이용시간·요금 확인하기</a><a href="/blog.html" class="btn-outline">전체 블로그 보기</a></div></div></section>
 </main>
 <style>
+#study-series .meeting-series-card,
+#study-series .meeting-series-card-hero,
+#study-series .meeting-series-card-support,
+#study-series .meeting-series-card-archive {
+  grid-column: auto !important;
+  grid-template-columns: 1fr !important;
+  min-height: 100% !important;
+}
+#study-series .meeting-series-card .blog-guide-image,
+#study-series .meeting-series-card-hero .blog-guide-image,
+#study-series .meeting-series-card-support .blog-guide-image,
+#study-series .meeting-series-card-archive .blog-guide-image {
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+}
+#study-series .meeting-series-card .blog-guide-content,
+#study-series .meeting-series-card-hero .blog-guide-content,
+#study-series .meeting-series-card-support .blog-guide-content,
+#study-series .meeting-series-card-archive .blog-guide-content {
+  padding: 1.15rem 1rem 1.1rem !important;
+}
+#study-series .meeting-series-card h3,
+#study-series .meeting-series-card-hero h3,
+#study-series .meeting-series-card-support h3,
+#study-series .meeting-series-card-archive h3 {
+  font-size: 1.06rem !important;
+  line-height: 1.38 !important;
+}
+#study-series .meeting-series-card-hero .meeting-series-index {
+  font-size: inherit !important;
+  color: inherit !important;
+}
 @media (max-width: 760px) {
   #study-series .blog-guide-grid.meeting-series-grid,
   #related-series .blog-guide-grid {
@@ -41,17 +73,6 @@ script_version: 20260711-4
   #related-series .blog-guide-grid {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-  #study-series .meeting-series-card,
-  #study-series .meeting-series-card-hero,
-  #study-series .meeting-series-card-support,
-  #study-series .meeting-series-card-archive {
-    grid-column: auto !important;
-    grid-template-columns: 1fr !important;
-  }
-  #study-series .meeting-series-card-hero .blog-guide-image {
-    min-height: 0;
-    aspect-ratio: 16 / 9;
   }
 }
 </style>
