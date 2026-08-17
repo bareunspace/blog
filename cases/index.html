@@ -4,7 +4,7 @@ title: 사례 데이터베이스 | 바른자리
 description: 채용·면접·시험·업무 등 바른자리와 연결되는 실제 사례를 출처와 최종 확인일과 함께 정리한 사례 데이터베이스입니다.
 permalink: /cases/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-4
+extra_css_version: 20260817-6
 breadcrumbs:
   - label: 사례 DB
 ---
@@ -15,16 +15,38 @@ breadcrumbs:
       <p class="section-label">Verified Cases Database</p>
       <h1 class="section-title">바른자리 사례 데이터베이스</h1>
       <p class="section-desc">검색 유입을 위한 단순 뉴스 모음이 아니라, 실제 사용 준비와 연결되는 사례를 출처와 최종 확인일을 기준으로 축적합니다.</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-primary">기업별 사례 보기</a>
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 사례 보기</a>
+      </div>
     </div>
   </section>
 
   {% include breadcrumb.html %}
 
+  <section>
+    <div class="section-inner">
+      <h2 class="section-title">사례를 두 가지 축으로 탐색하세요</h2>
+      <div class="about-highlight-grid">
+        <article class="about-highlight-card">
+          <h3>기업별 사례 DB</h3>
+          <p>SK하이닉스, 이스타항공처럼 같은 기업의 전형 변화를 묶어 봅니다.</p>
+          <p><a href="{{ '/cases/companies/' | relative_url }}">기업별로 보기 →</a></p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>직무별 사례 DB</h3>
+          <p>객실승무원, 반도체처럼 기업이 달라도 같은 직무에서 반복되는 준비 포인트를 묶어 봅니다.</p>
+          <p><a href="{{ '/cases/jobs/' | relative_url }}">직무별로 보기 →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   {% include cases-list.html
     section_id='case-database'
     eyebrow='All Cases'
     title='전체 검증 사례'
-    intro='직무나 기업에 묶이지 않는 공통 데이터베이스입니다. 각 사례는 동일한 스키마로 관리되어 다른 허브와 글에서도 다시 사용할 수 있습니다.'
+    intro='직무나 기업에 묶이지 않는 공통 데이터베이스입니다. 각 사례는 동일한 스키마로 관리되어 기업별·직무별 페이지와 관련 허브·글에서 다시 사용할 수 있습니다.'
     open_first=true
   %}
 </main>
