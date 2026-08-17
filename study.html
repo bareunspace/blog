@@ -70,9 +70,16 @@ script_version: 20260711-4
 }
 @media (min-width: 900px) {
   #study-series .blog-guide-grid.meeting-series-grid,
-  #related-series .blog-guide-grid {
+  #related-series .blog-guide-grid,
+  #study-project-focus .about-principle-grid,
+  #space-fit .about-highlight-grid {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  #study-project-focus .about-principle-item,
+  #space-fit .about-highlight-card {
+    min-width: 0 !important;
+    width: 100% !important;
   }
 }
 </style>
