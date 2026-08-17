@@ -2,7 +2,7 @@
 <div id="interview-verified-cases-slot">
   {% include cases-list.html
     topic='interview'
-    limit=1
+    limit=3
     section_id='verified-interview-cases'
     eyebrow='Verified Hiring Cases'
     title='최근 검증된 면접·채용 사례'
@@ -91,34 +91,36 @@ document.addEventListener('DOMContentLoaded', function () {
       var shell = caseSection.querySelector('.case-archive-shell');
       var head = shell && shell.querySelector('.case-archive-head');
       var list = shell && shell.querySelector('.case-archive-list');
-      if (shell && head && list && !shell.querySelector('.interview-case-accordion')) {
-        var accordion = document.createElement('details');
-        accordion.className = 'interview-case-accordion';
+      var more = shell && shell.querySelector('.case-archive-more');
+      var note = shell && shell.querySelector('.case-archive-note');
 
-        var summary = document.createElement('summary');
-        summary.setAttribute('aria-label', '최근 검증된 면접·채용 사례 열기');
-        summary.appendChild(head);
-        summary.insertAdjacentHTML('beforeend', '<span class="interview-case-accordion-toggle" aria-hidden="true"></span>');
-        accordion.appendChild(summary);
+      if (head && list && !head.querySelector('.interview-case-toggle-button')) {
+        var toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'btn-outline interview-case-toggle-button';
+        toggle.textContent = '펼쳐보기';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', 'verified-interview-cases-list');
+        head.appendChild(toggle);
 
-        var content = document.createElement('div');
-        content.className = 'interview-case-accordion-content';
-        content.appendChild(list);
+        list.id = 'verified-interview-cases-list';
+        list.hidden = true;
+        if (more) more.hidden = true;
+        if (note) note.hidden = true;
 
-        var more = shell.querySelector('.case-archive-more');
-        var note = shell.querySelector('.case-archive-note');
-        if (more) content.appendChild(more);
-        if (note) content.appendChild(note);
-
-        accordion.appendChild(content);
-        shell.appendChild(accordion);
+        toggle.addEventListener('click', function () {
+          var willOpen = list.hidden;
+          list.hidden = !willOpen;
+          if (more) more.hidden = !willOpen;
+          if (note) note.hidden = !willOpen;
+          toggle.textContent = willOpen ? '접기' : '펼쳐보기';
+          toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          caseSection.classList.toggle('is-open', willOpen);
+        });
       }
     }
     caseSlot.remove();
   }
-
-  var upcoming = document.getElementById('upcoming-series');
-  if (upcoming) upcoming.style.display = 'none';
 
   var toc = hub.querySelector('.guide-toc-inner');
   if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
