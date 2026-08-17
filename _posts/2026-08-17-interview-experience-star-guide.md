@@ -13,6 +13,11 @@ tags:
 canonical: https://bareunjari.com/posts/interview-experience-star-guide/
 permalink: /posts/interview-experience-star-guide/
 date: 2026-08-17 22:10:00 +0900
+og_image: https://bareunjari.com/images/interview-experience-star-guide.webp
+og_image_alt: 면접 경험을 상황 역할 판단 행동 결과 순서로 정리하고 녹화 연습하는 모습
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/interview-experience-star-guide.webp
 ---
 
 <main class="about-page">
