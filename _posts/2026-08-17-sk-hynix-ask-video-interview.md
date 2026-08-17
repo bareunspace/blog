@@ -32,7 +32,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">SK hynix Interview Practice Guide</p>
       <h1 class="section-title">SK하이닉스 A!SK 영상면접 준비<br />반나절 심층면접까지 어떻게 연습할까</h1>
-      <p class="section-desc">SK하이닉스는 A!SK를 대면면접 전에 진행하는 비대면 영상 인터뷰로 안내하고 있고, 2026년 신입 수시채용에는 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접을 도입했습니다. 핵심은 답을 더 많이 외우는 것보다 <strong>준비한 경험과 판단 근거를 실제로 말해보는 것</strong>입니다.</p>
+      <p class="section-desc">SK하이닉스는 현재 Talent Hub의 일반 채용 절차에서 A!SK를 대면면접 전에 진행하는 비대면 영상 인터뷰로 안내하고 있고, 2026년 8월 신입 수시채용에는 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접 도입을 발표했습니다. 핵심은 답을 더 많이 외우는 것보다 <strong>준비한 경험과 판단 근거를 실제로 말해보는 것</strong>입니다.</p>
       <div class="hero-btns">
         <a href="#two-hour-practice" class="btn-primary">2시간 리허설 방법 보기</a>
         <a href="#verified-case" class="btn-outline">현재 채용 사례 확인</a>
@@ -46,7 +46,7 @@ script_version: 20260711-4
   <section id="source-note" class="guide-summary-section" aria-label="자료 기준 안내">
     <div class="section-inner">
       <h2 class="section-title">먼저 확인하세요</h2>
-      <p class="section-desc">이 글은 <strong>2026년 8월 17일 기준</strong> SK하이닉스 Talent Hub와 뉴스룸의 공식 채용 자료를 우선 근거로 정리했습니다. 전형 방식은 직무와 채용 차수에 따라 달라질 수 있으므로 실제 지원 전에는 본인이 지원한 공고와 응시 안내를 다시 확인하세요.</p>
+      <p class="section-desc">이 글은 <strong>2026년 8월 17일 기준</strong> SK하이닉스 Talent Hub와 뉴스룸의 공식 채용 자료를 우선 근거로 정리했습니다. 현재 Talent Hub에 안내된 일반 채용 절차와 8월 20일 시작 예정인 수시채용의 발표 내용을 구분해 설명합니다. 이번 수시채용의 세부 전형은 실제 채용공고가 공개되면 반드시 다시 확인하세요.</p>
     </div>
   </section>
 
@@ -77,11 +77,11 @@ script_version: 20260711-4
   <section id="official-info">
     <div class="section-inner">
       <h2 class="section-title">A!SK와 심층면접, 공식적으로 확인되는 것은 무엇인가요?</h2>
-      <p class="section-desc">SK하이닉스 Talent Hub는 채용 절차를 서류전형 이후 SKCT 및 A!SK 전형, 면접전형, 최종 합격 순으로 안내합니다. A!SK는 대면면접 전에 진행되는 비대면 영상 인터뷰이며, 2026년 신입 수시채용에서는 기존 짧은 면접 대신 반나절 심층면접을 도입한다고 밝혔습니다.</p>
+      <p class="section-desc">현재 SK하이닉스 Talent Hub의 <strong>일반 채용 절차 안내</strong>는 서류전형 이후 SKCT 및 A!SK 전형, 면접전형, 최종 합격 순으로 소개하고 있습니다. A!SK는 대면면접 전에 진행되는 비대면 영상 인터뷰입니다. 별도로 SK하이닉스는 2026년 8월 신입 수시채용에서 반나절 심층면접을 도입하고, 기존 자기소개서 틀에서 벗어나 <strong>AI 활용 및 직무 역량을 집중 검증하는 서식</strong>을 도입한다고 발표했습니다. 이번 수시채용의 구체적인 전형 순서와 A!SK 적용 여부는 실제 공고에서 다시 확인해야 합니다.</p>
       <div class="about-highlight-grid" aria-label="SK하이닉스 공식 확인 정보">
-        <article class="about-highlight-card"><h3>A!SK 비대면 영상 인터뷰</h3><p>카메라를 통해 자기소개서 밖의 가치관, 태도와 직무 관련 내용을 전달하는 온라인 인터뷰 단계입니다.</p></article>
-        <article class="about-highlight-card"><h3>반나절 심층면접</h3><p>과제 수행과 인터뷰를 이어가며 직무 전문성, AI 응용 능력, 논리적 사고력 등을 더 깊게 확인하는 방향입니다.</p></article>
-        <article class="about-highlight-card"><h3>실력 중심 채용 강화</h3><p>2026년부터 학력 제한을 전면 철폐하고 경험, 직무역량과 성장 가능성을 중심으로 채용 기준을 넓히는 흐름을 발표했습니다.</p></article>
+        <article class="about-highlight-card"><h3>A!SK 비대면 영상 인터뷰</h3><p>현재 Talent Hub의 일반 채용 절차에서 대면면접에 앞서 진행되는 비대면 영상 인터뷰로 안내됩니다.</p></article>
+        <article class="about-highlight-card"><h3>반나절 심층면접</h3><p>2026년 8월 신입 수시채용에서 과제 수행과 인터뷰를 통해 직무 전문성, AI 응용 능력, 논리적 사고력 등을 깊게 확인하는 방식의 도입이 발표됐습니다.</p></article>
+        <article class="about-highlight-card"><h3>지원서·채용 기준 변화</h3><p>기존 자기소개서 틀에서 벗어나 AI 활용 및 직무 역량을 집중 검증하는 서식을 도입하고, 2026년부터 학력 제한도 전면 철폐하는 방향을 발표했습니다.</p></article>
       </div>
       <p class="section-desc">공식 자료는 위 사례 카드의 원문 출처와 최종 확인일에서 바로 확인할 수 있습니다.</p>
     </div>
@@ -92,7 +92,7 @@ script_version: 20260711-4
       <h2 class="section-title">SK하이닉스 면접 전에 연습할 것 5가지</h2>
       <div class="about-principle-grid" aria-label="SK하이닉스 실전 연습 포인트">
         <article class="about-principle-item" data-step="01"><h3>자기소개를 3가지 길이로 말해보기</h3><p>20초, 40초, 60초처럼 길이를 바꿔 말해보세요. 문장을 통째로 외우기보다 핵심 키워드만 보고 자연스럽게 이어가는 연습이 좋습니다.</p></article>
-        <article class="about-principle-item" data-step="02"><h3>직무·프로젝트 내용을 쉬운 말로 설명하기</h3><p>전공 용어나 프로젝트 경험을 정의 → 판단 근거 → 자신의 역할 → 결과 순서로 말해보세요. 알고 있는 것과 설명할 수 있는 것은 다릅니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>지원서의 AI 활용·직무 경험까지 설명하기</h3><p>2026년 8월 수시채용은 AI 활용 및 직무 역량을 집중 검증하는 새로운 서식 도입이 발표됐습니다. 지원서에 적은 AI 활용 경험이나 프로젝트를 정의 → 판단 근거 → 자신의 역할 → 결과 순서로 직접 설명해보세요. 알고 있는 것과 설명할 수 있는 것은 다릅니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>과제의 판단 과정을 말로 풀어보기</h3><p>임의의 문제를 하나 정하고 문제 정의, 선택 기준, 대안, 최종 결론을 소리 내어 설명해보세요. 기술 정답을 맞히는 연습이 아니라 사고 과정을 전달하는 연습입니다.</p></article>
         <article class="about-principle-item" data-step="04"><h3>꼬리질문을 붙여 다시 답하기</h3><p>첫 답변 뒤에 “왜 그렇게 판단했나요?”, “다른 방법은 없었나요?” 같은 질문을 붙여 답변 논리가 이어지는지 확인하세요.</p></article>
         <article class="about-principle-item" data-step="05"><h3>A!SK처럼 카메라 앞에서 녹화하기</h3><p>노트북이나 휴대폰 카메라를 보고 답변해 시선, 말속도, 답변 길이와 반복 표현을 확인하세요. 실제 질문을 맞히는 것이 아니라 카메라 앞 발화 자체에 익숙해지는 것이 목적입니다.</p></article>
