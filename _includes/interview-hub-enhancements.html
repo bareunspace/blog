@@ -97,6 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  var videoInterview = document.getElementById('video-interview');
+  if (videoInterview) {
+    var videoInner = videoInterview.querySelector('.section-inner');
+    if (videoInner) {
+      videoInner.innerHTML = '<p class="section-label">Video Interview</p><h2 class="section-title">화상면접이라면 환경도 따로 점검하세요</h2><p class="section-desc">대면면접과 달리 화상면접은 답변뿐 아니라 카메라, 조명, 마이크, 배경과 접속 환경도 미리 확인해야 합니다. 구체적인 세팅 방법은 화상면접 가이드에서 확인하세요.</p><div class="hero-btns"><a href="/posts/video-interview-setup/" class="btn-primary">화상면접 세팅 가이드 보기</a><a href="/posts/bucheon-video-interview-place-guide/" class="btn-outline">화상면접 장소 선택 가이드</a></div>';
+    }
+  }
+
   var toc = hub.querySelector('.guide-toc-inner');
   if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
 });
@@ -127,16 +135,14 @@ document.addEventListener('DOMContentLoaded', function () {
       aspect-ratio: 16 / 9;
     }
 
-    #interview-practice-focus .about-principle-grid,
-    #video-interview .about-highlight-grid {
+    #interview-practice-focus .about-principle-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       align-items: stretch;
     }
 
-    #interview-practice-focus .about-principle-item,
-    #video-interview .about-highlight-card {
+    #interview-practice-focus .about-principle-item {
       min-width: 0;
       height: 100%;
     }
@@ -175,8 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   @media (max-width: 900px) {
-    #interview-practice-focus .about-principle-grid,
-    #video-interview .about-highlight-grid {
+    #interview-practice-focus .about-principle-grid {
       grid-template-columns: 1fr;
     }
   }
