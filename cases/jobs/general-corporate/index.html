@@ -1,0 +1,38 @@
+---
+layout: default
+title: 일반 기업 신입·직무면접 사례 | 바른자리 사례 DB
+description: 일반 기업 신입채용에서 확인되는 AI역량검사와 실무·직무면접 사례를 모아 실제 연습 포인트와 공식 출처를 정리합니다.
+permalink: /cases/jobs/general-corporate/
+extra_css: /styles/case-archive.css
+extra_css_version: 20260817-6
+breadcrumbs:
+  - label: 사례 DB
+    url: /cases/
+  - label: 직무별
+    url: /cases/jobs/
+  - label: 일반 기업 신입·직무면접
+---
+
+<main class="about-page">
+  <section id="home" class="case-archive-hero">
+    <div class="section-inner case-archive-shell">
+      <p class="section-label">Corporate Interview Cases</p>
+      <h1 class="section-title">일반 기업 신입·직무면접 사례</h1>
+      <p class="section-desc">특정 전문직보다 일반 기업 신입채용의 AI역량검사, 실무·직무면접처럼 말하기와 녹화 연습으로 연결되는 사례를 모았습니다.</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 사례 DB</a>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  {% include cases-list.html
+    job='general-corporate'
+    section_id='general-corporate-cases'
+    eyebrow='Corporate Interview'
+    title='일반 기업 신입·직무면접 검증 사례'
+    intro='일반 기업 신입채용에서 공식적으로 확인되고 바른자리의 말하기·녹화·직무 설명 연습과 연결되는 사례만 표시합니다.'
+    open_first=true
+  %}
+</main>
