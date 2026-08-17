@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 면접 경험 정리하는 법 | STAR보다 중요한 판단과 행동 설명하기
-description: 면접 경험 질문에 답하기 위해 경험을 어떻게 고르고 정리해야 할까요? STAR 구조를 기본으로 상황, 역할, 행동, 판단 이유, 결과와 배운 점을 말할 수 있도록 정리하는 방법을 안내합니다.
+title: 면접 STAR 경험 정리법 | 꼬리질문까지 대비하는 답변 구조
+description: 면접 경험 질문을 STAR로 정리할 때 상황·역할·행동·결과만 외우지 말고 판단 이유까지 준비하세요. 경험 선택, 답변 구조, 꼬리질문, 60~90초 말하기 연습까지 정리했습니다.
 category: 면접준비
 keywords: 면접경험정리,면접STAR,STAR면접,면접경험질문,면접답변구조,면접꼬리질문,면접준비,면접연습
 tags:
@@ -24,12 +24,12 @@ preload_image: images/interview-experience-star-guide.webp
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Interview Experience Guide</p>
-      <h1 class="section-title">면접 경험 정리하는 법</h1>
-      <p class="hero-subtitle">STAR를 외우기보다, 내가 왜 그렇게 행동했는지 설명할 수 있게 준비하세요.</p>
-      <p class="section-desc">면접에서 프로젝트, 갈등, 실패, 협업 경험을 묻는 이유는 사건의 줄거리만 듣기 위해서가 아닙니다. 그 상황에서 지원자가 무엇을 맡았고, 무엇을 판단했고, 실제로 어떻게 행동했는지를 확인하려는 질문에 가깝습니다. 그래서 경험 정리는 문장을 외우는 작업보다 내 선택의 이유를 다시 꺼내 말할 수 있게 만드는 작업이 중요합니다.</p>
+      <h1 class="section-title">면접 STAR 경험 정리법</h1>
+      <p class="hero-subtitle">STAR를 외우기보다, “왜 그렇게 판단했는가”까지 설명할 수 있게 준비하세요.</p>
+      <p class="section-desc">면접에서 프로젝트, 갈등, 실패, 협업 경험을 묻는 이유는 사건의 줄거리만 듣기 위해서가 아닙니다. 그 상황에서 지원자가 무엇을 맡았고, 무엇을 판단했고, 실제로 어떻게 행동했는지를 확인하려는 질문에 가깝습니다. 그래서 경험 정리는 문장을 외우는 작업보다 <strong>내 선택의 이유를 다시 꺼내 말할 수 있게 만드는 작업</strong>이 중요합니다.</p>
       <div class="hero-btns">
-        <a href="#five-parts" class="btn-primary">경험 정리 순서 보기</a>
-        <a href="/posts/interview-answer-practice/" class="btn-outline">답변 연습법 보기</a>
+        <a href="#five-parts" class="btn-primary">STAR+판단 구조 보기</a>
+        <a href="#template" class="btn-outline">바로 쓰는 정리 템플릿</a>
       </div>
     </div>
   </section>
@@ -64,13 +64,27 @@ preload_image: images/interview-experience-star-guide.webp
   <section id="five-parts">
     <div class="section-inner">
       <h2 class="section-title">STAR 4칸에 ‘판단 이유’를 하나 더 넣어 정리해보세요</h2>
-      <p class="section-desc">STAR는 경험을 빠뜨리지 않고 정리하는 유용한 틀입니다. 다만 실제 면접에서는 Action만큼 “왜 그렇게 했나요?”가 중요합니다. 바른자리에서는 아래 다섯 질문에 답할 수 있도록 경험을 정리하는 방식을 권합니다.</p>
+      <p class="section-desc">STAR는 경험을 빠뜨리지 않고 정리하는 유용한 틀입니다. 다만 실제 면접에서는 Action만큼 “왜 그렇게 했나요?”가 중요합니다. 아래 다섯 질문에 답할 수 있도록 경험을 정리하면 꼬리질문에도 훨씬 자연스럽게 이어갈 수 있습니다.</p>
       <div class="about-principle-grid">
         <article class="about-principle-item" data-step="01"><h3>Situation · 어떤 상황이었나</h3><p>배경 설명은 짧게 합니다. 언제, 어떤 목표나 문제가 있었는지만 면접관이 이해할 정도로 정리합니다.</p></article>
         <article class="about-principle-item" data-step="02"><h3>Task · 내 역할은 무엇이었나</h3><p>팀의 목표와 내 책임을 분리합니다. “저희가”만 반복하면 본인의 기여를 확인하기 어렵습니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>Judgment · 왜 그 방법을 골랐나</h3><p>가능했던 선택지와 당시 고려한 기준을 떠올립니다. 이 부분이 꼬리질문 대응의 핵심 재료가 됩니다.</p></article>
         <article class="about-principle-item" data-step="04"><h3>Action · 실제로 무엇을 했나</h3><p>회의했다, 노력했다 같은 표현보다 조사했다, 제안했다, 우선순위를 바꿨다처럼 본인의 행동이 보이는 동사를 사용합니다.</p></article>
         <article class="about-principle-item" data-step="05"><h3>Result · 무엇이 달라졌나</h3><p>성과뿐 아니라 실패했다면 무엇을 확인했고 이후 행동이 어떻게 달라졌는지까지 정리합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="template" class="guide-summary-section">
+    <div class="section-inner">
+      <h2 class="section-title">바로 써볼 수 있는 경험 정리 템플릿</h2>
+      <p class="section-desc">문장을 길게 쓰기보다 아래 다섯 줄을 먼저 채운 뒤, 노트를 덮고 말해보세요.</p>
+      <div class="about-highlight-grid">
+        <article class="about-highlight-card"><h3>1. 상황</h3><p>“당시 ○○한 목표/문제가 있었습니다.”</p></article>
+        <article class="about-highlight-card"><h3>2. 역할</h3><p>“그중 제가 맡은 역할은 ○○였습니다.”</p></article>
+        <article class="about-highlight-card"><h3>3. 판단</h3><p>“○○라고 판단해 이 방법을 선택했습니다.”</p></article>
+        <article class="about-highlight-card"><h3>4. 행동</h3><p>“그래서 직접 ○○하고, ○○를 바꿨습니다.”</p></article>
+        <article class="about-highlight-card"><h3>5. 결과</h3><p>“그 결과 ○○가 달라졌고, 이후에는 ○○하게 됐습니다.”</p></article>
       </div>
     </div>
   </section>
@@ -100,7 +114,18 @@ preload_image: images/interview-experience-star-guide.webp
       </div>
       <div class="hero-btns">
         <a href="/posts/interview-answer-practice/" class="btn-primary">60분 면접 답변 연습법</a>
-        <a href="/ai-interview/" class="btn-outline">AI 모의면접 데모</a>
+        <a href="/posts/1-minute-self-introduction-guide/" class="btn-outline">1분 자기소개 가이드</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="guide-summary-section">
+    <div class="section-inner">
+      <h2 class="section-title">면접 STAR 경험 정리 FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary>STAR 순서를 꼭 그대로 말해야 하나요?</summary><div class="faq-answer"><p>꼭 순서를 기계적으로 읽을 필요는 없습니다. 면접관이 상황을 이해할 만큼 배경을 짧게 설명한 뒤, 본인의 역할·판단·행동·결과가 빠지지 않게 말하는 것이 더 중요합니다.</p></div></details>
+        <details class="faq-item"><summary>성과가 큰 경험만 준비해야 하나요?</summary><div class="faq-answer"><p>그렇지 않습니다. 작은 경험이라도 본인의 역할과 판단이 분명하고, 왜 그렇게 행동했는지 설명할 수 있다면 좋은 면접 소재가 될 수 있습니다.</p></div></details>
+        <details class="faq-item"><summary>경험 답변은 몇 개 준비하면 좋나요?</summary><div class="faq-answer"><p>숫자를 고정하기보다 협업·문제 해결·실패·성과·새로운 시도처럼 서로 다른 상황의 경험을 몇 개 골라두고, 하나의 경험을 여러 질문에 억지로 끼워 넣지 않는 것이 좋습니다.</p></div></details>
       </div>
     </div>
   </section>
@@ -112,7 +137,7 @@ preload_image: images/interview-experience-star-guide.webp
       <p class="section-desc">바른자리는 면접 코칭이나 합격을 보장하는 서비스가 아닙니다. 준비한 답변을 직접 말하고 휴대폰으로 녹화하며 반복 연습할 수 있는 프라이빗 공간입니다. 글로 정리한 경험이 실제 질문에서도 자연스럽게 나오는지 확인하는 데 활용할 수 있습니다.</p>
       <div class="hero-btns">
         <a href="/interview/" class="btn-outline">면접준비 가이드 전체 보기</a>
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">면접 연습 시간 예약</a>
+        <a href="/booking/" class="btn-primary" data-cta="interview_star_booking">면접 연습 시간 확인하기</a>
       </div>
     </div>
   </section>
