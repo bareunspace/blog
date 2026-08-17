@@ -10,7 +10,7 @@ og_image_alt: 스터디와 팀플, 소규모 수업에 활용하는 프라이빗
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/private-space-for-study-groups.webp
-css_version: 20260809-1
+css_version: 20260818-1
 script_version: 20260711-4
 ---
 <main class="about-page blog-hub study-hub">
@@ -22,3 +22,22 @@ script_version: 20260711-4
 <section id="space-fit" class="study-surface"><div class="section-inner"><p class="section-label">Why Private Space</p><h2 class="section-title">조용하기만 한 공간보다, 하려는 일에 맞는 공간</h2><p class="section-desc">혼자 몰입하는 공부와 팀으로 말하며 준비하는 시간은 필요한 환경이 다릅니다. 바른자리는 예약한 시간 동안 한 팀이 사용할 수 있어 공부, 토론, 설명, 프로젝트처럼 목적 있는 시간을 보내는 데 활용할 수 있습니다.</p><div class="about-highlight-grid"><article class="about-highlight-card"><h3>혼자 몰입</h3><p>집이나 공용 공간에서 흐트러지기 쉬운 날, 예약한 시간만큼 한 가지 일에 집중합니다.</p></article><article class="about-highlight-card"><h3>함께 말하기</h3><p>질문·설명·토론·발표처럼 조용히 앉아 있기보다 서로 말해야 하는 준비에 활용합니다.</p></article><article class="about-highlight-card"><h3>2~3시간 함께 준비</h3><p>팀 스터디와 프로젝트처럼 시작부터 정리까지 연속된 시간이 필요한 모임에 활용합니다.</p></article></div></div></section>
 <section id="booking" class="about-cta-section study-booking-section"><div class="section-inner"><p class="section-label">Book Your Time</p><h2 class="section-title">하려는 일이 정해졌다면, 필요한 시간을 예약하세요</h2><p class="section-desc">혼자 집중하는 시간이든 함께 준비하는 시간이든, 목적에 맞는 시간을 미리 확보해두면 그 시간만큼은 한 가지 일에 집중하기 쉬워집니다.</p><div class="hero-btns"><a href="/booking/" class="btn-primary">이용시간·요금 확인하기</a><a href="/blog.html" class="btn-outline">전체 블로그 보기</a></div></div></section>
 </main>
+<style>
+@media (max-width: 760px) {
+  #study-series .blog-guide-grid.meeting-series-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (min-width: 761px) and (max-width: 1023px) {
+  #study-series .blog-guide-grid.meeting-series-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (min-width: 1024px) {
+  #study-series .blog-guide-grid.meeting-series-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+</style>
