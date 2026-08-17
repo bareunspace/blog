@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var heroLabel = hub.querySelector('#home .section-label');
   if (heroLabel) heroLabel.textContent = 'Interview';
-
   var heroTitle = hub.querySelector('#home .section-title');
   if (heroTitle) heroTitle.textContent = '면접';
-
   var heroSubtitle = hub.querySelector('#home .hero-subtitle');
-  if (heroSubtitle) heroSubtitle.textContent = '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 기업별 최신 전형 사례, 화상면접 환경, 면접 당일 마지막 확인까지. 면접에 필요한 준비를 단계별로 골라보세요.';
+  if (heroSubtitle) heroSubtitle.textContent = '답변을 정리하고, 실제로 말해보고, 지원 기업의 전형과 면접 환경을 확인하세요.';
 
   var metrics = hub.querySelectorAll('.interview-hero-metrics .interview-metric-card');
   if (metrics.length >= 3) {
@@ -24,34 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var flow = document.getElementById('prep-flow');
   if (flow) {
-    var flowHeading = flow.querySelector('h2');
-    var flowDesc = flow.querySelector('.interview-flow-heading p:last-child');
-    if (flowHeading) flowHeading.textContent = '지금 면접이 어디까지 준비됐나요?';
-    if (flowDesc) flowDesc.textContent = '새로운 정보를 계속 찾기보다 현재 단계에 맞는 가이드를 고르고, 실제 기업 전형 사례는 출처가 확인된 정보만 참고하세요.';
-
-    var cards = flow.querySelectorAll('.guide-summary-card');
-    if (cards.length >= 4) {
-      cards[0].querySelector('h2').textContent = '답변 정리';
-      cards[0].querySelector('p').textContent = '1분 자기소개, 지원 동기, 경험 사례와 역질문처럼 면접에서 꺼낼 핵심 내용을 정리합니다.';
-      if (!cards[0].querySelector('a[href="/posts/1-minute-self-introduction-guide/"]')) cards[0].insertAdjacentHTML('beforeend', '<p><a href="/posts/1-minute-self-introduction-guide/">1분 자기소개 가이드 →</a></p>');
-
-      cards[1].querySelector('h2').textContent = '소리 내어 연습';
-      cards[1].querySelector('p').textContent = '준비한 문장을 읽는 데서 끝내지 않고 실제 질문을 받은 것처럼 말하고 휴대폰으로 녹화해 확인합니다.';
-      if (!cards[1].querySelector('a[href="/posts/interview-answer-practice/"]')) cards[1].insertAdjacentHTML('beforeend', '<p><a href="/posts/interview-answer-practice/">면접 답변 연습 가이드 →</a></p>');
-
-      cards[2].querySelector('h2').textContent = '실제 전형 확인';
-      cards[2].querySelector('p').textContent = '지원 기업의 최신 전형이 영상면접, 상황대처, 과제·심층면접 중 무엇인지 공식 출처와 확인일을 기준으로 확인합니다.';
-      if (!cards[2].querySelector('a[href="#verified-interview-cases"]')) cards[2].insertAdjacentHTML('beforeend', '<p><a href="#verified-interview-cases">최근 검증 사례 보기 →</a></p>');
-
-      cards[3].querySelector('h2').textContent = '당일 마지막 점검';
-      cards[3].querySelector('p').textContent = '면접 30분 전에는 새 답변을 만들기보다 자기소개와 핵심 경험을 다시 말하고 목소리·시선·환경을 확인합니다.';
-      var demo = cards[3].querySelector('a[href="/ai-interview/"]');
-      if (demo) demo.remove();
-      if (!cards[3].querySelector('a[href="/posts/interview-30-minutes-before/"]')) cards[3].insertAdjacentHTML('beforeend', '<p><a href="/posts/interview-30-minutes-before/">면접 30분 전 체크리스트 →</a></p>');
-    }
-
-    var chips = flow.querySelector('.interview-situation-chips');
-    if (chips) chips.innerHTML = '<a href="/posts/1-minute-self-introduction-guide/">자기소개</a><a href="/posts/interview-answer-practice/">답변 연습</a><a href="#verified-interview-cases">기업별 사례</a><a href="/posts/video-interview-setup/">화상면접</a><a href="#booking">예약</a>';
+    var inner = flow.querySelector('.section-inner');
+    if (inner) inner.innerHTML = '<div class="interview-flow-heading"><p class="section-label">Preparation Route</p><h2 class="section-title">지금 필요한 준비부터 고르세요</h2><p>면접 준비를 처음부터 다시 할 필요는 없습니다. 현재 단계에 맞는 가이드로 바로 이동하세요.</p></div><nav class="interview-quick-route" aria-label="면접 준비 단계"><a href="/posts/1-minute-self-introduction-guide/"><strong>01 답변 정리</strong><span>자기소개·경험</span></a><a href="/posts/interview-answer-practice/"><strong>02 말하기</strong><span>답변·녹화 점검</span></a><a href="#verified-interview-cases"><strong>03 전형 확인</strong><span>기업별 검증 사례</span></a><a href="/posts/interview-30-minutes-before/"><strong>04 마지막 점검</strong><span>면접 당일</span></a></nav>';
   }
 
   var series = document.getElementById('interview-series');
@@ -61,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!document.getElementById('interview-practice-focus')) {
       var focus = document.createElement('section');
       focus.id = 'interview-practice-focus';
-      focus.className = 'guide-summary-section interview-surface';
-      focus.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Practice Loop</p><h2 class="section-title">답변을 만들었다면, 이제 실제로 꺼내는 연습이 필요합니다</h2><p>면접의 마지막 준비는 문장을 더 고치는 것이 아니라 질문을 듣고 답변을 소리 내어 말해보는 것입니다. 한 번 말하고, 녹화해 확인하고, 다시 말하는 짧은 반복으로 준비한 내용을 실제 답변에 가깝게 만들어보세요.</p></div><div class="about-principle-grid"><article class="about-principle-item" data-step="01"><h3>질문을 정합니다</h3><p>자기소개와 지원 동기, 핵심 경험처럼 반드시 말해볼 질문 몇 개를 고릅니다.</p></article><article class="about-principle-item" data-step="02"><h3>소리 내어 답합니다</h3><p>원고를 읽지 않고 실제 면접처럼 질문에 답하면서 막히는 부분을 확인합니다.</p></article><article class="about-principle-item" data-step="03"><h3>녹화하고 다시 말합니다</h3><p>휴대폰 녹화로 목소리, 속도, 시선과 불필요한 반복 표현을 확인한 뒤 한 번 더 답합니다.</p></article></div><div class="hero-btns" style="margin-top:1.5rem;"><a href="/posts/interview-answer-practice/" class="btn-primary">60분 답변 연습 가이드</a><a href="/ai-interview/" class="btn-outline">AI 모의면접 데모</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">면접 연습 시간 확인</a></div></div>';
+      focus.className = 'interview-surface interview-practice-compact';
+      focus.innerHTML = '<div class="section-inner"><p class="section-label">Practice Loop</p><h2 class="section-title">답변을 만들었다면, 실제로 말해보세요</h2><p class="section-desc">준비한 문장을 더 고치기보다 질문을 듣고 답하고, 녹화해 확인하고, 다시 말하는 짧은 반복이 필요합니다.</p><div class="hero-btns"><a href="/posts/interview-answer-practice/" class="btn-primary">60분 답변 연습 가이드</a><a href="/ai-interview/" class="btn-outline">AI 모의면접 데모</a></div></div>';
       series.parentNode.insertBefore(focus, series);
     }
   }
@@ -75,11 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
       controls.className = 'online-hiring-carousel-controls';
       controls.setAttribute('aria-label', '온라인 채용 전형 카드 이동');
       controls.innerHTML = '<button type="button" class="online-hiring-arrow online-hiring-prev" aria-label="이전 카드">←</button><button type="button" class="online-hiring-arrow online-hiring-next" aria-label="다음 카드">→</button>';
-
       var heading = onlineHiring.querySelector('.blog-section-heading');
-      if (heading) heading.insertAdjacentElement('afterend', controls);
-      else onlineGrid.parentNode.insertBefore(controls, onlineGrid);
-
+      if (heading) heading.insertAdjacentElement('afterend', controls); else onlineGrid.parentNode.insertBefore(controls, onlineGrid);
       function getScrollAmount() {
         var card = onlineGrid.querySelector('.post-related-card');
         if (!card) return Math.max(260, onlineGrid.clientWidth * 0.8);
@@ -87,102 +56,46 @@ document.addEventListener('DOMContentLoaded', function () {
         var gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
         return card.getBoundingClientRect().width + gap;
       }
-
-      controls.querySelector('.online-hiring-prev').addEventListener('click', function () {
-        onlineGrid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      });
-      controls.querySelector('.online-hiring-next').addEventListener('click', function () {
-        onlineGrid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-      });
+      controls.querySelector('.online-hiring-prev').addEventListener('click', function () { onlineGrid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }); });
+      controls.querySelector('.online-hiring-next').addEventListener('click', function () { onlineGrid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }); });
     }
   }
 
   var videoInterview = document.getElementById('video-interview');
   if (videoInterview) {
     var videoInner = videoInterview.querySelector('.section-inner');
-    if (videoInner) {
-      videoInner.innerHTML = '<p class="section-label">Video Interview</p><h2 class="section-title">화상면접이라면 환경도 따로 점검하세요</h2><p class="section-desc">대면면접과 달리 화상면접은 답변뿐 아니라 카메라, 조명, 마이크, 배경과 접속 환경도 미리 확인해야 합니다. 구체적인 세팅 방법은 화상면접 가이드에서 확인하세요.</p><div class="hero-btns"><a href="/posts/video-interview-setup/" class="btn-primary">화상면접 세팅 가이드 보기</a><a href="/posts/bucheon-video-interview-place-guide/" class="btn-outline">화상면접 장소 선택 가이드</a></div>';
-    }
+    if (videoInner) videoInner.innerHTML = '<p class="section-label">Video Interview</p><h2 class="section-title">화상면접이라면 환경도 따로 점검하세요</h2><p class="section-desc">카메라, 조명, 마이크, 배경과 접속 환경의 구체적인 준비 방법은 상세 가이드에서 확인하세요.</p><div class="hero-btns"><a href="/posts/video-interview-setup/" class="btn-primary">화상면접 세팅 가이드</a><a href="/posts/bucheon-video-interview-place-guide/" class="btn-outline">장소 선택 가이드</a></div>';
   }
 
   var toc = hub.querySelector('.guide-toc-inner');
-  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색 순서</span><a href="#prep-flow">준비 단계</a><a href="#interview-practice-focus">답변 연습</a><a href="#interview-series">면접 가이드</a><a href="#verified-interview-cases">검증 사례</a><a href="#video-interview">화상면접</a><a href="#booking">예약</a>';
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색</span><a href="#prep-flow">준비 단계</a><a href="#interview-series">면접 가이드</a><a href="#job-interview">직무별</a><a href="#online-hiring">온라인 전형</a><a href="#verified-interview-cases">검증 사례</a><a href="#booking">예약</a>';
 });
 </script>
 
 <style>
+  .interview-quick-route { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin-top:1.25rem; }
+  .interview-quick-route a { display:flex; flex-direction:column; gap:.2rem; padding:1rem 1.05rem; border:1px solid rgba(26,54,41,.12); border-radius:14px; background:#fff; text-decoration:none; }
+  .interview-quick-route strong { font-size:.95rem; }
+  .interview-quick-route span { font-size:.8rem; opacity:.68; }
+  .interview-practice-compact .section-inner { padding-top:2.5rem; padding-bottom:2.5rem; }
+  .interview-practice-compact .section-desc { max-width:760px; }
+
   @media (min-width: 901px) {
-    #interview-series .interview-series-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    #interview-series .interview-series-card,
-    #interview-series .interview-series-card-hero,
-    #interview-series .interview-series-card-support,
-    #interview-series .interview-series-card-archive {
-      grid-column: auto !important;
-      min-width: 0;
-      width: 100%;
-      height: 100%;
-      grid-template-columns: 1fr;
-    }
-
-    #interview-series .interview-series-card-hero .blog-guide-image {
-      min-height: 0;
-      aspect-ratio: 16 / 9;
-    }
-
-    #interview-practice-focus .about-principle-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    #interview-practice-focus .about-principle-item {
-      min-width: 0;
-      height: 100%;
-    }
+    #interview-series .interview-series-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; align-items:stretch; }
+    #interview-series .interview-series-card, #interview-series .interview-series-card-hero, #interview-series .interview-series-card-support, #interview-series .interview-series-card-archive { grid-column:auto !important; min-width:0; width:100%; height:100%; grid-template-columns:1fr; }
+    #interview-series .interview-series-card-hero .blog-guide-image { min-height:0; aspect-ratio:16 / 9; }
   }
 
-  .online-hiring-carousel-controls {
-    display: none;
-    justify-content: flex-end;
-    gap: .55rem;
-    margin: -.25rem 0 .9rem;
-  }
+  .online-hiring-carousel-controls { display:none; justify-content:flex-end; gap:.55rem; margin:-.25rem 0 .9rem; }
+  .online-hiring-arrow { width:2.5rem; height:2.5rem; border:1px solid rgba(26,54,41,.16); border-radius:999px; background:#fff; color:inherit; font-size:1.1rem; line-height:1; cursor:pointer; box-shadow:0 6px 18px rgba(26,54,41,.08); }
+  .online-hiring-arrow:hover, .online-hiring-arrow:focus-visible { transform:translateY(-1px); border-color:rgba(26,54,41,.32); }
 
-  .online-hiring-arrow {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 1px solid rgba(26, 54, 41, .16);
-    border-radius: 999px;
-    background: #fff;
-    color: inherit;
-    font-size: 1.1rem;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0 6px 18px rgba(26, 54, 41, .08);
+  @media (max-width:1080px) {
+    .online-hiring-carousel-controls { display:flex; }
+    #online-hiring .online-hiring-grid { scrollbar-width:none; }
+    #online-hiring .online-hiring-grid::-webkit-scrollbar { display:none; }
   }
-
-  .online-hiring-arrow:hover,
-  .online-hiring-arrow:focus-visible {
-    transform: translateY(-1px);
-    border-color: rgba(26, 54, 41, .32);
-  }
-
-  @media (max-width: 1080px) {
-    .online-hiring-carousel-controls { display: flex; }
-    #online-hiring .online-hiring-grid { scrollbar-width: none; }
-    #online-hiring .online-hiring-grid::-webkit-scrollbar { display: none; }
-  }
-
-  @media (max-width: 900px) {
-    #interview-practice-focus .about-principle-grid {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width:760px) {
+    .interview-quick-route { grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
 </style>
