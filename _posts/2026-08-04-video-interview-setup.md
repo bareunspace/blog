@@ -148,7 +148,7 @@ preload_image: images/video-interview-setup-header.webp
     <div class="section-inner">
       <h2 class="section-title">좋은 면접은 좋은 환경에서 시작됩니다</h2>
       <p class="section-desc">준비한 답변이 아무리 좋아도, 생활 소음 때문에 목소리가 잘 들리지 않거나 얼굴이 어둡게 보이면 준비한 만큼의 인상을 전달하기 어렵습니다. 면접은 한 번의 기회인 경우가 많기 때문에, 답변뿐 아니라 환경도 같이 준비해야 합니다.</p>
-      <p class="section-desc">바른자리는 조용한 환경에서 면접을 연습하거나 실제 면접을 준비하기 좋은 프라이빗 공간입니다. 안정적인 Wi-Fi, 넓은 테이블, 정돈된 환경을 원하신다면 예약을 미리 확인해 보세요.</p>
+      <p class="section-desc">바른자리는 조용한 환경에서 면접을 연습하거나 실제 면접을 준비하기 좋은 프라이빗 공간입니다. 안정적인 Wi-Fi와 넓은 테이블이 있고, <strong>노트북 받침대와 링라이트</strong>도 준비되어 있어 카메라 높이와 얼굴 쪽 조명을 직접 조정해볼 수 있습니다.</p>
     </div>
   </section>
 
