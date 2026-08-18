@@ -14,11 +14,11 @@ tags:
 canonical: https://bareunjari.com/posts/experienced-hire-interview-experience-guide/
 permalink: /posts/experienced-hire-interview-experience-guide/
 date: 2026-08-19 06:00:00 +0900
-og_image: https://bareunjari.com/images/interview-experience-star-guide.webp
+og_image: https://bareunjari.com/images/experienced-hire-interview-experience-guide.webp
 og_image_alt: 경력직 면접에서 프로젝트 경험과 본인의 역할을 정리하는 모습
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/interview-experience-star-guide.webp
+preload_image: images/experienced-hire-interview-experience-guide.webp
 ---
 
 <main class="about-page">
@@ -38,7 +38,7 @@ preload_image: images/interview-experience-star-guide.webp
 
   <section class="post-feature-image" aria-label="경력직 면접 경험 정리 대표 이미지">
     <div class="section-inner">
-      <img src="/images/interview-experience-star-guide.webp" alt="경력직 면접을 앞두고 프로젝트 경험과 역할을 정리하는 방법" width="1536" height="1024" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
+      <img src="/images/experienced-hire-interview-experience-guide.webp" alt="경력직 면접을 앞두고 프로젝트 경험과 역할을 정리하는 방법" width="1536" height="1024" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
     </div>
   </section>
 
