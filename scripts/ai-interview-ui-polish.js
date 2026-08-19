@@ -27,6 +27,7 @@
     .aii-ux-v2 [data-aii-answer-start]{font-weight:700}
     .aii-ux-v2 .aii-voice-controls{border:1px solid #e7ece9}
     .aii-ux-v2 .aii-answer{resize:vertical;box-shadow:inset 0 1px 2px rgba(31,56,43,.025)}
+    .aii-ux-v2 .aii-answer.is-empty-warning{border-color:#b45353!important;box-shadow:0 0 0 3px rgba(180,83,83,.09)!important}
     .aii-ux-v2 .aii-answer-meta{align-items:center}
     .aii-ux-v2 .aii-answer-meta+.aii-actions{align-items:center}
     .aii-ux-v2 .aii-answer-meta+.aii-actions .btn-primary{box-shadow:0 6px 14px rgba(40,91,63,.1)}
@@ -102,6 +103,40 @@
   if (primaryStart) primaryStart.setAttribute('aria-describedby', 'aiiStartHint');
   const note = document.querySelector('.aii-ux-start-note');
   if (note) note.id = 'aiiStartHint';
+
+  // Do not allow users to reach feedback with an empty answer. This prevents a blank
+  // session from waiting on remote analysis and makes the required action explicit.
+  document.addEventListener('click', (event) => {
+    const next = event.target.closest('[data-aii-next]');
+    if (!next || next.disabled) return;
+    const answerField = document.querySelector('[data-aii-answer]');
+    const progress = document.querySelector('[data-aii-progress]');
+    const voiceStatus = document.querySelector('[data-aii-voice-status]');
+    const value = String(answerField?.value || '').trim();
+    const hasActiveQuestion = /질문\s*\d+\s*\/\s*\d+/.test(String(progress?.textContent || ''));
+    if (!hasActiveQuestion || value) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (answerField) {
+      answerField.classList.add('is-empty-warning');
+      answerField.setAttribute('aria-invalid', 'true');
+      answerField.focus({ preventScroll: true });
+      answerField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (voiceStatus) {
+      voiceStatus.textContent = '답변을 말하거나 입력한 뒤 다음 질문으로 진행해 주세요.';
+    }
+  }, true);
+
+  if (answer) {
+    answer.addEventListener('input', () => {
+      if (String(answer.value || '').trim()) {
+        answer.classList.remove('is-empty-warning');
+        answer.removeAttribute('aria-invalid');
+      }
+    });
+  }
 
   // Keep the AI page focused on interview practice; Daily English remains an optional mode.
   const heroTitle = document.querySelector('.aii-hero .section-title');
