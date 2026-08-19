@@ -1,14 +1,14 @@
 ---
 layout: default
-title: 공공기관 직무별 채용·면접 사례 | 바른자리 사례 DB
-description: 공공기관 채용과 면접 사례를 직무 기준으로 모아 전형 변화, 연습 포인트, 출처와 최종 확인일을 함께 정리합니다.
+title: 공공기관 채용·인터뷰 패턴 | 바른자리
+description: 공공기관과 지자체의 공개 면접 사례에서 지원 동기, 업무 이해, 상황 대응처럼 실제 말하기를 요구하는 평가 패턴과 준비 방향을 정리합니다.
 permalink: /cases/jobs/public-sector/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-6
+extra_css_version: 20260820-2
 breadcrumbs:
-  - label: 사례 DB
+  - label: 채용·인터뷰 패턴
     url: /cases/
-  - label: 직무별
+  - label: 직무별 보기
     url: /cases/jobs/
   - label: 공공기관
 ---
@@ -16,24 +16,17 @@ breadcrumbs:
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
-      <p class="section-label">Public Sector Job Cases</p>
-      <h1 class="section-title">공공기관 직무별 사례</h1>
-      <p class="section-desc">지자체와 공공기관 채용 사례를 직무 기준으로 다시 보여줍니다. 지원 동기, 업무 이해, 상황 대응처럼 실제로 말해봐야 정리되는 면접 준비 포인트를 함께 비교할 수 있습니다.</p>
+      <p class="section-label">Public Sector Interview Patterns</p>
+      <h1 class="section-title">공공기관 채용·인터뷰 패턴</h1>
+      <p class="section-desc">공공채용 공고를 모으는 페이지가 아닙니다. 확인 가능한 전형 사례에서 <strong>지원 동기, 담당 업무 이해, 상황 대응을 실제 목소리로 설명해야 하는 지점</strong>을 보고 그에 맞는 연습 방향을 정리합니다.</p>
       <div class="hero-btns case-archive-back">
         <a href="{{ '/posts/interview-answer-practice/' | relative_url }}" class="btn-primary">면접 답변 연습 가이드</a>
-        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 사례 DB</a>
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 패턴 보기</a>
       </div>
     </div>
   </section>
 
   {% include breadcrumb.html %}
 
-  {% include cases-list.html
-    job='public-sector'
-    section_id='public-sector-job-cases'
-    eyebrow='Public Sector'
-    title='공공기관 관련 검증 사례'
-    intro='job: public-sector로 분류된 검증 사례만 표시합니다.'
-    open_first=true
-  %}
+  {% include cases-list.html job='public-sector' section_id='public-sector-job-cases' eyebrow='Public Sector' title='공공기관에서 확인된 면접 패턴' intro='공개된 사례 범위 안에서 실제 말하기 준비가 필요한 지점을 비교합니다. 공고에 없는 세부 평가 기준은 단정하지 않습니다.' open_first=true %}
 </main>
