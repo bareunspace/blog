@@ -43,9 +43,12 @@
   const roleInput = form.querySelector('[data-aii-role-input]');
   const interviewTypeSelect = form.querySelector('[data-aii-type-select]');
   const demoSection = document.querySelector('.aii-block-demo');
+  const interviewCard = document.querySelector('[data-aii-card]');
   const resultCopyNode = document.querySelector('.aii-result-copy');
   const deviceCopyNode = document.querySelector('.aii-device-copy');
   const storageKey = 'aii:prefill-from-case';
+  const searchParams = new URLSearchParams(window.location.search);
+  const isCasePracticeEntry = searchParams.get('focus') === '1' && searchParams.get('source') === 'case-practice';
 
   const style = document.createElement('style');
   style.textContent = `
@@ -59,11 +62,21 @@
     .aii-case-prefill-note strong{font-size:.95rem}
     .aii-case-prefill-note p{margin:0;font-size:.88rem;line-height:1.55}
     .aii-case-recording-tip{margin:.55rem 0 0;font-size:.8rem;color:#5f7067;line-height:1.5}
+    .aii-case-start-panel{display:grid;gap:.5rem;margin:0 0 1rem;padding:1rem 1.05rem;border:1px solid #cfe4d7;border-radius:16px;background:#f4faf6;color:#244a36}
+    .aii-case-start-panel[hidden]{display:none!important}
+    .aii-case-start-eyebrow{margin:0;font-size:.76rem;font-weight:800;letter-spacing:.04em;color:#3d7457}
+    .aii-case-start-panel strong{font-size:1rem;line-height:1.45;color:#1f3f2f}
+    .aii-case-start-panel p{margin:0;font-size:.86rem;line-height:1.55;color:#5a6d62}
+    .aii-case-start-panel .btn-primary{width:100%;min-height:50px;margin-top:.2rem;font-size:1rem;font-weight:800}
   `;
   document.head.appendChild(style);
 
   let activeCustomQuestions = [];
   let customModeActive = false;
+  let casePracticeWaitingToStart = false;
+  let caseStartPanel = null;
+  let caseStartButton = null;
+  let caseStartTitle = null;
   const originalFetch = window.fetch.bind(window);
   const NativeUtterance = window.SpeechSynthesisUtterance;
 
@@ -84,6 +97,69 @@
       questionCount.appendChild(option);
     }
     questionCount.value = value;
+  };
+
+  const ensureCaseStartPanel = (payload) => {
+    if (!isCasePracticeEntry || !interviewCard) return;
+
+    casePracticeWaitingToStart = true;
+    document.body.classList.add('aii-case-practice-entry');
+
+    if (!caseStartPanel) {
+      caseStartPanel = document.createElement('div');
+      caseStartPanel.className = 'aii-case-start-panel';
+      caseStartPanel.setAttribute('data-aii-case-start-panel', 'true');
+      caseStartPanel.innerHTML = `
+        <p class="aii-case-start-eyebrow">검증 사례 연습</p>
+        <strong data-aii-case-start-title>연습 질문이 준비되었습니다.</strong>
+        <p>연습 시작을 누르면 첫 질문이 표시되고 음성으로 재생됩니다.</p>
+        <button type="button" class="btn-primary" data-aii-case-start>연습 시작</button>
+      `;
+      const stageNode = interviewCard.querySelector('[data-aii-stage]');
+      interviewCard.insertBefore(caseStartPanel, stageNode || interviewCard.firstChild);
+      caseStartButton = caseStartPanel.querySelector('[data-aii-case-start]');
+      caseStartTitle = caseStartPanel.querySelector('[data-aii-case-start-title]');
+
+      caseStartButton.addEventListener('click', () => {
+        if (caseStartButton.disabled) return;
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        casePracticeWaitingToStart = false;
+        caseStartButton.disabled = true;
+        caseStartButton.textContent = '질문 준비 중...';
+
+        if (typeof form.requestSubmit === 'function') {
+          form.requestSubmit();
+          return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+        if (submitButton) submitButton.click();
+      });
+    }
+
+    const companyLabel = String(payload?.company || '').trim() || '검증 사례';
+    const preparedCount = Math.min(Array.isArray(payload?.questions) ? payload.questions.length : 0, 10);
+    if (caseStartTitle) {
+      caseStartTitle.textContent = `${companyLabel} 연습 질문 ${preparedCount}개가 준비되었습니다.`;
+    }
+    caseStartPanel.hidden = false;
+    if (caseStartButton) {
+      caseStartButton.disabled = false;
+      caseStartButton.textContent = '연습 시작';
+    }
+    questionNode.textContent = '연습 시작을 누르면 첫 질문이 표시됩니다.';
+  };
+
+  const syncCaseStartState = () => {
+    if (!caseStartPanel || caseStartPanel.hidden) return;
+    const match = String(progressNode.textContent || '').match(/질문\s*(\d+)\s*\/\s*(\d+)/);
+    if (match && Number(match[1]) > 0) {
+      caseStartPanel.hidden = true;
+    }
   };
 
   if (demoSection && !demoSection.querySelector('[data-aii-recording-tip]')) {
@@ -144,11 +220,18 @@
     sourceSelect.dispatchEvent(new Event('change', { bubbles: true }));
     practiceMode.dispatchEvent(new Event('change', { bubbles: true }));
 
+    ensureCaseStartPanel(payload);
+
     try {
       localStorage.removeItem(storageKey);
     } catch (_error) {}
 
-    if (window.location.search.includes('focus=1')) {
+    if (isCasePracticeEntry && caseStartButton) {
+      window.setTimeout(() => {
+        caseStartPanel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        caseStartButton.focus();
+      }, 80);
+    } else if (searchParams.get('focus') === '1') {
       window.setTimeout(() => {
         customTextarea.focus();
         customTextarea.setSelectionRange(customTextarea.value.length, customTextarea.value.length);
@@ -162,6 +245,7 @@
   };
 
   const paintCustomQuestion = () => {
+    if (casePracticeWaitingToStart) return;
     if (!customModeActive || !activeCustomQuestions.length) return;
     const index = getCurrentIndex();
     const custom = activeCustomQuestions[index];
@@ -246,6 +330,7 @@
   const observer = new MutationObserver(() => {
     paintCustomQuestion();
     paintResultQuestions();
+    syncCaseStartState();
   });
   observer.observe(progressNode, { childList: true, subtree: true, characterData: true });
   observer.observe(questionNode, { childList: true, subtree: true, characterData: true });
