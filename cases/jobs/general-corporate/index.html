@@ -1,38 +1,32 @@
 ---
 layout: default
-title: 일반 기업 신입·직무면접 사례 | 바른자리 사례 DB
-description: 일반 기업 신입채용에서 확인되는 AI역량검사와 실무·직무면접 사례를 모아 실제 연습 포인트와 공식 출처를 정리합니다.
+title: 일반 기업 채용·인터뷰 패턴 | 바른자리
+description: 일반 기업 신입채용의 공개 전형 사례에서 카메라 답변, 직무 경험 설명, AI역량검사와 면접처럼 실제 수행을 요구하는 평가 패턴과 준비 방향을 정리합니다.
 permalink: /cases/jobs/general-corporate/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-6
+extra_css_version: 20260820-2
 breadcrumbs:
-  - label: 사례 DB
+  - label: 채용·인터뷰 패턴
     url: /cases/
-  - label: 직무별
+  - label: 직무별 보기
     url: /cases/jobs/
-  - label: 일반 기업 신입·직무면접
+  - label: 일반 기업
 ---
 
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
-      <p class="section-label">Corporate Interview Cases</p>
-      <h1 class="section-title">일반 기업 신입·직무면접 사례</h1>
-      <p class="section-desc">특정 전문직보다 일반 기업 신입채용의 AI역량검사, 실무·직무면접처럼 말하기와 녹화 연습으로 연결되는 사례를 모았습니다.</p>
+      <p class="section-label">Corporate Hiring Patterns</p>
+      <h1 class="section-title">일반 기업 채용·인터뷰 패턴</h1>
+      <p class="section-desc">기업 채용공고를 모으는 페이지가 아닙니다. 일반 기업 신입채용에서 <strong>작성한 경험을 카메라와 면접관 앞에서 직접 설명하고, 판단 근거까지 말하도록 요구하는 방식</strong>을 사례로 살펴봅니다.</p>
       <div class="hero-btns case-archive-back">
-        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 사례 DB</a>
+        <a href="{{ '/posts/interview-answer-practice/' | relative_url }}" class="btn-primary">면접 답변 연습 가이드</a>
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 패턴 보기</a>
       </div>
     </div>
   </section>
 
   {% include breadcrumb.html %}
 
-  {% include cases-list.html
-    job='general-corporate'
-    section_id='general-corporate-cases'
-    eyebrow='Corporate Interview'
-    title='일반 기업 신입·직무면접 검증 사례'
-    intro='일반 기업 신입채용에서 공식적으로 확인되고 바른자리의 말하기·녹화·직무 설명 연습과 연결되는 사례만 표시합니다.'
-    open_first=true
-  %}
+  {% include cases-list.html job='general-corporate' section_id='general-corporate-cases' eyebrow='Corporate Hiring' title='일반 기업에서 확인된 평가 패턴' intro='공식적으로 확인 가능한 사례를 통해 카메라 답변과 직무 경험 설명처럼 실제 수행 중심으로 준비해야 하는 지점을 확인합니다.' open_first=true %}
 </main>
