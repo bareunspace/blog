@@ -104,8 +104,6 @@
   const note = document.querySelector('.aii-ux-start-note');
   if (note) note.id = 'aiiStartHint';
 
-  // Do not allow users to reach feedback with an empty answer. This prevents a blank
-  // session from waiting on remote analysis and makes the required action explicit.
   document.addEventListener('click', (event) => {
     const next = event.target.closest('[data-aii-next]');
     if (!next || next.disabled) return;
@@ -118,6 +116,7 @@
 
     event.preventDefault();
     event.stopImmediatePropagation();
+    window.alert('답변이 입력되지 않았습니다.\n답변을 말하거나 입력한 뒤 다음으로 진행해 주세요.');
     if (answerField) {
       answerField.classList.add('is-empty-warning');
       answerField.setAttribute('aria-invalid', 'true');
@@ -138,7 +137,6 @@
     });
   }
 
-  // Keep the AI page focused on interview practice; Daily English remains an optional mode.
   const heroTitle = document.querySelector('.aii-hero .section-title');
   if (heroTitle) heroTitle.textContent = 'AI 모의면접 연습';
   const heroSubtitle = document.querySelector('.aii-hero .hero-subtitle');
@@ -158,7 +156,6 @@
     if (link.textContent.trim() === '시간 예약') link.textContent = '면접 연습 공간 예약';
   });
 
-  // Align browser title/description with the page's interview-first positioning.
   document.title = 'AI 모의면접 연습 | 질문 받고 답하고 녹화하기 | 바른자리';
   const description = document.querySelector('meta[name="description"]');
   if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
