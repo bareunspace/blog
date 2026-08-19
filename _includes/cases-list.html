@@ -57,7 +57,23 @@
 
               {% if case.barunjari.practice_points %}
               <div class="case-archive-section-title"><span>02</span><h4>바른자리에서 이렇게 연습</h4></div>
-              <div class="case-archive-block case-archive-block-practice"><ul>{% for item in case.barunjari.practice_points %}<li>{{ item }}</li>{% endfor %}</ul></div>
+              <div class="case-archive-practice-grid">
+                <div class="case-archive-practice-panel case-archive-practice-questions">
+                  <p class="case-archive-practice-label">연습용 질문</p>
+                  <ol
+                    data-case-generated-questions
+                    data-case-company="{{ case.company | escape }}"
+                    data-case-job="{{ case.job | escape }}"
+                    data-case-role="{% if case.application.roles %}{{ case.application.roles | escape }}{% endif %}"
+                    data-case-practice-points="{% for item in case.barunjari.practice_points %}{{ item | strip | escape }}{% unless forloop.last %}||{% endunless %}{% endfor %}"
+                  ></ol>
+                  <p class="case-archive-practice-note">공개된 전형 특징을 바탕으로 만든 연습용 질문입니다. 실제 기업·기관의 면접 질문을 의미하지 않습니다.</p>
+                </div>
+                <div class="case-archive-practice-panel case-archive-practice-guide">
+                  <p class="case-archive-practice-label">연습 안내</p>
+                  <ul>{% for item in case.barunjari.practice_points %}<li>{{ item }}</li>{% endfor %}</ul>
+                </div>
+              </div>
               <div class="case-archive-actions">
                 <a
                   href="{{ '/ai-interview/?focus=1&source=case-practice' | relative_url }}"
@@ -110,6 +126,19 @@
 </section>
 {% endif %}
 
+<style>
+  .case-archive-practice-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:.8rem;margin:.65rem 0 1rem}
+  .case-archive-practice-panel{padding:1rem 1.05rem;border:1px solid rgba(39,86,61,.12);border-radius:14px;background:#fff}
+  .case-archive-practice-questions{background:#f5faf7;border-color:#d8e9df}
+  .case-archive-practice-guide{background:#fafbfa}
+  .case-archive-practice-label{margin:0 0 .65rem;color:#285b40;font-size:.82rem;font-weight:800;letter-spacing:.02em}
+  .case-archive-practice-panel ol,.case-archive-practice-panel ul{margin:0;padding-left:1.25rem;display:grid;gap:.5rem}
+  .case-archive-practice-panel li{padding-left:.15rem;line-height:1.6;color:#33483c}
+  .case-archive-practice-questions li{font-weight:650;color:#20382b}
+  .case-archive-practice-note{margin:.75rem 0 0;padding-top:.65rem;border-top:1px solid rgba(39,86,61,.1);color:#728078;font-size:.76rem;line-height:1.55}
+  @media(max-width:760px){.case-archive-practice-grid{grid-template-columns:1fr}.case-archive-practice-panel{padding:.9rem}}
+</style>
+
 <script>
   (() => {
     if (window.__caseAiInterviewBridgeInit) return;
@@ -117,31 +146,98 @@
 
     const storageKey = 'aii:prefill-from-case';
 
-    const toQuestions = (items, company) => items.map((item) => {
+    const splitPracticePoints = (value) => String(value || '')
+      .split('||')
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    const fallbackQuestions = (items, company) => items.map((item) => {
       const text = String(item || '').trim();
       if (!text) return null;
       if (text.includes('지원 동기')) return `${company}에 지원한 동기를 30초 버전과 60초 버전으로 각각 말씀해 주세요.`;
       if (text.includes('연결해 설명')) return '담당 업무를 본인의 경험과 연결해 설명해 주세요.';
       if (text.includes('민원') || text.includes('협업 상황')) return '민원이나 협업 상황이 생겼을 때 어떤 기준으로 판단하고 대응할지 말씀해 주세요.';
-      if (text.includes('녹화')) return '방금 답변한 내용에서 말의 속도, 반복 표현, 전달력을 스스로 어떻게 점검할지 말씀해 주세요.';
+      if (text.includes('녹화')) return null;
       return text
         .replace(/말해보기$/u, '말씀해 주세요.')
         .replace(/설명해보기$/u, '설명해 주세요.')
         .replace(/확인하기$/u, '확인하는 방법을 말씀해 주세요.');
     }).filter(Boolean);
 
+    const buildPracticeQuestions = ({ company, job, role, practicePoints }) => {
+      if (company === 'CJ그룹') {
+        return [
+          'CJ그룹에 지원한 동기를 30초 버전과 60초 버전으로 각각 말씀해 주세요.',
+          '성과·실패·협업·갈등 경험 중 하나를 골라 당시 상황, 본인의 행동, 판단 근거, 결과를 설명해 주세요.',
+          '본인이 참여한 프로젝트나 직무 경험에서 가장 중요한 판단은 무엇이었고, 왜 그렇게 결정했나요?',
+          '방금 답변에서 고려했던 다른 대안과 본인의 역할을 더 구체적으로 설명해 주세요.'
+        ];
+      }
+
+      if (company === 'SK하이닉스') {
+        return [
+          '지원서에 작성한 AI 활용 또는 직무 경험 중 하나를 골라 본인의 역할과 결과를 설명해 주세요.',
+          '새로운 과제를 받았다고 가정할 때, 문제를 어떻게 정의하고 어떤 기준으로 해결 방향을 선택하겠습니까?',
+          '선택한 해결 방향 외에 고려한 대안은 무엇이며, 왜 현재 선택이 더 적절하다고 판단했나요?',
+          '방금 답변에서 본인의 역할과 판단 근거를 더 구체적으로 설명해 주세요.'
+        ];
+      }
+
+      if (job === 'cabin-crew') {
+        return [
+          '기내에서 고객의 요구가 안전 규정과 충돌하는 상황이라면 어떤 기준으로 판단하고 어떻게 대응하시겠습니까?',
+          '예상하지 못한 고객 불만이 발생했을 때 가장 먼저 무엇을 확인하고 어떤 순서로 대응하시겠습니까?',
+          '동료 승무원과 대응 방향에 대한 판단이 다를 때 어떻게 의견을 조율하시겠습니까?'
+        ];
+      }
+
+      if (job === 'public-sector') {
+        const roleLabel = role || '담당 업무';
+        return [
+          `${company} ${roleLabel}에 지원한 동기를 30초 버전과 60초 버전으로 각각 말씀해 주세요.`,
+          `${roleLabel}를 본인의 경험과 연결해 설명해 주세요.`,
+          '민원인이 업무 결과에 강하게 이의를 제기하는 상황이라면 어떤 기준으로 판단하고 어떻게 대응하시겠습니까?',
+          '동료와 업무 우선순위에 대한 의견이 다를 때 어떻게 협업하고 조율하시겠습니까?'
+        ];
+      }
+
+      return fallbackQuestions(practicePoints, company);
+    };
+
+    const renderPracticeQuestions = () => {
+      document.querySelectorAll('[data-case-generated-questions]').forEach((list) => {
+        const company = String(list.dataset.caseCompany || '').trim();
+        const job = String(list.dataset.caseJob || '').trim();
+        const role = String(list.dataset.caseRole || '').trim();
+        const practicePoints = splitPracticePoints(list.dataset.casePracticePoints);
+        const questions = buildPracticeQuestions({ company, job, role, practicePoints });
+        list.innerHTML = '';
+        questions.forEach((question) => {
+          const item = document.createElement('li');
+          item.textContent = question;
+          list.appendChild(item);
+        });
+      });
+    };
+
+    renderPracticeQuestions();
+
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-case-ai-interview-link]');
       if (!link) return;
 
       const company = String(link.dataset.caseCompany || '').trim();
-      const role = String(link.dataset.caseRole || link.dataset.caseJob || '').trim();
+      const job = String(link.dataset.caseJob || '').trim();
+      const role = String(link.dataset.caseRole || job).trim();
       const interviewType = String(link.dataset.caseInterviewType || '일반 모의면접').trim();
-      const practicePoints = String(link.dataset.casePracticePoints || '')
-        .split('||')
-        .map((item) => item.trim())
-        .filter(Boolean);
-      const questions = toQuestions(practicePoints, company);
+      const practicePoints = splitPracticePoints(link.dataset.casePracticePoints);
+      const details = link.closest('.case-archive-item');
+      const visibleQuestions = details
+        ? Array.from(details.querySelectorAll('[data-case-generated-questions] li')).map((item) => String(item.textContent || '').trim()).filter(Boolean)
+        : [];
+      const questions = visibleQuestions.length
+        ? visibleQuestions
+        : buildPracticeQuestions({ company, job, role, practicePoints });
 
       const payload = {
         source: 'case-practice',
