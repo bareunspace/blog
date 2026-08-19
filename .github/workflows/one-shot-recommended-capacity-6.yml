@@ -1,0 +1,65 @@
+name: One-shot recommended capacity to 6
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-shot-recommended-capacity-6.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-recommended-capacity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore recommended group size to 6
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          skip_dirs = {'.git', '_site', 'node_modules', 'vendor'}
+          text_exts = {'.html', '.md', '.yml', '.yaml', '.json', '.js', '.css', '.xml', '.txt'}
+          replacements = [
+              ('2~8인', '2~6인'), ('2-8인', '2-6인'), ('2–8인', '2–6인'),
+              ('3~8인', '3~6인'), ('3-8인', '3-6인'), ('3–8인', '3–6인'),
+              ('2~8명', '2~6명'), ('2-8명', '2-6명'), ('2–8명', '2–6명'),
+              ('3~8명', '3~6명'), ('3-8명', '3-6명'), ('3–8명', '3–6명'),
+          ]
+
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in text_exts:
+                  continue
+              if any(part in skip_dirs for part in path.parts):
+                  continue
+              try:
+                  old = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              new = old
+              for before, after in replacements:
+                  new = new.replace(before, after)
+              if new != old:
+                  path.write_text(new, encoding='utf-8')
+          PY
+
+      - name: Remove one-shot workflow
+        run: rm -f .github/workflows/one-shot-recommended-capacity-6.yml
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo 'No changes needed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Restore recommended capacity to 6 people'
+          git push
