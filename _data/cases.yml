@@ -1,7 +1,91 @@
 version: 1
-updated_at: 2026-08-19
+updated_at: 2026-08-20
 
 cases:
+  - id: naver-webtoon-2026-ai-animator-internship
+    type: hiring
+    topic: interview
+    job: ai-content
+    company: NAVER WEBTOON
+    company_slug: naver-webtoon
+    title: 2026 채용연계형 인턴십 · AI 애니메이션 제작 (AI animator)
+    summary: NAVER WEBTOON의 AI 애니메이션 제작 채용연계형 인턴십으로, 인터뷰 과정에 사전과제와 기업문화 적합도 검사가 포함됩니다. 작업 결과만 보여주는 것보다 연출 의도, AI 도구 선택 이유, 시행착오와 판단 근거를 실제로 설명하는 연습과 연결됩니다.
+
+    published_at: 2026-08-20
+    verified_at: 2026-08-20
+
+    application:
+      start: null
+      end: "2026-08-23 23:59"
+      period_label: "2026-08-23 23:59 마감"
+      hiring_size: 채용연계형 인턴십
+      roles: AI 애니메이션 제작 (AI animator)
+      expected_join: 2026년 9월 3주차 인턴십 시작 예정
+
+    selection:
+      process_label: 지원서 리뷰 → 인터뷰(사전과제 및 기업문화 적합도 검사 포함) → 8주 인턴십 → 정규직 신입사원 채용 여부 결정
+      interview_focus: 작업의 연출 의도와 AI 활용 과정, 모델·방법 선택 이유, 시행착오와 판단 근거를 구체적인 언어로 설명하는 준비
+      stages:
+        - 지원서 리뷰
+        - 인터뷰 · 사전과제 및 기업문화 적합도 검사 포함
+        - 8주 채용연계형 인턴십
+        - 정규직 신입사원 채용 여부 결정
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 공고에 사전과제가 포함된 인터뷰가 명시되어 있고, 직무 역량으로 머릿속의 이미지와 연출 의도를 구체적인 언어로 표현하는 능력과 AI 모델·방법의 실험·검증이 강조되어 있어 말하기·녹화·작업 설명 리허설과 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - task-explanation
+        - portfolio-explanation
+        - follow-up-response
+      practice_points:
+        - 대표 작업을 목표 → 연출 의도 → 사용한 방법 → 결과 순서로 60~90초 안에 설명해보기
+        - 사용한 AI 모델이나 방법을 왜 선택했는지 비교 기준과 함께 말해보기
+        - 원하는 결과가 나오지 않았던 시도와 이후 바꾼 변수를 설명해보기
+        - 첫 답변 뒤에 선택 이유·대안·본인 역할을 묻는 질문을 붙여 이어서 답해보기
+      excluded:
+        - 실제 사전과제 내용이나 실제 면접 질문을 알고 있거나 제공한다는 표현
+        - 포트폴리오 제작이나 AI 애니메이션 기술 코칭을 제공한다는 표현
+        - NAVER WEBTOON과 제휴된 채용 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공식 공고 기준 지원 마감은 2026년 8월 23일 23:59입니다.
+      - 인터뷰 과정에 사전과제와 기업문화 적합도 검사가 포함된다고 안내되어 있습니다.
+      - 구체적인 인터뷰 날짜와 실제 질문, 사전과제 내용은 공개되어 있지 않습니다.
+      - 인턴십은 8주간 진행되며 공고 기준 2026년 9월 3주차부터 11월 1주차까지 예정되어 있습니다.
+      - 실제 일정과 전형은 변경될 수 있으므로 지원 전 공식 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: NAVER Careers
+      title: "[2026 채용연계형 인턴십] AI 애니메이션 제작 (AI animator)"
+      url: https://recruit.navercorp.com/rcrt/view.do?annoId=30005265
+      checked_at: 2026-08-20
+
+    related:
+      url: /posts/naver-webtoon-ai-animator-internship-interview-prep/
+      label: 네이버웹툰 AI 애니메이션 제작 인턴십 준비 가이드 보기
+
   - id: cj-2026-fall-preparation
     type: hiring
     topic: interview
