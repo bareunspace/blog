@@ -1,22 +1,22 @@
 ---
 layout: default
-title: 직무별 채용·면접 사례 | 바른자리 사례 DB
-description: 바른자리 사례 데이터베이스를 직무별로 탐색합니다. 같은 사례 원본을 직무 기준으로 분류해 출처와 최종 확인일을 함께 확인할 수 있습니다.
+title: 직무별 실전 준비 사례 | 바른자리
+description: 직무별 채용정보를 모으는 페이지가 아니라, 실제 말하기·녹화·과제 설명이 필요한 전형 사례를 직무 기준으로 다시 찾아보는 페이지입니다.
 permalink: /cases/jobs/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-6
+extra_css_version: 20260820-1
 breadcrumbs:
-  - label: 사례 DB
+  - label: 실전 준비 사례
     url: /cases/
-  - label: 직무별
+  - label: 직무별 보기
 ---
 
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
       <p class="section-label">Jobs</p>
-      <h1 class="section-title">직무별 사례 DB</h1>
-      <p class="section-desc">하나의 사례 DB를 직무 기준으로 다시 보여줍니다. 같은 직무에서 반복되는 전형과 실제 말하기·녹화·과제 설명 연습 포인트를 묶어서 볼 수 있습니다.</p>
+      <h1 class="section-title">직무별 실전 준비 사례</h1>
+      <p class="section-desc">직무 채용공고를 나열하는 페이지가 아닙니다. 같은 직무에서 반복되는 <strong>면접 말하기, 카메라 녹화, 과제·작업 설명, 온라인 응시</strong> 같은 실제 준비 상황을 묶어서 볼 수 있도록 정리했습니다.</p>
     </div>
   </section>
 
@@ -24,7 +24,7 @@ breadcrumbs:
 
   <section>
     <div class="section-inner">
-      <h2 class="section-title">현재 등록된 직무</h2>
+      <h2 class="section-title">직무별로 준비 사례 찾기</h2>
       <div class="about-highlight-grid">
         {% assign job_groups = site.data.cases.cases | group_by: 'job' %}
         {% for group in job_groups %}
@@ -37,8 +37,8 @@ breadcrumbs:
           {% if group.name == 'ai-content' %}{% assign job_label = 'AI 콘텐츠' %}{% endif %}
           <article class="about-highlight-card">
             <h3>{{ job_label }}</h3>
-            <p>검증 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
-            <p><a href="{{ '/cases/jobs/' | append: group.name | append: '/' | relative_url }}">{{ job_label }} 사례 보기 →</a></p>
+            <p>실전 준비 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
+            <p><a href="{{ '/cases/jobs/' | append: group.name | append: '/' | relative_url }}">{{ job_label }} 준비 사례 보기 →</a></p>
           </article>
         {% endfor %}
       </div>
