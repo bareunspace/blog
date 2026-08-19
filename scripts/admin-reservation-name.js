@@ -5,6 +5,8 @@
   const list = root.querySelector('[data-reservations-list]');
   const status = root.querySelector('[data-reservations-status]');
   const refreshButton = root.querySelector('[data-reservations-refresh]');
+  const rangeFilter = root.querySelector('[data-reservations-range-filter]');
+  const tools = root.querySelector('.admin-community-tools');
   if (!list) return;
 
   const rowsById = new Map();
@@ -26,6 +28,32 @@
 
   const setText = (node, value) => {
     if (node && node.textContent !== value) node.textContent = value;
+  };
+
+  let nameSearchInput = root.querySelector('[data-reservations-name-filter]');
+  if (!nameSearchInput && tools) {
+    const label = document.createElement('label');
+    label.className = 'admin-filter';
+    label.innerHTML = '이름<input type="search" data-reservations-name-filter placeholder="예약자 이름 검색" autocomplete="off" />';
+    const numberFilter = tools.querySelector('[data-reservations-query-filter]')?.closest('label');
+    if (numberFilter) numberFilter.insertAdjacentElement('afterend', label);
+    else tools.appendChild(label);
+    nameSearchInput = label.querySelector('[data-reservations-name-filter]');
+  }
+
+  const applyNameSearch = () => {
+    if (!nameSearchInput) return;
+    const query = normalizeName(nameSearchInput.value).toLowerCase();
+    list.querySelectorAll('[data-reservation-id]').forEach((card) => {
+      const id = String(card.dataset.reservationId || '');
+      const row = rowsById.get(id);
+      const names = [row?.customer_name, row?.reservation_name]
+        .map(normalizeName)
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      card.hidden = Boolean(query) && !names.includes(query);
+    });
   };
 
   const renderCardName = (card, row) => {
@@ -67,6 +95,7 @@
       if (!row) { hasMissingRows = true; return; }
       renderCardName(card, row);
     });
+    applyNameSearch();
     if (hasMissingRows && !loadingNames) loadNames();
   };
 
@@ -124,8 +153,20 @@
 
     rowsById.set(id, data);
     renderCardName(card, data);
+    applyNameSearch();
     showStatus(nextName ? `${nextName} 이름을 저장했습니다.` : '관리자 확인 이름을 비웠습니다.', 'success');
   };
+
+  nameSearchInput?.addEventListener('input', () => {
+    const query = normalizeName(nameSearchInput.value);
+    if (query && rangeFilter && rangeFilter.value !== 'all') {
+      rangeFilter.value = 'all';
+      rangeFilter.dispatchEvent(new Event('change', { bubbles: true }));
+      window.setTimeout(scheduleEnhance, 0);
+      return;
+    }
+    applyNameSearch();
+  });
 
   list.addEventListener('click', (event) => {
     const button = event.target.closest('[data-save-reservation-name]');
