@@ -20,11 +20,142 @@ document.addEventListener('DOMContentLoaded', function () {
     metrics[2].querySelector('.interview-metric-label').textContent = '출처·확인일 기준 최신 전형';
   }
 
+  var journeyTasks = [
+    {
+      id: 'self_intro',
+      number: '01',
+      title: '자기소개 말해보기',
+      description: '1분 자기소개를 실제로 소리 내어 한 번 끝까지 말해봅니다.',
+      href: '/posts/1-minute-self-introduction-guide/',
+      action: '자기소개 준비하기'
+    },
+    {
+      id: 'experience_examples',
+      number: '02',
+      title: '경험 답변 정리하기',
+      description: '면접에서 꺼내 말할 핵심 경험을 STAR 흐름과 판단 이유까지 정리합니다.',
+      href: '/posts/interview-experience-star-guide/',
+      action: '경험 정리하기'
+    },
+    {
+      id: 'ai_answer_practice',
+      number: '03',
+      title: '실제 질문에 답해보기',
+      description: '질문을 듣고 실제 목소리로 답합니다. AI 모의면접은 3문항 이상 완료하면 자동 기록됩니다.',
+      href: '/ai-interview/',
+      action: 'AI 모의면접 시작'
+    },
+    {
+      id: 'hiring_process_check',
+      number: '04',
+      title: '지원 전형 확인하기',
+      description: '면접·과제·영상·상황 대응처럼 내가 실제로 준비해야 할 행동을 확인합니다.',
+      href: '/cases/',
+      action: '채용·인터뷰 패턴 보기'
+    },
+    {
+      id: 'full_rehearsal',
+      number: '05',
+      title: '실전 리허설하기',
+      description: '여러 질문을 끊지 않고 실제 면접처럼 이어서 답해봅니다.',
+      href: '/posts/interview-answer-practice/',
+      action: '실전 연습하기'
+    }
+  ];
+
+  var formatJourneyDate = function (iso) {
+    if (!iso) return '';
+    var date = new Date(iso);
+    if (Number.isNaN(date.getTime())) return '';
+    return new Intl.DateTimeFormat('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      month: 'numeric',
+      day: 'numeric'
+    }).format(date);
+  };
+
+  var renderJourneyBoard = function () {
+    var api = window.BareunjariInterviewJourney;
+    var board = document.getElementById('interviewJourneyBoard');
+    if (!api || !board) return;
+
+    var state = api.getState();
+    var completedCount = journeyTasks.filter(function (task) {
+      return Boolean(state.tasks && state.tasks[task.id] && state.tasks[task.id].completed_at);
+    }).length;
+    var nextTask = journeyTasks.find(function (task) {
+      return !(state.tasks && state.tasks[task.id] && state.tasks[task.id].completed_at);
+    });
+
+    var dots = journeyTasks.map(function (task) {
+      var done = Boolean(state.tasks && state.tasks[task.id] && state.tasks[task.id].completed_at);
+      return '<span class="interview-journey-dot' + (done ? ' is-done' : '') + '" aria-hidden="true"></span>';
+    }).join('');
+
+    var cards = journeyTasks.map(function (task) {
+      var record = state.tasks && state.tasks[task.id];
+      var done = Boolean(record && record.completed_at);
+      var isNext = Boolean(!done && nextTask && nextTask.id === task.id);
+      var status = done ? '✓ 완료' : (isNext ? '다음 추천' : '준비 전');
+      var statusClass = done ? ' is-complete' : (isNext ? ' is-next' : '');
+      var dateText = done ? formatJourneyDate(record.completed_at) : '';
+      var footer = done
+        ? '<div class="interview-journey-card-footer"><span class="interview-journey-completed">완료' + (dateText ? ' · ' + dateText : '') + '</span><a href="' + task.href + '">다시 보기 →</a></div>'
+        : '<div class="interview-journey-card-footer"><a class="interview-journey-action" href="' + task.href + '">' + task.action + ' →</a></div>';
+
+      return '<article class="interview-journey-card' + statusClass + '">' +
+        '<div class="interview-journey-card-head"><span class="interview-journey-number">' + task.number + '</span><span class="interview-journey-status">' + status + '</span></div>' +
+        '<h3>' + task.title + '</h3>' +
+        '<p>' + task.description + '</p>' +
+        footer +
+        '</article>';
+    }).join('');
+
+    var nextCopy = nextTask
+      ? '다음으로 <strong>' + nextTask.title + '</strong>를 해볼 수 있어요. 순서대로 할 필요는 없습니다.'
+      : '<strong>5단계 준비 행동을 모두 기록했어요.</strong> 필요한 부분은 언제든 다시 연습할 수 있습니다.';
+
+    board.innerHTML = '<div class="interview-journey-summary">' +
+      '<div class="interview-journey-progress-row"><div class="interview-journey-dots">' + dots + '</div><strong>' + completedCount + ' / ' + journeyTasks.length + ' 완료</strong></div>' +
+      '<p>' + nextCopy + '</p>' +
+      '</div>' +
+      '<div class="interview-journey-grid">' + cards + '</div>' +
+      '<p class="interview-journey-device-note">로그인 없이 현재 기기의 브라우저에 준비 상태가 저장됩니다. 답변 내용이나 지원 기업 정보는 저장하지 않습니다.</p>';
+  };
+
+  var ensureJourneyApi = function () {
+    if (window.BareunjariInterviewJourney) {
+      renderJourneyBoard();
+      return;
+    }
+
+    var existing = document.querySelector('script[data-interview-journey-loader]');
+    if (existing) {
+      existing.addEventListener('load', renderJourneyBoard, { once: true });
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.src = '/scripts/interview-journey.js?v=20260820-2';
+    script.async = true;
+    script.setAttribute('data-interview-journey-loader', 'true');
+    script.addEventListener('load', renderJourneyBoard, { once: true });
+    document.head.appendChild(script);
+  };
+
   var flow = document.getElementById('prep-flow');
   if (flow) {
     var inner = flow.querySelector('.section-inner');
-    if (inner) inner.innerHTML = '<div class="interview-flow-heading"><p class="section-label">Preparation Route</p><h2 class="section-title">지금 필요한 준비부터 고르세요</h2><p>면접 준비를 처음부터 다시 할 필요는 없습니다. 현재 단계에 맞는 가이드로 바로 이동하세요.</p></div><nav class="interview-quick-route" aria-label="면접 준비 단계"><a href="/posts/1-minute-self-introduction-guide/"><strong>01 답변 정리</strong><span>자기소개·경험</span></a><a href="/posts/interview-answer-practice/"><strong>02 말하기</strong><span>답변·녹화 점검</span></a><a href="#verified-interview-cases"><strong>03 전형 확인</strong><span>기업별 검증 사례</span></a><a href="/posts/interview-30-minutes-before/"><strong>04 마지막 점검</strong><span>면접 당일</span></a></nav>';
+    if (inner) {
+      inner.innerHTML = '<div class="interview-flow-heading"><p class="section-label">My Interview Journey</p><h2 class="section-title">나의 면접 준비</h2><p>읽은 글이 아니라 실제로 말하고, 정리하고, 답해본 준비를 기록합니다. 이미 해본 단계는 건너뛰고 지금 필요한 것부터 시작하세요.</p></div><div id="interviewJourneyBoard" class="interview-journey-board" aria-live="polite"><div class="interview-journey-loading">준비 기록을 불러오는 중입니다.</div></div>';
+      ensureJourneyApi();
+    }
   }
+
+  window.addEventListener('bareunjari:interview-journey-change', renderJourneyBoard);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'bareunjari_interview_journey_v1') renderJourneyBoard();
+  });
 
   var series = document.getElementById('interview-series');
   if (series) {
@@ -68,15 +199,37 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var toc = hub.querySelector('.guide-toc-inner');
-  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색</span><a href="#prep-flow">준비 단계</a><a href="#interview-series">면접 가이드</a><a href="#job-interview">직무별</a><a href="#online-hiring">온라인 전형</a><a href="#verified-interview-cases">검증 사례</a><a href="#booking">예약</a>';
+  if (toc) toc.innerHTML = '<span class="guide-toc-label">면접 허브 탐색</span><a href="#prep-flow">나의 준비</a><a href="#interview-series">면접 가이드</a><a href="#job-interview">직무별</a><a href="#online-hiring">온라인 전형</a><a href="#verified-interview-cases">검증 사례</a><a href="#booking">예약</a>';
 });
 </script>
 
 <style>
-  .interview-quick-route { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin-top:1.25rem; }
-  .interview-quick-route a { display:flex; flex-direction:column; gap:.2rem; padding:1rem 1.05rem; border:1px solid rgba(26,54,41,.12); border-radius:14px; background:#fff; text-decoration:none; }
-  .interview-quick-route strong { font-size:.95rem; }
-  .interview-quick-route span { font-size:.8rem; opacity:.68; }
+  .interview-journey-board { margin-top:1.25rem; }
+  .interview-journey-loading { padding:1rem; border:1px solid rgba(26,54,41,.12); border-radius:14px; background:#fff; color:#6e7c73; font-size:.88rem; }
+  .interview-journey-summary { padding:1rem 1.05rem; border:1px solid rgba(26,54,41,.12); border-radius:16px; background:#f8fbf9; }
+  .interview-journey-summary p { margin:.55rem 0 0; color:#5f6d64; font-size:.88rem; line-height:1.6; }
+  .interview-journey-progress-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  .interview-journey-progress-row > strong { color:#284b39; font-size:.92rem; white-space:nowrap; }
+  .interview-journey-dots { display:flex; gap:.42rem; }
+  .interview-journey-dot { width:12px; height:12px; border-radius:999px; background:#d8e0db; box-shadow:inset 0 0 0 1px rgba(26,54,41,.06); }
+  .interview-journey-dot.is-done { background:#35664d; }
+  .interview-journey-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; margin-top:.85rem; }
+  .interview-journey-card { display:flex; flex-direction:column; min-height:190px; padding:1rem 1.05rem; border:1px solid rgba(26,54,41,.12); border-radius:16px; background:#fff; }
+  .interview-journey-card.is-next { border-color:rgba(53,102,77,.5); box-shadow:0 8px 22px rgba(26,54,41,.07); }
+  .interview-journey-card.is-complete { background:#f9fbfa; }
+  .interview-journey-card-head { display:flex; justify-content:space-between; align-items:center; gap:.75rem; margin-bottom:.55rem; }
+  .interview-journey-number { color:#78847d; font-size:.74rem; font-weight:800; letter-spacing:.05em; }
+  .interview-journey-status { display:inline-flex; align-items:center; min-height:26px; padding:.22rem .48rem; border-radius:999px; background:#f0f3f1; color:#758179; font-size:.71rem; font-weight:800; }
+  .interview-journey-card.is-next .interview-journey-status { background:#edf7f0; color:#35664d; }
+  .interview-journey-card.is-complete .interview-journey-status { background:#e9f4ed; color:#315f48; }
+  .interview-journey-card h3 { margin:0 0 .35rem; color:#22372c; font-size:1rem; letter-spacing:-.015em; }
+  .interview-journey-card > p { margin:0; color:#68756d; font-size:.82rem; line-height:1.6; }
+  .interview-journey-card-footer { display:flex; justify-content:space-between; align-items:center; gap:.65rem; margin-top:auto; padding-top:.9rem; }
+  .interview-journey-card-footer a { color:#315f48; font-size:.8rem; font-weight:750; text-decoration:none; }
+  .interview-journey-card-footer a:hover, .interview-journey-card-footer a:focus-visible { text-decoration:underline; }
+  .interview-journey-action { display:inline-flex; align-items:center; min-height:38px; }
+  .interview-journey-completed { color:#617168; font-size:.77rem; font-weight:700; }
+  .interview-journey-device-note { margin:.8rem .15rem 0; color:#7b867f; font-size:.74rem; line-height:1.55; }
   .interview-practice-compact .section-inner { padding-top:2.5rem; padding-bottom:2.5rem; }
   .interview-practice-compact .section-desc { max-width:760px; }
 
@@ -96,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #online-hiring .online-hiring-grid::-webkit-scrollbar { display:none; }
   }
   @media (max-width:760px) {
-    .interview-quick-route { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .interview-journey-grid { grid-template-columns:1fr; }
+    .interview-journey-card { min-height:0; }
   }
 </style>
