@@ -1,0 +1,39 @@
+---
+layout: default
+title: NAVER WEBTOON 채용·면접 사례 | 바른자리 사례 DB
+description: NAVER WEBTOON 채용과 면접 사례를 모아 사전과제, 작업 설명, AI 활용 과정과 판단 근거를 실제로 말해보는 준비 포인트와 공식 출처를 정리합니다.
+permalink: /cases/naver-webtoon/
+extra_css: /styles/case-archive.css
+extra_css_version: 20260817-6
+breadcrumbs:
+  - label: 사례 DB
+    url: /cases/
+  - label: 기업별
+    url: /cases/companies/
+  - label: NAVER WEBTOON
+---
+
+<main class="about-page">
+  <section id="home" class="case-archive-hero">
+    <div class="section-inner case-archive-shell">
+      <p class="section-label">NAVER WEBTOON Cases</p>
+      <h1 class="section-title">NAVER WEBTOON 채용·면접 사례</h1>
+      <p class="section-desc">NAVER WEBTOON의 공식 채용공고에서 사전과제와 인터뷰처럼 실제 준비 방식에 영향을 주는 전형을 확인합니다. 공개된 정보만 기준으로 작업 의도와 판단 근거를 말로 설명하는 연습 포인트를 연결합니다.</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ '/posts/naver-webtoon-ai-animator-internship-interview-prep/' | relative_url }}" class="btn-primary">AI 애니메이션 인턴십 준비 가이드</a>
+        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-outline">기업별 사례 DB</a>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  {% include cases-list.html
+    company='naver-webtoon'
+    section_id='naver-webtoon-cases'
+    eyebrow='NAVER WEBTOON'
+    title='NAVER WEBTOON 관련 검증 사례'
+    intro='공식 출처와 최종 확인일이 있고, 말하기·녹화·과제 설명 연습과 직접 연결되는 사례만 표시합니다.'
+    open_first=true
+  %}
+</main>
