@@ -7,7 +7,8 @@
     experience_examples: { order: 2, title: '경험 답변 정리하기' },
     ai_answer_practice: { order: 3, title: '실제 질문에 답해보기' },
     hiring_process_check: { order: 4, title: '지원 전형 확인하기' },
-    full_rehearsal: { order: 5, title: '실전 리허설하기' }
+    full_rehearsal: { order: 5, title: '실전 리허설하기' },
+    final_check: { order: 6, title: '면접 직전 점검하기' }
   };
 
   const MANUAL_PROMPTS = {
@@ -34,6 +35,12 @@
       eyebrow: '실전 연습 기록',
       question: '여러 질문을 끊지 않고 연속으로 실제 답해봤나요?',
       help: '답변을 읽거나 고친 것보다 실제 면접처럼 이어서 말해본 경험을 기록합니다.'
+    },
+    '/posts/interview-30-minutes-before/': {
+      taskId: 'final_check',
+      eyebrow: '면접 직전 준비 기록',
+      question: '자기소개, 핵심 경험, 목소리·시선과 면접 환경까지 마지막 점검을 마쳤나요?',
+      help: '면접 직전에 새로운 답변을 더 만들기보다 준비한 내용을 안정적으로 꺼낼 수 있는지 확인했다면 기록하세요.'
     }
   };
 
