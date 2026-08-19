@@ -58,6 +58,18 @@
               {% if case.barunjari.practice_points %}
               <div class="case-archive-section-title"><span>02</span><h4>바른자리에서 이렇게 연습</h4></div>
               <div class="case-archive-block case-archive-block-practice"><ul>{% for item in case.barunjari.practice_points %}<li>{{ item }}</li>{% endfor %}</ul></div>
+              <div class="case-archive-actions">
+                <a
+                  href="{{ '/ai-interview/?focus=1&source=case-practice' | relative_url }}"
+                  data-case-ai-interview-link
+                  data-case-company="{{ case.company | escape }}"
+                  data-case-title="{{ case.title | escape }}"
+                  data-case-job="{{ case.job | escape }}"
+                  data-case-role="{% if case.application.roles %}{{ case.application.roles | escape }}{% endif %}"
+                  data-case-interview-type="{% if case.job == 'cabin-crew' %}승무원면접{% elsif case.job == 'public-sector' %}일반 모의면접{% elsif case.topic == 'interview' %}직무면접{% else %}일반 모의면접{% endif %}"
+                  data-case-practice-points="{% for item in case.barunjari.practice_points %}{{ item | strip | escape }}{% unless forloop.last %}||{% endunless %}{% endfor %}"
+                >이 연습 포인트로 답변하고 녹화 저장해보기 <span aria-hidden="true">→</span></a>
+              </div>
               {% endif %}
 
               {% if case.barunjari.excluded %}
@@ -97,3 +109,52 @@
   </div>
 </section>
 {% endif %}
+
+<script>
+  (() => {
+    if (window.__caseAiInterviewBridgeInit) return;
+    window.__caseAiInterviewBridgeInit = true;
+
+    const storageKey = 'aii:prefill-from-case';
+
+    const toQuestions = (items, company) => items.map((item) => {
+      const text = String(item || '').trim();
+      if (!text) return null;
+      if (text.includes('지원 동기')) return `${company}에 지원한 동기를 30초 버전과 60초 버전으로 각각 말씀해 주세요.`;
+      if (text.includes('연결해 설명')) return '담당 업무를 본인의 경험과 연결해 설명해 주세요.';
+      if (text.includes('민원') || text.includes('협업 상황')) return '민원이나 협업 상황이 생겼을 때 어떤 기준으로 판단하고 대응할지 말씀해 주세요.';
+      if (text.includes('녹화')) return '방금 답변한 내용에서 말의 속도, 반복 표현, 전달력을 스스로 어떻게 점검할지 말씀해 주세요.';
+      return text
+        .replace(/말해보기$/u, '말씀해 주세요.')
+        .replace(/설명해보기$/u, '설명해 주세요.')
+        .replace(/확인하기$/u, '확인하는 방법을 말씀해 주세요.');
+    }).filter(Boolean);
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('[data-case-ai-interview-link]');
+      if (!link) return;
+
+      const company = String(link.dataset.caseCompany || '').trim();
+      const role = String(link.dataset.caseRole || link.dataset.caseJob || '').trim();
+      const interviewType = String(link.dataset.caseInterviewType || '일반 모의면접').trim();
+      const practicePoints = String(link.dataset.casePracticePoints || '')
+        .split('||')
+        .map((item) => item.trim())
+        .filter(Boolean);
+      const questions = toQuestions(practicePoints, company);
+
+      const payload = {
+        source: 'case-practice',
+        company,
+        role,
+        interviewType,
+        questions,
+        title: String(link.dataset.caseTitle || '').trim()
+      };
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(payload));
+      } catch (_error) {}
+    });
+  })();
+</script>
