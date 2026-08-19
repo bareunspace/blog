@@ -34,6 +34,7 @@ breadcrumbs:
           {% if group.name == 'semiconductor' %}{% assign job_label = '반도체' %}{% endif %}
           {% if group.name == 'general-corporate' %}{% assign job_label = '일반 기업' %}{% endif %}
           {% if group.name == 'public-sector' %}{% assign job_label = '공공기관' %}{% endif %}
+          {% if group.name == 'ai-content' %}{% assign job_label = 'AI 콘텐츠' %}{% endif %}
           <article class="about-highlight-card">
             <h3>{{ job_label }}</h3>
             <p>검증 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
