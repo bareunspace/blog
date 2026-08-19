@@ -1,0 +1,39 @@
+---
+layout: default
+title: 공공기관 직무별 채용·면접 사례 | 바른자리 사례 DB
+description: 공공기관 채용과 면접 사례를 직무 기준으로 모아 전형 변화, 연습 포인트, 출처와 최종 확인일을 함께 정리합니다.
+permalink: /cases/jobs/public-sector/
+extra_css: /styles/case-archive.css
+extra_css_version: 20260817-6
+breadcrumbs:
+  - label: 사례 DB
+    url: /cases/
+  - label: 직무별
+    url: /cases/jobs/
+  - label: 공공기관
+---
+
+<main class="about-page">
+  <section id="home" class="case-archive-hero">
+    <div class="section-inner case-archive-shell">
+      <p class="section-label">Public Sector Job Cases</p>
+      <h1 class="section-title">공공기관 직무별 사례</h1>
+      <p class="section-desc">지자체와 공공기관 채용 사례를 직무 기준으로 다시 보여줍니다. 지원 동기, 업무 이해, 상황 대응처럼 실제로 말해봐야 정리되는 면접 준비 포인트를 함께 비교할 수 있습니다.</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ '/posts/interview-answer-practice/' | relative_url }}" class="btn-primary">면접 답변 연습 가이드</a>
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 사례 DB</a>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  {% include cases-list.html
+    job='public-sector'
+    section_id='public-sector-job-cases'
+    eyebrow='Public Sector'
+    title='공공기관 관련 검증 사례'
+    intro='job: public-sector로 분류된 검증 사례만 표시합니다.'
+    open_first=true
+  %}
+</main>
