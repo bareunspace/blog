@@ -3,26 +3,11 @@
   const VERSION = 1;
 
   const TASKS = {
-    self_intro: {
-      order: 1,
-      title: '1분 자기소개 말해보기'
-    },
-    experience_examples: {
-      order: 2,
-      title: '경험 답변 정리하기'
-    },
-    ai_answer_practice: {
-      order: 3,
-      title: '실제 질문에 답해보기'
-    },
-    hiring_process_check: {
-      order: 4,
-      title: '지원 전형 확인하기'
-    },
-    full_rehearsal: {
-      order: 5,
-      title: '실전 리허설하기'
-    }
+    self_intro: { order: 1, title: '1분 자기소개 말해보기' },
+    experience_examples: { order: 2, title: '경험 답변 정리하기' },
+    ai_answer_practice: { order: 3, title: '실제 질문에 답해보기' },
+    hiring_process_check: { order: 4, title: '지원 전형 확인하기' },
+    full_rehearsal: { order: 5, title: '실전 리허설하기' }
   };
 
   const MANUAL_PROMPTS = {
@@ -53,12 +38,7 @@
   };
 
   const nowIso = () => new Date().toISOString();
-
-  const emptyState = () => ({
-    version: VERSION,
-    tasks: {},
-    last_active_at: nowIso()
-  });
+  const emptyState = () => ({ version: VERSION, tasks: {}, last_active_at: nowIso() });
 
   const readState = () => {
     try {
@@ -73,17 +53,9 @@
   };
 
   const writeState = (state) => {
-    const next = {
-      version: VERSION,
-      tasks: state.tasks || {},
-      last_active_at: nowIso()
-    };
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-      return next;
-    } catch (_) {
-      return next;
-    }
+    const next = { version: VERSION, tasks: state.tasks || {}, last_active_at: nowIso() };
+    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch (_) {}
+    return next;
   };
 
   const track = (eventName, params = {}) => {
@@ -128,7 +100,6 @@
   };
 
   const isComplete = (taskId) => Boolean(readState().tasks?.[taskId]?.completed_at);
-
   const completedCount = () => Object.keys(TASKS).filter(isComplete).length;
 
   window.BareunjariInterviewJourney = {
@@ -147,9 +118,7 @@
     const date = new Date(iso);
     if (Number.isNaN(date.getTime())) return '';
     return new Intl.DateTimeFormat('ko-KR', {
-      timeZone: 'Asia/Seoul',
-      month: 'numeric',
-      day: 'numeric'
+      timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric'
     }).format(date);
   };
 
@@ -202,8 +171,7 @@
               : '<button type="button" class="interview-journey-record-btn" data-journey-complete>✓ 했어요, 기록하기</button>'}
           </div>
           <p class="interview-journey-record-note">로그인 없이 현재 기기의 브라우저에만 저장됩니다. 답변 내용이나 지원 기업 정보는 저장하지 않습니다.</p>
-        </div>
-      `;
+        </div>`;
       section.querySelector('[data-journey-complete]')?.addEventListener('click', () => {
         completeTask(config.taskId, 'manual_confirm');
         render();
@@ -227,7 +195,6 @@
     if (!result || !progress) return;
 
     addStyles();
-
     const sync = () => {
       if (result.hidden) return;
       if (mode && String(mode.value || '') !== 'interview') return;
@@ -253,8 +220,11 @@
     sync();
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const init = () => {
     renderManualPrompt();
     initAiPracticeCompletion();
-  });
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
 })();
