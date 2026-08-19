@@ -1,195 +1,48 @@
 @media (max-width: 680px) {
-  #adminDashboardRoot.admin-shell-dashboard {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  #adminDashboardRoot .admin-card {
-    border-radius: 16px;
-    padding: 16px;
-  }
-
-  #adminDashboardRoot .admin-section-head {
-    gap: 12px;
-  }
-
-  #adminDashboardRoot .admin-title {
-    line-height: 1.25;
-  }
-
-  #adminDashboardRoot .admin-dashboard-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  #adminDashboardRoot .admin-dashboard-stat {
-    min-width: 0;
-    padding: 12px;
-    border-radius: 13px;
-  }
-
-  #adminDashboardRoot .admin-dashboard-stat span {
-    font-size: .76rem;
-  }
-
-  #adminDashboardRoot .admin-dashboard-stat strong {
-    font-size: 1.45rem;
-  }
-
-  #adminDashboardRoot .admin-dashboard-stat p {
-    font-size: .73rem;
-    line-height: 1.45;
-  }
-
-  #adminDashboardRoot .admin-workspace-tabs {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px;
-    width: 100%;
-    padding: 4px;
-    border-radius: 14px;
-  }
-
-  #adminDashboardRoot .admin-workspace-tab {
-    min-width: 0;
-    padding: 9px 5px;
-    border-radius: 10px;
-    font-size: .78rem;
-    white-space: nowrap;
-  }
-
-  #adminDashboardRoot .admin-community-tools {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    width: 100%;
-  }
-
-  #adminDashboardRoot .admin-community-tools .admin-filter {
-    min-width: 0;
-    width: 100%;
-    font-size: .74rem;
-  }
-
+  #adminDashboardRoot.admin-shell-dashboard { padding-left:10px; padding-right:10px; }
+  #adminDashboardRoot .admin-card { border-radius:16px; padding:16px; }
+  #adminDashboardRoot .admin-section-head { display:block; width:100%; min-width:0; gap:12px; }
+  #adminDashboardRoot .admin-section-head > div:first-child { width:100%; min-width:0; }
+  #adminDashboardRoot .admin-title { line-height:1.25; white-space:normal; word-break:keep-all; overflow-wrap:normal; }
+  #adminDashboardRoot .admin-desc { white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
+  #adminDashboardRoot .admin-dashboard-grid { display:grid; width:100%; min-width:0; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  #adminDashboardRoot .admin-dashboard-stat { min-width:0; padding:12px; border-radius:13px; }
+  #adminDashboardRoot .admin-dashboard-stat span { font-size:.76rem; }
+  #adminDashboardRoot .admin-dashboard-stat strong { font-size:1.45rem; }
+  #adminDashboardRoot .admin-dashboard-stat p { font-size:.73rem; line-height:1.45; }
+  #adminDashboardRoot .admin-workspace-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; width:100%; padding:4px; border-radius:14px; }
+  #adminDashboardRoot .admin-workspace-tab { min-width:0; padding:9px 5px; border-radius:10px; font-size:.78rem; white-space:nowrap; }
+  #adminDashboardRoot .admin-community-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; width:100%; min-width:0; }
+  #adminDashboardRoot .admin-community-tools .admin-filter { min-width:0; width:100%; font-size:.74rem; }
   #adminDashboardRoot .admin-community-tools .admin-filter select,
-  #adminDashboardRoot .admin-community-tools .admin-filter input {
-    width: 100%;
-    min-width: 0;
-    min-height: 42px;
-    padding: 8px 10px;
-    font-size: .88rem;
-  }
-
-  #adminDashboardRoot .admin-community-tools > .admin-btn {
-    width: 100%;
-    min-height: 42px;
-  }
-
-  #adminDashboardRoot .admin-community-item {
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  #adminDashboardRoot .admin-community-item-head {
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  #adminDashboardRoot .admin-community-item-head h3 {
-    font-size: 1.02rem;
-    line-height: 1.35;
-  }
-
-  #adminDashboardRoot .admin-community-status {
-    flex: 0 0 auto;
-    font-size: .7rem;
-    padding: 5px 8px;
-  }
-
+  #adminDashboardRoot .admin-community-tools .admin-filter input { width:100%; min-width:0; min-height:42px; padding:8px 10px; font-size:.88rem; }
+  #adminDashboardRoot .admin-community-tools > .admin-btn { width:100%; min-height:42px; }
+  #adminDashboardRoot .admin-community-item { padding:14px; border-radius:14px; }
+  #adminDashboardRoot .admin-community-item-head { align-items:flex-start; gap:8px; }
+  #adminDashboardRoot .admin-community-item-head h3 { font-size:1.02rem; line-height:1.35; }
+  #adminDashboardRoot .admin-community-status { flex:0 0 auto; font-size:.7rem; padding:5px 8px; }
   #adminDashboardRoot .admin-reservation-meta,
-  #adminDashboardRoot .admin-community-meta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
-  }
-
-  #adminDashboardRoot .admin-community-meta > div {
-    min-width: 0;
-    padding: 9px;
-  }
-
-  #adminDashboardRoot .admin-community-meta dt {
-    font-size: .7rem;
-  }
-
-  #adminDashboardRoot .admin-community-meta dd {
-    overflow-wrap: anywhere;
-    font-size: .82rem;
-  }
-
+  #adminDashboardRoot .admin-community-meta { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  #adminDashboardRoot .admin-community-meta > div { min-width:0; padding:9px; }
+  #adminDashboardRoot .admin-community-meta dt { font-size:.7rem; }
+  #adminDashboardRoot .admin-community-meta dd { overflow-wrap:anywhere; font-size:.82rem; }
   #adminDashboardRoot .admin-reservation-name-editor .admin-reservation-name-row,
-  #adminDashboardRoot .admin-reservation-purpose-editor .admin-form-row {
-    display: block !important;
-  }
-
+  #adminDashboardRoot .admin-reservation-purpose-editor .admin-form-row { display:block !important; }
   #adminDashboardRoot .admin-reservation-name-editor label,
-  #adminDashboardRoot .admin-reservation-purpose-editor label {
-    display: block;
-    margin-bottom: 6px !important;
-    font-size: .76rem;
-    font-weight: 800;
-  }
-
+  #adminDashboardRoot .admin-reservation-purpose-editor label { display:block; margin-bottom:6px !important; font-size:.76rem; font-weight:800; }
   #adminDashboardRoot .admin-reservation-name-controls,
-  #adminDashboardRoot .admin-reservation-purpose-editor .admin-form-row > div {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 6px !important;
-    width: 100%;
-  }
-
-  #adminDashboardRoot .admin-reservation-purpose-editor .admin-form-row > div {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  #adminDashboardRoot [data-delete-reservation] {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin-top: 2px;
-  }
-
+  #adminDashboardRoot .admin-reservation-purpose-editor .admin-form-row > div { display:grid !important; grid-template-columns:minmax(0,1fr) auto; gap:6px !important; width:100%; }
+  #adminDashboardRoot [data-delete-reservation] { grid-column:1 / -1; width:100%; margin-top:2px; }
   #adminDashboardRoot .admin-reservation-name-controls input,
-  #adminDashboardRoot .admin-reservation-purpose-editor select {
-    min-width: 0;
-    width: 100%;
-    min-height: 42px;
-  }
-
+  #adminDashboardRoot .admin-reservation-purpose-editor select { min-width:0; width:100%; min-height:42px; }
   #adminDashboardRoot .admin-reservation-name-controls .admin-btn,
-  #adminDashboardRoot .admin-reservation-purpose-editor .admin-btn {
-    min-height: 42px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
-
-  #adminDashboardRoot .admin-report-summary {
-    gap: 8px;
-  }
+  #adminDashboardRoot .admin-reservation-purpose-editor .admin-btn { min-height:42px; padding-left:11px; padding-right:11px; }
+  #adminDashboardRoot .admin-report-summary { gap:8px; }
 }
-
-@media (max-width: 390px) {
-  #adminDashboardRoot .admin-community-tools {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width:390px) {
+  #adminDashboardRoot .admin-community-tools { grid-template-columns:1fr; }
   #adminDashboardRoot .admin-dashboard-grid,
   #adminDashboardRoot .admin-reservation-meta,
-  #adminDashboardRoot .admin-community-meta {
-    grid-template-columns: 1fr;
-  }
-
-  #adminDashboardRoot .admin-workspace-tab {
-    font-size: .72rem;
-    padding-left: 3px;
-    padding-right: 3px;
-  }
+  #adminDashboardRoot .admin-community-meta { grid-template-columns:1fr; }
+  #adminDashboardRoot .admin-workspace-tab { font-size:.72rem; padding-left:3px; padding-right:3px; }
 }
