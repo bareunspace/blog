@@ -1,14 +1,14 @@
 ---
 layout: default
-title: CJ그룹 채용·면접 사례 | 바른자리 사례 DB
-description: CJ그룹 채용과 면접 사례를 모아 AI역량검사, 실무·직무면접 등 실제 준비 방식과 공식 출처를 함께 정리합니다.
+title: CJ그룹 채용·인터뷰 패턴 | 바른자리
+description: CJ그룹의 공개 전형 사례에서 카메라 답변, 직무 경험 설명, AI역량검사와 면접처럼 실제 수행을 요구하는 평가 패턴과 준비 방향을 정리합니다.
 permalink: /cases/cj/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-6
+extra_css_version: 20260820-2
 breadcrumbs:
-  - label: 사례 DB
+  - label: 채용·인터뷰 패턴
     url: /cases/
-  - label: 기업별
+  - label: 기업별 보기
     url: /cases/companies/
   - label: CJ그룹
 ---
@@ -16,24 +16,17 @@ breadcrumbs:
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
-      <p class="section-label">CJ Cases</p>
-      <h1 class="section-title">CJ그룹 채용·면접 사례</h1>
-      <p class="section-desc">CJ그룹의 공식 채용 자료에서 실제 준비 방식에 영향을 주는 전형을 확인합니다. 2026년 하반기 공채가 공개되면 최신 공고 기준으로 계속 업데이트합니다.</p>
+      <p class="section-label">CJ Hiring Patterns</p>
+      <h1 class="section-title">CJ그룹 채용·인터뷰 패턴</h1>
+      <p class="section-desc">CJ그룹 채용소식을 모으는 페이지가 아니라, 공개된 전형에서 지원자가 <strong>경험을 카메라와 면접관 앞에서 어떻게 설명하도록 요구받는지</strong>와 그에 맞는 연습 방향을 확인합니다.</p>
       <div class="hero-btns case-archive-back">
         <a href="{{ '/posts/cj-ai-competency-interview-practice/' | relative_url }}" class="btn-primary">CJ 면접 준비 가이드</a>
-        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-outline">기업별 사례 DB</a>
+        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-outline">기업별 패턴 보기</a>
       </div>
     </div>
   </section>
 
   {% include breadcrumb.html %}
 
-  {% include cases-list.html
-    company='cj'
-    section_id='cj-cases'
-    eyebrow='CJ Group'
-    title='CJ그룹 관련 검증 사례'
-    intro='company: cj로 분류되고 공식 출처와 최종 확인일이 있는 사례만 표시합니다.'
-    open_first=true
-  %}
+  {% include cases-list.html company='cj' section_id='cj-cases' eyebrow='CJ Group' title='CJ그룹에서 확인된 평가 패턴' intro='공식 출처와 최종 확인일이 있는 사례를 통해 실제로 무엇을 말하고 설명하도록 요구하는지와 준비 방향을 확인합니다.' open_first=true %}
 </main>
