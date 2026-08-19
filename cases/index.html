@@ -42,3 +42,24 @@ breadcrumbs:
     intro='기업과 직무는 분류용 정보로 함께 표시하고, 각 사례에서 실제로 요구되는 행동과 그에 맞는 연습 방향에 집중합니다.'
   %}
 </main>
+
+<script>
+  (() => {
+    const labels = {
+      'cabin-crew': '객실승무원',
+      'semiconductor': '반도체',
+      'general-corporate': '일반 기업',
+      'public-sector': '공공기관',
+      'ai-content': 'AI 콘텐츠'
+    };
+    document.querySelectorAll('#case-database .case-archive-card[data-job]').forEach((card) => {
+      const meta = card.querySelector('.case-archive-meta');
+      const label = labels[card.dataset.job];
+      if (!meta || !label || meta.querySelector('.case-archive-job-tag')) return;
+      const tag = document.createElement('span');
+      tag.className = 'case-archive-job-tag case-archive-date';
+      tag.textContent = label;
+      meta.insertBefore(tag, meta.children[1] || null);
+    });
+  })();
+</script>
