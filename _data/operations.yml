@@ -3,6 +3,7 @@ branch:
   name: 바른자리 신중동점
   short_name: 신중동점
   capacity: "1~8인"
+  recommended_capacity: "6인"
   access: "신중동역 1분"
   private_use: true
 
@@ -36,7 +37,7 @@ products:
     price: 30000
     price_label: "30,000원 / 3시간"
     duration: "3시간"
-    recommended_people: "3~8명"
+    recommended_people: "3~6명"
     booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
 
   overnight:
