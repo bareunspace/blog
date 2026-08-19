@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   .interview-journey-dots { display:flex; gap:.42rem; }
   .interview-journey-dot { width:12px; height:12px; border-radius:999px; background:#d8e0db; box-shadow:inset 0 0 0 1px rgba(26,54,41,.06); }
   .interview-journey-dot.is-done { background:#35664d; }
-  .interview-journey-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; margin-top:.85rem; }
+  .interview-journey-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin-top:.85rem; }
   .interview-journey-card { display:flex; flex-direction:column; min-height:190px; padding:1rem 1.05rem; border:1px solid rgba(26,54,41,.12); border-radius:16px; background:#fff; }
   .interview-journey-card.is-next { border-color:rgba(53,102,77,.5); box-shadow:0 8px 22px rgba(26,54,41,.07); }
   .interview-journey-card.is-complete { background:#f9fbfa; }
@@ -248,8 +248,14 @@ document.addEventListener('DOMContentLoaded', function () {
     #online-hiring .online-hiring-grid { scrollbar-width:none; }
     #online-hiring .online-hiring-grid::-webkit-scrollbar { display:none; }
   }
-  @media (max-width:760px) {
-    .interview-journey-grid { grid-template-columns:1fr; }
-    .interview-journey-card { min-height:0; }
+  @media (max-width:520px) {
+    .interview-journey-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:.45rem; }
+    .interview-journey-card { min-height:0; padding:.75rem .7rem; }
+    .interview-journey-card-head { gap:.35rem; margin-bottom:.45rem; }
+    .interview-journey-status { padding:.18rem .35rem; font-size:.64rem; }
+    .interview-journey-card h3 { font-size:.87rem; }
+    .interview-journey-card > p { font-size:.72rem; line-height:1.5; }
+    .interview-journey-card-footer { padding-top:.7rem; }
+    .interview-journey-card-footer a, .interview-journey-completed { font-size:.69rem; }
   }
 </style>
