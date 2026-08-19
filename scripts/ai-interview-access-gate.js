@@ -1,7 +1,6 @@
 (() => {
   const FREE_QUESTIONS = 3;
-  const ACCESS_HOURS = 6;
-  const STORAGE_KEY = 'bareunjari_ai_interview_access_until';
+  const STORAGE_KEY = 'bareunjari_ai_interview_access_date';
   const ENDPOINT = 'https://nhiyxgcrjdzdiquutxml.supabase.co/functions/v1/ai-interview-access';
   const API_KEY = 'sb_publishable_kqB-Q3vuJwrd8cvEzbcp7g_a6QBxf_u';
   const BOOKING_URL = 'https://m.place.naver.com/place/2041312316/ticket';
@@ -11,8 +10,19 @@
   const next = document.querySelector('[data-aii-next]');
   if (!card || !progress || !next) return;
 
-  const hasAccess = () => Number(localStorage.getItem(STORAGE_KEY) || 0) > Date.now();
-  const setAccess = () => localStorage.setItem(STORAGE_KEY, String(Date.now() + ACCESS_HOURS * 60 * 60 * 1000));
+  const getSeoulDateKey = () => {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  };
+
+  const hasAccess = () => localStorage.getItem(STORAGE_KEY) === getSeoulDateKey();
+  const setAccess = (dateKey) => localStorage.setItem(STORAGE_KEY, String(dateKey || getSeoulDateKey()));
   const currentQuestionNumber = () => {
     const match = String(progress.textContent || '').match(/(\d+)\s*\/\s*(\d+)/);
     return match ? Number(match[1]) : 1;
@@ -33,7 +43,7 @@
   const modal = document.createElement('div');
   modal.className = 'aii-access-modal';
   modal.hidden = true;
-  modal.innerHTML = `<div class="aii-access-dialog" role="dialog" aria-modal="true" aria-labelledby="aiiAccessTitle"><span class="aii-access-badge">무료 연습 3문항 완료</span><p class="aii-access-kicker">BARUNJARI ONSITE ACCESS</p><h3 id="aiiAccessTitle">4번째 질문부터는 바른자리에서 계속할 수 있어요.</h3><p class="aii-access-copy">바른자리 이용 중이라면 공간에 안내된 6자리 코드를 입력하세요. 인증 후 이 브라우저에서 6시간 동안 전체 면접 연습을 이용할 수 있습니다.</p><form data-aii-access-form><input class="aii-access-code" data-aii-access-code inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-label="바른자리 현장 이용코드" placeholder="000000" required><p class="aii-access-status" data-aii-access-status aria-live="polite"></p><div class="aii-access-actions"><button class="btn btn-primary" type="submit">현장 코드 인증</button><a class="btn btn-outline" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">면접 연습 공간 예약</a></div><button class="aii-access-close" type="button" data-aii-access-close>지금은 3문항까지만 연습하기</button></form></div>`;
+  modal.innerHTML = `<div class="aii-access-dialog" role="dialog" aria-modal="true" aria-labelledby="aiiAccessTitle"><span class="aii-access-badge">무료 연습 3문항 완료</span><p class="aii-access-kicker">BARUNJARI ONSITE ACCESS</p><h3 id="aiiAccessTitle">4번째 질문부터는 바른자리 예약코드로 계속할 수 있어요.</h3><p class="aii-access-copy">바른자리 이용 중이라면 해당 월·요일에 안내된 6자리 예약코드를 입력하세요. 인증한 날에는 문항 수 제한 없이 면접 연습을 계속 이용할 수 있습니다.</p><form data-aii-access-form><input class="aii-access-code" data-aii-access-code inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-label="바른자리 예약코드" placeholder="000000" required><p class="aii-access-status" data-aii-access-status aria-live="polite"></p><div class="aii-access-actions"><button class="btn btn-primary" type="submit">예약코드 인증</button><a class="btn btn-outline" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">면접 연습 공간 예약</a></div><button class="aii-access-close" type="button" data-aii-access-close>지금은 3문항까지만 연습하기</button></form></div>`;
   document.body.appendChild(modal);
 
   const form = modal.querySelector('[data-aii-access-form]');
@@ -82,10 +92,10 @@
         body: JSON.stringify({ code })
       });
       const data = await response.json().catch(() => ({}));
-      if (!response.ok || data.ok !== true) throw new Error('invalid');
-      setAccess();
+      if (!response.ok || data.ok !== true || !data.accessDate) throw new Error('invalid');
+      setAccess(data.accessDate);
       status.style.color = '#37664d';
-      status.textContent = '인증되었습니다. 6시간 동안 전체 연습을 이용할 수 있습니다.';
+      status.textContent = '인증되었습니다. 오늘은 문항 수 제한 없이 계속 이용할 수 있습니다.';
       window.setTimeout(() => {
         closeGate();
         if (continueAfterUnlock) next.click();
@@ -93,10 +103,10 @@
       }, 550);
     } catch {
       status.style.color = '#a14242';
-      status.textContent = '코드가 맞지 않습니다. 공간에 안내된 코드를 확인해 주세요.';
+      status.textContent = '오늘 사용할 수 있는 예약코드가 아닙니다. 해당 월·요일 코드를 확인해 주세요.';
     } finally {
       submit.disabled = false;
-      submit.textContent = '현장 코드 인증';
+      submit.textContent = '예약코드 인증';
     }
   });
 })();
