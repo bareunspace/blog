@@ -31,6 +31,11 @@ cases:
         - 8주 채용연계형 인턴십
         - 정규직 신입사원 채용 여부 결정
 
+    pattern:
+      label: 결과물만이 아니라 판단 과정 설명
+      insight: 완성된 작업 자체뿐 아니라 연출 의도, AI 활용 과정, 선택 이유를 구체적인 언어로 설명하는 능력을 직접 확인하는 방향을 보여주는 사례입니다.
+      practice_shift: 작업 결과를 보여주는 데서 끝내지 말고 왜 그렇게 만들었는지 60~90초로 설명하는 연습
+
     signals:
       situation_interview: null
       video_interview: null
@@ -114,6 +119,11 @@ cases:
         - 1차 실무·직무면접
         - 2차 면접
         - 2026년 하반기 세부 전형은 실제 공고에서 재확인
+
+    pattern:
+      label: 서류 작성에서 카메라·면접관 앞 설명으로
+      insight: AI역량검사와 실무·직무면접 사례는 작성한 경험을 실제 목소리와 카메라 앞에서 설명하는 준비가 별도로 필요하다는 점을 보여줍니다.
+      practice_shift: 주요 경험을 30초·60초·90초 버전으로 바꿔 말하고 카메라로 녹화하는 연습
 
     signals:
       situation_interview: null
@@ -205,6 +215,11 @@ cases:
         - 현재 Talent Hub 일반 안내 · SKCT 및 A!SK 전형
         - 2026년 8월 수시채용 · 반나절 심층면접 도입 발표
         - 세부 전형은 실제 공고에서 재확인
+
+    pattern:
+      label: 짧은 문답에서 과제·심층 검증으로
+      insight: 반나절 심층면접 도입은 정답 암기보다 과제를 수행하며 문제 정의, 선택 이유, 판단 근거를 설명하는 과정을 더 깊게 확인하려는 방향을 보여줍니다.
+      practice_shift: 과제를 가정해 문제 정의 → 판단 기준 → 선택 이유를 소리 내어 설명하고 꼬리질문까지 이어가는 연습
 
     signals:
       situation_interview: false
@@ -300,6 +315,11 @@ cases:
         - 임원 면접
         - 채용 검진
 
+    pattern:
+      label: 외운 답변에서 상황 판단과 즉시 설명으로
+      insight: 상황 대처 면접은 준비한 문장을 반복하는 것보다 처음 보는 상황에서 판단 기준을 세우고 대응을 말로 표현하는 능력을 직접 확인하는 흐름을 보여줍니다.
+      practice_shift: 처음 보는 상황을 받고 30~60초 안에 판단 기준과 행동을 실제 목소리로 답하는 연습
+
     signals:
       situation_interview: true
       video_interview: false
@@ -372,6 +392,11 @@ cases:
       stages:
         - 서류전형
         - 면접시험
+
+    pattern:
+      label: 기본 면접도 실제 말하기 준비가 필요
+      insight: 공개된 공고만으로 세부 평가 항목을 단정할 수는 없지만, 서류 이후 별도 면접시험이 이어지는 지역 공공채용의 기본 구조를 보여주는 보조 사례입니다.
+      practice_shift: 지원 동기와 담당 업무 이해를 30~60초로 말해보며 기본 답변을 정리하는 연습
 
     signals:
       situation_interview: true
