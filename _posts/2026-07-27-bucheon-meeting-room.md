@@ -39,7 +39,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Bucheon · Sinjung-dong Meeting Room</p>
       <h1 class="section-title">부천 회의실·신중동 미팅룸을 찾는다면<br />신중동역 1분 바른자리</h1>
-      <p class="section-desc">부천에서 2~8명이 함께 이야기할 독립된 회의실이 필요할 때, 너무 큰 대관 공간까지 빌릴 필요는 없습니다. 바른자리는 예약 시간 동안 한 팀이 단독으로 이용하는 신중동 소규모 미팅룸입니다.</p>
+      <p class="section-desc">부천에서 2~6명이 함께 이야기할 독립된 회의실이 필요할 때, 너무 큰 대관 공간까지 빌릴 필요는 없습니다. 바른자리는 예약 시간 동안 한 팀이 단독으로 이용하는 신중동 소규모 미팅룸입니다.</p>
       <div class="hero-btns">
         <a href="/booking/?purpose=meeting&amp;source=bucheon-meeting-room" class="btn-primary" data-cta="bucheon_meeting_room_hero">빈 시간 확인하고 예약하기</a>
         <a href="#quick-info" class="btn-outline">위치·요금 먼저 보기</a>
@@ -86,7 +86,7 @@ script_version: 20260711-4
       <h2 class="section-title">부천에서 이런 회의를 할 때 잘 맞습니다</h2>
       <p class="section-desc">이 페이지는 화상회의나 혼자 하는 업무보다, <strong>부천·신중동에서 여러 사람이 직접 만나 대화할 장소</strong>를 찾는 분을 위한 지역 회의실 안내입니다.</p>
       <div class="about-principle-grid" aria-label="부천 신중동 회의실 활용 상황">
-        <article class="about-principle-item" data-step="01"><h3>2~8인 소규모 회의</h3><p>업무 안건을 함께 검토하거나 역할과 일정을 정하는 팀 회의에 사용할 수 있습니다.</p></article>
+        <article class="about-principle-item" data-step="01"><h3>2~6인 소규모 회의</h3><p>업무 안건을 함께 검토하거나 역할과 일정을 정하는 팀 회의에 사용할 수 있습니다.</p></article>
         <article class="about-principle-item" data-step="02"><h3>고객·거래처 미팅</h3><p>자료를 펼쳐 설명하고 질문을 주고받아야 할 때 카페보다 대화에 집중하기 편합니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>상담·컨설팅</h3><p>주변 테이블을 의식하지 않고 일정 시간 마주 앉아 이야기를 이어가야 하는 일정에 사용할 수 있습니다.</p></article>
         <article class="about-principle-item" data-step="04"><h3>프로젝트 논의</h3><p>기획안, 노트북, 출력물을 함께 보며 수정사항과 다음 행동을 정리하는 모임에 맞습니다.</p></article>
