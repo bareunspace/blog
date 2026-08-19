@@ -21,11 +21,11 @@ tags:
 canonical: https://bareunjari.com/posts/naver-webtoon-ai-animator-internship-interview-prep/
 permalink: /posts/naver-webtoon-ai-animator-internship-interview-prep/
 date: 2026-08-20 06:30:00 +0900
-og_image: https://bareunjari.com/images/interview-answer-practice.webp
-og_image_alt: 네이버웹툰 AI 애니메이션 제작 인턴십 인터뷰를 앞두고 작업 경험을 소리 내어 설명하는 연습 장면
+og_image: https://bareunjari.com/images/naver-webtoon-ai-animator-internship-interview-prep.webp
+og_image_alt: 네이버웹툰 AI 애니메이션 제작 인턴십 사전과제와 인터뷰 준비를 위해 작업 의도와 AI 활용 과정을 설명하는 연습 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/interview-answer-practice.webp
+preload_image: images/naver-webtoon-ai-animator-internship-interview-prep.webp
 css_version: 20260728-1
 script_version: 20260711-4
 ---
@@ -48,7 +48,7 @@ script_version: 20260711-4
 
   <section class="post-feature-image" aria-label="네이버웹툰 AI 애니메이션 제작 인턴십 준비 대표 이미지">
     <div class="section-inner">
-      <img src="/images/interview-answer-practice.webp" alt="AI 애니메이션 제작 경험과 판단 근거를 소리 내어 설명하며 인터뷰를 준비하는 모습" width="1672" height="941" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
+      <img src="/images/naver-webtoon-ai-animator-internship-interview-prep.webp" alt="네이버웹툰 AI 애니메이션 제작 인턴십 사전과제와 인터뷰 준비를 위해 작업 의도와 AI 활용 과정을 설명하는 연습 장면" width="1672" height="941" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
     </div>
   </section>
 
