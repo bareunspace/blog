@@ -23,9 +23,9 @@
 
   const hasAccess = () => localStorage.getItem(STORAGE_KEY) === getSeoulDateKey();
   const setAccess = (dateKey) => localStorage.setItem(STORAGE_KEY, String(dateKey || getSeoulDateKey()));
-  const currentQuestionNumber = () => {
+  const getProgress = () => {
     const match = String(progress.textContent || '').match(/(\d+)\s*\/\s*(\d+)/);
-    return match ? Number(match[1]) : 1;
+    return match ? { current: Number(match[1]), total: Number(match[2]) } : { current: 1, total: 1 };
   };
 
   const style = document.createElement('style');
@@ -65,7 +65,11 @@
   };
 
   next.addEventListener('click', (event) => {
-    if (!hasAccess() && currentQuestionNumber() >= FREE_QUESTIONS) {
+    const { current, total } = getProgress();
+    // The free limit only blocks entry into question 4+. If the user selected
+    // exactly three questions, Q3 -> result must always remain available.
+    const movingBeyondFreeLimit = current >= FREE_QUESTIONS && current < total;
+    if (!hasAccess() && movingBeyondFreeLimit) {
       event.preventDefault();
       event.stopImmediatePropagation();
       openGate();
