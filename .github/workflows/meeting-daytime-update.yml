@@ -1,0 +1,95 @@
+name: One-shot meeting daytime update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/meeting-daytime-update.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-meeting-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Expand weekday daytime messaging and counseling link
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('meeting.html')
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              (
+                  'description: 부천 신중동역에서 고객 미팅, 상담, 화상회의, 평일 오전 집중 업무가 필요할 때 이용하는 프라이빗 시간제 업무공간. 1시간 10,000원, 필요한 시간만 예약하세요.',
+                  'description: 부천 신중동역에서 고객 미팅, 상담, 화상회의, 평일 낮 집중 업무가 필요할 때 이용하는 프라이빗 시간제 업무공간. 1시간 10,000원, 필요한 시간만 예약하세요.'
+              ),
+              (
+                  '<p class="hero-subtitle">매일 사용하는 사무실이 아니라 오늘 필요한 몇 시간의 업무공간. 혼자 집중하는 오전부터 고객 미팅, 상담, 화상회의까지 내 상황에 맞는 활용법을 찾고 필요한 시간만 예약하세요.</p>',
+                  '<p class="hero-subtitle">매일 사용하는 사무실이 아니라 오늘 필요한 몇 시간의 업무공간. 평일 낮의 오전·오후 집중 업무부터 고객 미팅, 상담, 화상회의까지 내 상황에 맞는 활용법을 찾고 필요한 시간만 예약하세요.</p>'
+              ),
+              (
+                  '<p>매일 사무실은 필요 없지만 오늘 오전 한두 시간 동안 노트북 업무와 자료 정리에 집중해야 하는 시간.</p>',
+                  '<p>매일 사무실은 필요 없지만 오늘 오전이나 오후 한두 시간 동안 노트북 업무와 자료 정리에 집중해야 하는 시간.</p>'
+              ),
+              (
+                  '          <h2>상담하기</h2>\n          <p>한 사람과 차분하게 이야기해야 하고 주변 시선을 덜 의식하고 싶은 상담 시간.</p>',
+                  '          <h2>상담하기</h2>\n          <p>한 사람과 차분하게 이야기해야 하고 주변 시선을 덜 의식하고 싶은 상담 시간.</p>\n          <p><a href="/posts/freelance-counselor-office/">프리랜서 상담사 공간 운영 가이드 보기 →</a></p>'
+              ),
+              (
+                  '<p class="section-desc">매일 사용하는 고정 사무실보다 오늘 필요한 업무시간을 먼저 생각해보세요. 혼자 집중하는 오전, 고객 미팅, 화상회의처럼 목적에 따라 필요한 시간만 예약할 수 있습니다.</p>',
+                  '<p class="section-desc">매일 사용하는 고정 사무실보다 오늘 필요한 업무시간을 먼저 생각해보세요. 혼자 집중하는 오전·오후, 고객 미팅, 상담, 화상회의처럼 목적에 따라 필요한 시간만 예약할 수 있습니다.</p>'
+              ),
+              (
+                  '          <h3>고객 미팅 2시간</h3>\n          <p>10:00 → 12:00<br />2시간 · 20,000원</p>',
+                  '          <h3>오후 상담·미팅 2시간</h3>\n          <p>13:00 → 15:00<br />2시간 · 20,000원</p>'
+              ),
+              (
+                  '          <h3>화상회의 + 후속 업무 3시간</h3>\n          <p>10:00 → 13:00<br />3시간 · 30,000원</p>',
+                  '          <h3>오후 화상회의 + 후속 업무 3시간</h3>\n          <p>14:00 → 17:00<br />3시간 · 30,000원</p>'
+              ),
+              (
+                  '<article class="about-principle-item" data-step="B"><h3>고객 미팅 2시간</h3><p><strong>20,000원</strong><br />10:00~12:00 예시</p></article>',
+                  '<article class="about-principle-item" data-step="B"><h3>오후 상담·미팅 2시간</h3><p><strong>20,000원</strong><br />13:00~15:00 예시</p></article>'
+              ),
+              (
+                  '<article class="about-principle-item" data-step="C"><h3>화상회의 + 업무 3시간</h3><p><strong>30,000원</strong><br />10:00~13:00 예시</p></article>',
+                  '<article class="about-principle-item" data-step="C"><h3>오후 화상회의 + 업무 3시간</h3><p><strong>30,000원</strong><br />14:00~17:00 예시</p></article>'
+              ),
+              (
+                  '<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">평일 오전에만 이용할 수 있나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아닙니다. 이 허브에서는 평일 오전 활용 사례를 중점적으로 소개합니다. 실제 예약 가능 시간은 예약 페이지의 최신 일정을 확인해 주세요.</p></div></details>',
+                  '<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">평일 오전이나 오후에도 이용할 수 있나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">네. 이 허브에서는 평일 낮의 오전·오후 활용 사례를 함께 소개합니다. 실제 예약 가능 시간은 예약 페이지의 최신 일정을 확인해 주세요.</p></div></details>'
+              ),
+              (
+                  '<h2>월 사무실은 필요 없지만<br />오늘 오전 두 시간은 필요하다면</h2>',
+                  '<h2>월 사무실은 필요 없지만<br />오늘 평일 낮 두세 시간은 필요하다면</h2>'
+              ),
+              (
+                  '<p>매일 사무실을 계약하는 대신 오늘 필요한 업무시간만 확보하는 방법도 있습니다. 혼자 일하기, 고객 미팅, 화상회의 중 지금 필요한 목적에 맞게 이용해보세요.</p>',
+                  '<p>매일 사무실을 계약하는 대신 오늘 필요한 업무시간만 확보하는 방법도 있습니다. 혼자 일하기, 고객 미팅, 상담, 화상회의 중 지금 필요한 목적에 맞게 이용해보세요.</p>'
+              ),
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f'Expected text not found: {old[:100]}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+          rm .github/workflows/meeting-daytime-update.yml
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add meeting.html .github/workflows/meeting-daytime-update.yml
+          git commit -m "Expand meeting hub for weekday daytime counseling"
+          git push origin HEAD:main
