@@ -57,58 +57,58 @@ module Bareunjari
     def company_page_data(first_case, slug)
       company = first_case["company"].to_s.strip
       {
-        "title" => "#{company} 채용·면접 사례 | 바른자리 사례 DB",
-        "description" => "#{company} 관련 채용과 면접 사례를 기업 기준으로 모아 전형, 연습 포인트, 출처와 최종 확인일을 함께 정리합니다.",
+        "title" => "#{company} 채용·인터뷰 패턴 | 바른자리",
+        "description" => "#{company}의 공개 전형 사례에서 지원자에게 실제로 요구되는 말하기, 설명, 과제 수행, 카메라 응답 패턴과 준비 방향을 정리합니다.",
         "permalink" => "/cases/#{slug}/",
         "extra_css" => "/styles/case-archive.css",
-        "extra_css_version" => "20260817-6",
+        "extra_css_version" => "20260820-2",
         "breadcrumbs" => [
-          { "label" => "사례 DB", "url" => "/cases/" },
-          { "label" => "기업별", "url" => "/cases/companies/" },
+          { "label" => "채용·인터뷰 패턴", "url" => "/cases/" },
+          { "label" => "기업별 보기", "url" => "/cases/companies/" },
           { "label" => company }
         ],
         "layout" => "case-archive-detail",
         "archive_kind" => "company",
         "archive_filter" => slug,
-        "hero_label" => "#{company} Cases",
-        "hero_title" => "#{company} 채용·면접 사례",
-        "hero_description" => "#{company} 관련 사례만 모아 실제 면접 준비와 연결되는 전형 변화, 연습 포인트, 출처를 함께 확인할 수 있습니다.",
+        "hero_label" => "#{company} Hiring Patterns",
+        "hero_title" => "#{company} 채용·인터뷰 패턴",
+        "hero_description" => "#{company}의 채용소식을 모으는 페이지가 아니라, 공개된 전형에서 지원자에게 무엇을 직접 수행하도록 요구하는지와 그에 맞는 연습 방향을 확인하는 페이지입니다.",
         "primary_cta_url" => first_related_url(first_case),
         "primary_cta_label" => first_related_label(first_case),
         "secondary_cta_url" => "/cases/companies/",
-        "secondary_cta_label" => "기업별 사례 DB",
+        "secondary_cta_label" => "기업별 패턴 보기",
         "archive_eyebrow" => company,
-        "archive_title" => "#{company} 관련 검증 사례",
-        "archive_intro" => "company: #{slug}로 분류되고 출처와 최종 확인일이 있는 사례만 표시합니다."
+        "archive_title" => "#{company}에서 확인된 평가 패턴",
+        "archive_intro" => "공식 출처와 최종 확인일이 있는 사례만 표시하며, 각 사례가 보여주는 평가 방식의 변화와 실제 연습 방향을 함께 확인합니다."
       }
     end
 
     def job_page_data(first_case, job_slug)
       job_label = human_job_label(job_slug)
       {
-        "title" => "#{job_label} 직무별 채용·면접 사례 | 바른자리 사례 DB",
-        "description" => "#{job_label} 직무에서 확인된 채용과 면접 사례를 모아 전형 변화, 연습 포인트, 출처와 최종 확인일을 함께 정리합니다.",
+        "title" => "#{job_label} 채용·인터뷰 패턴 | 바른자리",
+        "description" => "#{job_label} 직무의 공개 전형 사례에서 반복되는 말하기, 설명, 과제 수행, 상황 대응, 카메라 응답 패턴과 준비 방향을 정리합니다.",
         "permalink" => "/cases/jobs/#{job_slug}/",
         "extra_css" => "/styles/case-archive.css",
-        "extra_css_version" => "20260817-6",
+        "extra_css_version" => "20260820-2",
         "breadcrumbs" => [
-          { "label" => "사례 DB", "url" => "/cases/" },
-          { "label" => "직무별", "url" => "/cases/jobs/" },
+          { "label" => "채용·인터뷰 패턴", "url" => "/cases/" },
+          { "label" => "직무별 보기", "url" => "/cases/jobs/" },
           { "label" => job_label }
         ],
         "layout" => "case-archive-detail",
         "archive_kind" => "job",
         "archive_filter" => job_slug,
-        "hero_label" => "#{job_label} Job Cases",
-        "hero_title" => "#{job_label} 직무별 사례",
-        "hero_description" => "#{job_label} 직무 사례만 모아 실제 말하기 연습과 연결되는 전형 변화와 준비 포인트를 함께 비교할 수 있습니다.",
+        "hero_label" => "#{job_label} Hiring Patterns",
+        "hero_title" => "#{job_label} 채용·인터뷰 패턴",
+        "hero_description" => "#{job_label} 채용공고를 모으는 페이지가 아니라, 같은 직무에서 실제로 요구되는 말하기·설명·과제 수행 방식과 준비 방향을 비교하는 페이지입니다.",
         "primary_cta_url" => first_related_url(first_case),
         "primary_cta_label" => first_related_label(first_case),
         "secondary_cta_url" => "/cases/jobs/",
-        "secondary_cta_label" => "직무별 사례 DB",
+        "secondary_cta_label" => "직무별 패턴 보기",
         "archive_eyebrow" => job_label,
-        "archive_title" => "#{job_label} 관련 검증 사례",
-        "archive_intro" => "job: #{job_slug}로 분류된 검증 사례만 표시합니다."
+        "archive_title" => "#{job_label}에서 확인된 평가 패턴",
+        "archive_intro" => "같은 직무의 사례를 통해 최근 전형에서 무엇을 직접 수행하도록 요구하는지와 그에 맞는 연습 방향을 함께 비교합니다."
       }
     end
 
@@ -127,7 +127,8 @@ module Bareunjari
         "cabin-crew" => "객실승무원",
         "semiconductor" => "반도체",
         "general-corporate" => "일반 기업",
-        "public-sector" => "공공기관"
+        "public-sector" => "공공기관",
+        "ai-content" => "AI 콘텐츠"
       }[job_slug] || job_slug.tr("-", " ").split.map(&:capitalize).join(" ")
     end
   end
