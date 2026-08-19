@@ -1,22 +1,22 @@
 ---
 layout: default
-title: 기업별 채용·면접 사례 | 바른자리 사례 DB
-description: 바른자리 사례 데이터베이스를 기업별로 탐색합니다. 같은 사례 원본을 기업 기준으로 분류해 출처와 최종 확인일을 함께 확인할 수 있습니다.
+title: 기업별 실전 준비 사례 | 바른자리
+description: 기업별 채용공고를 모으는 페이지가 아니라, 실제 말하기·녹화·과제 설명이 필요한 전형 사례를 기업 기준으로 다시 찾아보는 페이지입니다.
 permalink: /cases/companies/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-6
+extra_css_version: 20260820-1
 breadcrumbs:
-  - label: 사례 DB
+  - label: 실전 준비 사례
     url: /cases/
-  - label: 기업별
+  - label: 기업별 보기
 ---
 
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
       <p class="section-label">Companies</p>
-      <h1 class="section-title">기업별 사례 DB</h1>
-      <p class="section-desc">별도의 데이터를 복제하지 않고 하나의 사례 DB를 기업 기준으로 다시 보여줍니다. 기업별 전형 변화와 바른자리에서 연습할 수 있는 부분을 빠르게 확인할 수 있습니다.</p>
+      <h1 class="section-title">기업별 실전 준비 사례</h1>
+      <p class="section-desc">기업 채용정보를 탐색하기 위한 목록이 아닙니다. 공개된 실제 전형 가운데 <strong>말하기, 녹화, 과제 설명, 발표처럼 준비 행동이 분명한 사례</strong>를 기업 기준으로 다시 찾아볼 수 있게 정리했습니다.</p>
     </div>
   </section>
 
@@ -24,15 +24,15 @@ breadcrumbs:
 
   <section>
     <div class="section-inner">
-      <h2 class="section-title">현재 등록된 기업</h2>
+      <h2 class="section-title">기업별로 준비 사례 찾기</h2>
       <div class="about-highlight-grid">
         {% assign company_groups = site.data.cases.cases | group_by: 'company_slug' %}
         {% for group in company_groups %}
           {% assign first_case = group.items | first %}
           <article class="about-highlight-card">
             <h3>{{ first_case.company }}</h3>
-            <p>검증 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
-            <p><a href="{{ '/cases/' | append: group.name | append: '/' | relative_url }}">{{ first_case.company }} 사례 보기 →</a></p>
+            <p>실전 준비 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
+            <p><a href="{{ '/cases/' | append: group.name | append: '/' | relative_url }}">{{ first_case.company }} 준비 사례 보기 →</a></p>
           </article>
         {% endfor %}
       </div>
