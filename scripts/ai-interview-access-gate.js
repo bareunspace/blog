@@ -66,8 +66,6 @@
 
   next.addEventListener('click', (event) => {
     const { current, total } = getProgress();
-    // The free limit only blocks entry into question 4+. If the user selected
-    // exactly three questions, Q3 -> result must always remain available.
     const movingBeyondFreeLimit = current >= FREE_QUESTIONS && current < total;
     if (!hasAccess() && movingBeyondFreeLimit) {
       event.preventDefault();
@@ -113,4 +111,13 @@
       submit.textContent = '예약코드 인증';
     }
   });
+})();
+
+(() => {
+  if (window.BareunjariInterviewJourney || document.querySelector('script[data-interview-journey-loader]')) return;
+  const script = document.createElement('script');
+  script.src = '/scripts/interview-journey.js?v=20260820-1';
+  script.async = true;
+  script.setAttribute('data-interview-journey-loader', 'true');
+  document.head.appendChild(script);
 })();
