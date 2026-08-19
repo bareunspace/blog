@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20260820-1" />
+<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20260820-2" />
 {% assign cases = site.data.cases.cases %}
 {% if include.type %}{% assign cases = cases | where: 'type', include.type %}{% endif %}
 {% if include.topic %}{% assign cases = cases | where: 'topic', include.topic %}{% endif %}
@@ -13,8 +13,8 @@
     {% if include.hide_header != true %}
     <div class="case-archive-head">
       <div class="case-archive-head-copy">
-        <p class="case-archive-eyebrow"><span></span>{{ include.eyebrow | default: 'Preparation Cases' }}</p>
-        <h2 class="section-title">{{ include.title | default: '실전 준비 사례' }}</h2>
+        <p class="case-archive-eyebrow"><span></span>{{ include.eyebrow | default: 'Hiring Patterns' }}</p>
+        <h2 class="section-title">{{ include.title | default: '채용·인터뷰 패턴 사례' }}</h2>
         {% if include.intro %}<p class="section-desc">{{ include.intro }}</p>{% endif %}
       </div>
       <span class="case-archive-count">{{ cases | size }}건</span>
@@ -33,20 +33,26 @@
                 {% if case.verified_at %}<span class="case-archive-verified">최종 확인 {{ case.verified_at }}</span>{% endif %}
               </div>
               <h3>{{ case.title }}</h3>
-              <div class="case-archive-quickfacts" aria-label="실전 준비 사례 핵심 정보">
+              {% if case.pattern.label %}<p class="case-archive-summary"><strong>이 사례가 보여주는 변화 · {{ case.pattern.label }}</strong></p>{% endif %}
+              <div class="case-archive-quickfacts" aria-label="채용 인터뷰 패턴 핵심 정보">
                 {% if case.application.hiring_size %}<span><b>상황</b>{{ case.application.hiring_size }}</span>{% endif %}
                 {% if case.application.period_label %}<span><b>일정</b>{{ case.application.period_label }}</span>{% endif %}
                 {% if case.selection.interview_focus %}<span class="case-archive-quickfact-focus"><b>준비</b>{{ case.selection.interview_focus }}</span>{% endif %}
               </div>
               <p class="case-archive-summary">{{ case.summary }}</p>
-              <span class="case-archive-open-label">준비 포인트와 출처 보기</span>
+              <span class="case-archive-open-label">패턴·준비 포인트와 출처 보기</span>
             </div>
             <span class="case-archive-chevron" aria-hidden="true">⌄</span>
           </summary>
 
           <div class="case-archive-body">
             <div class="case-archive-body-inner">
-              <div class="case-archive-section-title"><span>01</span><h4>공개된 전형·일정 정보</h4></div>
+              {% if case.pattern.insight %}
+              <div class="case-archive-section-title"><span>01</span><h4>이 사례가 보여주는 채용·인터뷰 변화</h4></div>
+              <div class="case-archive-block"><p><strong>{{ case.pattern.label }}</strong></p><p>{{ case.pattern.insight }}</p>{% if case.pattern.practice_shift %}<p><strong>준비 방향:</strong> {{ case.pattern.practice_shift }}</p>{% endif %}</div>
+              {% endif %}
+
+              <div class="case-archive-section-title"><span>02</span><h4>공개된 전형·일정 정보</h4></div>
               <dl class="case-archive-facts">
                 {% if case.application.period_label %}<div><dt>일정</dt><dd>{{ case.application.period_label }}</dd></div>{% endif %}
                 {% if case.application.hiring_size %}<div><dt>전형·상황</dt><dd>{{ case.application.hiring_size }}</dd></div>{% endif %}
@@ -56,7 +62,7 @@
               </dl>
 
               {% if case.barunjari.practice_points %}
-              <div class="case-archive-section-title"><span>02</span><h4>바른자리에서 이렇게 연습</h4></div>
+              <div class="case-archive-section-title"><span>03</span><h4>바른자리에서 이렇게 연습</h4></div>
               <div class="case-archive-practice-grid">
                 <div class="case-archive-practice-panel case-archive-practice-questions">
                   <p class="case-archive-practice-label">연습용 질문</p>
@@ -89,12 +95,12 @@
               {% endif %}
 
               {% if case.barunjari.excluded %}
-              <div class="case-archive-section-title"><span>03</span><h4>연결하지 않는 부분</h4></div>
+              <div class="case-archive-section-title"><span>04</span><h4>연결하지 않는 부분</h4></div>
               <div class="case-archive-block case-archive-block-muted"><ul>{% for item in case.barunjari.excluded %}<li>{{ item }}</li>{% endfor %}</ul></div>
               {% endif %}
 
               {% if case.notes %}
-              <div class="case-archive-section-title"><span>04</span><h4>추가 확인사항</h4></div>
+              <div class="case-archive-section-title"><span>05</span><h4>추가 확인사항</h4></div>
               <div class="case-archive-block case-archive-block-note"><ul>{% for item in case.notes %}<li>{{ item }}</li>{% endfor %}</ul></div>
               {% endif %}
 
@@ -120,8 +126,8 @@
       {% endfor %}
     </div>
 
-    {% if include.more_url %}<div class="case-archive-more"><a href="{{ include.more_url | relative_url }}"><span>{{ include.more_label | default: '전체 준비 사례 보기' }}</span><b aria-hidden="true">→</b></a></div>{% endif %}
-    <p class="case-archive-note">이 페이지는 채용정보를 모으기 위한 목록이 아니라 실제 준비 행동을 찾기 위한 참고 자료입니다. 사례 정보는 출처와 최종 확인일을 기준으로 정리하며, 실제 지원이나 의사결정 전에는 원문과 최신 정보를 다시 확인하세요.</p>
+    {% if include.more_url %}<div class="case-archive-more"><a href="{{ include.more_url | relative_url }}"><span>{{ include.more_label | default: '전체 패턴 사례 보기' }}</span><b aria-hidden="true">→</b></a></div>{% endif %}
+    <p class="case-archive-note">이 페이지는 채용공고를 모으기 위한 목록이 아니라, 실제 전형에서 기업이 무엇을 직접 요구하는지 관찰하고 그에 맞는 연습 방향을 찾기 위한 참고 자료입니다. 사례는 출처와 최종 확인일을 기준으로 정리하며, 실제 지원 전에는 원문과 최신 정보를 다시 확인하세요.</p>
   </div>
 </section>
 {% endif %}
