@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 기업별 실전 준비 사례 | 바른자리
-description: 기업별 채용공고를 모으는 페이지가 아니라, 실제 말하기·녹화·과제 설명이 필요한 전형 사례를 기업 기준으로 다시 찾아보는 페이지입니다.
+title: 기업별 채용·인터뷰 패턴 | 바른자리
+description: 기업별 채용공고를 모으는 페이지가 아니라, 실제 전형에서 지원자에게 요구되는 말하기·설명·과제 수행·카메라 응답 패턴을 기업 기준으로 비교합니다.
 permalink: /cases/companies/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260820-1
+extra_css_version: 20260820-2
 breadcrumbs:
-  - label: 실전 준비 사례
+  - label: 채용·인터뷰 패턴
     url: /cases/
   - label: 기업별 보기
 ---
@@ -15,8 +15,8 @@ breadcrumbs:
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
       <p class="section-label">Companies</p>
-      <h1 class="section-title">기업별 실전 준비 사례</h1>
-      <p class="section-desc">기업 채용정보를 탐색하기 위한 목록이 아닙니다. 공개된 실제 전형 가운데 <strong>말하기, 녹화, 과제 설명, 발표처럼 준비 행동이 분명한 사례</strong>를 기업 기준으로 다시 찾아볼 수 있게 정리했습니다.</p>
+      <h1 class="section-title">기업별 채용·인터뷰 패턴</h1>
+      <p class="section-desc">기업 채용정보를 탐색하기 위한 목록이 아닙니다. 공개된 실제 전형에서 <strong>무엇을 직접 말하고 설명하고 수행하도록 요구하는지</strong>를 기업 기준으로 비교해, 최근 평가 방식에 맞는 준비 방향을 찾는 페이지입니다.</p>
     </div>
   </section>
 
@@ -24,15 +24,15 @@ breadcrumbs:
 
   <section>
     <div class="section-inner">
-      <h2 class="section-title">기업별로 준비 사례 찾기</h2>
+      <h2 class="section-title">기업별로 평가 패턴 보기</h2>
       <div class="about-highlight-grid">
         {% assign company_groups = site.data.cases.cases | group_by: 'company_slug' %}
         {% for group in company_groups %}
           {% assign first_case = group.items | first %}
           <article class="about-highlight-card">
             <h3>{{ first_case.company }}</h3>
-            <p>실전 준비 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
-            <p><a href="{{ '/cases/' | append: group.name | append: '/' | relative_url }}">{{ first_case.company }} 준비 사례 보기 →</a></p>
+            <p>관찰 사례 {{ group.items | size }}건 · 최근 확인 {{ first_case.verified_at }}</p>
+            <p><a href="{{ '/cases/' | append: group.name | append: '/' | relative_url }}">{{ first_case.company }} 평가 패턴 보기 →</a></p>
           </article>
         {% endfor %}
       </div>
