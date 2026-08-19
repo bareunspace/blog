@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<main class="about-page">
+  <section id="home" class="case-archive-hero">
+    <div class="section-inner case-archive-shell">
+      <p class="section-label">{{ page.hero_label }}</p>
+      <h1 class="section-title">{{ page.hero_title }}</h1>
+      <p class="section-desc">{{ page.hero_description }}</p>
+      <div class="hero-btns case-archive-back">
+        <a href="{{ page.primary_cta_url | relative_url }}" class="btn-primary">{{ page.primary_cta_label }}</a>
+        <a href="{{ page.secondary_cta_url | relative_url }}" class="btn-outline">{{ page.secondary_cta_label }}</a>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  {% if page.archive_kind == 'company' %}
+  {% include cases-list.html
+    company=page.archive_filter
+    section_id=page.archive_filter
+    eyebrow=page.archive_eyebrow
+    title=page.archive_title
+    intro=page.archive_intro
+    open_first=true
+  %}
+  {% elsif page.archive_kind == 'job' %}
+  {% include cases-list.html
+    job=page.archive_filter
+    section_id=page.archive_filter
+    eyebrow=page.archive_eyebrow
+    title=page.archive_title
+    intro=page.archive_intro
+    open_first=true
+  %}
+  {% endif %}
+</main>
