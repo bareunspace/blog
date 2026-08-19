@@ -1,24 +1,25 @@
 ---
 layout: default
-title: 사례 데이터베이스 | 바른자리
-description: 채용·면접·시험·업무 등 바른자리와 연결되는 실제 사례를 출처와 최종 확인일과 함께 정리한 사례 데이터베이스입니다.
+title: 실전 준비 사례 | 바른자리
+description: 채용·면접·시험·업무 가운데 실제 말하기, 녹화, 과제 설명, 온라인 응시처럼 준비 공간이 필요한 사례만 출처와 함께 정리합니다.
 permalink: /cases/
 extra_css: /styles/case-archive.css
-extra_css_version: 20260817-7
+extra_css_version: 20260820-1
 breadcrumbs:
-  - label: 사례 DB
+  - label: 실전 준비 사례
 ---
 
 <main class="about-page">
   <section id="home" class="case-archive-hero">
     <div class="section-inner case-archive-shell">
-      <p class="section-label">Verified Cases Database</p>
-      <h1 class="section-title">바른자리 사례 데이터베이스</h1>
-      <p class="section-desc">검색 유입을 위한 단순 뉴스 모음이 아니라, 실제 사용 준비와 연결되는 사례를 출처와 최종 확인일을 기준으로 축적합니다.</p>
-      <div class="hero-btns case-archive-back" aria-label="사례 데이터베이스 보기 방식">
-        <a href="{{ '/cases/' | relative_url }}" class="btn-primary" aria-current="page">검증 사례</a>
-        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-outline">기업별</a>
-        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별</a>
+      <p class="section-label">Real Preparation Cases</p>
+      <h1 class="section-title">실전 준비 사례</h1>
+      <p class="section-desc"><strong>바른자리는 채용공고나 뉴스를 모으는 사이트가 아닙니다.</strong> 실제 전형과 중요한 일정 가운데 말하기, 녹화, 발표·과제 설명, 온라인 응시처럼 <strong>방해받지 않는 준비 시간이 필요한 사례</strong>만 선별해 정리합니다.</p>
+      <div class="about-quote"><p>사례를 다루는 기준은 “어디가 채용하는가”가 아니라 <strong>“이 상황에서 실제로 무엇을 연습하고 준비해야 하는가”</strong>입니다.</p></div>
+      <div class="hero-btns case-archive-back" aria-label="실전 준비 사례 보기 방식">
+        <a href="{{ '/cases/' | relative_url }}" class="btn-primary" aria-current="page">실전 준비 사례</a>
+        <a href="{{ '/cases/companies/' | relative_url }}" class="btn-outline">기업별 보기</a>
+        <a href="{{ '/cases/jobs/' | relative_url }}" class="btn-outline">직무별 보기</a>
       </div>
     </div>
   </section>
@@ -27,8 +28,8 @@ breadcrumbs:
 
   {% include cases-list.html
     section_id='case-database'
-    eyebrow='All Cases'
-    title='전체 검증 사례'
-    intro='직무나 기업에 묶이지 않는 공통 데이터베이스입니다. 각 사례는 동일한 스키마로 관리되어 기업별·직무별 페이지와 관련 허브·글에서 다시 사용할 수 있습니다.'
+    eyebrow='Preparation Cases'
+    title='실제 준비와 연결되는 사례'
+    intro='공개된 전형·일정 중 바른자리의 말하기·녹화·과제 설명·온라인 응시 준비와 직접 연결되는 사례만 선별합니다. 채용정보 자체보다 필요한 준비 행동과 공식 출처를 확인하는 용도입니다.'
   %}
 </main>
