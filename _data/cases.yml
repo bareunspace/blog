@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-08-17
+updated_at: 2026-08-19
 
 cases:
   - id: cj-2026-fall-preparation
@@ -258,6 +258,83 @@ cases:
       title: 이스타항공, 객실승무원 30명 채용…목소리 크기도 측정
       url: https://www.yna.co.kr/amp/view/AKR20260803036100003
       published_at: "2026-08-03 09:29"
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
+  - id: bucheon-2026-08-public-job-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 부천시
+    company_slug: bucheon-city
+    title: 2027년 개별주택가격조사 기간제근로자 · 면접시험 공고 사례
+    summary: 부천시 공식 채용정보 게시판에서 2026년 8월 6일 서류전형 합격자와 면접시험 시행 공고가 확인된 지역 공공채용 사례입니다. 공공기관 면접을 앞두고 지원 동기, 업무 이해, 민원·협업 상황에 대한 답변을 실제 목소리로 정리하는 연습과 연결할 수 있습니다.
+
+    published_at: 2026-08-06
+    verified_at: 2026-08-19
+
+    application:
+      start: null
+      end: null
+      period_label: 2026년 8월 6일 면접시험 시행 공고 확인
+      hiring_size: 기간제근로자
+      roles: 개별주택가격조사 관련 업무
+
+    selection:
+      process_label: 서류전형 → 면접시험
+      interview_focus: 공공기관 지원 동기, 담당 업무 이해, 민원·협업 상황에 대한 설명 연습
+      stages:
+        - 서류전형
+        - 면접시험
+
+    signals:
+      situation_interview: true
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: null
+      pt_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 부천 지역의 실제 공공채용 면접 사례로, 지역 기반 면접 수요와 직접 연결되고 지원 동기·업무 이해·상황 대응을 말로 연습하는 사용 상황과 잘 맞아 선정했습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - public-sector-interview
+        - situational-response
+      practice_points:
+        - 지원 동기를 30초·60초 버전으로 각각 말해보기
+        - 담당 업무를 본인 경험과 연결해 설명해보기
+        - 민원·협업 상황을 가정해 판단 기준과 대응 방식을 말해보기
+        - 휴대폰으로 답변을 녹화해 말의 속도와 반복 표현을 확인하기
+      excluded:
+        - 실제 부천시 면접 질문을 보유하거나 제공한다는 표현
+        - 부천시와 제휴되었다는 표현
+        - 채용 합격이나 평가 결과를 보장하는 표현
+
+    notes:
+      - 2026년 8월 6일 기준 서류전형 합격자와 면접시험 시행 공고가 확인된 사례입니다.
+      - 현재 진행 중인 채용으로 오해하지 않도록 과거 검증 사례로 표시합니다.
+      - 향후 부천시 신규 채용공고는 별도로 다시 확인해야 합니다.
+
+    source:
+      publisher: 부천시
+      title: 2027년 개별주택가격조사 기간제근로자 서류전형 합격자 및 면접시험 시행 공고
+      checked_at: 2026-08-19
 
     related:
       url: /posts/interview-answer-practice/
