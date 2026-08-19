@@ -218,7 +218,7 @@ script_version: 20260711-4
   <section id="how-to-use">
     <div class="section-inner">
       <h2 class="section-title">바른자리 이용 안내</h2>
-      <p class="section-desc">바른자리는 신중동역 인근에서 1~6인이 공간 전체를 단독으로 이용할 수 있는 프라이빗 공간대여 서비스입니다.</p>
+      <p class="section-desc">바른자리는 신중동역 인근에서 1~8인이 공간 전체를 단독으로 이용할 수 있는 프라이빗 공간대여 서비스입니다.</p>
       <div class="about-principle-grid" aria-label="바른자리 활용 목적">
         <article class="about-principle-item" data-step="01">
           <h3>면접·자기소개 연습</h3>

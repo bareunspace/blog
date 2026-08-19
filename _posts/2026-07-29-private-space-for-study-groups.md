@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간
-description: 카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞습니다. 부천 신중동에서 2~6명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 소개합니다.
+description: 카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞습니다. 부천 신중동에서 2~8명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 소개합니다.
 category: 스터디룸
 hub_series: study
 hub_section: related
@@ -36,7 +36,7 @@ script_version: 20260711-4
 ---
 
 <main class="about-page">
-  <section id="home"><div class="section-inner"><p class="section-label">Private Space for Study Groups</p><h1 class="section-title">2인 이상 스터디 · 소모임,<br />프라이빗 공간이 더 잘 맞는 7가지 순간</h1><p class="section-desc">카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞을 수 있습니다. 부천 신중동에서 2~6명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 정리했습니다.</p><div class="hero-btns"><a href="#seven-moments" class="btn-primary">7가지 순간 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div></div></section>
+  <section id="home"><div class="section-inner"><p class="section-label">Private Space for Study Groups</p><h1 class="section-title">2인 이상 스터디 · 소모임,<br />프라이빗 공간이 더 잘 맞는 7가지 순간</h1><p class="section-desc">카페에서도 모임은 가능하지만, 말하기 연습과 발표, 회의, 과제처럼 서로 의견을 나누고 결과를 만들어야 할 때는 프라이빗 공간이 더 잘 맞을 수 있습니다. 부천 신중동에서 2~8명이 함께 이용할 수 있는 스터디·소모임 공간 활용법을 정리했습니다.</p><div class="hero-btns"><a href="#seven-moments" class="btn-primary">7가지 순간 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div></div></section>
   {% include breadcrumb.html %}
 
   <section id="guide-visual"><div class="section-inner"><figure class="article-hero-visual"><img class="article-hero-full" src="/images/private-space-for-study-groups.webp" alt="2인 이상 스터디와 소모임에 어울리는 프라이빗 공간" loading="eager" width="1672" height="941" /><figcaption>함께 말하고, 연습하고, 결과를 만들어야 하는 모임일수록 독립된 공간의 차이가 더 크게 느껴집니다.</figcaption></figure></div></section>

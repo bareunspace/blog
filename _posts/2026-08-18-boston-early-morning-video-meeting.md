@@ -135,9 +135,9 @@ faq:
     <div class="section-inner">
       <p class="section-label">Private Workspace</p>
       <h2 class="section-title">부천·신중동에서<br />새벽 화상회의 장소를 찾는다면</h2>
-      <p class="section-desc">바른자리는 신중동역 도보 1분, 1층에 있는 프라이빗 공간입니다. 예약한 시간 동안 1~6인이 단독으로 이용하며 Wi-Fi, 테이블과 의자, 콘센트·멀티탭, 링라이트를 사용할 수 있습니다.</p>
+      <p class="section-desc">바른자리는 신중동역 도보 1분, 1층에 있는 프라이빗 공간입니다. 예약한 시간 동안 1~8인이 단독으로 이용하며 Wi-Fi, 테이블과 의자, 콘센트·멀티탭, 링라이트를 사용할 수 있습니다.</p>
       <div class="guide-summary-grid">
-        <article class="guide-summary-card"><span>1~6인</span><h3>한 팀 단독 이용</h3><p>혼자 하는 해외 미팅부터 소규모 팀 화상회의까지 예약할 수 있습니다.</p></article>
+        <article class="guide-summary-card"><span>1~8인</span><h3>한 팀 단독 이용</h3><p>혼자 하는 해외 미팅부터 소규모 팀 화상회의까지 예약할 수 있습니다.</p></article>
         <article class="guide-summary-card"><span>24시간</span><h3>시간에 맞춰 이용</h3><p>새벽 일정은 대응 가능한 시간에 예약과 출입 안내를 미리 확인해 주세요.</p></article>
         <article class="guide-summary-card"><span>10,000원</span><h3>현재 1시간 요금</h3><p>기본 1시간부터 이용하고 이후 30분 단위로 추가할 수 있습니다.</p></article>
       </div>

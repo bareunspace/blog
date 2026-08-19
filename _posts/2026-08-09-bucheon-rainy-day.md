@@ -93,9 +93,9 @@ script_version: 20260719-1
   <section id="bareunjari"><div class="section-inner">
     <p class="section-label">Bareunjari Guide</p>
     <h2 class="section-title">신중동에서 비 오는 날이라면</h2>
-    <p class="section-desc">바른자리는 신중동역 도보 1분 거리의 1~6인 프라이빗 공간입니다. 비 오는 날에는 이동 동선이 짧다는 점이 평소보다 더 큰 장점이 됩니다.</p>
+    <p class="section-desc">바른자리는 신중동역 도보 1분 거리의 1~8인 프라이빗 공간입니다. 비 오는 날에는 이동 동선이 짧다는 점이 평소보다 더 큰 장점이 됩니다.</p>
     <div class="guide-summary-grid" aria-label="바른자리 핵심 정보">
-      <article class="guide-summary-card"><span>01</span><h2>1~6인 이용</h2><p>혼자부터 소규모까지 필요한 인원에 맞게 이용할 수 있습니다.</p></article>
+      <article class="guide-summary-card"><span>01</span><h2>1~8인 이용</h2><p>혼자부터 소규모까지 필요한 인원에 맞게 이용할 수 있습니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h2>한 팀 단독 이용</h2><p>예약한 시간 동안 한 팀이 공간을 단독으로 이용합니다.</p></article>
       <article class="guide-summary-card"><span>03</span><h2>1시간 10,000원</h2><p>현재 안내 기준이며 실제 예약 가능한 시간은 예약 페이지에서 확인할 수 있습니다.</p></article>
     </div>

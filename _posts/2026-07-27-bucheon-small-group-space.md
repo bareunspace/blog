@@ -1,14 +1,14 @@
 ---
 layout: default
-title: 부천 소모임 장소 추천 | 2~6명이 조용히 모이기 좋은 프라이빗 공간
-description: 부천에서 2~6명이 편하게 모일 수 있는 소모임 장소를 찾고 계신가요? 스터디, 독서모임, 프로젝트 회의, 취미모임까지 활용 가능한 프라이빗 공간 바른자리를 소개합니다.
+title: 부천 소모임 장소 추천 | 2~8명이 조용히 모이기 좋은 프라이빗 공간
+description: 부천에서 2~8명이 편하게 모일 수 있는 소모임 장소를 찾고 계신가요? 스터디, 독서모임, 프로젝트 회의, 취미모임까지 활용 가능한 프라이빗 공간 바른자리를 소개합니다.
 category: 미팅·상담
 hub_series: meeting
 hub_section: related
 hub_order: 1
 hub_label: 보조 활용
 hub_kicker: 스터디와 목적형 소모임까지 확장
-hub_title: 2~6명이 편하게 모이기 좋은 프라이빗 공간
+hub_title: 2~8명이 편하게 모이기 좋은 프라이빗 공간
 hub_description: 소규모 프로젝트 회의나 대화 중심 모임처럼 상담·미팅 외에도 조용한 공간이 필요한 보조 활용 사례를 정리했습니다.
 hub_tags:
   - 스터디룸
@@ -25,7 +25,7 @@ canonical: https://bareunjari.com/posts/bucheon-small-group-space/
 permalink: /posts/bucheon-small-group-space/
 date: 2026-07-26 09:00:00 +0900
 og_image: https://bareunjari.com/images/bucheon-small-group-meeting-space.webp
-og_image_alt: 부천에서 2명부터 6명까지 조용하게 모이기 좋은 프라이빗 소모임 공간
+og_image_alt: 부천에서 2명부터 8명까지 조용하게 모이기 좋은 프라이빗 소모임 공간
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/bucheon-small-group-meeting-space.webp
@@ -37,7 +37,7 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Small Group Space Guide</p>
-      <h1 class="section-title">부천 소모임 장소 추천<br />2~6명이 편하게 모이기 좋은 프라이빗 공간</h1>
+      <h1 class="section-title">부천 소모임 장소 추천<br />2~8명이 편하게 모이기 좋은 프라이빗 공간</h1>
       <p class="section-desc">스터디, 독서모임, 프로젝트 회의, 취미모임까지. 카페보다 편안하고 회의실보다 부담 없는 공간을 찾고 있다면, 신중동역 도보 1분 바른자리가 좋은 선택이 될 수 있습니다.</p>
       <div class="hero-btns">
         <a href="#choose-place" class="btn-primary">우리 모임에 맞는지 확인하기</a>
@@ -50,7 +50,7 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/bucheon-small-group-meeting-space.webp" alt="부천에서 2명부터 6명까지 조용하게 모이기 좋은 프라이빗 소모임 공간" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/bucheon-small-group-meeting-space.webp" alt="부천에서 2명부터 8명까지 조용하게 모이기 좋은 프라이빗 소모임 공간" loading="eager" width="1672" height="941" />
         <figcaption>소규모 모임은 인원수보다도, 대화에 집중할 수 있는 공간 분위기가 더 중요할 때가 많습니다.</figcaption>
       </figure>
     </div>
@@ -70,7 +70,7 @@ script_version: 20260711-4
 
   <section class="guide-summary-section" aria-label="소모임 공간 핵심 요약">
     <div class="section-inner guide-summary-grid">
-      <article class="guide-summary-card"><span>01</span><h2>2~6명에 딱 맞는 규모</h2><p>너무 넓지도 좁지도 않은 크기로, 소규모 모임이 어색하지 않고 편하게 진행되기 좋습니다.</p></article>
+      <article class="guide-summary-card"><span>01</span><h2>2~8명에 딱 맞는 규모</h2><p>너무 넓지도 좁지도 않은 크기로, 소규모 모임이 어색하지 않고 편하게 진행되기 좋습니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h2>카페보다 집중하기 좋게</h2><p>주변 음악과 소음, 자리 눈치 없이 대화와 활동 자체에 조금 더 몰입할 수 있습니다.</p></article>
       <article class="guide-summary-card"><span>03</span><h2>필요한 시간만 예약</h2><p>정기 모임이든 일회성 모임이든 시간 단위로 예약해 부담을 줄이며 이용할 수 있습니다.</p></article>
     </div>
@@ -94,7 +94,7 @@ script_version: 20260711-4
       <h2 class="section-title">매번 모임 장소를 정해야 한다면</h2>
       <p class="section-desc">모임 장소는 단순히 사람이 앉을 수 있는 곳보다, 그날 하려는 활동을 끝까지 이어갈 수 있는지가 중요합니다. 카페로 충분한 날도 있지만 아래와 같은 일정이라면 우리끼리 쓰는 공간을 따로 예약하는 편이 더 편할 수 있습니다.</p>
       <div class="about-highlight-grid" aria-label="모임 장소를 따로 예약하면 좋은 상황">
-        <article class="about-highlight-card"><h3>3~6명이 계속 이야기해야 할 때</h3><p>독서토론, 영어회화, 취업·자격증 스터디처럼 질문하고 설명하고 의견을 나누는 활동이 중심인 모임입니다.</p></article>
+        <article class="about-highlight-card"><h3>3~8명이 계속 이야기해야 할 때</h3><p>독서토론, 영어회화, 취업·자격증 스터디처럼 질문하고 설명하고 의견을 나누는 활동이 중심인 모임입니다.</p></article>
         <article class="about-highlight-card"><h3>자료와 노트북을 펼쳐야 할 때</h3><p>팀 프로젝트나 발표 준비처럼 여러 사람이 자료를 함께 보고 역할을 맞추는 일정은 한 자리를 안정적으로 쓰는 편이 좋습니다.</p></article>
         <article class="about-highlight-card"><h3>2~3시간 흐름을 끊고 싶지 않을 때</h3><p>준비부터 토론·문제풀이·피드백·정리까지 이어지는 모임이라면 처음부터 필요한 시간을 여유 있게 잡아두는 방법이 있습니다.</p></article>
       </div>
@@ -139,7 +139,7 @@ script_version: 20260711-4
       <p class="section-desc">단순히 모일 장소가 필요한 것이 아니라, 모임의 분위기와 집중도를 함께 챙기고 싶은 분들에게 더 잘 맞습니다.</p>
       <div class="about-principle-grid" aria-label="추천 대상">
         <article class="about-principle-item" data-step="01"><h3>카페 대신 조용한 공간이 필요한 분</h3><p>주변 소음과 자리 제약 없이 조금 더 차분하게 모임을 진행하고 싶은 경우에 적합합니다.</p></article>
-        <article class="about-principle-item" data-step="02"><h3>2~6명이 편하게 모일 장소를 찾는 분</h3><p>너무 큰 회의실은 부담스럽고, 일반 카페 좌석은 불편하게 느껴지는 소규모 인원에 잘 맞습니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>2~8명이 편하게 모일 장소를 찾는 분</h3><p>너무 큰 회의실은 부담스럽고, 일반 카페 좌석은 불편하게 느껴지는 소규모 인원에 잘 맞습니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>정기 스터디 운영자</h3><p>매주 같은 시간에 모여 공부하거나 토론해야 한다면, 안정적인 공간이 모임 운영을 훨씬 수월하게 만듭니다.</p></article>
         <article class="about-principle-item" data-step="04"><h3>프로젝트 회의를 자주 하는 팀</h3><p>기획 회의, 역할 조율, 발표 준비 등 실무형 대화가 많은 팀에게 특히 효율적입니다.</p></article>
         <article class="about-principle-item" data-step="05"><h3>독서모임과 취미모임 운영자</h3><p>대화와 교류가 중심인 커뮤니티 모임은 공간 분위기에 따라 만족도가 크게 달라질 수 있습니다.</p></article>
