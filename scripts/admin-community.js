@@ -13,5 +13,6 @@
   loadScript(`/scripts/admin-community-core.js?v=${cacheKey}`)
     .then(() => loadScript(`/scripts/admin-reservation-name.js?v=${cacheKey}`))
     .then(() => loadScript(`/scripts/admin-reservation-purpose.js?v=${cacheKey}`))
+    .then(() => loadScript(`/scripts/admin-reservation-name-search.js?v=${cacheKey}`))
     .catch((error) => console.error('admin dashboard script load failed', error));
 })();
