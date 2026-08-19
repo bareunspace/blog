@@ -55,10 +55,9 @@ script_version: 20260711-4
   <section id="why-this-case" class="guide-summary-section" aria-label="이 채용 사례에서 읽을 수 있는 평가 패턴">
     <div class="section-inner">
       <p class="section-label">Hiring Pattern</p>
-      <h2 class="section-title">이 공고에서 봐야 할 것은 ‘채용 소식’보다 평가 방식입니다</h2>
-      <p class="section-desc"><strong>바른자리는 채용공고를 모으는 사이트가 아닙니다.</strong> 기업이 실제 전형에서 지원자에게 무엇을 직접 말하고, 설명하고, 수행하도록 요구하는지를 봅니다. 이런 패턴을 파악해야 최근 채용 방식에 맞춰 준비 방법도 바꿀 수 있기 때문입니다.</p>
-      <div class="about-quote"><p><strong>이 사례가 보여주는 변화는 ‘결과물만 보여주기 → 판단 과정까지 설명하기’입니다.</strong> 공식 공고에는 사전과제가 포함된 인터뷰가 명시되어 있고, 직무 역량에는 머릿속의 이미지와 연출 의도를 구체적인 언어로 표현하는 능력이 강조되어 있습니다.</p></div>
-      <p class="section-desc">따라서 이 글의 목적은 모집인원이나 기업소개를 정리하는 것이 아닙니다. 지원자가 자신의 작업 의도, AI 활용 과정, 선택 이유와 시행착오를 <strong>실제로 말로 설명해보는 준비</strong>가 왜 필요한지 보여주고, 그 연습 방법을 정리하는 데 있습니다.</p>
+      <h2 class="section-title">이 사례가 보여주는 변화</h2>
+      <div class="about-quote"><p><strong>결과물만 보여주기 → 판단 과정까지 설명하기.</strong> 공식 공고에는 사전과제가 포함된 인터뷰가 명시되어 있고, 직무 역량에는 머릿속의 이미지와 연출 의도를 구체적인 언어로 표현하는 능력이 강조되어 있습니다.</p></div>
+      <p class="section-desc">그래서 준비할 때도 작업 결과만 정리하기보다 <strong>연출 의도, AI 활용 과정, 선택 이유와 시행착오를 실제로 말해보는 연습</strong>까지 해두는 편이 좋습니다.</p>
       <div class="hero-btns"><a href="/cases/" class="btn-outline">최근 채용·인터뷰 패턴 더 보기 →</a></div>
     </div>
   </section>
