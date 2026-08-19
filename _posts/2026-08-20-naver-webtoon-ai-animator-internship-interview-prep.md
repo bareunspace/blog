@@ -20,7 +20,7 @@ tags:
   - 면접준비
 canonical: https://bareunjari.com/posts/naver-webtoon-ai-animator-internship-interview-prep/
 permalink: /posts/naver-webtoon-ai-animator-internship-interview-prep/
-date: 2026-08-20 07:00:00 +0900
+date: 2026-08-20 06:30:00 +0900
 og_image: https://bareunjari.com/images/interview-answer-practice.webp
 og_image_alt: 네이버웹툰 AI 애니메이션 제작 인턴십 인터뷰를 앞두고 작업 경험을 소리 내어 설명하는 연습 장면
 og_image_width: 1672
