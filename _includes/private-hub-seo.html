@@ -1,20 +1,3 @@
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var hub = document.querySelector('.private-hub');
-  if (!hub) return;
-
-  var selector = document.getElementById('situation-selector');
-  if (selector && !document.getElementById('private-quick-answer')) {
-    var quick = document.createElement('section');
-    quick.id = 'private-quick-answer';
-    quick.className = 'guide-summary-section private-surface';
-    quick.setAttribute('aria-label', '프라이빗시간 빠른 답변');
-    quick.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Quick Answer</p><h2 class="section-title">프라이빗시간이란 무엇인가요?</h2><p><strong>프라이빗시간은 공간 자체보다 다른 사람의 시선과 방해에서 벗어나 혼자 또는 함께 온전히 사용할 시간을 확보하는 것입니다.</strong> 바른자리는 부천 신중동에서 혼자 쉬기, 생각 정리, 둘만의 대화, 조용한 데이트처럼 필요한 시간만 예약해 사용하는 프라이빗 공간입니다.</p></div></div>';
-    selector.parentNode.insertBefore(quick, selector);
-  }
-});
-</script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
