@@ -5,27 +5,29 @@ permalink: /admin-interview-experiences.html
 title: 면접 경험 관리자
 robots: noindex,nofollow
 sitemap: false
-script_version: 20260820-1
+script_version: 20260820-2
 ---
 <link rel="stylesheet" href="{{ '/styles/admin-mobile.css' | relative_url }}?v=20260819-2">
 <style>
   .interview-admin-toolbar{display:flex;flex-wrap:wrap;gap:.7rem;align-items:end;margin-top:1rem}
   .interview-admin-toolbar .admin-filter{min-width:150px}
   .interview-admin-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}
-  .interview-admin-stat{padding:1rem;border:1px solid rgba(45,106,79,.12);border-radius:14px;background:#f8fbf9}
-  .interview-admin-stat span{display:block;color:#6f7e75;font-size:.76rem;font-weight:700}.interview-admin-stat strong{display:block;margin-top:.25rem;color:#244b38;font-size:1.5rem}
-  .interview-admin-list{display:grid;gap:1rem;margin-top:1rem}
+  .interview-admin-stat{padding:.9rem 1rem;border:1px solid rgba(45,106,79,.12);border-radius:14px;background:#f8fbf9}
+  .interview-admin-stat span{display:block;color:#6f7e75;font-size:.73rem;font-weight:700}.interview-admin-stat strong{display:block;margin-top:.22rem;color:#244b38;font-size:1.45rem}
+  .interview-admin-list{display:grid;gap:.8rem;margin-top:1rem}
   .interview-admin-card{padding:1rem;border:1px solid rgba(45,106,79,.14);border-radius:16px;background:#fff}
   .interview-admin-card-head{display:flex;justify-content:space-between;gap:1rem}.interview-admin-card h3{margin:.15rem 0 0;font-size:1rem;color:#244b38}.interview-admin-card h3 span{color:#718078;font-weight:600}
-  .interview-admin-meta{margin:0;color:#87928c;font-size:.72rem}.interview-admin-badges{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
-  .interview-admin-state,.interview-admin-consent,.interview-admin-live{display:inline-flex;align-items:center;padding:.3rem .5rem;border-radius:999px;font-size:.7rem;font-weight:800;background:#eef3f0;color:#586860}
+  .interview-admin-meta{margin:0;color:#87928c;font-size:.7rem}.interview-admin-badges{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:flex-end}
+  .interview-admin-state,.interview-admin-consent,.interview-admin-live{display:inline-flex;align-items:center;padding:.28rem .48rem;border-radius:999px;font-size:.68rem;font-weight:800;background:#eef3f0;color:#586860}
   .interview-admin-state.is-approved,.interview-admin-live,.interview-admin-consent.is-yes{background:#edf7f0;color:#315f48}.interview-admin-state.is-rejected,.interview-admin-consent.is-no{background:#f6f2f1;color:#7f605a}
-  .interview-admin-facts{display:grid;grid-template-columns:180px 1fr 1fr;gap:.75rem;margin-top:1rem}.interview-admin-facts>div,.interview-admin-original{padding:.8rem;border-radius:12px;background:#f8faf9}.interview-admin-facts span,.interview-admin-original>span{display:block;color:#748078;font-size:.72rem;font-weight:800;margin-bottom:.35rem}
-  .interview-admin-tags{display:flex;flex-wrap:wrap;gap:.35rem}.interview-admin-tag{padding:.26rem .45rem;border-radius:999px;background:#eef5f1;color:#3c654f;font-size:.7rem;font-weight:700}.interview-admin-empty-inline{color:#9aa39e;font-size:.75rem}
+  .interview-admin-scan-row{display:grid;grid-template-columns:150px 1fr;gap:.75rem;margin-top:.8rem;padding:.8rem;border-radius:12px;background:#f8faf9}.interview-admin-scan-row>div>span{display:block;color:#748078;font-size:.7rem;font-weight:800;margin-bottom:.3rem}
+  .interview-admin-tags{display:flex;flex-wrap:wrap;gap:.35rem}.interview-admin-tag{padding:.24rem .44rem;border-radius:999px;background:#eef5f1;color:#3c654f;font-size:.69rem;font-weight:700}.interview-admin-empty-inline{color:#9aa39e;font-size:.73rem}
+  .interview-admin-details{margin-top:.7rem;border-top:1px solid rgba(45,106,79,.09);padding-top:.55rem}.interview-admin-details>summary{cursor:pointer;color:#35664d;font-size:.78rem;font-weight:800;list-style:none}.interview-admin-details>summary::-webkit-details-marker{display:none}.interview-admin-details>summary::after{content:' +';font-weight:900}.interview-admin-details[open]>summary::after{content:' −'}.interview-admin-detail-body{padding-top:.75rem}
+  .interview-admin-facts{display:grid;grid-template-columns:1fr;gap:.75rem}.interview-admin-facts>div,.interview-admin-original{padding:.8rem;border-radius:12px;background:#f8faf9}.interview-admin-facts span,.interview-admin-original>span{display:block;color:#748078;font-size:.72rem;font-weight:800;margin-bottom:.35rem}
   .interview-admin-copy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:.75rem}.interview-admin-original p{margin:0;color:#44564d;line-height:1.65;white-space:pre-wrap}
-  .interview-admin-editor{display:grid;grid-template-columns:1fr 2fr;gap:.75rem;margin-top:.85rem}.interview-admin-editor .admin-field:last-child{grid-column:1/-1}.interview-admin-editor textarea{min-height:88px}
-  .interview-admin-approval-hint{margin:.75rem 0 0;color:#66756c;font-size:.76rem}.interview-admin-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}.admin-btn-danger{background:#fff;border-color:#c9aaa4;color:#86574f}
-  @media(max-width:760px){.interview-admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.interview-admin-card-head{flex-direction:column}.interview-admin-badges{justify-content:flex-start}.interview-admin-facts,.interview-admin-copy-grid,.interview-admin-editor{grid-template-columns:1fr}.interview-admin-editor .admin-field:last-child{grid-column:auto}.interview-admin-actions .admin-btn{flex:1 1 calc(50% - .5rem)}}
+  .interview-admin-editor{display:grid;grid-template-columns:1fr 2fr;gap:.75rem;margin-top:.85rem}.interview-admin-note-editor{grid-template-columns:1fr}.interview-admin-editor textarea{min-height:88px}
+  .interview-admin-approval-hint{margin:.7rem 0 0;color:#66756c;font-size:.74rem}.interview-admin-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}.admin-btn-danger{background:#fff;border-color:#c9aaa4;color:#86574f}
+  @media(max-width:760px){.interview-admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.interview-admin-card-head{flex-direction:column}.interview-admin-badges{justify-content:flex-start}.interview-admin-scan-row,.interview-admin-copy-grid,.interview-admin-editor{grid-template-columns:1fr}.interview-admin-actions .admin-btn{flex:1 1 calc(50% - .5rem)}}
 </style>
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
   <section class="admin-card admin-session-card">
@@ -34,17 +36,17 @@ script_version: 20260820-1
   </section>
 
   <section class="admin-card admin-card-wide" id="adminInterviewExperiencesRoot">
-    <div class="admin-section-head"><div><p class="admin-label">Review Queue</p><h2 class="admin-title">새 면접 경험 확인</h2><p class="admin-desc">사용자가 남긴 원문을 확인하고, 공개 동의가 있는 경험만 익명 문구로 정리해 승인합니다. 공개 동의가 없으면 내부 분석용으로만 검토 완료 처리합니다.</p></div></div>
+    <div class="admin-section-head"><div><p class="admin-label">Review Queue</p><h2 class="admin-title">면접 경험 확인</h2><p class="admin-desc">새 경험은 핵심 정보만 먼저 보고, 필요한 경우 상세 내용을 펼쳐 검수합니다. 공개 동의가 있는 경험만 공개용 문구를 만들 수 있습니다.</p></div></div>
 
     <div class="interview-admin-stats">
-      <div class="interview-admin-stat"><span>검토 전</span><strong data-interview-stat-pending>0</strong></div>
+      <div class="interview-admin-stat"><span>새 경험</span><strong data-interview-stat-pending>0</strong></div>
       <div class="interview-admin-stat"><span>검토 완료</span><strong data-interview-stat-approved>0</strong></div>
-      <div class="interview-admin-stat"><span>공개 가능</span><strong data-interview-stat-public>0</strong></div>
-      <div class="interview-admin-stat"><span>공개 제외</span><strong data-interview-stat-rejected>0</strong></div>
+      <div class="interview-admin-stat"><span>공개 후보</span><strong data-interview-stat-public>0</strong></div>
+      <div class="interview-admin-stat"><span>제외</span><strong data-interview-stat-rejected>0</strong></div>
     </div>
 
     <div class="interview-admin-toolbar">
-      <label class="admin-filter">상태<select data-interview-admin-status-filter><option value="pending">검토 전</option><option value="approved">검토 완료</option><option value="rejected">공개 제외</option><option value="all">전체</option></select></label>
+      <label class="admin-filter">상태<select data-interview-admin-status-filter><option value="pending">새 경험</option><option value="approved">검토 완료</option><option value="rejected">제외</option><option value="all">전체</option></select></label>
       <label class="admin-filter">공개 동의<select data-interview-admin-public-filter><option value="all">전체</option><option value="yes">동의 있음</option><option value="no">동의 없음</option></select></label>
       <label class="admin-filter">검색<input type="search" data-interview-admin-query-filter placeholder="기업명·직무·내용"></label>
       <button class="admin-btn admin-btn-outline" type="button" data-interview-admin-refresh>새로고침</button>
