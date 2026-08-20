@@ -20,39 +20,5 @@ products:
     minimum_duration: "1시간"
     extra_30min_price: 5000
     extra_30min_label: "30분 추가 5,000원"
-    hours: "06:00~24:00"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
-
-  interview_2h:
-    name: "면접·발표 연습 - 2시간"
-    short_name: "면접·발표 2시간"
-    price: 20000
-    price_label: "20,000원 / 2시간"
-    duration: "2시간"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
-
-  study_3h:
-    name: "스터디·소모임 - 3시간"
-    short_name: "스터디·소모임 3시간"
-    price: 30000
-    price_label: "30,000원 / 3시간"
-    duration: "3시간"
-    recommended_people: "3~6명"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
-
-  overnight:
-    name: "심야 집중 공간대여 - 올나잇 6시간"
-    short_name: "올나잇 6시간"
-    price: 30000
-    price_label: "30,000원 / 6시간"
-    duration: "6시간"
-    hours: "00:00~06:00"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7928660"
-    lodging: false
-    note: "숙박 상품이 아닌 심야 작업·공부·회의·연습용 공간 상품"
-
-common:
-  parking: "등록 시 주차 2시간 무료"
-  booking_channel: "네이버 예약"
-  entry_guide: "예약 확정 후 입실 안내 확인"
-  private_use_label: "예약 시간 동안 공간 단독 이용"
+    hours: "24시간"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159
