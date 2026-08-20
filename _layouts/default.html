@@ -41,8 +41,6 @@
   {% if page.collection == 'posts' and page.hub_series == 'study' %}{% include study-post-enhancements.html %}{% endif %}
   {% if page.collection == 'posts' and page.category == '면접준비' %}{% include interview-post-enhancements.html %}{% endif %}
   {% if page.collection == 'posts' and page.category == '프라이빗시간' %}{% include private-time-post-enhancements.html %}{% endif %}
-  {% if page.collection == 'posts' and page.category == '연습·리허설' %}{% include practice-post-enhancements.html %}{% endif %}
-
   {% if page.category %}
     {% unless content contains 'class="post-related"' %}{% include related-posts.html %}{% endunless %}
   {% endif %}
