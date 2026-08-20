@@ -1,5 +1,5 @@
 (() => {
-  const FREE_QUESTIONS = 3;
+  const FREE_QUESTIONS = 2;
   const STORAGE_KEY = 'bareunjari_ai_interview_access_date';
   const ENDPOINT = 'https://nhiyxgcrjdzdiquutxml.supabase.co/functions/v1/ai-interview-access';
   const API_KEY = 'sb_publishable_kqB-Q3vuJwrd8cvEzbcp7g_a6QBxf_u';
@@ -43,7 +43,7 @@
   const modal = document.createElement('div');
   modal.className = 'aii-access-modal';
   modal.hidden = true;
-  modal.innerHTML = `<div class="aii-access-dialog" role="dialog" aria-modal="true" aria-labelledby="aiiAccessTitle"><span class="aii-access-badge">무료 연습 3문항 완료</span><p class="aii-access-kicker">BARUNJARI ONSITE ACCESS</p><h3 id="aiiAccessTitle">4번째 질문부터는 바른자리 예약코드로 계속할 수 있어요.</h3><p class="aii-access-copy">바른자리 이용 중이라면 해당 월·요일에 안내된 6자리 예약코드를 입력하세요. 인증한 날에는 문항 수 제한 없이 면접 연습을 계속 이용할 수 있습니다.</p><form data-aii-access-form><input class="aii-access-code" data-aii-access-code inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-label="바른자리 예약코드" placeholder="000000" required><p class="aii-access-status" data-aii-access-status aria-live="polite"></p><div class="aii-access-actions"><button class="btn btn-primary" type="submit">예약코드 인증</button><a class="btn btn-outline" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">면접 연습 공간 예약</a></div><button class="aii-access-close" type="button" data-aii-access-close>지금은 3문항까지만 연습하기</button></form></div>`;
+  modal.innerHTML = `<div class="aii-access-dialog" role="dialog" aria-modal="true" aria-labelledby="aiiAccessTitle"><span class="aii-access-badge">무료 연습 2문항 완료</span><p class="aii-access-kicker">BARUNJARI ONSITE ACCESS</p><h3 id="aiiAccessTitle">3번째 질문부터는 바른자리 예약코드로 계속할 수 있어요.</h3><p class="aii-access-copy">바른자리 이용 중이라면 해당 월·요일에 안내된 6자리 예약코드를 입력하세요. 인증한 날에는 문항 수 제한 없이 면접 연습을 계속 이용할 수 있습니다.</p><form data-aii-access-form><input class="aii-access-code" data-aii-access-code inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-label="바른자리 예약코드" placeholder="000000" required><p class="aii-access-status" data-aii-access-status aria-live="polite"></p><div class="aii-access-actions"><button class="btn btn-primary" type="submit">예약코드 인증</button><a class="btn btn-outline" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">면접 연습 공간 예약</a></div><button class="aii-access-close" type="button" data-aii-access-close>지금은 2문항까지만 연습하기</button></form></div>`;
   document.body.appendChild(modal);
 
   const form = modal.querySelector('[data-aii-access-form]');
