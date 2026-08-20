@@ -20,7 +20,7 @@ products:
     minimum_duration: "1시간"
     extra_30min_price: 5000
     extra_30min_label: "30분 추가 5,000원"
-    hours: "06:00~24:00"
+    hours: "24시간"
     booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
 
   interview_2h:
