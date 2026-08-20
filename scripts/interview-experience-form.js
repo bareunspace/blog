@@ -3,6 +3,16 @@
   const form = document.querySelector('[data-interview-experience-form]');
   if (!configNode || !form) return;
 
+  const experienceSection = document.getElementById('interview-experience');
+  const experienceLabel = experienceSection?.querySelector('.interview-experience-summary-copy .section-label');
+  if (experienceLabel) {
+    experienceLabel.textContent = 'AFTER THE INTERVIEW';
+    experienceLabel.style.color = '#35664d';
+    experienceLabel.style.fontWeight = '800';
+    experienceLabel.style.letterSpacing = '.08em';
+    experienceLabel.style.opacity = '1';
+  }
+
   let config = {};
   try { config = JSON.parse(configNode.textContent || '{}'); } catch (_) {}
   const supabaseUrl = String(config.supabaseUrl || '').replace(/\/$/, '');
