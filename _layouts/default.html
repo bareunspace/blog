@@ -20,10 +20,6 @@
     {% assign rendered_content = rendered_content | replace: '혼자 집중 학습부터 발표, 면접, 그룹 스터디까지 공부 목적에 맞춘 활용 가이드입니다.', '대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.' %}
     {% assign rendered_content = rendered_content | replace: '<li>추천 3시간</li>\n            <li>스터디</li>\n            <li>발표 연습</li>\n            <li>소모임</li>', '<li>팀플·프로젝트</li>\n            <li>그룹 스터디</li>\n            <li>1인 집중</li>' %}
     {% assign rendered_content = rendered_content | replace: '혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트를 위한 프라이빗 활용 흐름입니다.', '혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.' %}
-  {% elsif page.page_id == 'private' %}
-    {% assign rendered_content = rendered_content | replace: '<p class="section-label">Private Time Center</p>', '<p class="section-label">Personal Time</p>' %}
-    {% assign rendered_content = rendered_content | replace: '<h1 class="section-title">누구에게도 방해받지 않는<br />나만의 시간이 필요할 때</h1>', '<h1 class="section-title">프라이빗시간</h1>' %}
-    {% assign rendered_content = rendered_content | replace: '프라이빗시간 허브는 혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트처럼 외부 소음과 시선에서 벗어나고 싶은 순간을 위해 만들어졌습니다.', '혼자 쉬고 생각을 정리하는 시간, 둘만의 대화, 조용한 데이트처럼 다른 사람의 시선과 일정에서 잠시 벗어나고 싶은 순간을 위한 허브입니다.' %}
   {% endif %}
 
   {{ rendered_content }}
@@ -69,7 +65,7 @@
   {% if page.page_id == 'meeting' %}{% include meeting-hub-seo.html %}{% endif %}
   {% if page.page_id == 'study' %}{% include study-hub-seo.html %}{% endif %}
   {% if page.page_id == 'interview' %}{% include interview-hub-seo.html %}{% include interview-experience-form.html %}{% endif %}
-  {% if page.page_id == 'private' %}{% include private-hub-enhancements.html %}{% include private-hub-seo.html %}{% endif %}
+  {% if page.page_id == 'private' %}{% include private-hub-seo.html %}{% endif %}
   {% if page.page_id == 'time_space' %}{% include time-space-enhancements.html %}{% endif %}
 
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}{% include meeting-workspace-series.html %}{% endif %}
