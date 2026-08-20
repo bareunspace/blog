@@ -20,13 +20,6 @@
     {% assign rendered_content = rendered_content | replace: '혼자 집중 학습부터 발표, 면접, 그룹 스터디까지 공부 목적에 맞춘 활용 가이드입니다.', '대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.' %}
     {% assign rendered_content = rendered_content | replace: '<li>추천 3시간</li>\n            <li>스터디</li>\n            <li>발표 연습</li>\n            <li>소모임</li>', '<li>팀플·프로젝트</li>\n            <li>그룹 스터디</li>\n            <li>1인 집중</li>' %}
     {% assign rendered_content = rendered_content | replace: '혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트를 위한 프라이빗 활용 흐름입니다.', '혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.' %}
-  {% elsif page.page_id == 'interview' %}
-    {% assign rendered_content = rendered_content | replace: '<p class="section-label">Interview Prep Series</p>', '<p class="section-label">Interview</p>' %}
-    {% assign rendered_content = rendered_content | replace: '<h1 class="section-title">면접준비 가이드</h1>', '<h1 class="section-title">면접</h1>' %}
-    {% assign rendered_content = rendered_content | replace: '면접 전날 체크리스트부터 자기소개, 면접 답변 연습, 화상면접 장소, 마지막 역질문까지 순서대로 준비하세요.', '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 화상면접 환경, 면접 당일 마지막 확인까지 필요한 준비를 단계별로 골라보세요.' %}
-    {% assign rendered_content = rendered_content | replace: 'aria-label="면접준비 허브 목차"', 'aria-label="면접 허브 목차"' %}
-    {% assign rendered_content = rendered_content | replace: '<span class="guide-toc-label">면접준비 순서</span>', '<span class="guide-toc-label">면접 허브 탐색 순서</span>' %}
-    {% assign rendered_content = rendered_content | replace: '<h2 class="section-title">면접준비 시리즈</h2>', '<h2 class="section-title">면접 가이드</h2>' %}
   {% elsif page.page_id == 'private' %}
     {% assign rendered_content = rendered_content | replace: '<p class="section-label">Private Time Center</p>', '<p class="section-label">Personal Time</p>' %}
     {% assign rendered_content = rendered_content | replace: '<h1 class="section-title">누구에게도 방해받지 않는<br />나만의 시간이 필요할 때</h1>', '<h1 class="section-title">프라이빗시간</h1>' %}
@@ -75,7 +68,7 @@
 
   {% if page.page_id == 'meeting' %}{% include meeting-hub-seo.html %}{% endif %}
   {% if page.page_id == 'study' %}{% include study-hub-seo.html %}{% endif %}
-  {% if page.page_id == 'interview' %}{% include interview-hub-enhancements.html %}{% include interview-hub-seo.html %}{% include interview-experience-form.html %}{% endif %}
+  {% if page.page_id == 'interview' %}{% include interview-hub-seo.html %}{% include interview-experience-form.html %}{% endif %}
   {% if page.page_id == 'private' %}{% include private-hub-enhancements.html %}{% include private-hub-seo.html %}{% endif %}
   {% if page.page_id == 'time_space' %}{% include time-space-enhancements.html %}{% endif %}
 
