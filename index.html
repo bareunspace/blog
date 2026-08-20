@@ -18,7 +18,7 @@ script_version: 20260719-1
   <section id="home">
     <span class="badge">네이버 예약 첫 예약 10% 할인 <span id="promoCountdown">지금 적용 중</span></span>
     <h1 class="hero-title">나만의 시간을 예약하세요.</h1>
-    <p class="hero-subtitle">면접, 상담, 스터디, 회의부터 혼자만의 집중 시간까지. 예약 가능한 프라이빗 공간입니다.</p>
+    <p class="hero-subtitle">면접, 미팅·업무, 스터디·소모임부터 방해받지 않는 개인시간까지. 필요한 시간만 예약하는 프라이빗 공간입니다.</p>
     <p class="hero-desc">
       <strong>신중동역 1분, 1~8인이 단독으로 이용하는 프라이빗 공간.</strong>
       조용한 환경에서 몰입하고, 필요한 순간만 자유롭게 쓰는 공간입니다.
@@ -30,12 +30,12 @@ script_version: 20260719-1
     </div>
     <p class="hero-price">1시간 10,000원부터</p>
     <ul class="hero-points" aria-label="공간 핵심 포인트">
-      <li>화상면접 · 상담 · 회의에 적합</li>
-      <li>단체 스터디와 개인 집중시간 모두 가능</li>
+      <li>화상면접 · 고객 미팅 · 상담에 활용</li>
+      <li>소규모 스터디와 개인 집중 모두 가능</li>
       <li>예약 후 입실 비밀번호 사전 안내</li>
     </ul>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="hero_primary">오늘 빈 시간 확인하기</a>
+      <a href="{{ '/booking/' | relative_url }}" class="btn-primary" data-cta="hero_primary">오늘 빈 시간 확인하기</a>
       <a href="#space" class="btn-outline" data-cta="hero_secondary_use_case">공간 사진 보기</a>
     </div>
     <p class="hero-assurance">네이버 예약 선결제 · 입실 비밀번호 사전 안내 · 등록 시 주차 2시간 무료</p>
@@ -48,9 +48,8 @@ script_version: 20260719-1
         <p class="section-label">Space <a href="https://bareunjari.com/about.html" class="section-label-link" data-cta="space_brand_story_text">브랜드 스토리</a></p>
         <a class="blog-guide-category-link" href="https://bareunjari.com/about.html" aria-label="브랜드 스토리 바로가기" data-cta="space_brand_story">→</a>
       </div>
-      <h2 class="section-title">면접·스터디·상담·회의, 이런 순간에 필요한 프라이빗 공간</h2>
-      <p class="section-desc">스터디룸, 회의실, 화상면접 장소를 찾는 분들이 조용히 몰입할 수 있는 프라이빗 공간입니다.</p>
-      <p class="section-desc">부천 신중동에서 예약 가능한 프라이빗 공간으로, 소규모 회의부터 개인적인 일정까지 자연스럽게 활용할 수 있습니다.</p>
+      <h2 class="section-title">예약한 시간 동안, 공간 전체를 단독으로</h2>
+      <p class="section-desc">신중동역 도보 3분 · 1~8인 이용 · 다른 팀과 공간 공유 없음</p>
       <div class="space-gallery" id="gallery" aria-label="바른자리 공간 사진">
         <div class="space-gallery-track" id="galleryTrack">
           <figure class="gallery-item space-gallery-item space-gallery-featured">
@@ -103,37 +102,35 @@ script_version: 20260719-1
       <div class="space-gallery-context" aria-label="사진 아래 예약 안내">
         <div class="space-gallery-context-copy"></div>
         <div class="space-gallery-context-actions">
-          <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="space_gallery_quick_booking">사진 확인 후 바로 예약하기</a>
+          <a href="{{ '/booking/' | relative_url }}" class="btn-primary" data-cta="space_gallery_quick_booking">사진 확인 후 바로 예약하기</a>
           <a href="#about" class="space-gallery-context-link" data-cta="space_gallery_pricing">요금 먼저 보기</a>
         </div>
       </div>
       <div class="features-grid">
         <article class="feature-card feature-card-primary">
-          <a href="{{ '/interview/' | relative_url }}" class="feature-card-hitarea" aria-label="면접준비 허브 바로가기"></a>
+          <a href="{{ '/interview/' | relative_url }}" class="feature-card-hitarea" aria-label="면접 허브 바로가기"></a>
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
           <div class="feature-title-row">
-            <h3>면접준비</h3>
-            <a class="blog-guide-category-link" href="{{ '/interview/' | relative_url }}" aria-label="면접준비 허브 바로가기">→</a>
-            <span class="feature-priority" aria-label="주력 허브">추천</span>
+            <h3>면접</h3>
+            <a class="blog-guide-category-link" href="{{ '/interview/' | relative_url }}" aria-label="면접 허브 바로가기">→</a>
           </div>
-          <p>자기소개, 답변 연습, 화상면접 환경 점검까지 면접 준비 흐름을 한 번에 확인할 수 있습니다.</p>
-          <ul class="feature-quick-list" aria-label="면접준비 허브 포인트">
-            <li>추천 2시간</li>
-            <li>답변 루틴</li>
-            <li><a href="{{ '/ai-interview/' | relative_url }}" class="feature-chip-link">AI 모의면접</a></li>
+          <p>면접 연습과 화상면접 준비부터 온라인 시험 응시 환경까지, 중요한 평가를 앞둔 준비와 실전 이용을 안내합니다.</p>
+          <ul class="feature-quick-list" aria-label="면접 허브 포인트">
+            <li>면접 연습</li>
+            <li>화상면접</li>
+            <li>온라인 시험</li>
           </ul>
         </article>
 
         <article class="feature-card feature-card-primary">
-          <a href="{{ '/meeting/' | relative_url }}" class="feature-card-hitarea" aria-label="미팅·상담 허브 바로가기"></a>
+          <a href="{{ '/meeting/' | relative_url }}" class="feature-card-hitarea" aria-label="미팅·업무 허브 바로가기"></a>
           <div class="feature-icon"><svg aria-hidden="true"><use href="#i-briefcase"></use></svg></div>
           <div class="feature-title-row">
-            <h3>미팅·상담</h3>
-            <a class="blog-guide-category-link" href="{{ '/meeting/' | relative_url }}" aria-label="미팅·상담 허브 바로가기">→</a>
+            <h3>미팅·업무</h3>
+            <a class="blog-guide-category-link" href="{{ '/meeting/' | relative_url }}" aria-label="미팅·업무 허브 바로가기">→</a>
           </div>
-          <p>고객 미팅, 상담, 화상회의, 집중 업무까지 필요한 시간만 예약하는 실전 흐름입니다.</p>
-          <ul class="feature-quick-list" aria-label="미팅업무 허브 포인트">
-            <li>추천 3시간</li>
+          <p>고객 미팅, 상담, 화상회의, 집중 업무처럼 사무실이 필요한 몇 시간을 목적에 맞게 활용하는 가이드입니다.</p>
+          <ul class="feature-quick-list" aria-label="미팅·업무 허브 포인트">
             <li>고객 미팅</li>
             <li>상담</li>
             <li>집중 업무</li>
@@ -146,13 +143,13 @@ script_version: 20260719-1
           <div class="feature-title-row">
             <h3>스터디·소모임</h3>
             <a class="blog-guide-category-link" href="{{ '/study/' | relative_url }}" aria-label="스터디·소모임 허브 바로가기">→</a>
+            <span class="feature-priority" aria-label="추천 허브">추천</span>
           </div>
-          <p>혼자 집중 학습부터 발표, 면접, 그룹 스터디까지 공부 목적에 맞춘 활용 가이드입니다.</p>
+          <p>대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.</p>
           <ul class="feature-quick-list" aria-label="스터디 허브 포인트">
-            <li>추천 3시간</li>
-            <li>스터디</li>
-            <li>발표 연습</li>
-            <li>소모임</li>
+            <li>팀플·프로젝트</li>
+            <li>그룹 스터디</li>
+            <li>1인 집중</li>
           </ul>
         </article>
 
@@ -163,84 +160,67 @@ script_version: 20260719-1
             <h3>프라이빗시간</h3>
             <a class="blog-guide-category-link" href="{{ '/private/' | relative_url }}" aria-label="프라이빗시간 허브 바로가기">→</a>
           </div>
-          <p>혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트를 위한 프라이빗 활용 흐름입니다.</p>
+          <p>혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.</p>
           <ul class="feature-quick-list" aria-label="프라이빗시간 허브 포인트">
-            <li>추천 2시간</li>
-            <li>혼자 회복</li>
-            <li>둘만의 대화</li>
-            <li>실내 데이트</li>
+            <li>혼자 있는 시간</li>
+            <li>둘만의 시간</li>
+            <li>프라이버시</li>
           </ul>
         </article>
+      </div>
+      <div id="home-practice-entry" class="home-practice-entry">
+        <p><strong>직접 말하고 촬영하며 반복하는 연습이 필요한가요?</strong> 독백·대사·오디션·셀프테이프는 <a href="{{ '/practice/' | relative_url }}">연습·리허설 허브 →</a>에서 따로 안내합니다.</p>
       </div>
     </div>
   </section>
 
   <!-- ── About / Pricing ── -->
+  {% assign ops = site.data.operations %}
+  {% assign hourly = ops.products.hourly %}
+  {% assign interview = ops.products.interview_2h %}
+  {% assign study = ops.products.study_3h %}
+  {% assign overnight = ops.products.overnight %}
   <section id="about">
     <div class="section-inner">
       <div class="home-section-label-row">
         <p class="section-label">Booking</p>
-        <a class="blog-guide-category-link" href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" aria-label="네이버 예약 페이지 바로가기" data-cta="about_label_booking">→</a>
+        <a class="blog-guide-category-link" href="{{ '/booking/' | relative_url }}" aria-label="바른자리 이용시간 전체 보기" data-cta="about_label_booking">→</a>
       </div>
-      <h2 class="section-title">요금 및 예약 안내</h2>
-      <p class="section-desc">기본 1시간부터 예약 가능하며, 이용 목적에 맞는 추천 시간과 예약 방법을 함께 안내드립니다.</p>
+      <h2 class="section-title">이용 요금·상품</h2>
+      <p class="section-desc">목적별로 공간이 나뉘는 것이 아니라, 필요한 시간에 맞춰 선택하는 방식입니다. 2시간과 3시간은 집중하거나 함께 준비할 때 추천하는 이용시간입니다.</p>
       <div class="about-layout">
         <div class="pricing-cards">
-          <a href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_hourly" aria-label="1시간부터 예약하기">
+          <a href="{{ hourly.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_hourly" aria-label="1시간부터 예약하기">
             <span class="price-badge">기본 이용</span>
-            <p class="price-label">시간 단위 이용</p>
+            <p class="price-label">1시간 가볍게 시작</p>
             <p class="price-amount">10,000<span class="price-unit">원 / 시간</span></p>
-            <p class="price-desc">· 기본 1시간부터 이용 가능<br />· 30분 추가 시 5,000원</p>
-            <p class="price-desc">· 24시간 이용 가능</p>
-
+            <p class="price-desc">개인 공부 · 업무 · 짧은 미팅 · 상담 · 개인시간</p>
+            <span class="price-card-cta">1시간부터 예약하기 →</span>
           </a>
-          <a href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer" class="price-card is-new" data-cta="price_study_group" aria-label="3시간부터 예약하기">
-            <span class="price-badge">3~6명 추천</span>
-            <p class="price-label">3시간 팀 스터디 · 소모임</p>
+          <a href="{{ interview.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card recommended" data-cta="price_interview_2h" aria-label="2시간 예약하기">
+            <span class="price-badge">추천 이용시간</span>
+            <p class="price-label">2시간 집중 준비</p>
+            <p class="price-amount">20,000<span class="price-unit">원 / 2시간</span></p>
+            <p class="price-desc">면접 · 발표 · 스피킹 · 리허설 · 집중 작업</p>
+            <span class="price-card-cta">2시간 예약하기 →</span>
+          </a>
+          <a href="{{ study.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card recommended recommended-primary" data-cta="price_study_3h" aria-label="3시간 예약하기">
+            <span class="price-badge">추천 이용시간</span>
+            <p class="price-label">3시간 함께 준비</p>
             <p class="price-amount">30,000<span class="price-unit">원 / 3시간</span></p>
-            <p class="price-desc">· 팀 스터디 · 팀플 · 발표 준비 · 영어 스터디<br />· 말하고 토론하며 함께 준비하는 프라이빗 팀 공간</p>
+            <p class="price-desc">스터디 · 팀플 · 프로젝트 · 토론 · 소모임</p>
+            <span class="price-card-cta">3시간 예약하기 →</span>
+          </a>
+          <a href="{{ overnight.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_overnight" aria-label="올나잇 6시간 예약하기">
+            <span class="price-badge">심야 집중</span>
+            <p class="price-label">올나잇 6시간</p>
+            <p class="price-amount">30,000<span class="price-unit">원 / 6시간</span></p>
+            <p class="price-desc">00:00~06:00 · 과제 · 작업 · 공부 · 해외 화상회의</p>
+            <span class="price-card-cta">올나잇 예약하기 →</span>
           </a>
         </div>
-        <figure class="about-photo">
-          <img src="images/bareunjari-main-table-with-mirror.webp" alt="바른자리 테이블과 기본 장비가 보이는 실제 공간" loading="lazy" width="1536" height="1152" />
-        </figure>
       </div>
-      <div class="policy-summary">
-        <h3 class="policy-title">이용 안내 핵심 요약</h3>
-        <div class="policy-grid">
-          <article class="policy-card">
-            <h4>예약 및 결제</h4>
-            <p>네이버 예약(기본 1시간)으로 빠르게 예약하고, 결제는 선결제로 깔끔하게 완료됩니다.</p>
-          </article>
-          <article class="policy-card">
-            <h4>출입 및 주차</h4>
-            <p>이용 전 비밀번호를 네이버톡톡으로 안내드리며, 등록 시 주차 2시간 무료 적용이 가능합니다.</p>
-          </article>
-          <article class="policy-card">
-            <h4>이용 시간</h4>
-            <p>24시간 이용 가능합니다. 오후 11시~오전 6시는 실시간 문의 및 현장 대응이 어렵습니다. 야간 이용 예정이라면 오후 11시 이전에 예약하고 출입 방법을 확인해 주세요.</p>
-          </article>
-        </div>
-        <details class="policy-disclosure">
-          <summary>예약 전에 꼭 확인할 내용 보기</summary>
-          <div class="policy-hidden-grid">
-            <article class="policy-card">
-              <h4>환불 기준</h4>
-              <p>이용 2일 전 100%, 전날 50%, 당일 환불 불가입니다.</p>
-            </article>
-            <article class="policy-card">
-              <h4>출입 및 보안</h4>
-              <p>이용 전 비밀번호를 네이버톡톡으로 보내드리며, 공용 공간은 안전을 위해 24시간 보안카메라를 운영합니다.</p>
-            </article>
-            <article class="policy-card">
-              <h4>이용 규칙</h4>
-              <p>쓰레기 분리배출/반려동물 불가/퇴실 전 잠금 및 에어컨 전원 확인이 필요합니다.</p>
-            </article>
-          </div>
-        </details>
-        <p class="policy-footnote">상세 규정은 <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer">네이버 예약 페이지</a>에서 최신 기준으로 확인해 주세요.</p>
-      </div>
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="about-cta" data-cta="about_primary">바로 예약하기</a>
+      <a href="{{ '/booking/' | relative_url }}" class="about-cta" data-cta="about_booking_guide">예약하기 →</a>
     </div>
   </section>
 
@@ -261,10 +241,11 @@ script_version: 20260719-1
       {% if onsite_posts.size > 0 %}
       <div class="blog-guide-filters" id="homeGuideFilters" aria-label="실전 가이드 카테고리 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
-        <button type="button" class="blog-guide-filter" data-category="면접준비" aria-pressed="false">면접준비</button>
+        <button type="button" class="blog-guide-filter" data-category="시간·공간" aria-pressed="false">시간·공간 저널</button>
+        <button type="button" class="blog-guide-filter" data-category="면접준비" aria-pressed="false">면접</button>
         <button type="button" class="blog-guide-filter" data-category="연습·리허설" aria-pressed="false">연습·리허설</button>
-        <button type="button" class="blog-guide-filter" data-category="스터디룸" aria-pressed="false">스터디룸</button>
-        <button type="button" class="blog-guide-filter" data-category="미팅·상담" aria-pressed="false">미팅·상담</button>
+        <button type="button" class="blog-guide-filter" data-category="스터디룸" aria-pressed="false">스터디·소모임</button>
+        <button type="button" class="blog-guide-filter" data-category="미팅·상담" aria-pressed="false">미팅·업무</button>
         <button type="button" class="blog-guide-filter" data-category="프라이빗시간" aria-pressed="false">프라이빗시간</button>
       </div>
       <div class="blog-guide-grid" id="homeGuideGrid" aria-label="바른자리 실전 가이드 목록">
@@ -335,8 +316,8 @@ script_version: 20260719-1
         <p class="section-label">Use Cases</p>
         <a class="blog-guide-category-link" href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer" aria-label="바른자리 네이버 블로그에서 더 많은 활용 사례 보기">→</a>
       </div>
-      <h2 class="section-title">이용사례 · 이용안내</h2>
-      <p class="section-desc">실제 이용자들의 순간과 활용 아이디어를 따뜻하게 담아 소개합니다. 이용사례 및 이용안내 콘텐츠는 바른자리 공식 네이버 블로그 운영 내용을 바탕으로 제공합니다.</p>
+      <h2 class="section-title">활용 예시 · 이용안내</h2>
+      <p class="section-desc">면접, 스터디, 미팅, 개인시간처럼 바른자리를 활용할 수 있는 대표 상황과 이용 안내를 소개합니다. 최신 실제 이용사례는 공식 네이버 블로그에서 확인할 수 있습니다.</p>
       <script type="application/json" id="naverBlogFallbackData">{{ site.data.naver_blog.posts | jsonify }}</script>
       <div class="blog-guide-filters" id="useCaseFilters" aria-label="이용사례 및 이용안내 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
@@ -346,21 +327,21 @@ script_version: 20260719-1
       <p class="rss-status" id="rssStatus" hidden>네이버 블로그에서 최신 이용사례를 불러오고 있습니다.</p>
       <div class="testimonials-grid" id="useCasesGrid">
         <div class="testimonial-card">
-          <div class="stars">이용사례</div>
+          <div class="stars">활용 예시</div>
           <h3 class="testimonial-title"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">화상면접 준비</a></h3>
-          <p class="testimonial-meta"><strong>최근 이용사례</strong></p>
+          <p class="testimonial-meta"><strong>대표 활용 상황</strong></p>
           <p class="testimonial-summary">화상면접 준비하러 왔는데 완전 조용하고 집중도 잘 됐어요. 역에서도 가깝고 다음에도 또 이용할게요!</p>
         </div>
         <div class="testimonial-card">
-          <div class="stars">이용사례</div>
+          <div class="stars">활용 예시</div>
           <h3 class="testimonial-title"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">소모임 · 스터디</a></h3>
-          <p class="testimonial-meta"><strong>최근 이용사례</strong></p>
+          <p class="testimonial-meta"><strong>대표 활용 상황</strong></p>
           <p class="testimonial-summary">소모임할 시간이 필요해서 예약했는데 딱 필요한 사이즈의 독립 환경이라 너무 좋았습니다. 분위기도 깔끔해요.</p>
         </div>
         <div class="testimonial-card">
-          <div class="stars">이용사례</div>
+          <div class="stars">활용 예시</div>
           <h3 class="testimonial-title"><a href="https://blog.naver.com/bareunjari114" target="_blank" rel="noopener noreferrer">혼자만의 시간</a></h3>
-          <p class="testimonial-meta"><strong>최근 이용사례</strong></p>
+          <p class="testimonial-meta"><strong>대표 활용 상황</strong></p>
           <p class="testimonial-summary">약속 사이에 혼자 쉴 곳이 필요했는데 조용하고 편해서 컨디션을 정리하기 좋았어요. 다음에는 데이트로도 와보고 싶어요.</p>
         </div>
       </div>
@@ -374,12 +355,12 @@ script_version: 20260719-1
   <section id="contact">
     <div class="section-inner">
       <p class="section-label soft">Contact</p>
-      <h2 class="section-title">FAQ 및 문의</h2>
-      <p class="section-desc">원하는 시간에 편하게 예약하고, 필요한 안내는 언제든 가볍게 문의해 주세요.</p>
+      <h2 class="section-title">예약·상담·오시는 길</h2>
+      <p class="section-desc">예약은 바로 확인하고, 빠른 질문은 톡톡으로. 상세 이용안내와 기타 문의는 별도 문의 페이지에서 확인하세요.</p>
       <div class="contact-grid">
         <div class="contact-item">
           <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-calendar"></use></svg>예약</p>
-          <p class="ci-value"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="contact_booking">네이버플레이스</a></p>
+          <p class="ci-value"><a href="{{ '/booking/' | relative_url }}" data-cta="contact_booking">네이버플레이스</a></p>
         </div>
         <div class="contact-item">
           <p class="ci-label"><svg class="ci-icon" aria-hidden="true"><use href="#i-chat"></use></svg>상담</p>
@@ -394,86 +375,13 @@ script_version: 20260719-1
           <p class="ci-value"><a href="https://map.naver.com/p/entry/place/2041312316" target="_blank" rel="noopener noreferrer">네이버지도</a></p>
         </div>
       </div>
-      <div class="contact-support-layout">
-        <div class="contact-faq" aria-label="문의 자주 묻는 질문">
-          <h3 class="contact-faq-title">문의 FAQ</h3>
-          <p class="contact-faq-lead">문의 전에 자주 묻는 질문을 먼저 확인해 보세요.</p>
-          <details>
-            <summary>Q. 예약은 어떻게 진행되나요?</summary>
-            <p>네이버 예약에서 원하는 날짜와 시간을 선택해 예약하며, 기본 이용은 1시간부터 가능합니다. 예약 완료 후 이용 안내를 보내드립니다.</p>
-          </details>
-          <details>
-            <summary>Q. 당일에도 예약할 수 있나요?</summary>
-            <p>네. 이용 시작 1시간 전까지 예약 가능합니다.</p>
-            <p>이용까지 1시간이 남지 않았거나 빠른 확인이 필요하시면 전화 또는 네이버 톡톡으로 문의해 주세요.</p>
-            <p>예약이 없는 시간이라면 운영 상황 확인 후 바로 이용 가능 여부를 안내해 드립니다.</p>
-            <p>예: 오후 3시 이용은 오후 2시까지 예약 가능</p>
-          </details>
-          <details>
-            <summary>Q. 환불/일정 변경 기준은 어떻게 되나요?</summary>
-            <p>환불은 이용 2일 전 100%, 전날 50%, 당일은 환불이 어렵습니다. 일정 변경은 가능 여부를 먼저 문의해 주세요.</p>
-          </details>
-          <details>
-            <summary>Q. 시설과 비품은 어떤 것들이 있나요?</summary>
-            <p>테이블/의자, Wi-Fi, 커피포트, 캡슐커피머신, 블루투스 스피커, 멀티탭, 핸드폰 충전기, 거울, 링라이트 등을 제공합니다. 현장 운영에 따라 일부 구성은 달라질 수 있습니다.</p>
-          </details>
-          <details>
-            <summary>Q. 주차 등록은 어떻게 하나요?</summary>
-            <p>주차는 매장 내 비치된 패드를 이용해 자동차 번호를 입력한 뒤 2시간 주차권을 부여받는 셀프 등록 방식으로 진행됩니다.</p>
-          </details>
-        </div>
-        <div class="contact-form-wrap">
-          <form id="contactForm" class="contact-form" action="https://formsubmit.co/f7ed0ce03c8dd0b9b5b294cf0002adfa" method="POST">
-            <input type="hidden" name="_subject" id="contactSubject" value="[바른자리] 문의 접수" />
-            <input type="hidden" name="_replyto" id="contactReplyTo" value="" />
-            <input type="hidden" name="_autoresponse" value="바른자리에 문의해 주셔서 감사합니다. 접수하신 내용을 확인 중이며, 순차적으로 답변드리겠습니다." />
-            <input type="hidden" name="_next" value="https://bareunjari.com/?contact=sent#contact" />
-            <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-            <div class="contact-form-row">
-              <div>
-                <label for="contactName">이름</label>
-                <input id="contactName" name="이름" type="text" autocomplete="name" required />
-              </div>
-              <div>
-                <label for="contactPhone">연락처</label>
-                <input id="contactPhone" name="연락처" type="tel" inputmode="tel" autocomplete="tel" placeholder="예: 010-1234-5678" required />
-              </div>
-            </div>
-
-            <div class="contact-form-row">
-              <div>
-                <label for="contactInquiryType">문의 유형</label>
-                <select id="contactInquiryType" name="문의유형" required>
-                  <option value="일반 문의" selected>일반 문의</option>
-                  <option value="예약/이용 문의">예약/이용 문의</option>
-                </select>
-              </div>
-              <div>
-                <label for="contactBranch">문의 지점</label>
-                <input id="contactBranch" name="문의지점" type="text" value="바른자리 신중동점" readonly />
-                <input id="contactBranchSlug" name="지점코드" type="hidden" value="bucheon-sinjungdong" />
-              </div>
-            </div>
-
-            <div>
-              <label for="contactEmail">이메일</label>
-              <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="답변 받을 이메일" required />
-            </div>
-
-            <div>
-              <label for="contactMessage">문의 내용</label>
-              <textarea id="contactMessage" name="문의내용" placeholder="문의내용을 남겨주세요." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">문의 보내기</button>
-            <p class="contact-help-note">접수 후 입력하신 이메일로 확인 메일이 발송됩니다. 메일이 보이지 않으면 스팸함도 확인해 주세요.</p>
-          </form>
-          <p class="contact-rate-note" id="contactRateNote" aria-live="polite"></p>
-          <p class="contact-submit-status" id="contactSubmitStatus" hidden></p>
+      <div class="home-contact-next">
+        <p>예약 가능 여부를 찾고 있다면 문의를 기다리지 않아도 됩니다. 예약 안내에서 이용 방법을 확인하고 바로 빈 시간을 확인할 수 있습니다.</p>
+        <div class="home-contact-actions">
+          <a class="home-contact-book" href="{{ '/booking/' | relative_url }}" data-cta="home_contact_booking">예약 안내 보기</a>
+          <a class="home-contact-help" href="{{ '/contact.html' | relative_url }}">FAQ · 기타 문의 →</a>
         </div>
       </div>
     </div>
   </section>
-  <a id="mobileStickyCta" class="mobile-sticky-cta" href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" data-cta="mobile_sticky_primary">지금 예약하기 · 1시간 1만원</a>
   </main>

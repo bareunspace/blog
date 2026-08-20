@@ -7,36 +7,7 @@
   {% include icon-sprite.html %}
   {% include header.html %}
 
-  {% assign rendered_content = content %}
-  {% if page.page_id == 'home' %}
-    {% assign rendered_content = rendered_content | replace: 'aria-label="면접준비 허브 바로가기"', 'aria-label="면접 허브 바로가기"' %}
-    {% assign rendered_content = rendered_content | replace: '<h3>면접준비</h3>', '<h3>면접</h3>' %}
-    {% assign rendered_content = rendered_content | replace: '자기소개, 답변 연습, 화상면접 환경 점검까지 면접 준비 흐름을 한 번에 확인할 수 있습니다.', '자기소개와 답변 정리부터 실제 말하기, 녹화 점검, 화상면접 환경과 당일 확인까지 면접 전체 흐름을 안내합니다.' %}
-    {% assign rendered_content = rendered_content | replace: 'aria-label="면접준비 허브 포인트"', 'aria-label="면접 허브 포인트"' %}
-    {% assign rendered_content = rendered_content | replace: '<li>추천 2시간</li>\n            <li>답변 루틴</li>\n            <li><a href="{{ \'/ai-interview/\' | relative_url }}" class="feature-chip-link">AI 모의면접</a></li>', '<li>답변 정리</li>\n            <li>말하기·녹화</li>\n            <li>화상면접</li>' %}
-    {% assign rendered_content = rendered_content | replace: 'aria-label="미팅·상담 허브 바로가기"', 'aria-label="미팅·업무 허브 바로가기"' %}
-    {% assign rendered_content = rendered_content | replace: '<h3>미팅·상담</h3>', '<h3>미팅·업무</h3>' %}
-    {% assign rendered_content = rendered_content | replace: '고객 미팅, 상담, 화상회의, 집중 업무까지 필요한 시간만 예약하는 실전 흐름입니다.', '고객 미팅, 상담, 화상회의, 집중 업무처럼 사무실이 필요한 몇 시간을 목적에 맞게 활용하는 가이드입니다.' %}
-    {% assign rendered_content = rendered_content | replace: '혼자 집중 학습부터 발표, 면접, 그룹 스터디까지 공부 목적에 맞춘 활용 가이드입니다.', '대학생 팀플과 프로젝트, 그룹 스터디, 1인 집중 학습처럼 공부 방식에 맞는 공간 활용 가이드입니다.' %}
-    {% assign rendered_content = rendered_content | replace: '<li>추천 3시간</li>\n            <li>스터디</li>\n            <li>발표 연습</li>\n            <li>소모임</li>', '<li>팀플·프로젝트</li>\n            <li>그룹 스터디</li>\n            <li>1인 집중</li>' %}
-    {% assign rendered_content = rendered_content | replace: '혼자 회복하는 시간, 둘만의 대화, 조용한 실내 데이트를 위한 프라이빗 활용 흐름입니다.', '혼자 있는 시간, 둘만의 대화, 방해받지 않는 개인시간처럼 프라이버시가 필요한 순간을 다룹니다.' %}
-  {% endif %}
-
-  {{ rendered_content }}
-
-  {% if page.page_id == "home" %}
-    {% include home-hub-enhancements.html %}
-    <script>
-      (function () {
-        var filters = document.getElementById('homeGuideFilters');
-        if (!filters || filters.querySelector('[data-category="시간·공간"]')) { return; }
-        var allButton = filters.querySelector('[data-category="all"]');
-        var button = document.createElement('button');
-        button.type = 'button'; button.className = 'blog-guide-filter'; button.setAttribute('data-category', '시간·공간'); button.setAttribute('aria-pressed', 'false'); button.textContent = '시간·공간';
-        if (allButton && allButton.nextSibling) { filters.insertBefore(button, allButton.nextSibling); } else { filters.appendChild(button); }
-      })();
-    </script>
-  {% endif %}
+  {{ content }}
   {% if page.page_id == 'blog' %}{% include blog-hub-enhancements.html %}{% endif %}
 
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
