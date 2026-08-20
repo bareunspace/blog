@@ -49,6 +49,9 @@ script_version: 20260711-4
     font-size: .86rem;
     line-height: 1.65;
   }
+  .acting-practice-page .practice-post-role {
+    margin-top: 1rem;
+  }
   .acting-practice-page .acting-faq-list {
     max-width: 860px;
     margin-top: 1.4rem;
@@ -98,6 +101,7 @@ script_version: 20260711-4
       <div class="hero-highlights" aria-label="이 글이 잘 맞는 사람">
         <span>예고 준비생</span><span>연영과 입시</span><span>오디션 준비</span><span>독백 연습</span><span>셀프테이프</span>
       </div>
+      <p class="section-desc practice-post-role" data-hub-role-note="true"><strong>이 글의 역할:</strong> 독백·대사·오디션처럼 실제로 말하고 움직이며 반복하는 연습 공간 가이드입니다. 면접 답변 연습은 <a href="{{ '/interview/' | relative_url }}">면접 허브</a>에서 별도로 다룹니다.</p>
       <div class="hero-btns">
         <a href="#practice-loop" class="btn-primary">연습 루틴 바로 보기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">공간 예약하기</a>
@@ -249,4 +253,5 @@ script_version: 20260711-4
   </section>
 
   {% include post-tags.html %}
+  {% include practice-series-links.html %}
 </main>

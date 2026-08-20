@@ -65,6 +65,9 @@ script_version: 20260711-4
     color: var(--muted);
     line-height: 1.7;
   }
+  .self-tape-page .practice-post-role {
+    margin-top: 1rem;
+  }
   @media (max-width: 720px) {
     .self-tape-page .self-tape-checklist {
       grid-template-columns: 1fr;
@@ -81,6 +84,7 @@ script_version: 20260711-4
       <div class="hero-highlights" aria-label="셀프테이프 핵심 점검 항목">
         <span>공고 규격</span><span>구도와 시선</span><span>배경과 빛</span><span>소리</span><span>파일 확인</span>
       </div>
+      <p class="section-desc practice-post-role" data-hub-role-note="true"><strong>이 글의 역할:</strong> 셀프테이프를 직접 촬영할 때 공고 규격, 구도, 배경, 빛, 소리와 제출 파일을 순서대로 확인하는 체크리스트입니다.</p>
       <div class="hero-btns">
         <a href="#checklist" class="btn-primary">10가지 바로 확인하기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">연습 공간 예약하기</a>
@@ -197,4 +201,5 @@ script_version: 20260711-4
   </section>
 
   {% include post-tags.html %}
+  {% include practice-series-links.html %}
 </main>
