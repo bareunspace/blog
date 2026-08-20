@@ -58,6 +58,50 @@ main#mainContent #contact {
   background:linear-gradient(180deg,#e7f0ea 0%,#dce9e1 100%) !important;
   color:#17291f !important;
 }
+
+/* Home hub content rendered directly in index.html */
+main#mainContent .home-practice-entry { margin-top:1.15rem; padding:1rem 1.1rem; border:1px solid rgba(45,106,79,.16); border-radius:16px; background:#f7faf8; }
+main#mainContent .home-practice-entry p { margin:0; color:var(--muted); line-height:1.7; }
+main#mainContent .home-practice-entry a { font-weight:800; }
+main#mainContent #about .about-layout { display:block; }
+main#mainContent #about .pricing-cards { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.9rem; align-items:stretch; width:100%; }
+main#mainContent #about .price-card { display:flex; flex-direction:column; height:100%; min-width:0; padding:1.35rem 1.15rem; border:1px solid #dce7e0; background:#fff; }
+main#mainContent #about .price-card .price-badge { align-self:flex-start; background:#2d6a4f; color:#fff; }
+main#mainContent #about .price-card .price-label { margin-top:.8rem; font-size:1.05rem; line-height:1.4; }
+main#mainContent #about .price-card .price-amount { margin-top:.55rem; white-space:nowrap; }
+main#mainContent #about .price-card .price-desc { margin-top:.75rem; margin-bottom:1rem; font-size:.86rem; line-height:1.6; }
+main#mainContent #about .price-card.recommended { background:#fff; border:2px solid #2d6a4f; box-shadow:0 12px 28px rgba(45,106,79,.16); }
+main#mainContent #about .price-card.recommended .price-badge { background:#f59a45; color:#fff; }
+main#mainContent #about .price-card.recommended .price-label,
+main#mainContent #about .price-card.recommended .price-amount { color:#245f43; }
+main#mainContent #about .price-card.recommended .price-amount { font-size:1.95rem; font-weight:900; }
+main#mainContent #about .price-card.recommended-primary { background:#e7f3eb; border:3px solid #245f43; box-shadow:0 16px 34px rgba(45,106,79,.20); }
+main#mainContent #about .price-card.recommended-primary .price-badge { background:#f59a45; color:#fff; }
+main#mainContent #about .price-card.recommended-primary .price-label,
+main#mainContent #about .price-card.recommended-primary .price-amount { color:#1f5a3d; }
+main#mainContent #about .price-card-cta { display:flex; align-items:center; justify-content:center; min-height:42px; margin-top:auto; padding:.65rem .8rem; border-radius:10px; background:#f1f6f3; color:#245f43; font-size:.82rem; font-weight:800; }
+main#mainContent #about .price-card.recommended .price-card-cta { background:#2d6a4f; color:#fff; }
+main#mainContent #about .price-card.recommended-primary .price-card-cta { background:#1f5a3d; color:#fff; }
+main#mainContent #about .about-cta { display:inline-flex !important; width:max-content; align-items:center; justify-content:flex-start; margin:1rem 0 0; padding:.72rem 1rem; border-radius:10px; background:#245f43 !important; color:#fff !important; font-weight:800; text-decoration:none !important; }
+main#mainContent #about .about-cta:hover,
+main#mainContent #about .about-cta:focus-visible { background:#2d6a4f !important; color:#fff !important; text-decoration:none !important; }
+main#mainContent #contact .contact-grid { margin-bottom:1.2rem; }
+main#mainContent #contact .home-contact-next { max-width:760px; margin:1.25rem auto 0; padding-top:1.15rem; border-top:1px solid rgba(45,106,79,.16); }
+main#mainContent #contact .home-contact-next p { margin:0 0 .8rem; color:#3f5147; line-height:1.7; }
+main#mainContent #contact .home-contact-actions { display:flex; justify-content:center; gap:.65rem; flex-wrap:wrap; }
+main#mainContent #contact .home-contact-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:.7rem 1rem; border-radius:999px; font-weight:800; text-decoration:none; }
+main#mainContent #contact .home-contact-actions .home-contact-book { background:#245f43; color:#fff; }
+main#mainContent #contact .home-contact-actions .home-contact-help { border:1px solid #b8ccbf; background:#fff; color:#245f43; }
+
+@media(max-width:900px){
+  main#mainContent #about .pricing-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media(max-width:640px){
+  main#mainContent #about .pricing-cards { grid-template-columns:1fr; }
+  main#mainContent #contact .home-contact-actions { display:grid; }
+  main#mainContent #contact .home-contact-actions a { width:100%; }
+}
 main#mainContent #contact .section-inner { max-width:980px; }
 main#mainContent #contact .section-label,
 main#mainContent #contact .section-title,
