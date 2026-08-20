@@ -43,6 +43,7 @@ extra_css_version: 20260812-2
       <p class="section-label">Regular Study Group Guide</p>
       <h1 class="section-title">정기 스터디 장소를<br />바꿔야 하는 신호 5가지</h1>
       <p class="section-desc">매주 만나는 스터디인데 시작하기 전부터 자리를 찾아야 하고, 말할 때 주변을 신경 쓰고, 자료를 펼치기 어렵다면 멤버나 의지보다 장소가 문제일 수 있습니다. 부천에서 정기 스터디 장소를 고를 때 확인할 기준을 정리했습니다.</p>
+      <p class="section-desc" style="margin-top:1rem;"><strong>이 글의 역할:</strong> 매주·격주 반복해서 만나는 스터디가 장소를 바꿀 시점을 판단하는 가이드입니다. 모임 당일 3시간 활용법은 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 가이드</a>로 이어집니다.</p>
       <div class="hero-btns"><a href="#five-signals" class="btn-primary">5가지 신호 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div>
     </div>
   </section>
@@ -71,4 +72,5 @@ extra_css_version: 20260812-2
   <section class="post-related" aria-label="함께 읽으면 좋은 글"><div class="section-inner"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul><li><a href="{{ '/posts/group-study-3-hours/' | relative_url }}">그룹 스터디 3시간, 어떻게 활용할까?</a></li><li><a href="{{ '/posts/private-space-for-study-groups/' | relative_url }}">2인 이상 스터디·소모임, 프라이빗 공간이 더 잘 맞는 7가지 순간</a></li><li><a href="{{ '/posts/college-team-project-space/' | relative_url }}">대학생 팀플 장소, 카페에서 하기 어려운 순간</a></li><li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li></ul></div></section>
 
   {% include post-tags.html %}
+  {% include study-series-links.html %}
 </main>

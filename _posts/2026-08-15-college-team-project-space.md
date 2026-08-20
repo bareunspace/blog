@@ -42,6 +42,7 @@ script_version: 20260711-4
       <p class="section-label">College Team Project Guide</p>
       <h1 class="section-title">대학생 팀플 장소,<br />카페에서 하기 어려운 순간</h1>
       <p class="section-desc">팀플은 조용히 각자 공부하는 시간이 아니라, 같이 말하고 자료를 펼치고 같은 결과물을 계속 수정하는 작업에 가깝습니다. 카페·스터디카페·독립 공간 중 어떤 환경이 프로젝트에 맞는지 실제 팀플 흐름으로 정리했습니다.</p>
+      <p class="section-desc" style="margin-top:1rem;"><strong>이 글의 역할:</strong> 대학생 팀플·프로젝트를 위해 장소를 비교하고 고르는 기준에 집중합니다. 3시간을 실제로 어떻게 나눠 쓸지는 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 활용법</a>에서 이어서 볼 수 있습니다.</p>
       <div class="hero-btns"><a href="#space-choice" class="btn-primary">팀플 장소 고르는 기준</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">팀플 시간 확인하기</a></div>
     </div>
   </section>
@@ -70,4 +71,5 @@ script_version: 20260711-4
   <section class="post-related" aria-label="함께 읽으면 좋은 글"><div class="section-inner"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul><li><a href="{{ '/posts/group-study-3-hours/' | relative_url }}">그룹 스터디 3시간, 어떻게 활용할까?</a></li><li><a href="{{ '/posts/regular-study-space-signals/' | relative_url }}">정기 스터디 장소를 바꿔야 하는 신호 5가지</a></li><li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li></ul></div></section>
 
   {% include post-tags.html %}
+  {% include study-series-links.html %}
 </main>
