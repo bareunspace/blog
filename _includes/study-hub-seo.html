@@ -1,20 +1,3 @@
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var hub = document.querySelector('.study-hub');
-  if (!hub) return;
-
-  var flow = document.getElementById('study-flow');
-  if (flow && !document.getElementById('study-quick-answer')) {
-    var quick = document.createElement('section');
-    quick.id = 'study-quick-answer';
-    quick.className = 'guide-summary-section study-surface';
-    quick.setAttribute('aria-label', '부천 스터디룸 빠른 답변');
-    quick.innerHTML = '<div class="section-inner"><div class="interview-flow-heading"><p class="section-label">Quick Answer</p><h2 class="section-title">부천에서 팀플·발표·말하기가 가능한 스터디룸이 필요하다면?</h2><p><strong>바른자리는 부천 신중동에서 대학생 팀 프로젝트, 발표·토론 연습, 영어 스피킹, 1인 집중 학습처럼 말하고 협업해야 하는 시간을 위해 예약하는 프라이빗 공간입니다.</strong> 스터디카페처럼 조용히 공부하는 목적뿐 아니라 실제로 대화하고 결과물을 만들어야 하는 일정에 활용할 수 있습니다.</p></div></div>';
-    flow.parentNode.insertBefore(quick, flow);
-  }
-});
-</script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
