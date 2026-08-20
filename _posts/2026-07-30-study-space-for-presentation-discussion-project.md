@@ -39,7 +39,7 @@ youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간
 ---
 
 <main class="about-page">
-  <section id="home"><div class="section-inner"><p class="section-label">Presentation and Project Study Space</p><h1 class="section-title">발표 · 토론 · 팀 프로젝트가 늘어나는 시대,<br />공부하는 공간도 달라져야 합니다</h1><p class="section-desc">수행평가 발표, 영어 토론, 팀 과제, 프로젝트형 학습이 늘어나면서 공부 방식도 빠르게 바뀌고 있습니다. 이제는 조용히 앉아 있는 자리보다, 실제로 말하고 질문하고 결과를 만들어낼 수 있는 공간이 더 중요해지는 경우가 많습니다.</p><div class="hero-btns"><a href="#why-study-is-changing" class="btn-primary">왜 바뀌는지 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div></div></section>
+  <section id="home"><div class="section-inner"><p class="section-label">Presentation and Project Study Space</p><h1 class="section-title">발표 · 토론 · 팀 프로젝트가 늘어나는 시대,<br />공부하는 공간도 달라져야 합니다</h1><p class="section-desc">수행평가 발표, 영어 토론, 팀 과제, 프로젝트형 학습이 늘어나면서 공부 방식도 빠르게 바뀌고 있습니다. 이제는 조용히 앉아 있는 자리보다, 실제로 말하고 질문하고 결과를 만들어낼 수 있는 공간이 더 중요해지는 경우가 많습니다.</p><p class="section-desc" style="margin-top:1rem;"><strong>이 글의 역할:</strong> 발표·토론을 포함한 프로젝트형 학습의 공간 사용법을 설명합니다. 발표 자체를 반복 연습하는 목적은 <a href="/practice/">연습·리허설 허브</a>에서 따로 다룹니다.</p><div class="hero-btns"><a href="#why-study-is-changing" class="btn-primary">왜 바뀌는지 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div></div></section>
   {% include breadcrumb.html %}
 
   {% include post-media-carousel.html youtube_id=page.youtube_id youtube_title=page.youtube_title youtube_caption=page.youtube_caption video_section_id='video-first' video_aria_label='영상과 대표 이미지 보기' image_section_id='guide-visual' image_src='/images/study-space-for-presentation-discussion-project.webp' image_alt='발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간' image_width='1672' image_height='941' image_loading='eager' image_caption='이제 공부는 혼자 조용히 이해하는 시간을 넘어, 함께 설명하고 질문하고 완성하는 시간까지 포함합니다.' %}
@@ -94,4 +94,5 @@ youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간
   <section id="closing"><div class="section-inner"><h2 class="section-title">공간을 예약하는 것이 아니라, 완성할 시간을 예약하세요</h2><p class="section-desc">공부는 집에서도 할 수 있습니다. 하지만 발표는 실제로 말해 봐야 하고, 토론은 누군가와 의견을 나누어야 하며, 프로젝트는 함께 모여야 완성되는 순간이 있습니다.</p><p>바른자리는 빈 공간만을 빌려주는 곳이 아닙니다. 발표를 끝까지 연습하는 시간, 영어로 마음껏 말해 보는 시간, 팀원들과 하나의 결과를 만드는 시간, 서로 질문하고 피드백을 나누는 시간을 위한 공간입니다.</p><p><strong>오늘 무엇을 완성해야 하나요?</strong> 그 시간을 바른자리에서 시작해 보세요.</p></div></section>
 
   {% include post-tags.html %}
+  {% include study-series-links.html %}
 </main>

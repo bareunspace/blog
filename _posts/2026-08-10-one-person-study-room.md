@@ -124,6 +124,7 @@ script_version: 20260711-4
       <p class="section-label">One Person Study Room</p>
       <h1 class="section-title">1인 스터디룸이 필요한 순간<br />혼자인데 굳이 방을 빌리는 이유</h1>
       <p class="section-desc">혼자 공부하거나 일할 거라면 집이나 카페, 스터디카페면 충분할 때가 많습니다. 하지만 화상회의, 면접 답변, 영어 스피킹, 발표 연습처럼 혼자서도 계속 말해야 하는 순간에는 단순한 1인석이 아니라 혼자 사용할 수 있는 공간이 필요할 수 있습니다.</p>
+      <p class="section-desc" style="margin-top:1rem;"><strong>이 글의 역할:</strong> 혼자 단독으로 공부·과제·자료정리에 집중할 공간을 고르는 가이드입니다. 팀으로 말하면서 공부한다면 <a href="/posts/group-study-3-hours/">그룹 스터디 3시간 가이드</a>가 더 가깝습니다.</p>
       <div class="hero-btns">
         <a href="#quick-answer" class="btn-primary">1인 스터디룸이 필요한 이유</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">가능한 시간 확인하기</a>
@@ -331,4 +332,5 @@ script_version: 20260711-4
       </div>
     </div>
   </section>
+  {% include study-series-links.html %}
 </main>
