@@ -42,9 +42,9 @@
   };
 
   const moderationLabels = {
-    pending: '검토 전',
+    pending: '새 경험',
     approved: '검토 완료',
-    rejected: '공개 제외'
+    rejected: '제외'
   };
 
   let client = null;
@@ -121,12 +121,19 @@
     listNode.innerHTML = rows.map((row) => {
       const publicAllowed = Boolean(row.public_consent);
       const isPublic = row.moderation_status === 'approved' && publicAllowed && Boolean(row.published_at);
-      const company = row.company_name || '기업명 미입력';
+      const company = row.company_name || '기업 미입력';
       const role = row.job_role || '직무 미입력';
-      const approvalLabel = publicAllowed ? '공개 승인' : '검토 완료(비공개)';
+      const approvalLabel = publicAllowed ? '공개용으로 승인' : '검토 완료';
       const approvalHint = publicAllowed
-        ? '공개 동의가 있습니다. 공개용 문구를 확인한 뒤 승인하세요.'
-        : '공개 동의가 없습니다. 내부 분석용으로만 검토 완료 처리합니다.';
+        ? '공개 동의가 있습니다. 공개용 문구를 확인한 뒤 승인하면 공개 후보가 됩니다.'
+        : '공개 동의가 없으므로 내부 분석용으로만 보관합니다.';
+      const publicEditor = publicAllowed ? `
+        <div class="interview-admin-editor interview-admin-public-editor">
+          <label class="admin-field"><span>공개용 기업 표시 <small>예: IT 기업 / 반도체 기업</small></span><input type="text" maxlength="80" data-field="public_company_label" value="${escapeHtml(row.public_company_label || '')}" placeholder="필요할 때만 익명화"></label>
+          <label class="admin-field"><span>공개용 경험 문구</span><textarea rows="4" maxlength="500" data-field="public_excerpt" placeholder="식별 가능한 내용을 빼고 핵심 경험만 정리">${escapeHtml(row.public_excerpt || '')}</textarea></label>
+        </div>` : `
+        <input type="hidden" data-field="public_company_label" value="${escapeHtml(row.public_company_label || '')}">
+        <textarea data-field="public_excerpt" hidden>${escapeHtml(row.public_excerpt || '')}</textarea>`;
 
       return `
         <article class="interview-admin-card" data-interview-row="${row.id}">
@@ -138,35 +145,42 @@
             <div class="interview-admin-badges">
               <span class="interview-admin-state is-${escapeHtml(row.moderation_status)}">${escapeHtml(moderationLabels[row.moderation_status] || row.moderation_status)}</span>
               <span class="interview-admin-consent ${publicAllowed ? 'is-yes' : 'is-no'}">공개 동의 ${publicAllowed ? '있음' : '없음'}</span>
-              ${isPublic ? '<span class="interview-admin-live">공개 가능 상태</span>' : ''}
+              ${isPublic ? '<span class="interview-admin-live">공개 후보</span>' : ''}
             </div>
           </div>
 
-          <div class="interview-admin-facts">
-            <div><span>면접 결과</span><strong>${escapeHtml(resultLabels[row.result] || row.result || '-')}</strong></div>
-            <div><span>실제 요구 행동</span><div class="interview-admin-tags">${renderTags(row.interview_actions, actionLabels)}</div></div>
-            <div><span>준비 행동</span><div class="interview-admin-tags">${renderTags(row.preparation_actions, prepLabels)}</div></div>
+          <div class="interview-admin-scan-row">
+            <div><span>결과</span><strong>${escapeHtml(resultLabels[row.result] || row.result || '-')}</strong></div>
+            <div><span>실제 면접에서 요구받은 것</span><div class="interview-admin-tags">${renderTags(row.interview_actions, actionLabels)}</div></div>
           </div>
 
-          <div class="interview-admin-copy-grid">
-            <div class="interview-admin-original"><span>가장 도움 됐던 준비</span><p>${escapeHtml(row.helpful_preparation || '작성 없음')}</p></div>
-            <div class="interview-admin-original"><span>예상과 달랐던 점</span><p>${escapeHtml(row.unexpected_point || '작성 없음')}</p></div>
-          </div>
+          <details class="interview-admin-details">
+            <summary>상세 보기</summary>
+            <div class="interview-admin-detail-body">
+              <div class="interview-admin-facts">
+                <div><span>준비하면서 해본 것</span><div class="interview-admin-tags">${renderTags(row.preparation_actions, prepLabels)}</div></div>
+              </div>
 
-          <div class="interview-admin-editor">
-            <label class="admin-field"><span>공개용 기업 표시 <small>예: IT 기업 / 반도체 기업</small></span><input type="text" maxlength="80" data-field="public_company_label" value="${escapeHtml(row.public_company_label || '')}" placeholder="기업명을 그대로 공개하지 않을 때 사용"></label>
-            <label class="admin-field"><span>공개용 경험 문구 <small>공개 동의가 있을 때만 노출 후보</small></span><textarea rows="4" maxlength="500" data-field="public_excerpt" placeholder="식별 가능한 내용을 제거하고 핵심 경험만 정리">${escapeHtml(row.public_excerpt || '')}</textarea></label>
-            <label class="admin-field"><span>관리자 메모 <small>외부에 공개되지 않음</small></span><textarea rows="2" data-field="admin_note" placeholder="검수 메모">${escapeHtml(row.admin_note || '')}</textarea></label>
-          </div>
+              <div class="interview-admin-copy-grid">
+                <div class="interview-admin-original"><span>가장 도움 됐던 준비</span><p>${escapeHtml(row.helpful_preparation || '작성 없음')}</p></div>
+                <div class="interview-admin-original"><span>예상과 달랐던 점</span><p>${escapeHtml(row.unexpected_point || '작성 없음')}</p></div>
+              </div>
 
-          <p class="interview-admin-approval-hint">${escapeHtml(approvalHint)}</p>
-          <div class="interview-admin-actions">
-            <button type="button" class="admin-btn admin-btn-outline" data-action="save">문구 저장</button>
-            <button type="button" class="admin-btn" data-action="approve">${escapeHtml(approvalLabel)}</button>
-            <button type="button" class="admin-btn admin-btn-danger" data-action="reject">공개 제외</button>
-            ${row.moderation_status !== 'pending' ? '<button type="button" class="admin-btn admin-btn-outline" data-action="pending">검토 전으로 되돌리기</button>' : ''}
-          </div>
-          <p class="admin-status interview-admin-card-status" data-card-status hidden></p>
+              ${publicEditor}
+              <div class="interview-admin-editor interview-admin-note-editor">
+                <label class="admin-field"><span>관리자 메모 <small>외부에 공개되지 않음</small></span><textarea rows="2" data-field="admin_note" placeholder="필요한 경우만 기록">${escapeHtml(row.admin_note || '')}</textarea></label>
+              </div>
+
+              <p class="interview-admin-approval-hint">${escapeHtml(approvalHint)}</p>
+              <div class="interview-admin-actions">
+                <button type="button" class="admin-btn admin-btn-outline" data-action="save">저장</button>
+                <button type="button" class="admin-btn" data-action="approve">${escapeHtml(approvalLabel)}</button>
+                <button type="button" class="admin-btn admin-btn-danger" data-action="reject">제외</button>
+                ${row.moderation_status !== 'pending' ? '<button type="button" class="admin-btn admin-btn-outline" data-action="pending">새 경험으로 되돌리기</button>' : ''}
+              </div>
+              <p class="admin-status interview-admin-card-status" data-card-status hidden></p>
+            </div>
+          </details>
         </article>`;
     }).join('');
   };
@@ -213,12 +227,12 @@
     try {
       if (action === 'save') {
         await updateRow(id, fields);
-        showCardStatus(card, '공개용 문구와 관리자 메모를 저장했습니다.', 'success');
+        showCardStatus(card, '저장했습니다.', 'success');
       }
 
       if (action === 'approve') {
         if (row.public_consent && !fields.public_excerpt) {
-          showCardStatus(card, '공개 승인 전에는 공개용 경험 문구를 작성해 주세요.', 'error');
+          showCardStatus(card, '공개용 경험 문구를 먼저 작성해 주세요.', 'error');
           return;
         }
         await updateRow(id, {
@@ -226,7 +240,7 @@
           moderation_status: 'approved',
           published_at: row.public_consent ? (row.published_at || new Date().toISOString()) : null
         });
-        showStatus(row.public_consent ? '면접 경험을 공개 승인했습니다.' : '면접 경험을 내부 검토 완료로 처리했습니다.', 'success');
+        showStatus(row.public_consent ? '공개용 경험으로 승인했습니다.' : '검토 완료 처리했습니다.', 'success');
         render();
       }
 
@@ -236,7 +250,7 @@
           moderation_status: 'rejected',
           published_at: null
         });
-        showStatus('면접 경험을 공개 제외로 처리했습니다.', 'success');
+        showStatus('제외 처리했습니다.', 'success');
         render();
       }
 
@@ -246,7 +260,7 @@
           moderation_status: 'pending',
           published_at: null
         });
-        showStatus('검토 전 상태로 되돌렸습니다.', 'success');
+        showStatus('새 경험 상태로 되돌렸습니다.', 'success');
         render();
       }
     } catch (error) {
@@ -271,7 +285,7 @@
       return;
     }
     allRows = Array.isArray(data) ? data : [];
-    showStatus(`면접 경험 ${allRows.length}건을 불러왔습니다.`, 'success');
+    showStatus(`면접 경험 ${allRows.length}건`, 'success');
     render();
   };
 
