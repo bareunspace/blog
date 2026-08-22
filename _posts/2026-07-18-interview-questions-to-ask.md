@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 면접 마지막 질문 추천 | 역질문 20개와 임원면접 예시
-description: 면접 마지막 질문과 역질문이 고민될 때 바로 고를 수 있는 질문 20개를 정리했습니다. 실무·임원면접 질문 예시, 피해야 할 질문, 역질문 개수와 말 꺼내는 법까지 확인하세요.
+description: 면접 마지막 질문과 면접 역질문이 고민될 때 바로 고를 수 있는 질문 20개를 정리했습니다. 임원면접 마지막 질문 추천 5개, 피해야 할 질문, 역질문 개수와 말 꺼내는 법까지 확인하세요.
 category: 면접준비
 keywords: 면접마지막질문,면접마지막질문추천,면접역질문,면접역질문추천,역질문,임원면접마지막질문,임원면접역질문,면접질문추천,면접준비
 tags:
@@ -110,13 +110,14 @@ script_version: 20260711-4
   <section id="executive-questions" class="guide-summary-section">
     <div class="section-inner">
       <p class="section-label">Executive Interview</p>
-      <h2 class="section-title">임원면접 마지막 질문은 무엇을 물어보면 좋을까요?</h2>
-      <p class="section-desc">임원면접에서는 세부 업무만 묻기보다 조직의 방향과 이 역할에 기대하는 영향, 좋은 구성원의 기준을 묻는 질문이 잘 맞습니다.</p>
+      <h2 class="section-title">임원면접 마지막 질문 추천 5개</h2>
+      <p class="section-desc">임원면접 마지막 질문은 세부 업무만 묻기보다 조직의 방향과 이 역할에 기대하는 영향, 좋은 구성원의 기준을 묻는 질문이 잘 맞습니다. 아래 5개 중 면접 흐름과 겹치지 않는 질문 1개를 고르세요.</p>
       <div class="about-principle-grid">
         <article class="about-principle-item" data-step="01"><h3>현재 조직에서 가장 중요하게 보고 있는 우선순위는 무엇인가요?</h3><p>조직 전체가 어디에 집중하고 있는지 확인할 수 있습니다.</p></article>
         <article class="about-principle-item" data-step="02"><h3>이 포지션에 합류한 사람이 어떤 변화를 만들어주길 기대하시나요?</h3><p>임원이 생각하는 역할의 존재 이유와 기대 수준을 들을 수 있습니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>이 회사에서 오래 좋은 성과를 내는 분들의 공통점은 무엇인가요?</h3><p>조직이 실제로 중요하게 보는 태도와 문화를 확인할 수 있습니다.</p></article>
-        <article class="about-principle-item" data-step="04"><h3>제가 합류하기 전에 더 보완하면 좋을 부분이 있다면 무엇일까요?</h3><p>면접관의 우려를 듣고 마지막으로 답변을 보완할 기회를 만들 수 있습니다.</p></article>
+        <article class="about-principle-item" data-step="04"><h3>앞으로 이 조직이 가장 중요하게 해결해야 할 과제는 무엇이라고 보시나요?</h3><p>임원이 보는 조직의 방향과 당면 과제를 이해하는 데 도움이 됩니다.</p></article>
+        <article class="about-principle-item" data-step="05"><h3>제가 합류하기 전에 더 보완하면 좋을 부분이 있다면 무엇일까요?</h3><p>면접관의 우려를 듣고 마지막으로 답변을 보완할 기회를 만들 수 있습니다.</p></article>
       </div>
     </div>
   </section>
@@ -168,6 +169,7 @@ script_version: 20260711-4
       <p class="section-label">FAQ</p>
       <h2 class="section-title">면접 마지막 질문·역질문 FAQ</h2>
       <div class="faq-list">
+        <details class="faq-item"><summary>면접 마지막 질문은 무엇을 물어보는 게 좋나요?</summary><div class="faq-answer"><p>입사 후 가장 먼저 해결할 과제, 좋은 성과의 기준, 팀의 협업 방식처럼 실제 직무와 조직을 이해할 수 있는 질문이 좋습니다. 면접 중 이미 답이 나온 내용은 빼고 1~2개만 고르세요.</p></div></details>
         <details class="faq-item"><summary>면접 마지막에 질문을 꼭 해야 하나요?</summary><div class="faq-answer"><p>반드시 해야 하는 것은 아닙니다. 다만 직무나 팀에 대해 실제로 궁금한 질문 1개 정도를 준비하면 면접을 준비한 흔적을 보여주고, 지원자 본인도 회사를 판단하는 데 도움이 됩니다.</p></div></details>
         <details class="faq-item"><summary>면접 역질문은 몇 개가 적당한가요?</summary><div class="faq-answer"><p>보통 1~2개면 충분합니다. 준비는 3~4개 정도 해두고, 면접 중 이미 답이 나온 질문을 제외한 뒤 가장 중요한 질문을 고르는 방식이 좋습니다.</p></div></details>
         <details class="faq-item"><summary>임원면접 마지막 질문은 무엇이 좋나요?</summary><div class="faq-answer"><p>조직의 우선순위, 이 역할에 기대하는 변화, 좋은 성과를 내는 구성원의 공통점처럼 큰 관점의 질문이 잘 맞습니다.</p></div></details>
