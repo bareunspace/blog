@@ -17,8 +17,9 @@ extra_css_version: 20260820-1
 
   {% assign onsite_posts = site.posts | where_exp: "item", "item.draft != true" %}
   {% assign featured_posts = onsite_posts | where_exp: "item", "item.editor_pick == true" %}
+  {% assign featured_posts = featured_posts | where_exp: "item", "item.url != '/posts/all-night-private-workspace/'" %}
   {% if featured_posts.size == 0 %}
-    {% assign featured_posts = onsite_posts | sort: "date" | reverse %}
+    {% assign featured_posts = onsite_posts | where_exp: "item", "item.url != '/posts/all-night-private-workspace/'" | sort: "date" | reverse %}
   {% endif %}
   {% assign featured_posts = featured_posts | sort: "date" | reverse %}
 
