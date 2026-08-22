@@ -55,7 +55,7 @@ script_version: 20260711-4
       <a href="#executive-questions">임원면접</a>
       <a href="#question-list">역질문 20개</a>
       <a href="#avoid-questions">피할 질문</a>
-      <a href="#question-faq">FAQ</a>
+      <a href="#faq">FAQ</a>
       <a href="#final-routine">전날 준비</a>
     </div>
   </nav>
@@ -164,7 +164,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="question-faq" class="guide-summary-section">
+  <section id="faq">
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">면접 마지막 질문·역질문 FAQ</h2>
