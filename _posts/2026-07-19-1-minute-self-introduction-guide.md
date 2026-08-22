@@ -27,15 +27,41 @@ script_version: 20260719-1
     <div class="section-inner">
       <p class="section-label">1-Minute Self-Introduction Guide</p>
       <h1 class="section-title">면접 1분 자기소개 예시와 작성법</h1>
-      <p class="section-desc">면접 1분 자기소개는 경력을 길게 나열하는 시간이 아니라, <strong>“나는 어떤 강점을 가진 사람이고 그 강점을 어떤 경험으로 증명했는가”</strong>를 50~60초 안에 보여주는 시간입니다. 아래 예문을 그대로 외우기보다 자신의 경험과 지원 직무에 맞게 바꿔 쓰는 것이 중요합니다.</p>
+      <p class="section-desc">처음부터 작성법을 읽기보다 <strong>신입·경력 예시를 먼저 보고</strong>, 자신의 강점과 경험으로 바꿔보세요. 핵심은 강점 1개, 대표 경험 1개, 지원 직무에서의 기여 1개를 50~60초 안에 연결하는 것입니다.</p>
       <div class="hero-btns">
-        <a href="#quick-template" class="btn-primary">바로 쓰는 60초 틀</a>
-        <a href="#intro-examples-newbie" class="btn-outline">1분 자기소개 예문</a>
+        <a href="#quick-examples" class="btn-primary">신입·경력 예시 바로 보기</a>
+        <a href="#quick-template" class="btn-outline">바로 쓰는 60초 틀</a>
         <a href="/interview/" class="btn-outline">면접 전체 가이드</a>
       </div>
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="quick-examples" class="guide-summary-section">
+    <div class="section-inner">
+      <p class="section-label">Quick Examples</p>
+      <h2 class="section-title">면접 1분 자기소개, 먼저 예시부터 보세요</h2>
+      <p class="section-desc">아래 문장을 그대로 외우기보다 <strong>강점 → 경험 → 기여</strong>의 흐름만 가져가 자신의 내용으로 바꾸는 것이 좋습니다.</p>
+      <div class="guide-summary-grid">
+        <article class="guide-summary-card">
+          <span>신입</span>
+          <h3>프로젝트 경험을 활용한 예시</h3>
+          <p>안녕하세요. 사용자 데이터를 바탕으로 문제를 찾고 개선안을 실행해본 지원자 OOO입니다. 캡스톤 프로젝트에서 사용자 이탈 패턴을 분석해 주요 불편 지점을 정리했고, 팀과 함께 화면 흐름을 개선했습니다. 이 경험을 바탕으로 입사 후에도 사용자 문제를 구체적으로 파악하고 해결하는 데 기여하겠습니다.</p>
+        </article>
+        <article class="guide-summary-card">
+          <span>경력</span>
+          <h3>직무 성과를 앞세운 예시</h3>
+          <p>안녕하세요. B2B 마케팅에서 콘텐츠 기획부터 리드 전환까지 운영해온 OOO입니다. 이전 회사에서 유입 데이터를 바탕으로 콘텐츠 주제와 배포 방식을 조정하고 웨비나와 후속 캠페인을 운영했습니다. 이 경험을 바탕으로 귀사의 타깃 고객과 전환 과정을 더 정교하게 만드는 데 기여하고 싶습니다.</p>
+        </article>
+      </div>
+      <div class="about-quote"><p><strong>공통 구조는 하나입니다. “나는 어떤 강점을 가진 사람인가 → 어떤 경험으로 증명했는가 → 이번 직무에서 어떻게 기여할 것인가.”</strong></p></div>
+      <div class="hero-btns" style="margin-top:1.5rem;">
+        <a href="#intro-examples-newbie" class="btn-primary">신입 예시 자세히 보기</a>
+        <a href="#intro-examples-experienced" class="btn-outline">경력 예시 자세히 보기</a>
+        <a href="#intro-examples-career-change" class="btn-outline">직무전환 예시 보기</a>
+      </div>
+    </div>
+  </section>
 
   <section id="guide-visual">
     <div class="section-inner">
@@ -55,7 +81,6 @@ script_version: 20260719-1
       <a href="#intro-examples-newbie">신입 예시</a>
       <a href="#intro-examples-experienced">경력 예시</a>
       <a href="#intro-examples-career-change">직무전환 예시</a>
-      <a href="#common-mistakes">실수</a>
       <a href="#faq">FAQ</a>
     </div>
   </nav>
@@ -165,14 +190,15 @@ script_version: 20260719-1
     </div>
   </section>
 
-  <section id="faq" class="guide-summary-section">
+  <section id="faq">
     <div class="section-inner">
+      <p class="section-label">FAQ</p>
       <h2 class="section-title">면접 1분 자기소개 FAQ</h2>
-      <div class="contact-faq" itemscope itemtype="https://schema.org/FAQPage">
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">면접 1분 자기소개는 정확히 1분이어야 하나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">정확히 60초를 맞출 필요는 없습니다. 보통 50~60초 정도를 기준으로 연습하면 충분하지만, 면접관이 더 짧게 요청하면 그 지시에 맞추는 것이 우선입니다.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">1분 자기소개 예문을 그대로 외워도 되나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">권하지 않습니다. 예문의 구조만 참고하고 강점, 경험, 지원 직무를 자신의 내용으로 바꾸세요. 말할 때도 문장 전체보다 핵심 키워드를 기억하는 편이 자연스럽습니다.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">신입인데 특별한 성과가 없으면 무엇을 말하나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">프로젝트, 수업 과제, 인턴, 아르바이트 등에서 본인이 맡은 역할과 해결한 문제를 사용해도 됩니다. 성과 규모보다 본인의 행동이 명확한지가 중요합니다.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">경력직 1분 자기소개에는 경력을 모두 넣어야 하나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아닙니다. 이번 지원 직무와 가장 관련 있는 역할과 성과를 먼저 고르고, 필요한 경력은 이후 질문에서 더 설명하는 편이 좋습니다.</p></div></details>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">면접 1분 자기소개는 정확히 1분이어야 하나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">정확히 60초를 맞출 필요는 없습니다. 보통 50~60초 정도를 기준으로 연습하면 충분하지만, 면접관이 더 짧게 요청하면 그 지시에 맞추는 것이 우선입니다.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">1분 자기소개 예문을 그대로 외워도 되나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">권하지 않습니다. 예문의 구조만 참고하고 강점, 경험, 지원 직무를 자신의 내용으로 바꾸세요. 말할 때도 문장 전체보다 핵심 키워드를 기억하는 편이 자연스럽습니다.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">신입인데 특별한 성과가 없으면 무엇을 말하나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">프로젝트, 수업 과제, 인턴, 아르바이트 등에서 본인이 맡은 역할과 해결한 문제를 사용해도 됩니다. 성과 규모보다 본인의 행동이 명확한지가 중요합니다.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">경력직 1분 자기소개에는 경력을 모두 넣어야 하나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아닙니다. 이번 지원 직무와 가장 관련 있는 역할과 성과를 먼저 고르고, 필요한 경력은 이후 질문에서 더 설명하는 편이 좋습니다.</p></div></details>
       </div>
     </div>
   </section>
