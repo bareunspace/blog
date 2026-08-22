@@ -89,6 +89,14 @@
 
   const onlineGrid = document.querySelector('#online-hiring .online-hiring-grid');
   const controls = document.querySelector('#online-hiring .online-hiring-carousel-controls');
+  if (onlineGrid) {
+    const aptitudeCard = Array.from(onlineGrid.querySelectorAll('.post-related-card')).find((card) =>
+      card.querySelector('a[href="/posts/online-aptitude-test-space/"]')
+    );
+    if (aptitudeCard && onlineGrid.firstElementChild !== aptitudeCard) {
+      onlineGrid.insertBefore(aptitudeCard, onlineGrid.firstElementChild);
+    }
+  }
   if (onlineGrid && controls) {
     controls.classList.add('is-enhanced');
     const getScrollAmount = () => {
