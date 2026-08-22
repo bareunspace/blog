@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 에어컨 빵빵한 실내 피서 데이트, 바른자리에서 보내는 여름 하루
-description: 더운 여름, 시원한 에어컨 아래에서 편하게 쉬고 대화하며 시간을 보낼 수 있는 바른자리 실내 피서 데이트 코스를 소개합니다.
+title: 부천 실내 데이트 추천｜더운 날엔 시원한 프라이빗 공간에서
+description: 부천 실내 데이트 장소를 찾는다면, 더운 여름에도 시원한 에어컨 아래에서 편하게 쉬고 대화하며 둘만의 시간을 보낼 수 있는 바른자리 실내 피서 데이트를 소개합니다.
 category: 프라이빗시간
 keywords: 부천실내데이트,신중동데이트,여름피서데이트,부천공간대여,바른자리,신중동공간대여
 tags:
@@ -26,8 +26,8 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Summer Date Guide</p>
-      <h1 class="section-title">더운 날엔 밖보다 안이 더 좋다<br />에어컨 빵빵한 실내 피서 데이트</h1>
-      <p class="section-desc">한여름에 땀 흘리며 이동하기보다, 시원한 공간에서 편하게 대화하고 쉬는 시간이 더 소중할 때가 있습니다. 바른자리에서 보내는 여름 데이트 동선을 정리해봤어요.</p>
+      <h1 class="section-title">부천 실내 데이트 추천<br />더운 날엔 시원한 프라이빗 공간에서</h1>
+      <p class="section-desc">부천에서 실내 데이트 장소를 찾는 날, 한여름에 땀 흘리며 이동하기보다 시원한 공간에서 편하게 대화하고 쉬는 시간이 더 소중할 때가 있습니다. 신중동 바른자리에서 보내는 여름 데이트 동선을 정리해봤어요.</p>
       <div class="hero-btns">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">바로 예약하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 더 보기</a>
@@ -56,8 +56,8 @@ script_version: 20260711-4
 
   <section id="why-indoor-date">
     <div class="section-inner">
-      <h2 class="section-title">여름에 실내 데이트가 만족도가 높은 이유</h2>
-      <p class="section-desc">데이트가 즐거우려면 체력 소모를 줄이고, 서로의 대화에 집중할 수 있어야 합니다.</p>
+      <h2 class="section-title">부천 실내 데이트가 더 편한 날</h2>
+      <p class="section-desc">데이트가 즐거우려면 체력 소모를 줄이고, 서로의 대화에 집중할 수 있어야 합니다. 특히 폭염이나 비가 이어지는 날에는 여러 장소를 옮겨 다니기보다 한곳에서 편하게 머무는 실내 데이트가 잘 맞습니다.</p>
       <div class="about-highlight-grid" aria-label="실내 피서 데이트 장점">
         <article class="about-highlight-card"><h3>더위 스트레스 감소</h3><p>이동 중 땀과 열기로 지치지 않으니 표정과 텐션이 훨씬 편안하게 유지됩니다.</p></article>
         <article class="about-highlight-card"><h3>대화 밀도 증가</h3><p>시끄러운 외부 소음이 적어 서로의 이야기에 더 집중할 수 있고, 긴 대화도 부담이 적습니다.</p></article>
@@ -100,7 +100,7 @@ script_version: 20260711-4
 
   <section id="cta">
     <div class="section-inner">
-      <h2 class="section-title">올여름, 더위 피해서 편하게 쉬고 싶다면</h2>
+      <h2 class="section-title">부천에서 시원한 실내 데이트를 찾는다면</h2>
       <p class="section-desc">바른자리에서 시원하고 조용한 여름 데이트를 경험해 보세요. 밖은 뜨거워도, 안에서는 여유롭게 둘만의 시간을 보낼 수 있습니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">여름 데이트 시간 예약하기</a>
