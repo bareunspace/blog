@@ -1,6 +1,15 @@
-/* Shared post UI rule: when a standard card grid contains exactly three cards,
-   keep all three on one row on desktop. Mobile remains a single column. */
+/* Shared post UI rules for standard card grids.
+   - Exactly two cards: two equal columns on desktop.
+   - Exactly three cards: three equal columns on desktop.
+   - Mobile: one column. */
 @media (min-width: 768px) {
+  main.about-page .guide-summary-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .about-highlight-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .about-principle-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .guide-compare-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   main.about-page .guide-summary-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
   main.about-page .about-highlight-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
   main.about-page .about-principle-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
@@ -10,6 +19,10 @@
 }
 
 @media (max-width: 767px) {
+  main.about-page .guide-summary-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .about-highlight-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .about-principle-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
+  main.about-page .guide-compare-grid:has(> article:nth-child(2)):not(:has(> article:nth-child(3))),
   main.about-page .guide-summary-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
   main.about-page .about-highlight-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
   main.about-page .about-principle-grid:has(> article:nth-child(3)):not(:has(> article:nth-child(4))),
