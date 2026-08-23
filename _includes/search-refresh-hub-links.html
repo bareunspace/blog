@@ -1,0 +1,25 @@
+{% assign current_hub = page.page_id %}
+{% if current_hub == 'interview' or current_hub == 'meeting' or current_hub == 'study' %}
+  {% assign has_refresh_links = false %}
+  {% for item in site.data.search_refresh %}
+    {% if item.hub == current_hub %}{% assign has_refresh_links = true %}{% endif %}
+  {% endfor %}
+  {% if has_refresh_links %}
+  <section class="search-refresh-links" aria-label="함께 볼 가이드">
+    <div class="section-inner">
+      <p class="section-label">Related Guides</p>
+      <h2 class="section-title">함께 보면 좋은 실전 가이드</h2>
+      <div class="about-highlight-grid">
+        {% for item in site.data.search_refresh %}
+          {% if item.hub == current_hub %}
+          <article class="about-highlight-card">
+            <h3><a href="{{ item.path }}">{{ item.title }}</a></h3>
+            <p>{{ item.summary | truncate: 95 }}</p>
+          </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+{% endif %}
