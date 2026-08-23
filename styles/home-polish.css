@@ -4,7 +4,6 @@ main#mainContent { overflow-x:clip; }
 
 /* Hero: cleaner visual hierarchy */
 main#mainContent #home { min-height:clamp(560px,76vh,740px); padding-top:4.5rem; padding-bottom:4.5rem; }
-main#mainContent #home::after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(8,28,19,.05),rgba(8,28,19,.18)); }
 main#mainContent #home > * { z-index:2; }
 main#mainContent .hero-title { font-size:clamp(2.35rem,5.6vw,4rem); letter-spacing:-.045em; font-weight:800; }
 main#mainContent .hero-subtitle { max-width:720px; margin-bottom:1rem; color:rgba(255,255,255,.94); font-weight:500; line-height:1.65; }
