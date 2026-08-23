@@ -284,12 +284,12 @@ script_version: 20260711-4
   <section id="bareunjari" class="about-cta-section">
     <div class="section-inner">
       <p class="section-label">Your Time, Even on Holidays</p>
-      <h2 class="section-title">명절에도 내 시간은 사라지지 않습니다</h2>
+      <h2 class="section-title">명절에도, 내게 주어진 시간을 잘 보내는 일은 중요합니다</h2>
       <p class="section-desc">혼자 쉬고 싶은 두 시간, 부부끼리 이야기하고 싶은 두 시간, 부모님과 천천히 커피를 마시고 싶은 세 시간, 연휴에도 꼭 끝내야 할 일을 위한 세 시간. 사람마다 필요한 시간은 다릅니다.</p>
       <div class="about-quote">
         <p><strong>집을 넓힐 수는 없어도,<br />나에게 필요한 몇 시간은 따로 만들 수 있습니다.</strong></p>
       </div>
-      <h2 class="section-title">추석 연휴에도,<br />나만의 시간을 예약하세요.</h2>
+      <h2 class="section-title">추석 연휴에도,<br />필요한 시간을 위한 자리를 마련하세요.</h2>
       <div class="hero-btns">
         <a href="/private/" class="btn-outline">프라이빗시간 더 알아보기</a>
         <a href="/booking/" class="btn-primary">추석 연휴 빈 시간 확인하기</a>
