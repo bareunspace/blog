@@ -113,6 +113,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">이런 예약에 특히 잘 맞습니다</h2>
       <p class="section-desc">실제로 소리 내어 연습해야 하는 일정이라면 더욱 만족도가 높습니다.</p>
+      <p class="section-desc"><strong>AI 음성 대화·AI 영어회화·AI 면접 연습처럼 화면을 보며 계속 말해야 하는 학습도 같은 문제를 가집니다.</strong> 답변을 반복하거나 AI와 대화를 이어갈 때 주변 시선과 소음을 의식하지 않는 환경이 있으면 더 자연스럽게 연습할 수 있습니다.</p>
       <div class="about-principle-grid" aria-label="말하기 연습 공간 추천 대상">
         <article class="about-principle-item" data-step="01">
           <h3>OPIc·토익스피킹·영어회화 연습</h3>
