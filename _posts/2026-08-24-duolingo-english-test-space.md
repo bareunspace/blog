@@ -21,11 +21,11 @@ hubs:
 canonical: https://bareunjari.com/posts/duolingo-english-test-space/
 permalink: /posts/duolingo-english-test-space/
 date: 2026-08-24 00:30:00 +0900
-og_image: https://bareunjari.com/images/online-exam-home-setup.webp
-og_image_alt: 온라인 영어시험을 위해 노트북과 스마트폰을 준비할 수 있는 바른자리 프라이빗 공간
+og_image: https://bareunjari.com/images/duolingo-english-test-space.webp
+og_image_alt: 바른자리 프라이빗 공간에서 노트북과 스마트폰 보조 카메라로 듀오링고 영어시험을 준비하는 모습
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/online-exam-home-setup.webp
+preload_image: images/duolingo-english-test-space.webp
 script_version: 20260711-4
 ---
 
@@ -39,7 +39,7 @@ script_version: 20260711-4
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/online-exam-home-setup.webp' image_alt='온라인 영어시험을 위해 노트북과 스마트폰을 준비할 수 있는 바른자리 프라이빗 공간' image_width='1536' image_height='1024' image_loading='eager' image_caption='온라인 시험에서는 책상 하나보다 방 전체의 조건이 중요할 수 있습니다. 실제 응시 전에는 최신 DET 공식 규정을 기준으로 공간과 장비를 다시 확인하세요.' %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/duolingo-english-test-space.webp' image_alt='바른자리 프라이빗 공간에서 노트북과 스마트폰 보조 카메라로 듀오링고 영어시험을 준비하는 모습' image_width='1536' image_height='1024' image_loading='eager' image_caption='온라인 시험에서는 책상 하나보다 방 전체의 조건이 중요할 수 있습니다. 실제 응시 전에는 최신 DET 공식 규정을 기준으로 공간과 장비를 다시 확인하세요.' %}
 
   <section id="quick-answer" class="guide-summary-section"><div class="section-inner">
     <p class="section-label">Quick Answer</p>
