@@ -9,6 +9,7 @@
 
   {{ content }}
   {% if page.collection == 'posts' %}{% include search-refresh.html %}{% endif %}
+  {% if page.page_id == 'interview' or page.page_id == 'meeting' or page.page_id == 'study' %}{% include search-refresh-hub-links.html %}{% endif %}
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
       {% assign ai_demo_cta_label = 'AI 모의면접 데모' %}
