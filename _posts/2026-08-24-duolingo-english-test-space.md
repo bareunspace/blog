@@ -20,7 +20,7 @@ hubs:
   - 스터디룸
 canonical: https://bareunjari.com/posts/duolingo-english-test-space/
 permalink: /posts/duolingo-english-test-space/
-date: 2026-08-24 00:40:00 +0900
+date: 2026-08-24 00:30:00 +0900
 og_image: https://bareunjari.com/images/online-exam-home-setup.webp
 og_image_alt: 온라인 영어시험을 위해 노트북과 스마트폰을 준비할 수 있는 바른자리 프라이빗 공간
 og_image_width: 1536
