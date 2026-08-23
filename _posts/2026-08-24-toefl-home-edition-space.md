@@ -58,7 +58,7 @@ script_version: 20260711-4
     <a href="#home-problem">집에서 어려운 이유</a>
     <a href="#choose-space">공간 고르는 기준</a>
     <a href="#checklist">응시 전 체크</a>
-    <a href="#related-guides">DET와 비교하기</a>
+    <a href="#related-guides">관련 온라인 시험 보기</a>
     <a href="#bareunjari">바른자리에서 준비한다면</a>
     <a href="#faq">FAQ</a>
   </div></nav>
@@ -111,9 +111,12 @@ script_version: 20260711-4
 
   <section id="related-guides"><div class="section-inner">
     <p class="section-label">Related Guides</p>
-    <h2 class="section-title">다른 온라인 영어시험도 함께 확인하세요</h2>
+    <h2 class="section-title">온라인 시험·평가 공간 가이드를 함께 확인하세요</h2>
+    <p class="section-desc">TOEFL Home Edition처럼 노트북과 독립된 공간이 중요한 시험은 영어시험에만 한정되지 않습니다. 바른자리에서 다뤄온 다른 온라인 시험·평가의 공간 준비 기준도 함께 확인할 수 있습니다.</p>
     <div class="about-highlight-grid">
       <article class="about-highlight-card"><h3>Duolingo English Test</h3><p>DET는 스마트폰 보조 카메라와 room scan 등 TOEFL Home Edition과 다른 준비가 필요합니다.</p><p><a href="{{ '/posts/duolingo-english-test-space/' | relative_url }}">듀오링고 영어시험 공간 가이드 →</a></p></article>
+      <article class="about-highlight-card"><h3>AI 역량검사</h3><p>질의응답, 게임, 영상면접이 이어질 수 있어 카메라·마이크·인터넷과 방해받지 않는 시간이 중요합니다.</p><p><a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 공간 가이드 →</a></p></article>
+      <article class="about-highlight-card"><h3>온라인 코딩테스트</h3><p>카메라·화면공유·별도 프로그램 여부와 함께 와이파이, 전원, 독립된 공간을 확인해야 합니다.</p><p><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 가이드 →</a></p></article>
       <article class="about-highlight-card"><h3>집에서 온라인 시험을 볼 때</h3><p>책상과 주변 기기, 카메라 범위, 가족 동선까지 일반적인 원격감독 시험 준비 기준을 확인하세요.</p><p><a href="{{ '/posts/online-exam-home-setup/' | relative_url }}">온라인 시험 집에서 준비하기 →</a></p></article>
       <article class="about-highlight-card"><h3>영어 말하기 연습</h3><p>오픽·토익스피킹처럼 실제로 소리 내어 답하고 녹음하며 연습할 공간 선택 기준도 볼 수 있습니다.</p><p><a href="{{ '/posts/english-speaking-test-recording-practice/' | relative_url }}">영어 말하기 녹음 연습 →</a></p></article>
     </div>
