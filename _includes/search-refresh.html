@@ -1,0 +1,25 @@
+{% assign current_path = page.url %}
+{% assign refresh_item = nil %}
+{% for item in site.data.search_refresh %}
+  {% if item.path == current_path %}
+    {% assign refresh_item = item %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if refresh_item %}
+<section class="search-refresh" aria-label="이 페이지의 핵심 정리">
+  <div class="section-inner">
+    <p class="section-label">Quick Answer</p>
+    <h2 class="section-title">{{ refresh_item.title }}</h2>
+    <p class="section-desc">{{ refresh_item.summary }}</p>
+    {% if refresh_item.links %}
+    <div class="hero-btns" style="margin-top: 1.5rem;">
+      {% for link in refresh_item.links %}
+      <a href="{{ link.href }}" class="btn-outline">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
