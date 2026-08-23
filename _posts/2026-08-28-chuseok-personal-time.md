@@ -138,7 +138,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  {% include post-media-carousel.html image_section_id='family-lounge-visual' image_src='/images/bareunjari-sunny-private-room.webp' image_alt='밝은 바른자리 실제 공간에서 가족이 몇 시간 편하게 머물 수 있는 테이블과 좌석' image_loading='lazy' image_caption='큰 가족행사보다 부모님이나 형제·자매와 몇 시간 편하게 이야기하고 쉬어가는 작은 사랑방처럼 사용할 수 있는 실제 공간입니다.' %}
+  {% include post-media-carousel.html image_section_id='family-lounge-visual' image_src='/images/bareunjari-cozy-private-room.webp' image_alt='밝은 바른자리 실제 공간에서 가족이 몇 시간 편하게 머물 수 있는 테이블과 좌석' image_loading='lazy' image_caption='큰 가족행사보다 부모님이나 형제·자매와 몇 시간 편하게 이야기하고 쉬어가는 작은 사랑방처럼 사용할 수 있는 실제 공간입니다.' %}
 
   <section>
     <div class="section-inner">
