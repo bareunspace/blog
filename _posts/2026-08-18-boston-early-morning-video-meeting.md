@@ -119,14 +119,29 @@ faq:
     </div>
   </section>
 
-  <section id="ai-interpretation">
+  <section id="ai-interpretation" class="guide-summary-section" aria-label="AI 실시간 통역 해외 화상회의 안내">
     <div class="section-inner">
       <p class="section-label">AI Interpretation</p>
       <h2 class="section-title">영어가 부담스러운 해외 미팅이라면<br />AI 실시간 통역도 하나의 선택지입니다</h2>
-      <p class="section-desc"><strong>이 글은 특정 이용자의 실제 사례를 다루는 글이 아닙니다.</strong> AI 실시간 통역 역시 실제 바른자리 이용 사례가 아니라, 해외 화상회의 도구의 변화에 따라 활용할 수 있는 하나의 선택지로 소개합니다.</p>
-      <p>Microsoft Teams의 Interpreter는 한국어를 포함한 지원 언어 사이에서 실시간 음성 통역을 제공하고 있습니다. Google Meet도 일부 언어 조합에서 음성 번역 기능을 제공하고 있으며, 지원 언어와 이용 가능한 요금제는 서비스마다 다릅니다. 실제 회의 전에 본인의 계정과 회의 방식에서 사용할 수 있는지 먼저 확인해야 합니다.</p>
-      <p>AI 통역을 사용하더라도 <strong>내가 또렷하게 말하고 상대방의 말을 집중해서 듣는 환경</strong>은 여전히 필요합니다. 특히 가족이 자는 새벽에는 집에서 목소리를 줄이기보다, 주변을 의식하지 않고 대화할 수 있는 독립 공간이 더 편할 수 있습니다.</p>
-      <p>기능과 지원 언어는 <a href="https://support.microsoft.com/ko-KR/teams/copilot/interpreter-in-microsoft-teams-meetings-and-calls" target="_blank" rel="noopener noreferrer">Microsoft Teams Interpreter 공식 안내</a>와 <a href="https://support.google.com/meet/answer/16221730?hl=ko" target="_blank" rel="noopener noreferrer">Google Meet 음성 번역 공식 안내</a>에서 최신 내용을 확인하세요.</p>
+      <p class="section-desc"><strong>이 내용은 특정 이용자의 실제 사례가 아니라 기술 활용 가이드입니다.</strong> 최근 화상회의 서비스의 실시간 통역 기능을 활용하면 해외 미팅의 언어 부담을 낮추는 데 도움을 받을 수 있습니다.</p>
+      <div class="guide-summary-grid">
+        <article class="guide-summary-card">
+          <span>01</span>
+          <h3>실시간 통역 기능</h3>
+          <p>Microsoft Teams Interpreter와 Google Meet의 음성 번역처럼 화상회의 안에서 통역을 지원하는 기능이 확대되고 있습니다.</p>
+        </article>
+        <article class="guide-summary-card">
+          <span>02</span>
+          <h3>회의 전에 테스트</h3>
+          <p>지원 언어와 계정 권한, 마이크 인식, 통역 지연을 실제 회의 전에 미리 확인하는 편이 좋습니다.</p>
+        </article>
+        <article class="guide-summary-card">
+          <span>03</span>
+          <h3>또렷하게 말할 환경</h3>
+          <p>AI 통역을 사용해도 내 목소리가 분명하게 전달돼야 하므로 주변을 의식하지 않고 말할 수 있는 독립 환경이 중요합니다.</p>
+        </article>
+      </div>
+      <p>지원 언어와 이용 가능한 요금제는 서비스마다 다릅니다. 기능과 최신 지원 범위는 <a href="https://support.microsoft.com/ko-KR/teams/copilot/interpreter-in-microsoft-teams-meetings-and-calls" target="_blank" rel="noopener noreferrer">Microsoft Teams Interpreter 공식 안내</a>와 <a href="https://support.google.com/meet/answer/16221730?hl=ko" target="_blank" rel="noopener noreferrer">Google Meet 음성 번역 공식 안내</a>에서 확인하세요.</p>
     </div>
   </section>
 
