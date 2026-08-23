@@ -31,16 +31,16 @@
     - label: 화상면접 장비와 배경 세팅
       href: /posts/video-interview-setup/
 
-- path: /posts/tutoring-space-guide-for-teachers/
+- path: /posts/bucheon-tutoring-class-space/
   refreshed_at: 2026-08-23
-  hub: meeting
+  hub: study
   title: 부천에서 과외·보충수업 장소를 찾는다면
   summary: 과외나 보충수업 장소는 단순히 앉을 자리만 있으면 되는 것이 아닙니다. 학생과 마주 앉을 테이블, 설명을 이어갈 수 있는 조용한 환경, Wi-Fi와 전원, 이동하기 쉬운 위치, 필요한 시간만 예약할 수 있는지를 함께 확인하는 것이 좋습니다.
   links:
-    - label: 부천 회의실·미팅룸 가이드
-      href: /posts/bucheon-meeting-room/
-    - label: 미팅·수업 공간 허브 보기
-      href: /meeting/
+    - label: 스터디룸 선택 기준 보기
+      href: /posts/study-space-guide/
+    - label: 스터디·수업 공간 허브 보기
+      href: /study/
 
 - path: /posts/bucheon-meeting-room/
   refreshed_at: 2026-08-23
