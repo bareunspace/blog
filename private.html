@@ -15,6 +15,12 @@ script_version: 20260711-4
 ---
 
 <style>
+@media (min-width: 768px) {
+  .private-hub #price .about-principle-grid,
+  .private-hub #other-hubs .about-highlight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 @media (min-width: 901px) {
   .private-hub #private-series .meeting-series-grid:not(.private-series-pillar-grid) .meeting-series-card-support {
     grid-column: span 4;
