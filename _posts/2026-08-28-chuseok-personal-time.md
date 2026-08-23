@@ -138,7 +138,7 @@ script_version: 20260711-4
     </div>
   </section>
 
-  {% include post-media-carousel.html image_section_id='family-lounge-visual' image_src='/images/bareunjari-cozy-private-room.webp' image_alt='밝은 바른자리 실제 공간에서 가족이 몇 시간 편하게 머물 수 있는 테이블과 좌석' image_loading='lazy' image_caption='큰 가족행사보다 부모님이나 형제·자매와 몇 시간 편하게 이야기하고 쉬어가는 작은 사랑방처럼 사용할 수 있는 실제 공간입니다.' %}
+  {% include post-media-carousel.html image_section_id='family-lounge-visual' image_src='/images/bareunjari-cozy-private-room.webp' image_alt='바른자리에서 가족이 몇 시간 편하게 머물 수 있는 테이블과 좌석' image_loading='lazy' image_caption='큰 가족행사보다 부모님이나 형제·자매와 몇 시간 편하게 이야기하고 쉬어가는 작은 사랑방처럼 활용하기에 잘 맞습니다.' %}
 
   <section>
     <div class="section-inner">
@@ -181,7 +181,7 @@ script_version: 20260711-4
       </div>
 
       <div class="about-quote">
-        <p><strong>2시간이나 3시간을 사는 것이 아니라, 그 시간 동안 내가 원하는 방식으로 쓸 자리를 확보한다고 생각하면 됩니다.</strong></p>
+        <p><strong>중요한 건 2시간이나 3시간이라는 숫자가 아니라, 그 시간 동안 내가 원하는 방식으로 쓸 자리를 마련하는 일입니다.</strong></p>
       </div>
 
       <div class="hero-btns">
@@ -193,7 +193,7 @@ script_version: 20260711-4
   <section id="space-guide">
     <div class="section-inner">
       <p class="section-label">Bareunjari</p>
-      <h2 class="section-title">신중동에서 몇 시간, 나에게 필요한 자리가 필요할 때</h2>
+      <h2 class="section-title">신중동에서 몇 시간, 나에게 필요한 자리를 찾을 때</h2>
       <p class="section-desc">바른자리 신중동점은 예약한 시간 동안 한 팀이 사용하는 프라이빗 공간입니다.</p>
 
       <div class="about-principle-grid" aria-label="바른자리 공간 안내">
@@ -283,11 +283,11 @@ script_version: 20260711-4
 
   <section id="bareunjari" class="about-cta-section">
     <div class="section-inner">
-      <p class="section-label">Your Time, Even on Holidays</p>
+      <p class="section-label">Time Well Spent</p>
       <h2 class="section-title">명절에도, 내게 주어진 시간을 잘 보내는 일은 중요합니다</h2>
       <p class="section-desc">혼자 쉬고 싶은 두 시간, 부부끼리 이야기하고 싶은 두 시간, 부모님과 천천히 커피를 마시고 싶은 세 시간, 연휴에도 꼭 끝내야 할 일을 위한 세 시간. 사람마다 필요한 시간은 다릅니다.</p>
       <div class="about-quote">
-        <p><strong>집을 넓힐 수는 없어도,<br />나에게 필요한 몇 시간은 따로 만들 수 있습니다.</strong></p>
+        <p><strong>집을 넓힐 수는 없어도,<br />필요한 시간을 위한 자리는 마련할 수 있습니다.</strong></p>
       </div>
       <h2 class="section-title">추석 연휴에도,<br />필요한 시간을 위한 자리를 마련하세요.</h2>
       <div class="hero-btns">
