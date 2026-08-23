@@ -113,6 +113,7 @@ script_version: 20260711-4
     <p class="section-label">Related Guides</p>
     <h2 class="section-title">온라인 시험 준비를 이어서 확인하세요</h2>
     <div class="about-highlight-grid">
+      <article class="about-highlight-card"><h3>TOEFL Home Edition</h3><p>TOEFL iBT Home Edition도 혼자 사용하는 닫힌 공간과 사전 장비 점검이 중요합니다. DET와 필요한 카메라·장비 구성이 어떻게 다른지 확인하세요.</p><p><a href="{{ '/posts/toefl-home-edition-space/' | relative_url }}">TOEFL Home Edition 공간 가이드 →</a></p></article>
       <article class="about-highlight-card"><h3>집에서 온라인 시험을 볼 때</h3><p>책상과 주변 기기, 카메라 범위, 가족 동선까지 일반적인 원격감독 시험 준비 기준을 정리했습니다.</p><p><a href="{{ '/posts/online-exam-home-setup/' | relative_url }}">온라인 시험 집에서 준비하기 →</a></p></article>
       <article class="about-highlight-card"><h3>온라인 코딩테스트가 있다면</h3><p>개발환경과 인터넷, 집중 시간을 함께 준비해야 하는 코딩테스트 장소 선택 기준을 확인하세요.</p><p><a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 공간 가이드 →</a></p></article>
       <article class="about-highlight-card"><h3>영어 말하기를 먼저 연습한다면</h3><p>오픽·토익스피킹처럼 실제로 소리 내어 답하고 녹음하며 점검하는 연습 흐름도 볼 수 있습니다.</p><p><a href="{{ '/posts/english-speaking-test-recording-practice/' | relative_url }}">영어 말하기 녹음 연습 →</a></p></article>
