@@ -89,7 +89,7 @@ faq:
   </section>
 
   <nav class="guide-toc" aria-label="새벽 해외 화상회의 가이드 목차">
-    <div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#case">보스턴 실제 사례</a><a href="#time">보스턴 시차</a><a href="#place">장소 선택</a><a href="#checklist">30분 준비</a><a href="#bareunjari">바른자리 이용</a><a href="#faq">FAQ</a></div>
+    <div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#case">보스턴 실제 사례</a><a href="#time">보스턴 시차</a><a href="#place">장소 선택</a><a href="#ai-interpretation">AI 실시간 통역</a><a href="#checklist">30분 준비</a><a href="#bareunjari">바른자리 이용</a><a href="#faq">FAQ</a></div>
   </nav>
 
   <section id="time">
@@ -119,6 +119,17 @@ faq:
     </div>
   </section>
 
+  <section id="ai-interpretation">
+    <div class="section-inner">
+      <p class="section-label">AI Interpretation</p>
+      <h2 class="section-title">영어가 부담스러운 해외 미팅이라면<br />AI 실시간 통역도 하나의 선택지입니다</h2>
+      <p class="section-desc"><strong>이번 보스턴 이용 사례에서 AI 통역을 사용했다는 뜻은 아닙니다.</strong> 다만 같은 새벽 해외 화상회의에서도 영어가 부담스러운 사람이라면, 최근 화상회의 서비스에 들어오고 있는 AI 실시간 통역 기능을 활용하는 방식이 새로운 선택지가 될 수 있습니다.</p>
+      <p>Microsoft Teams의 Interpreter는 한국어를 포함한 지원 언어 사이에서 실시간 음성 통역을 제공하고 있습니다. Google Meet도 일부 언어 조합에서 음성 번역 기능을 제공하고 있으며, 지원 언어와 이용 가능한 요금제는 서비스마다 다릅니다. 실제 회의 전에 본인의 계정과 회의 방식에서 사용할 수 있는지 먼저 확인해야 합니다.</p>
+      <p>AI 통역을 사용하더라도 <strong>내가 또렷하게 말하고 상대방의 말을 집중해서 듣는 환경</strong>은 여전히 필요합니다. 특히 가족이 자는 새벽에는 집에서 목소리를 줄이기보다, 주변을 의식하지 않고 대화할 수 있는 독립 공간이 더 편할 수 있습니다.</p>
+      <p>기능과 지원 언어는 <a href="https://support.microsoft.com/ko-KR/teams/copilot/interpreter-in-microsoft-teams-meetings-and-calls" target="_blank" rel="noopener noreferrer">Microsoft Teams Interpreter 공식 안내</a>와 <a href="https://support.google.com/meet/answer/16221730?hl=ko" target="_blank" rel="noopener noreferrer">Google Meet 음성 번역 공식 안내</a>에서 최신 내용을 확인하세요.</p>
+    </div>
+  </section>
+
   <section id="checklist">
     <div class="section-inner">
       <h2 class="section-title">회의 시작 30분 전,<br />이 순서로 준비하세요</h2>
@@ -128,6 +139,7 @@ faq:
         <article class="guide-summary-card"><span>T-10</span><h3>자료와 알림</h3><p>발표 자료를 열고 PC와 휴대전화 알림을 끈 뒤 보스턴 현지 시간을 다시 확인합니다.</p></article>
       </div>
       <p>회의 링크에는 5분 정도 먼저 접속하세요. 업데이트나 로그인 오류가 생겨도 대응할 시간이 있고, 대기 화면에서 카메라와 마이크 상태를 마지막으로 점검할 수 있습니다.</p>
+      <p>AI 실시간 통역을 사용할 예정이라면 회의 당일 처음 켜지 말고, <strong>지원 언어·계정 권한·마이크 인식·통역 지연</strong>까지 미리 테스트해 두는 편이 좋습니다.</p>
     </div>
   </section>
 
