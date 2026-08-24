@@ -12,104 +12,161 @@ preload_image: images/online-exam-home-setup.webp
 css_version: 20260818-1
 script_version: 20260711-4
 ---
+
 <main class="about-page blog-hub study-hub exam-hub">
   <section id="home" class="study-hero">
     <div class="section-inner">
-      <p class="section-label">Online Exam Guide</p>
-      <h1 class="section-title">온라인 시험,<br />어디서 보면 좋을까?</h1>
-      <p class="hero-subtitle">듀오링고 영어시험, TOEFL Home Edition, 온라인 코딩테스트, AI 역량검사처럼 집이나 조용한 독립 공간에서 응시하는 시험이 늘고 있습니다. 시험마다 요구 조건이 다르므로 <strong>공간을 예약하기 전에 시험기관의 최신 규정을 먼저 확인하고</strong>, 그다음 인터넷·카메라·마이크·전원·주변 방해 여부를 점검하세요.</p>
+      <p class="section-label">Online Exam</p>
+      <h1 class="section-title">온라인 시험</h1>
+      <p class="hero-subtitle">듀오링고 영어시험, TOEFL Home Edition, 온라인 코딩테스트, AI 역량검사처럼 독립된 응시 환경이 필요한 시험을 준비할 때 확인할 가이드를 모았습니다.</p>
       <div class="hero-btns">
-        <a href="#exam-guides" class="btn-primary">시험별 가이드 보기</a>
-        <a href="#checklist" class="btn-outline">응시 환경 체크하기</a>
+        <a href="#exam-guides" class="btn-outline">내 시험 찾기</a>
+        <a href="#common-check" class="btn-outline">공통 체크 보기</a>
+        <a href="/booking/" class="btn-primary">시험 시간 예약</a>
+      </div>
+      <div class="study-hero-metrics" aria-label="온라인 시험 공간 핵심 안내">
+        <article class="study-metric-card">
+          <p class="study-metric-value">한 팀 단독</p>
+          <p class="study-metric-label">예약 시간 동안 프라이빗 이용</p>
+        </article>
+        <article class="study-metric-card">
+          <p class="study-metric-value">공식 규정 우선</p>
+          <p class="study-metric-label">시험별 응시 장소·장비 조건 확인</p>
+        </article>
+        <article class="study-metric-card">
+          <p class="study-metric-value">환경 점검</p>
+          <p class="study-metric-label">인터넷·카메라·마이크·전원 확인</p>
+        </article>
       </div>
     </div>
   </section>
 
   {% include breadcrumb.html %}
 
-  <section id="quick-answer" class="guide-summary-section study-surface">
+  <nav class="guide-toc" aria-label="온라인 시험 허브 목차">
+    <div class="guide-toc-inner">
+      <span class="guide-toc-label">온라인 시험 허브 탐색</span>
+      <a href="#exam-guides">시험 선택</a>
+      <a href="#common-check">공통 체크</a>
+      <a href="#checklist">예약 전 확인</a>
+      <a href="#faq">FAQ</a>
+      <a href="#booking">예약</a>
+    </div>
+  </nav>
+
+  <section id="quick-answer" class="guide-summary-section study-surface-soft" aria-label="온라인 시험 장소 빠른 답변">
     <div class="section-inner">
-      <p class="section-label">Quick Answer</p>
-      <h2 class="section-title">온라인 시험 장소는 ‘조용한 곳’만으로 충분하지 않습니다</h2>
-      <p class="section-desc">원격감독 시험이나 온라인 평가에서는 다른 사람이 들어오지 않는 공간, 안정적인 인터넷과 전원, 허용된 카메라·마이크·스피커, 책상 주변 정리, 추가 모니터와 휴대폰 사용 조건 등이 중요할 수 있습니다. 시험마다 규정이 다르고 변경될 수 있으므로 <strong>공식 응시 안내가 항상 우선</strong>입니다.</p>
-      <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>독립된 공간</h3><p>시험 중 다른 사람의 출입이나 대화가 문제가 되지 않는지 확인합니다.</p></article>
-        <article class="about-highlight-card"><h3>인터넷·전원</h3><p>시험 전체 시간 동안 연결과 노트북 전원을 안정적으로 유지할 수 있는지 확인합니다.</p></article>
-        <article class="about-highlight-card"><h3>카메라·마이크</h3><p>시험기관이 요구하는 카메라 각도, 마이크, 스피커 또는 보조 카메라 조건을 확인합니다.</p></article>
-        <article class="about-highlight-card"><h3>책상과 주변 환경</h3><p>허용되지 않는 물건, 추가 화면, 메모지나 전자기기를 치워야 하는지 확인합니다.</p></article>
+      <div class="interview-flow-heading">
+        <p class="section-label">Quick Answer</p>
+        <h2 class="section-title">온라인 시험 장소는 ‘조용한 곳’만으로 충분하지 않습니다</h2>
+        <p><strong>원격감독 시험이나 온라인 평가는 시험 중 다른 사람이 들어오지 않는지, 인터넷과 전원이 안정적인지, 카메라·마이크·스피커와 주변 환경이 시험 규정에 맞는지를 함께 확인해야 합니다.</strong> 시험마다 조건이 다르고 변경될 수 있으므로 공식 응시 안내를 먼저 확인하세요.</p>
       </div>
     </div>
   </section>
 
-  <section id="exam-guides" class="blog-guides-section study-surface-soft">
+  <section id="exam-guides" class="guide-summary-section study-surface" aria-label="시험별 온라인 응시 가이드">
     <div class="section-inner">
-      <div class="blog-section-heading">
-        <div><p class="section-label">Exam Guides</p><h2 class="section-title">시험별 응시 공간 가이드</h2></div>
-        <p>시험 이름을 선택하면 집에서 응시할 때와 외부 독립 공간을 이용할 때 무엇을 확인해야 하는지 볼 수 있습니다.</p>
+      <div class="interview-flow-heading">
+        <p class="section-label">Choose Your Exam</p>
+        <h2 class="section-title">어떤 시험을 준비하나요?</h2>
+        <p>시험 이름을 먼저 선택하면 해당 시험에서 확인해야 할 공간과 장비 조건을 빠르게 볼 수 있습니다.</p>
       </div>
-      <div class="about-highlight-grid exam-guide-grid">
-        <article class="about-highlight-card">
-          <p class="section-label">Duolingo English Test</p>
-          <h3>듀오링고 영어시험</h3>
-          <p>조용하고 밝은 공간, 인터넷, 컴퓨터와 스마트폰 보조 카메라 등 DET 응시 환경을 준비할 때 확인할 항목을 정리했습니다.</p>
+      <div class="guide-summary-grid interview-flow-grid exam-guide-grid">
+        <article class="guide-summary-card">
+          <span>01</span>
+          <h2>듀오링고 영어시험</h2>
+          <p>조용하고 밝은 공간, 인터넷, 컴퓨터와 스마트폰 보조 카메라 등 DET 응시 환경을 확인합니다.</p>
           <p><a href="/posts/duolingo-english-test-space/">듀오링고 시험 장소 가이드 →</a></p>
         </article>
-        <article class="about-highlight-card">
-          <p class="section-label">TOEFL Home Edition</p>
-          <h3>TOEFL iBT Home Edition</h3>
-          <p>닫힌 공간, 컴퓨터, 카메라·마이크·스피커와 시험 중 주변 환경을 준비할 때 확인할 내용을 정리했습니다.</p>
-          <p><a href="/posts/toefl-home-edition-space/">TOEFL Home Edition 장소 가이드 →</a></p>
+        <article class="guide-summary-card">
+          <span>02</span>
+          <h2>TOEFL Home Edition</h2>
+          <p>닫힌 공간, 컴퓨터, 카메라·마이크·스피커와 시험 중 주변 환경을 확인합니다.</p>
+          <p><a href="/posts/toefl-home-edition-space/">TOEFL Home Edition 가이드 →</a></p>
         </article>
-        <article class="about-highlight-card">
-          <p class="section-label">Online Coding Test</p>
-          <h3>온라인 코딩테스트</h3>
-          <p>와이파이, 전원, 화면 공유나 녹화 여부, 독립 공간과 시험 시간을 고려해 응시 장소를 고르는 기준을 정리했습니다.</p>
-          <p><a href="/posts/online-coding-test-place/">온라인 코딩테스트 장소 가이드 →</a></p>
+        <article class="guide-summary-card">
+          <span>03</span>
+          <h2>온라인 코딩테스트</h2>
+          <p>와이파이, 전원, 화면 공유나 녹화 여부, 독립 공간과 시험 시간을 확인합니다.</p>
+          <p><a href="/posts/online-coding-test-place/">온라인 코딩테스트 가이드 →</a></p>
         </article>
-        <article class="about-highlight-card">
-          <p class="section-label">AI Competency Test</p>
-          <h3>AI 역량검사</h3>
-          <p>카메라·마이크를 사용하는 질의응답, 게임, 영상면접 등이 이어질 때 방해받지 않는 응시 환경을 확인합니다.</p>
-          <p><a href="/posts/ai-competency-test-space/">AI 역량검사 장소 가이드 →</a></p>
+        <article class="guide-summary-card">
+          <span>04</span>
+          <h2>AI 역량검사</h2>
+          <p>카메라·마이크를 사용하는 질의응답, 게임, 영상면접 중 방해받지 않는 환경을 확인합니다.</p>
+          <p><a href="/posts/ai-competency-test-space/">AI 역량검사 가이드 →</a></p>
         </article>
       </div>
-      <article class="exam-common-check">
-        <div>
-          <p class="section-label">Remote Proctoring</p>
-          <h3>온라인·원격감독 시험 공통 체크</h3>
-          <p>시험 한 번 때문에 집을 정리해야 할 때 책상, 주변 물건, 카메라 범위, 가족 동선까지 무엇을 확인해야 하는지 정리했습니다.</p>
-        </div>
-        <p><a href="/posts/online-exam-home-setup/" class="btn-outline">온라인 시험 준비 체크리스트</a></p>
-      </article>
     </div>
   </section>
 
-  <section id="checklist" class="guide-summary-section study-surface">
+  <section id="common-check" class="guide-summary-section study-surface-soft" aria-label="온라인 원격감독 시험 공통 체크">
     <div class="section-inner">
-      <p class="section-label">Before Booking</p>
-      <h2 class="section-title">부천에서 온라인 시험 장소를 찾기 전 확인할 것</h2>
-      <p class="section-desc">바른자리는 부천 신중동역 인근에서 한 팀이 예약 시간 동안 단독으로 이용하는 프라이빗 공간입니다. 다만 특정 시험의 공식 시험센터가 아니며, 시험기관이 외부 공간 응시를 허용하는지와 장비·환경 조건을 대신 보증하지 않습니다. 아래 항목을 공식 안내와 대조한 뒤 예약하세요.</p>
+      <div class="interview-flow-heading">
+        <p class="section-label">Remote Proctoring</p>
+        <h2 class="section-title">시험 이름이 달라도 먼저 확인할 것은 비슷합니다</h2>
+        <p>시험기관의 공식 규정을 확인한 뒤 공간, 장비, 시간을 차례대로 점검하면 응시 장소를 정하기 쉬워집니다.</p>
+      </div>
+      <div class="about-principle-grid">
+        <article class="about-principle-item" data-step="01">
+          <h3>공간</h3>
+          <p>다른 사람의 출입, 주변 소음, 책상 위 물건과 카메라에 보이는 범위를 확인합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="02">
+          <h3>장비</h3>
+          <p>노트북 또는 데스크톱, 운영체제, 카메라·마이크·스피커, 보조 카메라 조건을 확인합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="03">
+          <h3>시간</h3>
+          <p>체크인, 환경점검, 프로그램 설치와 감독관 확인까지 고려해 시험시간보다 여유 있게 준비합니다.</p>
+        </article>
+      </div>
+      <div class="hero-btns" style="margin-top:1.5rem;">
+        <a href="/posts/online-exam-home-setup/" class="btn-primary">온라인 시험 준비 체크리스트</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist" class="guide-summary-section study-surface" aria-label="부천 온라인 시험 장소 예약 전 확인">
+    <div class="section-inner">
+      <div class="interview-flow-heading">
+        <p class="section-label">Before Booking</p>
+        <h2 class="section-title">부천에서 온라인 시험 장소를 예약하기 전 확인할 것</h2>
+        <p>바른자리는 부천 신중동역 인근에서 한 팀이 예약 시간 동안 단독으로 이용하는 프라이빗 공간입니다. 특정 시험의 공식 시험센터가 아니며, 시험기관의 응시 승인이나 장비 적합성을 대신 보증하지 않습니다.</p>
+      </div>
       <div class="about-principle-grid">
         <article class="about-principle-item" data-step="01"><h3>응시 장소 규정</h3><p>자택만 허용되는지, 호텔·사무실·독립 공간 등 다른 장소에서도 가능한지 확인합니다.</p></article>
         <article class="about-principle-item" data-step="02"><h3>사용 기기</h3><p>노트북·데스크톱 허용 여부, 운영체제, 브라우저, 추가 모니터와 휴대폰 사용 조건을 확인합니다.</p></article>
         <article class="about-principle-item" data-step="03"><h3>카메라 범위</h3><p>얼굴만 촬영하는지, 책상이나 방 전체 스캔 또는 스마트폰 보조 카메라가 필요한지 확인합니다.</p></article>
-        <article class="about-principle-item" data-step="04"><h3>시험 시간</h3><p>체크인과 환경점검 시간을 포함해 예약 종료 전에 충분한 여유가 있는지 확인합니다.</p></article>
+        <article class="about-principle-item" data-step="04"><h3>예약 시간</h3><p>체크인과 환경점검 시간을 포함해 예약 종료 전에 시험을 마칠 수 있도록 충분한 여유를 둡니다.</p></article>
       </div>
       <div class="hero-btns" style="margin-top:1.5rem;">
         <a href="/booking/" class="btn-primary">이용시간·요금 확인하기</a>
-        <a href="/study/" class="btn-outline">스터디·소모임 가이드 보기</a>
+        <a href="/study/" class="btn-outline">스터디·소모임 가이드</a>
       </div>
     </div>
   </section>
 
   <section id="faq" class="study-surface-soft">
     <div class="section-inner">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-title">온라인 시험 장소 관련 자주 묻는 질문</h2>
-      <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>바른자리에서 모든 온라인 시험을 볼 수 있나요?</h3><p>아닙니다. 시험기관마다 응시 장소와 장비 조건이 다릅니다. 해당 시험이 외부 독립 공간에서의 응시를 허용하는지 공식 안내를 먼저 확인해야 합니다.</p></article>
-        <article class="about-highlight-card"><h3>노트북만 가져가면 되나요?</h3><p>시험에 따라 카메라·마이크·스피커, 스마트폰 보조 카메라, 특정 브라우저나 프로그램이 필요할 수 있습니다. 개인 시험 장비는 응시자가 준비하고 사전에 작동 여부를 확인하는 것이 좋습니다.</p></article>
-        <article class="about-highlight-card"><h3>예약시간은 시험시간과 똑같이 잡아도 되나요?</h3><p>환경점검, 체크인, 프로그램 설치나 감독관 확인이 길어질 수 있으므로 시험기관 안내에 맞춰 앞뒤 여유시간을 두는 편이 안전합니다.</p></article>
+      <div class="interview-flow-heading">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">온라인 시험 장소 관련 자주 묻는 질문</h2>
+        <p>예약 전에 많이 확인하는 내용을 정리했습니다.</p>
+      </div>
+      <div class="contact-faq">
+        <details>
+          <summary>바른자리에서 모든 온라인 시험을 볼 수 있나요?</summary>
+          <div><p>아닙니다. 시험기관마다 응시 장소와 장비 조건이 다릅니다. 해당 시험이 외부 독립 공간에서의 응시를 허용하는지 공식 안내를 먼저 확인해야 합니다.</p></div>
+        </details>
+        <details>
+          <summary>노트북만 가져가면 되나요?</summary>
+          <div><p>시험에 따라 카메라·마이크·스피커, 스마트폰 보조 카메라, 특정 브라우저나 프로그램이 필요할 수 있습니다. 개인 시험 장비는 응시자가 준비하고 사전에 작동 여부를 확인하는 것이 좋습니다.</p></div>
+        </details>
+        <details>
+          <summary>예약시간은 시험시간과 똑같이 잡아도 되나요?</summary>
+          <div><p>환경점검, 체크인, 프로그램 설치나 감독관 확인이 길어질 수 있으므로 시험기관 안내에 맞춰 앞뒤 여유시간을 두는 편이 안전합니다.</p></div>
+        </details>
       </div>
     </div>
   </section>
@@ -119,56 +176,41 @@ script_version: 20260711-4
       <p class="section-label">Book Your Time</p>
       <h2 class="section-title">시험 규정을 확인했다면, 방해받지 않을 시간을 확보하세요</h2>
       <p class="section-desc">시험기관의 최신 규정과 개인 장비 조건을 먼저 확인한 뒤 필요한 시간만큼 예약하세요. 바른자리는 시험 합격이나 시험기관의 응시 승인을 보장하는 서비스가 아니라, 예약 시간 동안 사용할 수 있는 프라이빗 공간입니다.</p>
-      <div class="hero-btns"><a href="/booking/" class="btn-primary">예약 가능한 시간 확인하기</a><a href="/posts/online-exam-home-setup/" class="btn-outline">온라인 시험 체크리스트 보기</a></div>
+      <div class="hero-btns">
+        <a href="/booking/" class="btn-primary">예약 가능한 시간 확인하기</a>
+        <a href="/posts/online-exam-home-setup/" class="btn-outline">시험 체크리스트 보기</a>
+      </div>
     </div>
   </section>
 </main>
+
 <style>
-@media (min-width: 980px) {
+main.about-page.exam-hub #home.study-hero {
+  background:
+    linear-gradient(114deg, rgba(18, 44, 61, .72), rgba(34, 84, 112, .46)),
+    radial-gradient(circle at 8% 15%, rgba(188, 214, 231, .24), transparent 30%),
+    radial-gradient(circle at 88% 14%, rgba(140, 177, 204, .22), transparent 34%),
+    url('/images/online-exam-home-setup.webp') center / cover no-repeat;
+}
+@media (min-width: 1000px) {
   .exam-hub .exam-guide-grid {
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
   }
 }
-.exam-hub .exam-common-check {
-  margin-top: 1.25rem;
-  padding: 1.25rem 1.35rem;
-  border: 1px solid #d7e2db;
-  border-radius: 18px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-.exam-hub .exam-common-check h3 {
-  margin: .15rem 0 .45rem;
-}
-.exam-hub .exam-common-check p {
-  margin-bottom: 0;
-}
-.exam-hub .exam-common-check .btn-outline {
-  white-space: nowrap;
-}
-@media (max-width: 979px) and (min-width: 640px) {
+@media (min-width: 700px) and (max-width: 999px) {
   .exam-hub .exam-guide-grid {
-    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+  }
+  .exam-hub .exam-guide-grid .guide-summary-card::after {
+    display: none !important;
   }
 }
-@media (max-width: 639px) {
+@media (max-width: 699px) {
   .exam-hub .exam-guide-grid {
-    display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
-  .exam-hub .exam-common-check {
-    display: block;
-  }
-  .exam-hub .exam-common-check > p {
-    margin-top: 1rem;
+  .exam-hub .exam-guide-grid .guide-summary-card::after {
+    display: none !important;
   }
 }
 </style>
