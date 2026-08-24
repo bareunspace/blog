@@ -10,7 +10,7 @@
 {% if refresh_item %}
 <section class="search-refresh" aria-label="이 페이지의 핵심 정리">
   <div class="section-inner">
-    <p class="section-label">Quick Answer</p>
+    <p class="section-label">{{ refresh_item.label | default: 'Quick Answer' }}</p>
     <h2 class="section-title">{{ refresh_item.title }}</h2>
     {% if refresh_item.paragraphs %}
       {% for paragraph in refresh_item.paragraphs %}
