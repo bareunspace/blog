@@ -74,6 +74,7 @@ preload_image: images/online-exam-home-setup.webp
   <div class="guide-toc-inner">
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
     <a href="#home-exams">집에서 볼 수 있는 시험</a>
+    <a href="#onvue">OnVUE 자격시험</a>
     <a href="#cleanup">왜 주변을 정리해야 하나</a>
     <a href="#weekday-daytime">평일 낮 변수</a>
     <a href="#checklist">시험 전 정리 체크</a>
@@ -106,6 +107,24 @@ preload_image: images/online-exam-home-setup.webp
     <p>대학 수업에서도 LMS를 통한 온라인 시험이나 원격시험이 진행되는 경우가 있습니다. 모든 학생이 별도 공간을 빌릴 필요는 없지만, 집·기숙사·원룸에서 소음, 인터넷, 카메라 배경, 룸메이트 동선이 불안하다면 시험 시간 동안 방해받지 않는 공간을 따로 확보하는 것도 하나의 선택지가 될 수 있습니다.</p>
     <p>채용 과정에서 이어지는 온라인 시험이라면 <a href="{{ '/interview/' | relative_url }}#online-hiring">면접준비 허브의 온라인 채용 전형 글</a>도 함께 보면 좋습니다. AI 역량검사는 <a href="{{ '/posts/ai-competency-test-space/' | relative_url }}">AI 역량검사 응시 환경</a>, 인적성은 <a href="{{ '/posts/online-aptitude-test-space/' | relative_url }}">온라인 인적성검사 장소 기준</a>, 코딩테스트는 <a href="{{ '/posts/online-coding-test-place/' | relative_url }}">온라인 코딩테스트 준비 공간</a>에서 따로 정리했습니다.</p>
     <p><strong>중요:</strong> 위 목록은 현재 확인되는 대표 사례입니다. 종목별 시험 방식과 세부 환경 조건은 바뀔 수 있으므로 접수 후 받은 수험자 안내와 공식 공지를 반드시 다시 확인하세요.</p>
+  </div>
+</section>
+
+<section id="onvue">
+  <div class="section-inner">
+    <p class="section-label">Pearson VUE OnVUE</p>
+    <h2 class="section-title">AWS·Microsoft 같은 자격시험도<br />온라인 감독 방식이 있습니다</h2>
+    <p class="section-desc">Pearson VUE의 OnVUE는 시험센터 방문 대신 온라인 감독으로 시험을 보는 방식입니다. 현재 AWS Certification은 Pearson VUE에 별도의 OnVUE 온라인 시험 안내가 있고, Microsoft도 Pearson VUE를 통해 가정이나 사무실에서 온라인 감독 시험을 제공하고 있습니다. 다만 <strong>모든 시험·모든 회차에서 온라인 옵션이 보장되는 것은 아니므로 실제 예약 화면과 공식 안내를 최종 기준으로 확인해야 합니다.</strong></p>
+
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>AWS</span><h3>AWS Certification</h3><p>Cloud Practitioner, Solutions Architect 등 AWS Certification을 준비한다면 Pearson VUE 예약 과정에서 본인이 응시할 시험의 OnVUE 온라인 옵션을 확인할 수 있습니다. 시험 전에는 <a href="https://www.pearsonvue.com/kr/ko/aws/onvue.html" target="_blank" rel="noopener noreferrer">AWS OnVUE 공식 안내</a>에서 최신 요구사항을 다시 확인하세요.</p></article>
+      <article class="guide-summary-card"><span>Microsoft</span><h3>Microsoft Certification</h3><p>Microsoft는 Pearson VUE와 협력해 온라인 감독 시험을 가정이나 사무실에서 제공합니다. 시험별로 온라인 응시 가능 여부가 다를 수 있으므로 <a href="https://learn.microsoft.com/ko-kr/credentials/certifications/online-exams" target="_blank" rel="noopener noreferrer">Microsoft 공식 온라인 시험 안내</a>와 실제 예약 화면을 함께 확인하세요.</p></article>
+      <article class="guide-summary-card"><span>필수 점검</span><h3>같은 기기·같은 네트워크로 테스트</h3><p>OnVUE는 시험 당일 사용할 동일한 기기와 네트워크에서 사전 시스템 테스트를 실행하도록 안내합니다. AWS OnVUE는 VPN·회사 네트워크·공용/공유 네트워크를 금지하므로, 단순히 속도가 빠른지뿐 아니라 <strong>사용할 네트워크가 시험 정책에 맞는지</strong>도 별도로 확인해야 합니다.</p></article>
+    </div>
+
+    <p>OnVUE 계열 시험은 일반적인 온라인 시험보다 공간과 네트워크 조건이 더 엄격할 수 있습니다. 시험 공간은 조용하고 방해가 없어야 하고, 시험 중 혼자 있어야 하며, 다른 사람이 화면을 볼 수 없어야 합니다. 추가 모니터나 주변 물건 등도 시험별 규정에 맞게 정리해야 합니다.</p>
+    <p>바른자리 같은 외부 독립 공간을 검토한다면 <strong>“공간이 조용하다”는 이유만으로 응시 가능하다고 판단하지 말고</strong>, 본인의 시험 정책과 OnVUE 요구사항을 확인한 뒤 실제 시험에 사용할 기기·네트워크로 시스템 테스트를 진행하세요.</p>
+    <p>온라인 영어시험을 준비하고 있다면 <a href="{{ '/posts/duolingo-english-test-space/' | relative_url }}">듀오링고 영어시험(DET) 공간 준비</a>와 <a href="{{ '/posts/toefl-home-edition-space/' | relative_url }}">TOEFL Home Edition 공간 준비</a>도 함께 확인할 수 있습니다.</p>
   </div>
 </section>
 
@@ -214,6 +233,7 @@ preload_image: images/online-exam-home-setup.webp
       <details><summary>듀얼모니터를 사용해도 되나요?</summary><p>시험마다 다릅니다. 일부 온라인 시험은 듀얼모니터나 추가 화면 사용을 제한하므로 응시할 시험의 장비 규정을 반드시 확인해야 합니다.</p></details>
       <details><summary>가족이 시험 중 방에 들어오면 문제가 되나요?</summary><p>온라인 감독 시험은 타인이 함께 있는 환경을 제한할 수 있습니다. 시험시간뿐 아니라 신분확인과 환경점검 시간까지 고려해 가족이나 룸메이트에게 미리 알려두는 것이 좋습니다.</p></details>
       <details><summary>CCTV가 있는 외부 공간에서도 시험을 볼 수 있나요?</summary><p>CCTV나 유리벽 등 공간 조건에 대한 기준은 시험마다 다를 수 있습니다. 외부 공간을 사용할 경우 먼저 공간 조건을 확인한 뒤 시험기관의 공식 응시환경 규정과 비교하세요.</p></details>
+      <details><summary>AWS·Microsoft 자격시험도 온라인으로 볼 수 있나요?</summary><p>AWS와 Microsoft는 Pearson VUE의 온라인 감독 시험을 지원합니다. 다만 모든 시험·모든 회차에서 온라인 옵션이 제공되는 것은 아니므로 실제 예약 화면에서 본인의 시험이 OnVUE 대상인지 확인해야 합니다. 시험 당일 사용할 동일한 기기와 네트워크로 시스템 테스트를 진행하고, 공용·공유 네트워크 등 금지 조건도 최신 공식 규정에서 다시 확인하세요.</p></details>
       <details><summary>FAT·TAT도 집에서 볼 수 있나요?</summary><p>2026년 FAT 1·2급과 TAT 1·2급 시험은 비대면 방식으로 안내되고 있습니다. 다만 시험 방식은 향후 변경될 수 있으므로 실제 응시 회차의 시행계획과 수험자 안내를 다시 확인해야 합니다.</p></details>
       <details><summary>대학 LMS 원격시험도 외부 공간에서 볼 수 있나요?</summary><p>학교와 과목의 시험 안내에 따라 다릅니다. 집이나 기숙사에서 응시하기 어렵다면 담당 교원이나 LMS 공지의 응시환경 조건을 먼저 확인하고, 필요한 경우 조용한 개인 공간을 비교해볼 수 있습니다.</p></details>
       <details><summary>평일 낮 온라인 시험은 집에서 보는 게 더 쉽지 않나요?</summary><p>집이 비어 있고 인터넷과 주변 환경을 통제할 수 있다면 집이 가장 편할 수 있습니다. 다만 가족·룸메이트 동선, 택배·초인종, 생활소음, 공사 소음처럼 낮 시간대 변수가 있다면 시험 시간만 독립된 공간을 확보하는 방법도 비교해볼 수 있습니다.</p></details>
