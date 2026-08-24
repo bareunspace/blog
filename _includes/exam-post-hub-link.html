@@ -1,0 +1,12 @@
+{% assign exam_post = false %}
+{% if page.url == '/posts/duolingo-english-test-space/' or page.url == '/posts/toefl-home-edition-space/' or page.url == '/posts/online-coding-test-place/' or page.url == '/posts/ai-competency-test-space/' or page.url == '/posts/online-exam-home-setup/' %}{% assign exam_post = true %}{% endif %}
+{% if exam_post %}
+<section class="search-refresh-links" aria-label="온라인 시험 가이드">
+  <div class="section-inner">
+    <p class="section-label">Online Exam Hub</p>
+    <h2 class="section-title">다른 온라인 시험 가이드도 함께 확인하세요</h2>
+    <p class="section-desc">시험마다 응시 장소와 장비 규정이 다릅니다. 듀오링고 영어시험, TOEFL Home Edition, 온라인 코딩테스트, AI 역량검사와 공통 응시환경 체크리스트를 한곳에서 비교할 수 있습니다.</p>
+    <p><a href="/exam/">온라인 시험 장소 가이드 전체 보기 →</a></p>
+  </div>
+</section>
+{% endif %}
