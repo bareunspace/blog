@@ -8,7 +8,7 @@
   {% include header.html %}
 
   {{ content }}
-  {% if page.collection == 'posts' %}{% include search-refresh.html %}{% endif %}
+  {% if page.collection == 'posts' %}{% include search-refresh.html %}{% include exam-post-hub-link.html %}{% endif %}
   {% if page.page_id == 'interview' or page.page_id == 'meeting' or page.page_id == 'study' or page.page_id == 'exam' %}{% include search-refresh-hub-links.html %}{% endif %}
   {% if page.category == '면접준비' or page.category == '스터디룸' %}
     {% if page.category == '면접준비' %}
