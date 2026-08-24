@@ -47,7 +47,7 @@ script_version: 20260711-4
         <div><p class="section-label">Exam Guides</p><h2 class="section-title">시험별 응시 공간 가이드</h2></div>
         <p>시험 이름을 선택하면 집에서 응시할 때와 외부 독립 공간을 이용할 때 무엇을 확인해야 하는지 볼 수 있습니다.</p>
       </div>
-      <div class="about-highlight-grid">
+      <div class="about-highlight-grid exam-guide-grid">
         <article class="about-highlight-card">
           <p class="section-label">Duolingo English Test</p>
           <h3>듀오링고 영어시험</h3>
@@ -72,13 +72,15 @@ script_version: 20260711-4
           <p>카메라·마이크를 사용하는 질의응답, 게임, 영상면접 등이 이어질 때 방해받지 않는 응시 환경을 확인합니다.</p>
           <p><a href="/posts/ai-competency-test-space/">AI 역량검사 장소 가이드 →</a></p>
         </article>
-        <article class="about-highlight-card">
+      </div>
+      <article class="exam-common-check">
+        <div>
           <p class="section-label">Remote Proctoring</p>
           <h3>온라인·원격감독 시험 공통 체크</h3>
           <p>시험 한 번 때문에 집을 정리해야 할 때 책상, 주변 물건, 카메라 범위, 가족 동선까지 무엇을 확인해야 하는지 정리했습니다.</p>
-          <p><a href="/posts/online-exam-home-setup/">온라인 시험 준비 체크리스트 →</a></p>
-        </article>
-      </div>
+        </div>
+        <p><a href="/posts/online-exam-home-setup/" class="btn-outline">온라인 시험 준비 체크리스트</a></p>
+      </article>
     </div>
   </section>
 
@@ -121,3 +123,52 @@ script_version: 20260711-4
     </div>
   </section>
 </main>
+<style>
+@media (min-width: 980px) {
+  .exam-hub .exam-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+.exam-hub .exam-common-check {
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid #d7e2db;
+  border-radius: 18px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.exam-hub .exam-common-check h3 {
+  margin: .15rem 0 .45rem;
+}
+.exam-hub .exam-common-check p {
+  margin-bottom: 0;
+}
+.exam-hub .exam-common-check .btn-outline {
+  white-space: nowrap;
+}
+@media (max-width: 979px) and (min-width: 640px) {
+  .exam-hub .exam-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+@media (max-width: 639px) {
+  .exam-hub .exam-guide-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .exam-hub .exam-common-check {
+    display: block;
+  }
+  .exam-hub .exam-common-check > p {
+    margin-top: 1rem;
+  }
+}
+</style>
