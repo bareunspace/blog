@@ -31,17 +31,6 @@
     - label: 화상면접 장비와 배경 세팅
       href: /posts/video-interview-setup/
 
-- path: /posts/bucheon-tutoring-class-space/
-  refreshed_at: 2026-08-23
-  hub: study
-  title: 부천에서 과외·보충수업 장소를 찾는다면
-  summary: 과외나 보충수업 장소는 단순히 앉을 자리만 있으면 되는 것이 아닙니다. 학생과 마주 앉을 테이블, 설명을 이어갈 수 있는 조용한 환경, Wi-Fi와 전원, 이동하기 쉬운 위치, 필요한 시간만 예약할 수 있는지를 함께 확인하는 것이 좋습니다.
-  links:
-    - label: 스터디룸 선택 기준 보기
-      href: /posts/study-space-guide/
-    - label: 스터디·수업 공간 허브 보기
-      href: /study/
-
 - path: /posts/bucheon-meeting-room/
   refreshed_at: 2026-08-23
   hub: meeting
@@ -89,6 +78,7 @@
 - path: /posts/ai-competency-test-space/
   refreshed_at: 2026-08-25
   hub: interview
+  label: Webcam Check
   title: AI 역량검사, 웹캠이 없으면 어떻게 해야 할까?
   summary: 웹캠이 필요한 역량검사라면 먼저 노트북 내장 카메라가 응시 조건을 충족하는지 확인하세요. 내장 카메라가 없거나 인식되지 않는다면 검사 플랫폼이 허용하는 외장 웹캠을 준비하고, 실제 응시 전에 환경체크로 영상과 마이크가 정상 작동하는지 확인하는 것이 좋습니다.
   paragraphs:
