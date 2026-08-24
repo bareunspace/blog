@@ -3,12 +3,13 @@
 {% assign article_title = time_space_override.title | default: seo_override.title | default: page.title %}
 {% assign article_description = time_space_override.description | default: seo_override.description | default: page.description %}
 {% assign article_keywords = time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
-{% assign interview_hub = false %}{% assign study_hub = false %}{% assign meeting_hub = false %}{% assign private_hub = false %}{% assign time_space_hub = false %}
+{% assign interview_hub = false %}{% assign study_hub = false %}{% assign meeting_hub = false %}{% assign private_hub = false %}{% assign time_space_hub = false %}{% assign exam_hub = false %}
 {% if page.category == '면접준비' %}{% assign interview_hub = true %}{% endif %}
 {% if page.category == '스터디룸' %}{% assign study_hub = true %}{% endif %}
 {% if page.category == '미팅·상담' %}{% assign meeting_hub = true %}{% endif %}
 {% if page.category == '프라이빗시간' %}{% assign private_hub = true %}{% endif %}
 {% if page.category == '시간·공간' %}{% assign time_space_hub = true %}{% endif %}
+{% if page.url == '/posts/duolingo-english-test-space/' or page.url == '/posts/toefl-home-edition-space/' or page.url == '/posts/online-coding-test-place/' or page.url == '/posts/ai-competency-test-space/' or page.url == '/posts/online-exam-home-setup/' %}{% assign exam_hub = true %}{% endif %}
 {% assign effective_hubs = page.hubs | default: time_space_override.hubs %}
 {% if effective_hubs %}
   {% if effective_hubs contains '면접준비' %}{% assign interview_hub = true %}{% endif %}
@@ -37,7 +38,8 @@
     {"@type":"WebSite","name":"바른자리","url":"https://bareunjari.com/"}{% if time_space_hub %},
     {"@type":"CollectionPage","name":"시간·공간 저널","url":"https://bareunjari.com/time-space/"}{% endif %}{% if interview_hub %},
     {"@type":"CollectionPage","name":"면접준비 허브","url":"https://bareunjari.com/interview/"}{% endif %}{% if study_hub %},
-    {"@type":"CollectionPage","name":"스터디·소모임 허브","url":"https://bareunjari.com/study/"}{% endif %}{% if meeting_hub %},
+    {"@type":"CollectionPage","name":"스터디·소모임 허브","url":"https://bareunjari.com/study/"}{% endif %}{% if exam_hub %},
+    {"@type":"CollectionPage","name":"온라인 시험 장소 가이드","url":"https://bareunjari.com/exam/"}{% endif %}{% if meeting_hub %},
     {"@type":"CollectionPage","name":"미팅·업무 허브","url":"https://bareunjari.com/meeting/"}{% endif %}{% if private_hub %},
     {"@type":"CollectionPage","name":"프라이빗시간 허브","url":"https://bareunjari.com/private/"}{% endif %}
   ]
