@@ -107,7 +107,7 @@ script_version: 20260711-4
         <h2 class="section-title">시험 이름이 달라도 먼저 확인할 것은 비슷합니다</h2>
         <p>시험기관의 공식 규정을 확인한 뒤 공간, 장비, 시간을 차례대로 점검하면 응시 장소를 정하기 쉬워집니다.</p>
       </div>
-      <div class="about-principle-grid">
+      <div class="about-principle-grid remote-proctor-grid">
         <article class="about-principle-item" data-step="01">
           <h3>공간</h3>
           <p>다른 사람의 출입, 주변 소음, 책상 위 물건과 카메라에 보이는 범위를 확인합니다.</p>
@@ -196,6 +196,9 @@ main.about-page.exam-hub #home.study-hero {
   .exam-hub .exam-guide-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .exam-hub #common-check .remote-proctor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 @media (min-width: 700px) and (max-width: 999px) {
   .exam-hub .exam-guide-grid {
@@ -204,9 +207,13 @@ main.about-page.exam-hub #home.study-hero {
   .exam-hub .exam-guide-grid .guide-summary-card::after {
     display: none !important;
   }
+  .exam-hub #common-check .remote-proctor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 @media (max-width: 699px) {
-  .exam-hub .exam-guide-grid {
+  .exam-hub .exam-guide-grid,
+  .exam-hub #common-check .remote-proctor-grid {
     grid-template-columns: 1fr;
   }
   .exam-hub .exam-guide-grid .guide-summary-card::after {
