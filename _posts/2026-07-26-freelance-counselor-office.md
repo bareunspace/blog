@@ -203,6 +203,16 @@ script_version: 20260711-4
     </div>
   </section>
 
+  <section id="psychological-testing">
+    <div class="section-inner">
+      <h2 class="section-title">심리검사·출장검사를 진행할 공간이 필요할 때</h2>
+      <p class="section-desc">프리랜서 상담사나 임상심리사가 내담자와 만나 심리검사나 대면 평가를 진행해야 할 때, 고정 상담실이 없더라도 필요한 시간만 독립된 공간을 이용할 수 있습니다.</p>
+      <p class="section-desc">웩슬러 지능검사, 성격검사, 주의력검사 등은 검사에 따라 1~3시간 이상 소요되기도 합니다. 바른자리는 예약한 한 팀이 공간 전체를 단독으로 이용하기 때문에 다른 이용자와 공간을 공유하지 않습니다.</p>
+      <p class="section-desc">신중동역에서 가까워 부천에서 내담자와 만날 장소를 정하기에도 편리하며, 검사 일정에 맞춰 필요한 시간만 예약해 이용할 수 있습니다.</p>
+      <p class="section-desc">검사마다 필요한 환경과 조건이 다를 수 있으므로, 실제 검사 진행 전에는 검사 시행자가 바른자리의 공간 환경이 해당 검사에 적합한지 확인해 주세요.</p>
+    </div>
+  </section>
+
   <section id="checklist">
     <div class="section-inner">
       <h2 class="section-title">상담 공간을 고를 때 꼭 확인할 체크리스트</h2>
