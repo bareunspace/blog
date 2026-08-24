@@ -78,6 +78,9 @@ main#mainContent #about .price-card.recommended-primary { background:#e7f3eb; bo
 main#mainContent #about .price-card.recommended-primary .price-badge { background:#f59a45; color:#fff; }
 main#mainContent #about .price-card.recommended-primary .price-label,
 main#mainContent #about .price-card.recommended-primary .price-amount { color:#1f5a3d; }
+main#mainContent #about .price-card[data-cta="price_focus_4h"] { transition:transform var(--transition), box-shadow var(--transition); }
+main#mainContent #about .price-card[data-cta="price_focus_4h"]:hover,
+main#mainContent #about .price-card[data-cta="price_focus_4h"]:focus-visible { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.14); }
 main#mainContent #about .price-card-cta { display:flex; align-items:center; justify-content:center; min-height:42px; margin-top:auto; padding:.65rem .8rem; border-radius:10px; background:#f1f6f3; color:#245f43; font-size:.82rem; font-weight:800; }
 main#mainContent #about .price-card.recommended .price-card-cta { background:#2d6a4f; color:#fff; }
 main#mainContent #about .price-card.recommended-primary .price-card-cta { background:#1f5a3d; color:#fff; }
