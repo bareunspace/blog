@@ -180,6 +180,7 @@ script_version: 20260719-1
   {% assign hourly = ops.products.hourly %}
   {% assign interview = ops.products.interview_2h %}
   {% assign study = ops.products.study_3h %}
+  {% assign focus = ops.products.focus_4h %}
   {% assign overnight = ops.products.overnight %}
   <section id="about">
     <div class="section-inner">
@@ -188,7 +189,7 @@ script_version: 20260719-1
         <a class="blog-guide-category-link" href="{{ '/booking/' | relative_url }}" aria-label="바른자리 이용시간 전체 보기" data-cta="about_label_booking">→</a>
       </div>
       <h2 class="section-title">이용 요금·상품</h2>
-      <p class="section-desc">목적별로 공간이 나뉘는 것이 아니라, 필요한 시간에 맞춰 선택하는 방식입니다. 2시간과 3시간은 집중하거나 함께 준비할 때 추천하는 이용시간입니다.</p>
+      <p class="section-desc">목적별로 공간이 나뉘는 것이 아니라, 필요한 시간에 맞춰 선택하는 방식입니다. 2시간·3시간·4시간은 집중하거나 함께 준비할 때 추천하는 이용시간입니다.</p>
       <div class="about-layout">
         <div class="pricing-cards">
           <a href="{{ hourly.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_hourly" aria-label="1시간부터 예약하기">
@@ -212,14 +213,21 @@ script_version: 20260719-1
             <p class="price-desc">스터디 · 팀플 · 프로젝트 · 토론 · 소모임</p>
             <span class="price-card-cta">3시간 예약하기 →</span>
           </a>
-          <a href="{{ overnight.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" data-cta="price_overnight" aria-label="올나잇 6시간 예약하기">
-            <span class="price-badge">심야 집중</span>
-            <p class="price-label">올나잇 6시간</p>
-            <p class="price-amount">30,000<span class="price-unit">원 / 6시간</span></p>
-            <p class="price-desc">00:00~06:00 · 과제 · 작업 · 공부 · 해외 화상회의</p>
-            <span class="price-card-cta">올나잇 예약하기 →</span>
+          <a href="{{ focus.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card recommended" data-cta="price_focus_4h" aria-label="4시간 예약하기">
+            <span class="price-badge">추천 이용시간</span>
+            <p class="price-label">4시간 긴 몰입</p>
+            <p class="price-amount">40,000<span class="price-unit">원 / 4시간</span></p>
+            <p class="price-desc">그룹스터디 · 시험 준비 · 팀 프로젝트 · 장시간 작업 · 워크숍</p>
+            <span class="price-card-cta">4시간 예약하기 →</span>
           </a>
         </div>
+        <a href="{{ overnight.booking_url }}" target="_blank" rel="noopener noreferrer" class="price-card" style="margin-top:.9rem;" data-cta="price_overnight" aria-label="올나잇 6시간 예약하기">
+          <span class="price-badge">심야 집중</span>
+          <p class="price-label">올나잇 6시간</p>
+          <p class="price-amount">30,000<span class="price-unit">원 / 6시간</span></p>
+          <p class="price-desc">00:00~06:00 · 과제 · 작업 · 공부 · 해외 화상회의</p>
+          <span class="price-card-cta">올나잇 예약하기 →</span>
+        </a>
       </div>
       <a href="{{ '/booking/' | relative_url }}" class="about-cta" data-cta="about_booking_guide">예약하기 →</a>
     </div>
