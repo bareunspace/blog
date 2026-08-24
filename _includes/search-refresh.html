@@ -12,7 +12,13 @@
   <div class="section-inner">
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">{{ refresh_item.title }}</h2>
-    <p class="section-desc">{{ refresh_item.summary }}</p>
+    {% if refresh_item.paragraphs %}
+      {% for paragraph in refresh_item.paragraphs %}
+        <p{% if forloop.first %} class="section-desc"{% endif %}>{{ paragraph }}</p>
+      {% endfor %}
+    {% else %}
+      <p class="section-desc">{{ refresh_item.summary }}</p>
+    {% endif %}
     {% if refresh_item.links %}
     <div class="hero-btns" style="margin-top: 1.5rem;">
       {% for link in refresh_item.links %}
