@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  var NAVER_PLACE_ID = '2041312316';
+  var NAVER_BIZ_ID = '1663159';
+
   function inferPurpose() {
     var path = window.location.pathname || '/';
     var body = document.body;
@@ -46,9 +49,41 @@
     return '/booking/?' + params.toString();
   }
 
+  function getNaverBookingMeta(href) {
+    if (!href) return null;
+
+    var url;
+    try {
+      url = new URL(href, window.location.origin);
+    } catch (e) {
+      return null;
+    }
+
+    var host = url.hostname.toLowerCase();
+    var path = url.pathname.replace(/\/+$/, '');
+
+    if (host === 'm.place.naver.com' && path === '/place/' + NAVER_PLACE_ID + '/ticket') {
+      return {
+        destination: 'naver_place_ticket',
+        item_id: 'place_ticket'
+      };
+    }
+
+    if (host === 'booking.naver.com') {
+      var itemMatch = path.match(new RegExp('^/booking/10/bizes/' + NAVER_BIZ_ID + '/items/(\\d+)$'));
+      if (itemMatch) {
+        return {
+          destination: 'naver_booking_item',
+          item_id: itemMatch[1]
+        };
+      }
+    }
+
+    return null;
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var path = window.location.pathname || '/';
-    var naverUrl = 'https://m.place.naver.com/place/2041312316/ticket';
 
     if (path.indexOf('/booking') === 0) {
       var query = new URLSearchParams(window.location.search);
@@ -57,7 +92,9 @@
 
       document.querySelectorAll('a[href]').forEach(function (link) {
         var href = (link.getAttribute('href') || '').trim();
-        if (href !== naverUrl && href !== naverUrl + '/') return;
+        var bookingMeta = getNaverBookingMeta(href);
+        if (!bookingMeta) return;
+
         link.addEventListener('click', function (event) {
           var target = link.href;
           event.preventDefault();
@@ -65,7 +102,9 @@
             purpose: bookingPurpose,
             source_path: bookingSource,
             cta_position: link.getAttribute('data-cta') || 'unknown',
-            page_path: path
+            page_path: path,
+            item_id: bookingMeta.item_id,
+            booking_destination: bookingMeta.destination
           }, function () {
             window.location.href = target;
           });
@@ -77,7 +116,7 @@
     var purpose = inferPurpose();
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = (link.getAttribute('href') || '').trim();
-      var isNaverBooking = href === naverUrl || href === naverUrl + '/';
+      var isNaverBooking = !!getNaverBookingMeta(href);
       var isBookingPage = href === '/booking/' || href === '/booking';
       if (!isNaverBooking && !isBookingPage) return;
 
