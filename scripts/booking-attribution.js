@@ -3,6 +3,48 @@
 
   var NAVER_PLACE_ID = '2041312316';
   var NAVER_BIZ_ID = '1663159';
+  var ATTR_KEYS = {
+    first: 'bareunjari_first_touch_path',
+    assist: 'bareunjari_assist_path',
+    last: 'bareunjari_last_touch_path'
+  };
+
+  function sessionGet(key) {
+    try {
+      return window.sessionStorage.getItem(key) || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function sessionSet(key, value) {
+    if (!value) return;
+    try {
+      window.sessionStorage.setItem(key, value);
+    } catch (e) {
+      // Analytics attribution must never block the booking flow.
+    }
+  }
+
+  function initAttribution(path) {
+    var firstTouch = sessionGet(ATTR_KEYS.first);
+    if (!firstTouch) {
+      sessionSet(ATTR_KEYS.first, path);
+      return;
+    }
+
+    if (path.indexOf('/booking') !== 0 && path !== firstTouch) {
+      sessionSet(ATTR_KEYS.assist, path);
+    }
+  }
+
+  function attributionParams(fallbackLastTouch) {
+    return {
+      first_touch_path: sessionGet(ATTR_KEYS.first) || fallbackLastTouch || '',
+      assist_path: sessionGet(ATTR_KEYS.assist) || '',
+      last_touch_path: sessionGet(ATTR_KEYS.last) || fallbackLastTouch || ''
+    };
+  }
 
   function inferPurpose() {
     var path = window.location.pathname || '/';
@@ -84,11 +126,16 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var path = window.location.pathname || '/';
+    initAttribution(path);
 
     if (path.indexOf('/booking') === 0) {
       var query = new URLSearchParams(window.location.search);
       var bookingPurpose = query.get('purpose') || 'unspecified';
       var bookingSource = query.get('source') || document.referrer || 'direct';
+
+      if (!sessionGet(ATTR_KEYS.last) && bookingSource && bookingSource !== 'direct') {
+        sessionSet(ATTR_KEYS.last, bookingSource);
+      }
 
       document.querySelectorAll('a[href]').forEach(function (link) {
         var href = (link.getAttribute('href') || '').trim();
@@ -97,10 +144,14 @@
 
         link.addEventListener('click', function (event) {
           var target = link.href;
+          var attribution = attributionParams(bookingSource);
           event.preventDefault();
           track('naver_booking_click', {
             purpose: bookingPurpose,
             source_path: bookingSource,
+            first_touch_path: attribution.first_touch_path,
+            assist_path: attribution.assist_path,
+            last_touch_path: attribution.last_touch_path,
             cta_position: link.getAttribute('data-cta') || 'unknown',
             page_path: path,
             item_id: bookingMeta.item_id,
@@ -125,10 +176,16 @@
       link.removeAttribute('target');
       link.removeAttribute('rel');
       link.addEventListener('click', function (event) {
+        var attribution;
+        sessionSet(ATTR_KEYS.last, path);
+        attribution = attributionParams(path);
         event.preventDefault();
         track('booking_intent', {
           purpose: purpose,
           source_path: path,
+          first_touch_path: attribution.first_touch_path,
+          assist_path: attribution.assist_path,
+          last_touch_path: attribution.last_touch_path,
           link_text: (link.textContent || '').trim().slice(0, 80)
         }, function () {
           window.location.href = target;
