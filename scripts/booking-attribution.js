@@ -85,9 +85,14 @@
   }
 
   function bookingUrl(purpose) {
+    var currentPath = window.location.pathname || '/';
+    var attribution = attributionParams(currentPath);
     var params = new URLSearchParams();
     params.set('purpose', purpose);
-    params.set('source', window.location.pathname || '/');
+    params.set('source', currentPath);
+    if (attribution.first_touch_path) params.set('first', attribution.first_touch_path);
+    if (attribution.assist_path) params.set('assist', attribution.assist_path);
+    if (attribution.last_touch_path) params.set('last', attribution.last_touch_path);
     return '/booking/?' + params.toString();
   }
 
@@ -132,7 +137,13 @@
       var query = new URLSearchParams(window.location.search);
       var bookingPurpose = query.get('purpose') || 'unspecified';
       var bookingSource = query.get('source') || document.referrer || 'direct';
+      var queryFirst = query.get('first') || '';
+      var queryAssist = query.get('assist') || '';
+      var queryLast = query.get('last') || '';
 
+      if (queryFirst) sessionSet(ATTR_KEYS.first, queryFirst);
+      if (queryAssist) sessionSet(ATTR_KEYS.assist, queryAssist);
+      if (queryLast) sessionSet(ATTR_KEYS.last, queryLast);
       if (!sessionGet(ATTR_KEYS.last) && bookingSource && bookingSource !== 'direct') {
         sessionSet(ATTR_KEYS.last, bookingSource);
       }
@@ -171,14 +182,15 @@
       var isBookingPage = href === '/booking/' || href === '/booking';
       if (!isNaverBooking && !isBookingPage) return;
 
-      var target = bookingUrl(purpose);
-      link.setAttribute('href', target);
       link.removeAttribute('target');
       link.removeAttribute('rel');
       link.addEventListener('click', function (event) {
         var attribution;
+        var target;
         sessionSet(ATTR_KEYS.last, path);
         attribution = attributionParams(path);
+        target = bookingUrl(purpose);
+        link.setAttribute('href', target);
         event.preventDefault();
         track('booking_intent', {
           purpose: purpose,
