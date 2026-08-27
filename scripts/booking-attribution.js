@@ -51,7 +51,7 @@
     var body = document.body;
     var pageId = body && body.getAttribute('data-page-id');
     if (pageId === 'study' || /(^|\/)study(\/|\.|$)/.test(path)) return 'study_group';
-    if (pageId === 'interview' || /(^|\/)interview(\/|\.|$)/.test(path) || /ai-interview/.test(path)) return 'interview';
+    if (pageId === 'interview' || pageId === 'ai_ready_check' || /(^|\/)interview(\/|\.|$)/.test(path) || /ai-interview/.test(path) || /ai-ready-check/.test(path)) return 'interview';
     if (pageId === 'meeting' || /(^|\/)meeting(\/|\.|$)/.test(path)) return 'meeting_work';
     if (pageId === 'private' || /(^|\/)private(\/|\.|$)/.test(path)) return 'private_time';
 
