@@ -65,6 +65,52 @@ script_version: 20260820-1
 </main>
 
 <style>
+  /* Related guides: keep the shared section aligned with the interview hub card system. */
+  .search-refresh-links {
+    padding: clamp(3.75rem, 7vw, 5.5rem) 1.5rem;
+    border-top: 1px solid rgba(26,54,41,.1);
+    background: #f4f7f5;
+  }
+  .search-refresh-links .section-inner { max-width: 1080px; }
+  .search-refresh-links .section-title { margin-bottom: 0; }
+  .search-refresh-links .about-highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .9rem;
+    margin-top: 1.15rem;
+  }
+  .search-refresh-links .about-highlight-card {
+    min-width: 0;
+    padding: 1.1rem 1.15rem;
+    border: 1px solid rgba(26,54,41,.13);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(26,54,41,.06);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .search-refresh-links .about-highlight-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(53,102,77,.32);
+    box-shadow: 0 12px 26px rgba(26,54,41,.09);
+  }
+  .search-refresh-links .about-highlight-card h3 {
+    margin: 0 0 .42rem;
+    font-size: 1rem;
+    line-height: 1.48;
+    letter-spacing: -.015em;
+  }
+  .search-refresh-links .about-highlight-card h3 a {
+    color: #284b39;
+    text-decoration: none;
+  }
+  .search-refresh-links .about-highlight-card h3 a:hover,
+  .search-refresh-links .about-highlight-card h3 a:focus-visible { text-decoration: underline; }
+  .search-refresh-links .about-highlight-card p {
+    margin: 0;
+    color: #68756d;
+    font-size: .84rem;
+    line-height: 1.7;
+  }
   #prep-flow .guide-summary-grid.interview-flow-grid { align-items: stretch; }
   #prep-flow .guide-summary-card { display: flex; flex-direction: column; gap: .5rem; min-height: 0; }
   #prep-flow .guide-summary-card > span { margin-bottom: .1rem; flex: 0 0 auto; }
