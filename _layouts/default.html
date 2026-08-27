@@ -65,6 +65,47 @@
     </script>
   {% endif %}
 
+  {% if page.url == '/posts/ai-competency-test-space/' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var readyUrl = '/ai-ready-check/';
+      var label = 'AI 면접 Ready Room 2시간 예약';
+      var send = function (location) {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'ai_ready_check_entry_click', {
+            source_path: '/posts/ai-competency-test-space/',
+            link_location: location
+          });
+        }
+      };
+      var heroPrimary = document.querySelector('#home .hero-btns .btn-primary');
+      if (heroPrimary) {
+        heroPrimary.href = readyUrl;
+        heroPrimary.textContent = label;
+        heroPrimary.setAttribute('data-ai-ready-entry', 'hero');
+        heroPrimary.addEventListener('click', function () { send('hero'); });
+        var note = document.createElement('p');
+        note.className = 'post-inline-community-note';
+        note.textContent = '예약 전 5분 동안 카메라·마이크·인터넷·응시 환경을 먼저 점검합니다.';
+        heroPrimary.closest('.hero-btns')?.insertAdjacentElement('afterend', note);
+      }
+      [
+        ['#bareunjari .hero-btns .btn-primary', 'space_section'],
+        ['.blog-conversion-section .blog-conversion-actions .btn-primary', 'bottom_conversion']
+      ].forEach(function (item) {
+        var node = document.querySelector(item[0]);
+        if (!node) return;
+        node.href = readyUrl;
+        node.removeAttribute('target');
+        node.removeAttribute('rel');
+        node.textContent = label;
+        node.setAttribute('data-ai-ready-entry', item[1]);
+        node.addEventListener('click', function () { send(item[1]); });
+      });
+    });
+  </script>
+  {% endif %}
+
   {% if page.page_id == 'meeting' %}{% include meeting-hub-seo.html %}{% endif %}
   {% if page.page_id == 'study' %}{% include study-hub-seo.html %}{% endif %}
   {% if page.page_id == 'interview' %}{% include interview-hub-seo.html %}{% include interview-experience-form.html %}{% endif %}
