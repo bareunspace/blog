@@ -1,0 +1,238 @@
+---
+layout: default
+page_id: ai_ready_check
+permalink: /ai-ready-check/
+title: AI 면접 5분 환경점검 | 카메라·마이크·인터넷 확인 | 바른자리
+description: AI 역량검사와 영상면접 전 카메라, 마이크, 인터넷, 방해 없는 환경을 5분 안에 확인하는 바른자리 Ready Check입니다.
+canonical: https://bareunjari.com/ai-ready-check/
+robots: noindex,follow
+sitemap: false
+---
+
+<main class="about-page ai-ready-check-page">
+  <section class="arc-hero">
+    <div class="section-inner arc-shell">
+      <p class="section-label">AI Interview Ready Check</p>
+      <h1 class="section-title">AI 면접 전 5분,<br />환경부터 확인하세요</h1>
+      <p class="section-desc">카메라·마이크·인터넷·방해 없는 환경을 실제 브라우저에서 점검합니다. 영상과 음성은 서버에 업로드하거나 저장하지 않습니다.</p>
+      <div class="arc-progress" aria-label="환경점검 진행률">
+        <span data-progress-text>0 / 4 완료</span>
+        <div class="arc-progress-track"><span data-progress-bar></span></div>
+      </div>
+    </div>
+  </section>
+
+  {% include breadcrumb.html %}
+
+  <section class="arc-section">
+    <div class="section-inner arc-shell arc-grid">
+      <article class="arc-card" data-step="camera">
+        <div class="arc-card-head"><span>01</span><div><h2>카메라</h2><p>실제 면접 화면처럼 얼굴 위치와 밝기를 확인합니다.</p></div></div>
+        <div class="arc-video-wrap">
+          <video data-camera-video class="arc-video" autoplay muted playsinline></video>
+          <div class="arc-face-guide" aria-hidden="true"></div>
+        </div>
+        <p class="arc-status" data-camera-status>아직 확인하지 않았습니다.</p>
+        <button type="button" class="btn-primary" data-camera-start>카메라·마이크 켜기</button>
+      </article>
+
+      <article class="arc-card" data-step="mic">
+        <div class="arc-card-head"><span>02</span><div><h2>마이크</h2><p>평소 답변하는 목소리로 말해 입력이 들어오는지 확인합니다.</p></div></div>
+        <p class="arc-sample">“안녕하세요. 지원자입니다.”라고 말해보세요.</p>
+        <div class="arc-meter" aria-label="마이크 입력 수준"><span data-mic-meter></span></div>
+        <p class="arc-status" data-mic-status>카메라·마이크를 먼저 켜주세요.</p>
+        <button type="button" class="btn-outline" data-mic-complete disabled>마이크 확인 완료</button>
+      </article>
+
+      <article class="arc-card" data-step="network">
+        <div class="arc-card-head"><span>03</span><div><h2>인터넷</h2><p>현재 브라우저가 바른자리 사이트와 안정적으로 통신하는지 간단히 확인합니다.</p></div></div>
+        <div class="arc-result-box"><strong data-network-result>검사 전</strong><span data-network-detail>3회 연결 확인을 진행합니다.</span></div>
+        <button type="button" class="btn-outline" data-network-start>인터넷 확인하기</button>
+        <p class="arc-note">이 검사는 실제 채용 플랫폼의 속도나 접속 상태를 보증하지 않습니다. 최종 응시 전 기업·검사 플랫폼의 안내와 자체 환경체크를 우선하세요.</p>
+      </article>
+
+      <article class="arc-card" data-step="environment">
+        <div class="arc-card-head"><span>04</span><div><h2>응시 환경</h2><p>장비가 정상이어도 검사 중 방해가 생기면 집중이 깨질 수 있습니다.</p></div></div>
+        <div class="arc-checks">
+          <label><input type="checkbox" data-env-check> 검사 시간 동안 다른 사람이 들어오지 않습니다.</label>
+          <label><input type="checkbox" data-env-check> 휴대폰 알림과 불필요한 프로그램을 끌 수 있습니다.</label>
+          <label><input type="checkbox" data-env-check> 노트북 전원 또는 충전기를 확보했습니다.</label>
+          <label><input type="checkbox" data-env-check> 기업·검사 플랫폼의 공식 응시 안내를 확인했습니다.</label>
+        </div>
+        <p class="arc-status" data-env-status>4개 항목을 모두 확인해 주세요.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="arc-ready" data-ready-panel hidden>
+    <div class="section-inner arc-shell">
+      <p class="section-label">Ready</p>
+      <h2 class="section-title">기본 환경점검이 끝났습니다</h2>
+      <p class="section-desc">기기와 연결이 정상이어도 실제 응시 규정은 기업과 플랫폼마다 다릅니다. 집에서 방해 없는 시간을 확보하기 어렵다면 바른자리 AI 면접 Ready Room에서 2시간을 예약해 준비와 응시 시간을 확보할 수 있습니다.</p>
+      <div class="hero-btns">
+        <a href="/booking/" class="btn-primary" data-cta="ai-ready-check-complete">AI 면접 Ready Room 2시간 예약</a>
+        <a href="/ai-interview/" class="btn-outline" data-ready-practice>1분 모의답변 해보기</a>
+      </div>
+      <p class="arc-note">현재 바른자리 기본 요금 기준 2시간 20,000원입니다. 바른자리는 특정 AI 역량검사 운영기관의 공식 시험장이 아니며, 응시 가능 여부를 보장하지 않습니다.</p>
+    </div>
+  </section>
+</main>
+
+<style>
+.ai-ready-check-page{background:#f6f8f6;color:#173726}.arc-shell{max-width:980px}.arc-hero{padding:72px 0 36px;background:linear-gradient(180deg,#eef5f0 0%,#f6f8f6 100%)}.arc-hero .section-title{max-width:760px}.arc-progress{margin-top:24px;max-width:520px;display:grid;gap:8px;color:#355745;font-weight:800}.arc-progress-track{height:10px;border-radius:999px;background:#dce8e1;overflow:hidden}.arc-progress-track span{display:block;width:0;height:100%;background:#2d6a4f;transition:width .25s ease}.arc-section{padding:28px 0 70px}.arc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.arc-card{background:#fff;border:1px solid #dce8e1;border-radius:18px;padding:22px;display:grid;gap:16px;align-content:start;box-shadow:0 8px 24px rgba(28,61,43,.05)}.arc-card.is-complete{border-color:#78a98c;box-shadow:0 8px 24px rgba(45,106,79,.10)}.arc-card-head{display:flex;gap:14px;align-items:flex-start}.arc-card-head>span{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;border-radius:50%;background:#edf7f1;color:#1f6a46;font-size:.82rem;font-weight:900}.arc-card-head h2{margin:0;font-size:1.25rem}.arc-card-head p{margin:5px 0 0;color:#5f7066;line-height:1.55;font-size:.9rem}.arc-video-wrap{position:relative;background:#0b1110;border-radius:14px;overflow:hidden;aspect-ratio:16/9}.arc-video{width:100%;height:100%;object-fit:cover}.arc-face-guide{position:absolute;left:50%;top:50%;width:34%;height:62%;transform:translate(-50%,-50%);border:2px solid rgba(255,255,255,.78);border-radius:50% 50% 44% 44%;box-shadow:0 0 0 999px rgba(0,0,0,.06)}.arc-status{margin:0;color:#4b5e54;font-size:.88rem;font-weight:700}.arc-status.is-good{color:#1f6a46}.arc-status.is-warn{color:#9a6700}.arc-sample{margin:0;padding:12px 14px;border-radius:12px;background:#f4f8f5;color:#2a3d33}.arc-meter{height:14px;border-radius:999px;background:#dce8e1;overflow:hidden}.arc-meter span{display:block;width:0;height:100%;background:linear-gradient(90deg,#2d6a4f,#52b788);transition:width .08s linear}.arc-result-box{border:1px solid #dce8e1;background:#f8fcfa;border-radius:14px;padding:18px;display:grid;gap:6px}.arc-result-box strong{font-size:1.15rem}.arc-result-box span,.arc-note{color:#66756d;font-size:.82rem;line-height:1.6}.arc-checks{display:grid;gap:10px}.arc-checks label{display:flex;gap:9px;align-items:flex-start;padding:11px 12px;border:1px solid #e2ebe5;border-radius:12px;background:#fbfcfb;color:#2f4438;line-height:1.5}.arc-checks input{margin-top:3px;accent-color:#2d6a4f}.arc-card button{justify-self:start}.arc-ready{padding:68px 0 84px;background:#17352a;color:#fff}.arc-ready .section-label,.arc-ready .section-desc,.arc-ready .arc-note{color:#d8e4dd}.arc-ready .section-title{color:#fff}.arc-ready .btn-primary{background:#fff;color:#17352a;border-color:#fff}.arc-ready .btn-outline{color:#fff;border-color:#b8c9bf}.arc-ready[hidden]{display:none!important}@media(max-width:760px){.arc-hero{padding:48px 0 24px}.arc-grid{grid-template-columns:1fr}.arc-card{padding:18px}.arc-section{padding-bottom:52px}.arc-ready{padding:52px 0 64px}}
+</style>
+
+<script>
+(() => {
+  const send = (name, params = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, { page_type: 'ai_ready_check', ...params });
+    }
+  };
+
+  const state = { camera:false, mic:false, network:false, environment:false };
+  const cards = Object.fromEntries([...document.querySelectorAll('[data-step]')].map((node) => [node.dataset.step, node]));
+  const progressText = document.querySelector('[data-progress-text]');
+  const progressBar = document.querySelector('[data-progress-bar]');
+  const readyPanel = document.querySelector('[data-ready-panel]');
+  const video = document.querySelector('[data-camera-video]');
+  const cameraStatus = document.querySelector('[data-camera-status]');
+  const micStatus = document.querySelector('[data-mic-status]');
+  const micMeter = document.querySelector('[data-mic-meter]');
+  const micComplete = document.querySelector('[data-mic-complete]');
+  const envChecks = [...document.querySelectorAll('[data-env-check]')];
+  const envStatus = document.querySelector('[data-env-status]');
+  let stream = null;
+  let audioContext = null;
+  let analyser = null;
+  let meterFrame = null;
+  let micPeak = 0;
+  let completeSent = false;
+
+  const mark = (key, value = true) => {
+    state[key] = value;
+    cards[key]?.classList.toggle('is-complete', value);
+    const count = Object.values(state).filter(Boolean).length;
+    progressText.textContent = `${count} / 4 완료`;
+    progressBar.style.width = `${count * 25}%`;
+    if (count === 4) {
+      readyPanel.hidden = false;
+      if (!completeSent) {
+        completeSent = true;
+        send('ai_ready_check_complete');
+      }
+      window.setTimeout(() => readyPanel.scrollIntoView({ behavior:'smooth', block:'start' }), 180);
+    }
+  };
+
+  send('ai_ready_check_view', { source_path: document.referrer || 'direct' });
+
+  document.querySelector('[data-camera-start]')?.addEventListener('click', async () => {
+    send('ai_ready_check_camera_start');
+    if (!navigator.mediaDevices?.getUserMedia) {
+      cameraStatus.textContent = '이 브라우저에서는 카메라·마이크 점검을 지원하지 않습니다.';
+      cameraStatus.className = 'arc-status is-warn';
+      return;
+    }
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video:true, audio:true });
+      video.srcObject = stream;
+      cameraStatus.textContent = '카메라가 정상적으로 열렸습니다. 얼굴 위치와 밝기를 확인하세요.';
+      cameraStatus.className = 'arc-status is-good';
+      mark('camera');
+      send('ai_ready_check_camera_complete');
+
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const source = audioContext.createMediaStreamSource(stream);
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 256;
+      source.connect(analyser);
+      const data = new Uint8Array(analyser.frequencyBinCount);
+      const tick = () => {
+        analyser.getByteFrequencyData(data);
+        const avg = data.reduce((sum, value) => sum + value, 0) / Math.max(1, data.length);
+        micPeak = Math.max(micPeak, avg);
+        const pct = Math.min(100, Math.max(2, avg * 1.8));
+        micMeter.style.width = `${pct}%`;
+        if (micPeak > 8) {
+          micStatus.textContent = '마이크 입력이 감지됩니다. 평소 답변 목소리로 한 문장 말해보세요.';
+          micStatus.className = 'arc-status is-good';
+          micComplete.disabled = false;
+        }
+        meterFrame = requestAnimationFrame(tick);
+      };
+      tick();
+    } catch (error) {
+      cameraStatus.textContent = '카메라 또는 마이크 권한을 사용할 수 없습니다. 브라우저 권한을 확인해 주세요.';
+      cameraStatus.className = 'arc-status is-warn';
+      send('ai_ready_check_camera_error', { error_name: error?.name || 'unknown' });
+    }
+  });
+
+  micComplete?.addEventListener('click', () => {
+    if (micPeak <= 8) return;
+    mark('mic');
+    micStatus.textContent = '마이크 입력 확인을 완료했습니다.';
+    micStatus.className = 'arc-status is-good';
+    micComplete.disabled = true;
+    send('ai_ready_check_mic_complete');
+  });
+
+  document.querySelector('[data-network-start]')?.addEventListener('click', async (event) => {
+    const button = event.currentTarget;
+    const result = document.querySelector('[data-network-result]');
+    const detail = document.querySelector('[data-network-detail]');
+    button.disabled = true;
+    result.textContent = '확인 중...';
+    const timings = [];
+    let success = 0;
+    for (let i = 0; i < 3; i += 1) {
+      const started = performance.now();
+      try {
+        const response = await fetch(`${window.location.pathname}?readycheck_ping=${Date.now()}_${i}`, { method:'HEAD', cache:'no-store' });
+        if (response.ok) success += 1;
+        timings.push(performance.now() - started);
+      } catch (error) {
+        timings.push(null);
+      }
+    }
+    const valid = timings.filter((value) => typeof value === 'number');
+    const avg = valid.length ? Math.round(valid.reduce((a,b) => a+b,0) / valid.length) : null;
+    if (success === 3) {
+      result.textContent = '연결 정상';
+      detail.textContent = avg === null ? '3회 연결에 성공했습니다.' : `3회 연결 성공 · 평균 응답 ${avg}ms`;
+      mark('network');
+      send('ai_ready_check_network_complete', { success_count:success, average_response_ms:avg });
+    } else {
+      result.textContent = '연결 재확인 필요';
+      detail.textContent = `3회 중 ${success}회 연결되었습니다. 실제 면접 플랫폼의 환경체크를 다시 진행하세요.`;
+      send('ai_ready_check_network_warning', { success_count:success });
+    }
+    button.disabled = false;
+  });
+
+  const syncEnvironment = () => {
+    const checked = envChecks.filter((input) => input.checked).length;
+    if (checked === envChecks.length) {
+      envStatus.textContent = '응시 환경 확인을 완료했습니다.';
+      envStatus.className = 'arc-status is-good';
+      if (!state.environment) send('ai_ready_check_environment_complete');
+      mark('environment');
+    } else {
+      envStatus.textContent = `${checked} / ${envChecks.length} 확인 · 나머지 항목도 점검해 주세요.`;
+      envStatus.className = 'arc-status';
+      mark('environment', false);
+    }
+  };
+  envChecks.forEach((input) => input.addEventListener('change', syncEnvironment));
+
+  document.querySelector('[data-ready-practice]')?.addEventListener('click', () => send('ai_ready_check_practice_click'));
+
+  const stopMedia = () => {
+    if (meterFrame) cancelAnimationFrame(meterFrame);
+    stream?.getTracks().forEach((track) => track.stop());
+    if (audioContext && audioContext.state !== 'closed') audioContext.close().catch(() => {});
+  };
+  window.addEventListener('pagehide', stopMedia);
+})();
+</script>
