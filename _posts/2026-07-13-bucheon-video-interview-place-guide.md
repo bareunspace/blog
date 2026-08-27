@@ -30,6 +30,7 @@ script_version: 20260711-4
       <div class="hero-btns">
         <a href="#quick-answer" class="btn-primary">장소 선택 기준 바로 보기</a>
         <a href="/booking/" class="btn-outline">화상면접 시간 확인하기</a>
+        <a href="/ai-ready-check/" class="btn-outline">화상면접 전 5분 환경점검</a>
       </div>
     </div>
   </section>
@@ -101,6 +102,9 @@ script_version: 20260711-4
         <article class="about-highlight-card"><h3>T-20분 · 장비 테스트</h3><p>면접 플랫폼에서 카메라, 마이크, 이어폰, 인터넷 연결과 표시 이름을 점검합니다.</p></article>
         <article class="about-highlight-card"><h3>T-10분 · 방해 요소 차단</h3><p>휴대전화와 PC 알림을 끄고 물과 이력서를 손이 닿는 곳에 둔 뒤 면접 시작을 준비합니다.</p></article>
       </div>
+      <div class="hero-btns" style="margin-top:1.5rem;">
+        <a href="/ai-ready-check/" class="btn-outline">카메라·마이크·인터넷 지금 확인하기 →</a>
+      </div>
     </div>
   </section>
 
@@ -125,6 +129,7 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top:2rem;">
         <a href="/booking/" class="btn-primary">부천 화상면접 시간 확인하기</a>
+        <a href="/ai-ready-check/" class="btn-outline">면접 전 5분 환경점검</a>
         <a href="/posts/video-interview-setup/" class="btn-outline">화상면접 장비·배경 세팅</a>
         <a href="/posts/interview-prep-checklist/" class="btn-outline">면접 전날 체크리스트</a>
         <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 마지막 질문 준비</a>
