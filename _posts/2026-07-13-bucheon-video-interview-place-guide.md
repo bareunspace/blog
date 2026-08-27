@@ -28,8 +28,7 @@ script_version: 20260711-4
       <h1 class="section-title">부천 화상면접 장소<br />어디가 좋을까요?</h1>
       <p class="section-desc">부천에서 화상면접을 볼 장소를 찾는다면 단순히 조용한 곳보다 <strong>면접 시간 동안 혼자 사용할 수 있는지, 배경·조명·인터넷을 직접 점검할 수 있는지</strong>를 먼저 보세요. 집과 카페가 불안하다면 신중동역 도보 1분의 프라이빗 공간처럼 예약 시간 동안 독립적으로 사용할 수 있는 장소가 대안이 될 수 있습니다.</p>
       <div class="hero-btns">
-        <a href="#quick-answer" class="btn-primary">장소 선택 기준 바로 보기</a>
-        <a href="/booking/" class="btn-outline">화상면접 시간 확인하기</a>
+        <a href="/booking/" class="btn-primary">화상면접 시간 확인하기</a>
         <a href="/ai-ready-check/" class="btn-outline">화상면접 전 5분 환경점검</a>
       </div>
     </div>
