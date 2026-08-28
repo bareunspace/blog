@@ -3,7 +3,6 @@ layout: default
 title: 면접 STAR 경험 정리법 | 꼬리질문까지 대비하는 답변 구조
 description: 면접 경험 질문을 STAR로 정리할 때 상황·역할·행동·결과만 외우지 말고 판단 이유까지 준비하세요. 경험 선택, 답변 구조, 꼬리질문, 60~90초 말하기 연습까지 정리했습니다.
 category: 면접준비
-editor_pick: true
 keywords: 면접경험정리,면접STAR,STAR면접,면접경험질문,면접답변구조,면접꼬리질문,면접준비,면접연습
 tags:
   - 면접준비
