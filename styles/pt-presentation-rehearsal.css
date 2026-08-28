@@ -433,29 +433,7 @@ body:has(.pt-rehearsal-guide) .breadcrumb-inner {
   writing-mode: horizontal-tb;
 }
 
-/* FAQ and related links */
-.pt-rehearsal-guide #faq .contact-faq {
-  margin-top: 1.25rem;
-  border-top: 1px solid var(--pt-line);
-}
-
-.pt-rehearsal-guide #faq details {
-  border-bottom: 1px solid var(--pt-line);
-  background: #fff;
-}
-
-.pt-rehearsal-guide #faq summary {
-  padding: 1.15rem .25rem;
-  color: var(--pt-ink);
-  font-weight: 800;
-}
-
-.pt-rehearsal-guide #faq details p {
-  padding: 0 .25rem 1.2rem;
-  color: #536159;
-  line-height: 1.78;
-}
-
+/* FAQ uses the shared card-style pattern for consistency. */
 .pt-rehearsal-guide .post-related {
   padding-top: 3.4rem;
   padding-bottom: 3.4rem;
