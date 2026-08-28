@@ -12,14 +12,14 @@ tags:
   - 연습공간
 permalink: /posts/pt-presentation-rehearsal/
 canonical: https://bareunjari.com/posts/pt-presentation-rehearsal/
-description: "PT 면접뿐 아니라 대학 발표, 공모전, 회사 제안과 온라인 발표까지 적용할 수 있는 실전 리허설 방법입니다. 준비물, 2시간 연습 순서, 촬영 점검표와 예약 시간 선택 기준을 정리했습니다."
+description: "PT 면접뿐 아니라 대학 발표, 공모전, 회사 제안과 온라인 발표까지 적용할 수 있는 실전 리허설 방법입니다. 준비물, 3시간 실전 리허설 순서, 촬영 점검표와 예약 시간 선택 기준을 정리했습니다."
 og_image: https://bareunjari.com/images/pt-presentation-rehearsal-bareunjari.webp
 og_image_alt: 노트북과 발표 자료를 펼쳐 놓고 PT 발표를 리허설하는 프라이빗 공간
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 extra_css: /styles/pt-presentation-rehearsal.css
-extra_css_version: 20260828-4
+extra_css_version: 20260828-5
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -31,7 +31,7 @@ script_version: 20260711-4
       <h1 class="section-title">PT 발표 연습, 자료를 완성했다면 이제 실제로 해볼 차례입니다</h1>
       <p class="section-desc">PT는 면접에만 쓰이지 않습니다. 대학 수업과 팀 프로젝트, 공모전·피칭, 회사 보고와 제안, 강의와 온라인 발표도 모두 자료를 띄우고 제한 시간 안에 핵심을 전달해야 합니다. 이 글은 발표 내용을 만드는 법보다 <strong>완성한 자료로 실제 리허설을 반복하는 방법</strong>에 집중합니다.</p>
       <div class="hero-btns">
-        <a href="#two-hour-plan" class="btn-primary">2시간 리허설 순서 보기</a>
+        <a href="#three-hour-plan" class="btn-primary">3시간 리허설 순서 보기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">발표 연습 시간 확인하기</a>
       </div>
     </div>
@@ -45,7 +45,7 @@ script_version: 20260711-4
       <span class="guide-toc-label">PT 리허설 순서</span>
       <a href="#pt-types">적용할 수 있는 발표</a>
       <a href="#preparation">준비물</a>
-      <a href="#two-hour-plan">2시간 연습법</a>
+      <a href="#three-hour-plan">3시간 연습법</a>
       <a href="#review-checklist">촬영 점검표</a>
       <a href="#booking-time">시간 선택</a>
       <a href="#faq">FAQ</a>
@@ -92,26 +92,27 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="two-hour-plan">
+  <section id="three-hour-plan">
     <div class="section-inner">
-      <p class="section-label">120-Minute Plan</p>
-      <h2 class="section-title">2시간 PT 리허설, 이렇게 나눠보세요</h2>
-      <p class="section-desc">자료를 계속 고치기보다 발표하고 확인하는 회차를 두 번 확보하는 구성입니다. 발표 길이에 따라 각 구간은 조정하세요.</p>
+      <p class="section-label">180-Minute Plan</p>
+      <h2 class="section-title">3시간 PT 리허설, 이렇게 나눠보세요</h2>
+      <p class="section-desc">자료 수정에만 시간을 쓰지 않고 발표·촬영·질문·최종 리허설까지 세 회차를 확보하는 구성입니다. 발표 길이가 짧다면 같은 흐름을 더 여러 번 반복하세요.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>시간</th><th>할 일</th><th>확인할 결과</th></tr></thead>
           <tbody>
-            <tr><td>0~10분</td><td>자료 실행, 화면·소리·촬영 구도와 타이머 설정</td><td>실제 발표와 비슷한 환경</td></tr>
-            <tr><td>10~25분</td><td>중간에 멈추지 않고 1차 발표</td><td>전체 시간, 막힌 구간, 첫 인상</td></tr>
-            <tr><td>25~45분</td><td>영상을 보며 시간 초과·자료 읽기·작은 목소리 표시</td><td>고칠 항목 최대 3개</td></tr>
-            <tr><td>45~70분</td><td>첫 문장, 슬라이드 전환 문장, 마무리 문장 집중 반복</td><td>발표의 연결감</td></tr>
-            <tr><td>70~90분</td><td>수정한 내용으로 2차 발표와 촬영</td><td>1차 대비 달라진 점</td></tr>
-            <tr><td>90~110분</td><td>예상 질문에 30초~1분 안으로 답하기</td><td>핵심부터 답하는 습관</td></tr>
-            <tr><td>110~120분</td><td>마지막 도입·마무리 확인, 파일과 준비물 점검</td><td>실전 직전 체크리스트</td></tr>
+            <tr><td>0~15분</td><td>자료 실행, 화면·소리·촬영 구도와 타이머 설정</td><td>실제 발표와 비슷한 환경</td></tr>
+            <tr><td>15~35분</td><td>중간에 멈추지 않고 1차 발표</td><td>전체 시간, 막힌 구간, 첫 인상</td></tr>
+            <tr><td>35~60분</td><td>영상을 보며 시간 초과·자료 읽기·작은 목소리 표시</td><td>고칠 항목 최대 3개</td></tr>
+            <tr><td>60~90분</td><td>첫 문장, 슬라이드 전환 문장, 마무리 문장 집중 반복</td><td>발표의 연결감</td></tr>
+            <tr><td>90~115분</td><td>수정한 내용으로 2차 발표와 촬영</td><td>1차 대비 달라진 점</td></tr>
+            <tr><td>115~140분</td><td>예상 질문에 30초~1분 안으로 답하고 추가 질문 이어가기</td><td>핵심부터 답하는 습관</td></tr>
+            <tr><td>140~165분</td><td>질문 대응까지 반영해 3차 최종 발표</td><td>실전 흐름과 종료 시간</td></tr>
+            <tr><td>165~180분</td><td>도입·마무리 재확인, 파일 백업과 준비물 점검</td><td>실전 직전 체크리스트</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="about-quote"><p><strong>리허설의 목표는 한 번 완벽하게 말하는 것이 아니라, 첫 회차에서 문제를 찾고 두 번째 회차에서 실제로 달라졌는지 확인하는 것입니다.</strong></p></div>
+      <div class="about-quote"><p><strong>리허설의 목표는 한 번 완벽하게 말하는 것이 아니라, 첫 회차에서 문제를 찾고, 두 번째 회차에서 수정하고, 세 번째 회차에서 질문 대응까지 포함한 실전 흐름을 완성하는 것입니다.</strong></p></div>
     </div>
   </section>
 
@@ -154,15 +155,15 @@ script_version: 20260711-4
           <thead><tr><th>권장 시간</th><th>잘 맞는 목표</th><th>가능한 흐름</th></tr></thead>
           <tbody>
             <tr><td>1시간</td><td>자료가 확정된 짧은 발표의 최종 점검</td><td>설정 → 1차 발표 → 핵심 수정 → 마지막 확인</td></tr>
-            <tr><td>2시간</td><td>혼자 발표·촬영·질문까지 한 번에 연습</td><td>1차 발표 → 영상 확인 → 부분 수정 → 2차 발표 → Q&amp;A</td></tr>
-            <tr><td>3시간</td><td>팀 발표, 긴 PT 또는 자료 수정이 함께 필요한 경우</td><td>팀별 구간 점검 → 전체 발표 → 수정 → 재발표 → 질문</td></tr>
+            <tr><td>2시간</td><td>자료가 확정된 개인 발표의 압축 연습</td><td>1차 발표 → 영상 확인 → 부분 수정 → 2차 발표</td></tr>
+            <tr><td>3시간 <strong>추천</strong></td><td>발표·촬영·피드백·질문과 최종 리허설까지 필요한 경우</td><td>1차 발표 → 분석·수정 → 2차 발표 → Q&amp;A → 3차 최종 발표</td></tr>
           </tbody>
         </table>
       </div>
       <div class="blog-conversion-panel blog-conversion-panel-soft" style="margin-top:2rem;">
         <p class="section-label">Bareunjari</p>
         <h2 class="section-title">주변 시선 없이 실제처럼 발표할 시간이 필요하다면</h2>
-        <p>바른자리는 코칭이나 전문 촬영 스튜디오가 아니라, 예약 시간 동안 한 팀이 단독으로 사용하는 프라이빗 공간대여 서비스입니다. 넓은 테이블, 콘센트와 Wi-Fi를 이용해 자료를 띄우고 말하고 촬영하며 반복할 수 있습니다. 현재 안내 요금은 1시간 10,000원이며 실제 가능 시간과 최신 운영 안내는 예약 페이지에서 확인해 주세요.</p>
+        <p>바른자리는 코칭이나 전문 촬영 스튜디오가 아니라, 예약 시간 동안 한 팀이 단독으로 사용하는 프라이빗 공간대여 서비스입니다. 넓은 테이블, 콘센트와 Wi-Fi를 이용해 자료를 띄우고 말하고 촬영하며 반복할 수 있습니다. 현재 안내 요금은 1시간 10,000원이며, 3시간 리허설은 30,000원 기준입니다. 실제 가능 시간과 최신 운영 안내는 예약 페이지에서 확인해 주세요.</p>
         <div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="pt-rehearsal-booking">PT 리허설 시간 확인하기</a><a href="/index.html#space" class="btn-outline">공간 사진 보기</a></div>
       </div>
     </div>
