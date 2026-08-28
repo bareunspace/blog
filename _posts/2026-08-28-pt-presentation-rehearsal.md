@@ -19,7 +19,7 @@ og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 extra_css: /styles/pt-presentation-rehearsal.css
-extra_css_version: 20260828-1
+extra_css_version: 20260828-2
 css_version: 20260810-4
 script_version: 20260711-4
 ---
