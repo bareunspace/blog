@@ -13,11 +13,11 @@ tags:
 permalink: /posts/pt-presentation-rehearsal/
 canonical: https://bareunjari.com/posts/pt-presentation-rehearsal/
 description: "PT 면접뿐 아니라 대학 발표, 공모전, 회사 제안과 온라인 발표까지 적용할 수 있는 실전 리허설 방법입니다. 준비물, 2시간 연습 순서, 촬영 점검표와 예약 시간 선택 기준을 정리했습니다."
-og_image: https://bareunjari.com/images/pt-presentation-rehearsal.webp
+og_image: https://bareunjari.com/images/pt-presentation-rehearsal-bareunjari.webp
 og_image_alt: 노트북과 발표 자료를 펼쳐 놓고 PT 발표를 리허설하는 프라이빗 공간
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/pt-presentation-rehearsal.webp
+preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -36,7 +36,7 @@ script_version: 20260711-4
   </section>
 
   {% include breadcrumb.html %}
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/pt-presentation-rehearsal.webp' image_alt='노트북과 발표 자료를 펼쳐 놓고 PT 발표를 리허설할 수 있는 프라이빗 공간' image_width='1672' image_height='941' image_loading='eager' image_caption='좋은 자료도 실제로 말해보면 시간 초과, 어색한 전환, 화면만 읽는 습관이 드러납니다. PT 준비의 마지막 단계는 실전과 같은 리허설입니다.' %}
+  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/pt-presentation-rehearsal-bareunjari.webp' image_alt='노트북과 발표 자료를 펼쳐 놓고 PT 발표를 리허설할 수 있는 프라이빗 공간' image_width='1672' image_height='941' image_loading='eager' image_caption='좋은 자료도 실제로 말해보면 시간 초과, 어색한 전환, 화면만 읽는 습관이 드러납니다. PT 준비의 마지막 단계는 실전과 같은 리허설입니다.' %}
 
   <nav class="guide-toc" aria-label="PT 발표 연습 가이드 목차">
     <div class="guide-toc-inner">
