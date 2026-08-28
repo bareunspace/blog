@@ -4833,24 +4833,8 @@ main.about-page .about-highlight-card p {
 }
 @media (max-width: 640px) {
   .search-refresh-links .about-highlight-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: .8rem;
-    margin-right: -1rem;
-    margin-left: -1rem;
-    padding: 0 1rem .35rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .search-refresh-links .about-highlight-grid::-webkit-scrollbar {
-    display: none;
-  }
-  .search-refresh-links .about-highlight-card {
-    flex: 0 0 min(82vw, 320px);
-    scroll-snap-align: start;
+    grid-template-columns: 1fr;
+    gap: .72rem;
   }
 }
 main.about-page .info-card {
