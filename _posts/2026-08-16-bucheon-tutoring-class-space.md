@@ -27,6 +27,8 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-tutoring-class-space/
 permalink: /posts/bucheon-tutoring-class-space/
 date: 2026-08-16 09:30:00 +0900
+editor_pick: true
+editor_pick_order: 1
 og_image: https://bareunjari.com/images/bucheon-tutoring-class-space.webp
 og_image_alt: 부천 신중동 바른자리에서 선생님과 학생이 1대1 과외 수업을 진행하는 모습
 og_image_width: 1536
