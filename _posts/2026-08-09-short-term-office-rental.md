@@ -26,7 +26,6 @@ hide_tags: true
 canonical: https://bareunjari.com/posts/short-term-office-rental/
 permalink: /posts/short-term-office-rental/
 date: 2026-08-09 11:00:00 +0900
-editor_pick: true
 og_image: https://bareunjari.com/images/short-term-office-rental.webp
 og_image_alt: 부천 신중동에서 필요한 시간만 예약해 사용하는 바른자리 프라이빗 시간제 업무공간
 og_image_width: 1672
