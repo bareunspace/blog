@@ -19,7 +19,7 @@ og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 extra_css: /styles/pt-presentation-rehearsal.css
-extra_css_version: 20260828-3
+extra_css_version: 20260828-4
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -181,14 +181,39 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section class="post-related" aria-label="함께 읽으면 좋은 글">
+  <section class="pt-next-guides guide-summary-section" aria-label="PT 발표 연습과 함께 읽으면 좋은 글">
     <div class="section-inner">
-      <h2 class="section-title">함께 읽으면 좋은 글</h2>
-      <ul>
-        <li><a href="{{ '/posts/college-team-project-space/' | relative_url }}">대학생 팀플 장소, 카페에서 하기 어려운 순간</a></li>
-        <li><a href="{{ '/posts/practice-speaking-space/' | relative_url }}">영어·면접·발표 연습할 조용한 공간</a></li>
-        <li><a href="{{ '/practice/' | relative_url }}">연습·리허설 가이드 전체 보기</a></li>
-      </ul>
+      <div class="pt-next-guides-heading">
+        <div>
+          <p class="section-label">Next Guides</p>
+          <h2 class="section-title">지금 상황에 맞는 다음 가이드</h2>
+        </div>
+        <p>발표 전 단계와 함께 준비하는 사람의 수에 따라 필요한 글을 골라보세요.</p>
+      </div>
+      <div class="pt-next-guides-grid">
+        <article class="pt-next-guide-card">
+          <span>01</span>
+          <h3>팀으로 자료와 역할을 정하는 중이라면</h3>
+          <p>발표 연습 전에 역할 분담, 자료 공유와 공동 수정까지 해야 할 때 적합한 공간 선택 기준입니다.</p>
+          <a href="{{ '/posts/college-team-project-space/' | relative_url }}">대학생 팀플 장소 가이드 <b aria-hidden="true">→</b></a>
+        </article>
+        <article class="pt-next-guide-card">
+          <span>02</span>
+          <h3>혼자 소리 내어 반복할 장소가 필요하다면</h3>
+          <p>영어, 면접과 발표처럼 주변 시선 없이 실제 목소리로 반복해야 할 때 확인할 내용입니다.</p>
+          <a href="{{ '/posts/practice-speaking-space/' | relative_url }}">말하기 연습 공간 가이드 <b aria-hidden="true">→</b></a>
+        </article>
+        <article class="pt-next-guide-card">
+          <span>03</span>
+          <h3>다른 종류의 실전 연습도 찾고 있다면</h3>
+          <p>PT 발표부터 독백·대사, 오디션과 셀프테이프까지 직접 해보는 연습 가이드를 모았습니다.</p>
+          <a href="{{ '/practice/' | relative_url }}">연습·리허설 전체 가이드 <b aria-hidden="true">→</b></a>
+        </article>
+      </div>
+      <div class="hero-btns pt-next-guides-actions">
+        <a href="{{ '/practice/' | relative_url }}" class="btn-outline">연습·리허설 허브</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">PT 리허설 시간 확인하기</a>
+      </div>
     </div>
   </section>
 
