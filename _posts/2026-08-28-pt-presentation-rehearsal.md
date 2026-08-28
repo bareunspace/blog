@@ -19,7 +19,7 @@ og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 extra_css: /styles/pt-presentation-rehearsal.css
-extra_css_version: 20260828-2
+extra_css_version: 20260828-3
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -172,11 +172,11 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">PT 발표 연습 FAQ</h2>
-      <div class="contact-faq" itemscope itemtype="https://schema.org/FAQPage">
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">PT 면접 준비만 다루는 글인가요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아니요. 면접뿐 아니라 대학 발표, 팀 프로젝트, 공모전·피칭, 회사 보고와 제안, 강의와 온라인 발표에 공통으로 적용할 수 있는 리허설 방법입니다.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">발표 자료가 완성되지 않아도 리허설할 수 있나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">가능하지만 자료 수정에 대부분의 시간을 쓰기 쉽습니다. 최소한 발표 순서와 핵심 슬라이드를 정한 뒤 첫 완주를 해보면 빠진 내용과 불필요한 내용을 더 분명히 찾을 수 있습니다.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">혼자 연습해도 효과가 있나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">네. 타이머와 휴대폰 촬영을 이용하면 시간, 시선, 말 속도와 자료 의존도를 혼자서도 확인할 수 있습니다. 질문 연습은 예상 질문을 화면에 띄워 무작위로 답해보세요.</p></div></details>
-        <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">바른자리에서 발표 코칭이나 장비 대여도 제공하나요?</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">바른자리는 발표 코칭이나 전문 스튜디오가 아닌 프라이빗 공간대여 서비스입니다. 발표 파일을 실행할 노트북, 휴대폰, 충전기와 별도 연결 어댑터 등 개인 장비는 직접 준비해 주세요.</p></div></details>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">PT 면접 준비만 다루는 글인가요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">아니요. 면접뿐 아니라 대학 발표, 팀 프로젝트, 공모전·피칭, 회사 보고와 제안, 강의와 온라인 발표에 공통으로 적용할 수 있는 리허설 방법입니다.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">발표 자료가 완성되지 않아도 리허설할 수 있나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">가능하지만 자료 수정에 대부분의 시간을 쓰기 쉽습니다. 최소한 발표 순서와 핵심 슬라이드를 정한 뒤 첫 완주를 해보면 빠진 내용과 불필요한 내용을 더 분명히 찾을 수 있습니다.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">혼자 연습해도 효과가 있나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">네. 타이머와 휴대폰 촬영을 이용하면 시간, 시선, 말 속도와 자료 의존도를 혼자서도 확인할 수 있습니다. 질문 연습은 예상 질문을 화면에 띄워 무작위로 답해보세요.</p></div></details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">바른자리에서 발표 코칭이나 장비 대여도 제공하나요?</summary><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">바른자리는 발표 코칭이나 전문 스튜디오가 아닌 프라이빗 공간대여 서비스입니다. 발표 파일을 실행할 노트북, 휴대폰, 충전기와 별도 연결 어댑터 등 개인 장비는 직접 준비해 주세요.</p></div></details>
       </div>
     </div>
   </section>
