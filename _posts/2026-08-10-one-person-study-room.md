@@ -30,6 +30,8 @@ tags:
 canonical: https://bareunjari.com/posts/one-person-study-room/
 permalink: /posts/one-person-study-room/
 date: 2026-08-10 07:00:00 +0900
+editor_pick: true
+editor_pick_order: 3
 last_modified_at: 2026-08-22 21:40:00 +0900
 og_image: https://bareunjari.com/images/one-person-study-room.webp
 og_image_alt: 1인 스터디룸에서 노트북과 태블릿으로 혼자 공부하고 작업하는 모습
