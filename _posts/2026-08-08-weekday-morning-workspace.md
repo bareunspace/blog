@@ -27,7 +27,6 @@ tags:
 canonical: https://bareunjari.com/posts/weekday-morning-workspace/
 permalink: /posts/weekday-morning-workspace/
 date: 2026-08-08 09:00:00 +0900
-editor_pick: true
 og_image: https://bareunjari.com/images/bareunjari-morning-workspace.webp
 og_image_alt: 부천 신중동 바른자리에서 평일 오전 혼자 집중 업무를 하는 시간제 프라이빗 업무공간
 og_image_width: 1536
