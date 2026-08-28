@@ -65,6 +65,24 @@ preload_image: images/online-aptitude-test-space.webp
   </div>
 </section>
 
+<section id="booking-decision" class="guide-summary-section">
+  <div class="section-inner">
+    <p class="section-label">Do I Need Another Space?</p>
+    <h2 class="section-title">집에서 응시할지 고민된다면<br />먼저 이 네 가지를 확인하세요</h2>
+    <p class="section-desc">아래 항목 중 하나라도 조정하기 어렵다면, 시험 당일만큼은 외부 독립 공간을 검토할 이유가 있습니다.</p>
+    <div class="about-principle-grid">
+      <article class="about-principle-item" data-step="01"><h3>시험 중 출입</h3><p>가족이나 동거인이 들어오지 않도록 검사 종료까지 확실하게 조정하기 어렵습니다.</p></article>
+      <article class="about-principle-item" data-step="02"><h3>생활소음</h3><p>통화, TV, 초인종, 반려동물처럼 예상 가능한 소음을 시험시간 동안 통제하기 어렵습니다.</p></article>
+      <article class="about-principle-item" data-step="03"><h3>장비 배치</h3><p>PC와 감독용 스마트폰, 충전기 등을 안내된 방식으로 안정적으로 놓을 자리가 부족합니다.</p></article>
+      <article class="about-principle-item" data-step="04"><h3>동일한 시험 환경</h3><p>사전점검과 본시험을 같은 장소와 같은 장비 배치로 진행하기 어렵습니다.</p></article>
+    </div>
+    <p><strong>예약시간은 검사시간만 계산하지 마세요.</strong> 입실 후 로그인, 프로그램 실행, PC·스마트폰 배치와 인터넷 확인, 시험 종료 후 제출 확인까지 포함해 필요한 전체 시간을 먼저 계산하는 편이 안전합니다.</p>
+    <div class="hero-btns">
+      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="online_aptitude_mid_booking">시험시간에 맞춰 빈 시간 확인하기</a>
+    </div>
+  </div>
+</section>
+
 <nav class="guide-toc" aria-label="온라인 인적성검사 장소 목차">
   <div class="guide-toc-inner">
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
@@ -143,15 +161,16 @@ preload_image: images/online-aptitude-test-space.webp
 <section id="bareunjari">
   <div class="section-inner">
     <p class="section-label">Private Test Time</p>
-    <h2 class="section-title">부천·신중동에서<br />온라인 인적성검사 몇 시간만 독립된 공간이 필요하다면</h2>
-    <p>바른자리는 예약한 시간 동안 한 팀이 사용하는 프라이빗 공간대여 서비스입니다.</p>
-    <p>집에서는 가족이나 생활소음, 출입 때문에 검사시간을 온전히 확보하기 어렵다면 필요한 시간만 독립된 공간을 예약하는 방법도 생각해볼 수 있습니다.</p>
-    <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
-    <p><strong>바른자리는 인적성검사 운영기관이나 공식 시험장이 아니며 특정 기업의 검사 응시 가능 여부를 보장하지 않습니다.</strong> 실제 예약 전 해당 기업 또는 검사 플랫폼의 최신 응시 조건과 공간 환경을 직접 비교해 주세요. PC, 스마트폰 등 응시에 필요한 장비도 이용자가 준비해야 합니다.</p>
-    <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 인적성 응시 시간에 맞춰 예약 확인하기</a>
-      <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 가이드 더 보기</a>
+    <h2 class="section-title">시험 시작 전에 세팅하고<br />예약 시간 동안 한 팀만 이용하세요</h2>
+    <p>바른자리는 예약한 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간입니다. 시험 전에 입실해 노트북과 스마트폰을 배치하고, 인터넷과 전원을 확인한 뒤 다른 이용자와 공간을 공유하지 않고 응시에 집중할 수 있습니다.</p>
+    <p>집에서는 가족의 출입이나 생활소음을 통제하기 어렵거나, 예비점검과 본시험을 같은 환경에서 진행하고 싶다면 필요한 몇 시간만 예약하는 방법을 검토할 수 있습니다.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>공간</span><h3>한 팀 단독 이용</h3><p>예약 시간 동안 다른 팀과 좌석이나 방을 함께 사용하지 않습니다.</p></article>
+      <article class="guide-summary-card"><span>환경</span><h3>Wi-Fi·전원·테이블</h3><p>PC와 스마트폰을 놓고 충전하며 응시 환경을 준비할 수 있습니다.</p></article>
+      <article class="guide-summary-card"><span>위치</span><h3>신중동역 도보 1분</h3><p>시험 시작 전에 여유 있게 도착할 수 있도록 이동시간도 함께 계산하세요.</p></article>
     </div>
+    <p>현재 안내 요금은 <strong>1시간 10,000원</strong>이며, 노트북·스마트폰·충전기와 응시 프로그램 등 시험에 필요한 장비는 이용자가 준비해야 합니다.</p>
+    <p><strong>바른자리는 인적성검사 운영기관이나 공식 시험장이 아니며 특정 기업의 검사 응시 가능 여부를 보장하지 않습니다.</strong> 예약 전 해당 기업 또는 검사 플랫폼의 최신 응시 조건과 실제 공간 환경을 직접 비교해 주세요. 촬영 범위나 공간 조건에 별도 제한이 있다면 시험 운영사의 안내를 우선해야 합니다.</p>
   </div>
 </section>
 
@@ -175,10 +194,10 @@ preload_image: images/online-aptitude-test-space.webp
       <div>
         <p class="section-label soft">Before the Test</p>
         <h2>온라인 인적성검사 당일,<br />장소 때문에 신경 쓰고 싶지 않다면</h2>
-        <p>기업의 응시 안내를 먼저 확인한 뒤 독립성·PC·스마트폰·인터넷·여유시간까지 실제 검사 환경을 미리 점검해보세요.</p>
+        <p>검사시간에 로그인·프로그램 실행·장비 배치와 제출 확인 시간을 더해 필요한 전체 시간을 계산한 뒤, 독립성·인터넷·전원 조건을 실제 응시 안내와 비교해보세요.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 인적성 응시 시간에 맞춰 예약 확인하기</a>
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="online_aptitude_bottom_booking">시험시간에 맞춰 빈 시간 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 글 더 보기</a>
       </div>
     </div>
