@@ -32,7 +32,8 @@ script_version: 20260711-4
       <h1 class="section-title">PT 발표 연습, 자료를 완성했다면 이제 실제로 해볼 차례입니다</h1>
       <p class="section-desc">PT는 면접에만 쓰이지 않습니다. 대학 수업과 팀 프로젝트, 공모전·피칭, 회사 보고와 제안, 강의와 온라인 발표도 모두 자료를 띄우고 제한 시간 안에 핵심을 전달해야 합니다. 이 글은 발표 내용을 만드는 법보다 <strong>완성한 자료로 실제 리허설을 반복하는 방법</strong>에 집중합니다.</p>
       <div class="hero-btns">
-        <a href="#three-hour-plan" class="btn-primary">3시간 리허설 순서 보기</a>
+        <a href="/ai-interview/?mode=pt" class="btn-primary">AI PT 리허설 시작</a>
+        <a href="#three-hour-plan" class="btn-outline">3시간 리허설 순서 보기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">발표 연습 시간 확인하기</a>
       </div>
     </div>
