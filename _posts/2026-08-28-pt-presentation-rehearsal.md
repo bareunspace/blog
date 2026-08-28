@@ -19,7 +19,8 @@ og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
 extra_css: /styles/pt-presentation-rehearsal.css
-extra_css_version: 20260828-5
+extra_css_version: 20260828-6
+hide_auto_related: true
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -57,6 +58,23 @@ script_version: 20260711-4
       <article class="guide-summary-card"><span>01</span><h2>처음부터 끝까지 말하기</h2><p>중간에 멈춰 고치기 전에 실제 발표처럼 한 번 완주해야 전체 시간과 막히는 구간이 보입니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h2>촬영해서 확인하기</h2><p>말 속도, 시선, 자료 의존도와 불필요한 습관은 기억보다 영상으로 볼 때 더 정확히 찾을 수 있습니다.</p></article>
       <article class="guide-summary-card"><span>03</span><h2>질문까지 연습하기</h2><p>본문만 외우지 말고 예상 질문에 짧게 답하고 다시 핵심으로 돌아오는 흐름까지 맞춰봅니다.</p></article>
+    </div>
+  </section>
+
+  <section class="pt-duration-guide" aria-labelledby="pt-duration-title">
+    <div class="section-inner">
+      <div class="pt-duration-heading">
+        <div>
+          <p class="section-label">Choose Your Time</p>
+          <h2 class="section-title" id="pt-duration-title">연습 범위에 따라 1·2·3시간을 선택하세요</h2>
+        </div>
+        <p>3시간은 모든 발표에 필요한 시간이 아니라, 촬영·피드백·질문 대응과 최종 발표까지 한 번에 끝내려는 경우에 적합합니다.</p>
+      </div>
+      <div class="pt-duration-grid">
+        <article class="pt-duration-card"><span>1시간</span><h3>최종 확인</h3><p>자료가 확정된 짧은 발표를 한 번 실행하고 핵심만 고칠 때</p></article>
+        <article class="pt-duration-card"><span>2시간</span><h3>개인 압축 연습</h3><p>1차 촬영과 피드백 후 두 번째 발표까지 마칠 때</p></article>
+        <article class="pt-duration-card is-recommended"><span>3시간 · 추천</span><h3>실전 리허설 완주</h3><p>세 차례 발표, 영상 피드백, 예상 질문과 최종 점검까지 필요할 때</p></article>
+      </div>
     </div>
   </section>
 
@@ -163,7 +181,12 @@ script_version: 20260711-4
       <div class="blog-conversion-panel blog-conversion-panel-soft" style="margin-top:2rem;">
         <p class="section-label">Bareunjari</p>
         <h2 class="section-title">주변 시선 없이 실제처럼 발표할 시간이 필요하다면</h2>
-        <p>바른자리는 코칭이나 전문 촬영 스튜디오가 아니라, 예약 시간 동안 한 팀이 단독으로 사용하는 프라이빗 공간대여 서비스입니다. 넓은 테이블, 콘센트와 Wi-Fi를 이용해 자료를 띄우고 말하고 촬영하며 반복할 수 있습니다. 현재 안내 요금은 1시간 10,000원이며, 3시간 리허설은 30,000원 기준입니다. 실제 가능 시간과 최신 운영 안내는 예약 페이지에서 확인해 주세요.</p>
+        <p>바른자리는 코칭이나 전문 촬영 스튜디오가 아니라, 예약 시간 동안 한 팀이 단독으로 사용하는 프라이빗 공간대여 서비스입니다. 넓은 테이블, 콘센트와 Wi-Fi를 이용해 자료를 띄우고 말하고 촬영하며 반복할 수 있습니다. 실제 가능 시간과 최신 운영 안내는 예약 페이지에서 확인해 주세요.</p>
+        <div class="pt-booking-facts" aria-label="바른자리 PT 리허설 이용 정보">
+          <span><b>위치</b> 신중동역 도보 1분</span>
+          <span><b>이용</b> 예약 시간 동안 한 팀 단독</span>
+          <span><b>요금</b> 3시간 30,000원</span>
+        </div>
         <div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="pt-rehearsal-booking">PT 리허설 시간 확인하기</a><a href="/index.html#space" class="btn-outline">공간 사진 보기</a></div>
       </div>
     </div>
