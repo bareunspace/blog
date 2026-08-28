@@ -56,13 +56,14 @@
 }
 
 .pt-rehearsal-guide #home .section-title {
-  max-width: 880px;
+  max-width: 1020px;
   margin: 0 auto;
   color: #fff;
-  font-size: clamp(2.15rem, 4.2vw, 3.55rem);
+  font-size: clamp(2.15rem, 3.8vw, 3.25rem);
   line-height: 1.22;
   letter-spacing: -.045em;
   text-wrap: balance;
+  word-break: keep-all;
   text-shadow: 0 8px 30px rgba(0,0,0,.36);
 }
 
