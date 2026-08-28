@@ -125,7 +125,7 @@ script_version: 20260711-4
         </article>
         <article class="about-principle-item" data-step="03">
           <h3>발표·PT 준비</h3>
-          <p>발표 동선, 말 속도, 시간 분배까지 혼자 리허설하며 정리하기 좋습니다.</p>
+          <p>발표 동선, 말 속도, 시간 분배까지 혼자 리허설하며 정리하기 좋습니다. 촬영·피드백·질문 대응까지 이어지는 순서는 <a href="/posts/pt-presentation-rehearsal/">3시간 PT 발표 리허설 가이드</a>에서 확인해보세요.</p>
         </article>
         <article class="about-principle-item" data-step="04">
           <h3>연기와 스피치 연습</h3>
