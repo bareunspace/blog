@@ -26,6 +26,7 @@ permalink: /posts/ai-competency-test-space/
 canonical: https://bareunjari.com/posts/ai-competency-test-space/
 date: 2026-08-13 08:10:00 +0900
 editor_pick: true
+editor_pick_order: 4
 og_image: https://bareunjari.com/images/ai-competency-test-space.webp
 og_image_alt: 실제 바른자리 공간에서 노트북으로 AI 역량검사를 준비하는 모습
 preload_image: images/ai-competency-test-space.webp
