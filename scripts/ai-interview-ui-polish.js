@@ -156,7 +156,78 @@
     if (link.textContent.trim() === '시간 예약') link.textContent = '면접 연습 공간 예약';
   });
 
-  document.title = 'AI 모의면접 연습 | 질문 받고 답하고 녹화하기 | 바른자리';
-  const description = document.querySelector('meta[name="description"]');
-  if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
+  const practiceMode = document.querySelector('[data-aii-mode]');
+  const syncPracticeModeCopy = () => {
+    const isPt = String(practiceMode?.value || '') === 'pt_presentation';
+    document.body.classList.toggle('aii-is-pt-mode', isPt);
+    if (!isPt) return;
+
+    const currentHeroTitle = document.querySelector('.aii-hero .section-title');
+    const currentHeroSubtitle = document.querySelector('.aii-hero .hero-subtitle');
+    const currentHeroLabel = document.querySelector('.aii-hero .section-label');
+    if (currentHeroLabel) currentHeroLabel.textContent = 'AI PT PRESENTATION PRACTICE';
+    if (currentHeroTitle) currentHeroTitle.textContent = 'AI PT 발표 리허설';
+    if (currentHeroSubtitle) currentHeroSubtitle.textContent = '발표를 처음부터 끝까지 녹화하고, 발표 내용에 맞는 예상 질문과 답변까지 이어서 연습하세요.';
+
+    const stepper = document.querySelector('.aii-ux-stepper');
+    if (stepper) {
+      stepper.setAttribute('aria-label', 'PT 발표 리허설 진행 단계');
+      const labels = stepper.querySelectorAll('span');
+      if (labels[0]) labels[0].textContent = '발표 설정';
+      if (labels[1]) labels[1].textContent = '발표·질문';
+      if (labels[2]) labels[2].textContent = '결과·피드백';
+    }
+    const lead = document.querySelector('.aii-setup-lead');
+    if (lead) lead.textContent = '발표 주제와 목표, 제한 시간, 청중을 입력하고 예상 질문 수를 선택하세요.';
+    const demoTitle = document.querySelector('.aii-block-demo .section-title');
+    if (demoTitle) demoTitle.textContent = 'PT 발표·질문 연습';
+    const deviceCopy = document.querySelector('.aii-device-copy');
+    if (deviceCopy) deviceCopy.textContent = '카메라와 마이크를 연결한 뒤 발표 전체와 예상 질문 답변을 한 영상으로 녹화할 수 있습니다.';
+    const timedField = document.querySelector('[data-aii-timed-mode]');
+    const timedPanel = document.querySelector('[data-aii-timed-panel]');
+    if (timedField) timedField.hidden = true;
+    if (timedPanel) timedPanel.hidden = true;
+
+    document.querySelectorAll('a[href="/interview/"]').forEach((link) => {
+      link.href = '/posts/pt-presentation-rehearsal/';
+      if (/허브|가이드/.test(link.textContent)) link.textContent = 'PT 리허설 가이드';
+    });
+    document.querySelectorAll('a[href*="purpose=interview"]').forEach((link) => {
+      link.href = '/booking/';
+      if (/면접|실전/.test(link.textContent)) link.textContent = 'PT 연습 공간 예약';
+    });
+
+    const recommendCards = document.querySelectorAll('#aiInterviewHubLink .guide-summary-card');
+    if (recommendCards[0]) {
+      const h = recommendCards[0].querySelector('h3');
+      const p = recommendCards[0].querySelector('p');
+      const a = recommendCards[0].querySelector('a');
+      if (h) h.textContent = '3시간 PT 리허설 순서 확인';
+      if (p) p.textContent = '발표·촬영·피드백·예상 질문과 최종 발표까지 이어지는 순서를 확인하세요.';
+      if (a) { a.href = '/posts/pt-presentation-rehearsal/'; a.textContent = 'PT 리허설 가이드'; }
+    }
+    if (recommendCards[1]) {
+      const h = recommendCards[1].querySelector('h3');
+      const p = recommendCards[1].querySelector('p');
+      const a = recommendCards[1].querySelector('a');
+      if (h) h.textContent = '프라이빗 공간에서 전체 발표 녹화';
+      if (p) p.textContent = '주변 시선 없이 실제 목소리와 동선으로 발표하고 예상 질문까지 반복해 보세요.';
+      if (a) { a.href = '/booking/'; a.textContent = 'PT 연습 공간 예약'; }
+    }
+
+    document.title = 'AI PT 발표 리허설 | 발표 녹화·예상 질문·피드백 | 바른자리';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.setAttribute('content', 'PT 발표를 녹화하고 발표 내용에 맞는 예상 질문과 답변까지 연습하는 바른자리 AI PT 리허설 도구입니다.');
+  };
+
+  if (practiceMode) {
+    practiceMode.addEventListener('change', () => window.setTimeout(syncPracticeModeCopy, 0));
+    window.setTimeout(syncPracticeModeCopy, 0);
+  }
+
+  if (String(practiceMode?.value || '') !== 'pt_presentation') {
+    document.title = 'AI 모의면접 연습 | 질문 받고 답하고 녹화하기 | 바른자리';
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
+  }
 })();
