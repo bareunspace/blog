@@ -5,7 +5,6 @@ description: 약속이나 면접, 미팅 전에 한 시간 먼저 나와 독립�
 category: 프라이빗시간
 hub_series: private
 hub_section: recommended
-editor_pick: true
 keywords: 약속전시간보내기,한시간시간보내기,신중동시간보낼곳,부천시간보낼곳,신중동쉴곳,부천쉴곳,낮시간휴식공간,더운날쉴곳,약속전옷매무새,잠깐쉴곳,약속전대기,신중동역공간대여,프라이빗공간,바른자리
 tags:
   - 약속전시간
