@@ -21,7 +21,6 @@ hubs:
 canonical: https://bareunjari.com/posts/august-two-hour-focus-time/
 permalink: /posts/august-two-hour-focus-time/
 date: 2026-08-06 09:00:00 +0900
-editor_pick: true
 og_image: https://bareunjari.com/images/august-focus-time.webp
 og_image_alt: 8월 방학 막바지 집중 준비를 상징하는 작업 장면 이미지
 preload_image: images/august-focus-time.webp
