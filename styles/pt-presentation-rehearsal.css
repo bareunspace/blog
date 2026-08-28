@@ -362,8 +362,8 @@ body:has(.pt-rehearsal-guide) .breadcrumb-inner {
   border-bottom: 0;
 }
 
-.pt-rehearsal-guide #two-hour-plan .table-wrap th:first-child,
-.pt-rehearsal-guide #two-hour-plan .table-wrap td:first-child {
+.pt-rehearsal-guide #three-hour-plan .table-wrap th:first-child,
+.pt-rehearsal-guide #three-hour-plan .table-wrap td:first-child {
   width: 110px;
   color: var(--pt-green-deep);
   font-weight: 900;
@@ -773,4 +773,16 @@ body:has(.pt-rehearsal-guide) .breadcrumb-inner {
     width: 100%;
     min-width: 0;
   }
+}
+
+.pt-rehearsal-guide #booking-time .table-wrap td:first-child strong {
+  display: inline-flex;
+  margin-left: .35rem;
+  padding: .18rem .45rem;
+  border-radius: 999px;
+  background: var(--pt-green);
+  color: #fff;
+  font-size: .68rem;
+  line-height: 1;
+  vertical-align: middle;
 }
