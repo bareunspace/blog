@@ -25,7 +25,6 @@ tags:
 canonical: https://bareunjari.com/posts/freelance-counselor-office/
 permalink: /posts/freelance-counselor-office/
 date: 2026-07-26 09:00:00 +0900
-editor_pick: true
 og_image: https://bareunjari.com/images/freelance-counselor-office.webp
 og_image_alt: 프리랜서 상담과 코칭에 어울리는 차분한 프라이빗 상담 공간
 og_image_width: 1672
