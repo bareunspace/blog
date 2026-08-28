@@ -2,22 +2,22 @@
 layout: default
 page_id: ai_interview
 permalink: /ai-interview/
-title: 바른자리 AI 실험실 - 모의면접, 데일리 영어 | 프라이빗 공간 면접 연습
-description: 바른자리에서 제공하는 AI 모의면접 데모 페이지입니다. 회사·직무 설정 후 고정 질문으로 답변 연습 흐름을 체험해 보세요.
+title: 바른자리 AI 면접·발표 연습실 | 모의면접·PT 리허설·데일리 영어
+description: AI 모의면접, PT 발표 리허설과 데일리 영어를 실제 목소리와 녹화로 연습하고 맞춤 질문과 피드백을 받아보세요.
 canonical: https://bareunjari.com/ai-interview/
 og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
 og_image_alt: 바른자리 AI 모의면접 데모 화면
 preload_image: images/interview-prep-checklist-cover.jpg
-css_version: 20260806-19
-script_version: 20260806-24
+css_version: 20260828-20
+script_version: 20260828-25
 ---
 
 <main class="about-page aii-page">
   <section id="home" class="aii-hero">
     <div class="section-inner">
-      <p class="section-label">AI Interview Demo</p>
-      <h1 class="section-title">바른자리 AI 실험실 - 모의면접, 데일리 영어</h1>
-      <p class="hero-subtitle">바로 시작할 수 있도록 설계한 1차 체험판입니다. 실제 목소리로 답하고, 질문 흐름을 반복 연습해 보세요.</p>
+      <p class="section-label">AI Interview &amp; Presentation Lab</p>
+      <h1 class="section-title">바른자리 AI 면접·발표 연습실</h1>
+      <p class="hero-subtitle">모의면접과 데일리 영어뿐 아니라 PT 발표를 녹화하고 예상 질문까지 이어서 연습해 보세요.</p>
       <div class="hero-btns">
         <a href="#aiDemoSetup" class="btn-primary">데모 시작</a>
         <a href="/interview/" class="btn-outline">면접준비 허브 보기</a>
@@ -38,6 +38,7 @@ script_version: 20260806-24
           <select name="practice_mode" data-aii-mode required>
             <option value="interview">AI 모의면접</option>
             <option value="daily_english">데일리 영어</option>
+            <option value="pt_presentation">PT 발표 리허설</option>
           </select>
         </label>
         <label>
@@ -58,8 +59,22 @@ script_version: 20260806-24
             <option value="일반 모의면접">일반 모의면접</option>
           </select>
         </label>
+        <label data-aii-pt-field hidden>
+          <span>제한 시간</span>
+          <select name="pt_duration" data-aii-pt-duration>
+            <option value="3">3분</option>
+            <option value="5" selected>5분</option>
+            <option value="7">7분</option>
+            <option value="10">10분</option>
+            <option value="15">15분</option>
+          </select>
+        </label>
+        <label data-aii-pt-field hidden>
+          <span>청중·평가자</span>
+          <input name="pt_audience" data-aii-pt-audience type="text" placeholder="예: 면접관, 교수와 학생, 심사위원, 팀장" />
+        </label>
         <label>
-          <span>질문 수</span>
+          <span data-aii-question-count-label>질문 수</span>
           <select name="question_count" required>
             <option value="1">1개 (하루 1개)</option>
             <option value="3">3개</option>
@@ -69,7 +84,7 @@ script_version: 20260806-24
           </select>
         </label>
         <div class="aii-actions">
-          <button type="submit" class="btn-primary">면접 시작</button>
+          <button type="submit" class="btn-primary">연습 시작</button>
           <button type="button" class="btn-outline" data-aii-reset>새 사용자 시작</button>
         </div>
       </form>
@@ -152,16 +167,16 @@ script_version: 20260806-24
           <button type="button" class="btn-primary" data-aii-next disabled>다음 질문</button>
         </div>
         <section class="aii-result" data-aii-result hidden>
-          <h4 class="aii-result-title">모의면접 1회 완료</h4>
-          <p class="aii-result-copy">아래 요약을 보고 바로 2회차를 진행하거나, 면접준비 허브에서 답변 구조를 정리해 보세요.</p>
+          <h4 class="aii-result-title" data-aii-result-title>모의면접 1회 완료</h4>
+          <p class="aii-result-copy" data-aii-result-copy>아래 요약을 보고 바로 2회차를 진행하거나, 면접준비 허브에서 답변 구조를 정리해 보세요.</p>
           <ul class="aii-result-list" data-aii-result-list></ul>
           <section class="aii-feedback" data-aii-feedback hidden>
             <h5 class="aii-feedback-title">피드백</h5>
             <p class="aii-feedback-status" data-aii-feedback-status>피드백을 준비 중입니다.</p>
             <div class="aii-score-grid" data-aii-score-grid>
-              <p><span>전달력</span><strong data-aii-score-clarity>0</strong></p>
-              <p><span>구체성</span><strong data-aii-score-specificity>0</strong></p>
-              <p><span>구조화</span><strong data-aii-score-structure>0</strong></p>
+              <p><span data-aii-score-label="clarity">전달력</span><strong data-aii-score-clarity>0</strong></p>
+              <p><span data-aii-score-label="specificity">구체성</span><strong data-aii-score-specificity>0</strong></p>
+              <p><span data-aii-score-label="structure">구조화</span><strong data-aii-score-structure>0</strong></p>
               <p><span>종합</span><strong data-aii-score-overall>0</strong></p>
             </div>
             <p class="aii-feedback-summary" data-aii-feedback-summary></p>
@@ -175,7 +190,7 @@ script_version: 20260806-24
             <ul class="aii-feedback-list" data-aii-feedback-question-reviews></ul>
           </section>
           <div class="aii-actions">
-            <a href="/interview/" class="btn-outline">면접준비 허브 이동</a>
+            <a href="/interview/" class="btn-outline" data-aii-result-guide>면접준비 허브 이동</a>
             <button type="button" class="btn-primary" data-aii-restart>다시 시작</button>
           </div>
         </section>
@@ -463,6 +478,16 @@ script_version: 20260806-24
     const roleLabelNode = document.querySelector('[data-aii-role-label]');
     const companyInputNode = document.querySelector('[data-aii-company-input]');
     const roleInputNode = document.querySelector('[data-aii-role-input]');
+    const ptFieldNodes = Array.from(document.querySelectorAll('[data-aii-pt-field]'));
+    const ptDurationNode = document.querySelector('[data-aii-pt-duration]');
+    const ptAudienceNode = document.querySelector('[data-aii-pt-audience]');
+    const questionCountLabelNode = document.querySelector('[data-aii-question-count-label]');
+    const scoreClarityLabelNode = document.querySelector('[data-aii-score-label="clarity"]');
+    const scoreSpecificityLabelNode = document.querySelector('[data-aii-score-label="specificity"]');
+    const scoreStructureLabelNode = document.querySelector('[data-aii-score-label="structure"]');
+    const resultTitleNode = document.querySelector('[data-aii-result-title]');
+    const resultCopyNode = document.querySelector('[data-aii-result-copy]');
+    const resultGuideNode = document.querySelector('[data-aii-result-guide]');
     const focusToggleButton = document.querySelector('[data-aii-focus-toggle]');
     const openWindowButton = document.querySelector('[data-aii-open-window]');
     const deviceStartButton = document.querySelector('[data-aii-device-start]');
@@ -486,7 +511,9 @@ script_version: 20260806-24
       company: String(companyInputNode.value || form.company.value || '').trim(),
       role: String(roleInputNode.value || form.role.value || '').trim(),
       interviewType: String(interviewTypeNode.value || form.interview_type.value || '인성면접').trim(),
-      questionCount: String(form.question_count.value || '3').trim()
+      questionCount: String(form.question_count.value || '3').trim(),
+      ptDuration: String(ptDurationNode?.value || '5').trim(),
+      ptAudience: String(ptAudienceNode?.value || '').trim()
     });
 
     const saveSetupDraft = () => {
@@ -497,13 +524,15 @@ script_version: 20260806-24
       }
     };
 
+    const isPtModeSelected = () => String(practiceModeNode.value || '').trim() === 'pt_presentation';
+
     const isDailyEnglishModeSelected = () => {
       const mode = String(practiceModeNode.value || 'interview').trim();
       const type = String(form?.interview_type?.value || '').trim();
       return mode === 'daily_english' || type === '데일리영어';
     };
 
-    const getStartActionText = () => (isDailyEnglishModeSelected() ? '연습 시작' : '면접 시작');
+    const getStartActionText = () => (isPtModeSelected() ? 'PT 리허설 시작' : isDailyEnglishModeSelected() ? '연습 시작' : '면접 시작');
 
     const getIdleQuestionText = () => `${getStartActionText()} 버튼을 누르면 질문이 표시됩니다.`;
 
@@ -527,13 +556,15 @@ script_version: 20260806-24
           return false;
         }
 
-        const practiceMode = ['interview', 'daily_english'].includes(String(draft.practiceMode || '').trim())
+        const practiceMode = ['interview', 'daily_english', 'pt_presentation'].includes(String(draft.practiceMode || '').trim())
           ? String(draft.practiceMode || '').trim()
           : 'interview';
         const interviewType = String(draft.interviewType || '인성면접').trim();
         const company = String(draft.company || '').trim();
         const role = String(draft.role || '').trim();
         const questionCount = String(draft.questionCount || '3').trim();
+        const ptDuration = String(draft.ptDuration || '5').trim();
+        const ptAudience = String(draft.ptAudience || '').trim();
 
         practiceModeNode.value = practiceMode;
         renderInterviewTypeOptionsByMode(interviewType);
@@ -543,6 +574,8 @@ script_version: 20260806-24
         form.role.value = role;
         form.interview_type.value = interviewType;
         form.question_count.value = questionCount;
+        if (ptDurationNode) ptDurationNode.value = ptDuration;
+        if (ptAudienceNode) ptAudienceNode.value = ptAudience;
         syncSetupFieldByMode();
         return true;
       } catch (_error) {
@@ -586,6 +619,32 @@ script_version: 20260806-24
       'How do you organize your day when multiple tasks are urgent? Explain your decision process with an example.'
     ];
     const questionBankByType = {
+      'PT 면접': [
+        '발표의 핵심 제안을 한 문장으로 다시 정리해 주세요. 왜 지금 실행해야 하는지도 설명해 주세요.',
+        '제안의 근거가 되는 수치나 사례 중 가장 중요한 한 가지를 설명해 주세요.',
+        '면접관이 현실성이 낮다고 지적한다면 어떤 근거로 설득하시겠습니까?',
+        '제안 실행 과정에서 예상되는 가장 큰 위험과 대응 방법을 말씀해 주세요.'
+      ],
+      '대학·팀 프로젝트': [
+        '발표에서 팀이 도출한 가장 중요한 결론과 그 근거를 설명해 주세요.',
+        '자료 조사 또는 역할 분담 과정에서 본인이 기여한 부분은 무엇인가요?',
+        '결론과 다른 해석이 가능하다는 의견에 어떻게 답하시겠습니까?'
+      ],
+      '공모전·피칭': [
+        '이 아이디어가 해결하는 문제를 한 문장으로 정의해 주세요.',
+        '기존 대안과 비교했을 때 가장 분명한 차별점은 무엇인가요?',
+        '실행 가능성을 검증하기 위해 가장 먼저 확인할 지표는 무엇인가요?'
+      ],
+      '회사 보고·제안': [
+        '의사결정자가 오늘 결정해야 할 사항을 한 문장으로 말씀해 주세요.',
+        '예상 비용과 기대 효과의 근거를 설명해 주세요.',
+        '일정이나 예산이 줄어든다면 무엇을 우선 유지하시겠습니까?'
+      ],
+      '강의·온라인 발표': [
+        '청중이 발표 후 반드시 기억해야 할 핵심 한 가지는 무엇인가요?',
+        '청중이 이해하기 어려울 수 있는 부분을 다른 예시로 설명해 주세요.',
+        '온라인 환경에서 질문이나 반응이 적을 때 어떻게 참여를 유도하시겠습니까?'
+      ],
       '인성면접': [
         '본인을 세 단어로 표현해 주세요. 각 단어가 실제 경험에서 어떻게 드러났는지도 함께 설명해 주세요.',
         '가치관이 충돌했던 상황을 말씀해 주세요. 어떤 기준으로 선택했고 결과가 어땠는지 설명해 주세요.',
@@ -793,6 +852,7 @@ script_version: 20260806-24
       '일반 모의면접'
     ];
     const dailyModeTypes = ['데일리영어'];
+    const ptModeTypes = ['PT 면접', '대학·팀 프로젝트', '공모전·피칭', '회사 보고·제안', '강의·온라인 발표'];
     let stageQuality = {
       setup: null,
       question: null,
@@ -1098,7 +1158,7 @@ script_version: 20260806-24
 
     const renderInterviewTypeOptionsByMode = (preferredType = '') => {
       const mode = String(practiceModeNode.value || 'interview');
-      const options = mode === 'daily_english' ? dailyModeTypes : interviewModeTypes;
+      const options = mode === 'daily_english' ? dailyModeTypes : mode === 'pt_presentation' ? ptModeTypes : interviewModeTypes;
       const selectedType = options.includes(preferredType)
         ? preferredType
         : options.includes(String(interviewTypeNode.value || '').trim())
@@ -1114,12 +1174,44 @@ script_version: 20260806-24
       });
       interviewTypeNode.value = selectedType;
 
-      interviewTypeLabelNode.textContent = mode === 'daily_english' ? '연습 스타일' : defaultTypeLabelText;
+      interviewTypeLabelNode.textContent = mode === 'daily_english' ? '연습 스타일' : mode === 'pt_presentation' ? '발표 유형' : defaultTypeLabelText;
       interviewSetup.interviewType = selectedType;
     };
 
     const syncSetupFieldByMode = () => {
+      const isPt = isPtModeSelected();
       const isDailyEnglish = String(form.interview_type.value || '').trim() === '데일리영어';
+      ptFieldNodes.forEach((node) => { node.hidden = !isPt; });
+      if (questionCountLabelNode) questionCountLabelNode.textContent = isPt ? '예상 질문 수' : '질문 수';
+      if (scoreClarityLabelNode) scoreClarityLabelNode.textContent = '전달력';
+      if (scoreSpecificityLabelNode) scoreSpecificityLabelNode.textContent = isPt ? '핵심 근거' : '구체성';
+      if (scoreStructureLabelNode) scoreStructureLabelNode.textContent = isPt ? '발표 구성' : '구조화';
+      if (resultTitleNode) resultTitleNode.textContent = isPt ? 'PT 발표·질문 리허설 완료' : '모의면접 1회 완료';
+      if (resultCopyNode) resultCopyNode.textContent = isPt
+        ? '발표와 예상 질문 답변을 확인하고, 부족한 부분을 고쳐 2회차를 진행해 보세요.'
+        : '아래 요약을 보고 바로 2회차를 진행하거나, 면접준비 허브에서 답변 구조를 정리해 보세요.';
+      if (resultGuideNode) {
+        resultGuideNode.href = isPt ? '/posts/pt-presentation-rehearsal/' : '/interview/';
+        resultGuideNode.textContent = isPt ? '3시간 PT 리허설 가이드' : '면접준비 허브 이동';
+      }
+      answerNode.placeholder = isPt
+        ? '발표 또는 예상 질문 답변을 말한 뒤 핵심 내용을 정리해 보세요.'
+        : '여기에 답변을 말한 뒤 핵심 문장을 정리해 보세요.';
+      const tipNode = document.querySelector('.aii-answer-tip');
+      if (tipNode) tipNode.textContent = isPt
+        ? '팁: 결론 → 핵심 근거 → 제안 또는 다음 행동 순서로 말하면 전달력이 좋아집니다.'
+        : '팁: 결론 1문장 → 근거 사례 2문장 → 마무리 1문장 순서로 말하면 전달력이 좋아집니다.';
+
+      if (isPt) {
+        companyLabelNode.textContent = '발표 주제';
+        roleLabelNode.textContent = '발표 목표';
+        companyInputNode.placeholder = '예: 신제품 출시 전략, 졸업 프로젝트 결과';
+        roleInputNode.placeholder = '예: 제안 승인, 심사 통과, 핵심 내용 공유';
+        companyInputNode.required = true;
+        roleInputNode.required = true;
+        applyModeCopy();
+        return;
+      }
       if (isDailyEnglish) {
         companyLabelNode.textContent = '연습 주제 (선택)';
         roleLabelNode.textContent = '오늘 목표 (선택)';
@@ -1434,7 +1526,7 @@ script_version: 20260806-24
           speakQuestionButton.disabled = true;
           nextButton.disabled = true;
           prevButton.disabled = true;
-          setVoiceStatus('모의면접이 완료되었습니다. 요약을 확인해 주세요.');
+          setVoiceStatus(isPtModeSelected() ? 'PT 발표와 예상 질문 연습이 완료되었습니다. 요약을 확인해 주세요.' : '모의면접이 완료되었습니다. 요약을 확인해 주세요.');
           updateStage();
         }
       } catch (_error) {
@@ -1698,6 +1790,9 @@ script_version: 20260806-24
       company: interviewSetup.company,
       role: interviewSetup.role,
       interviewType: interviewSetup.interviewType,
+      practiceMode: String(practiceModeNode.value || 'interview'),
+      presentationDuration: String(interviewSetup.presentationDuration || ''),
+      audience: String(interviewSetup.audience || ''),
       qa: state.questions.map((question, index) => ({
         question,
         answer: String(state.answers[index] || '').trim().slice(0, 500)
@@ -1709,6 +1804,9 @@ script_version: 20260806-24
       company: interviewSetup.company,
       role: interviewSetup.role,
       interviewType: interviewSetup.interviewType,
+      practiceMode: String(practiceModeNode.value || 'interview'),
+      presentationDuration: String(interviewSetup.presentationDuration || ''),
+      audience: String(interviewSetup.audience || ''),
       questionCount
     });
 
@@ -2351,6 +2449,9 @@ script_version: 20260806-24
       saveSetupDraft();
       const formData = new FormData(form);
       const interviewTypeValue = String(formData.get('interview_type') || '').trim();
+      const isPtPresentation = String(formData.get('practice_mode') || '') === 'pt_presentation';
+      const ptDurationValue = String(formData.get('pt_duration') || '5').trim();
+      const ptAudienceValue = String(formData.get('pt_audience') || '').trim();
       const isDailyEnglish = interviewTypeValue === '데일리영어';
       interviewSetup = {
         company: isDailyEnglish
@@ -2359,7 +2460,9 @@ script_version: 20260806-24
         role: isDailyEnglish
           ? String(formData.get('role') || '').trim() || 'Fluent speaking practice'
           : String(formData.get('role') || '').trim(),
-        interviewType: interviewTypeValue
+        interviewType: interviewTypeValue,
+        presentationDuration: isPtPresentation ? ptDurationValue : '',
+        audience: isPtPresentation ? ptAudienceValue : ''
       };
       selectedVoiceName = '';
       renderVoiceOptions();
@@ -2509,6 +2612,10 @@ script_version: 20260806-24
       if (state.questions.length < selectedCount) {
         state.questions = pickQuestions(interviewSetup.interviewType, selectedCount);
       }
+      if (isPtPresentation) {
+        const presentationPrompt = `먼저 ${interviewSetup.presentationDuration || '5'}분 안에 ‘${interviewSetup.company}’ 발표를 처음부터 끝까지 진행해 주세요. 청중은 ${interviewSetup.audience || '설정한 평가자'}입니다. 녹화를 켜고 발표가 끝나면 핵심 내용을 입력한 뒤 예상 질문으로 넘어가세요.`;
+        state.questions = [presentationPrompt, ...state.questions.filter((q) => q !== presentationPrompt)].slice(0, selectedCount + 1);
+      }
       const answerCount = state.questions.length;
       state.answers = new Array(answerCount).fill('');
       state.index = 0;
@@ -2632,6 +2739,11 @@ script_version: 20260806-24
     }
 
     const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get('mode') === 'pt') {
+      practiceModeNode.value = 'pt_presentation';
+      renderInterviewTypeOptionsByMode(searchParams.get('type') || 'PT 면접');
+      syncSetupFieldByMode();
+    }
     if (searchParams.get('focus') === '1') {
       setFocusMode(true);
     }
@@ -2643,7 +2755,9 @@ script_version: 20260806-24
     syncSetupFieldByMode();
     renderVoiceOptions();
     updateRecordingButtons();
-    restoreSetupDraft();
+    if (searchParams.get('mode') !== 'pt') {
+      restoreSetupDraft();
+    }
 
     syncView();
     tryRestoreFromSnapshot();
