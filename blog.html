@@ -21,7 +21,7 @@ extra_css_version: 20260820-1
   {% if featured_posts.size == 0 %}
     {% assign featured_posts = onsite_posts | where_exp: "item", "item.url != '/posts/all-night-private-workspace/'" | sort: "date" | reverse %}
   {% endif %}
-  {% assign featured_posts = featured_posts | sort: "date" | reverse %}
+  {% assign featured_posts = featured_posts | sort: "editor_pick_order" %}
 
   <section id="blog-hub-entry" class="guide-summary-section blog-hub-entry" aria-label="목적별 바른자리 허브">
     <div class="section-inner">
@@ -50,7 +50,7 @@ extra_css_version: 20260820-1
         <section class="blog-guide-category-group blog-editor-picks-group" data-category="Editor's Pick">
           <div class="blog-guide-category-header"><div class="blog-guide-category-title-row"><h3>Editor's Pick</h3><a class="blog-guide-category-link" href="{{ '/blog.html' | relative_url }}" aria-label="Editor's Pick 전체 글 보기">→</a></div><div class="blog-guide-category-controls" aria-label="Editor's Pick 가이드 넘기기"><button type="button" class="blog-guide-category-nav blog-guide-category-prev" data-blog-guide-prev aria-label="Editor's Pick 이전 가이드">‹</button><button type="button" class="blog-guide-category-nav blog-guide-category-next" data-blog-guide-next aria-label="Editor's Pick 다음 가이드">›</button></div></div>
           <div class="blog-guide-category-list" data-blog-guide-track tabindex="0" aria-label="Editor's Pick 가이드 목록">
-            {% for featured_post in featured_posts %}
+            {% for featured_post in featured_posts limit: 6 %}
               {% assign featured_image = featured_post.preload_image | default: featured_post.og_image | default: '/images/main.jpeg' %}
               {% assign featured_video_id = featured_post.youtube_id | default: '' %}
               {% assign featured_has_video = false %}{% if featured_video_id != '' %}{% assign featured_has_video = true %}{% endif %}
