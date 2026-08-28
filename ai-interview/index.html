@@ -9,7 +9,7 @@ og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
 og_image_alt: 바른자리 AI 모의면접 데모 화면
 preload_image: images/interview-prep-checklist-cover.jpg
 css_version: 20260828-20
-script_version: 20260828-25
+script_version: 20260828-26
 ---
 
 <main class="about-page aii-page">
@@ -2262,13 +2262,7 @@ script_version: 20260828-25
       }
     };
 
-    const stopDevice = () => {
-      if (mediaRecorder && mediaRecorder.state === 'recording') {
-        mediaRecorder.stop();
-      }
-      mediaRecorder = null;
-      recordingChunks = [];
-      recordedBlob = null;
+    const finalizeDeviceShutdown = () => {
       if (meterAnimation) {
         cancelAnimationFrame(meterAnimation);
         meterAnimation = null;
@@ -2286,8 +2280,32 @@ script_version: 20260828-25
       meterFillNode.style.width = '0%';
       deviceStartButton.disabled = false;
       deviceStopButton.disabled = true;
-      setDeviceStatus('장비 대기 중');
+      if (!(recordedBlob instanceof Blob)) {
+        setDeviceStatus('장비 대기 중');
+      }
       updateRecordingButtons();
+    };
+
+    const stopDevice = () => {
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+        const activeRecorder = mediaRecorder;
+        const handleRecordingStop = activeRecorder.onstop;
+        activeRecorder.onstop = (event) => {
+          if (typeof handleRecordingStop === 'function') {
+            handleRecordingStop.call(activeRecorder, event);
+          }
+          mediaRecorder = null;
+          finalizeDeviceShutdown();
+        };
+        activeRecorder.stop();
+        setDeviceStatus('녹화를 종료하고 영상을 저장하는 중입니다...');
+        updateRecordingButtons();
+        return;
+      }
+
+      mediaRecorder = null;
+      recordingChunks = [];
+      finalizeDeviceShutdown();
     };
 
     const startMeter = () => {
