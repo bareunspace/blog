@@ -115,7 +115,7 @@
   {% if page.collection == 'posts' and page.hub_series == 'meeting' %}{% include meeting-workspace-series.html %}{% endif %}
   {% if page.collection == 'posts' and page.category == '면접준비' %}{% include interview-post-enhancements.html %}{% endif %}
   {% if page.collection == 'posts' and page.category == '프라이빗시간' %}{% include private-time-post-enhancements.html %}{% endif %}
-  {% if page.category %}
+  {% if page.category and page.hide_auto_related != true %}
     {% unless content contains 'class="post-related"' %}{% include related-posts.html %}{% endunless %}
   {% endif %}
 
