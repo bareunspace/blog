@@ -18,6 +18,8 @@ og_image_alt: 노트북과 발표 자료를 펼쳐 놓고 PT 발표를 리허설
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/pt-presentation-rehearsal-bareunjari.webp
+extra_css: /styles/pt-presentation-rehearsal.css
+extra_css_version: 20260828-1
 css_version: 20260810-4
 script_version: 20260711-4
 ---
@@ -26,7 +28,7 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">PT Presentation Rehearsal</p>
-      <h1 class="section-title">PT 발표 연습,<br />자료를 완성했다면 이제 실제로 해볼 차례입니다</h1>
+      <h1 class="section-title">PT 발표 연습, 자료를 완성했다면 이제 실제로 해볼 차례입니다</h1>
       <p class="section-desc">PT는 면접에만 쓰이지 않습니다. 대학 수업과 팀 프로젝트, 공모전·피칭, 회사 보고와 제안, 강의와 온라인 발표도 모두 자료를 띄우고 제한 시간 안에 핵심을 전달해야 합니다. 이 글은 발표 내용을 만드는 법보다 <strong>완성한 자료로 실제 리허설을 반복하는 방법</strong>에 집중합니다.</p>
       <div class="hero-btns">
         <a href="#two-hour-plan" class="btn-primary">2시간 리허설 순서 보기</a>
