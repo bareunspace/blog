@@ -8,6 +8,10 @@ main.about-page > section:not(#home) {
   position: relative;
 }
 
+main.about-page > section[id] {
+  scroll-margin-top: 140px;
+}
+
 main.about-page > section:not(#home) .section-inner {
   max-width: 940px;
 }
@@ -17,8 +21,8 @@ main.about-page #home {
   min-height: clamp(520px, 68vh, 700px);
   padding: clamp(4.5rem, 10vw, 7rem) 1.5rem;
   background:
-    linear-gradient(112deg, rgba(16, 43, 32, .88) 0%, rgba(32, 80, 58, .68) 52%, rgba(17, 44, 33, .48) 100%),
-    url('/images/short-term-office-rental.webp') center 52% / cover no-repeat;
+    linear-gradient(112deg, rgba(16, 43, 32, .84) 0%, rgba(25, 65, 47, .72) 52%, rgba(17, 44, 33, .62) 100%),
+    url('/images/10.webp') center 48% / cover no-repeat;
 }
 main.about-page #home::before {
   background:
@@ -250,7 +254,7 @@ main.about-page .guide-summary-card p {
 
 /* Time cards */
 main.about-page #time-examples .about-principle-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .85rem;
   margin: 1.35rem 0 1rem;
 }
@@ -265,6 +269,7 @@ main.about-page #time-examples .about-principle-item {
 }
 main.about-page #time-examples .about-principle-item::before {
   content: attr(data-step);
+  position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -278,7 +283,8 @@ main.about-page #time-examples .about-principle-item::before {
   font-size: .68rem;
   font-weight: 900;
 }
-main.about-page #time-examples .about-principle-item h3 {
+main.about-page #time-examples .about-principle-item h3 { 
+  clear: both;
   margin-bottom: .45rem;
   color: #244c39;
   font-size: 1.2rem;
@@ -420,7 +426,7 @@ main.about-page .post-related {
 @media (max-width: 860px) {
   main.about-page .guide-toc { top: 58px; }
   main.about-page #time-examples .about-principle-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   main.about-page #time-examples .about-principle-item {
     min-height: 0;
@@ -429,7 +435,7 @@ main.about-page .post-related {
 
 @media (max-width: 680px) {
   main.about-page #home {
-    min-height: 520px;
+    min-height: 620px;
     padding: 4.2rem 1rem 3.8rem;
     background-position: 58% center;
   }
@@ -462,7 +468,8 @@ main.about-page .post-related {
   main.about-page > section:not(#home) .section-title {
     font-size: 1.55rem;
   }
-  main.about-page .guide-summary-grid {
+  main.about-page .guide-summary-grid,
+  main.about-page #time-examples .about-principle-grid {
     grid-template-columns: 1fr;
   }
   main.about-page .guide-summary-card {
