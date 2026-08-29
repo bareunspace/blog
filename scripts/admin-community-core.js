@@ -718,6 +718,7 @@
       const sourceLabel = labels[source] || source || '외부';
       const customerName = reservation.reservation_name || reservation.customer_name || '예약자명 없음';
       const productName = reservation.product || reservation.product_name || '-';
+      const usagePurpose = reservation.usage_purpose || '-';
       const paidAmount = reservation.payment_amount ?? reservation.paid_amount;
       const cancelReason = reservation.cancellation_reason || reservation.cancel_reason || '';
       const reservationCreatedAt = formatDate(reservation.reservation_created_at || reservation.created_at) || '-';
@@ -742,6 +743,7 @@
             <div><dt>결제상태</dt><dd>${escapeHtml(reservation.payment_status || '-')}</dd></div>
             <div><dt>결제금액</dt><dd>${escapeHtml(formatCurrency(paidAmount))}</dd></div>
             <div><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div>
+            <div><dt>이용목적</dt><dd data-reservation-purpose-display>${escapeHtml(usagePurpose)}</dd></div>
           </dl>
           ${cancelReason ? `<p class="admin-community-message"><strong>취소 사유</strong>${escapeHtml(cancelReason)}</p>` : ''}
         </article>

@@ -58,6 +58,8 @@
     const currentPurpose = normalize(row?.usage_purpose);
     const isPreset = PURPOSES.includes(currentPurpose);
     let editor = card.querySelector('[data-reservation-purpose-editor]');
+    const display = card.querySelector('[data-reservation-purpose-display]');
+    if (display) display.textContent = currentPurpose || '-';
 
     if (!editor) {
       editor = document.createElement('div');
