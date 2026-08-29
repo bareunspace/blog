@@ -67,6 +67,15 @@
     .filter((taskId) => state.tasks?.[taskId]?.completed_at)
     .length;
 
+  const isDebugMode = () => {
+    try {
+      const query = new URLSearchParams(window.location.search || '');
+      return query.get('ga_debug') === '1' || query.get('debug_mode') === '1';
+    } catch (_) {
+      return false;
+    }
+  };
+
   const trackOnce = (eventName, sessionKey, params = {}) => {
     if (sessionKey && sessionGet(sessionKey)) return;
     if (sessionKey) sessionSet(sessionKey, '1');
@@ -75,6 +84,7 @@
       page_path: window.location.pathname,
       auth_provider: 'google',
       feature_area: 'interview_journey',
+      debug_mode: isDebugMode() || undefined,
       ...params
     });
   };

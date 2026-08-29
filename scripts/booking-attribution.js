@@ -26,6 +26,15 @@
     }
   }
 
+  function isDebugMode() {
+    try {
+      var query = new URLSearchParams(window.location.search || '');
+      return query.get('ga_debug') === '1' || query.get('debug_mode') === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+
   function initAttribution(path) {
     var firstTouch = sessionGet(ATTR_KEYS.first);
     if (!firstTouch) {
@@ -84,6 +93,7 @@
       if (callback) callback();
     };
     var payload = Object.assign({}, params || {});
+    if (isDebugMode()) payload.debug_mode = true;
     if (callback) {
       payload.event_callback = done;
       payload.event_timeout = 800;
