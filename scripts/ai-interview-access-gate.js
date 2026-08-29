@@ -116,7 +116,7 @@
 (() => {
   if (window.BareunjariInterviewJourney || document.querySelector('script[data-interview-journey-loader]')) return;
   const script = document.createElement('script');
-  script.src = '/scripts/interview-journey.js?v=20260820-1';
+  script.src = '/scripts/interview-journey.js?v=20260829-2';
   script.async = true;
   script.setAttribute('data-interview-journey-loader', 'true');
   document.head.appendChild(script);

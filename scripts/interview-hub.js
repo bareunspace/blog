@@ -80,7 +80,7 @@
       return;
     }
     const script = document.createElement('script');
-    script.src = '/scripts/interview-journey.js?v=20260820-3';
+    script.src = '/scripts/interview-journey.js?v=20260829-2';
     script.async = true;
     script.dataset.interviewJourneyLoader = 'true';
     script.addEventListener('load', renderJourneyBoard, { once: true });

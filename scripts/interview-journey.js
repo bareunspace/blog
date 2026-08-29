@@ -47,22 +47,53 @@
   const nowIso = () => new Date().toISOString();
   const emptyState = () => ({ version: VERSION, tasks: {}, last_active_at: nowIso() });
 
+  const normalizeState = (state) => {
+    const normalized = emptyState();
+    const tasks = state && typeof state.tasks === 'object' ? state.tasks : {};
+    Object.keys(TASKS).forEach((taskId) => {
+      const record = tasks[taskId];
+      if (!record || !record.completed_at) return;
+      normalized.tasks[taskId] = {
+        completed_at: String(record.completed_at),
+        source: String(record.source || 'synced')
+      };
+    });
+    normalized.last_active_at = state?.last_active_at || nowIso();
+    return normalized;
+  };
+
   const readState = () => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) return emptyState();
       const parsed = JSON.parse(raw);
       if (!parsed || parsed.version !== VERSION || typeof parsed.tasks !== 'object') return emptyState();
-      return parsed;
+      return normalizeState(parsed);
     } catch (_) {
       return emptyState();
     }
   };
 
   const writeState = (state) => {
-    const next = { version: VERSION, tasks: state.tasks || {}, last_active_at: nowIso() };
+    const normalized = normalizeState(state);
+    const next = { version: VERSION, tasks: normalized.tasks || {}, last_active_at: nowIso() };
     try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch (_) {}
     return next;
+  };
+
+  const mergeStates = (localState, remoteState) => {
+    const merged = normalizeState(localState);
+    const remote = normalizeState(remoteState);
+    Object.keys(TASKS).forEach((taskId) => {
+      const localRecord = merged.tasks[taskId];
+      const remoteRecord = remote.tasks[taskId];
+      if (!remoteRecord?.completed_at) return;
+      if (!localRecord?.completed_at || new Date(remoteRecord.completed_at) < new Date(localRecord.completed_at)) {
+        merged.tasks[taskId] = remoteRecord;
+      }
+    });
+    merged.last_active_at = nowIso();
+    return merged;
   };
 
   const track = (eventName, params = {}) => {
@@ -109,11 +140,19 @@
   const isComplete = (taskId) => Boolean(readState().tasks?.[taskId]?.completed_at);
   const completedCount = () => Object.keys(TASKS).filter(isComplete).length;
 
+  const replaceState = (state, action = 'replace') => {
+    const saved = writeState(state);
+    emitChange(saved, null, action);
+    return saved;
+  };
+
   window.BareunjariInterviewJourney = {
     version: VERSION,
     storageKey: STORAGE_KEY,
     tasks: TASKS,
     getState: readState,
+    setState: replaceState,
+    mergeStates,
     complete: completeTask,
     reset: resetTask,
     isComplete,
@@ -174,10 +213,10 @@
           <p class="interview-journey-record-help">${config.help}</p>
           <div class="interview-journey-record-actions">
             ${done
-              ? `<p class="interview-journey-record-status">✓ 이 기기에 기록됨${formatDate(record.completed_at) ? ` · ${formatDate(record.completed_at)}` : ''}</p><button type="button" class="interview-journey-record-reset" data-journey-reset>기록 취소</button>`
+              ? `<p class="interview-journey-record-status">✓ 준비 기록됨${formatDate(record.completed_at) ? ` · ${formatDate(record.completed_at)}` : ''}</p><button type="button" class="interview-journey-record-reset" data-journey-reset>기록 취소</button>`
               : '<button type="button" class="interview-journey-record-btn" data-journey-complete>✓ 했어요, 기록하기</button>'}
           </div>
-          <p class="interview-journey-record-note">로그인 없이 현재 기기의 브라우저에만 저장됩니다. 답변 내용이나 지원 기업 정보는 저장하지 않습니다.</p>
+          <p class="interview-journey-record-note">로그인하면 준비 단계가 계정에 저장되어 다른 기기에서도 이어볼 수 있습니다. 답변 내용이나 지원 기업 정보는 저장하지 않습니다.</p>
         </div>`;
       section.querySelector('[data-journey-complete]')?.addEventListener('click', () => {
         completeTask(config.taskId, 'manual_confirm');
