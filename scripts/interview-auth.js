@@ -110,13 +110,15 @@
   };
 
   const providerFromUser = (user) => {
+    const selectedProvider = normalizeProvider(sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider));
+    if (selectedProvider) return selectedProvider;
+
     const candidates = [
       user?.app_metadata?.provider,
       ...(Array.isArray(user?.app_metadata?.providers) ? user.app_metadata.providers : []),
       ...(Array.isArray(user?.identities) ? user.identities.map((identity) => identity?.provider) : []),
       ...(Array.isArray(user?.identities) ? user.identities.map((identity) => identity?.identity_data?.provider) : []),
-      sessionGet(ANALYTICS_SESSION_KEYS.authProvider),
-      sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider)
+      sessionGet(ANALYTICS_SESSION_KEYS.authProvider)
     ];
     return candidates.map(normalizeProvider).find(Boolean) || 'unknown';
   };
