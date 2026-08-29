@@ -46,6 +46,14 @@
     };
   }
 
+  function interviewAuthParams() {
+    return {
+      interview_login_status: sessionGet('bareunjari_interview_login_status') || 'unknown',
+      interview_completed_count: Number(sessionGet('bareunjari_interview_completed_count') || 0),
+      interview_resume_seen: sessionGet('bareunjari_interview_resume_seen') === '1'
+    };
+  }
+
   function inferPurpose() {
     var path = window.location.pathname || '/';
     var body = document.body;
@@ -166,7 +174,8 @@
             cta_position: link.getAttribute('data-cta') || 'unknown',
             page_path: path,
             item_id: bookingMeta.item_id,
-            booking_destination: bookingMeta.destination
+            booking_destination: bookingMeta.destination,
+            ...interviewAuthParams()
           }, function () {
             window.location.href = target;
           });
@@ -198,7 +207,8 @@
           first_touch_path: attribution.first_touch_path,
           assist_path: attribution.assist_path,
           last_touch_path: attribution.last_touch_path,
-          link_text: (link.textContent || '').trim().slice(0, 80)
+          link_text: (link.textContent || '').trim().slice(0, 80),
+          ...interviewAuthParams()
         }, function () {
           window.location.href = target;
         });
