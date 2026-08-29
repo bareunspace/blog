@@ -95,15 +95,30 @@
     login_surface: 'interview_auth_panel'
   });
 
+  const normalizeProvider = (value) => {
+    const provider = String(value || '').toLowerCase();
+    if (provider.includes('kakao')) return 'kakao';
+    if (provider.includes('google')) return 'google';
+    return '';
+  };
+
   const providerLabel = (provider) => {
-    if (provider === 'kakao') return '카카오';
-    if (provider === 'google') return 'Google';
+    const normalized = normalizeProvider(provider);
+    if (normalized === 'kakao') return '카카오';
+    if (normalized === 'google') return 'Google';
     return '소셜';
   };
 
   const providerFromUser = (user) => {
-    const provider = user?.app_metadata?.provider || user?.identities?.[0]?.provider || sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider);
-    return provider === 'kakao' || provider === 'google' ? provider : 'unknown';
+    const candidates = [
+      user?.app_metadata?.provider,
+      ...(Array.isArray(user?.app_metadata?.providers) ? user.app_metadata.providers : []),
+      ...(Array.isArray(user?.identities) ? user.identities.map((identity) => identity?.provider) : []),
+      ...(Array.isArray(user?.identities) ? user.identities.map((identity) => identity?.identity_data?.provider) : []),
+      sessionGet(ANALYTICS_SESSION_KEYS.authProvider),
+      sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider)
+    ];
+    return candidates.map(normalizeProvider).find(Boolean) || 'unknown';
   };
 
   const waitForJourney = () => new Promise((resolve) => {
