@@ -4737,6 +4737,11 @@ main.about-page .article-hero-visual {
   box-shadow: 0 16px 34px rgba(17,24,39,.1);
   isolation: isolate;
 }
+/* Blog title images need a tighter rhythm than full content sections. */
+main.about-page > #guide-visual {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
 main.about-page .article-hero-visual img {
   width: 100%;
   height: clamp(145px, 14vw, 180px);
@@ -7022,6 +7027,10 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   }
   main.about-page .article-hero-visual img {
     height: clamp(145px, 42vw, 190px);
+  }
+  main.about-page > #guide-visual {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
   main.about-page .article-intro-copy .section-title,
   main.about-page .article-intro-copy .section-desc {
