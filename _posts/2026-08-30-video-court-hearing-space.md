@@ -26,6 +26,7 @@ hide_tags: true
 canonical: https://bareunjari.com/posts/video-court-hearing-space/
 permalink: /posts/video-court-hearing-space/
 date: 2026-08-30 06:50:00 +0900
+published: false
 og_image: https://bareunjari.com/images/video-court-hearing-space.webp
 og_image_alt: 부천 신중동 바른자리에서 노트북과 이어폰을 점검하며 민사 영상재판 참여를 준비하는 이용자
 og_image_width: 1536
