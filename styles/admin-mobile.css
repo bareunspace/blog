@@ -236,14 +236,21 @@
   #adminDashboardRoot [data-delete-reservation] { grid-column:1 / -1; width:100%; margin-top:2px; }
   #adminDashboardRoot .admin-reservation-name-controls input,
   #adminDashboardRoot .admin-reservation-purpose-editor select,
+  #adminDashboardRoot .admin-reservation-purpose-editor input,
   #adminDashboardRoot [data-reservations-list] .admin-reservation-name-controls input,
-  #adminDashboardRoot [data-reservations-list] .admin-reservation-purpose-editor select {
+  #adminDashboardRoot [data-reservations-list] .admin-reservation-purpose-editor select,
+  #adminDashboardRoot [data-reservations-list] .admin-reservation-purpose-editor input {
     min-width:0;
     width:100%;
-    min-height:38px;
     font-size:.82rem;
     padding:6px 8px;
   }
+  #adminDashboardRoot .admin-reservation-name-controls input,
+  #adminDashboardRoot .admin-reservation-purpose-editor select,
+  #adminDashboardRoot .admin-reservation-purpose-editor input,
+  #adminDashboardRoot [data-reservations-list] .admin-reservation-name-controls input,
+  #adminDashboardRoot [data-reservations-list] .admin-reservation-purpose-editor select,
+  #adminDashboardRoot [data-reservations-list] .admin-reservation-purpose-editor input { min-height:38px; }
   #adminDashboardRoot .admin-reservation-name-controls .admin-btn,
   #adminDashboardRoot .admin-reservation-purpose-editor .admin-btn,
   #adminDashboardRoot [data-reservations-list] .admin-reservation-name-controls .admin-btn,
