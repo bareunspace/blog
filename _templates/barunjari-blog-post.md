@@ -82,8 +82,18 @@ Hero -> 대표 이미지 -> 핵심 답/도입 -> 문제 해결 본문 -> Related
 - FAQ 답변은 반드시 .faq-answer로 감싼다.
 - 모바일 첫 화면 제목/설명/CTA가 지나치게 길어지지 않게 한다.
 
-5. 발행 전 한 번에 확인
-Search intent / cannibalization / title / description / canonical / tags / hub metadata / WEBP title image / OG / preload / ALT / mobile UI / internal links / FAQ / current operation / booking CTA / hub thumbnail cover
+5. 이미지 제작·발행 체크
+상세 판단 기준은 knowledge-base의 `Bareunjari/Content/image-production-guide.md`를 따른다.
+- [ ] 이 글의 검색 의도와 실제 사용 장면을 보여주는 전용 WEBP인가
+- [ ] 실제 바른자리의 구조·크기·제공 장비를 왜곡하거나 과장하지 않았는가
+- [ ] 파일은 1536×1024, 3:2이며 파일명이 slug와 일치하는가
+- [ ] `og_image`, `preload_image`, 본문 대표 이미지가 같은 파일인가
+- [ ] ALT가 실제 공간과 사용 상황을 구체적으로 설명하는가
+- [ ] 모바일·허브 카드 cover 크롭에서 핵심 장면이 잘리지 않는가
+- [ ] 개인정보, AI 문자 오류, 제공하지 않는 서비스 암시가 없는가
+
+6. 발행 전 전체 확인
+Search intent / cannibalization / title / description / canonical / tags / hub metadata / mobile UI / internal links / FAQ / current operation / booking CTA / hub thumbnail cover
 -->
 
 <main class="about-page">
