@@ -25,7 +25,7 @@ tags:
 hide_tags: true
 canonical: https://bareunjari.com/posts/video-court-hearing-space/
 permalink: /posts/video-court-hearing-space/
-date: 2026-08-30 07:20:00 +0900
+date: 2026-08-30 06:50:00 +0900
 og_image: https://bareunjari.com/images/bucheon-meeting-room.webp
 og_image_alt: 민사 영상재판과 화상조정 등 중요한 온라인 일정에 사용할 수 있는 부천 신중동 프라이빗 공간
 og_image_width: 1672
