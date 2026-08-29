@@ -5,7 +5,7 @@
 
   const titleNode = panel.querySelector('[data-interview-auth-title]');
   const messageNode = panel.querySelector('[data-interview-auth-message]');
-  const loginButton = panel.querySelector('[data-interview-auth-login]');
+  const loginButtons = Array.from(panel.querySelectorAll('[data-interview-auth-login]'));
   const logoutButton = panel.querySelector('[data-interview-auth-logout]');
 
   const parseConfig = () => {
@@ -19,7 +19,7 @@
   };
 
   const setBusy = (busy) => {
-    if (loginButton) loginButton.disabled = busy;
+    loginButtons.forEach((button) => { button.disabled = busy; });
     if (logoutButton) logoutButton.disabled = busy;
   };
 
@@ -33,7 +33,7 @@
 
   if (!supabaseUrl || !supabaseAnonKey || !window.supabase || typeof window.supabase.createClient !== 'function') {
     setMessage('로그인 준비 중 문제가 생겼습니다', '잠시 후 다시 시도해 주세요. 기기 안에 저장된 면접 준비 기록은 그대로 사용할 수 있습니다.');
-    if (loginButton) loginButton.hidden = true;
+    loginButtons.forEach((button) => { button.hidden = true; });
     if (logoutButton) logoutButton.hidden = true;
     return;
   }
@@ -50,7 +50,9 @@
     resume: 'bareunjari_interview_resume_tracked',
     loginStatus: 'bareunjari_interview_login_status',
     completedCount: 'bareunjari_interview_completed_count',
-    resumeSeen: 'bareunjari_interview_resume_seen'
+    resumeSeen: 'bareunjari_interview_resume_seen',
+    authProvider: 'bareunjari_interview_auth_provider',
+    selectedProvider: 'bareunjari_interview_selected_provider'
   };
 
   const sessionGet = (key) => {
@@ -82,7 +84,7 @@
     if (typeof window.gtag !== 'function') return;
     window.gtag('event', eventName, {
       page_path: window.location.pathname,
-      auth_provider: 'google',
+      auth_provider: params.auth_provider || sessionGet(ANALYTICS_SESSION_KEYS.authProvider) || sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider) || 'unknown',
       feature_area: 'interview_journey',
       debug_mode: isDebugMode() || undefined,
       ...params
@@ -92,6 +94,17 @@
   trackOnce('login_view', ANALYTICS_SESSION_KEYS.loginView, {
     login_surface: 'interview_auth_panel'
   });
+
+  const providerLabel = (provider) => {
+    if (provider === 'kakao') return '카카오';
+    if (provider === 'google') return 'Google';
+    return '소셜';
+  };
+
+  const providerFromUser = (user) => {
+    const provider = user?.app_metadata?.provider || user?.identities?.[0]?.provider || sessionGet(ANALYTICS_SESSION_KEYS.selectedProvider);
+    return provider === 'kakao' || provider === 'google' ? provider : 'unknown';
+  };
 
   const waitForJourney = () => new Promise((resolve) => {
     if (window.BareunjariInterviewJourney) {
@@ -153,15 +166,17 @@
   const render = (user) => {
     const email = user?.email || '';
     if (user) {
+      const provider = providerFromUser(user);
       sessionSet(ANALYTICS_SESSION_KEYS.loginStatus, 'signed_in');
-      setMessage('Google 로그인됨', email ? `${email} 계정으로 로그인되어 있습니다. 면접 준비 상태를 다른 기기에서도 이어볼 수 있습니다.` : 'Google 계정으로 로그인되어 있습니다. 면접 준비 상태를 다른 기기에서도 이어볼 수 있습니다.');
-      if (loginButton) loginButton.hidden = true;
+      sessionSet(ANALYTICS_SESSION_KEYS.authProvider, provider);
+      setMessage(`${providerLabel(provider)} 로그인됨`, email ? `${email} 계정으로 로그인되어 있습니다. 면접 준비 상태를 다른 기기에서도 이어볼 수 있습니다.` : `${providerLabel(provider)} 계정으로 로그인되어 있습니다. 면접 준비 상태를 다른 기기에서도 이어볼 수 있습니다.`);
+      loginButtons.forEach((button) => { button.hidden = true; });
       if (logoutButton) logoutButton.hidden = false;
       return;
     }
     sessionSet(ANALYTICS_SESSION_KEYS.loginStatus, 'signed_out');
-    setMessage('Google로 로그인하기', '로그인하면 면접 준비 상태를 계정에 저장해 다른 기기에서도 이어볼 수 있습니다.');
-    if (loginButton) loginButton.hidden = false;
+    setMessage('로그인하기', '로그인하면 면접 준비 상태를 계정에 저장해 다른 기기에서도 이어볼 수 있습니다.');
+    loginButtons.forEach((button) => { button.hidden = false; });
     if (logoutButton) logoutButton.hidden = true;
   };
 
@@ -171,27 +186,33 @@
     render(currentUser);
     if (currentUser) {
       trackOnce('login_success', ANALYTICS_SESSION_KEYS.loginSuccess, {
-        login_surface: 'interview_auth_panel'
+        login_surface: 'interview_auth_panel',
+        auth_provider: providerFromUser(currentUser)
       });
       syncJourneyState(currentUser).catch(() => {
-        setMessage('Google 로그인됨', '로그인은 되어 있지만 준비 상태 동기화가 잠시 지연되고 있습니다. 이 기기의 기록은 그대로 남아 있습니다.');
+        setMessage(`${providerLabel(providerFromUser(currentUser))} 로그인됨`, '로그인은 되어 있지만 준비 상태 동기화가 잠시 지연되고 있습니다. 이 기기의 기록은 그대로 남아 있습니다.');
       });
     }
   };
 
-  loginButton?.addEventListener('click', async () => {
-    trackOnce('login_click', ANALYTICS_SESSION_KEYS.loginClick, {
-      login_surface: 'interview_auth_panel'
+  loginButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const provider = button.dataset.interviewAuthProvider === 'kakao' ? 'kakao' : 'google';
+      sessionSet(ANALYTICS_SESSION_KEYS.selectedProvider, provider);
+      trackOnce('login_click', `${ANALYTICS_SESSION_KEYS.loginClick}_${provider}`, {
+        login_surface: 'interview_auth_panel',
+        auth_provider: provider
+      });
+      setBusy(true);
+      const { error } = await client.auth.signInWithOAuth({
+        provider,
+        options: { redirectTo }
+      });
+      if (error) {
+        setBusy(false);
+        setMessage(`${providerLabel(provider)} 로그인을 시작하지 못했습니다`, '잠시 후 다시 시도해 주세요. 기기 안에 저장된 준비 기록은 그대로 남아 있습니다.');
+      }
     });
-    setBusy(true);
-    const { error } = await client.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo }
-    });
-    if (error) {
-      setBusy(false);
-      setMessage('Google 로그인을 시작하지 못했습니다', '잠시 후 다시 시도해 주세요. 기기 안에 저장된 준비 기록은 그대로 남아 있습니다.');
-    }
   });
 
   logoutButton?.addEventListener('click', async () => {
@@ -202,6 +223,8 @@
       setMessage('로그아웃하지 못했습니다', '잠시 후 다시 시도해 주세요. 기기 안에 저장된 준비 기록은 그대로 남아 있습니다.');
       return;
     }
+    sessionSet(ANALYTICS_SESSION_KEYS.authProvider, '');
+    sessionSet(ANALYTICS_SESSION_KEYS.selectedProvider, '');
     render(null);
   });
 
@@ -211,10 +234,11 @@
     setBusy(false);
     if (currentUser && currentUser.id !== syncedUserId) {
       trackOnce('login_success', ANALYTICS_SESSION_KEYS.loginSuccess, {
-        login_surface: 'interview_auth_panel'
+        login_surface: 'interview_auth_panel',
+        auth_provider: providerFromUser(currentUser)
       });
       syncJourneyState(currentUser).catch(() => {
-        setMessage('Google 로그인됨', '로그인은 되어 있지만 준비 상태 동기화가 잠시 지연되고 있습니다. 이 기기의 기록은 그대로 남아 있습니다.');
+        setMessage(`${providerLabel(providerFromUser(currentUser))} 로그인됨`, '로그인은 되어 있지만 준비 상태 동기화가 잠시 지연되고 있습니다. 이 기기의 기록은 그대로 남아 있습니다.');
       });
     }
   });

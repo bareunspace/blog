@@ -58,6 +58,7 @@
   function interviewAuthParams() {
     return {
       interview_login_status: sessionGet('bareunjari_interview_login_status') || 'unknown',
+      interview_auth_provider: sessionGet('bareunjari_interview_auth_provider') || sessionGet('bareunjari_interview_selected_provider') || 'unknown',
       interview_completed_count: Number(sessionGet('bareunjari_interview_completed_count') || 0),
       interview_resume_seen: sessionGet('bareunjari_interview_resume_seen') === '1'
     };
