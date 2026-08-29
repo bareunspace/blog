@@ -26,11 +26,11 @@ hide_tags: true
 canonical: https://bareunjari.com/posts/video-court-hearing-space/
 permalink: /posts/video-court-hearing-space/
 date: 2026-08-30 06:50:00 +0900
-og_image: https://bareunjari.com/images/bucheon-meeting-room.webp
-og_image_alt: 민사 영상재판과 화상조정 등 중요한 온라인 일정에 사용할 수 있는 부천 신중동 프라이빗 공간
-og_image_width: 1672
-og_image_height: 941
-preload_image: images/bucheon-meeting-room.webp
+og_image: https://bareunjari.com/images/video-court-hearing-space.webp
+og_image_alt: 부천 신중동 바른자리에서 노트북과 이어폰을 점검하며 민사 영상재판 참여를 준비하는 이용자
+og_image_width: 1536
+og_image_height: 1024
+preload_image: images/video-court-hearing-space.webp
 css_version: 20260828-1
 script_version: 20260711-4
 ---
@@ -52,12 +52,12 @@ script_version: 20260711-4
 
   {% include post-media-carousel.html
     image_section_id='guide-visual'
-    image_src='/images/bucheon-meeting-room.webp'
-    image_alt='민사 영상재판과 화상조정 등 중요한 온라인 일정에 사용할 수 있는 부천 신중동 프라이빗 공간'
-    image_width='1672'
-    image_height='941'
+    image_src='/images/video-court-hearing-space.webp'
+    image_alt='부천 신중동 바른자리에서 노트북과 이어폰을 점검하며 민사 영상재판 참여를 준비하는 이용자'
+    image_width='1536'
+    image_height='1024'
     image_loading='eager'
-    image_caption='짧은 온라인 일정이라도 정해진 시간에 안정적으로 접속하고 주변을 의식하지 않아야 한다면 독립 공간이 도움이 될 수 있습니다.'
+    image_caption='중요한 온라인 일정은 시작 전에 노트북·카메라·마이크와 접속 상태를 확인할 여유까지 함께 확보하는 편이 좋습니다.'
   %}
 
   <nav class="guide-toc" aria-label="민사 영상재판 화상조정 공간 가이드 목차">
@@ -110,6 +110,9 @@ script_version: 20260711-4
       <p>따라서 외부 공간에서 참여해도 되는지, 어떤 프로그램이나 장비가 필요한지, 신분 확인이나 별도 접속 절차가 있는지는 반드시 담당 법원 또는 안내받은 내용을 기준으로 확인해야 합니다.</p>
       <p>이 가이드는 <strong>민사 영상재판·화상조정 등 일반적인 온라인 민사 절차에 참여할 공간을 찾는 상황</strong>을 중심으로 안내합니다. 형사 절차 등 다른 유형의 재판은 해당 사건에서 안내받은 참여 방식과 장소 조건을 우선해 주세요.</p>
       <p>바른자리는 법원 시설이나 법률서비스 제공기관이 아니라, 예약자가 자신의 온라인 일정에 사용할 수 있는 일반 프라이빗 공간대여 서비스입니다.</p>
+      <div class="hero-btns" style="margin-top:1.5rem;">
+        <a href="https://seoul.scourt.go.kr/seoul/civil/civil_07/index.html" target="_blank" rel="noopener noreferrer" class="btn-outline">법원 영상재판 절차 안내 보기</a>
+      </div>
     </div>
   </section>
 
@@ -117,6 +120,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Space Checklist</p>
       <h2 class="section-title">민사 온라인 일정에 참여할 공간이라면</h2>
+      <p class="section-desc">공간의 독립성뿐 아니라 본인 장비, 사전 접속 테스트, 녹화 관련 유의사항까지 함께 확인해야 합니다.</p>
       <div class="about-principle-grid">
         <article class="about-principle-item" data-step="01">
           <h3>혼자 사용할 수 있는가</h3>
@@ -133,6 +137,14 @@ script_version: 20260711-4
         <article class="about-principle-item" data-step="04">
           <h3>일정이 길어져도 여유가 있는가</h3>
           <p>예정 시간보다 대기나 진행이 길어질 가능성까지 고려해 예약 종료 시간을 너무 촉박하게 잡지 않는 편이 안전합니다.</p>
+        </article>
+        <article class="about-principle-item" data-step="05">
+          <h3>이어폰·헤드셋을 준비했는가</h3>
+          <p>법원 공식 안내에서도 에코와 하울링을 줄이기 위해 이어폰이나 헤드셋 사용을 안내합니다. 본인 기기와 호환되는 제품을 준비해 미리 테스트하세요.</p>
+        </article>
+        <article class="about-principle-item" data-step="06">
+          <h3>녹화·촬영 유의사항을 확인했는가</h3>
+          <p>법원 안내에 따르면 재판장 허가 없는 영상재판 녹화·촬영에는 제재가 따를 수 있습니다. 화면이나 음성을 임의로 기록하지 마세요.</p>
         </article>
       </div>
     </div>
@@ -152,7 +164,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Bareunjari</p>
       <h2 class="section-title">부천·신중동에서 민사 온라인 일정에 쓸 프라이빗 공간이 필요하다면</h2>
-      <p>바른자리는 신중동역에서 가까운 프라이빗 공간으로, 예약한 한 팀이 예약시간 동안 공간 전체를 이용합니다. Wi-Fi와 전원, 테이블을 이용해 본인의 노트북이나 모바일 기기로 온라인 일정에 참여할 수 있습니다.</p>
+      <p>바른자리는 신중동역에서 가까운 프라이빗 공간으로, 예약한 한 팀이 예약시간 동안 공간 전체를 이용합니다. Wi-Fi와 전원, 테이블을 이용할 수 있으며, 법원 공식 안내에 맞는 개인 노트북·카메라·마이크·이어폰 등은 직접 준비해야 합니다.</p>
       <p>민사 영상재판이나 화상조정뿐 아니라 변호사·세무사·노무사 등과의 온라인 상담, 중요한 화상회의처럼 주변을 덜 의식하고 대화해야 하는 일정에도 같은 방식으로 이용할 수 있습니다.</p>
       <div class="hero-btns" style="margin-top:1.5rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">예약 가능 시간 확인하기</a>
@@ -165,26 +177,30 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">FAQ</p>
       <h2 class="section-title">민사 영상재판·화상조정 공간을 찾을 때 자주 묻는 질문</h2>
-      <div class="faq-list">
-        <details>
-          <summary>바른자리에서 민사 영상재판이나 화상조정에 참여할 수 있나요?</summary>
-          <p>공간과 Wi-Fi를 이용해 본인 기기로 온라인 일정에 참여하는 것은 가능하지만, 특정 민사 영상재판이나 화상조정에서 외부 공간 사용이 허용되는지와 필요한 접속 조건은 사건별 법원 안내를 반드시 먼저 확인해야 합니다.</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">바른자리에서 민사 영상재판이나 화상조정에 참여할 수 있나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">공간과 Wi-Fi를 이용해 본인 기기로 온라인 일정에 참여할 수 있습니다. 다만 외부 공간에서 참여해도 되는지, 어떤 장비와 접속 방식이 필요한지는 사건별 법원 안내를 반드시 먼저 확인해야 합니다.</p></div>
         </details>
-        <details>
-          <summary>형사재판 참여 장소로도 이용할 수 있나요?</summary>
-          <p>이 페이지는 민사 영상재판·화상조정 등 온라인 민사 절차를 중심으로 안내합니다. 형사 절차는 참여 방식과 장소 조건이 다를 수 있으므로 해당 사건에서 안내받은 내용을 우선 확인해 주세요.</p>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">형사재판 참여 장소로도 이용할 수 있나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">이 페이지는 민사 영상재판·화상조정 등 온라인 민사 절차를 중심으로 안내합니다. 형사 절차는 참여 방식과 장소 조건이 다를 수 있으므로 해당 사건에서 안내받은 내용을 우선 확인해 주세요.</p></div>
         </details>
-        <details>
-          <summary>노트북은 제공되나요?</summary>
-          <p>개인 노트북이나 모바일 기기를 준비하는 것을 전제로 안내합니다. 필요한 프로그램 설치, 카메라·마이크 작동 여부는 이용 전에 직접 확인해 주세요.</p>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">노트북이나 이어폰이 제공되나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">제공되지 않습니다. 법원 안내에 맞는 개인 노트북과 카메라·마이크, 이어폰 또는 헤드셋을 준비하고 필요한 프로그램과 장치 작동 여부를 이용 전에 직접 확인해 주세요.</p></div>
         </details>
-        <details>
-          <summary>카페보다 어떤 점이 다른가요?</summary>
-          <p>예약시간 동안 한 팀이 공간 전체를 사용하기 때문에 주변 사람의 이동과 시선을 덜 의식하고 대화할 수 있다는 점이 가장 큰 차이입니다.</p>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">Wi-Fi만 연결되면 바로 참여할 수 있나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">인터넷 연결 외에도 법원이 보낸 접속 링크, 프로그램 설치, 카메라·마이크·스피커 설정이 필요할 수 있습니다. 법원 공식 안내는 실제 기일 전에 사전 테스트를 실시하도록 안내하고 있으므로 미리 점검하세요.</p></div>
         </details>
-        <details>
-          <summary>일정보다 시간이 길어지면 어떻게 하나요?</summary>
-          <p>뒤 예약이 없고 추가 예약이 가능한 경우에는 필요한 시간을 추가로 예약할 수 있지만, 중요한 일정이라면 처음부터 준비·대기 시간을 고려해 여유 있게 예약하는 것을 권합니다.</p>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">영상재판 화면이나 음성을 녹화해도 되나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">법원 공식 안내에 따르면 재판장 허가 없이 영상재판을 녹화·촬영하면 감치나 과태료 등의 제재를 받을 수 있고, 무단 유포는 형사처벌 대상이 될 수 있습니다. 임의로 화면이나 음성을 기록하지 마세요.</p></div>
+        </details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">일정보다 시간이 길어지면 어떻게 하나요?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">뒤 예약이 없고 추가 예약이 가능한 경우에는 시간을 추가로 예약할 수 있습니다. 다만 중요한 일정은 연장이 불가능할 가능성까지 고려해 준비·대기 시간을 포함한 여유 있는 시간으로 처음부터 예약하는 편이 안전합니다.</p></div>
         </details>
       </div>
     </div>
