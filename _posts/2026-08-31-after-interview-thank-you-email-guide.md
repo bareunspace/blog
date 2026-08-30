@@ -13,11 +13,11 @@ tags:
 canonical: https://bareunjari.com/posts/after-interview-thank-you-email-guide/
 permalink: /posts/after-interview-thank-you-email-guide/
 date: 2026-08-31 05:20:00 +0900
-og_image: https://bareunjari.com/images/interview-questions-to-ask.webp
+og_image: https://bareunjari.com/images/after-interview-thank-you-email-guide.webp
 og_image_alt: 면접 후 질문을 복기하고 감사 메일을 작성하는 장면
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/interview-questions-to-ask.webp
+preload_image: images/after-interview-thank-you-email-guide.webp
 ---
 
 <main class="about-page">
@@ -34,6 +34,15 @@ preload_image: images/interview-questions-to-ask.webp
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/after-interview-thank-you-email-guide.webp" alt="면접 직후 답변을 복기하고 감사 메일을 준비하는 지원자" loading="eager" decoding="async" width="1536" height="1024">
+        <figcaption>면접 직후에는 질문과 답변을 먼저 기록하고, 공식 연락 창구가 있을 때만 감사 메일을 간결하게 준비하세요.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <section class="guide-summary-section" aria-label="면접 후 해야 할 일 핵심 답변">
     <div class="section-inner">
