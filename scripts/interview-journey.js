@@ -3,15 +3,21 @@
   const VERSION = 1;
 
   const TASKS = {
-    self_intro: { order: 1, title: '1분 자기소개 말해보기' },
-    experience_examples: { order: 2, title: '경험 답변 정리하기' },
-    ai_answer_practice: { order: 3, title: '실제 질문에 답해보기' },
-    hiring_process_check: { order: 4, title: '지원 전형 확인하기' },
+    hiring_process_check: { order: 1, title: '기업·직무·전형 확인하기' },
+    self_intro: { order: 2, title: '1분 자기소개 말해보기' },
+    experience_examples: { order: 3, title: '경험 답변 정리하기' },
+    ai_answer_practice: { order: 4, title: '실제 질문에 답해보기' },
     full_rehearsal: { order: 5, title: '실전 리허설하기' },
     final_check: { order: 6, title: '면접 직전 점검하기' }
   };
 
   const MANUAL_PROMPTS = {
+    '/posts/interview-motivation-job-analysis-guide/': {
+      taskId: 'hiring_process_check',
+      eyebrow: '기업·직무·전형 확인 기록',
+      question: '회사와 직무가 원하는 역할, 실제 전형과 지원동기의 근거를 확인했나요?',
+      help: '공고와 공식 정보를 확인하고 내 경험과 기여를 연결했다면 기록하세요.'
+    },
     '/posts/1-minute-self-introduction-guide/': {
       taskId: 'self_intro',
       eyebrow: '오늘의 준비 기록',
@@ -27,8 +33,8 @@
     '/cases/': {
       taskId: 'hiring_process_check',
       eyebrow: '전형 확인 기록',
-      question: '지원하려는 전형에서 내가 직접 해야 할 행동을 확인했나요?',
-      help: '면접·과제·영상·상황 대응 등 실제로 준비해야 할 행동을 확인했을 때 기록하세요.'
+      question: '지원하려는 기업과 직무, 전형에서 내가 직접 해야 할 행동을 확인했나요?',
+      help: '공고와 공식 정보를 기준으로 역할, 면접·과제·영상·상황 대응 등 실제 준비 행동을 확인했을 때 기록하세요.'
     },
     '/posts/interview-answer-practice/': {
       taskId: 'full_rehearsal',
