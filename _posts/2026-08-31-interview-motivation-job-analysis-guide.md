@@ -13,11 +13,11 @@ tags:
 canonical: https://bareunjari.com/posts/interview-motivation-job-analysis-guide/
 permalink: /posts/interview-motivation-job-analysis-guide/
 date: 2026-08-31 05:10:00 +0900
-og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
+og_image: https://bareunjari.com/images/interview-motivation-job-analysis-guide.webp
 og_image_alt: 기업과 직무 정보를 확인하며 면접 지원동기를 정리하는 장면
 og_image_width: 1536
 og_image_height: 1024
-preload_image: images/interview-prep-checklist-cover.jpg
+preload_image: images/interview-motivation-job-analysis-guide.webp
 ---
 
 <main class="about-page">
@@ -34,6 +34,15 @@ preload_image: images/interview-prep-checklist-cover.jpg
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/interview-motivation-job-analysis-guide.webp" alt="채용공고와 기업 자료를 살펴보며 면접 지원동기를 정리하는 지원자" loading="eager" decoding="async" width="1536" height="1024">
+        <figcaption>지원동기는 기업과 직무에서 확인한 근거를 내 경험과 연결할 때 구체적으로 바뀝니다.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <section class="guide-summary-section" aria-label="면접 지원동기 핵심 답변">
     <div class="section-inner">
