@@ -716,7 +716,9 @@
       const status = normalizeReservationStatus(reservation.status);
       const source = String(reservation.source || '').trim().toLowerCase();
       const sourceLabel = labels[source] || source || '외부';
-      const customerName = reservation.reservation_name || reservation.customer_name || '예약자명 없음';
+      const customerName = reservation.customer_name || reservation.reservation_name || '예약자명 없음';
+      const customerPhone = String(reservation.customer_phone || '').trim();
+      const customerEmail = String(reservation.customer_email || '').trim();
       const productName = reservation.product || reservation.product_name || '-';
       const usagePurpose = reservation.usage_purpose || '-';
       const paidAmount = reservation.payment_amount ?? reservation.paid_amount;
@@ -740,6 +742,8 @@
             <div><dt>종료</dt><dd>${escapeHtml(getReservationEndText(reservation) || '-')}</dd></div>
             <div><dt>이용시간</dt><dd>${escapeHtml(formatDuration(reservation.duration_minutes))}</dd></div>
             <div><dt>상품</dt><dd>${escapeHtml(productName)}</dd></div>
+            <div><dt>전화번호</dt><dd>${customerPhone ? `<a href="tel:${escapeHtml(customerPhone)}">${escapeHtml(customerPhone)}</a>` : '-'}</dd></div>
+            <div><dt>이메일</dt><dd>${customerEmail ? `<a href="mailto:${escapeHtml(customerEmail)}">${escapeHtml(customerEmail)}</a>` : '-'}</dd></div>
             <div><dt>결제상태</dt><dd>${escapeHtml(reservation.payment_status || '-')}</dd></div>
             <div><dt>결제금액</dt><dd>${escapeHtml(formatCurrency(paidAmount))}</dd></div>
             <div><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div>
