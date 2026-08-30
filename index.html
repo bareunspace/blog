@@ -10,7 +10,7 @@ og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 부천 신중동 바른자리 프라이빗룸 메인 공간 이미지
 preload_image: images/main.webp
 naver_site_verification: 46b51cdf33b64778f7ae6e7dd0dabcb6890be955
-css_version: 20260809-1
+css_version: 20260831-1
 script_version: 20260719-1
 ---
   <main id="mainContent">
@@ -263,6 +263,7 @@ script_version: 20260719-1
             {% assign post_card_has_video = true %}
           {% endif %}
           <article class="blog-guide-card" data-home-guide-item data-category="{{ post.category | default: '시간 활용 가이드' }}">
+            <span class="blog-card-image-badge">{{ post.category | default: "시간 활용 가이드" }}</span>
             <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
               {% if post_card_has_video %}
                 <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
@@ -296,7 +297,6 @@ script_version: 20260719-1
               {% endif %}
             </a>
             <div class="blog-guide-content">
-              <p class="blog-card-eyebrow">{{ post.category | default: "시간 활용 가이드" }}</p>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               <div class="blog-card-footer">
                 <span>{{ post.date | date: "%Y-%m-%d" }}</span>
