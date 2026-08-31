@@ -407,13 +407,16 @@ main.about-page #partner-growth .partner-growth-panel {
 }
 main.about-page #partner-growth .section-label {
   color:#c8ead4 !important;
+  -webkit-text-fill-color:#c8ead4 !important;
 }
 main.about-page #partner-growth .section-title {
   color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
 }
 main.about-page #partner-growth .section-desc,
 main.about-page #partner-growth p {
   color:rgba(255,255,255,.90) !important;
+  -webkit-text-fill-color:rgba(255,255,255,.90) !important;
   opacity:1 !important;
 }
 main.about-page .partner-cta-row {
@@ -440,6 +443,7 @@ main.about-page #contact .section-inner {
 }
 main.about-page #contact .section-label {
   color:#24563f !important;
+  -webkit-text-fill-color:#24563f !important;
   font-weight:900 !important;
   opacity:1 !important;
 }
@@ -448,6 +452,7 @@ main.about-page #contact .section-title {
   margin-left:auto;
   margin-right:auto;
   color:#0d281a !important;
+  -webkit-text-fill-color:#0d281a !important;
   font-size:clamp(1.95rem,4vw,3rem) !important;
   line-height:1.34 !important;
   letter-spacing:-.035em !important;
@@ -460,6 +465,7 @@ html body main.about-page #contact .contact-lead-line {
   margin-left:auto !important;
   margin-right:auto !important;
   color:#0d281a !important;
+  -webkit-text-fill-color:#0d281a !important;
   font-size:1.08rem !important;
   font-weight:700 !important;
   line-height:1.85 !important;
@@ -467,6 +473,7 @@ html body main.about-page #contact .contact-lead-line {
 }
 html body main.about-page #contact .contact-lead-line strong {
   color:#071a10 !important;
+  -webkit-text-fill-color:#071a10 !important;
   font-weight:900 !important;
 }
 html body main.about-page #contact .contact-closing-line {
@@ -477,6 +484,7 @@ html body main.about-page #contact .contact-closing-line {
   border-radius:18px;
   background:#ddebe2 !important;
   color:#0d281a !important;
+  -webkit-text-fill-color:#0d281a !important;
   font-size:1.08rem !important;
   font-weight:700 !important;
   line-height:1.8 !important;
@@ -486,6 +494,7 @@ html body main.about-page #contact .contact-closing-line strong {
   display:inline-block;
   margin-bottom:.18rem;
   color:#071a10 !important;
+  -webkit-text-fill-color:#071a10 !important;
   font-size:1.14em;
   font-weight:900 !important;
 }
