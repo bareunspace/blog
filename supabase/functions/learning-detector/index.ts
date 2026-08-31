@@ -165,7 +165,8 @@ Deno.serve(async (req: Request) => {
     const analysis = {
       classification: "HYPOTHESIS",
       summary: candidate.hypothesis,
-      proposed_path: `Bareunjari/KnowledgeOps/Learning-Candidates/${safeKey}.md`,
+      repository: "bareunspace/knowledge-base",
+      proposed_path: `Bareunjari/KnowledgeOps/learning-candidate-${safeKey}.md`,
       evidence_window: { start: candidate.evidence_window_start, end: candidate.evidence_window_end },
       confidence: candidate.confidence,
       evidence: evidenceRows ?? [],
