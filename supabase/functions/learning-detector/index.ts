@@ -82,12 +82,13 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
     const candidateIds = (candidates ?? []).map((candidate) => candidate.id);
     let evidence: Array<Record<string, unknown>> = [];
+    let reviewActions: Array<Record<string, unknown>> = [];
     if (candidateIds.length) {
       const { data: evidenceRows, error: evidenceError } = await admin
         .from("learning_evidence")
@@ -96,9 +97,45 @@ Deno.serve(async (req: Request) => {
         .order("created_at", { ascending: false });
       if (evidenceError) return Response.json({ error: evidenceError.message }, { status: 500, headers: corsHeaders });
       evidence = evidenceRows ?? [];
+
+      const { data: actionRows, error: actionsError } = await admin
+        .from("learning_actions")
+        .select("candidate_id,from_status,to_status,actor_label,payload,created_at")
+        .in("candidate_id", candidateIds)
+        .eq("action_type", "human_review")
+        .order("created_at", { ascending: false });
+      if (actionsError) return Response.json({ error: actionsError.message }, { status: 500, headers: corsHeaders });
+      reviewActions = actionRows ?? [];
     }
 
-    return Response.json({ ok: true, candidates: candidates ?? [], evidence }, {
+    return Response.json({ ok: true, candidates: candidates ?? [], evidence, review_actions: reviewActions }, {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  if (action === "review") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    const decision = typeof body?.decision === "string" ? body.decision : "";
+    const note = typeof body?.note === "string" ? body.note.trim() : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    if (!["approved", "hold", "rejected"].includes(decision)) {
+      return Response.json({ error: "invalid_review_decision" }, { status: 400, headers: corsHeaders });
+    }
+    if (note.length > 2000) {
+      return Response.json({ error: "review_note_too_long" }, { status: 400, headers: corsHeaders });
+    }
+
+    const { data: candidate, error: reviewError } = await admin.rpc("review_learning_candidate", {
+      p_candidate_id: candidateId,
+      p_decision: decision,
+      p_note: note || null,
+      p_reviewer_id: userData.user.id,
+      p_reviewer_email: email,
+    });
+    if (reviewError) return Response.json({ error: reviewError.message }, { status: 400, headers: corsHeaders });
+    return Response.json({ ok: true, candidate }, {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
