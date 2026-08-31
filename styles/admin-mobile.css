@@ -357,3 +357,9 @@
   .admin-learning-next-action .admin-btn { width:100%; }
 }
 
+
+
+.admin-learning-checkpoints { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:14px; }
+.admin-learning-checkpoints span { padding:9px 10px; border:1px dashed #c9d9d0; border-radius:10px; color:#829188; font-size:.68rem; font-weight:800; text-align:center; }
+.admin-learning-checkpoints .is-complete { border-style:solid; border-color:#9bc7ad; background:#eaf6ef; color:#286244; }
+@media (max-width:720px) { .admin-learning-checkpoints { grid-template-columns:1fr; } }
