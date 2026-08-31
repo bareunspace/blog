@@ -62,10 +62,12 @@
           <p>${escapeHtml(analysis.summary)}</p>
           <p><strong>검증 규칙:</strong> ${escapeHtml(analysis.promotion_rule)}</p>
         </details>` : '';
-      const prControl = candidate.github_pr_url
-        ? `<a class="admin-btn admin-btn-outline" href="${escapeHtml(candidate.github_pr_url)}" target="_blank" rel="noopener">GitHub PR #${Number(candidate.github_pr_number)} 열기</a>`
+      const promotionUrl = candidate.promoted_commit_sha && candidate.github_repo
+        ? `https://github.com/${candidate.github_repo}/commit/${candidate.promoted_commit_sha}` : '';
+      const promotionControl = promotionUrl
+        ? `<a class="admin-btn admin-btn-outline" href="${escapeHtml(promotionUrl)}" target="_blank" rel="noopener">KB 반영 commit 열기</a>`
         : (candidate.status === 'approved' && candidate.ai_analysis_status === 'completed'
-          ? '<button type="button" class="admin-btn" data-learning-create-pr>GitHub PR 생성</button>' : '');
+          ? '<button type="button" class="admin-btn" data-learning-promote>KB에 직접 반영</button>' : '');
       const reviewHistory = reviews.length ? `<details class="admin-desc"><summary>판단 이력 ${reviews.length}건</summary><ul>${reviews.map((review) => {
         const reviewPayload = review.payload || {};
         return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(decisionLabels[reviewPayload.decision] || reviewPayload.decision)} · ${escapeHtml(review.actor_label || '')}${reviewPayload.note ? ` — ${escapeHtml(reviewPayload.note)}` : ''}</li>`;
@@ -98,7 +100,7 @@
           </div>
           ${candidate.status === 'approved' ? `<button type="button" class="admin-btn admin-btn-outline" data-learning-create-draft>KB 반영 초안 생성</button>` : ''}
           ${draft}
-          ${prControl}
+          ${promotionControl}
           ${reviewHistory}
           <p class="admin-desc">판단은 이력으로 저장됩니다. Knowledge Base와 GitHub PR은 아직 수정하지 않습니다.</p>
         </article>`;
@@ -120,6 +122,27 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const promoteButton = event.target.closest('[data-learning-promote]');
+    if (promoteButton) {
+      const card = promoteButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      if (!candidateId || !window.confirm('검토한 초안을 knowledge-base main에 직접 반영할까요? GitHub commit 이력은 보존됩니다.')) return;
+      promoteButton.disabled = true;
+      showStatus('Knowledge Base에 직접 반영하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'promote', candidate_id: candidateId }
+      });
+      if (error || !data?.ok) {
+        promoteButton.disabled = false;
+        const reason = data?.error === 'github_token_not_configured' ? 'GitHub 연결 키가 아직 설정되지 않았습니다.' : (data?.error || error?.message || '알 수 없는 오류');
+        showStatus(`KB에 반영하지 못했습니다. (${reason})`, 'error');
+        return;
+      }
+      showStatus('Knowledge Base 반영과 감사 이력 저장을 완료했습니다.', 'success');
+      await loadCandidates();
+      return;
+    }
     const prButton = event.target.closest('[data-learning-create-pr]');
     if (prButton) {
       const card = prButton.closest('[data-learning-candidate-id]');
