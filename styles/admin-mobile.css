@@ -333,6 +333,9 @@
 .admin-learning-review-body label { display:block; padding-top:12px; color:#395d4b; font-size:.74rem; font-weight:800; }
 .admin-learning-review-body label span { color:#8a9a92; font-weight:600; }
 .admin-learning-review-body textarea { box-sizing:border-box; width:100%; margin-top:7px; padding:11px 12px; resize:vertical; border:1px solid #cbdcd2; border-radius:10px; background:#fff; color:#243b31; font:inherit; line-height:1.5; }
+.admin-learning-override { border-color:#b9cfbf; }
+.admin-learning-override-current { margin:12px 0 0; color:#496556; font-size:.72rem; }
+.admin-learning-override-actions { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-top:10px; }
 .admin-learning-decision-actions { display:flex; gap:8px; margin-top:10px; }
 .admin-learning-decision-actions .admin-btn { flex:1; }
 .admin-learning-approve { background:#2d6a4f; }
@@ -358,6 +361,7 @@
   .admin-learning-window { margin-top:6px; text-align:left; }
   .admin-learning-decision-actions { display:grid; grid-template-columns:1fr 1fr; }
   .admin-learning-decision-actions .admin-btn-danger { grid-column:1/-1; }
+  .admin-learning-override-actions { grid-template-columns:1fr 1fr; }
   .admin-learning-next-action { align-items:stretch; flex-direction:column; }
   .admin-learning-next-action .admin-btn { width:100%; }
 }
