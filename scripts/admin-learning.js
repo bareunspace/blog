@@ -1,6 +1,8 @@
 (() => {
   const root = document.getElementById('adminLearningCandidates');
   if (!root) return;
+  if (root.dataset.learningControllerAttached === 'true') return;
+  root.dataset.learningControllerAttached = 'true';
 
   const listNode = root.querySelector('[data-learning-candidates-list]');
   const statusNode = root.querySelector('[data-learning-candidates-status]');
@@ -42,9 +44,17 @@
       if (!evidenceByCandidate.has(row.candidate_id)) evidenceByCandidate.set(row.candidate_id, row);
     });
     const reviewsByCandidate = new Map();
-    reviewRows.forEach((row) => {
+    const previousReviewByKey = new Map();
+    [...reviewRows].sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).forEach((row) => {
+      const decision = row.payload?.decision || '';
+      const key = `${row.candidate_id}|${row.actor_label || ''}|${decision}`;
+      const previous = previousReviewByKey.get(key);
+      const elapsed = previous ? new Date(row.created_at) - new Date(previous.created_at) : Infinity;
+      const isDuplicate = previous && elapsed >= 0 && elapsed <= 2000 && row.from_status === row.to_status;
+      previousReviewByKey.set(key, row);
+      if (isDuplicate) return;
       const rows = reviewsByCandidate.get(row.candidate_id) || [];
-      rows.push(row);
+      rows.unshift(row);
       reviewsByCandidate.set(row.candidate_id, rows);
     });
 
@@ -160,6 +170,8 @@
       const card = promoteButton.closest('[data-learning-candidate-id]');
       const candidateId = card?.dataset.learningCandidateId;
       if (!candidateId || !window.confirm('검토한 초안을 knowledge-base main에 직접 반영할까요? GitHub commit 이력은 보존됩니다.')) return;
+      if (card.dataset.learningSaving === 'true') return;
+      card.dataset.learningSaving = 'true';
       promoteButton.disabled = true;
       showStatus('Knowledge Base에 직접 반영하는 중입니다.', 'success');
       const client = window.barunjariAdmin?.client;
@@ -167,6 +179,7 @@
         body: { action: 'promote', candidate_id: candidateId }
       });
       if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
         promoteButton.disabled = false;
         const reason = data?.error === 'github_token_not_configured' ? 'GitHub 연결 키가 아직 설정되지 않았습니다.' : (data?.error || error?.message || '알 수 없는 오류');
         showStatus(`KB에 반영하지 못했습니다. (${reason})`, 'error');
@@ -181,6 +194,8 @@
       const card = draftButton.closest('[data-learning-candidate-id]');
       const candidateId = card?.dataset.learningCandidateId;
       if (!candidateId) return;
+      if (card.dataset.learningSaving === 'true') return;
+      card.dataset.learningSaving = 'true';
       draftButton.disabled = true;
       showStatus('Knowledge Base 반영 초안을 생성하는 중입니다.', 'success');
       const client = window.barunjariAdmin?.client;
@@ -188,6 +203,7 @@
         body: { action: 'draft', candidate_id: candidateId }
       });
       if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
         draftButton.disabled = false;
         showStatus(`초안을 생성하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
         return;
@@ -204,6 +220,8 @@
     const note = card?.querySelector('[data-learning-review-note]')?.value || '';
     if (!candidateId || !decision) return;
     if (decision === 'rejected' && !window.confirm('이 학습 후보를 기각할까요? 판단 이력은 보존됩니다.')) return;
+    if (card.dataset.learningSaving === 'true') return;
+    card.dataset.learningSaving = 'true';
 
     const buttons = card.querySelectorAll('[data-learning-review-decision]');
     buttons.forEach((node) => { node.disabled = true; });
@@ -213,6 +231,7 @@
       body: { action: 'review', candidate_id: candidateId, decision, note }
     });
     if (error || !data?.ok) {
+      delete card.dataset.learningSaving;
       buttons.forEach((node) => { node.disabled = false; });
       showStatus(`판단을 저장하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
       return;
