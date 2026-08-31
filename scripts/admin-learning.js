@@ -70,6 +70,14 @@
       const reviews = reviewsByCandidate.get(candidate.id) || [];
       const analysis = candidate.ai_analysis || {};
       const checkpoints = candidate.outcome_summary?.checkpoints || {};
+      const evidenceValidated = candidate.evidence_validation_status === 'validated';
+      const evidenceValidationView = `
+        <div class="admin-learning-evidence-validation ${evidenceValidated ? 'is-validated' : 'is-monitoring'}">
+          <strong>${evidenceValidated ? '근거 즉시 검증 완료' : '근거 추가 관찰'}</strong>
+          <span>${evidenceValidated
+            ? '예약 10건·고객 5명·활동 3주·신뢰도 85% 기준을 충족했습니다.'
+            : '현재 근거는 KB에 반영되었으며, 7·14·28일 결과를 계속 추적합니다.'}</span>
+        </div>`;
       const checkpointResult = (key, label) => checkpoints[key]
         ? `<span class="is-complete">${label} ✓</span>` : `<span>${label}</span>`;
       const checkpointView = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? `
@@ -135,11 +143,12 @@
             <div class="admin-learning-confidence"><dt>신뢰도</dt><dd><strong>${confidence}%</strong><span><i style="width:${confidence}%"></i></span></dd></div>
           </dl>
           <div class="admin-learning-window">관찰 기간 ${escapeHtml(candidate.evidence_window_start)} ~ ${escapeHtml(candidate.evidence_window_end)}</div>
+          ${['promoted', 'validated', 'invalidated'].includes(candidate.status) ? evidenceValidationView : ''}
           ${reviewPanel}
           <div class="admin-learning-next-action">
             ${candidate.status === 'approved' && candidate.ai_analysis_status !== 'completed' ? `<div><strong>다음 단계</strong><span>승인된 근거를 KB 문서 초안으로 정리합니다.</span></div><button type="button" class="admin-btn" data-learning-create-draft>KB 초안 생성</button>` : ''}
             ${candidate.status === 'approved' && candidate.ai_analysis_status === 'completed' ? `<div><strong>최종 확인</strong><span>초안을 확인한 뒤 Knowledge Base에 반영하세요.</span></div>${promotionControl}` : ''}
-            ${candidate.status === 'promoted' ? `<div><strong>반영 완료</strong><span>7일·14일 중간 점검 후 28일에 최종 검증합니다.</span></div>${promotionControl}` : ''}
+            ${candidate.status === 'promoted' ? `<div><strong>KB 반영 완료</strong><span>근거 검증과 별개로 7·14·28일에 반영 결과를 추적합니다.</span></div>${promotionControl}` : ''}
             ${candidate.status === 'validated' ? `<div><strong>가설 검증 완료</strong><span>실제 반복 예약 수요로 확인됐습니다.</span></div>${promotionControl}` : ''}
             ${candidate.status === 'invalidated' ? `<div><strong>가설 검증 실패</strong><span>KB 내용을 재검토하거나 보완해야 합니다.</span></div>${promotionControl}` : ''}
           </div>
