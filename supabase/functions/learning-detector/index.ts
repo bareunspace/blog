@@ -54,6 +54,12 @@ const encodeBase64 = (value: string): string => {
   return btoa(binary);
 };
 
+const decodeBase64 = (value: string): string => {
+  const binary = atob(value.replace(/\s/g, ""));
+  const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+};
+
 const githubRequest = async (token: string, path: string, init: RequestInit = {}) => {
   const response = await fetch(`https://api.github.com${path}`, {
     ...init,
@@ -124,9 +130,9 @@ Deno.serve(async (req: Request) => {
 
       const { data: actionRows, error: actionsError } = await admin
         .from("learning_actions")
-        .select("candidate_id,from_status,to_status,actor_label,payload,created_at")
+        .select("candidate_id,action_type,from_status,to_status,actor_label,payload,created_at")
         .in("candidate_id", candidateIds)
-        .in("action_type", ["human_review", "decision_override"])
+        .in("action_type", ["human_review", "decision_override", "execution_planned", "execution_applied"])
         .order("created_at", { ascending: false });
       if (actionsError) return Response.json({ error: actionsError.message }, { status: 500, headers: corsHeaders });
       reviewActions = actionRows ?? [];
@@ -161,6 +167,110 @@ Deno.serve(async (req: Request) => {
     return Response.json({ ok: true, candidate }, {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
+  }
+
+  if (action === "plan_execution") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    const { data: candidate, error: candidateError } = await admin
+      .from("learning_candidates")
+      .select("id,title,hypothesis,decision_override,execution_candidate,outcome_due_at")
+      .eq("id", candidateId).single();
+    if (candidateError) return Response.json({ error: candidateError.message }, { status: 404, headers: corsHeaders });
+    if (candidate.decision_override !== "execute_now") {
+      return Response.json({ error: "execute_now_decision_required" }, { status: 409, headers: corsHeaders });
+    }
+    const purpose = candidate.title.replace(/\s*반복 수요$/, "").trim().slice(0, 80);
+    const preview = {
+      eyebrow: "실제 반복 수요",
+      title: `${purpose}을 위한 프라이빗 공간`,
+      description: String(candidate.hypothesis ?? "").slice(0, 240),
+      cta_label: `${purpose} 예약하기`,
+      cta_url: "/booking/",
+    };
+    const plan = {
+      template: "homepage_validated_use_case_v1",
+      repository: "bareunspace/blog",
+      target_path: "_data/learning_actions.json",
+      target_area: "homepage_before_practical_guides",
+      risk: "low",
+      preview,
+      baseline: { captured_at: new Date().toISOString(), outcome_due_at: candidate.outcome_due_at },
+      protections: ["no_price_change", "no_booking_policy_change", "no_page_deletion"],
+    };
+    const { data: saved, error: saveError } = await admin.rpc("save_learning_execution_plan", {
+      p_candidate_id: candidateId, p_plan: plan,
+      p_actor_user_id: userData.user.id, p_actor_label: email,
+    });
+    if (saveError) return Response.json({ error: saveError.message }, { status: 400, headers: corsHeaders });
+    return Response.json({ ok: true, candidate: saved, plan }, { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  }
+
+  if (action === "apply_execution") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    const githubToken = Deno.env.get("GITHUB_TOKEN") ?? "";
+    if (!githubToken) return Response.json({ error: "github_token_not_configured" }, { status: 503, headers: corsHeaders });
+    const { data: candidate, error: candidateError } = await admin
+      .from("learning_candidates")
+      .select("id,title,decision_override,execution_candidate")
+      .eq("id", candidateId).single();
+    if (candidateError) return Response.json({ error: candidateError.message }, { status: 404, headers: corsHeaders });
+    const plan = candidate.execution_candidate ?? {};
+    if (candidate.decision_override !== "execute_now" || plan.status !== "preview_ready" ||
+        plan.template !== "homepage_validated_use_case_v1" ||
+        plan.repository !== "bareunspace/blog" || plan.target_path !== "_data/learning_actions.json") {
+      return Response.json({ error: "approved_execution_preview_required" }, { status: 409, headers: corsHeaders });
+    }
+    const repository = "bareunspace/blog";
+    const [owner, repo] = repository.split("/");
+    const targetPath = "_data/learning_actions.json";
+    try {
+      const repoInfo = await githubRequest(githubToken, `/repos/${owner}/${repo}`);
+      const branch = repoInfo.default_branch ?? "main";
+      let sha: string | undefined;
+      let document: { actions: Array<Record<string, unknown>> } = { actions: [] };
+      try {
+        const current = await githubRequest(githubToken, `/repos/${owner}/${repo}/contents/${targetPath}?ref=${encodeURIComponent(branch)}`);
+        sha = current.sha;
+        document = JSON.parse(decodeBase64(current.content ?? ""));
+      } catch (error) {
+        if (!(error instanceof Error) || !error.message.startsWith("github_404:")) throw error;
+      }
+      if (!document || !Array.isArray(document.actions)) document = { actions: [] };
+      const entry = {
+        candidate_id: candidate.id,
+        active: true,
+        template: "homepage_validated_use_case_v1",
+        ...plan.preview,
+      };
+      document.actions = [...document.actions.filter((item) => item?.candidate_id !== candidate.id), entry];
+      const requestBody: Record<string, unknown> = {
+        message: `feat: apply learning action ${candidate.title}`,
+        content: encodeBase64(JSON.stringify(document, null, 2) + "\n"),
+        branch,
+      };
+      if (sha) requestBody.sha = sha;
+      const result = await githubRequest(githubToken, `/repos/${owner}/${repo}/contents/${targetPath}`, {
+        method: "PUT", body: JSON.stringify(requestBody),
+      });
+      const commitSha = result?.commit?.sha;
+      if (!commitSha) throw new Error("github_commit_sha_missing");
+      const { error: recordError } = await admin.rpc("record_learning_execution_application", {
+        p_candidate_id: candidateId, p_repository: repository, p_path: targetPath,
+        p_commit_sha: commitSha, p_actor_user_id: userData.user.id, p_actor_label: email,
+      });
+      if (recordError) return Response.json({ error: `site_committed_but_record_failed:${recordError.message}`, commit_sha: commitSha }, { status: 500, headers: corsHeaders });
+      return Response.json({ ok: true, repository, path: targetPath, commit_sha: commitSha }, {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      return Response.json({ error: error instanceof Error ? error.message : "github_request_failed" }, { status: 502, headers: corsHeaders });
+    }
   }
 
   if (action === "review") {
