@@ -82,7 +82,7 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
@@ -136,6 +136,54 @@ Deno.serve(async (req: Request) => {
     });
     if (reviewError) return Response.json({ error: reviewError.message }, { status: 400, headers: corsHeaders });
     return Response.json({ ok: true, candidate }, {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  if (action === "draft") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    const { data: candidate, error: candidateError } = await admin
+      .from("learning_candidates")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,confidence,evidence_window_start,evidence_window_end")
+      .eq("id", candidateId)
+      .single();
+    if (candidateError) return Response.json({ error: candidateError.message }, { status: 404, headers: corsHeaders });
+    if (candidate.status !== "approved") {
+      return Response.json({ error: "candidate_must_be_approved" }, { status: 409, headers: corsHeaders });
+    }
+    const { data: evidenceRows, error: evidenceError } = await admin
+      .from("learning_evidence")
+      .select("metric_name,metric_value,sample_size,window_start,window_end,dimensions,payload")
+      .eq("candidate_id", candidateId)
+      .order("created_at", { ascending: false });
+    if (evidenceError) return Response.json({ error: evidenceError.message }, { status: 500, headers: corsHeaders });
+
+    const safeKey = candidate.candidate_key.replace(/[^a-zA-Z0-9가-힣_-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 100);
+    const analysis = {
+      classification: "HYPOTHESIS",
+      summary: candidate.hypothesis,
+      proposed_path: `Bareunjari/KnowledgeOps/Learning-Candidates/${safeKey}.md`,
+      evidence_window: { start: candidate.evidence_window_start, end: candidate.evidence_window_end },
+      confidence: candidate.confidence,
+      evidence: evidenceRows ?? [],
+      recommended_actions: [
+        `${candidate.title} 전용 콘텐츠 또는 상품 가설을 작은 범위에서 검증한다.`,
+        "예약·고객·순매출 변화를 동일 기간 기준으로 다시 측정한다.",
+      ],
+      success_metrics: ["확정 예약 수", "서로 다른 고객 수", "순매출", "재방문 여부"],
+      promotion_rule: "실험 또는 추가 관찰에서 반복 검증되기 전까지 HYPOTHESIS로 유지",
+    };
+    const { data: saved, error: saveError } = await admin.rpc("save_learning_promotion_draft", {
+      p_candidate_id: candidateId,
+      p_analysis: analysis,
+      p_actor_user_id: userData.user.id,
+      p_actor_label: email,
+    });
+    if (saveError) return Response.json({ error: saveError.message }, { status: 400, headers: corsHeaders });
+    return Response.json({ ok: true, candidate: saved, analysis }, {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
