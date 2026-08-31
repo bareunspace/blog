@@ -108,7 +108,7 @@
 
   #adminDashboardRoot .admin-workspace-tabs {
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(4,minmax(0,1fr));
     gap:3px;
     width:100%;
     padding:3px;
