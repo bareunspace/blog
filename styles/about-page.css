@@ -459,33 +459,33 @@ html body main.about-page #contact .contact-lead-line {
   max-width:760px !important;
   margin-left:auto !important;
   margin-right:auto !important;
-  color:#1d3026 !important;
-  font-size:1.04rem !important;
-  font-weight:650 !important;
+  color:#0d281a !important;
+  font-size:1.08rem !important;
+  font-weight:700 !important;
   line-height:1.85 !important;
   opacity:1 !important;
 }
 html body main.about-page #contact .contact-lead-line strong {
-  color:#0d281a !important;
+  color:#071a10 !important;
   font-weight:900 !important;
 }
 html body main.about-page #contact .contact-closing-line {
   max-width:720px !important;
   margin:1.6rem auto 0 !important;
   padding:1.2rem 1.3rem;
-  border:1px solid #b7cebf !important;
+  border:1px solid #a9c3b2 !important;
   border-radius:18px;
-  background:#e2eee6 !important;
-  color:#183326 !important;
-  font-size:1.04rem !important;
-  font-weight:650 !important;
+  background:#ddebe2 !important;
+  color:#0d281a !important;
+  font-size:1.08rem !important;
+  font-weight:700 !important;
   line-height:1.8 !important;
   opacity:1 !important;
 }
 html body main.about-page #contact .contact-closing-line strong {
   display:inline-block;
   margin-bottom:.18rem;
-  color:#092416 !important;
+  color:#071a10 !important;
   font-size:1.14em;
   font-weight:900 !important;
 }
@@ -617,7 +617,8 @@ main.about-page a:focus-visible {
   }
   html body main.about-page #contact .contact-lead-line,
   html body main.about-page #contact .contact-closing-line {
-    font-size:1rem !important;
+    font-size:1.04rem !important;
+    font-weight:700 !important;
   }
   main.about-page #contact .hero-btns {
     width:100%;
