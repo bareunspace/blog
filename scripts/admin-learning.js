@@ -28,7 +28,7 @@
     if (kind === 'success') statusNode.classList.add('is-success');
   };
 
-  const statusLabels = { detected: '검토 대기', pending_review: '추가 관찰', approved: '승인됨', rejected: '기각됨', promoted: 'KB 반영 완료' };
+  const statusLabels = { detected: '검토 대기', pending_review: '추가 관찰', approved: '승인됨', rejected: '기각됨', promoted: 'KB 반영 완료', validated: '검증 완료', invalidated: '검증 실패' };
   const decisionLabels = { approved: '승인', hold: '보류', rejected: '기각' };
   const formatDateTime = (value) => value ? new Date(value).toLocaleString('ko-KR') : '';
 
@@ -69,6 +69,15 @@
       const confidence = Math.round(Number(candidate.confidence || 0) * 100);
       const reviews = reviewsByCandidate.get(candidate.id) || [];
       const analysis = candidate.ai_analysis || {};
+      const checkpoints = candidate.outcome_summary?.checkpoints || {};
+      const checkpointResult = (key, label) => checkpoints[key]
+        ? `<span class="is-complete">${label} ✓</span>` : `<span>${label}</span>`;
+      const checkpointView = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? `
+        <div class="admin-learning-checkpoints">
+          ${checkpointResult('7d', '7일 조기 확인')}
+          ${checkpointResult('14d', '14일 방향 판단')}
+          ${checkpointResult('28d', '28일 최종 검증')}
+        </div>` : '';
       const draft = candidate.ai_analysis_status === 'completed' && analysis.proposed_path ? `
         <details class="admin-learning-details admin-learning-draft" open>
           <summary><span>KB 반영 초안</span><small>내용 확인</small></summary>
@@ -90,8 +99,8 @@
         const reviewPayload = review.payload || {};
         return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(decisionLabels[reviewPayload.decision] || reviewPayload.decision)} · ${escapeHtml(review.actor_label || '')}${reviewPayload.note ? ` — ${escapeHtml(reviewPayload.note)}` : ''}</li>`;
       }).join('')}</ul></div></details>` : '';
-      const currentStep = candidate.status === 'promoted' ? 4 : candidate.ai_analysis_status === 'completed' ? 3 : candidate.status === 'approved' ? 2 : 1;
-      const reviewPanel = candidate.status !== 'promoted' ? `
+      const currentStep = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? 4 : candidate.ai_analysis_status === 'completed' ? 3 : candidate.status === 'approved' ? 2 : 1;
+      const reviewPanel = ['detected', 'pending_review', 'approved', 'rejected'].includes(candidate.status) ? `
         <details class="admin-learning-review" ${candidate.status === 'detected' ? 'open' : ''}>
           <summary><span>${candidate.reviewed_at ? '판단 변경' : '후보 판단하기'}</span><small>메모와 함께 저장</small></summary>
           <div class="admin-learning-review-body">
@@ -130,8 +139,11 @@
           <div class="admin-learning-next-action">
             ${candidate.status === 'approved' && candidate.ai_analysis_status !== 'completed' ? `<div><strong>다음 단계</strong><span>승인된 근거를 KB 문서 초안으로 정리합니다.</span></div><button type="button" class="admin-btn" data-learning-create-draft>KB 초안 생성</button>` : ''}
             ${candidate.status === 'approved' && candidate.ai_analysis_status === 'completed' ? `<div><strong>최종 확인</strong><span>초안을 확인한 뒤 Knowledge Base에 반영하세요.</span></div>${promotionControl}` : ''}
-            ${candidate.status === 'promoted' ? `<div><strong>반영 완료</strong><span>28일 뒤 실제 예약·고객·매출 변화를 검증합니다.</span></div>${promotionControl}` : ''}
+            ${candidate.status === 'promoted' ? `<div><strong>반영 완료</strong><span>7일·14일 중간 점검 후 28일에 최종 검증합니다.</span></div>${promotionControl}` : ''}
+            ${candidate.status === 'validated' ? `<div><strong>가설 검증 완료</strong><span>실제 반복 예약 수요로 확인됐습니다.</span></div>${promotionControl}` : ''}
+            ${candidate.status === 'invalidated' ? `<div><strong>가설 검증 실패</strong><span>KB 내용을 재검토하거나 보완해야 합니다.</span></div>${promotionControl}` : ''}
           </div>
+          ${checkpointView}
           ${draft}
           ${reviewHistory}
         </article>`;
@@ -142,7 +154,7 @@
         <div><span>전체 후보</span><strong>${candidates.length}</strong></div>
         <div><span>검토 대기</span><strong>${Number(counts.detected || 0)}</strong></div>
         <div><span>승인·초안</span><strong>${Number(counts.approved || 0)}</strong></div>
-        <div><span>KB 반영</span><strong>${Number(counts.promoted || 0)}</strong></div>
+        <div><span>KB 반영</span><strong>${Number(counts.promoted || 0) + Number(counts.validated || 0) + Number(counts.invalidated || 0)}</strong></div>
       </div>
       <div class="admin-learning-flow" aria-label="학습 후보 처리 단계">
         <span>1 근거 확인</span><i>→</i><span>2 승인</span><i>→</i><span>3 KB 초안</span><i>→</i><span>4 직접 반영</span>
