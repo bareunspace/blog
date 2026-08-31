@@ -106,7 +106,7 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,evidence_validation_status,evidence_validated_at,evidence_validation_rule,evidence_validation_summary,outcome_due_at,outcome_status,outcome_summary")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,evidence_validation_status,evidence_validated_at,evidence_validation_rule,evidence_validation_summary,decision_override,decision_override_reason,decision_override_actor,decision_override_at,execution_candidate,outcome_due_at,outcome_status,outcome_summary")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
@@ -126,13 +126,39 @@ Deno.serve(async (req: Request) => {
         .from("learning_actions")
         .select("candidate_id,from_status,to_status,actor_label,payload,created_at")
         .in("candidate_id", candidateIds)
-        .eq("action_type", "human_review")
+        .in("action_type", ["human_review", "decision_override"])
         .order("created_at", { ascending: false });
       if (actionsError) return Response.json({ error: actionsError.message }, { status: 500, headers: corsHeaders });
       reviewActions = actionRows ?? [];
     }
 
     return Response.json({ ok: true, candidates: candidates ?? [], evidence, review_actions: reviewActions }, {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  if (action === "override") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    const decision = typeof body?.decision === "string" ? body.decision : "";
+    const reason = typeof body?.reason === "string" ? body.reason.trim() : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    if (!["auto", "execute_now", "observe", "exclude"].includes(decision)) {
+      return Response.json({ error: "invalid_override_decision" }, { status: 400, headers: corsHeaders });
+    }
+    if (reason.length < 3 || reason.length > 2000) {
+      return Response.json({ error: "override_reason_required" }, { status: 400, headers: corsHeaders });
+    }
+    const { data: candidate, error: overrideError } = await admin.rpc("override_learning_decision", {
+      p_candidate_id: candidateId,
+      p_decision: decision,
+      p_reason: reason,
+      p_actor_user_id: userData.user.id,
+      p_actor_label: email,
+    });
+    if (overrideError) return Response.json({ error: overrideError.message }, { status: 400, headers: corsHeaders });
+    return Response.json({ ok: true, candidate }, {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
