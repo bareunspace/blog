@@ -108,6 +108,8 @@
         const reviewPayload = review.payload || {};
         const label = review.action_type === 'execution_planned' ? '사이트 변경안 생성'
           : review.action_type === 'execution_applied' ? '사이트 반영 승인'
+          : review.action_type === 'execution_paused' ? '홈페이지 노출 중지'
+          : review.action_type === 'execution_resumed' ? '홈페이지 다시 노출'
           : reviewPayload.previous_decision
             ? `운영 결정: ${overrideLabels[reviewPayload.decision] || reviewPayload.decision}`
             : (decisionLabels[reviewPayload.decision] || reviewPayload.decision);
@@ -134,9 +136,9 @@
       const executionPreview = execution.preview || {};
       const executionPanel = overrideDecision === 'execute_now' ? `
         <div class="admin-learning-execution">
-          <div><strong>사이트 실행 엔진</strong><span>${execution.status === 'applied' ? '사이트 반영 완료' : execution.template ? '승인 전 변경안을 확인하세요.' : '안전한 변경안을 먼저 생성합니다.'}</span></div>
+          <div><strong>사이트 실행 엔진</strong><span>${execution.status === 'applied' ? '홈페이지 노출 중' : execution.status === 'paused' ? '홈페이지 노출 중지됨' : execution.template ? '승인 전 변경안을 확인하세요.' : '안전한 변경안을 먼저 생성합니다.'}</span></div>
           ${!execution.template ? '<button type="button" class="admin-btn" data-learning-plan-execution>변경안 생성</button>' : ''}
-          ${execution.template && execution.status !== 'applied' ? `
+          ${execution.template && execution.status === 'preview_ready' ? `
             <div class="admin-learning-execution-preview">
               <small>${escapeHtml(executionPreview.eyebrow || '')}</small>
               <strong>${escapeHtml(executionPreview.title || '')}</strong>
@@ -146,6 +148,8 @@
             </div>
             <button type="button" class="admin-btn" data-learning-apply-execution>이 변경안 사이트 반영</button>` : ''}
           ${execution.status === 'applied' && execution.commit_sha ? `<a class="admin-btn admin-btn-outline" href="https://github.com/bareunspace/blog/commit/${escapeHtml(execution.commit_sha)}" target="_blank" rel="noopener">사이트 반영 commit</a>` : ''}
+          ${execution.status === 'applied' ? '<button type="button" class="admin-btn admin-btn-danger" data-learning-toggle-execution="false">홈페이지 노출 중지</button>' : ''}
+          ${execution.status === 'paused' ? '<button type="button" class="admin-btn" data-learning-toggle-execution="true">홈페이지 다시 노출</button>' : ''}
         </div>` : '';
       const overridePanel = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? `
         <details class="admin-learning-review admin-learning-override" ${overrideDecision === 'auto' ? '' : 'open'}>
@@ -229,6 +233,33 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const toggleExecutionButton = event.target.closest('[data-learning-toggle-execution]');
+    if (toggleExecutionButton) {
+      const card = toggleExecutionButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      const active = toggleExecutionButton.dataset.learningToggleExecution === 'true';
+      if (!candidateId || card.dataset.learningSaving === 'true') return;
+      const message = active
+        ? '이 카드를 홈페이지에 다시 노출할까요?'
+        : '이 카드의 홈페이지 노출을 중지할까요? KB 내용과 판단 이력은 유지됩니다.';
+      if (!window.confirm(message)) return;
+      card.dataset.learningSaving = 'true';
+      toggleExecutionButton.disabled = true;
+      showStatus(active ? '홈페이지에 다시 노출하는 중입니다.' : '홈페이지 노출을 중지하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'toggle_execution_visibility', candidate_id: candidateId, active }
+      });
+      if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
+        toggleExecutionButton.disabled = false;
+        showStatus(`홈페이지 노출 상태를 변경하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
+        return;
+      }
+      showStatus(active ? '홈페이지에 다시 노출했습니다.' : '홈페이지 노출을 중지했습니다. KB와 판단 이력은 유지됩니다.', 'success');
+      await loadCandidates();
+      return;
+    }
     const planExecutionButton = event.target.closest('[data-learning-plan-execution]');
     if (planExecutionButton) {
       const card = planExecutionButton.closest('[data-learning-candidate-id]');
