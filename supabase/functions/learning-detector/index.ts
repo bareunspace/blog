@@ -106,7 +106,7 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,outcome_due_at,outcome_status")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,outcome_due_at,outcome_status,outcome_summary")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
