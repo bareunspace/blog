@@ -30,6 +30,7 @@
 
   const statusLabels = { detected: '검토 대기', pending_review: '추가 관찰', approved: '승인됨', rejected: '기각됨', promoted: 'KB 반영 완료', validated: '검증 완료', invalidated: '검증 실패' };
   const decisionLabels = { approved: '승인', hold: '보류', rejected: '기각' };
+  const overrideLabels = { auto: '자동 판정', execute_now: '즉시 실행', observe: '추가 관찰', exclude: '실행 제외' };
   const formatDateTime = (value) => value ? new Date(value).toLocaleString('ko-KR') : '';
 
   const render = (candidates, evidenceRows, reviewRows) => {
@@ -105,7 +106,11 @@
           ? '<button type="button" class="admin-btn" data-learning-promote>KB에 직접 반영</button>' : '');
       const reviewHistory = reviews.length ? `<details class="admin-learning-details"><summary><span>판단 이력</span><small>${reviews.length}건</small></summary><div class="admin-learning-details-body"><ul class="admin-learning-history">${reviews.map((review) => {
         const reviewPayload = review.payload || {};
-        return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(decisionLabels[reviewPayload.decision] || reviewPayload.decision)} · ${escapeHtml(review.actor_label || '')}${reviewPayload.note ? ` — ${escapeHtml(reviewPayload.note)}` : ''}</li>`;
+        const label = reviewPayload.previous_decision
+          ? `운영 결정: ${overrideLabels[reviewPayload.decision] || reviewPayload.decision}`
+          : (decisionLabels[reviewPayload.decision] || reviewPayload.decision);
+        const note = reviewPayload.reason || reviewPayload.note || '';
+        return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(label)} · ${escapeHtml(review.actor_label || '')}${note ? ` — ${escapeHtml(note)}` : ''}</li>`;
       }).join('')}</ul></div></details>` : '';
       const currentStep = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? 4 : candidate.ai_analysis_status === 'completed' ? 3 : candidate.status === 'approved' ? 2 : 1;
       const reviewPanel = ['detected', 'pending_review', 'approved', 'rejected'].includes(candidate.status) ? `
@@ -119,6 +124,23 @@
               <button type="button" class="admin-btn admin-learning-approve" data-learning-review-decision="approved">승인</button>
               <button type="button" class="admin-btn admin-btn-outline" data-learning-review-decision="hold">추가 관찰</button>
               <button type="button" class="admin-btn admin-btn-danger" data-learning-review-decision="rejected">기각</button>
+            </div>
+          </div>
+        </details>` : '';
+      const overrideDecision = candidate.decision_override || 'auto';
+      const overridePanel = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? `
+        <details class="admin-learning-review admin-learning-override" ${overrideDecision === 'auto' ? '' : 'open'}>
+          <summary><span>운영 결정 오버라이드</span><small>${escapeHtml(overrideLabels[overrideDecision])}</small></summary>
+          <div class="admin-learning-review-body">
+            <p class="admin-learning-override-current">현재 결정: <strong>${escapeHtml(overrideLabels[overrideDecision])}</strong>${candidate.decision_override_reason ? ` · ${escapeHtml(candidate.decision_override_reason)}` : ''}</p>
+            <label>결정 사유 <span>(필수)</span>
+              <textarea data-learning-override-reason maxlength="2000" rows="3" placeholder="빠르게 실행하거나 판정을 변경하는 이유를 입력하세요."></textarea>
+            </label>
+            <div class="admin-learning-override-actions">
+              <button type="button" class="admin-btn" data-learning-override="execute_now">즉시 실행</button>
+              <button type="button" class="admin-btn admin-btn-outline" data-learning-override="observe">추가 관찰</button>
+              <button type="button" class="admin-btn admin-btn-danger" data-learning-override="exclude">실행 제외</button>
+              <button type="button" class="admin-btn admin-btn-outline" data-learning-override="auto">자동 판정 복원</button>
             </div>
           </div>
         </details>` : '';
@@ -144,6 +166,7 @@
           </dl>
           <div class="admin-learning-window">관찰 기간 ${escapeHtml(candidate.evidence_window_start)} ~ ${escapeHtml(candidate.evidence_window_end)}</div>
           ${['promoted', 'validated', 'invalidated'].includes(candidate.status) ? evidenceValidationView : ''}
+          ${overridePanel}
           ${reviewPanel}
           <div class="admin-learning-next-action">
             ${candidate.status === 'approved' && candidate.ai_analysis_status !== 'completed' ? `<div><strong>다음 단계</strong><span>승인된 근거를 KB 문서 초안으로 정리합니다.</span></div><button type="button" class="admin-btn" data-learning-create-draft>KB 초안 생성</button>` : ''}
@@ -186,6 +209,37 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const overrideButton = event.target.closest('[data-learning-override]');
+    if (overrideButton) {
+      const card = overrideButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      const decision = overrideButton.dataset.learningOverride;
+      const reason = card?.querySelector('[data-learning-override-reason]')?.value.trim() || '';
+      if (!candidateId || !decision) return;
+      if (reason.length < 3) {
+        showStatus('운영 결정 사유를 3자 이상 입력해주세요.', 'error');
+        return;
+      }
+      if (card.dataset.learningSaving === 'true') return;
+      if (!window.confirm(`${overrideLabels[decision]} 결정으로 저장할까요? 측정 데이터와 이력은 계속 보존됩니다.`)) return;
+      card.dataset.learningSaving = 'true';
+      const buttons = card.querySelectorAll('[data-learning-override]');
+      buttons.forEach((node) => { node.disabled = true; });
+      showStatus('운영 결정을 저장하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'override', candidate_id: candidateId, decision, reason }
+      });
+      if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
+        buttons.forEach((node) => { node.disabled = false; });
+        showStatus(`운영 결정을 저장하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
+        return;
+      }
+      showStatus(decision === 'execute_now' ? '즉시 실행 후보를 생성했습니다.' : '운영 결정과 이력을 저장했습니다.', 'success');
+      await loadCandidates();
+      return;
+    }
     const promoteButton = event.target.closest('[data-learning-promote]');
     if (promoteButton) {
       const card = promoteButton.closest('[data-learning-candidate-id]');
