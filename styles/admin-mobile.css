@@ -320,6 +320,11 @@
 .admin-learning-confidence dd > span { display:block; flex:1; height:5px; overflow:hidden; border-radius:999px; background:#dce8e1; }
 .admin-learning-confidence dd i { display:block; height:100%; border-radius:inherit; background:#3a8a63; }
 .admin-learning-window { color:#7b8b83; font-size:.68rem; text-align:right; }
+.admin-learning-evidence-validation { display:grid; gap:3px; margin-top:12px; padding:12px 14px; border-radius:12px; }
+.admin-learning-evidence-validation strong { font-size:.78rem; }
+.admin-learning-evidence-validation span { font-size:.69rem; line-height:1.45; }
+.admin-learning-evidence-validation.is-validated { border:1px solid #9bc7ad; background:#eaf6ef; color:#245d3f; }
+.admin-learning-evidence-validation.is-monitoring { border:1px solid #ead7a7; background:#fff8e6; color:#745a1e; }
 .admin-learning-review,.admin-learning-details { margin-top:14px; overflow:hidden; border:1px solid #dce8e1; border-radius:14px; background:#fbfdfc; }
 .admin-learning-review > summary,.admin-learning-details > summary { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 15px; cursor:pointer; color:#254d39; font-size:.82rem; font-weight:900; list-style:none; }
 .admin-learning-review > summary::-webkit-details-marker,.admin-learning-details > summary::-webkit-details-marker { display:none; }
