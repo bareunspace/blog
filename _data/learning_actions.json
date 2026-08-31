@@ -1,3 +1,14 @@
 {
-  "actions": []
+  "actions": [
+    {
+      "candidate_id": "956199e6-689d-4814-a339-c78c1f5ea3dd",
+      "active": true,
+      "template": "homepage_validated_use_case_v1",
+      "eyebrow": "실제 반복 수요",
+      "title": "면접·발표 연습을 위한 프라이빗 공간",
+      "description": "면접·발표 연습 수요가 일회성 사례가 아니라 반복 가능한 예약 수요다.",
+      "cta_label": "면접·발표 연습 예약하기",
+      "cta_url": "/booking/"
+    }
+  ]
 }
