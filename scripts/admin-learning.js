@@ -62,6 +62,10 @@
           <p>${escapeHtml(analysis.summary)}</p>
           <p><strong>검증 규칙:</strong> ${escapeHtml(analysis.promotion_rule)}</p>
         </details>` : '';
+      const prControl = candidate.github_pr_url
+        ? `<a class="admin-btn admin-btn-outline" href="${escapeHtml(candidate.github_pr_url)}" target="_blank" rel="noopener">GitHub PR #${Number(candidate.github_pr_number)} 열기</a>`
+        : (candidate.status === 'approved' && candidate.ai_analysis_status === 'completed'
+          ? '<button type="button" class="admin-btn" data-learning-create-pr>GitHub PR 생성</button>' : '');
       const reviewHistory = reviews.length ? `<details class="admin-desc"><summary>판단 이력 ${reviews.length}건</summary><ul>${reviews.map((review) => {
         const reviewPayload = review.payload || {};
         return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(decisionLabels[reviewPayload.decision] || reviewPayload.decision)} · ${escapeHtml(review.actor_label || '')}${reviewPayload.note ? ` — ${escapeHtml(reviewPayload.note)}` : ''}</li>`;
@@ -94,6 +98,7 @@
           </div>
           ${candidate.status === 'approved' ? `<button type="button" class="admin-btn admin-btn-outline" data-learning-create-draft>KB 반영 초안 생성</button>` : ''}
           ${draft}
+          ${prControl}
           ${reviewHistory}
           <p class="admin-desc">판단은 이력으로 저장됩니다. Knowledge Base와 GitHub PR은 아직 수정하지 않습니다.</p>
         </article>`;
@@ -115,6 +120,27 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const prButton = event.target.closest('[data-learning-create-pr]');
+    if (prButton) {
+      const card = prButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      if (!candidateId || !window.confirm('knowledge-base 저장소에 검토용 PR을 생성할까요? 자동 병합되지는 않습니다.')) return;
+      prButton.disabled = true;
+      showStatus('GitHub PR을 생성하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'create_pr', candidate_id: candidateId }
+      });
+      if (error || !data?.ok) {
+        prButton.disabled = false;
+        const reason = data?.error === 'github_token_not_configured' ? 'GitHub 연결 키가 아직 설정되지 않았습니다.' : (data?.error || error?.message || '알 수 없는 오류');
+        showStatus(`PR을 생성하지 못했습니다. (${reason})`, 'error');
+        return;
+      }
+      showStatus(`GitHub PR #${data.pr_number}을 생성했습니다.`, 'success');
+      await loadCandidates();
+      return;
+    }
     const draftButton = event.target.closest('[data-learning-create-draft]');
     if (draftButton) {
       const card = draftButton.closest('[data-learning-candidate-id]');
