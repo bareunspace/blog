@@ -11,6 +11,7 @@
   // Always request fresh admin modules so saved reservation fields appear immediately.
   const cacheKey = Date.now();
   loadScript(`/scripts/admin-community-core.js?v=${cacheKey}`)
+    .then(() => loadScript(`/scripts/admin-learning.js?v=${cacheKey}`))
     .then(() => loadScript(`/scripts/admin-reservation-name.js?v=${cacheKey}`))
     .then(() => loadScript(`/scripts/admin-reservation-purpose.js?v=${cacheKey}`))
     .then(() => loadScript(`/scripts/admin-reservation-name-search.js?v=${cacheKey}`))
