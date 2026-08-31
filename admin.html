@@ -11,7 +11,7 @@ theme_color: "#2d6a4f"
 og_image: https://bareunjari.com/images/main.jpeg
 og_image_alt: 바른자리 관리자 페이지
 css_version: 20260831-6
-script_version: 20260831-13
+script_version: 20260831-14
 ---
 <link rel="stylesheet" href="{{ '/styles/admin-mobile.css' | relative_url }}?v={{ page.css_version }}">
 <main class="admin-shell admin-shell-dashboard" id="adminDashboardRoot">
@@ -38,4 +38,5 @@ script_version: 20260831-13
 <script id="adminAuthConfig" type="application/json">{"supabaseUrl": {{ site.supabase_url | jsonify }},"supabaseAnonKey": {{ site.supabase_anon_key | jsonify }},"allowedAdmins": {{ site.admin_allowed_emails | jsonify }},"siteUrl": {{ site.url | jsonify }},"loginPath": {{ '/admin-login.html' | relative_url | jsonify }},"dashboardPath": {{ '/admin.html' | relative_url | jsonify }}}</script>
 <script src="{{ '/scripts/admin-auth.js' | relative_url }}?v={{ page.script_version }}"></script>
 <script src="{{ '/scripts/admin-community.js' | relative_url }}?v={{ page.script_version }}"></script>
+<script src="{{ '/scripts/admin-learning-visibility.js' | relative_url }}?v={{ page.script_version }}"></script>
 <script src="{{ '/scripts/admin-learning.js' | relative_url }}?v={{ page.script_version }}"></script>
