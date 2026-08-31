@@ -8,7 +8,7 @@
       "title": "면접·발표 연습을 위한 프라이빗 공간",
       "description": "중요한 면접과 발표를 방해 없이 준비하고, 말하기·동선·화면 구성을 실제처럼 점검해 보세요.",
       "cta_label": "면접·발표 연습 예약하기",
-      "cta_url": "/booking/"
+      "cta_url": "/booking/?purpose=interview"
     }
   ]
 }
