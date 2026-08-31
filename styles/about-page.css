@@ -464,39 +464,39 @@ html body main.about-page #contact .contact-lead-line {
   max-width:760px !important;
   margin-left:auto !important;
   margin-right:auto !important;
-  color:#0d281a !important;
-  -webkit-text-fill-color:#0d281a !important;
-  font-size:1.08rem !important;
-  font-weight:700 !important;
+  color:#31443a !important;
+  -webkit-text-fill-color:#31443a !important;
+  font-size:1.04rem !important;
+  font-weight:500 !important;
   line-height:1.85 !important;
   opacity:1 !important;
 }
 html body main.about-page #contact .contact-lead-line strong {
-  color:#071a10 !important;
-  -webkit-text-fill-color:#071a10 !important;
-  font-weight:900 !important;
+  color:#173f2e !important;
+  -webkit-text-fill-color:#173f2e !important;
+  font-weight:700 !important;
 }
 html body main.about-page #contact .contact-closing-line {
   max-width:720px !important;
   margin:1.6rem auto 0 !important;
-  padding:1.2rem 1.3rem;
-  border:1px solid #a9c3b2 !important;
+  padding:1.15rem 1.3rem;
+  border:1px solid #c7d8ce !important;
   border-radius:18px;
-  background:#ddebe2 !important;
-  color:#0d281a !important;
-  -webkit-text-fill-color:#0d281a !important;
-  font-size:1.08rem !important;
-  font-weight:700 !important;
+  background:#edf4ef !important;
+  color:#31443a !important;
+  -webkit-text-fill-color:#31443a !important;
+  font-size:1.04rem !important;
+  font-weight:500 !important;
   line-height:1.8 !important;
   opacity:1 !important;
 }
 html body main.about-page #contact .contact-closing-line strong {
   display:inline-block;
   margin-bottom:.18rem;
-  color:#071a10 !important;
-  -webkit-text-fill-color:#071a10 !important;
-  font-size:1.14em;
-  font-weight:900 !important;
+  color:#173f2e !important;
+  -webkit-text-fill-color:#173f2e !important;
+  font-size:1.08em;
+  font-weight:700 !important;
 }
 main.about-page #contact .hero-btns {
   justify-content:center;
@@ -626,8 +626,8 @@ main.about-page a:focus-visible {
   }
   html body main.about-page #contact .contact-lead-line,
   html body main.about-page #contact .contact-closing-line {
-    font-size:1.04rem !important;
-    font-weight:700 !important;
+    font-size:1rem !important;
+    font-weight:500 !important;
   }
   main.about-page #contact .hero-btns {
     width:100%;
