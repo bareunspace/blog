@@ -106,7 +106,7 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,outcome_due_at,outcome_status")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
@@ -281,6 +281,63 @@ Deno.serve(async (req: Request) => {
       });
       if (recordError) return Response.json({ error: `pr_created_but_record_failed:${recordError.message}`, pr_url: pr.html_url }, { status: 500, headers: corsHeaders });
       return Response.json({ ok: true, pr_number: pr.number, pr_url: pr.html_url }, {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      return Response.json({ error: error instanceof Error ? error.message : "github_request_failed" }, { status: 502, headers: corsHeaders });
+    }
+  }
+
+  if (action === "promote") {
+    const candidateId = typeof body?.candidate_id === "string" ? body.candidate_id : "";
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(candidateId)) {
+      return Response.json({ error: "invalid_candidate_id" }, { status: 400, headers: corsHeaders });
+    }
+    const githubToken = Deno.env.get("GITHUB_TOKEN") ?? "";
+    if (!githubToken) return Response.json({ error: "github_token_not_configured" }, { status: 503, headers: corsHeaders });
+    const { data: candidate, error: candidateError } = await admin
+      .from("learning_candidates")
+      .select("id,title,hypothesis,status,ai_analysis_status,ai_analysis,promoted_commit_sha,promoted_path,github_repo")
+      .eq("id", candidateId).single();
+    if (candidateError) return Response.json({ error: candidateError.message }, { status: 404, headers: corsHeaders });
+    if (candidate.status === "promoted" && candidate.promoted_commit_sha) {
+      return Response.json({ ok: true, existing: true, commit_sha: candidate.promoted_commit_sha, path: candidate.promoted_path }, { headers: corsHeaders });
+    }
+    if (candidate.status !== "approved" || candidate.ai_analysis_status !== "completed") {
+      return Response.json({ error: "approved_promotion_draft_required" }, { status: 409, headers: corsHeaders });
+    }
+    const analysis = candidate.ai_analysis ?? {};
+    const repository = "bareunspace/knowledge-base";
+    const proposedPath = typeof analysis.proposed_path === "string" && analysis.proposed_path.startsWith("Bareunjari/")
+      ? analysis.proposed_path : "";
+    if (!proposedPath || proposedPath.includes("..")) return Response.json({ error: "invalid_proposed_path" }, { status: 400, headers: corsHeaders });
+    const actions = Array.isArray(analysis.recommended_actions) ? analysis.recommended_actions : [];
+    const metrics = Array.isArray(analysis.success_metrics) ? analysis.success_metrics : [];
+    const markdown = `# ${candidate.title}\n\n` +
+      `- Classification: ${analysis.classification ?? "HYPOTHESIS"}\n` +
+      `- Candidate ID: ${candidate.id}\n` +
+      `- Evidence source: Supabase learning layer (restricted)\n\n` +
+      `## Hypothesis\n\n${candidate.hypothesis}\n\n` +
+      `## Evidence handling\n\n예약·고객·매출 상세 수치는 Supabase에만 보관하며 이 문서에는 공개하지 않습니다.\n\n` +
+      `## Recommended actions\n\n${actions.map((item: string) => `- ${item}`).join("\n")}\n\n` +
+      `## Success metrics\n\n${metrics.map((item: string) => `- ${item}`).join("\n")}\n\n` +
+      `## Promotion rule\n\n${analysis.promotion_rule ?? "추가 검증 전까지 HYPOTHESIS로 유지"}\n`;
+    try {
+      const [owner, repo] = repository.split("/");
+      const repoInfo = await githubRequest(githubToken, `/repos/${owner}/${repo}`);
+      const branch = repoInfo.default_branch ?? "main";
+      const result = await githubRequest(githubToken, `/repos/${owner}/${repo}/contents/${proposedPath.split("/").map(encodeURIComponent).join("/")}`, {
+        method: "PUT",
+        body: JSON.stringify({ message: `docs: promote learning candidate ${candidate.title}`, content: encodeBase64(markdown), branch }),
+      });
+      const commitSha = result?.commit?.sha;
+      if (!commitSha) throw new Error("github_commit_sha_missing");
+      const { error: recordError } = await admin.rpc("record_learning_kb_promotion", {
+        p_candidate_id: candidateId, p_repository: repository, p_path: proposedPath,
+        p_commit_sha: commitSha, p_actor_user_id: userData.user.id, p_actor_label: email,
+      });
+      if (recordError) return Response.json({ error: `kb_committed_but_record_failed:${recordError.message}`, commit_sha: commitSha }, { status: 500, headers: corsHeaders });
+      return Response.json({ ok: true, repository, path: proposedPath, commit_sha: commitSha }, {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } catch (error) {
