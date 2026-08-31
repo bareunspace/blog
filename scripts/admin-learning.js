@@ -47,7 +47,7 @@
     const reviewsByCandidate = new Map();
     const previousReviewByKey = new Map();
     [...reviewRows].sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).forEach((row) => {
-      const decision = row.payload?.decision || '';
+      const decision = row.payload?.decision || row.action_type || '';
       const key = `${row.candidate_id}|${row.actor_label || ''}|${decision}`;
       const previous = previousReviewByKey.get(key);
       const elapsed = previous ? new Date(row.created_at) - new Date(previous.created_at) : Infinity;
@@ -106,10 +106,12 @@
           ? '<button type="button" class="admin-btn" data-learning-promote>KB에 직접 반영</button>' : '');
       const reviewHistory = reviews.length ? `<details class="admin-learning-details"><summary><span>판단 이력</span><small>${reviews.length}건</small></summary><div class="admin-learning-details-body"><ul class="admin-learning-history">${reviews.map((review) => {
         const reviewPayload = review.payload || {};
-        const label = reviewPayload.previous_decision
-          ? `운영 결정: ${overrideLabels[reviewPayload.decision] || reviewPayload.decision}`
-          : (decisionLabels[reviewPayload.decision] || reviewPayload.decision);
-        const note = reviewPayload.reason || reviewPayload.note || '';
+        const label = review.action_type === 'execution_planned' ? '사이트 변경안 생성'
+          : review.action_type === 'execution_applied' ? '사이트 반영 승인'
+          : reviewPayload.previous_decision
+            ? `운영 결정: ${overrideLabels[reviewPayload.decision] || reviewPayload.decision}`
+            : (decisionLabels[reviewPayload.decision] || reviewPayload.decision);
+        const note = reviewPayload.reason || reviewPayload.note || reviewPayload.path || '';
         return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(label)} · ${escapeHtml(review.actor_label || '')}${note ? ` — ${escapeHtml(note)}` : ''}</li>`;
       }).join('')}</ul></div></details>` : '';
       const currentStep = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? 4 : candidate.ai_analysis_status === 'completed' ? 3 : candidate.status === 'approved' ? 2 : 1;
@@ -128,6 +130,23 @@
           </div>
         </details>` : '';
       const overrideDecision = candidate.decision_override || 'auto';
+      const execution = candidate.execution_candidate || {};
+      const executionPreview = execution.preview || {};
+      const executionPanel = overrideDecision === 'execute_now' ? `
+        <div class="admin-learning-execution">
+          <div><strong>사이트 실행 엔진</strong><span>${execution.status === 'applied' ? '사이트 반영 완료' : execution.template ? '승인 전 변경안을 확인하세요.' : '안전한 변경안을 먼저 생성합니다.'}</span></div>
+          ${!execution.template ? '<button type="button" class="admin-btn" data-learning-plan-execution>변경안 생성</button>' : ''}
+          ${execution.template && execution.status !== 'applied' ? `
+            <div class="admin-learning-execution-preview">
+              <small>${escapeHtml(executionPreview.eyebrow || '')}</small>
+              <strong>${escapeHtml(executionPreview.title || '')}</strong>
+              <p>${escapeHtml(executionPreview.description || '')}</p>
+              <span>${escapeHtml(executionPreview.cta_label || '')} → ${escapeHtml(executionPreview.cta_url || '')}</span>
+              <em>가격·예약정책·페이지 삭제는 변경하지 않습니다.</em>
+            </div>
+            <button type="button" class="admin-btn" data-learning-apply-execution>이 변경안 사이트 반영</button>` : ''}
+          ${execution.status === 'applied' && execution.commit_sha ? `<a class="admin-btn admin-btn-outline" href="https://github.com/bareunspace/blog/commit/${escapeHtml(execution.commit_sha)}" target="_blank" rel="noopener">사이트 반영 commit</a>` : ''}
+        </div>` : '';
       const overridePanel = ['promoted', 'validated', 'invalidated'].includes(candidate.status) ? `
         <details class="admin-learning-review admin-learning-override" ${overrideDecision === 'auto' ? '' : 'open'}>
           <summary><span>운영 결정 오버라이드</span><small>${escapeHtml(overrideLabels[overrideDecision])}</small></summary>
@@ -167,6 +186,7 @@
           <div class="admin-learning-window">관찰 기간 ${escapeHtml(candidate.evidence_window_start)} ~ ${escapeHtml(candidate.evidence_window_end)}</div>
           ${['promoted', 'validated', 'invalidated'].includes(candidate.status) ? evidenceValidationView : ''}
           ${overridePanel}
+          ${executionPanel}
           ${reviewPanel}
           <div class="admin-learning-next-action">
             ${candidate.status === 'approved' && candidate.ai_analysis_status !== 'completed' ? `<div><strong>다음 단계</strong><span>승인된 근거를 KB 문서 초안으로 정리합니다.</span></div><button type="button" class="admin-btn" data-learning-create-draft>KB 초안 생성</button>` : ''}
@@ -209,6 +229,51 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const planExecutionButton = event.target.closest('[data-learning-plan-execution]');
+    if (planExecutionButton) {
+      const card = planExecutionButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      if (!candidateId || card.dataset.learningSaving === 'true') return;
+      card.dataset.learningSaving = 'true';
+      planExecutionButton.disabled = true;
+      showStatus('사이트 변경안을 생성하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'plan_execution', candidate_id: candidateId }
+      });
+      if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
+        planExecutionButton.disabled = false;
+        showStatus(`변경안을 생성하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
+        return;
+      }
+      showStatus('사이트 변경안을 생성했습니다. 내용을 확인한 뒤 승인하세요.', 'success');
+      await loadCandidates();
+      return;
+    }
+    const applyExecutionButton = event.target.closest('[data-learning-apply-execution]');
+    if (applyExecutionButton) {
+      const card = applyExecutionButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      if (!candidateId || card.dataset.learningSaving === 'true') return;
+      if (!window.confirm('미리보기의 변경안을 사이트 main에 직접 반영할까요? 배포 후 고객에게 노출됩니다.')) return;
+      card.dataset.learningSaving = 'true';
+      applyExecutionButton.disabled = true;
+      showStatus('승인된 변경안을 사이트에 반영하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'apply_execution', candidate_id: candidateId }
+      });
+      if (error || !data?.ok) {
+        delete card.dataset.learningSaving;
+        applyExecutionButton.disabled = false;
+        showStatus(`사이트에 반영하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
+        return;
+      }
+      showStatus('사이트 반영과 실행 이력 저장을 완료했습니다.', 'success');
+      await loadCandidates();
+      return;
+    }
     const overrideButton = event.target.closest('[data-learning-override]');
     if (overrideButton) {
       const card = overrideButton.closest('[data-learning-candidate-id]');
