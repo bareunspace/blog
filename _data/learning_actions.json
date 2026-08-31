@@ -2,7 +2,7 @@
   "actions": [
     {
       "candidate_id": "956199e6-689d-4814-a339-c78c1f5ea3dd",
-      "active": false,
+      "active": true,
       "template": "homepage_validated_use_case_v1",
       "eyebrow": "면접 · 발표 연습",
       "title": "면접·발표 연습을 위한 프라이빗 공간",
