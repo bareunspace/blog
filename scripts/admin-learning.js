@@ -57,7 +57,8 @@
       const draft = candidate.ai_analysis_status === 'completed' && analysis.proposed_path ? `
         <details class="admin-desc"><summary>Knowledge Base 반영 초안</summary>
           <p><strong>분류:</strong> ${escapeHtml(analysis.classification)}</p>
-          <p><strong>제안 경로:</strong> ${escapeHtml(analysis.proposed_path)}</p>
+          <p><strong>저장소:</strong> ${escapeHtml(analysis.repository || 'bareunspace/knowledge-base')}</p>
+          <p><strong>저장소 내부 경로:</strong> ${escapeHtml(analysis.proposed_path)}</p>
           <p>${escapeHtml(analysis.summary)}</p>
           <p><strong>검증 규칙:</strong> ${escapeHtml(analysis.promotion_rule)}</p>
         </details>` : '';
