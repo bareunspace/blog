@@ -53,6 +53,14 @@
       const payload = evidence.payload || {};
       const confidence = Math.round(Number(candidate.confidence || 0) * 100);
       const reviews = reviewsByCandidate.get(candidate.id) || [];
+      const analysis = candidate.ai_analysis || {};
+      const draft = candidate.ai_analysis_status === 'completed' && analysis.proposed_path ? `
+        <details class="admin-desc"><summary>Knowledge Base 반영 초안</summary>
+          <p><strong>분류:</strong> ${escapeHtml(analysis.classification)}</p>
+          <p><strong>제안 경로:</strong> ${escapeHtml(analysis.proposed_path)}</p>
+          <p>${escapeHtml(analysis.summary)}</p>
+          <p><strong>검증 규칙:</strong> ${escapeHtml(analysis.promotion_rule)}</p>
+        </details>` : '';
       const reviewHistory = reviews.length ? `<details class="admin-desc"><summary>판단 이력 ${reviews.length}건</summary><ul>${reviews.map((review) => {
         const reviewPayload = review.payload || {};
         return `<li>${escapeHtml(formatDateTime(review.created_at))} · ${escapeHtml(decisionLabels[reviewPayload.decision] || reviewPayload.decision)} · ${escapeHtml(review.actor_label || '')}${reviewPayload.note ? ` — ${escapeHtml(reviewPayload.note)}` : ''}</li>`;
@@ -83,6 +91,8 @@
             <button type="button" class="admin-btn" data-learning-review-decision="hold">보류</button>
             <button type="button" class="admin-btn admin-btn-danger" data-learning-review-decision="rejected">기각</button>
           </div>
+          ${candidate.status === 'approved' ? `<button type="button" class="admin-btn admin-btn-outline" data-learning-create-draft>KB 반영 초안 생성</button>` : ''}
+          ${draft}
           ${reviewHistory}
           <p class="admin-desc">판단은 이력으로 저장됩니다. Knowledge Base와 GitHub PR은 아직 수정하지 않습니다.</p>
         </article>`;
@@ -104,6 +114,26 @@
 
   refreshButton?.addEventListener('click', loadCandidates);
   listNode?.addEventListener('click', async (event) => {
+    const draftButton = event.target.closest('[data-learning-create-draft]');
+    if (draftButton) {
+      const card = draftButton.closest('[data-learning-candidate-id]');
+      const candidateId = card?.dataset.learningCandidateId;
+      if (!candidateId) return;
+      draftButton.disabled = true;
+      showStatus('Knowledge Base 반영 초안을 생성하는 중입니다.', 'success');
+      const client = window.barunjariAdmin?.client;
+      const { data, error } = await client.functions.invoke('learning-detector', {
+        body: { action: 'draft', candidate_id: candidateId }
+      });
+      if (error || !data?.ok) {
+        draftButton.disabled = false;
+        showStatus(`초안을 생성하지 못했습니다. (${data?.error || error?.message || '알 수 없는 오류'})`, 'error');
+        return;
+      }
+      showStatus('Knowledge Base 반영 초안을 저장했습니다.', 'success');
+      await loadCandidates();
+      return;
+    }
     const button = event.target.closest('[data-learning-review-decision]');
     if (!button) return;
     const card = button.closest('[data-learning-candidate-id]');
