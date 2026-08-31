@@ -230,6 +230,24 @@ script_version: 20260719-1
     </div>
   </section>
 
+  {% assign active_learning_actions = site.data.learning_actions.actions | where: "active", true %}
+  {% if active_learning_actions.size > 0 %}
+  <section class="home-learning-actions" aria-label="검증된 이용 수요">
+    <div class="section-inner">
+      {% for action in active_learning_actions %}
+      <article class="home-learning-action-card" data-learning-candidate-id="{{ action.candidate_id }}">
+        <div>
+          <p class="section-label">{{ action.eyebrow }}</p>
+          <h2>{{ action.title }}</h2>
+          <p>{{ action.description }}</p>
+        </div>
+        <a class="about-cta" href="{{ action.cta_url | relative_url }}" data-cta="learning_action_{{ action.candidate_id }}">{{ action.cta_label }} →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <!-- ── Practical Guides ── -->
   <section id="practical-guides" class="blog-guides-section">
     <div class="section-inner">
