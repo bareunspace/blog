@@ -106,7 +106,7 @@ Deno.serve(async (req: Request) => {
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
       .from("learning_candidates")
-      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,outcome_due_at,outcome_status,outcome_summary")
+      .select("id,candidate_key,candidate_type,title,hypothesis,status,priority,confidence,evidence_window_start,evidence_window_end,occurrence_count,last_detected_at,created_at,review_decision,review_note,reviewed_at,ai_analysis_status,ai_analysis,ai_analyzed_at,github_repo,github_pr_number,github_pr_url,promoted_path,promoted_commit_sha,promoted_at,evidence_validation_status,evidence_validated_at,evidence_validation_rule,evidence_validation_summary,outcome_due_at,outcome_status,outcome_summary")
       .order("last_detected_at", { ascending: false });
     if (candidatesError) return Response.json({ error: candidatesError.message }, { status: 500, headers: corsHeaders });
 
@@ -159,6 +159,14 @@ Deno.serve(async (req: Request) => {
       p_reviewer_email: email,
     });
     if (reviewError) return Response.json({ error: reviewError.message }, { status: 400, headers: corsHeaders });
+    if (decision === "approved") {
+      const { error: evidenceEvaluationError } = await admin.rpc("evaluate_learning_evidence", {
+        p_candidate_id: candidateId,
+      });
+      if (evidenceEvaluationError) {
+        return Response.json({ error: `review_saved_but_evidence_evaluation_failed:${evidenceEvaluationError.message}` }, { status: 500, headers: corsHeaders });
+      }
+    }
     return Response.json({ ok: true, candidate }, {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
@@ -337,6 +345,12 @@ Deno.serve(async (req: Request) => {
         p_commit_sha: commitSha, p_actor_user_id: userData.user.id, p_actor_label: email,
       });
       if (recordError) return Response.json({ error: `kb_committed_but_record_failed:${recordError.message}`, commit_sha: commitSha }, { status: 500, headers: corsHeaders });
+      const { error: evidenceEvaluationError } = await admin.rpc("evaluate_learning_evidence", {
+        p_candidate_id: candidateId,
+      });
+      if (evidenceEvaluationError) {
+        return Response.json({ error: `kb_committed_but_evidence_evaluation_failed:${evidenceEvaluationError.message}`, commit_sha: commitSha }, { status: 500, headers: corsHeaders });
+      }
       return Response.json({ ok: true, repository, path: proposedPath, commit_sha: commitSha }, {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
