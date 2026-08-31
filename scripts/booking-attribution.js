@@ -26,6 +26,45 @@
     }
   }
 
+  function sessionRemove(key) {
+    try {
+      window.sessionStorage.removeItem(key);
+    } catch (e) {
+      // Analytics attribution must never block the booking flow.
+    }
+  }
+
+  function localPath(value) {
+    var raw = String(value || '').trim();
+    if (!raw) return '';
+    if (raw.charAt(0) === '/') return raw.split(/[?#]/)[0] || '/';
+    try {
+      var url = new URL(raw, window.location.origin);
+      if (url.origin === window.location.origin) return url.pathname || '/';
+    } catch (e) {
+      return '';
+    }
+    return '';
+  }
+
+  function isExcludedAttributionValue(value) {
+    var path = localPath(value);
+    return !!path && /^\/admin(?:[-\/.]|$)/.test(path);
+  }
+
+  function cleanAttributionValue(value) {
+    return isExcludedAttributionValue(value) ? '' : String(value || '').trim();
+  }
+
+  function attributionSessionGet(key) {
+    var value = sessionGet(key);
+    if (isExcludedAttributionValue(value)) {
+      sessionRemove(key);
+      return '';
+    }
+    return value;
+  }
+
   function isDebugMode() {
     try {
       var query = new URLSearchParams(window.location.search || '');
@@ -36,7 +75,9 @@
   }
 
   function initAttribution(path) {
-    var firstTouch = sessionGet(ATTR_KEYS.first);
+    if (isExcludedAttributionValue(path)) return;
+
+    var firstTouch = attributionSessionGet(ATTR_KEYS.first);
     if (!firstTouch) {
       sessionSet(ATTR_KEYS.first, path);
       return;
@@ -48,10 +89,11 @@
   }
 
   function attributionParams(fallbackLastTouch) {
+    var fallback = cleanAttributionValue(fallbackLastTouch);
     return {
-      first_touch_path: sessionGet(ATTR_KEYS.first) || fallbackLastTouch || '',
-      assist_path: sessionGet(ATTR_KEYS.assist) || '',
-      last_touch_path: sessionGet(ATTR_KEYS.last) || fallbackLastTouch || ''
+      first_touch_path: attributionSessionGet(ATTR_KEYS.first) || fallback || '',
+      assist_path: attributionSessionGet(ATTR_KEYS.assist) || '',
+      last_touch_path: attributionSessionGet(ATTR_KEYS.last) || fallback || ''
     };
   }
 
@@ -82,6 +124,18 @@
     return 'unspecified';
   }
 
+  function inferPurposeFromLink(link) {
+    var explicit = (link.getAttribute('data-booking-purpose') || '').trim();
+    if (explicit) return explicit;
+
+    var text = (link.textContent || '').replace(/\s+/g, ' ').trim();
+    if (/면접|발표/.test(text)) return 'interview';
+    if (/스터디|팀\s*프로젝트|팀플|소모임/.test(text)) return 'study_group';
+    if (/미팅|업무|상담|회의/.test(text)) return 'meeting_work';
+    if (/개인\s*작업|집중|프라이빗|개인시간/.test(text)) return 'private_time';
+    return '';
+  }
+
   function track(eventName, params, callback) {
     if (typeof window.gtag !== 'function') {
       if (callback) callback();
@@ -104,15 +158,29 @@
   }
 
   function bookingUrl(purpose) {
-    var currentPath = window.location.pathname || '/';
+    var currentPath = cleanAttributionValue(window.location.pathname || '/') || '/';
     var attribution = attributionParams(currentPath);
     var params = new URLSearchParams();
-    params.set('purpose', purpose);
+    params.set('purpose', purpose || 'unspecified');
     params.set('source', currentPath);
     if (attribution.first_touch_path) params.set('first', attribution.first_touch_path);
     if (attribution.assist_path) params.set('assist', attribution.assist_path);
     if (attribution.last_touch_path) params.set('last', attribution.last_touch_path);
     return '/booking/?' + params.toString();
+  }
+
+  function getBookingPageMeta(href) {
+    if (!href) return null;
+    try {
+      var url = new URL(href, window.location.origin);
+      if (url.origin !== window.location.origin) return null;
+      if (url.pathname.replace(/\/+$/, '') !== '/booking') return null;
+      return {
+        purpose: (url.searchParams.get('purpose') || '').trim()
+      };
+    } catch (e) {
+      return null;
+    }
   }
 
   function getNaverBookingMeta(href) {
@@ -152,18 +220,20 @@
     var path = window.location.pathname || '/';
     initAttribution(path);
 
+    if (isExcludedAttributionValue(path)) return;
+
     if (path.indexOf('/booking') === 0) {
       var query = new URLSearchParams(window.location.search);
       var bookingPurpose = query.get('purpose') || 'unspecified';
-      var bookingSource = query.get('source') || document.referrer || 'direct';
-      var queryFirst = query.get('first') || '';
-      var queryAssist = query.get('assist') || '';
-      var queryLast = query.get('last') || '';
+      var bookingSource = cleanAttributionValue(query.get('source') || document.referrer || '') || 'direct';
+      var queryFirst = cleanAttributionValue(query.get('first') || '');
+      var queryAssist = cleanAttributionValue(query.get('assist') || '');
+      var queryLast = cleanAttributionValue(query.get('last') || '');
 
       if (queryFirst) sessionSet(ATTR_KEYS.first, queryFirst);
       if (queryAssist) sessionSet(ATTR_KEYS.assist, queryAssist);
       if (queryLast) sessionSet(ATTR_KEYS.last, queryLast);
-      if (!sessionGet(ATTR_KEYS.last) && bookingSource && bookingSource !== 'direct') {
+      if (!attributionSessionGet(ATTR_KEYS.last) && bookingSource !== 'direct') {
         sessionSet(ATTR_KEYS.last, bookingSource);
       }
 
@@ -195,12 +265,14 @@
       return;
     }
 
-    var purpose = inferPurpose();
+    var pagePurpose = inferPurpose();
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = (link.getAttribute('href') || '').trim();
-      var isNaverBooking = !!getNaverBookingMeta(href);
-      var isBookingPage = href === '/booking/' || href === '/booking';
-      if (!isNaverBooking && !isBookingPage) return;
+      var naverBookingMeta = getNaverBookingMeta(href);
+      var bookingPageMeta = getBookingPageMeta(href);
+      if (!naverBookingMeta && !bookingPageMeta) return;
+
+      var linkPurpose = (bookingPageMeta && bookingPageMeta.purpose) || inferPurposeFromLink(link) || pagePurpose;
 
       link.removeAttribute('target');
       link.removeAttribute('rel');
@@ -209,11 +281,11 @@
         var target;
         sessionSet(ATTR_KEYS.last, path);
         attribution = attributionParams(path);
-        target = bookingUrl(purpose);
+        target = bookingUrl(linkPurpose);
         link.setAttribute('href', target);
         event.preventDefault();
         track('booking_intent', {
-          purpose: purpose,
+          purpose: linkPurpose,
           source_path: path,
           first_touch_path: attribution.first_touch_path,
           assist_path: attribution.assist_path,
