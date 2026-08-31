@@ -250,3 +250,14 @@ main#mainContent #contact .contact-submit-status { color:#55675d !important; }
   main#mainContent #contact .contact-faq summary::after { right:.85rem; }
   main#mainContent #contact .contact-faq details p { padding-left:.9rem; padding-right:.9rem; }
 }
+
+/* Approved learning actions */
+.home-learning-actions { padding:1.5rem 0 0; }
+.home-learning-action-card { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding:1.35rem 1.5rem; border:1px solid #b7d3c2; border-radius:20px; background:linear-gradient(135deg,#f4fbf7,#fff); box-shadow:0 12px 30px rgba(30,77,52,.08); }
+.home-learning-action-card h2 { margin:.25rem 0 .45rem; color:#173e2c; font-size:clamp(1.25rem,2.5vw,1.7rem); }
+.home-learning-action-card p:not(.section-label) { margin:0; color:#607268; line-height:1.6; }
+.home-learning-action-card .about-cta { flex:0 0 auto; margin:0; white-space:nowrap; }
+@media (max-width:720px) {
+  .home-learning-action-card { align-items:flex-start; flex-direction:column; padding:1.15rem; }
+  .home-learning-action-card .about-cta { width:100%; text-align:center; }
+}
