@@ -10,7 +10,7 @@ main.about-page #faq .faq-list {
   counter-reset: post-faq-item;
 }
 
-main.about-page #faq .faq-item {
+main.about-page #faq .faq-list > details {
   counter-increment: post-faq-item;
   overflow: hidden;
   border: 1px solid #dce7df;
@@ -20,14 +20,14 @@ main.about-page #faq .faq-item {
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-main.about-page #faq .faq-item:hover,
-main.about-page #faq .faq-item:focus-within {
+main.about-page #faq .faq-list > details:hover,
+main.about-page #faq .faq-list > details:focus-within {
   transform: translateY(-1px);
   border-color: #c3d8ca;
   box-shadow: 0 10px 26px rgba(26, 67, 47, .10);
 }
 
-main.about-page #faq .faq-item summary {
+main.about-page #faq .faq-list > details summary {
   display: flex;
   align-items: center;
   gap: .75rem;
@@ -41,22 +41,24 @@ main.about-page #faq .faq-item summary {
   line-height: 1.5;
 }
 
-main.about-page #faq .faq-item summary::-webkit-details-marker { display: none; }
-main.about-page #faq .faq-item summary::before {
+main.about-page #faq .faq-list > details summary::-webkit-details-marker { display: none; }
+main.about-page #faq .faq-list > details summary::before {
   content: counter(post-faq-item, decimal-leading-zero);
   display: inline-flex; align-items: center; justify-content: center;
   flex: 0 0 2rem; width: 2rem; height: 2rem; border-radius: 999px;
   background: #edf5f0; color: var(--primary); font-size: .72rem; font-weight: 800;
 }
-main.about-page #faq .faq-item summary::after {
+main.about-page #faq .faq-list > details summary::after {
   content: '+'; display: inline-flex; align-items: center; justify-content: center;
   flex: 0 0 1.8rem; width: 1.8rem; height: 1.8rem; margin-left: auto;
   border-radius: 999px; background: #f4f7f5; color: var(--primary); font-size: 1.15rem; font-weight: 500; line-height: 1;
 }
-main.about-page #faq .faq-item[open] { border-color: #bdd4c5; background: #fbfdfb; }
-main.about-page #faq .faq-item[open] summary::after { content: '−'; background: var(--primary); color: #fff; }
-main.about-page #faq .faq-answer { padding: 0 1.15rem 1.05rem 3.85rem; }
-main.about-page #faq .faq-answer p { margin: 0; color: #536158; font-size: .9rem; line-height: 1.75; word-break: keep-all; }
+main.about-page #faq .faq-list > details[open] { border-color: #bdd4c5; background: #fbfdfb; }
+main.about-page #faq .faq-list > details[open] summary::after { content: '−'; background: var(--primary); color: #fff; }
+main.about-page #faq .faq-list > details > .faq-answer,
+main.about-page #faq .faq-list > details > p { padding: 0 1.15rem 1.05rem 3.85rem; }
+main.about-page #faq .faq-list > details > .faq-answer p,
+main.about-page #faq .faq-list > details > p { margin: 0; color: #536158; font-size: .9rem; line-height: 1.75; word-break: keep-all; }
 
 /* Rainy day guide: keep timeline labels readable as a single unit */
 main.about-page:has(#two-hours):has(#rainy-day-choice) #two-hours .about-principle-item::before {
@@ -77,11 +79,13 @@ main.about-page:has(#last-two-hours):has(#before-booking) .about-cta-section .se
 
 @media (max-width: 680px) {
   main.about-page #faq .faq-list { gap: .58rem; margin-top: 1rem; }
-  main.about-page #faq .faq-item summary { gap: .58rem; padding: .9rem .85rem; font-size: .9rem; }
-  main.about-page #faq .faq-item summary::before { flex-basis: 1.75rem; width: 1.75rem; height: 1.75rem; font-size: .66rem; }
-  main.about-page #faq .faq-item summary::after { flex-basis: 1.65rem; width: 1.65rem; height: 1.65rem; }
-  main.about-page #faq .faq-answer { padding: 0 .9rem .95rem 3.18rem; }
-  main.about-page #faq .faq-answer p { font-size: .86rem; line-height: 1.68; }
+  main.about-page #faq .faq-list > details summary { gap: .58rem; padding: .9rem .85rem; font-size: .9rem; }
+  main.about-page #faq .faq-list > details summary::before { flex-basis: 1.75rem; width: 1.75rem; height: 1.75rem; font-size: .66rem; }
+  main.about-page #faq .faq-list > details summary::after { flex-basis: 1.65rem; width: 1.65rem; height: 1.65rem; }
+  main.about-page #faq .faq-list > details > .faq-answer,
+  main.about-page #faq .faq-list > details > p { padding: 0 .9rem .95rem 3.18rem; }
+  main.about-page #faq .faq-list > details > .faq-answer p,
+  main.about-page #faq .faq-list > details > p { font-size: .86rem; line-height: 1.68; }
   main.about-page:has(#last-two-hours):has(#before-booking) #home { padding-bottom: .6rem; }
   main.about-page:has(#last-two-hours):has(#before-booking) #home .section-title { font-size: clamp(2rem, 9.4vw, 2.55rem); line-height: 1.16; letter-spacing: -.035em; }
   main.about-page:has(#last-two-hours):has(#before-booking) #home .section-desc { margin-top: .9rem; font-size: .95rem; line-height: 1.72; }

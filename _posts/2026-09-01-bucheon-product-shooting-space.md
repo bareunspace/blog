@@ -138,12 +138,12 @@ hide_tags: true
       <p class="section-label">FAQ</p>
       <h2 class="section-title">자주 묻는 질문</h2>
       <div class="faq-list">
-        <details><summary>바른자리는 촬영 스튜디오인가요?</summary><p>아닙니다. 전문 촬영 장비와 세트를 제공하는 촬영 스튜디오가 아니라 예약한 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간입니다. 전문 장비 없이 직접 촬영하는 간단한 제품 사진이나 콘텐츠 촬영에 활용할 수 있습니다.</p></details>
-        <details><summary>제품 촬영을 해도 되나요?</summary><p>네. 공간 이용에 지장이 없는 범위에서 직접 가져온 작은 제품의 사진이나 영상을 촬영할 수 있습니다.</p></details>
-        <details><summary>링라이트가 있나요?</summary><p>네. 공간에 있는 링라이트를 활용할 수 있습니다. 다만 전문 촬영용 조명 장비는 제공하지 않습니다.</p></details>
-        <details><summary>몇 시간 정도 예약하면 좋을까요?</summary><p>촬영할 제품 수와 영상 촬영 여부에 따라 다릅니다. 작은 제품 몇 개를 간단하게 촬영한다면 1시간부터 시작할 수 있고, 여러 제품을 촬영하거나 결과 확인과 재촬영까지 필요하다면 2시간 이상 여유를 두는 방법도 있습니다.</p></details>
-        <details><summary>촬영 장비를 빌릴 수 있나요?</summary><p>전문 카메라나 촬영 장비 대여 서비스는 제공하지 않습니다. 필요한 촬영 장비와 제품은 직접 준비해주세요.</p></details>
-        <details><summary>예약 전에 공간이 촬영에 맞는지 어떻게 확인하나요?</summary><p>바른자리의 실제 공간 사진을 먼저 확인해 원하는 배경과 구도, 제품 크기에 맞는지 판단한 뒤 예약해주세요.</p></details>
+        <details class="faq-item"><summary>바른자리는 촬영 스튜디오인가요?</summary><div class="faq-answer"><p>아닙니다. 전문 촬영 장비와 세트를 제공하는 촬영 스튜디오가 아니라 예약한 시간 동안 한 팀이 단독으로 이용하는 프라이빗 공간입니다. 전문 장비 없이 직접 촬영하는 간단한 제품 사진이나 콘텐츠 촬영에 활용할 수 있습니다.</p></div></details>
+        <details class="faq-item"><summary>제품 촬영을 해도 되나요?</summary><div class="faq-answer"><p>네. 공간 이용에 지장이 없는 범위에서 직접 가져온 작은 제품의 사진이나 영상을 촬영할 수 있습니다.</p></div></details>
+        <details class="faq-item"><summary>링라이트가 있나요?</summary><div class="faq-answer"><p>네. 공간에 있는 링라이트를 활용할 수 있습니다. 다만 전문 촬영용 조명 장비는 제공하지 않습니다.</p></div></details>
+        <details class="faq-item"><summary>몇 시간 정도 예약하면 좋을까요?</summary><div class="faq-answer"><p>촬영할 제품 수와 영상 촬영 여부에 따라 다릅니다. 작은 제품 몇 개를 간단하게 촬영한다면 1시간부터 시작할 수 있고, 여러 제품을 촬영하거나 결과 확인과 재촬영까지 필요하다면 2시간 이상 여유를 두는 방법도 있습니다.</p></div></details>
+        <details class="faq-item"><summary>촬영 장비를 빌릴 수 있나요?</summary><div class="faq-answer"><p>전문 카메라나 촬영 장비 대여 서비스는 제공하지 않습니다. 필요한 촬영 장비와 제품은 직접 준비해주세요.</p></div></details>
+        <details class="faq-item"><summary>예약 전에 공간이 촬영에 맞는지 어떻게 확인하나요?</summary><div class="faq-answer"><p>바른자리의 실제 공간 사진을 먼저 확인해 원하는 배경과 구도, 제품 크기에 맞는지 판단한 뒤 예약해주세요.</p></div></details>
       </div>
     </div>
   </section>
