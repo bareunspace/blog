@@ -7,11 +7,11 @@ keywords: 부천제품촬영,부천촬영공간,부천제품촬영공간,신중�
 canonical: https://bareunjari.com/posts/bucheon-product-shooting-space/
 permalink: /posts/bucheon-product-shooting-space/
 date: 2026-09-01 22:50:00 +0900
-og_image: https://bareunjari.com/images/short-term-office-rental.webp
-og_image_alt: 부천 신중동 바른자리의 테이블과 프라이빗 공간 전경
-og_image_width: 1672
-og_image_height: 941
-preload_image: images/short-term-office-rental.webp
+og_image: https://bareunjari.com/images/bucheon-product-shooting-space.webp
+og_image_alt: 부천 제품촬영 공간에서 스마트폰과 링라이트로 소형 제품을 직접 촬영하는 모습
+og_image_width: 720
+og_image_height: 405
+preload_image: images/bucheon-product-shooting-space.webp
 hide_tags: true
 ---
 
@@ -32,10 +32,10 @@ hide_tags: true
 
   {% include post-media-carousel.html
     image_section_id='shooting-visual'
-    image_src='/images/short-term-office-rental.webp'
-    image_alt='부천 신중동에서 제품과 스마트폰을 가져와 직접 촬영할 수 있는 바른자리 프라이빗 공간'
-    image_width='1672'
-    image_height='941'
+    image_src='/images/bucheon-product-shooting-space.webp'
+    image_alt='부천 신중동에서 스마트폰과 링라이트로 소형 제품을 직접 촬영하는 셀프 제품촬영 공간'
+    image_width='720'
+    image_height='405'
     image_loading='eager'
     image_caption='전문 촬영 스튜디오는 아니지만, 예약 시간 동안 한 팀이 단독으로 쓰며 제품 촬영과 결과 확인을 반복할 수 있습니다.'
   %}
