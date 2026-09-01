@@ -6143,19 +6143,13 @@ main.tutoring-guide #home .section-desc {
   position: sticky;
   top: 65px;
   z-index: 80;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: .7rem 1.5rem;
+  border-bottom: 1px solid rgba(31,90,66,.14);
   background: rgba(250,250,248,.92);
   backdrop-filter: blur(14px);
-}
-.guide-toc::after {
-  content: '';
-  position: absolute;
-  right: 50%;
-  bottom: 0;
-  width: 100vw;
-  border-bottom: 1px solid rgba(31,90,66,.14);
-  transform: translateX(50%);
-  pointer-events: none;
 }
 .guide-toc-inner {
   max-width: 940px;
