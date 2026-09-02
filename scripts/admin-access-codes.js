@@ -1,6 +1,6 @@
 (() => {
   const reservationsRoot = document.getElementById('adminReservations');
-  if (!reservationsRoot) return;
+  if (!reservationsRoot || reservationsRoot.querySelector('[data-access-code-panel]')) return;
 
   const weekdays = [
     ['Mon', '월'], ['Tue', '화'], ['Wed', '수'], ['Thu', '목'],
