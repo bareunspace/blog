@@ -1,15 +1,25 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2.57.4";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://bareunjari.com",
-  "Access-Control-Allow-Headers": "authorization, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Content-Type": "application/json",
-  "Cache-Control": "no-store"
+const allowedOrigins = new Set([
+  "https://bareunjari.com",
+  "https://www.bareunjari.com"
+]);
+
+const corsHeadersFor = (req: Request) => {
+  const origin = req.headers.get("origin") || "";
+  return {
+    "Access-Control-Allow-Origin": allowedOrigins.has(origin) ? origin : "https://bareunjari.com",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-api-version, x-retry-count, traceparent, tracestate, baggage",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Cache-Control": "no-store"
+  };
 };
 
 Deno.serve(async (req: Request) => {
+  const corsHeaders = corsHeadersFor(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return new Response(JSON.stringify({ ok: false, error: "method_not_allowed" }), { status: 405, headers: corsHeaders });
 
