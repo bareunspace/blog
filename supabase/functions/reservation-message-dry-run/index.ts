@@ -51,6 +51,20 @@ Deno.serve(async (req: Request) => {
     if (adminError || !adminRow?.email) return new Response(JSON.stringify({ ok: false, error: "forbidden" }), { status: 403, headers: corsHeaders });
 
     const body = await req.json().catch(() => ({}));
+    const action = String(body?.action || "dry-run").trim().toLowerCase();
+
+    if (action === "status") {
+      const reservationNumbers = Array.isArray(body?.reservationNumbers)
+        ? body.reservationNumbers.map((value: unknown) => String(value || "").trim()).filter(Boolean)
+        : [];
+      if (!reservationNumbers.length) return new Response(JSON.stringify({ ok: true, statuses: [] }), { status: 200, headers: corsHeaders });
+      const { data, error } = await admin.rpc("service_reservation_message_statuses", {
+        p_reservation_numbers: reservationNumbers
+      });
+      if (error) throw error;
+      return new Response(JSON.stringify({ ok: true, statuses: data || [] }), { status: 200, headers: corsHeaders });
+    }
+
     const reservationNumber = String(body?.reservationNumber || "").trim();
     if (!reservationNumber) return new Response(JSON.stringify({ ok: false, error: "reservation_number_required" }), { status: 400, headers: corsHeaders });
 
