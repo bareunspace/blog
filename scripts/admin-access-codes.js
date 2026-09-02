@@ -7,6 +7,9 @@
     const style = document.createElement('style');
     style.id = styleId;
     style.textContent = `
+      #adminDashboardRoot #adminReservations {
+        padding-top:.7rem !important;
+      }
       #adminDashboardRoot .admin-access-codes {
         width:100%;
         margin:0 0 1rem;
@@ -144,6 +147,7 @@
       #adminDashboardRoot .admin-access-code-toolbar .admin-btn { min-height:42px; }
       #adminDashboardRoot .admin-access-code-message { margin:12px 0 0; }
       @media (max-width:680px) {
+        #adminDashboardRoot #adminReservations { padding-top:.4rem !important; }
         #adminDashboardRoot .admin-access-codes { border-radius:13px; margin-bottom:10px; }
         #adminDashboardRoot .admin-access-codes > summary { padding:12px; gap:8px; }
         #adminDashboardRoot .admin-access-code-summary-title { font-size:.92rem; }
