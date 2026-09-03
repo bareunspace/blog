@@ -68,6 +68,15 @@ Deno.serve(async (req: Request) => {
     const reservationNumber = String(body?.reservationNumber || "").trim();
     if (!reservationNumber) return new Response(JSON.stringify({ ok: false, error: "reservation_number_required" }), { status: 400, headers: corsHeaders });
 
+    if (action === "manual-send") {
+      const { data, error } = await admin.rpc("service_request_reservation_access_guide", {
+        p_reservation_number: reservationNumber,
+        p_actor_email: email
+      });
+      if (error) throw error;
+      return new Response(JSON.stringify(data), { status: 200, headers: corsHeaders });
+    }
+
     const { data, error } = await admin.rpc("service_reservation_message_dry_run", {
       p_reservation_number: reservationNumber,
       p_actor_email: email
@@ -77,6 +86,6 @@ Deno.serve(async (req: Request) => {
     return new Response(JSON.stringify(data), { status: 200, headers: corsHeaders });
   } catch (error) {
     console.error("reservation-message-dry-run failed", error);
-    return new Response(JSON.stringify({ ok: false, error: "dry_run_failed" }), { status: 500, headers: corsHeaders });
+    return new Response(JSON.stringify({ ok: false, error: "reservation_message_action_failed" }), { status: 500, headers: corsHeaders });
   }
 });
