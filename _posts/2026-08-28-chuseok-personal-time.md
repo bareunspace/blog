@@ -147,8 +147,37 @@ script_version: 20260711-4
       <div class="about-quote">
         <p><strong>‘추석 가족 사랑방’은 가족을 더 많이 모으는 공간이 아니라, 우리 가족에게 필요한 몇 시간을 따로 만드는 방식입니다.</strong></p>
       </div>
-      <p>부모님과 커피를 마시거나, 형제·자매끼리 이야기하거나, 가족 몇 명이 식사 전후 잠시 쉬어가는 공간으로 활용할 수 있습니다.</p>
+      <p>부모님과 커피를 마시거나, 형제·자매끼리 못다 한 이야기를 나누거나, 가져온 카드나 보드게임을 함께 하거나, 식사 전후 다음 일정까지 몇 시간 편하게 쉬어갈 수 있습니다.</p>
       <p>바른자리는 큰 가족행사장이나 파티룸보다는 <strong>소규모로 몇 시간 머물며 대화하고 쉬는 이용</strong>에 더 가깝습니다.</p>
+    </div>
+  </section>
+
+  <section id="holiday-moments">
+    <div class="section-inner">
+      <p class="section-label">Between Holiday Plans</p>
+      <h2 class="section-title">이런 순간이라면 몇 시간의 공간이 유용합니다</h2>
+      <p class="section-desc">명절 일정이 모두 촘촘하게 이어지는 것은 아닙니다. 오히려 애매하게 남는 두세 시간이 생기기도 합니다.</p>
+      <div class="about-highlight-grid" aria-label="추석 연휴에 공간이 필요한 실제 상황">
+        <article class="about-highlight-card">
+          <h3>다음 일정까지 시간이 남았을 때</h3>
+          <p>성묘나 가족 식사가 끝난 뒤 다음 약속까지 두세 시간이 남았다면, 카페를 전전하기보다 가까운 곳에서 편하게 쉬어갈 수 있습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>집이 너무 북적일 때</h3>
+          <p>친척들이 한꺼번에 모여 거실과 방이 붐빈다면, 가족 몇 명이 잠시 자리를 옮겨 조용하게 시간을 보낼 수 있습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>가족끼리 따로 이야기하고 싶을 때</h3>
+          <p>형제·자매나 부모님과 오랜만에 조금 더 이야기하고 싶을 때, 주변을 신경 쓰지 않고 천천히 대화를 이어가기 좋습니다.</p>
+        </article>
+        <article class="about-highlight-card">
+          <h3>편하게 놀고 쉬고 싶을 때</h3>
+          <p>커피를 마시거나 가져온 카드·보드게임을 함께 하며, 특별한 준비 없이 우리끼리 몇 시간을 보내는 용도로도 활용할 수 있습니다.</p>
+        </article>
+      </div>
+      <div class="about-quote">
+        <p><strong>멀리 이동하기보다 가까운 곳에 두세 시간 머물 자리가 있으면, 명절의 빈 시간을 훨씬 편하게 보낼 수 있습니다.</strong></p>
+      </div>
     </div>
   </section>
 
@@ -174,7 +203,7 @@ script_version: 20260711-4
       <div class="about-highlight-grid" aria-label="추석 연휴 추천 이용시간">
         <article class="about-highlight-card">
           <h3>2시간 · 가볍게 자리를 바꾸고 싶을 때</h3>
-          <p>혼자 커피를 마시며 쉬기, 책 읽기와 생각 정리, 부부끼리 대화하기, 부모님과 천천히 커피 마시기, 짧은 개인 업무처럼 한 가지 목적에 여유 있게 사용하기 좋습니다.</p>
+          <p>혼자 커피를 마시며 쉬기, 책 읽기와 생각 정리, 부부끼리 대화하기, 부모님과 천천히 커피 마시기, 가족끼리 카드·보드게임 한두 판, 짧은 개인 업무처럼 한 가지 목적에 여유 있게 사용하기 좋습니다.</p>
         </article>
         <article class="about-highlight-card">
           <h3>3시간 · 서두르지 않고 머물고 싶을 때</h3>
