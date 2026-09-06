@@ -67,6 +67,19 @@ preload_image: images/ai-competency-test-space.webp
   </div>
 </section>
 
+<section id="booking-bridge" class="guide-summary-section" aria-label="AI 역량검사 공간 예약 안내">
+  <div class="section-inner">
+    <p class="section-label">Private Test Space</p>
+    <h2 class="section-title">집에서 검사시간을<br />온전히 확보하기 어렵다면</h2>
+    <p class="section-desc">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용 · 1시간 10,000원부터. 집에서 가족·생활소음·말하기 환경이 불안하다면 검사에 필요한 시간만 프라이빗 공간을 예약할 수 있습니다.</p>
+    <div class="hero-btns">
+      <a href="/booking/?purpose=interview&amp;source=ai-competency-test-space" class="btn-primary" data-cta="ai_competency_mid_booking">필요한 시간 빈 자리 확인하기</a>
+      <a href="{{ '/ai-ready-check/' | relative_url }}" class="btn-outline" data-cta="ai_competency_mid_ready_check">카메라·마이크·인터넷 5분 점검</a>
+    </div>
+    <p class="section-desc" style="margin-top:12px;font-size:14px;">노트북·웹캠 등 응시장비는 이용자가 준비하며, 실제 응시 가능 여부와 장비·공간 조건은 기업 또는 검사 플랫폼의 안내를 먼저 확인하세요.</p>
+  </div>
+</section>
+
 <nav class="guide-toc" aria-label="AI 역량검사 응시 환경 목차">
   <div class="guide-toc-inner">
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
