@@ -42,12 +42,37 @@ check_contains() {
   fi
 }
 
+is_layout_null_post() {
+  local post_file="$1"
+  awk '
+    BEGIN { in_frontmatter = 0; delimiter_count = 0; found = 0 }
+    /^---[[:space:]]*$/ {
+      delimiter_count++
+      if (delimiter_count == 1) {
+        in_frontmatter = 1
+        next
+      }
+      if (delimiter_count == 2) {
+        exit
+      }
+    }
+    in_frontmatter && $0 ~ /^layout:[[:space:]]*null[[:space:]]*$/ {
+      found = 1
+    }
+    END { if (!found) exit 1 }
+  ' "$post_file"
+}
+
 check_posts_have_category() {
   local missing_count=0
   local post_file
 
   shopt -s nullglob
   for post_file in _posts/*.md; do
+    if is_layout_null_post "$post_file"; then
+      continue
+    fi
+
     if ! awk '
       BEGIN { in_frontmatter = 0; delimiter_count = 0; found = 0 }
       /^---[[:space:]]*$/ {
@@ -71,7 +96,7 @@ check_posts_have_category() {
   done
 
   if [[ "$missing_count" -eq 0 ]]; then
-    pass "All _posts have non-empty category (breadcrumb category enabled)"
+    pass "All content posts have non-empty category"
   fi
 }
 
@@ -102,6 +127,10 @@ check_post_categories_allowlist() {
 
   shopt -s nullglob
   for post_file in _posts/*.md; do
+    if is_layout_null_post "$post_file"; then
+      continue
+    fi
+
     post_category="$(awk '
       BEGIN { in_frontmatter = 0; delimiter_count = 0 }
       /^---[[:space:]]*$/ {
@@ -137,7 +166,7 @@ check_post_categories_allowlist() {
   done
 
   if [[ "$invalid_count" -eq 0 ]]; then
-    pass "All _posts categories follow allowlist in $category_file"
+    pass "All content post categories follow allowlist in $category_file"
   fi
 }
 
@@ -176,7 +205,8 @@ check_contains "_site/index.html" 'rel="canonical" href="https://bareunjari.com/
 check_contains "_site/index.html" 'G-ECYS2XKQ4H' "Home GA tag"
 check_contains "_site/index.html" 'xfmtyp5w3b' "Home Clarity tag"
 check_contains "_site/index.html" '"@type": "LocalBusiness"' "Home LocalBusiness JSON-LD"
-check_contains "_site/index.html" '"@type": "FAQPage"' "Home FAQPage JSON-LD"
+check_contains "_site/index.html" '"@type": "WebSite"' "Home WebSite JSON-LD"
+check_contains "_site/index.html" '"@type": "WebPage"' "Home WebPage JSON-LD"
 if [[ -n "$ABOUT_OUTPUT" ]]; then
   check_contains "$ABOUT_OUTPUT" 'rel="canonical" href="https://bareunjari.com/about.html"' "About canonical"
   check_contains "$ABOUT_OUTPUT" 'G-ECYS2XKQ4H' "About GA tag"
