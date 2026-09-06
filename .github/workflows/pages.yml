@@ -36,6 +36,9 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Validate rendered site
+        run: PREDEPLOY_USE_EXISTING_BUILD=1 bash scripts/predeploy-check.sh
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
