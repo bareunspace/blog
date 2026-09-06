@@ -1,6 +1,6 @@
 # 바른자리 Scale-ready Structure Plan
 
-> Status: PHASE 1 IN PROGRESS
+> Status: PHASE 1 COMPLETE
 > Last updated: 2026-09-06
 > Scope: bareunspace/blog
 
@@ -28,7 +28,7 @@ _data/
 
 ## Phase 1 — Validation Baseline Repair
 
-Status: IN PROGRESS
+Status: COMPLETE
 Risk: LOW
 Production UI change: 없음
 
@@ -78,23 +78,51 @@ Commits:
 - `6c8e90bd8b17c0c907310a9acb9ec847211ee5d5`
 - `eac6616d4bb88c2a0e9f1b24d2530c64a29882c0`
 
-### 1-3. 실행 검증 / CI gate
+### 1-3. 실제 실행 검증
 
-Status: PENDING
+완료:
 
-남은 작업:
+- [x] 임시 GitHub Actions runner에서 `bash scripts/predeploy-check.sh` 실제 실행
+- [x] 1차 실행 실패 원인 분석
+- [x] 홈 FAQPage 검사가 현재 JSON-LD 구조와 맞지 않는 오래된 검사임을 확인
+- [x] `_posts/2026-08-06-august-two-hour-focus-time.md`가 일반 콘텐츠가 아닌 `layout:null` redirect stub임을 확인
+- [x] redirect stub은 category 필수 검사에서 제외하도록 보정
+- [x] 홈 JSON-LD 검사를 현재 구조(LocalBusiness/WebSite/WebPage)에 맞춤
+- [x] 2차 GitHub runner 검증 성공
 
-- [ ] 현재 main 기준 `bash scripts/predeploy-check.sh` 실제 성공 확인
-- [ ] false positive/false negative 확인
-- [ ] 기존 GitHub Pages build와 결과 비교
-- [ ] 안정 확인 후에만 `.github/workflows/pages.yml`에 validation step 추가 검토
+실제 검증 결과:
 
-현재 이 ChatGPT 실행환경에서는 GitHub clone을 위한 외부 DNS가 차단되어 로컬 실행 검증을 완료하지 못했다. GitHub connector에서도 방금 커밋의 workflow run/status가 아직 노출되지 않았다. 따라서 Phase 1을 COMPLETE로 표시하지 않는다.
+```text
+Passed: 22
+Failed: 0
+Pre-deploy check passed.
+```
 
-Rollback:
-- allowlist 문제 시 `_data/post_categories.yml` 이전 버전 복원
-- validation 문제 시 `scripts/predeploy-check.sh` 이전 버전 복원
-- Pages workflow는 아직 건드리지 않았으므로 운영 배포 게이트 영향 없음
+검증 커밋:
+- `62ddb51f1e71345e09c518a728db4f0f97cc19cb`
+
+### 1-4. Pages deploy gate 연결
+
+완료:
+
+- [x] `scripts/predeploy-check.sh`에 기존 `_site` 빌드 재사용 모드 추가
+- [x] `.github/workflows/pages.yml`에서 Jekyll build 직후 validation 실행
+- [x] 검증 통과 후에만 artifact upload / deploy 진행
+- [x] GitHub Actions에서 Build with Jekyll 성공 확인
+- [x] Validate rendered site 성공 확인
+- [x] Upload artifact 성공 확인
+- [x] Deploy to GitHub Pages 성공 확인
+- [x] 임시 `verify-predeploy.yml` workflow 제거
+
+Commits:
+- `f4aef92d9491876053470f1efcda8f0ea4cc580a`
+- `0ab80cf82cc984eea8889e860286f83961ed7d6e`
+- `96ef58c4453fc0b0c721b0975896d32917fda003`
+
+결론:
+- Phase 1 완료
+- 프로덕션 UI/URL/SEO 구조 변경 없음
+- 앞으로 main 배포는 Jekyll build 후 validation을 통과해야 실제 Pages deploy가 진행됨
 
 ---
 
@@ -176,15 +204,16 @@ Trigger: 2호점 실제 확정
 - 전체 `_posts` 일괄 구조변환
 - URL 구조 변경
 - 성장 중 페이지 대규모 리라이트
-- 현재 `predeploy-check.sh`를 검증 없이 Pages workflow에 바로 연결
 
 ## 진행 로그
 
 | Date | Phase | Change | Result | Next |
 |---|---|---|---|---|
 | 2026-09-05 | Planning | 기존 구조 재검증 | 새 파일보다 기존 `operations.yml` 활용이 맞음 | Validation 우선 |
-| 2026-09-06 | Phase 1 | category allowlist 정합성 보완 | Production UI 영향 없음 | 실행 검증 |
-| 2026-09-06 | Phase 1 | RSS sync와 predeploy validation 분리 | 검증 deterministic화 | 실제 script 실행 검증 |
+| 2026-09-06 | Phase 1 | category allowlist 정합성 보완 | Production UI 영향 없음 | predeploy 정리 |
+| 2026-09-06 | Phase 1 | RSS sync와 validation 분리 | 검증 deterministic화 | 실제 실행 |
+| 2026-09-06 | Phase 1 | GitHub runner 실제 실행 | 1차 3 fail → 오탐 2종 보정 → 22 pass / 0 fail | Pages gate 연결 |
+| 2026-09-06 | Phase 1 | Pages workflow validation gate 연결 | build / validate / upload / deploy 모두 성공 | Phase 2 |
 
 ## 의사결정 규칙
 
