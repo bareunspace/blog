@@ -49,16 +49,23 @@ products:
     duration: "4시간"
     booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
 
-  overnight:
-    name: "심야 집중 공간대여 - 올나잇 6시간"
-    short_name: "올나잇 6시간"
-    price: 30000
-    price_label: "30,000원 / 6시간"
+  long_6h:
+    name: "장시간 이용 - 6시간"
+    short_name: "6시간 이용"
+    price: 60000
+    price_label: "60,000원 / 6시간"
     duration: "6시간"
-    hours: "00:00~06:00"
-    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7928660"
-    lodging: false
-    note: "숙박 상품이 아닌 심야 작업·공부·회의·연습용 공간 상품"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
+    note: "별도 할인 상품이 아닌 일반 시간제 장시간 이용 예시"
+
+  day_8h:
+    name: "Day Office - 8시간"
+    short_name: "8시간 이용"
+    price: 80000
+    price_label: "80,000원 / 8시간"
+    duration: "8시간"
+    booking_url: "https://booking.naver.com/booking/10/bizes/1663159/items/7861240"
+    note: "팀 업무·프로젝트·촬영 등 장시간 이용 예시"
 
 common:
   parking: "등록 시 주차 2시간 무료"
