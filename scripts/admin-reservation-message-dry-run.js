@@ -4,6 +4,7 @@
 
   const getClient = () => window.barunjariAdmin?.client || null;
   const getCurrentEmail = () => window.barunjariAdmin?.currentUser?.email || '';
+  const requestStorageKey = (reservationNumber) => `bareunjari:manual-access-guide:${reservationNumber}`;
 
   const escapeHtml = (value) => String(value || '')
     .replaceAll('&', '&amp;')
@@ -16,6 +17,18 @@
     const numberNode = Array.from(card.querySelectorAll('.admin-community-subcopy'))
       .find((node) => node.textContent?.includes('예약번호'));
     return String(numberNode?.textContent || '').replace(/^.*예약번호\s*/, '').trim();
+  };
+
+  const getStoredRequestId = (reservationNumber) => {
+    try { return sessionStorage.getItem(requestStorageKey(reservationNumber)) || ''; } catch (_) { return ''; }
+  };
+
+  const storeRequestId = (reservationNumber, requestId) => {
+    try { sessionStorage.setItem(requestStorageKey(reservationNumber), requestId); } catch (_) {}
+  };
+
+  const clearStoredRequestId = (reservationNumber) => {
+    try { sessionStorage.removeItem(requestStorageKey(reservationNumber)); } catch (_) {}
   };
 
   const formatStatusTime = (value) => {
@@ -85,9 +98,14 @@
 
     const manualButton = card.querySelector('[data-reservation-manual-send]');
     if (manualButton) {
-      const blocked = ['manual_requested', 'queued', 'sending', 'sent'].includes(view.actual);
+      const blocked = ['manual_requested', 'queued', 'sending'].includes(view.actual);
       manualButton.disabled = blocked;
-      manualButton.textContent = view.actual === 'sent' ? '출입 안내 발송 완료' : blocked ? '수동 발송 요청됨' : '출입 안내 수동 발송';
+      manualButton.dataset.resend = view.actual === 'sent' ? 'true' : 'false';
+      manualButton.textContent = view.actual === 'sent'
+        ? '출입 안내 다시 보내기'
+        : blocked
+          ? '수동 발송 요청됨'
+          : '출입 안내 수동 발송';
     }
   };
 
@@ -123,12 +141,16 @@
 
     if (mode === 'manual-send') {
       const ok = data?.ok === true;
-      const title = ok ? '수동 발송 요청 등록' : '수동 발송 요청 차단';
-      const errorLine = data?.errorCode ? `<p><strong>차단 사유</strong> ${escapeHtml(data.errorCode)}</p>` : '';
+      const status = String(data?.status || '').toLowerCase();
+      const replayed = data?.replayed === true || data?.isReplay === true;
+      const title = ok ? (replayed ? '기존 발송 요청 상태 확인' : '수동 발송 요청 등록') : '수동 발송 요청 차단';
+      const errorLine = data?.errorCode ? `<p><strong>상태/사유</strong> ${escapeHtml(data.errorCode)}</p>` : '';
+      const statusLine = status ? `<p><strong>요청 상태</strong> ${escapeHtml(status)}</p>` : '';
       const preview = data?.messagePreview ? `<pre style="white-space:pre-wrap;margin:.65rem 0 0;">${escapeHtml(data.messagePreview)}</pre>` : '';
       panel.innerHTML = `
         <strong>${title}</strong>
         <p>${ok ? 'OpenClaw가 이 요청을 가져가 실제 네이버 톡톡 발송을 처리합니다.' : '검증 또는 중복 방지 조건 때문에 요청을 등록하지 않았습니다.'}</p>
+        ${statusLine}
         ${errorLine}
         ${preview}
       `;
@@ -183,18 +205,30 @@
     const client = getClient();
     if (!client || !reservationNumber || reservationNumber === '-') return;
 
-    const confirmed = window.confirm('이 예약의 출입 안내를 OpenClaw 수동 발송 큐에 등록할까요? 중복·취소·출입코드 검증을 통과한 경우에만 등록됩니다.');
+    const isResend = button.dataset.resend === 'true';
+    const confirmed = window.confirm(isResend
+      ? '이미 발송된 출입 안내를 다시 보낼까요? 새 수동 재전송 요청으로 등록됩니다.'
+      : '이 예약의 출입 안내를 OpenClaw 수동 발송 큐에 등록할까요? 중복·취소·출입코드 검증을 통과한 경우에만 등록됩니다.');
     if (!confirmed) return;
+
+    let requestId = getStoredRequestId(reservationNumber);
+    if (isResend || !requestId) {
+      requestId = crypto.randomUUID();
+      storeRequestId(reservationNumber, requestId);
+    }
 
     const originalText = button.textContent;
     button.disabled = true;
     button.textContent = '요청 등록 중...';
     try {
       const { data, error } = await client.functions.invoke('reservation-message-dry-run', {
-        body: { action: 'manual-send', reservationNumber }
+        body: { action: 'manual-send', reservationNumber, requestId }
       });
       if (error) throw error;
       renderResult(card, data || {}, 'manual-send');
+
+      const status = String(data?.status || '').toLowerCase();
+      if (['failed', 'error', 'rejected', 'sent'].includes(status)) clearStoredRequestId(reservationNumber);
     } catch (error) {
       renderResult(card, { ok: false, errorCode: error?.message || 'MANUAL_SEND_REQUEST_FAILED' }, 'manual-send');
     } finally {
