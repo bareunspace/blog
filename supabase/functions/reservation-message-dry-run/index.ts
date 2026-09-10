@@ -18,6 +18,8 @@ const corsHeadersFor = (req: Request) => {
   };
 };
 
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
 Deno.serve(async (req: Request) => {
   const corsHeaders = corsHeadersFor(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -69,9 +71,14 @@ Deno.serve(async (req: Request) => {
     if (!reservationNumber) return new Response(JSON.stringify({ ok: false, error: "reservation_number_required" }), { status: 400, headers: corsHeaders });
 
     if (action === "manual-send") {
+      const requestId = String(body?.requestId || "").trim();
+      if (requestId && !uuidPattern.test(requestId)) {
+        return new Response(JSON.stringify({ ok: false, error: "invalid_request_id", errorCode: "INVALID_REQUEST_ID" }), { status: 400, headers: corsHeaders });
+      }
       const { data, error } = await admin.rpc("service_request_reservation_access_guide", {
         p_reservation_number: reservationNumber,
-        p_actor_email: email
+        p_actor_email: email,
+        p_request_id: requestId || null
       });
       if (error) throw error;
       return new Response(JSON.stringify(data), { status: 200, headers: corsHeaders });
