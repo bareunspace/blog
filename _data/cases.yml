@@ -2,6 +2,112 @@ version: 1
 updated_at: 2026-09-14
 
 cases:
+  - id: amorepacific-2026-fall-ai-online-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 아모레퍼시픽
+    company_slug: amorepacific
+    title: 2026 하반기 신입채용 · AI 온라인 검사 포함
+    summary: 아모레퍼시픽의 2026년 하반기 신입채용으로, 서류전형 이후 AI 온라인 검사와 1차면접, 인턴 실습, Culture Fit면접/2차면접이 이어집니다. AI 온라인 검사는 역량·영어·AI 활용능력으로 구성되어 있어 조용한 독립 공간에서 장비와 응시 환경을 미리 점검하고, 이후 면접 단계에 맞춰 실제 목소리로 답변을 연습하는 사용 상황과 연결됩니다.
+
+    published_at: 2026-09-08
+    verified_at: 2026-09-14
+
+    application:
+      start: "2026-09-07"
+      end: "2026-09-20 23:59"
+      period_label: "2026-09-07 ~ 2026-09-20 23:59"
+      hiring_size: 2026 하반기 국내대 신입사원 공개채용
+      roles: 채널영업전략 · 공간디자인 · 시스템엔지니어링 · 소재연구 · MBS 영업관리 · 글로벌 소셜&커머스 마케팅 등
+      expected_join: 직무별 최종합격 후 2027년 1~2월 입사 예정
+
+    selection:
+      process_label: 서류전형(9월) → AI 온라인 검사(역량·영어·AI활용능력, 10월) → 1차면접(직무별 10월 중~11월 초) → 인턴 실습(직무별 2~4주) → Culture Fit면접/2차면접(11월 말~12월) → 최종합격
+      interview_focus: AI 온라인 검사 응시 환경을 안정적으로 준비하고, 이후 1차·Culture Fit·2차면접에서 지원 동기와 직무 경험을 실제 목소리로 설명하는 준비
+      stages:
+        - 서류전형 · 9월
+        - AI 온라인 검사 · 역량·영어·AI활용능력 · 10월
+        - 1차면접 · 직무별 10월 중~11월 초
+        - 인턴 실습 · 직무별 2~4주
+        - Culture Fit면접 및 2차면접 · 직무별 11월 말~12월
+        - 최종합격
+
+    pattern:
+      label: 온라인 AI 평가에서 직무·문화 적합 면접까지 단계 확장
+      insight: AI 온라인 검사 이후 1차면접과 Culture Fit/2차면접이 이어져, 온라인 평가 환경 점검과 말하기 준비를 분리하지 않고 단계별로 이어서 준비할 수 있는 사례입니다.
+      practice_shift: AI 온라인 검사 전 장비·인터넷·독립 환경을 먼저 점검하고, 이후 자기소개·지원 동기·직무 경험을 30~90초 길이로 실제처럼 말해보는 연습
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: true
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 실제 모집 중인 하반기 신입채용에서 AI 온라인 검사와 1차면접, Culture Fit/2차면접이 공식적으로 확인되고, AI 검사가 역량·영어·AI 활용능력으로 구성되어 바른자리의 독립 응시환경과 면접 말하기 연습 수요에 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - english-response
+        - follow-up-response
+      practice_points:
+        - AI 온라인 검사 전에 사용할 노트북, 인터넷, 마이크와 주변 방해 여부를 실제 응시 환경에서 점검하기
+        - 자기소개·지원 동기·직무 경험을 30초·60초·90초 길이로 나눠 실제 목소리로 답해보기
+        - 영어 답변이 필요한 상황을 가정해 기본 자기소개와 직무 경험을 짧게 말해보기
+        - 1차·Culture Fit·2차면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·협업 방식에 대한 꼬리질문까지 이어서 답해보기
+      excluded:
+        - 아모레퍼시픽 AI 온라인 검사를 영상면접이라고 단정하는 표현
+        - 실제 AI 검사 문항이나 실제 면접 질문을 보유하거나 제공한다는 표현
+        - AI 검사 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - 아모레퍼시픽과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 2026년 하반기 국내대 신입채용 공고는 9월 7일부터 9월 20일 23:59까지 지원할 수 있습니다.
+      - 공식 공고에 AI 온라인 검사는 역량, 영어, AI 활용능력의 세 영역으로 명시되어 있습니다.
+      - 국내대 직무에 따라 1차면접과 인턴 실습, Culture Fit/2차면접 일정이 다르므로 대표 범위로 표시했습니다.
+      - 채널영업전략·공간디자인·시스템엔지니어링 등은 11월 초 1차면접, 4주 인턴 실습, 12월 Culture Fit/2차면접 일정이 안내되어 있습니다.
+      - 소재연구 등 일부 연구 직무는 10월 중 1차면접, 2주 인턴 실습, 11월 말 Culture Fit/2차면접 일정이 안내되어 있습니다.
+      - AI 온라인 검사의 세부 응시 방식에 영상면접이 포함되는지는 공개된 공식 공고만으로 확인되지 않아 video_interview는 null로 두었습니다.
+      - 세부 일정과 전형 방식은 변경될 수 있으므로 지원자는 공식 채용사이트의 개별 직무 공고와 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 아모레퍼시픽 채용
+      title: 2026 하반기 AMOREPACIFIC 신입사원 채용
+      url: https://careers.apgroup.com/search/?q=2026
+      checked_at: 2026-09-14
+
+    references:
+      - publisher: 아모레퍼시픽 채용
+        title: 2026 하반기 AMOREPACIFIC 신입사원 채용_채널영업전략
+        url: https://careers.apgroup.com/job/%EC%84%9C%EC%9A%B8-2026-%ED%95%98%EB%B0%98%EA%B8%B0-AMOREPACIFIC-%EA%B5%AD%EB%82%B4%EB%8C%80-%EC%8B%A0%EC%9E%85%EC%82%AC%EC%9B%90-%EC%B1%84%EC%9A%A9_%EC%B1%84%EB%84%90%EC%98%81%EC%97%85%EC%A0%84%EB%9E%B5/1366997766/
+        checked_at: 2026-09-14
+      - publisher: 아모레퍼시픽 채용
+        title: 2026 하반기 AMOREPACIFIC 신입사원 채용_소재연구
+        url: https://careers.apgroup.com/job/%EC%9A%A9%EC%9D%B8-2026-%ED%95%98%EB%B0%98%EA%B8%B0-AMOREPACIFIC-%EA%B5%AD%EB%82%B4%EB%8C%80-%EC%8B%A0%EC%9E%85%EC%82%AC%EC%9B%90-%EC%B1%84%EC%9A%A9_%EC%86%8C%EC%9E%AC%EC%97%B0%EA%B5%AC/1366997466/
+        checked_at: 2026-09-14
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
   - id: hyundai-glovis-2026-fall-ai-interview
     type: hiring
     topic: interview
