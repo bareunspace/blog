@@ -2,6 +2,214 @@ version: 1
 updated_at: 2026-09-14
 
 cases:
+  - id: nps-2026-fall-new-hire-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 국민연금공단
+    company_slug: nps
+    title: 2026년도 하반기 일반직 신입직원 공개채용 · 토론·상황·직무수행능력면접
+    summary: 국민연금공단의 2026년도 하반기 일반직 신입직원 공개채용으로, 필기시험 이후 토론·상황·직무수행능력면접을 구조화된 방식으로 진행하는 사례입니다. 여러 지원자가 함께 참여하는 토론과 즉시 답변이 필요한 상황면접, 직무 경험 설명을 실제 목소리로 반복 연습하는 사용 상황과 직접 연결됩니다.
+
+    published_at: 2026-09-04
+    verified_at: 2026-09-14
+
+    application:
+      start: "2026-09-04 15:00"
+      end: "2026-09-18 17:00"
+      period_label: "2026-09-04 15:00 ~ 2026-09-18 17:00"
+      hiring_size: 일반직 신입직원 90명
+      roles: 6급 사무직 · 심사직 · 기술직 · 6급보 사무직
+      expected_join: 2026년 12월 14일 임용 예정
+
+    selection:
+      process_label: 서류전형 → 인성검사 및 필기시험 → 면접전형(토론·상황·직무수행능력) → 최종합격
+      interview_focus: 토론에서 자신의 의견을 짧고 논리적으로 제시하고, 상황면접에서 판단 기준과 대응을 즉시 설명하며, 직무수행능력면접에서 지원 경험과 직무 이해를 구체적으로 말하는 준비
+      stages:
+        - 서류전형 합격자 발표 · 2026-10-23 예정
+        - 필기시험 및 인성검사 · 2026-10-31 예정
+        - 면접전형 · 2026-11-16 ~ 2026-11-18 예정
+        - 최종합격 및 임용 · 2026-12-14 예정
+
+    pattern:
+      label: 준비한 답변에서 토론·상황 대응·직무 설명으로 확장
+      insight: 토론, 상황, 직무수행능력의 세 유형을 한 면접전형에서 구조화해 평가하므로 단순 암기보다 다른 사람의 의견을 듣고 즉시 반응하며 판단 근거와 경험을 말로 설명하는 준비가 필요합니다.
+      practice_shift: 토론 기조발언과 반론·보완 발언을 짧게 연습하고, 처음 보는 상황에 30~60초로 답한 뒤 직무 경험 꼬리질문까지 이어서 말해보기
+
+    signals:
+      situation_interview: true
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 90명 규모의 공개채용이며 공식 채용공고에 토론·상황·직무수행능력면접이 명시되어 있습니다. 그룹 토론과 즉시 상황 답변, 직무 경험 설명을 반복 리허설해야 해 바른자리의 프라이빗한 말하기·면접 연습 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - group-discussion
+        - situational-response
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 토론 주제를 받고 결론 → 근거 → 제안 순서로 30~60초 기조발언을 말해보기
+        - 다른 사람의 의견에 동의·보완·반대하는 세 가지 방식으로 짧게 이어 말하는 연습하기
+        - 처음 보는 상황 질문에 판단 기준 → 행동 → 이유 순서로 답해보기
+        - 직무 경험을 본인 역할·판단·결과 중심으로 설명하고 꼬리질문까지 이어서 답해보기
+      excluded:
+        - 실제 국민연금공단 면접 질문이나 토론 주제를 보유하거나 제공한다는 표현
+        - 특정 답변이 합격에 유리하다고 단정하는 표현
+        - 국민연금공단과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 4일 15:00부터 9월 18일 17:00까지입니다.
+      - 채용인원은 총 90명으로 공고되어 있습니다.
+      - 면접전형은 토론·상황·직무수행능력면접 형태의 구조화 면접으로 안내되어 있습니다.
+      - 면접은 5명 이내 지원자를 1개 조로 구성해 진행하는 방식으로 공고되어 있습니다.
+      - 채용 일정은 기관 사정에 따라 변경될 수 있으므로 지원자는 공식 채용사이트의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 국민연금공단
+      title: 2026년도 하반기 일반직 신입직원 공개채용 공고
+      url: https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?hmpgBbsCd=BS20240138&hmpgCd=01&menuId=MN24000969&pageIndex=1&pstId=ZZ202600000000001011&sortSe=FR
+      published_at: "2026-09-04"
+      checked_at: 2026-09-14
+
+    references:
+      - publisher: 국민연금공단 채용
+        title: 2026년도 하반기 국민연금공단 신입직원 채용공고
+        url: https://nps.saramin.co.kr/service/nps/3953/applicant/apply/recruit_default.asp
+        checked_at: 2026-09-14
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년도 하반기 일반직 신입직원 공개채용 공고
+        url: https://job.alio.go.kr/recruitview.do?idx=304656
+        checked_at: 2026-09-14
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
+  - id: kodit-2026-fall-new-hire-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 신용보증기금
+    company_slug: kodit
+    title: 2026년도 하반기 신입직원 채용 · 과제수행·실무·심층면접
+    summary: 신용보증기금의 2026년도 하반기 신입직원 채용으로, 필기전형 이후 과제수행면접·실무면접·심층면접의 3단계 면접을 진행하는 사례입니다. 조별 과제에서 협업하며 의견을 설명하고, 업무수행계획과 경험을 실제 목소리로 전달하며 꼬리질문에 대응하는 연습과 직접 연결됩니다.
+
+    published_at: 2026-09-02
+    verified_at: 2026-09-14
+
+    application:
+      start: "2026-09-02"
+      end: "2026-09-16 16:00"
+      period_label: "2026-09-02 ~ 2026-09-16 16:00"
+      hiring_size: 신입직원 77명
+      roles: 정규직 5급 상경계 · 비상경계 · 인공지능 · ICT · 보훈, 정규직 6급 고교 경영금융 · 정보통신
+      expected_join: 2026년 12월 말 입사 예정
+
+    selection:
+      process_label: 입사지원 → 서류전형 → 필기전형 → 면접전형(과제수행·실무·심층) → 신체검사·결격사유조회 → 최종합격
+      interview_focus: 조별 과제에서 문제 해결과 협업 과정을 설명하고, 실무면접에서 업무수행계획과 직무역량을 말하며, 심층면접에서 자기소개서와 경력 기반 질문에 논리적으로 대응하는 준비
+      stages:
+        - 서류전형 합격자 발표 · 2026-10-02 예정
+        - 필기전형 · 2026-10-17 예정
+        - 필기전형 합격자 발표 · 2026-10-30 예정
+        - 면접전형 · 2026-11-16 ~ 2026-11-27 예정
+        - 최종합격 및 입사 · 2026년 12월 말 예정
+
+    pattern:
+      label: 개인 답변에서 조별 과제·직무 설명·심층 검증으로 확장
+      insight: 조별 과제수행으로 문제해결력과 협업능력을 확인한 뒤 실무·심층면접으로 직무수행역량과 조직적합도를 이어서 평가하므로, 단순 예상질문 암기보다 협업 상황의 발언과 경험 설명을 실제처럼 반복하는 준비가 필요합니다.
+      practice_shift: 조별 과제 발언을 결론 → 이유 → 다음 행동 순서로 짧게 말하고, 업무수행계획과 주요 경험을 60~90초로 설명한 뒤 심층 꼬리질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: null
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 77명 규모의 공개채용이며 공식 채용공고에 과제수행·실무·심층면접의 3단계 면접이 명시되어 있습니다. 조별 협업 발언과 직무 경험 설명, 심층 질의응답을 소리 내어 반복 연습할 필요가 커 바른자리의 면접·발표 리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - group-task
+        - task-explanation
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 조별 과제를 가정해 문제 정의 → 우선순위 → 제안 순서로 짧게 의견을 말해보기
+        - 다른 사람의 제안을 요약한 뒤 본인의 보완 의견을 붙여 말하는 연습하기
+        - 업무수행계획서 핵심을 60~90초 안에 직무와 연결해 설명해보기
+        - 자기소개서와 경력사항을 바탕으로 이유·역할·성과·대안을 묻는 꼬리질문까지 이어서 답해보기
+      excluded:
+        - 실제 신용보증기금 면접 과제나 질문을 보유하거나 제공한다는 표현
+        - 과제수행면접의 정답이나 평가 기준을 알고 있다는 표현
+        - 신용보증기금과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 2일부터 9월 16일 16:00까지입니다.
+      - 채용인원은 총 77명으로 공고되어 있습니다.
+      - 면접전형은 과제수행면접, 실무면접, 심층면접의 3단계로 안내되어 있습니다.
+      - 과제수행면접은 조별 과제수행을 통해 문제해결력과 협업능력을 평가한다고 명시되어 있습니다.
+      - 실무면접은 업무수행계획서와 교육·자격사항 중심, 심층면접은 자기소개서와 경력사항 중심으로 안내되어 있습니다.
+      - 세부 일정은 기관 사정에 따라 변경될 수 있으므로 지원자는 공식 채용사이트의 최신 공지를 다시 확인해야 합니다.
+
+    source:
+      publisher: 신용보증기금 채용
+      title: 2026년도 하반기 신용보증기금 신입직원 채용
+      url: https://kodit.saramin.co.kr/service/kodit/3936/applicant/apply/recruit_default.asp
+      published_at: "2026-09-02"
+      checked_at: 2026-09-14
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년도 하반기 신용보증기금 신입직원 채용
+        url: https://job.alio.go.kr/recruitview.do?idx=304432
+        checked_at: 2026-09-14
+      - publisher: NCS 공정채용
+        title: 2026년도 하반기 신입직원 채용
+        url: https://skillsdb.hrdkorea.or.kr/blind/bl04/RecrtNotifDetail.do?recrtNo=20260903150245
+        checked_at: 2026-09-14
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
   - id: amorepacific-2026-fall-ai-online-assessment
     type: hiring
     topic: interview
@@ -318,7 +526,7 @@ cases:
     company: NAVER WEBTOON
     company_slug: naver-webtoon
     title: 2026 채용연계형 인턴십 · AI 애니메이션 제작 (AI animator)
-    summary: NAVER WEBTOON의 AI 애니메이션 제작 채용연계형 인턴십으로, 인터뷰 과정에 사전과제와 기업문화 적합도 검사가 포함됩니다. 작업 결과만 보여주는 것보다 연출 의도, AI 도구 선택 이유, 시행착오와 판단 근거를 실제로 설명하는 연습과 연결됩니다.
+    summary: NAVER WEBTOON의 2026년 채용연계형 인턴십으로, 인터뷰 과정에 사전과제와 기업문화 적합도 검사가 포함됩니다. 작업 결과만 보여주는 것보다 연출 의도, AI 도구 선택 이유, 시행착오와 판단 근거를 실제로 설명하는 연습과 연결됩니다.
 
     published_at: 2026-08-20
     verified_at: 2026-08-20
@@ -773,7 +981,7 @@ cases:
     application:
       start: "2026-08-10"
       end: "2026-09-10 15:00"
-      period_label: "신입(사무) 2026-08-10 ~ 2026-09-10 15:00 · 신입(현장)/경력 2026-08-26 15:00 마감"
+      period_label: "신입(사무) 2026-08-10 ~ 2026-09-10 15:00 마감"
       hiring_size: 2026 하반기 신입·경력사원 공개채용
       roles: 경영기획 · 해외사업 · 브랜드 · 제조 · SCM · R&D 등 사무 신입
       expected_join: 사무 신입 2027년 1월 초 입사 가능자
