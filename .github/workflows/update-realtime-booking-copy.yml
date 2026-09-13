@@ -1,0 +1,77 @@
+name: Update realtime booking copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-realtime-booking-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update booking copy
+        shell: python
+        run: |
+          from pathlib import Path
+
+          replacements = {
+              "예약 후 입실 비밀번호 사전 안내": "빈 시간이 있다면 이용 30분 전까지 예약 가능",
+              "입실 비밀번호 사전 안내": "예약 후 출입정보 자동 안내",
+              "이용 1시간 전까지 예약 가능": "이용 30분 전까지 예약 가능",
+              "예약은 이용 1시간 전까지 가능합니다. 급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요. 운영자가 확인 가능하고 빈 시간이라면 바로 이용하실 수 있도록 안내해 드립니다.": "빈 시간이 있다면 이용 30분 전까지 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.",
+              "급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요. 운영자가 확인 가능하고 빈 시간이라면 바로 이용하실 수 있도록 안내해 드립니다.": "빈 시간이 있다면 이용 30분 전까지 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.",
+          }
+
+          targets = [Path('index.html')] + sorted(Path('_posts').glob('*.md'))
+          changed = []
+          for path in targets:
+              text = path.read_text(encoding='utf-8')
+              new = text
+              for old, replacement in replacements.items():
+                  new = new.replace(old, replacement)
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append(str(path))
+
+          print('Changed files:')
+          for path in changed:
+              print(f'- {path}')
+
+          # Fail if any known outdated operational copy remains.
+          remaining = []
+          needles = [
+              '예약 후 입실 비밀번호 사전 안내',
+              '이용 1시간 전까지 예약 가능',
+              '급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요',
+              '운영자가 확인 가능하고 빈 시간이라면',
+          ]
+          for path in targets:
+              text = path.read_text(encoding='utf-8')
+              for needle in needles:
+                  if needle in text:
+                      remaining.append((str(path), needle))
+          if remaining:
+              raise SystemExit(f'Outdated copy remains: {remaining}')
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/update-realtime-booking-copy.yml
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html _posts .github/workflows/update-realtime-booking-copy.yml
+          git commit -m "Update booking copy for near-real-time access"
+          git push
