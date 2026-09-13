@@ -757,3 +757,110 @@ cases:
     related:
       url: /posts/interview-answer-practice/
       label: 면접 답변 60분 연습법 보기
+
+  - id: ktng-2026-fall-ai-video-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: KT&G
+    company_slug: ktng
+    title: 2026 하반기 신입채용 · AI 영상면접 포함
+    summary: KT&G의 2026년 하반기 신입·경력 공개채용으로, 사무 신입은 지원서 접수 후 AI 역량검사를 완료해야 최종지원 처리되며, 전체 채용 절차에는 AI 영상면접과 실무면접, 임원면접이 포함됩니다. 카메라 앞 답변과 독립된 응시 환경을 함께 준비해야 하는 사례로 바른자리의 면접·AI 응시 수요와 직접 연결됩니다.
+
+    published_at: 2026-08-12
+    verified_at: 2026-09-14
+
+    application:
+      start: "2026-08-10"
+      end: "2026-09-10 15:00"
+      period_label: "신입(사무) 2026-08-10 ~ 2026-09-10 15:00 · 신입(현장)/경력 2026-08-26 15:00 마감"
+      hiring_size: 2026 하반기 신입·경력사원 공개채용
+      roles: 경영기획 · 해외사업 · 브랜드 · 제조 · SCM · R&D 등 사무 신입
+      expected_join: 사무 신입 2027년 1월 초 입사 가능자
+
+    selection:
+      process_label: 서류전형 → AI 영상면접 및 AI 역량검사 → 실무면접 → 임원면접 → 채용검진 → 최종합격
+      interview_focus: AI 영상면접에서 카메라 앞 시선·표정·말하기를 점검하고, 이후 실무·임원면접에서 지원 경험과 직무 적합성을 실제 목소리로 설명하는 준비
+      stages:
+        - 지원서 접수 및 AI 역량검사
+        - 서류전형
+        - AI 영상면접
+        - 실무면접
+        - 임원면접
+        - 채용검진
+        - 최종합격
+
+    pattern:
+      label: AI 역량검사와 영상면접에서 대면 심층면접까지
+      insight: 지원 단계의 AI 역량검사와 이후 AI 영상면접, 실무·임원면접이 연속해서 이어져 온라인 응시 환경 점검과 카메라 답변 연습, 직무 경험 설명을 단계적으로 준비할 수 있는 사례입니다.
+      practice_shift: 노트북 카메라·마이크·인터넷을 먼저 점검하고 30~90초 답변을 촬영한 뒤, 같은 경험을 실무·임원면접 꼬리질문까지 이어서 설명
+
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: KT&G 공식 보도자료에 AI 영상면접과 AI 역량검사가 모두 명시되어 있고, 실무면접·임원면접으로 이어지는 실제 하반기 채용 사례라서 바른자리의 독립 응시환경·카메라 답변·말하기 리허설 사용 상황과 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - ai-interview-practice
+        - video-interview
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - AI 역량검사와 영상면접 전에 노트북 카메라·마이크·인터넷과 주변 방해 여부를 실제 응시 환경에서 점검하기
+        - 자기소개·지원 동기·직무 경험을 30초·60초·90초 길이로 바꿔 카메라 앞에서 답해보기
+        - 녹화 답변에서 시선, 말의 속도, 반복 표현과 첫 문장 시작 시간을 확인하기
+        - 실무·임원면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·성과·대안을 묻는 꼬리질문까지 이어서 답해보기
+      excluded:
+        - 실제 KT&G AI 영상면접 질문이나 AI 역량검사 문항을 보유하거나 제공한다는 표현
+        - AI 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - KT&G와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 신입(사무) 지원기간은 2026년 8월 10일부터 9월 10일 15:00까지로 안내됐습니다.
+      - 사무 전형 모집분야는 경영기획, 해외사업, 브랜드, 제조, SCM, R&D입니다.
+      - KT&G 공식 보도자료는 채용 절차를 서류전형, AI 영상면접, 실무면접, 임원면접 등의 순으로 안내합니다.
+      - 전체 전형에 객관적 검증을 위한 AI 역량검사가 함께 진행된다고 공식 보도자료에서 명시했습니다.
+      - 지원 안내에는 지원서 접수 후 AI 역량검사까지 완료해야 최종지원 처리된다고 안내되어 있습니다.
+      - 전형별 구체적인 날짜와 실제 질문은 공개된 공식 자료에서 확인되지 않아 임의로 추정하지 않습니다.
+
+    source:
+      publisher: KT&G
+      title: KT&G, 2026년 하반기 신입·경력사원 공개채용 실시
+      url: https://ktng.com/media/news/press-release/detail/310018
+      published_at: "2026-08-12"
+      checked_at: 2026-09-14
+
+    references:
+      - publisher: KT&G 채용
+        title: 채용가이드
+        url: https://www.ktng.com/career/recruit
+        checked_at: 2026-09-14
+      - publisher: 고려대학교 경영대학 경력개발센터
+        title: KT&G 2026년 하반기 신입/경력사원 채용 공고
+        url: https://biz.korea.ac.kr/cdc/recruitment/recruitment_view.html?cate=&key=&keyfield=&no=14483&page=1
+        checked_at: 2026-09-14
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
