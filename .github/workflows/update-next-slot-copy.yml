@@ -1,0 +1,82 @@
+name: Update next-slot booking copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-next-slot-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update booking immediacy copy
+        shell: python
+        run: |
+          from pathlib import Path
+
+          targets = [Path('index.html'), Path('contact.html'), Path('booking/index.html')]
+          targets += list(Path('_posts').glob('*.md'))
+
+          replacements = [
+            ('빈 시간이 있다면 이용 30분 전까지 예약 가능', '빈 시간이 있으면 다음 30분 단위부터 바로 이용 가능'),
+            ('빈 시간이 있다면 이용 30분 전까지 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.', '빈 시간이 있으면 다음 30분 단위부터 바로 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.'),
+            ('빈 시간이 있다면 이용 시작 30분 전까지 예약할 수 있습니다. 예약 후 출입정보가 자동으로 안내되므로 별도 문의 없이 이용할 수 있습니다.', '빈 시간이 있으면 다음 30분 단위부터 바로 예약할 수 있습니다. 예약 후 출입정보가 자동으로 안내되므로 별도 문의 없이 이용할 수 있습니다.'),
+            ('예약과 출입정보 안내는 자동으로 진행되며, 빈 시간이 있다면 이용 시작 30분 전까지 예약할 수 있습니다.', '예약과 출입정보 안내는 자동으로 진행되며, 빈 시간이 있으면 다음 30분 단위부터 바로 예약할 수 있습니다.'),
+            ('이용 30분 전까지 예약 가능', '빈 시간이 있으면 다음 30분 단위부터 바로 이용 가능'),
+            ('이용 시작 30분 전까지 예약할 수 있습니다', '빈 시간이 있으면 다음 30분 단위부터 바로 예약할 수 있습니다'),
+          ]
+
+          changed = []
+          total = 0
+          for path in targets:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              new = text
+              count_for_file = 0
+              for old, replacement in replacements:
+                  n = new.count(old)
+                  if n:
+                      new = new.replace(old, replacement)
+                      count_for_file += n
+                      total += n
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append((str(path), count_for_file))
+
+          if total < 5:
+              raise SystemExit(f'Expected at least 5 booking-copy replacements, got {total}: {changed}')
+
+          print('Updated occurrences:', total)
+          for item in changed:
+              print(item)
+
+      - name: Verify old cutoff wording is removed from core pages
+        shell: python
+        run: |
+          from pathlib import Path
+          core = [Path('index.html'), Path('contact.html'), Path('booking/index.html')]
+          banned = ['이용 30분 전까지 예약 가능', '이용 시작 30분 전까지 예약할 수 있습니다']
+          for path in core:
+              text = path.read_text(encoding='utf-8')
+              for phrase in banned:
+                  if phrase in text:
+                      raise SystemExit(f'Old wording remains in {path}: {phrase}')
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/update-next-slot-copy.yml
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html contact.html booking/index.html _posts .github/workflows/update-next-slot-copy.yml
+          git commit -m "Clarify next 30-minute slot booking"
+          git push
