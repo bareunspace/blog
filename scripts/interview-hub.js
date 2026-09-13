@@ -9,6 +9,74 @@
     if (action) action.dataset.defaultLabel = action.textContent;
   });
 
+  const track = (eventName, params = {}) => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', eventName, {
+      page_path: window.location.pathname,
+      feature_area: 'interview_practice_loop',
+      ...params
+    });
+  };
+
+  const renderPracticeLoopGuide = () => {
+    if (document.querySelector('[data-interview-practice-loop]')) return;
+    const anchor = document.querySelector('#interview-quick-answer');
+    if (!anchor) return;
+
+    const style = document.createElement('style');
+    style.id = 'interviewPracticeLoopStyles';
+    style.textContent = `
+      .interview-practice-loop{padding:1rem 0 1.5rem}
+      .interview-practice-loop .section-inner{max-width:980px}
+      .interview-practice-loop-shell{padding:1.2rem;border:1px solid #dbe9e1;border-radius:20px;background:linear-gradient(180deg,#f7fbf8 0%,#fff 100%);box-shadow:0 10px 30px rgba(31,69,49,.05)}
+      .interview-practice-loop-head{max-width:760px;margin-bottom:1rem}
+      .interview-practice-loop-head h2{margin:.2rem 0 .45rem;color:#1f3528;font-size:clamp(1.28rem,2.6vw,1.65rem);letter-spacing:-.025em}
+      .interview-practice-loop-head p{margin:0;color:#66736b;font-size:.9rem;line-height:1.7}
+      .interview-practice-loop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+      .interview-practice-loop-step{padding:1rem;border:1px solid #e1e9e4;border-radius:15px;background:#fff}
+      .interview-practice-loop-step span{display:inline-grid;place-items:center;width:28px;height:28px;margin-bottom:.55rem;border-radius:50%;background:#edf7f1;color:#2d6a4f;font-size:.76rem;font-weight:800}
+      .interview-practice-loop-step h3{margin:0 0 .35rem;color:#24372d;font-size:.98rem}
+      .interview-practice-loop-step p{margin:0;color:#657169;font-size:.82rem;line-height:1.6}
+      .interview-practice-loop-focus{margin:.9rem 0 0;padding:.75rem .85rem;border-radius:12px;background:#f5f8f6;color:#59675f;font-size:.8rem;line-height:1.6}
+      .interview-practice-loop-actions{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+      .interview-practice-loop-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem .95rem;border-radius:12px;background:#2d6a4f;color:#fff;text-decoration:none;font-weight:800;font-size:.88rem}
+      .interview-practice-loop-note{color:#7a857f;font-size:.76rem}
+      @media(max-width:720px){.interview-practice-loop-grid{grid-template-columns:1fr}.interview-practice-loop-shell{padding:1rem}.interview-practice-loop-actions{display:grid}.interview-practice-loop-actions a{width:100%}}
+    `;
+    document.head.appendChild(style);
+
+    const section = document.createElement('section');
+    section.className = 'interview-practice-loop interview-surface-soft';
+    section.setAttribute('data-interview-practice-loop', 'true');
+    section.setAttribute('aria-label', '면접 답변 반복 연습법');
+    section.innerHTML = `
+      <div class="section-inner">
+        <div class="interview-practice-loop-shell">
+          <div class="interview-practice-loop-head">
+            <p class="section-label">Speak · Review · Repeat</p>
+            <h2>답변은 한 번 정리하는 것보다, 말하고 확인한 뒤 다시 말해보세요.</h2>
+            <p>읽어서 이해한 답변과 실제 면접에서 입으로 꺼내는 답변은 다릅니다. 한 번 말한 뒤 여러 가지를 동시에 고치지 말고, <strong>한 가지를 골라 같은 질문에 다시 답하는 방식</strong>으로 연습하세요.</p>
+          </div>
+          <div class="interview-practice-loop-grid">
+            <article class="interview-practice-loop-step"><span>1</span><h3>소리 내어 1차 답변</h3><p>메모를 읽지 말고 질문을 들은 뒤 실제 면접처럼 처음부터 끝까지 답합니다.</p></article>
+            <article class="interview-practice-loop-step"><span>2</span><h3>녹화에서 하나만 확인</h3><p>첫 문장 시작, 말의 속도, 시선, 반복 표현, 답변 길이 중 가장 먼저 고칠 한 가지만 고릅니다.</p></article>
+            <article class="interview-practice-loop-step"><span>3</span><h3>같은 질문 다시 답변</h3><p>고른 한 가지에만 집중해 같은 질문에 다시 답하고, 1차 답변과 차이를 확인합니다.</p></article>
+          </div>
+          <p class="interview-practice-loop-focus"><strong>한 번에 하나만:</strong> 첫 문장 · 말의 속도 · 시선 · 반복어 · 답변 길이 중 하나를 고른 뒤 재답변하세요.</p>
+          <div class="interview-practice-loop-actions">
+            <a href="/ai-interview/?focus=1&source=interview-practice-loop" data-interview-practice-loop-cta>1분 답변으로 바로 연습해보기 →</a>
+            <span class="interview-practice-loop-note">녹화 영상은 서버에 업로드되지 않고 현재 기기에만 저장됩니다.</span>
+          </div>
+        </div>
+      </div>`;
+
+    anchor.insertAdjacentElement('afterend', section);
+    track('interview_practice_loop_view');
+    section.querySelector('[data-interview-practice-loop-cta]')?.addEventListener('click', () => {
+      track('interview_practice_loop_cta_click', { destination: 'ai_interview' });
+    });
+  };
+
   const formatDate = (iso) => {
     if (!iso) return '';
     const date = new Date(iso);
@@ -80,7 +148,7 @@
       return;
     }
     const script = document.createElement('script');
-    script.src = '/scripts/interview-journey.js?v=20260831-1';
+    script.src = '/scripts/interview-journey.js?v=20260914-1';
     script.async = true;
     script.dataset.interviewJourneyLoader = 'true';
     script.addEventListener('load', renderJourneyBoard, { once: true });
@@ -114,6 +182,7 @@
     });
   }
 
+  renderPracticeLoopGuide();
   ensureJourneyApi();
   window.addEventListener('bareunjari:interview-journey-change', renderJourneyBoard);
   window.addEventListener('storage', (event) => {
