@@ -1,0 +1,70 @@
+name: Tune self introduction SEO
+
+on:
+  push:
+    paths:
+      - '.github/workflows/tune-self-introduction-seo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  tune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply minimal SEO copy updates
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('_posts/2026-07-19-1-minute-self-introduction-guide.md')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = [
+            (
+              'title: 면접 1분 자기소개 예시 | 신입·경력 예문과 작성법',
+              'title: 면접 1분 자기소개 예시 | 신입·경력직 템플릿과 예문'
+            ),
+            (
+              'description: 면접 1분 자기소개를 어떻게 구성할지 고민될 때 바로 참고할 수 있는 신입·경력·직무전환 예시와 60초 작성법을 정리했습니다. 1분 자기소개 예문, 구조, 피해야 할 실수와 연습법까지 확인하세요.',
+              'description: 면접 1분 자기소개를 준비할 때 바로 참고할 수 있는 신입·경력직 예문과 60초 템플릿을 정리했습니다. 구성, 작성법, 직무전환 예시와 실제 말하기 연습법까지 확인하세요.'
+            ),
+            (
+              '<h1 class="section-title">면접 1분 자기소개 예시와 작성법</h1>',
+              '<h1 class="section-title">면접 1분 자기소개 예시<br />신입·경력직 60초 템플릿</h1>'
+            ),
+            (
+              '<p class="section-desc">처음부터 작성법을 읽기보다 <strong>신입·경력 예시를 먼저 보고</strong>, 자신의 강점과 경험으로 바꿔보세요. 핵심은 강점 1개, 대표 경험 1개, 지원 직무에서의 기여 1개를 50~60초 안에 연결하는 것입니다.</p>',
+              '<p class="section-desc"><strong>신입·경력직 예시와 바로 쓰는 60초 템플릿부터 확인해보세요.</strong> 핵심은 강점 1개, 대표 경험 1개, 지원 직무에서의 기여 1개를 50~60초 안에 연결하는 것입니다.</p>'
+            ),
+            (
+              '<a href="#quick-examples" class="btn-primary">신입·경력 예시 바로 보기</a>',
+              '<a href="#quick-examples" class="btn-primary">신입·경력직 예시 바로 보기</a>'
+            ),
+            (
+              '<a href="#quick-template" class="btn-outline">바로 쓰는 60초 틀</a>',
+              '<a href="#quick-template" class="btn-outline">바로 쓰는 60초 템플릿</a>'
+            ),
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f'Expected text not found: {old}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/tune-self-introduction-seo.yml
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _posts/2026-07-19-1-minute-self-introduction-guide.md .github/workflows/tune-self-introduction-seo.yml
+          git commit -m "Tune 1-minute self-introduction SEO copy"
+          git push
