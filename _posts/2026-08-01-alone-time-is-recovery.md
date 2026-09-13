@@ -240,7 +240,7 @@ youtube_caption: 혼자만의 시간을 보내는 이유와 회복의 의미를 
           </li>
           <li>
             <span class="info-card-label">예약 가능 시간</span>
-            <strong>이용 1시간 전까지 예약 가능</strong>
+            <strong>이용 30분 전까지 예약 가능</strong>
           </li>
         </ul>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary info-card-cta">지금 예약하기</a>

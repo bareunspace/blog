@@ -217,7 +217,7 @@ script_version: 20260711-4
           <p>현재 이용 요금은 1시간 10,000원 기준이며, 자세한 예약 가능 시간과 이용 조건은 예약 페이지에서 확인할 수 있습니다.</p>
         </article>
       </div>
-      <p>급하게 이용이 필요하신 경우 톡톡으로 문의해 주세요. 운영자가 확인 가능하고 빈 시간이라면 바로 이용하실 수 있도록 안내해 드립니다.</p>
+      <p>빈 시간이 있다면 이용 30분 전까지 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/?purpose=meeting&amp;source=recurring-space-booking-for-freelance-counselors" class="btn-primary">상담공간 예약 가능 시간 확인하기</a>
         <a href="/posts/bucheon-meeting-room/" class="btn-outline">다음 글: 고객 미팅 공간 보기</a>
