@@ -347,7 +347,7 @@ youtube_caption: 영상으로 실제 연습 분위기를 먼저 확인해보세�
         </article>
       </div>
       <blockquote class="example-quote">
-        <p><strong>바른자리 이용 정보</strong><br />1시간 10,000원<br />네이버 예약으로 원하는 시간 선택<br />이용 30분 전까지 예약 가능</p>
+        <p><strong>바른자리 이용 정보</strong><br />1시간 10,000원<br />네이버 예약으로 원하는 시간 선택<br />빈 시간이 있으면 다음 30분 단위부터 바로 이용 가능</p>
       </blockquote>
       <p class="section-desc">승무원 면접 전반의 표정, 자세와 답변 연습이 필요하다면 <a href="{{ '/posts/cabin-crew-interview-practice/' | relative_url }}">승무원 면접 준비, 답변보다 표정과 말하기를 먼저 연습해야 하는 이유</a>도 함께 확인해보세요.</p>
       <div class="hero-btns" style="margin-top: 1.5rem;">
