@@ -52,7 +52,10 @@ breadcrumbs:
       'public-sector': '공공기관',
       'ai-content': 'AI 콘텐츠'
     };
-    document.querySelectorAll('#case-database .case-archive-card[data-job]').forEach((card) => {
+
+    const cards = Array.from(document.querySelectorAll('#case-database .case-archive-card[data-job]'));
+
+    cards.forEach((card) => {
       const meta = card.querySelector('.case-archive-meta');
       const label = labels[card.dataset.job];
       if (!meta || !label || meta.querySelector('.case-archive-job-tag')) return;
@@ -61,6 +64,38 @@ breadcrumbs:
       tag.textContent = label;
       meta.insertBefore(tag, meta.children[1] || null);
     });
+
+    const initialVisibleCount = 6;
+    if (cards.length <= initialVisibleCount) return;
+
+    cards.slice(initialVisibleCount).forEach((card) => {
+      card.hidden = true;
+    });
+
+    const section = document.querySelector('#case-database .case-archive-shell');
+    const note = section?.querySelector('.case-archive-note');
+    if (!section || !note) return;
+
+    const more = document.createElement('div');
+    more.className = 'case-archive-more';
+
+    const link = document.createElement('a');
+    link.href = '#case-database';
+    link.setAttribute('role', 'button');
+    link.setAttribute('aria-expanded', 'false');
+    link.innerHTML = `<span>지난 사례 더 보기 (${cards.length - initialVisibleCount}건)</span><b aria-hidden="true">↓</b>`;
+
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      cards.slice(initialVisibleCount).forEach((card) => {
+        card.hidden = false;
+      });
+      link.setAttribute('aria-expanded', 'true');
+      more.remove();
+    });
+
+    more.appendChild(link);
+    section.insertBefore(more, note);
   })();
 </script>
 <script src="{{ '/scripts/interview-journey.js' | relative_url }}?v=20260829-2"></script>
