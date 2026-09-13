@@ -1,7 +1,110 @@
 version: 1
-updated_at: 2026-08-26
+updated_at: 2026-09-14
 
 cases:
+  - id: hyundai-glovis-2026-fall-ai-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 현대글로비스
+    company_slug: hyundai-glovis
+    title: 2026 하반기 신입채용 · AI 역량검사 영상면접 포함
+    summary: 현대글로비스의 2026년 하반기 신입채용으로, 서류 이후 AI 역량검사와 HMAT, 1차 면접, 최종 면접이 이어집니다. AI 역량검사에 전략게임과 영상면접이 활용된다고 공개되어 있어 카메라 앞 답변과 독립된 응시 환경을 미리 점검하는 사용 상황과 직접 연결됩니다.
+
+    published_at: 2026-09-03
+    verified_at: 2026-09-14
+
+    application:
+      start: "2026-09-01"
+      end: "2026-09-13 23:59"
+      period_label: "2026-09-01 ~ 2026-09-13 23:59"
+      hiring_size: 2026 하반기 신입사원 공개채용
+      roles: 지원 · 물류 · 해운 · KD · 글로벌통상 · 트레이딩 · IT · 보안 · 기획
+      expected_join: 2026년 12월 말 입사 예정
+
+    selection:
+      process_label: 서류전형 → AI역량검사/HMAT(10월 초) → 1차 면접(10월 말~11월 초) → 최종 면접(11월 말) → 최종 입사
+      interview_focus: AI 역량검사의 영상면접에서 카메라 앞 시선·표정·말하기를 점검하고, 이후 1차·최종면접에 맞춰 지원 경험과 직무 적합성을 실제 목소리로 설명하는 준비
+      stages:
+        - 서류전형
+        - AI역량검사 및 HMAT · 10월 초 예정
+        - 1차 면접 · 10월 말~11월 초 예정
+        - 최종 면접 · 11월 말 예정
+        - 최종 입사 · 12월 말 예정
+
+    pattern:
+      label: AI 영상면접에서 대면 면접까지 단계 확장
+      insight: 전략게임과 영상면접을 활용한 AI 역량검사 뒤에 1차·최종면접이 이어져, 온라인 평가 환경 점검과 카메라 답변 연습을 먼저 하고 이후 직무 경험 설명과 꼬리질문 대응으로 확장할 수 있는 사례입니다.
+      practice_shift: 노트북 카메라 앞에서 30~90초 답변을 녹화해 시선·속도·표정을 확인한 뒤 지원 경험과 직무 적합성을 실제 면접처럼 이어서 설명
+
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: false
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 2026년 하반기 실제 신입채용에서 AI 역량검사에 전략게임과 영상면접을 활용한다고 공개됐고, 10월 초 온라인 평가 이후 1차·최종면접이 연속해서 예정되어 있어 바른자리의 독립된 응시환경·카메라 답변·말하기 리허설 사용 상황과 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - ai-interview-practice
+        - video-interview
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 노트북 카메라와 마이크가 정상 작동하는지 확인하고 실제 응시 위치에서 화면 구도와 소리를 점검하기
+        - 자기소개·지원 동기·직무 경험을 30초·60초·90초 길이로 바꿔 카메라 앞에서 답해보기
+        - 녹화한 답변에서 시선, 말의 속도, 반복 표현, 첫 문장 시작 시간을 확인하기
+        - 1차·최종면접을 가정해 경험 설명 뒤에 선택 이유·본인 역할·대안을 묻는 꼬리질문까지 이어서 답해보기
+      excluded:
+        - 실제 현대글로비스 AI 역량검사 질문이나 영상면접 질문을 보유하거나 제공한다는 표현
+        - 전략게임의 정답이나 평가 알고리즘을 알고 있다는 표현
+        - 현대글로비스와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 2026년 하반기 신입채용 지원 기간은 9월 1일부터 9월 13일 23:59까지로 안내됐습니다.
+      - 전형 절차는 서류전형, AI역량검사/HMAT, 1차 면접, 최종 면접, 최종 입사 순으로 공개됐습니다.
+      - AI 역량검사에는 전략게임과 영상면접을 활용해 사고방식과 문제해결 과정을 분석한다고 회사 제공 자료를 인용한 보도에서 확인됩니다.
+      - AI역량검사/HMAT은 10월 초, 1차 면접은 10월 말~11월 초, 최종 면접은 11월 말로 예정되어 있습니다.
+      - 직무별 세부 면접 방식과 실제 질문은 공개된 범위 밖이므로 추정하지 않습니다.
+      - 세부 일정과 전형 방식은 변경될 수 있으므로 지원자는 공식 채용사이트의 개별 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 현대글로비스 채용
+      title: 2026 하반기 현대글로비스 신입채용
+      url: https://glovis.recruiter.co.kr/
+      checked_at: 2026-09-14
+
+    references:
+      - publisher: 연합뉴스
+        title: 현대글로비스, 하반기 신입사원 채용…AI 역량검사 실시
+        url: https://www.yna.co.kr/view/AKR20260903038400003
+        published_at: "2026-09-03"
+      - publisher: 고려대학교 경영대학 Career Hub
+        title: 2026 하반기 현대글로비스 신입채용
+        url: https://biz.korea.ac.kr/cdc/eng/recruitment/recruitment_view.html?no=14631
+        checked_at: 2026-09-14
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
   - id: airbusan-2026-08-cabin-crew
     type: hiring
     topic: interview
