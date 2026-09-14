@@ -1,0 +1,294 @@
+version: 1
+updated_at: 2026-09-15
+
+cases:
+  - id: shinhan-bank-2026-fall-video-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 신한은행
+    company_slug: shinhan-bank
+    title: 2026년 하반기 일반직 신입행원 채용 · 영상인터뷰·AI 협업면접
+    summary: 신한은행의 2026년 하반기 일반직 신입행원 채용으로, 자기소개서 대신 영상인터뷰를 통해 지원자의 이야기를 확인하고 이후 SLT 필기시험과 심층·그룹·AI 협업 통합면접을 진행하는 사례입니다. 카메라 앞 답변 녹화와 그룹면접·협업 상황 리허설을 모두 준비해야 해 바른자리의 독립 공간 수요와 직접 연결됩니다.
+
+    published_at: 2026-09-09
+    verified_at: 2026-09-15
+
+    application:
+      start: "2026-09-09"
+      end: "2026-09-17 14:00"
+      period_label: "2026-09-09 ~ 2026-09-17 14:00"
+      hiring_size: 일반직 신입행원 공개채용
+      roles: 개인·기업금융 일반 및 지역인재 등
+
+    selection:
+      process_label: 지원서 접수·영상인터뷰 및 역량검사 → SLT 필기시험 → 통합면접(심층·그룹·AI 협업면접) → 채용검진
+      interview_focus: 자기소개서 대신 제출하는 영상인터뷰에서 카메라 앞 답변을 명확하게 전달하고, 이후 그룹·AI 협업면접에서 다른 지원자와 상호작용하며 자신의 판단과 의견을 설명하는 준비
+      stages:
+        - 지원서 접수 및 영상인터뷰·역량검사
+        - SLT 필기시험
+        - 통합면접 · 심층면접
+        - 통합면접 · 그룹면접
+        - 통합면접 · AI 협업면접
+        - 채용검진
+
+    pattern:
+      label: 자기소개서에서 영상 답변·협업 면접으로
+      insight: 서면 자기소개서 대신 영상인터뷰를 전형에 직접 활용하고, 이후 통합면접에서 심층·그룹·AI 협업면접까지 진행해 개인 답변뿐 아니라 카메라 전달력과 상호작용을 함께 준비해야 하는 사례입니다.
+      practice_shift: 30~90초 답변을 실제 카메라로 녹화한 뒤, 같은 경험을 심층 꼬리질문과 그룹 토론·협업 상황에서도 짧고 분명하게 이어 말하기
+
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 실제 지원 과정에 영상인터뷰가 포함되고 이후 심층·그룹·AI 협업면접까지 이어져, 바른자리의 조용한 독립 공간·카메라 답변·말하기 리허설 수요와 직접 연결되는 현재 채용 사례입니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - video-interview
+        - ai-interview-practice
+        - group-discussion
+        - follow-up-response
+      practice_points:
+        - 노트북이나 휴대폰 카메라 앞에서 지원 동기와 주요 경험을 30초·60초·90초 버전으로 녹화하기
+        - 첫 문장을 바로 시작하고 시선·표정·말의 속도·답변 길이를 확인하기
+        - 경험 답변 뒤에 선택 이유·본인 역할·다른 대안을 묻는 꼬리질문까지 이어서 답하기
+        - 그룹 상황을 가정해 다른 의견을 요약한 뒤 본인의 동의·보완·반대 의견을 30초 안에 말하기
+      excluded:
+        - 실제 신한은행 영상인터뷰 질문이나 면접 질문을 보유하거나 제공한다는 표현
+        - AI 협업면접의 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - 신한은행과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 9일부터 9월 17일 14:00까지입니다.
+      - 공식 채용 안내를 인용한 금융투자협회 게시물에서 자기소개서 대신 영상인터뷰를 활용한다고 안내되어 있습니다.
+      - 통합면접 세부 유형은 심층면접, 그룹면접, AI 협업면접으로 공개되어 있습니다.
+      - 각 전형의 세부 시간과 실제 질문은 공개된 범위 밖이므로 임의로 추정하지 않습니다.
+
+    source:
+      publisher: 신한은행 채용
+      title: 2026년 하반기 신한은행 일반직 신입행원 채용
+      url: https://shinhan.recruiter.co.kr/career/jobs/127249
+      published_at: "2026-09-09"
+      checked_at: 2026-09-15
+
+    references:
+      - publisher: 금융투자협회
+        title: 2026년 하반기 신한은행 일반직 신입행원 채용
+        url: https://www.kofia.or.kr/brd/m_96/view.do?seq=42157
+        checked_at: 2026-09-15
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사·영상 응시 환경 가이드 보기
+
+  - id: nh-bank-2026-5th-grade-pt-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: NH농협은행
+    company_slug: nh-bank
+    title: 2026년도 금융 5급 신규직원 채용 · PT·직무역량·조직적합성면접
+    summary: NH농협은행의 2026년도 금융 5급 신규직원 채용으로, 온라인 인·적성평가와 필기전형 이후 PT면접·직무역량면접·조직적합성면접이 이어집니다. PT면접은 다대일, 직무역량·조직적합성면접은 다대다 방식으로 공식 안내되어 발표 리허설과 면접관 앞 답변 연습 수요가 분명한 사례입니다.
+
+    published_at: 2026-09-04
+    verified_at: 2026-09-15
+
+    application:
+      start: "2026-09-04"
+      end: "2026-09-17 17:00"
+      period_label: "2026-09-04 ~ 2026-09-17 17:00"
+      hiring_size: 금융 분야 ○○○명
+      roles: 개인·기업 고객 대상 종합금융서비스 등
+      expected_join: 2026년 12월 예정
+
+    selection:
+      process_label: 지원서·온라인 인적성평가 → 필기전형 → 면접전형(PT·직무역량·조직적합성)
+      interview_focus: 자료를 빠르게 정리해 면접관 앞에서 구조적으로 발표하고, 다대다 직무·조직적합성면접에서 자기소개서와 경험을 짧고 일관되게 설명하는 준비
+      stages:
+        - 지원서 작성 및 온라인 인·적성평가 Level 1 · 2026-09-19 ~ 2026-09-21
+        - 필기전형 · 2026-10-25 예정
+        - 면접전형 · 수도권 일대 · 2026년 11월 중순 예정
+        - PT면접 · 다대일
+        - 직무역량면접 · 다대다
+        - 조직적합성면접 · 다대다
+
+    pattern:
+      label: 필기 이후 발표·다대다 면접으로 확장
+      insight: PT면접에서 자료 분석과 기획·발표 역량을 확인하고, 이어지는 다대다 면접에서 직무 적합성과 조직문화 적합성을 검증하므로 읽고 준비하는 것보다 실제로 서서 설명하고 질문에 답하는 연습이 중요합니다.
+      practice_shift: 제한 시간을 두고 자료 핵심을 구조화해 3~5분 발표한 뒤, 자기소개서와 경험을 중심으로 다대다 꼬리질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 채용공고에 PT면접의 다대일 형식과 직무역량·조직적합성면접의 다대다 형식이 구체적으로 명시되어 있어 바른자리의 발표 연습·면접 리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - job-explanation
+        - panel-interview
+        - follow-up-response
+      practice_points:
+        - 임의의 금융·디지털 자료를 보고 핵심 문제 → 근거 → 제안 순서로 짧은 PT를 구성해 발표하기
+        - 발표 시작·종료 시간을 재고 서론이 길어지지 않는지 확인하기
+        - 자기소개서의 주요 경험을 역할·행동·판단·결과 순서로 60~90초 안에 설명하기
+        - 여러 면접관의 질문을 듣는 상황을 가정해 질문자에게 시선을 두고 결론부터 답하기
+      excluded:
+        - 실제 NH농협은행 PT 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 특정 금융지식 답변이나 평가 기준을 정답처럼 제시하는 표현
+        - NH농협은행과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 4일부터 9월 17일 17:00까지입니다.
+      - 온라인 인·적성평가 Level 1은 9월 19일 10:00부터 9월 21일 17:00까지 진행됩니다.
+      - 필기전형은 수도권 일대 시험장에서 10월 25일 진행 예정입니다.
+      - 면접은 수도권 일대에서 11월 중순 진행 예정입니다.
+      - PT면접은 다대일, 직무역량면접과 조직적합성면접은 다대다 형식으로 공식 안내되어 있습니다.
+
+    source:
+      publisher: NH농협은행 채용
+      title: 2026년 금융 5급 신규직원 채용
+      url: https://nhbank.incruit.com/hire/viewhire.asp?projectid=101
+      published_at: "2026-09-04"
+      checked_at: 2026-09-15
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
+
+  - id: cosmax-group-2026-fall-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 코스맥스그룹
+    company_slug: cosmax-group
+    title: 2026년 하반기 신입사원 공개채용 · AI 역량검사·실무면접
+    summary: 코스맥스그룹의 2026년 하반기 신입사원 공개채용으로, 서류전형 뒤 온라인 AI 역량검사와 실무면접을 거쳐 최종면접으로 이어지는 사례입니다. AI 평가를 위한 독립된 응시 환경과 실무·최종면접 답변 리허설을 단계적으로 준비할 수 있어 바른자리 이용 수요와 연결됩니다.
+
+    published_at: 2026-09-11
+    verified_at: 2026-09-15
+
+    application:
+      start: "2026-09-11 10:00"
+      end: "2026-09-30 16:00"
+      period_label: "2026-09-11 10:00 ~ 2026-09-30 16:00"
+      hiring_size: 코스맥스그룹 하반기 신입사원 공개채용
+      roles: R&I · 마케팅 · 영업 · SCM · IT·자동화 등 관계사별 다양한 직무
+      expected_join: 2026년 12월 중순~말 예정
+
+    selection:
+      process_label: 원서접수 → 서류전형 → AI 역량검사(10월 말)·실무면접(11월 초~중순) → 최종면접(12월 초) → 최종합격·입사
+      interview_focus: 온라인 AI 역량검사를 방해받지 않는 환경에서 응시하고, 이후 실무·최종면접에서 직무 경험과 AI 활용 경험을 실제 목소리로 구조화해 설명하는 준비
+      stages:
+        - 원서접수 · 2026-09-11 ~ 2026-09-30
+        - 서류전형
+        - AI 역량검사 · 2026년 10월 말 예정
+        - 실무면접 · 2026년 11월 초~중순 예정
+        - 최종면접 · 2026년 12월 초 예정
+        - 최종합격 및 입사 · 2026년 12월 중순~말 예정
+
+    pattern:
+      label: 온라인 AI 평가에서 실무·최종면접으로
+      insight: 온라인 AI 역량검사를 먼저 진행하고 실무면접과 최종면접이 이어져, 응시 환경 점검과 실제 말하기 준비를 단계별로 연결할 수 있는 현재 공개채용 사례입니다.
+      practice_shift: AI 역량검사 전 노트북·마이크·인터넷과 방해 요소를 확인하고, 이후 직무 경험과 AI 활용 경험을 60~90초 답변으로 녹화해 실무면접 꼬리질문까지 이어서 연습하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 현재 하반기 공개채용에서 온라인 AI 역량검사와 실무·최종면접 일정이 확인되며, 독립된 온라인 응시환경과 면접 말하기 연습을 모두 필요로 해 바른자리 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - AI 역량검사 전에 사용할 노트북·인터넷·마이크와 주변 방해 여부를 실제 응시 위치에서 확인하기
+        - 지원 직무와 본인의 경험이 어떻게 연결되는지 60초·90초 두 버전으로 설명하기
+        - AI 도구를 활용해 업무 효율이나 역량을 높인 경험이 있다면 문제 → 활용 방식 → 본인 판단 → 결과 순서로 말하기
+        - 실무면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·다른 대안을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 코스맥스그룹 AI 역량검사를 영상면접이라고 단정하는 표현
+        - 실제 AI 검사 문항이나 실제 면접 질문을 보유하거나 제공한다는 표현
+        - AI 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - 코스맥스그룹과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 11일 10:00부터 9월 30일 16:00까지로 안내되어 있습니다.
+      - 공개된 채용정보에서 AI 역량검사는 10월 말, 실무면접은 11월 초~중순, 최종면접은 12월 초 예정으로 확인됩니다.
+      - AI 역량검사의 구체적인 영상 응답 여부는 확인되지 않아 video_interview는 null로 두었습니다.
+      - 직무별 세부 전형 방식은 달라질 수 있으므로 실제 지원자는 코스맥스그룹 공식 채용사이트의 개별 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: 코스맥스그룹 채용
+      title: 2026년 하반기 코스맥스그룹 신입사원 공개채용
+      url: https://cosmax.recruiter.co.kr/
+      published_at: "2026-09-11"
+      checked_at: 2026-09-15
+
+    references:
+      - publisher: 비즈니스피플
+        title: 코스맥스 2026년 하반기 신입사원 채용 안내
+        url: https://www.bzpp.co.kr/biz/businessDetailView/BR260911A00482
+        checked_at: 2026-09-15
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
