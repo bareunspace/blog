@@ -136,7 +136,25 @@
     return '';
   }
 
+  function trackClarity(eventName, params) {
+    if (typeof window.clarity !== 'function') return;
+
+    try {
+      window.clarity('event', eventName);
+      if (params && params.purpose) {
+        window.clarity('set', 'purpose', String(params.purpose));
+      }
+      if (params && params.source_path) {
+        window.clarity('set', 'source_path', String(params.source_path));
+      }
+    } catch (e) {
+      // Clarity tracking must never block the booking flow.
+    }
+  }
+
   function track(eventName, params, callback) {
+    trackClarity(eventName, params);
+
     if (typeof window.gtag !== 'function') {
       if (callback) callback();
       return;
