@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20260820-2" />
 {% assign cases = site.data.cases.cases %}
+{% if site.data.cases_updates and site.data.cases_updates.cases %}
+  {% assign cases = site.data.cases_updates.cases | concat: cases %}
+{% endif %}
 {% if include.type %}{% assign cases = cases | where: 'type', include.type %}{% endif %}
 {% if include.topic %}{% assign cases = cases | where: 'topic', include.topic %}{% endif %}
 {% if include.job %}{% assign cases = cases | where: 'job', include.job %}{% endif %}
