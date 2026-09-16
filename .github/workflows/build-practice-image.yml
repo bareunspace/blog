@@ -1,0 +1,44 @@
+name: Build practice hero image
+
+on:
+  push:
+    branches:
+      - replace-practice-speaking-image-v2
+    paths:
+      - '.tmp/practice-image/**'
+      - '.github/workflows/build-practice-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild WebP
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f .tmp/practice-image/chunk-08 ]; then
+            echo "Image chunks already cleaned up; nothing to do."
+            exit 0
+          fi
+          cat .tmp/practice-image/chunk-* > /tmp/practice.b64
+          base64 -d /tmp/practice.b64 > images/practice-speaking-space.webp
+          file images/practice-speaking-space.webp
+          rm -rf .tmp/practice-image
+          rm -f .github/workflows/build-practice-image.yml
+      - name: Commit rebuilt image
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Replace speaking practice hero image"
+          git push
