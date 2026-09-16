@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 스터디룸·스터디 장소 고르는 법 | 혼자 공부부터 그룹 스터디까지
-description: 집·카페·스터디카페·프라이빗 공간을 비교해 혼자 공부하거나 그룹 스터디할 장소를 고르는 기준을 정리했습니다. 부천 신중동 스터디룸 선택법과 첫 이용 체크포인트를 확인하세요.
+title: 말하면서 공부할 수 있는 곳 | 스터디룸·스터디 장소 비교
+description: 말하면서 공부하거나 그룹 스터디할 장소가 필요할 때 집·카페·스터디카페·프라이빗 공간 차이를 비교합니다. 부천 신중동에서 대화 가능한 독립 스터디 공간 선택 기준도 확인하세요.
 category: 스터디룸
 hub_series: study
 hub_section: core
 hub_order: 1
 hub_label: 기본 선택 기준
 hub_kicker: 스터디룸을 처음 고를 때 먼저 읽을 글
-hub_title: 스터디룸·스터디 장소, 어디가 좋을까요?
-hub_description: 집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 혼자 공부와 그룹 스터디에 맞는 장소 선택 기준을 정리했습니다.
+hub_title: 말하면서 공부할 수 있는 곳, 어디가 좋을까요?
+hub_description: 집, 카페, 스터디카페, 프라이빗 공간대여를 비교하면서 소리 내어 공부하거나 그룹 스터디할 때 맞는 장소 선택 기준을 정리했습니다.
 hub_tags:
   - 집중 학습
   - 장소 비교
   - 첫 이용
 hub_footer: 스터디룸 기본 가이드
-keywords: 부천스터디룸,신중동스터디룸,스터디룸대여,스터디장소,그룹스터디룸,개인스터디룸,혼자공부할곳,스터디모임장소,신중동공간대여
+keywords: 말하면서공부할수있는곳,대화가능스터디룸,부천스터디룸,신중동스터디룸,스터디룸대여,스터디장소,그룹스터디룸,개인스터디룸,혼자공부할곳,스터디모임장소,신중동공간대여
 tags:
   - 신중동 공간대여
   - 스터디룸
@@ -38,15 +38,15 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Study Space Guide</p>
-      <h1 class="section-title">스터디룸·스터디 장소,<br />어디가 좋을까요?</h1>
-      <p class="section-desc">혼자 집중할 곳이 필요할 때와 여러 명이 말하며 공부할 때 필요한 환경은 다릅니다. 집·카페·스터디카페·프라이빗 공간을 비교하고, <strong>혼자 공부부터 그룹 스터디까지 목적에 맞는 장소를 고르는 기준</strong>을 확인해 보세요.</p>
+      <h1 class="section-title">말하면서 공부할 수 있는 곳,<br />어디가 좋을까요?</h1>
+      <p class="section-desc">혼자 소리 내어 연습하거나 여러 명이 질문·설명·토론하며 공부할 때는 단순히 조용한 곳보다 <strong>평소 목소리로 말할 수 있고 예약 시간 동안 자리가 보장되는지</strong>가 중요합니다. 집·카페·스터디카페·프라이빗 공간을 비교해 목적에 맞는 장소를 확인해 보세요.</p>
       <div class="guide-hero-meta" aria-label="가이드 핵심 내용">
+        <span>말하기 가능 여부</span>
         <span>장소 6종 비교</span>
         <span>선택 기준 6가지</span>
-        <span>첫 이용 체크</span>
       </div>
       <div class="hero-btns">
-        <a href="/booking/" class="btn-primary">스터디 시간 확인하기</a>
+        <a href="/booking/" class="btn-primary" data-cta="study_post_hero_booking">빈 시간 확인하기</a>
         <a href="/index.html#gallery" class="btn-outline">실제 공간 사진 보기</a>
       </div>
     </div>
@@ -68,8 +68,8 @@ script_version: 20260711-4
     <div class="section-inner guide-summary-grid">
       <article class="guide-summary-card">
         <span>01</span>
-        <h2>대화 가능 여부</h2>
-        <p>조용한 공간보다 중요한 것은 질문과 토론을 부담 없이 할 수 있는지입니다.</p>
+        <h2>말할 수 있는가</h2>
+        <p>소리 내어 읽고 질문하고 토론해도 다른 이용자를 계속 의식하지 않아도 되는지 확인하세요.</p>
       </article>
       <article class="guide-summary-card">
         <span>02</span>
@@ -89,10 +89,10 @@ script_version: 20260711-4
       <p class="guide-kicker">먼저 확인해 보세요</p>
       <div class="article-intro-layout">
         <div class="article-intro-copy">
-          <h2 class="section-title">모든 사람에게 별도 공간이 필요한 것은 아닙니다</h2>
-          <p class="section-desc">집에서 안정적으로 공부할 수 있거나 스터디 모임을 가질 별도 공간이 있다면 기존 방식이 가장 간단하고 경제적입니다.</p>
-          <p>다만 집에서 집중하기 어렵거나, 스터디 그룹처럼 여러 명이 모여 대화하며 공부해야 하는 경우가 있습니다. 카페에서 몇 차례 모여봤지만 소음과 좌석 때문에 불편을 느낀 분들도 별도 공간을 찾게 됩니다.</p>
-          <p>이 글은 집에서 공부하는 방식을 모두 바꾸자는 이야기가 아닙니다. 이미 집 밖의 학습 공간이 필요한 분들이 카페, 스터디카페, 공간대여 중 자신에게 맞는 선택지를 판단할 수 있도록 돕기 위한 글입니다.</p>
+          <h2 class="section-title">말하면서 공부해야 할 때는 장소 기준이 달라집니다</h2>
+          <p class="section-desc">집에서 편하게 소리 내어 공부할 수 있다면 별도 공간을 빌릴 필요는 없습니다. 조용히 혼자 공부하는 목적이라면 독서실이나 스터디카페가 더 경제적일 수도 있습니다.</p>
+          <p>다만 면접 답변, 발표, 스피킹, 암기 확인처럼 혼자서도 소리를 내야 하거나, 스터디 그룹이 서로 설명하고 질문해야 한다면 대화 가능한지가 중요한 조건이 됩니다. 카페에서 몇 차례 모여봤지만 소음과 좌석 때문에 불편을 느낀 경우에도 별도 공간이 대안이 될 수 있습니다.</p>
+          <p>이 글은 모든 공부에 공간대여가 필요하다는 이야기가 아닙니다. 이미 집 밖의 학습 공간이 필요한 분들이 카페, 스터디카페, 독립 공간 중 자신에게 맞는 선택지를 판단할 수 있도록 돕기 위한 글입니다.</p>
         </div>
         <figure class="article-hero-visual">
           <img src="/images/14.jpeg" alt="혼자 또는 여럿이 마주 앉아 공부할 수 있는 테이블과 의자가 놓인 바른자리 공간" loading="eager" width="2200" height="1650" />
@@ -218,11 +218,11 @@ script_version: 20260711-4
   <section id="booking-guide">
     <div class="section-inner guide-booking-panel">
       <p class="guide-kicker">Bareunjari · Sinjung-dong</p>
-      <h2 class="section-title">부천 신중동에서 스터디룸을 찾는다면</h2>
-      <p class="section-desc">바른자리는 신중동역에서 도보 1분 거리에 있으며, 예약 시간 동안 한 팀이 단독으로 이용하는 프라이빗 개인시간 플랫폼입니다. 테이블과 의자, 와이파이와 콘센트가 준비되어 있어 책과 노트북을 이용한 집중 학습이나 그룹 스터디 시간으로 활용할 수 있습니다.</p>
-      <p class="section-desc">먼저 한 번 예약해 이동 동선과 실제 이용 환경을 확인해 보세요. 반복 이용을 원한다면 희망하는 요일과 시간의 이용 가능 여부를 문의할 수 있습니다. 최신 이용 가능 시간과 예약 안내는 예약 페이지에서 확인하세요.</p>
+      <h2 class="section-title">부천 신중동에서 말하면서 공부할 스터디룸을 찾는다면</h2>
+      <p class="section-desc">바른자리는 신중동역에서 도보 1분 거리에 있으며, 예약 시간 동안 한 팀이 공간 전체를 단독으로 이용합니다. 다른 이용자와 좌석을 공유하지 않아 면접 답변, 발표, 스피킹, 그룹 스터디처럼 소리 내어 연습하거나 대화해야 할 때 이용할 수 있습니다.</p>
+      <p class="section-desc">테이블과 의자, 와이파이와 콘센트가 준비되어 있습니다. 필요한 날짜의 실제 빈 시간과 최신 예약 안내는 예약 페이지에서 바로 확인하세요.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
-        <a href="/booking/" class="btn-primary" data-cta="study_post_booking">스터디 시간 확인하기</a>
+        <a href="/booking/" class="btn-primary" data-cta="study_post_booking">빈 시간 확인하기</a>
         <a href="/study.html" class="btn-outline">스터디·소모임 가이드</a>
         <a href="/index.html#gallery" class="btn-outline">공간 사진 확인하기</a>
       </div>
