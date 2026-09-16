@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AI 역량검사 어디서 봐야 할까? | 카메라·말하기·게임까지 응시 환경 체크리스트
-description: AI 역량검사는 온라인으로 진행되지만 질의응답, 게임, 영상면접까지 이어질 수 있어 단순히 노트북만 놓을 자리가 아니라 카메라·마이크·인터넷·방해 없는 시간이 필요합니다. 집에서 보기 어렵다면 어떤 공간을 확인해야 하는지 정리했습니다.
+description: AI 역량검사는 온라인으로 진행되지만 웹캠·마이크·인터넷·방해 없는 환경이 필요할 수 있습니다. 웹캠이 없을 때 무엇을 먼저 확인해야 하는지와 집에서 응시하기 어려울 때의 장소 선택 기준을 정리했습니다.
 category: 면접준비
 hub_series: interview
 hub_section: problem
@@ -14,7 +14,7 @@ hub_tags:
   - 영상면접
   - 온라인 면접
 hub_footer: AI 역량검사 환경
-keywords: AI역량검사장소,AI역량검사어디서,AI역량검사집에서,AI역량검사스터디룸,AI역량검사환경,AI면접장소,잡다역량검사,역량검사카메라,역량검사마이크,부천면접공간,신중동면접공간
+keywords: AI역량검사장소,AI역량검사어디서,AI역량검사집에서,AI역량검사스터디룸,AI역량검사환경,AI면접장소,잡다역량검사,역량검사카메라,역량검사마이크,AI역량검사웹캠,AI역량검사웹캠없으면,역량검사웹캠,부천면접공간,신중동면접공간
 tags:
   - AI 역량검사
   - AI 면접
@@ -60,10 +60,24 @@ preload_image: images/ai-competency-test-space.webp
     <h2 class="section-title">집에서 봐도 됩니다.<br />다만 검사시간 동안 환경이 유지돼야 합니다.</h2>
     <p class="section-desc">온라인 역량검사는 집에서도 응시할 수 있는 경우가 있습니다. 중요한 건 장소 이름보다 <strong>카메라와 마이크가 안정적으로 작동하고, 필요한 만큼 말할 수 있고, 다른 사람이 들어오지 않으며, 인터넷 연결이 유지되는가</strong>입니다. 실제 응시 규정은 기업 또는 검사 플랫폼의 안내를 먼저 확인하세요.</p>
     <div class="guide-summary-grid">
-      <article class="guide-summary-card"><span>01</span><h3>카메라·마이크</h3><p>영상과 음성이 필요한 과제가 있다면 시작 전에 실제 장비가 정상 작동하는지 확인합니다.</p></article>
+      <article class="guide-summary-card"><span>01</span><h3>웹캠·마이크</h3><p>웹캠이 없다고 바로 응시 불가라고 단정하지 말고, 노트북 내장 카메라 유무와 기업·검사 플랫폼의 장비 요구사항을 먼저 확인합니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h3>말할 수 있는 환경</h3><p>영상면접이나 질의응답이 포함된다면 주변을 의식하지 않고 답변할 수 있는지가 중요합니다.</p></article>
       <article class="guide-summary-card"><span>03</span><h3>방해 없는 시간</h3><p>검사 중 가족·룸메이트 출입, 전화, 생활소음 등으로 흐름이 끊기지 않는지 확인합니다.</p></article>
     </div>
+  </div>
+</section>
+
+<section id="webcam" class="guide-summary-section" aria-label="AI 역량검사 웹캠과 마이크 확인">
+  <div class="section-inner">
+    <p class="section-label">Webcam & Microphone</p>
+    <h2 class="section-title">AI 역량검사 웹캠이 없으면?<br />장비를 사기 전에 이 순서로 확인하세요</h2>
+    <p class="section-desc"><strong>먼저 응시 안내에서 카메라·마이크 요구사항을 확인하세요.</strong> 노트북에 카메라와 마이크가 내장돼 있다면 별도 외장 웹캠이 필요하지 않은 경우도 있지만, 검사별 조건은 다를 수 있습니다. 특정 장비가 필수인지 여부는 기업 또는 검사 플랫폼의 안내가 가장 우선입니다.</p>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>01</span><h3>내장 카메라 확인</h3><p>노트북 설정이나 카메라 앱에서 내장 카메라가 실제로 인식되고 화면이 정상적으로 나오는지 확인합니다.</p></article>
+      <article class="guide-summary-card"><span>02</span><h3>응시 안내 확인</h3><p>외장 웹캠이 필요한지, 카메라 위치나 화면 조건이 따로 있는지 해당 기업·검사 플랫폼의 안내를 확인합니다.</p></article>
+      <article class="guide-summary-card"><span>03</span><h3>마이크까지 테스트</h3><p>영상만 확인하지 말고 실제로 말해 보면서 마이크 입력과 녹음 음량이 안정적인지도 함께 점검합니다.</p></article>
+    </div>
+    <p><strong>바른자리는 노트북이나 웹캠을 제공하지 않습니다.</strong> 외부 공간에서 응시한다면 필요한 장비를 직접 준비하고, 예약 전에 실제 응시 조건과 공간 환경을 비교해 주세요.</p>
   </div>
 </section>
 
@@ -83,6 +97,7 @@ preload_image: images/ai-competency-test-space.webp
 <nav class="guide-toc" aria-label="AI 역량검사 응시 환경 목차">
   <div class="guide-toc-inner">
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
+    <a href="#webcam">웹캠 없을 때</a>
     <a href="#what">어떤 검사인가</a>
     <a href="#home-test">집에서 볼 때</a>
     <a href="#checklist">장소 체크리스트</a>
@@ -187,6 +202,7 @@ preload_image: images/ai-competency-test-space.webp
   <div class="section-inner">
     <h2 class="section-title">AI 역량검사 장소 FAQ</h2>
     <div class="contact-faq">
+      <details><summary>AI 역량검사 웹캠이 없으면 어떻게 하나요?</summary><p>먼저 노트북에 카메라와 마이크가 내장돼 있는지 확인하고, 기업 또는 검사 플랫폼의 응시 안내에서 외장 웹캠이 별도로 필요한지 확인하세요. 검사마다 요구사항이 다를 수 있으므로 장비를 새로 준비하기 전에 공식 응시 조건을 먼저 보는 것이 좋습니다.</p></details>
       <details><summary>AI 역량검사는 집에서 볼 수 있나요?</summary><p>온라인으로 응시하는 역량검사는 집에서 진행할 수 있는 경우가 있습니다. 다만 기업이나 검사 플랫폼별 응시 규정이 다를 수 있으므로 받은 안내에서 장소와 장비 조건을 먼저 확인해야 합니다.</p></details>
       <details><summary>AI 역량검사 장소는 어디가 좋은가요?</summary><p>특정 장소보다 인터넷과 전원이 안정적이고, 필요한 만큼 말할 수 있으며, 검사 도중 다른 사람이 들어오지 않는 환경인지가 더 중요합니다. 집에서 이 조건을 만들 수 있다면 집도 괜찮고, 어렵다면 독립된 외부 공간을 검토할 수 있습니다.</p></details>
       <details><summary>AI 역량검사는 얼마나 걸리나요?</summary><p>검사 종류와 기업 설정에 따라 다릅니다. 현재 JOBDA의 일반 역량검사 안내에서는 약 80분을 제시하고 있지만 실제 기업 전형에서는 시간이 달라질 수 있으므로 응시 안내를 기준으로 준비하세요.</p></details>
