@@ -67,20 +67,6 @@ preload_image: images/ai-competency-test-space.webp
   </div>
 </section>
 
-<section id="webcam" class="guide-summary-section" aria-label="AI 역량검사 웹캠과 마이크 확인">
-  <div class="section-inner">
-    <p class="section-label">Webcam & Microphone</p>
-    <h2 class="section-title">AI 역량검사 웹캠이 없으면?<br />장비를 사기 전에 이 순서로 확인하세요</h2>
-    <p class="section-desc"><strong>먼저 응시 안내에서 카메라·마이크 요구사항을 확인하세요.</strong> 노트북에 카메라와 마이크가 내장돼 있다면 별도 외장 웹캠이 필요하지 않은 경우도 있지만, 검사별 조건은 다를 수 있습니다. 특정 장비가 필수인지 여부는 기업 또는 검사 플랫폼의 안내가 가장 우선입니다.</p>
-    <div class="guide-summary-grid">
-      <article class="guide-summary-card"><span>01</span><h3>내장 카메라 확인</h3><p>노트북 설정이나 카메라 앱에서 내장 카메라가 실제로 인식되고 화면이 정상적으로 나오는지 확인합니다.</p></article>
-      <article class="guide-summary-card"><span>02</span><h3>응시 안내 확인</h3><p>외장 웹캠이 필요한지, 카메라 위치나 화면 조건이 따로 있는지 해당 기업·검사 플랫폼의 안내를 확인합니다.</p></article>
-      <article class="guide-summary-card"><span>03</span><h3>마이크까지 테스트</h3><p>영상만 확인하지 말고 실제로 말해 보면서 마이크 입력과 녹음 음량이 안정적인지도 함께 점검합니다.</p></article>
-    </div>
-    <p><strong>바른자리는 노트북이나 웹캠을 제공하지 않습니다.</strong> 외부 공간에서 응시한다면 필요한 장비를 직접 준비하고, 예약 전에 실제 응시 조건과 공간 환경을 비교해 주세요.</p>
-  </div>
-</section>
-
 <section id="booking-bridge" class="guide-summary-section" aria-label="AI 역량검사 공간 예약 안내">
   <div class="section-inner">
     <p class="section-label">Private Test Space</p>
@@ -97,7 +83,6 @@ preload_image: images/ai-competency-test-space.webp
 <nav class="guide-toc" aria-label="AI 역량검사 응시 환경 목차">
   <div class="guide-toc-inner">
     <span class="guide-toc-label">이 글에서 확인할 내용</span>
-    <a href="#webcam">웹캠 없을 때</a>
     <a href="#what">어떤 검사인가</a>
     <a href="#home-test">집에서 볼 때</a>
     <a href="#checklist">장소 체크리스트</a>
