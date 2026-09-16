@@ -1,7 +1,110 @@
 version: 1
-updated_at: 2026-09-15
+updated_at: 2026-09-16
 
 cases:
+  - id: nhis-2026-fall-new-hire-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 국민건강보험공단
+    company_slug: nhis
+    title: 2026년도 하반기 신규직원 채용 · 경험행동·상황·토론면접
+    summary: 국민건강보험공단의 2026년도 하반기 신규직원 374명 채용으로, 일반·강원인재 모집은 필기와 인성검사 이후 경험행동면접·상황면접·토론면접을 진행합니다. 지원 경험을 구조적으로 설명하고 처음 보는 상황에 대응하며 다른 지원자와 토론하는 연습이 모두 필요해 바른자리의 말하기·면접 리허설 수요와 직접 연결됩니다.
+
+    published_at: 2026-09-15
+    verified_at: 2026-09-16
+
+    application:
+      start: "2026-09-15"
+      end: "2026-09-29"
+      period_label: "2026-09-15 ~ 2026-09-29"
+      hiring_size: 신규직원 374명
+      roles: 행정직 · 건강직 · 요양직 · 전산직 등
+
+    selection:
+      process_label: 지원서 접수 → 서류심사 → 필기시험 → 인성검사·증빙서류 제출 → 면접시험(경험행동·상황·토론) → 수습임용
+      interview_focus: 경험행동면접에서 실제 경험과 본인 역할을 구체적으로 설명하고, 상황면접에서 판단 기준과 대응을 즉시 말하며, 토론면접에서 다른 지원자의 의견을 듣고 자신의 의견을 짧고 논리적으로 제시하는 준비
+      stages:
+        - 지원서 접수
+        - 서류심사
+        - 필기시험 · 일반·강원인재 등 해당 모집
+        - 인성검사 및 증빙서류 제출
+        - 경험행동면접
+        - 상황면접
+        - 토론면접 · 전산직은 코딩테스트+과제면접으로 대체
+        - 수습임용
+
+    pattern:
+      label: 개인 경험 설명에서 즉시 상황 대응·토론까지
+      insight: 한 번의 면접에서 경험행동, 상황 대응, 토론을 연속해서 확인하므로 예상 답변 암기만으로는 부족하고 경험 설명, 즉답, 타인과의 상호작용을 각각 실제 목소리로 반복해야 하는 사례입니다.
+      practice_shift: 핵심 경험을 60~90초로 설명한 뒤 상황 질문에 30~60초로 즉답하고, 토론에서는 기조발언·동의·보완·반대 발언을 짧게 이어서 연습하기
+
+    signals:
+      situation_interview: true
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 374명 규모의 대형 공개채용이며 공식 공공기관 채용정보에 경험행동면접·상황면접·토론면접이 명시되어 있습니다. 말하기, 즉시 상황 대응, 다인 토론 리허설 수요가 모두 있어 바른자리와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - behavioral-interview
+        - situational-response
+        - group-discussion
+        - follow-up-response
+      practice_points:
+        - 주요 경험을 상황 → 본인 역할 → 행동 → 판단 이유 → 결과 순서로 60~90초 안에 설명하기
+        - 처음 보는 상황 질문에 판단 기준 → 행동 → 이유 순서로 30~60초 안에 답하기
+        - 토론 주제를 받고 결론 → 근거 → 제안 순서로 30초 기조발언을 말하기
+        - 상대 의견을 요약한 뒤 동의·보완·반대 중 하나의 방식으로 짧게 이어 말하기
+      excluded:
+        - 실제 국민건강보험공단 면접 질문이나 토론 주제를 보유하거나 제공한다는 표현
+        - 특정 답변이 합격에 유리하다고 단정하는 표현
+        - 국민건강보험공단과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 등록일은 2026년 9월 15일이며 공고기간은 9월 15일부터 9월 29일까지입니다.
+      - 채용인원은 총 374명으로 공공기관 채용정보시스템에 공시되어 있습니다.
+      - 일반·강원인재 모집의 최종 면접은 경험행동면접, 상황면접, 토론면접으로 안내되어 있습니다.
+      - 전산직은 토론면접 대신 코딩테스트와 과제면접을 실시한다고 명시되어 있습니다.
+      - 장애·보훈 제한경쟁은 필기시험 없이 인성검사·증빙 제출 후 경험행동·상황·토론면접으로 진행됩니다.
+      - 세부 일정과 직렬별 전형은 변경될 수 있으므로 지원자는 공식 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: 국민건강보험공단
+      title: 2026년도 하반기 국민건강보험공단 신규직원 채용 공고
+      url: http://www.nhis.or.kr/nhis/together/wbhaea02700m01.do?mode=view&articleNo=11013562&article.offset=0&articleLimit=10
+      published_at: "2026-09-15"
+      checked_at: 2026-09-16
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년도 하반기 국민건강보험공단 신규직원 채용 공고
+        url: https://job.alio.go.kr/recruitview.do?idx=305006
+        checked_at: 2026-09-16
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
   - id: shinhan-bank-2026-fall-video-interview
     type: hiring
     topic: interview
