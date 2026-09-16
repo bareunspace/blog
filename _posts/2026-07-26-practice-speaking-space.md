@@ -25,6 +25,8 @@ tags:
 canonical: https://bareunjari.com/posts/practice-speaking-space/
 permalink: /posts/practice-speaking-space/
 date: 2026-07-26 09:00:00 +0900
+editor_pick: true
+editor_pick_order: -2
 og_image: https://bareunjari.com/images/practice-speaking-space.webp
 og_image_alt: 영어와 면접, 발표 연습을 위한 프라이빗 예약 공간
 og_image_width: 1672
@@ -47,7 +49,6 @@ script_version: 20260711-4
     </div>
   </section>
   {% include breadcrumb.html %}
-
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
