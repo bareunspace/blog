@@ -39,7 +39,8 @@
         data-situation="{% if case.signals.situation_interview == true %}true{% else %}false{% endif %}"
         data-english="{% if case.signals.english_interview == true %}true{% else %}false{% endif %}"
         data-deep="{% if case.signals.deep_interview == true %}true{% else %}false{% endif %}"
-        data-task="{% if case.signals.task_interview == true %}true{% else %}false{% endif %}">
+        data-task="{% if case.signals.task_interview == true %}true{% else %}false{% endif %}"
+        data-practice-types="{% if case.barunjari.practice_types %}{% for item in case.barunjari.practice_types %}{{ item | strip | escape }}{% unless forloop.last %}||{% endunless %}{% endfor %}{% endif %}">
         <details class="case-archive-item" {% if include.open_first and forloop.first %}open{% endif %}>
           <summary>
             <div class="case-archive-title">
