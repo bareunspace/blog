@@ -1,7 +1,103 @@
 version: 1
-updated_at: 2026-09-16
+updated_at: 2026-09-20
 
 cases:
+  - id: kipa-2026-4th-ai-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국발명진흥회
+    company_slug: kipa
+    title: 2026년 제4차 임시계약직 채용 · 온라인 AI 역량면접
+    summary: 한국발명진흥회의 2026년 제4차 임시계약직 채용으로, 서류전형에서 5배수를 선발한 뒤 온라인 AI 역량면접을 실시해 최종 1배수를 선발합니다. 실제 전형 자체가 온라인 AI 면접으로 진행돼 방해받지 않는 독립 공간에서 응시 환경을 점검하고 말하기를 준비하려는 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-07
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-07"
+      end: "2026-09-21 14:00"
+      period_label: "2026-09-07 ~ 2026-09-21 14:00"
+      hiring_size: 임시계약직 4명
+      roles: 사업관리 · 경영·회계·사무 관련 직무
+      expected_join: 2026년 11월 2일 근무 시작 예정
+
+    selection:
+      process_label: 원서접수 → 서류전형(NCS 기반 자기소개서 정성평가·5배수) → 온라인 AI 역량면접 → 입사
+      interview_focus: 온라인 AI 역량면접을 실제 응시 환경에 가깝게 준비하고, 지원 경험과 직무 관련 내용을 짧고 명확하게 말로 설명하는 연습
+      stages:
+        - 원서접수 · 2026-09-07 ~ 2026-09-21 14:00
+        - 서류전형 · 자격요건 확인 및 NCS 기반 자기소개서 정성평가 · 5배수
+        - 온라인 AI 역량면접 · 1배수 선발
+        - 근무 시작 · 2026-11-02 예정
+
+    pattern:
+      label: 서류평가 이후 온라인 AI 면접으로 최종 선발
+      insight: 서류전형 통과 뒤 별도의 대면면접이 아니라 온라인 AI 역량면접을 통해 최종 선발하는 구조가 공식 공고에 명시된 사례입니다. 온라인 응시 환경과 실제 말하기 준비를 함께 점검할 필요가 있습니다.
+      practice_shift: 응시 장비와 인터넷 환경을 먼저 확인한 뒤, 자기소개서의 주요 경험과 지원 직무 관련 내용을 30~90초 답변으로 소리 내어 반복하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: false
+      deep_interview: null
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 공공기관 채용정보에 온라인 AI 역량면접이 최종 면접전형으로 명시되어 있어 조용한 독립 공간, 온라인 응시 환경, 말하기 준비라는 바른자리의 핵심 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - ai-interview-practice
+        - speaking
+        - follow-up-response
+      practice_points:
+        - 실제 응시할 노트북·인터넷·마이크와 주변 방해 요소를 미리 점검하기
+        - 자기소개서에 적은 주요 경험을 상황 → 본인 역할 → 행동 → 결과 순서로 60~90초 안에 설명하기
+        - 지원 직무와 본인의 경험이 어떻게 연결되는지 결론부터 60초 안에 말하기
+        - 처음 듣는 질문을 가정해 10초 안에 핵심 결론을 정하고 짧게 답하는 연습하기
+      excluded:
+        - 실제 한국발명진흥회 AI 역량면접 문항을 보유하거나 제공한다는 표현
+        - AI 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - 한국발명진흥회와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고기간은 2026년 9월 7일부터 9월 21일 14:00까지입니다.
+      - 채용인원은 총 4명으로 공공기관 채용정보시스템에 공시되어 있습니다.
+      - 서류전형은 자격요건 확인과 NCS 기반 자기소개서 정성평가로 5배수를 선발합니다.
+      - 면접전형은 온라인 AI 역량면접으로 진행하며 최종 1배수를 선발한다고 공식 공고에 명시되어 있습니다.
+      - AI 역량면접의 세부 문항, 영상 응답 여부, 평가 방식은 공개 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: 한국발명진흥회
+      title: 2026년 제4차 한국발명진흥회 임시계약직 채용 공고
+      url: https://www.kipa.org/kipa/notice/recruit_notice.jsp?mode=view&article_no=129085&board_wrapper=%2Fkipa%2Fnotice%2Frecruit_notice.jsp&pager.offset=0&board_no=1345
+      published_at: "2026-09-07"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년 제4차 한국발명진흥회 임시계약직 채용
+        url: https://job.alio.go.kr/recruitview.do?idx=304702
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사·온라인 응시 환경 가이드 보기
+
   - id: nhis-2026-fall-new-hire-interview
     type: hiring
     topic: interview
