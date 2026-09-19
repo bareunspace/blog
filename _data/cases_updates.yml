@@ -2,6 +2,403 @@ version: 1
 updated_at: 2026-09-20
 
 cases:
+  - id: kac-2026-fall-new-hire-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국공항공사
+    company_slug: kac
+    title: 2026년도 하반기 신입사원 공개채용 · 외국어 포함 직무역량·심층종합면접
+    summary: 한국공항공사의 2026년도 하반기 신입사원 공개채용으로, 5급갑 전형은 필기와 인성검사 이후 외국어를 포함한 직무역량 평가와 심층종합면접을 진행합니다. 직무 경험 설명과 외국어 답변을 실제 목소리로 반복해야 해 바른자리의 면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-15
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-17"
+      end: "2026-09-29 16:00"
+      period_label: "2026-09-17 ~ 2026-09-29 16:00"
+      hiring_size: 신입사원 총 90명
+      roles: 5급갑 일반·동행·장애인 및 6급갑 고졸수준
+      expected_join: 최종합격 발표 2026년 12월 24일 예정
+
+    selection:
+      process_label: 서류전형 → 필기전형 → 인성검사·자기소개서 입력 → 면접전형(직무역량·외국어 포함·심층종합) → 신원조사
+      interview_focus: 지원 직무와 경험을 구조적으로 설명하고, 외국어가 포함된 직무역량 평가에 대비해 기본 자기소개와 직무 경험을 실제 목소리로 답하며, 심층면접 꼬리질문까지 이어서 연습하는 준비
+      stages:
+        - 서류전형
+        - 필기전형
+        - 인성검사 및 자기소개서 입력
+        - 5급갑 면접전형 · 직무역량(외국어 포함) 및 심층종합면접
+        - 신원조사
+
+    pattern:
+      label: 직무 답변에 외국어·심층 검증이 결합
+      insight: 5급갑 신입에게 직무역량과 심층종합면접을 함께 실시하고 외국어 평가를 포함한다고 공식 공공기관 채용정보에 명시한 사례입니다.
+      practice_shift: 직무 경험을 60~90초로 설명한 뒤 같은 내용을 짧은 외국어 답변으로 바꾸어 말하고, 선택 이유와 본인 역할을 묻는 꼬리질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: true
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 90명 규모의 전국 단위 공개채용이며 5급갑 면접에 외국어를 포함한 직무역량 평가와 심층종합면접이 공식적으로 확인돼 말하기·외국어·심층질의 리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - english-interview
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 지원 직무와 본인의 경험이 어떻게 연결되는지 60초 안에 결론부터 설명하기
+        - 한국어로 정리한 자기소개와 직무 경험을 짧은 외국어 답변으로 바꾸어 실제 목소리로 말하기
+        - 첫 답변 뒤에 선택 이유·본인 역할·성과·대안을 묻는 꼬리질문까지 이어서 답하기
+        - 휴대폰으로 녹화해 말의 속도와 시선, 반복 표현을 확인하기
+      excluded:
+        - 실제 한국공항공사 외국어면접 질문이나 면접 질문을 보유하거나 제공한다는 표현
+        - 외국어 평가 언어·문항 구성을 공개 범위 이상으로 단정하는 표현
+        - 한국공항공사와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공공기관 채용정보시스템 기준 채용인원은 총 90명입니다.
+      - 5급갑 면접은 직무역량 평가에 외국어가 포함되고 심층종합면접을 실시한다고 명시되어 있습니다.
+      - 6급갑 고졸수준은 직무역량면접과 심층종합면접으로 별도 안내되어 있습니다.
+      - 지원 접수 세부 시각은 채용 홈페이지 안내를 기준으로 확인해야 합니다.
+
+    source:
+      publisher: 한국공항공사 채용
+      title: 2026년도 하반기 신입사원(5급갑, 6급갑 고졸수준) 공개채용
+      url: https://kac.careerlink.kr/
+      published_at: "2026-09-15"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년도 하반기 신입사원(5급갑, 6급갑 고졸수준) 공개채용
+        url: https://job.alio.go.kr/recruitview.do?idx=305011
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
+  - id: lh-2026-fall-5th-grade-presentation-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국토지주택공사
+    company_slug: lh
+    title: 2026년 하반기 5급 채용형인턴 · 집단발표·개별역량면접
+    summary: 한국토지주택공사의 2026년 하반기 5급 채용형인턴 204명 공채로, 필기전형 이후 사전 온라인검사를 거쳐 직무별 상황과 업무자료를 분석해 발표하는 집단발표면접과 자기소개서·인성검사 기반 개별역량면접을 진행합니다. 자료 분석 후 발표와 개인 답변 리허설을 함께 준비해야 하는 사례입니다.
+
+    published_at: 2026-09-15
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-22 14:00"
+      end: "2026-09-29 17:00"
+      period_label: "2026-09-22 14:00 ~ 2026-09-29 17:00"
+      hiring_size: 5급 채용형인턴 총 204명
+      roles: 일반행정 · 법률 · 회계 · 전산 · 국가유산 · 토목 · 도시계획 · 조경 · 건축 · 기계 · 전기 등
+      expected_join: 2026년 12월 28일 전일근무 시작 가능자
+
+    selection:
+      process_label: 서류전형 → 필기전형 → 자기소개서 제출·사전 온라인검사 → 최종 면접전형(집단발표·개별역량) → 채용형인턴
+      interview_focus: 직무별 상황과 업무자료를 짧은 시간에 구조화해 발표하고, 자기소개서와 인성검사 기반 개인 질문에 본인의 경험과 판단을 일관되게 설명하는 준비
+      stages:
+        - 서류전형
+        - 필기전형
+        - 자기소개서 제출 및 사전 온라인검사 · 면접 참고자료
+        - 집단발표면접 · 직무별 상황 및 업무자료 분석·발표
+        - 개별역량면접 · 자기소개서·인성검사 기반
+        - 채용형인턴 근무 및 전환심사
+
+    pattern:
+      label: 필기 이후 자료분석 발표와 개인 역량검증을 결합
+      insight: 최종 면접에서 직무별 상황과 업무자료를 분석해 직접 발표하고, 이어 개인 경험과 인성요소를 확인하는 구조가 공식적으로 공개된 사례입니다.
+      practice_shift: 처음 보는 자료를 핵심 문제 → 근거 → 대안 → 결론으로 정리해 짧게 발표하고, 발표 뒤 개인 경험과 판단 근거에 대한 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: true
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 5급만 204명 규모이며 집단발표면접과 개별역량면접이 공식적으로 확인돼 발표 리허설, 말하기, 꼬리질문 대응 수요가 매우 직접적입니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - task-explanation
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 임의의 직무 자료를 보고 핵심 문제 → 근거 → 대안 → 결론 순서로 짧은 발표를 구성하기
+        - 발표 시작과 종료 시간을 재고 서론이 길어지지 않는지 확인하기
+        - 자기소개서의 주요 경험을 역할 → 행동 → 판단 → 결과 순서로 60~90초 안에 설명하기
+        - 발표와 경험 답변 뒤에 선택 이유·다른 대안·본인 역할을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 실제 LH 집단발표면접 자료나 면접 질문을 보유하거나 제공한다는 표현
+        - 사전 온라인검사를 AI면접이라고 단정하는 표현
+        - LH와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - LH 공식 채용사이트의 5급 공채 모집인원은 총 204명으로 안내되어 있습니다.
+      - 5·6급 통합 공공기관 채용정보 기준 전체 채용인원은 235명입니다.
+      - 최종 면접은 집단발표면접과 개별역량면접으로 공식 안내되어 있습니다.
+      - 사전 온라인검사는 평가점수에 반영하지 않고 면접 참고자료로 활용한다고 안내되어 있습니다.
+
+    source:
+      publisher: 한국토지주택공사 채용
+      title: 2026년 하반기 신입사원(채용형인턴) 5급 공채
+      url: https://lh.incruit.com/hire/viewhire.asp?projectid=114
+      published_at: "2026-09-15"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: 한국토지주택공사
+        title: 2026년 하반기 신입사원(채용형인턴) 5급 공채
+        url: https://www.lh.or.kr/board.es?act=view&bid=0035&list_no=734051&mid=a10602040000
+        checked_at: 2026-09-20
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년 하반기 한국토지주택공사 신입사원(5·6급) 공채
+        url: https://job.alio.go.kr/recruitview.do?idx=304958
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
+
+  - id: kospo-2026-fall-pt-gd-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국남부발전
+    company_slug: kospo
+    title: 2026년 하반기 신입사원 및 별정직 채용 · PT·GD·실무역량면접
+    summary: 한국남부발전의 2026년 하반기 신입사원 및 별정직 76명 채용으로, 대졸수준 신입 면접은 PT, GD, 실무역량, 인성 및 조직적합성 평가로 진행됩니다. 발표와 집단토론, 직무 경험 설명을 실제처럼 반복할 필요가 커 바른자리의 발표·토론 리허설 수요와 직접 연결됩니다.
+
+    published_at: 2026-09-11
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-18 10:00"
+      end: "2026-09-28 12:00"
+      period_label: "2026-09-18 10:00 ~ 2026-09-28 12:00"
+      hiring_size: 신입사원 및 별정직 총 76명
+      roles: 사무 · ICT · 기계 · 전기 · 화학 · 토목 · 건축 · 별정직 등
+
+    selection:
+      process_label: 서류전형 → 필기전형 → 면접전형(PT·GD·실무역량·인성 및 조직적합성) → 합격예정자 결정 → 적부판정·최종합격
+      interview_focus: PT에서 핵심 내용을 구조화해 발표하고, GD에서 다른 지원자의 의견을 듣고 논리적으로 발언하며, 실무역량면접에서 직무 경험과 판단 근거를 구체적으로 설명하는 준비
+      stages:
+        - 서류전형
+        - NCS 기반 필기전형
+        - PT 평가
+        - GD 평가
+        - 실무역량 평가
+        - 인성 및 조직적합성 평가
+        - 최종합격
+
+    pattern:
+      label: 발표·집단토론·실무설명을 한 면접에서 종합 평가
+      insight: 대졸수준 신입에게 PT와 GD, 실무역량, 인성 및 조직적합성을 함께 평가한다고 공식적으로 공개된 사례로, 혼자 답변을 암기하는 준비보다 발표와 상호작용 리허설이 중요합니다.
+      practice_shift: 짧은 PT 발표를 마친 뒤 토론 기조발언과 보완·반대 발언을 연습하고, 같은 주제를 직무 경험 질문으로 연결해 설명하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 76명 규모의 공채이며 PT·GD·실무역량 평가가 공식적으로 확인돼 발표·토론·말하기 연습 수요와 직접 연결됩니다. 인천 근무 모집도 포함됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - group-discussion
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 임의의 직무 주제를 정해 문제 → 근거 → 제안 → 결론 순서로 짧은 PT를 발표하기
+        - 토론 주제를 받고 30초 기조발언과 동의·보완·반대 발언을 각각 연습하기
+        - 직무 경험을 본인 역할·판단·행동·결과 순서로 60~90초 안에 설명하기
+        - 발표나 토론 뒤에 왜 그렇게 판단했는지 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 실제 한국남부발전 PT·GD 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 공개되지 않은 상황대처면접을 대졸수준 신입 공통 전형이라고 단정하는 표현
+        - 한국남부발전과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 채용인원은 총 76명이며 인천을 포함한 여러 지역에서 근무하는 모집이 포함되어 있습니다.
+      - 대졸수준 신입의 면접전형은 PT, GD, 실무역량, 인성 및 조직적합성 평가로 공식 안내되어 있습니다.
+      - 일부 다른 모집단위는 면접 평가 방식이 다를 수 있으므로 지원자는 본인의 모집단위 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: 한국남부발전
+      title: 한국남부발전(주) 2026년 하반기 신입사원 및 별정직 채용공고
+      url: https://www.kospo.co.kr/bbs/kospo/93/112917/artclView.do
+      published_at: "2026-09-11"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 한국남부발전(주) 2026년 하반기 신입사원 및 별정직 채용공고
+        url: https://job.alio.go.kr/recruitview.do?idx=304839
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
+
+  - id: fipa-2026-fall-employee-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국어촌어항공단
+    company_slug: fipa
+    title: 2026년 하반기 직원 공개채용 · PT발표·토의·개별면접
+    summary: 한국어촌어항공단의 2026년 하반기 직원 50명 공개채용으로, 일반직 경력은 개별 PT발표와 인성면접을, 일반직·공무직 신입은 토의면접 및 인성면접을 포함한 집단면접 또는 개별면접을 진행합니다. 발표와 토론을 실제 목소리로 연습할 수요가 분명한 사례입니다.
+
+    published_at: 2026-09-14
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-17 13:00"
+      end: "2026-09-30 13:00"
+      period_label: "2026-09-17 13:00 ~ 2026-09-30 13:00"
+      hiring_size: 일반직·공무직·기간제·체험형인턴 총 50명
+      roles: 일반행정 · 정보화 · 토목 · 수산 · 선박 · 사무지원 등
+      expected_join: 직무별 2026년 11~12월 임용 예정
+
+    selection:
+      process_label: 서류전형 → 필기전형 또는 온라인 인성검사 → 면접전형(경력 PT·인성 / 신입 토의·인성 집단면접 또는 개별면접) → 신규임용
+      interview_focus: 경력 지원자는 직무 내용을 구조화해 PT로 설명하고, 신입 지원자는 토의 상황에서 자신의 의견을 짧고 논리적으로 제시하며 개인면접에서는 지원 경험과 직무 이해를 구체적으로 말하는 준비
+      stages:
+        - 서류전형
+        - 필기전형 또는 온라인 인성검사 · 모집분야별 상이
+        - 일반직 경력 · 개별면접(PT발표 및 인성면접)
+        - 일반직·공무직 신입 · 집단면접(토의면접 및 인성면접) 또는 개별면접
+        - 기간제·체험형인턴 · 집단면접 또는 개별면접
+        - 신규임용
+
+    pattern:
+      label: 직급·경력에 따라 PT와 토의면접을 구분 적용
+      insight: 같은 공개채용 안에서도 경력직에는 PT발표, 신입에게는 토의·인성 중심 집단면접 또는 개별면접을 적용해 발표와 상호작용 능력을 실제로 확인하는 사례입니다.
+      practice_shift: 경력자는 직무수행 내용을 3~5분 발표로 압축하고, 신입은 토론 기조발언과 다른 의견에 대한 보완 발언을 반복한 뒤 개인 경험 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 50명 규모이며 서울·인천 근무 모집이 포함되고, 공식 공공기관 채용정보에 PT발표와 토의면접·집단면접이 명시되어 있어 바른자리의 발표·토론 리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - group-discussion
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 경력 지원자는 직무수행 경험을 문제 → 역할 → 판단 → 결과 순서로 3~5분 발표해보기
+        - 신입 지원자는 토의 주제를 받고 30초 기조발언과 상대 의견에 대한 보완 발언을 연습하기
+        - 개인면접을 가정해 지원 동기와 직무 경험을 60~90초 안에 설명하기
+        - 발표나 토의 뒤에 선택 이유·다른 대안·본인 역할을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 실제 한국어촌어항공단 PT 주제나 토의면접 질문을 보유하거나 제공한다는 표현
+        - 모든 모집분야가 동일한 면접방식이라고 단정하는 표현
+        - 한국어촌어항공단과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공단 공식 홈페이지 게시일은 2026년 9월 14일이며 실제 접수는 9월 17일 13:00부터 9월 30일 13:00까지로 안내되어 있습니다.
+      - 채용인원은 총 50명이며 서울·인천을 포함한 전국 근무 모집이 포함되어 있습니다.
+      - 일반직 경력은 개별 PT발표 및 인성면접, 일반직·공무직 신입은 토의면접 및 인성면접을 포함한 집단면접 또는 개별면접으로 안내되어 있습니다.
+      - 모집분야에 따라 면접 형태가 다르므로 실제 지원자는 본인의 세부 직무 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: 한국어촌어항공단
+      title: 2026년 하반기 한국어촌어항공단 직원 공개채용
+      url: https://www.fipa.or.kr/west/bbs/i-547/detail.do?ntt_sn=9204
+      published_at: "2026-09-14"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년 하반기 한국어촌어항공단 직원 공개채용 공고
+        url: https://job.alio.go.kr/recruitview.do?idx=304996
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
   - id: kipa-2026-4th-ai-interview
     type: hiring
     topic: interview
