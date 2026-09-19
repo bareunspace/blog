@@ -106,13 +106,19 @@ breadcrumbs:
     const today = new Date();
     const ageInDays = (date) => Math.floor((today - date) / 86400000);
 
+    const practiceTypesFor = (card) => String(card.dataset.practiceTypes || '')
+      .split('||')
+      .map((item) => item.trim())
+      .filter(Boolean);
+
     const typeMatches = (card) => {
       if (activeType === 'all') return true;
+      const practiceTypes = practiceTypesFor(card);
       if (activeType === 'ai-video') return card.dataset.ai === 'true' || card.dataset.video === 'true';
-      if (activeType === 'pt') return card.dataset.pt === 'true' || card.dataset.task === 'true';
-      if (activeType === 'discussion') return card.dataset.situation === 'true' || card.dataset.task === 'true';
+      if (activeType === 'pt') return card.dataset.pt === 'true';
+      if (activeType === 'discussion') return card.dataset.situation === 'true' || practiceTypes.includes('group-discussion');
       if (activeType === 'language') return card.dataset.english === 'true';
-      if (activeType === 'deep') return card.dataset.deep === 'true';
+      if (activeType === 'deep') return card.dataset.deep === 'true' || card.dataset.task === 'true';
       if (activeType === 'cabin-crew') return card.dataset.job === 'cabin-crew';
       return true;
     };
