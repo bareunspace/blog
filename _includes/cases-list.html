@@ -26,7 +26,20 @@
 
     <div class="case-archive-list">
       {% for case in cases limit: limit_count %}
-      <article class="case-archive-card" data-type="{{ case.type }}" data-topic="{{ case.topic }}" data-job="{{ case.job }}" data-company="{{ case.company_slug }}">
+      <article class="case-archive-card"
+        data-type="{{ case.type }}"
+        data-topic="{{ case.topic }}"
+        data-job="{{ case.job }}"
+        data-company="{{ case.company_slug }}"
+        data-application-end="{% if case.application.end %}{{ case.application.end | escape }}{% endif %}"
+        data-published-at="{{ case.published_at }}"
+        data-ai="{% if case.signals.ai_interview == true %}true{% else %}false{% endif %}"
+        data-video="{% if case.signals.video_interview == true %}true{% else %}false{% endif %}"
+        data-pt="{% if case.signals.pt_interview == true %}true{% else %}false{% endif %}"
+        data-situation="{% if case.signals.situation_interview == true %}true{% else %}false{% endif %}"
+        data-english="{% if case.signals.english_interview == true %}true{% else %}false{% endif %}"
+        data-deep="{% if case.signals.deep_interview == true %}true{% else %}false{% endif %}"
+        data-task="{% if case.signals.task_interview == true %}true{% else %}false{% endif %}">
         <details class="case-archive-item" {% if include.open_first and forloop.first %}open{% endif %}>
           <summary>
             <div class="case-archive-title">
