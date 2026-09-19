@@ -35,6 +35,29 @@ breadcrumbs:
     </div>
   </section>
 
+  <section class="case-filter-section" aria-label="채용 사례 필터">
+    <div class="section-inner case-archive-shell">
+      <div class="case-filter-group" role="group" aria-label="면접 유형">
+        <span class="case-filter-label">면접 유형</span>
+        <button type="button" class="case-filter-chip is-active" data-case-filter="type" data-value="all" aria-pressed="true">전체</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="ai-video" aria-pressed="false">AI·영상</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="pt" aria-pressed="false">PT·발표</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="discussion" aria-pressed="false">토론·상황</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="language" aria-pressed="false">외국어</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="deep" aria-pressed="false">직무·심층</button>
+        <button type="button" class="case-filter-chip" data-case-filter="type" data-value="cabin-crew" aria-pressed="false">승무원</button>
+      </div>
+      <div class="case-filter-group" role="group" aria-label="채용 상태">
+        <span class="case-filter-label">상태</span>
+        <button type="button" class="case-filter-chip is-active" data-case-filter="status" data-value="all" aria-pressed="true">전체</button>
+        <button type="button" class="case-filter-chip" data-case-filter="status" data-value="open" aria-pressed="false">접수중</button>
+        <button type="button" class="case-filter-chip" data-case-filter="status" data-value="prep" aria-pressed="false">면접 준비기간</button>
+        <button type="button" class="case-filter-chip" data-case-filter="status" data-value="past" aria-pressed="false">지난 사례</button>
+      </div>
+      <p class="case-filter-result" data-case-filter-result aria-live="polite"></p>
+    </div>
+  </section>
+
   {% include cases-list.html
     section_id='case-database'
     eyebrow='Observed Cases'
@@ -54,6 +77,14 @@ breadcrumbs:
     };
 
     const cards = Array.from(document.querySelectorAll('#case-database .case-archive-card[data-job]'));
+    const typeButtons = Array.from(document.querySelectorAll('[data-case-filter="type"]'));
+    const statusButtons = Array.from(document.querySelectorAll('[data-case-filter="status"]'));
+    const result = document.querySelector('[data-case-filter-result]');
+    const note = document.querySelector('#case-database .case-archive-note');
+    const list = document.querySelector('#case-database .case-archive-list');
+    let activeType = 'all';
+    let activeStatus = 'all';
+    let expanded = false;
 
     cards.forEach((card) => {
       const meta = card.querySelector('.case-archive-meta');
@@ -65,37 +96,112 @@ breadcrumbs:
       meta.insertBefore(tag, meta.children[1] || null);
     });
 
-    const initialVisibleCount = 6;
-    if (cards.length <= initialVisibleCount) return;
+    const normalizeDate = (value) => {
+      const raw = String(value || '').trim();
+      if (!raw) return null;
+      const dateOnly = raw.match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+      return dateOnly ? new Date(dateOnly + 'T23:59:59+09:00') : null;
+    };
 
-    cards.slice(initialVisibleCount).forEach((card) => {
-      card.hidden = true;
-    });
+    const today = new Date();
+    const ageInDays = (date) => Math.floor((today - date) / 86400000);
 
-    const section = document.querySelector('#case-database .case-archive-shell');
-    const note = section?.querySelector('.case-archive-note');
-    if (!section || !note) return;
+    const typeMatches = (card) => {
+      if (activeType === 'all') return true;
+      if (activeType === 'ai-video') return card.dataset.ai === 'true' || card.dataset.video === 'true';
+      if (activeType === 'pt') return card.dataset.pt === 'true' || card.dataset.task === 'true';
+      if (activeType === 'discussion') return card.dataset.situation === 'true' || card.dataset.task === 'true';
+      if (activeType === 'language') return card.dataset.english === 'true';
+      if (activeType === 'deep') return card.dataset.deep === 'true';
+      if (activeType === 'cabin-crew') return card.dataset.job === 'cabin-crew';
+      return true;
+    };
 
-    const more = document.createElement('div');
-    more.className = 'case-archive-more';
+    const statusFor = (card) => {
+      const end = normalizeDate(card.dataset.applicationEnd);
+      const published = normalizeDate(card.dataset.publishedAt);
+      if (end && today <= end) return 'open';
+      if (end && today > end && ageInDays(end) <= 75) return 'prep';
+      if (!end && published && ageInDays(published) <= 75) return 'prep';
+      return 'past';
+    };
 
-    const link = document.createElement('a');
-    link.href = '#case-database';
-    link.setAttribute('role', 'button');
-    link.setAttribute('aria-expanded', 'false');
-    link.innerHTML = `<span>지난 사례 더 보기 (${cards.length - initialVisibleCount}건)</span><b aria-hidden="true">↓</b>`;
+    const statusMatches = (card) => activeStatus === 'all' || statusFor(card) === activeStatus;
 
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      cards.slice(initialVisibleCount).forEach((card) => {
-        card.hidden = false;
+    const setPressed = (buttons, value) => {
+      buttons.forEach((button) => {
+        const active = button.dataset.value === value;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
-      link.setAttribute('aria-expanded', 'true');
-      more.remove();
+    };
+
+    const render = () => {
+      let matched = 0;
+      cards.forEach((card) => {
+        const match = typeMatches(card) && statusMatches(card);
+        if (match) matched += 1;
+        card.hidden = !match;
+      });
+
+      if (!expanded && activeType === 'all' && activeStatus === 'all') {
+        cards.forEach((card, index) => {
+          card.hidden = index >= 6;
+        });
+        matched = Math.min(cards.length, 6);
+      }
+
+      if (result) {
+        if (activeType === 'all' && activeStatus === 'all' && !expanded) {
+          result.textContent = `최신 사례 6건을 먼저 보여줍니다. 전체 ${cards.length}건`;
+        } else {
+          const visible = cards.filter((card) => !card.hidden).length;
+          result.textContent = `조건에 맞는 사례 ${visible}건`;
+        }
+      }
+
+      let more = document.querySelector('#case-database .case-archive-more[data-case-more]');
+      const shouldShowMore = activeType === 'all' && activeStatus === 'all' && !expanded && cards.length > 6;
+      if (shouldShowMore && !more && list && note) {
+        more = document.createElement('div');
+        more.className = 'case-archive-more';
+        more.dataset.caseMore = 'true';
+        const link = document.createElement('a');
+        link.href = '#case-database';
+        link.setAttribute('role', 'button');
+        link.setAttribute('aria-expanded', 'false');
+        link.innerHTML = `<span>지난 사례 더 보기 (${cards.length - 6}건)</span><b aria-hidden="true">↓</b>`;
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          expanded = true;
+          render();
+        });
+        more.appendChild(link);
+        note.parentNode.insertBefore(more, note);
+      } else if (!shouldShowMore && more) {
+        more.remove();
+      }
+    };
+
+    typeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeType = button.dataset.value;
+        expanded = true;
+        setPressed(typeButtons, activeType);
+        render();
+      });
     });
 
-    more.appendChild(link);
-    section.insertBefore(more, note);
+    statusButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeStatus = button.dataset.value;
+        expanded = true;
+        setPressed(statusButtons, activeStatus);
+        render();
+      });
+    });
+
+    render();
   })();
 </script>
 <script src="{{ '/scripts/interview-journey.js' | relative_url }}?v=20260829-2"></script>
