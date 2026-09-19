@@ -2,6 +2,206 @@ version: 1
 updated_at: 2026-09-20
 
 cases:
+  - id: kotra-2026-trade-new-hire-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: KOTRA
+    company_slug: kotra
+    title: 2026년 통상직 신입사원 채용 · 외국어회화·역량·최종면접
+    summary: KOTRA의 2026년 통상직 신입사원 54명 공개채용으로, 필기 이후 외국어회화 테스트와 역량면접, 최종면접이 이어집니다. 원어민과의 외국어 답변과 직무·경험 설명을 실제 목소리로 반복해야 해 바른자리의 외국어·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-17
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-17"
+      end: "2026-10-07"
+      period_label: "2026-09-17 ~ 2026-10-07"
+      hiring_size: 통상직 신입사원 54명
+      roles: 일반계열 · 이공계열 · 어문계열(중국어·러시아어·스페인어·아랍어)
+      expected_join: 2026년 12월 중 최종합격 발표 예정
+
+    selection:
+      process_label: 지원서 접수 → 인성·NCS 직업기초능력평가 → 필기시험 → 외국어회화 테스트·역량면접 → 최종면접
+      interview_focus: 원어민 면접관과의 외국어회화 테스트에서 지원 동기와 경험을 짧고 명확하게 설명하고, 역량·최종면접에서 직무 경험과 판단 근거를 일관되게 말하는 준비
+      stages:
+        - 지원서 접수
+        - 인성 및 NCS 직업기초능력평가
+        - 필기시험
+        - 외국어회화 테스트 · 원어민 면접관과의 외국어면접
+        - 역량면접 · 구조화된 면접 도구 활용
+        - 최종면접
+
+    pattern:
+      label: 필기 이후 외국어 말하기와 구조화 면접을 연속 평가
+      insight: 외국어 성적 제출에 그치지 않고 실제 외국어회화 테스트를 별도 전형으로 진행한 뒤 역량면접과 최종면접까지 이어지는 사례입니다. 읽고 준비하는 것보다 실제로 말해보고 답변 길이와 전달력을 확인하는 연습 수요가 큽니다.
+      practice_shift: 지원 동기와 주요 경험을 한국어로 먼저 60초 안에 정리한 뒤 지원 계열의 외국어로 다시 말하고, 같은 경험을 직무·역량 꼬리질문으로 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: true
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 54명 규모의 전국 단위 공개채용이며 외국어회화 테스트와 역량·최종면접이 연속으로 이어져 외국어 말하기와 면접 리허설 수요가 직접적입니다. 서울·인천·경기 근무지가 포함되어 바른자리 접근권과도 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - english-interview
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 지원 동기와 주요 경험을 30초·60초 두 버전으로 외국어로 말하기
+        - 직무와 본인의 경험이 어떻게 연결되는지 결론부터 외국어로 설명하기
+        - 같은 경험을 한국어 역량면접 답변으로 바꿔 본인 역할·판단·결과까지 이어서 말하기
+        - 휴대폰으로 녹화해 발음보다 전달 속도·멈춤·시선·답변 길이를 확인하기
+      excluded:
+        - 실제 KOTRA 외국어회화 테스트나 면접 질문을 보유하거나 제공한다는 표현
+        - 모든 계열이 동일한 외국어를 평가한다고 단정하는 표현
+        - KOTRA와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공공기관 채용정보시스템 기준 공고 등록일은 2026년 9월 17일이며 채용인원은 54명입니다.
+      - 공고기간은 2026년 9월 17일부터 10월 7일까지입니다.
+      - 공개된 채용 요약에서 외국어회화 테스트, 역량면접, 최종면접 순서가 확인됩니다.
+      - 외국어회화 테스트는 지원 계열에 따라 평가 언어가 다를 수 있으므로 실제 지원자는 공식 채용사이트의 계열별 세부 안내를 다시 확인해야 합니다.
+      - PT·토론면접은 이번에 확인한 공식 공개범위에서 명시적으로 확인하지 못해 signals에 반영하지 않았습니다.
+
+    source:
+      publisher: KOTRA 채용
+      title: 2026년 KOTRA 통상직 신입사원 채용 공고
+      url: http://kotra.careerlink.kr
+      published_at: "2026-09-17"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년 KOTRA 통상직 신입사원 채용 공고
+        url: https://job.alio.go.kr/recruitview.do?idx=305112
+        checked_at: 2026-09-20
+      - publisher: 직행
+        title: 대한무역투자진흥공사 2026년 KOTRA 통상직 신입사원 채용 공고
+        url: https://zighang.com/recruitment/d586d29a-e1f2-4eea-9fb2-88acc40b24c1
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
+  - id: kangwonland-2026-winter-ai-video-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 강원랜드
+    company_slug: kangwonland
+    title: 2026년 동계 1차 기간제 근로자 채용 · AI면접·영상면접
+    summary: 강원랜드의 2026년 동계 1차 기간제 근로자 357명 채용으로, 서류 적격자 전원이 AI면접과 영상면접을 진행합니다. 대규모 지원자가 온라인으로 카메라 앞 답변을 수행하는 구조라 조용한 독립 공간과 안정적인 응시 환경 수요가 매우 직접적인 사례입니다.
+
+    published_at: 2026-09-17
+    verified_at: 2026-09-20
+
+    application:
+      start: "2026-09-17"
+      end: "2026-10-01"
+      period_label: "2026-09-17 ~ 2026-10-01"
+      hiring_size: 동계 1차 기간제 근로자 357명
+      roles: 경영·회계·사무 · 보건·의료 · 경비·청소 · 서비스·숙박·여행·오락·스포츠 · 음식서비스 · 농림어업 등
+      expected_join: 모집분야별 공고 세부 일정 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형(자격요건 적·부) → AI면접·영상면접 → 최종 선발
+      interview_focus: 방해받지 않는 공간에서 카메라·마이크·인터넷 상태를 점검하고, 지원 동기와 경험을 실제 화면을 보며 짧고 명확하게 답하는 준비
+      stages:
+        - 지원서 접수
+        - 서류전형 · 자격요건 적·부 심사 · 적합자 전원 합격
+        - AI면접
+        - 영상면접
+        - 최종 선발
+
+    pattern:
+      label: 대규모 적격자를 온라인 AI·영상면접으로 평가
+      insight: 서류에서 배수를 크게 줄이지 않고 자격요건 적합자를 모두 면접 대상으로 넘긴 뒤 AI면접과 영상면접을 실시하는 구조로, 짧은 기간에 대규모 온라인 응시 수요가 발생할 수 있는 사례입니다.
+      practice_shift: 실제 응시할 노트북이나 휴대폰 카메라 위치와 마이크를 점검한 뒤 30~90초 답변을 여러 번 녹화하고, 첫 문장 시작 속도와 시선·답변 길이를 확인하기
+
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: false
+      deep_interview: null
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 357명 규모이며 서류 적합자 전원을 대상으로 AI면접과 영상면접을 진행한다고 공식 공공기관 채용정보에 명시되어 있습니다. 실제 응시 자체가 조용한 독립 공간·카메라·마이크·인터넷 환경을 필요로 해 바른자리 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - ai-interview-practice
+        - video-interview
+        - speaking
+        - recording
+      practice_points:
+        - 실제 응시 장비로 카메라 높이·화면 밝기·마이크·인터넷 상태를 확인하기
+        - 지원 동기와 주요 경험을 30초·60초·90초 버전으로 각각 녹화하기
+        - 질문을 처음 본 상황을 가정해 10초 안에 핵심 결론을 정하고 바로 답변을 시작하기
+        - 녹화 화면을 다시 보며 시선·표정·말의 속도·불필요한 반복 표현을 확인하기
+      excluded:
+        - 실제 강원랜드 AI·영상면접 문항을 보유하거나 제공한다는 표현
+        - AI 평가 알고리즘이나 합격 기준을 알고 있다는 표현
+        - 강원랜드와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 등록일은 2026년 9월 17일이며 공고기간은 9월 17일부터 10월 1일까지입니다.
+      - 공공기관 채용정보시스템 기준 채용인원은 357명입니다.
+      - 서류전형은 자격요건 적·부 심사로 적합자 모두 합격하며 이후 AI면접과 영상면접을 실시한다고 명시되어 있습니다.
+      - AI면접과 영상면접의 세부 문항, 플랫폼, 응시시간은 공개범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: ALIO 공공기관 채용정보
+      title: (주)강원랜드 2026년 동계 1차 기간제 근로자 모집 공고
+      url: https://job.alio.go.kr/recruitview.do?idx=305116
+      published_at: "2026-09-17"
+      checked_at: 2026-09-20
+
+    references:
+      - publisher: 강원랜드
+        title: 강원랜드 공식 홈페이지
+        url: https://kangwonland.high1.com/
+        checked_at: 2026-09-20
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사·영상 응시 환경 가이드 보기
+
   - id: kac-2026-fall-new-hire-interview
     type: hiring
     topic: interview
