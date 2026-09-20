@@ -8,6 +8,13 @@ cases:
     job: public-sector
     company: 국민연금공단
     company_slug: nps
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - social-insurance
+        - pension
+      region_tags:
+        - nationwide
     title: 2026년도 하반기 일반직 신입직원 공개채용 · 토론·상황·직무수행능력면접
     summary: 국민연금공단의 2026년도 하반기 일반직 신입직원 공개채용으로, 필기시험 이후 토론·상황·직무수행능력면접을 구조화된 방식으로 진행하는 사례입니다. 여러 지원자가 함께 참여하는 토론과 즉시 답변이 필요한 상황면접, 직무 경험 설명을 실제 목소리로 반복 연습하는 사용 상황과 직접 연결됩니다.
 
@@ -111,6 +118,13 @@ cases:
     job: public-sector
     company: 신용보증기금
     company_slug: kodit
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - finance
+        - credit-guarantee
+      region_tags:
+        - nationwide
     title: 2026년도 하반기 신입직원 채용 · 과제수행·실무·심층면접
     summary: 신용보증기금의 2026년도 하반기 신입직원 채용으로, 필기전형 이후 과제수행면접·실무면접·심층면접의 3단계 면접을 진행하는 사례입니다. 조별 과제에서 협업하며 의견을 설명하고, 업무수행계획과 경험을 실제 목소리로 전달하며 꼬리질문에 대응하는 연습과 직접 연결됩니다.
 
@@ -216,6 +230,13 @@ cases:
     job: general-corporate
     company: 아모레퍼시픽
     company_slug: amorepacific
+    taxonomy:
+      industry_tags:
+        - beauty
+        - cosmetics
+        - consumer-goods
+      region_tags:
+        - unspecified
     title: 2026 하반기 신입채용 · AI 온라인 검사 포함
     summary: 아모레퍼시픽의 2026년 하반기 신입채용으로, 서류전형 이후 AI 온라인 검사와 1차면접, 인턴 실습, Culture Fit면접/2차면접이 이어집니다. AI 온라인 검사는 역량·영어·AI 활용능력으로 구성되어 있어 조용한 독립 공간에서 장비와 응시 환경을 미리 점검하고, 이후 면접 단계에 맞춰 실제 목소리로 답변을 연습하는 사용 상황과 연결됩니다.
 
@@ -322,6 +343,12 @@ cases:
     job: general-corporate
     company: 현대글로비스
     company_slug: hyundai-glovis
+    taxonomy:
+      industry_tags:
+        - logistics
+        - mobility
+      region_tags:
+        - unspecified
     title: 2026 하반기 신입채용 · AI 역량검사 영상면접 포함
     summary: 현대글로비스의 2026년 하반기 신입채용으로, 서류 이후 AI 역량검사와 HMAT, 1차 면접, 최종 면접이 이어집니다. AI 역량검사에 전략게임과 영상면접이 활용된다고 공개되어 있어 카메라 앞 답변과 독립된 응시 환경을 미리 점검하는 사용 상황과 직접 연결됩니다.
 
@@ -425,6 +452,12 @@ cases:
     job: cabin-crew
     company: 에어부산
     company_slug: airbusan
+    taxonomy:
+      industry_tags:
+        - airline
+        - aviation
+      region_tags:
+        - busan
     title: 2026년 신입 객실승무원 채용 · 영상전형 포함
     summary: 에어부산의 2026년 신입 객실승무원 채용으로, 서류 이후 영상전형과 토론·실무, 영어·임원면접이 이어지는 사례입니다. 카메라 앞 답변과 표정·시선 점검, 토론 및 영어면접 리허설을 단계적으로 준비하는 사용 상황과 직접 연결됩니다.
 
@@ -525,6 +558,13 @@ cases:
     job: ai-content
     company: NAVER WEBTOON
     company_slug: naver-webtoon
+    taxonomy:
+      industry_tags:
+        - it
+        - digital-content
+        - webtoon
+      region_tags:
+        - gyeonggi
     title: 2026 채용연계형 인턴십 · AI 애니메이션 제작 (AI animator)
     summary: NAVER WEBTOON의 2026년 채용연계형 인턴십으로, 인터뷰 과정에 사전과제와 기업문화 적합도 검사가 포함됩니다. 작업 결과만 보여주는 것보다 연출 의도, AI 도구 선택 이유, 시행착오와 판단 근거를 실제로 설명하는 연습과 연결됩니다.
 
@@ -614,6 +654,12 @@ cases:
     job: general-corporate
     company: CJ그룹
     company_slug: cj
+    taxonomy:
+      industry_tags:
+        - conglomerate
+        - multi-industry
+      region_tags:
+        - nationwide
     title: 2026 하반기 신입 공채 사전 준비 · 상반기 AI역량검사 사례
     summary: CJ그룹은 신입 공채를 매년 3월과 9월에 진행한다고 안내하고 있으며, 2026년 상반기 주요 계열사의 실제 신입 전형에는 AI역량검사와 TEST, 1·2차 면접이 포함된 사례가 확인됩니다. 하반기 세부 공고 전에는 카메라 답변과 직무 경험 설명을 미리 연습할 수 있습니다.
 
@@ -711,6 +757,13 @@ cases:
     job: semiconductor
     company: SK하이닉스
     company_slug: sk-hynix
+    taxonomy:
+      industry_tags:
+        - semiconductor
+        - technology
+      region_tags:
+        - gyeonggi
+        - chungbuk
     title: 2026 신입 수시채용 · 반나절 심층면접 도입
     summary: 기존 20~30분 면접에서 벗어나 반나절 동안 과제 수행과 인터뷰를 진행하는 심층면접이 도입된 사례입니다. 직무 지식을 외우는 것보다 과제의 판단 근거와 문제 해결 과정을 말로 설명하는 연습과 연결됩니다.
 
@@ -809,6 +862,12 @@ cases:
     job: cabin-crew
     company: 이스타항공
     company_slug: eastar
+    taxonomy:
+      industry_tags:
+        - airline
+        - aviation
+      region_tags:
+        - unspecified
     title: 2026 신입 객실승무원 채용
     summary: 공개 전형에 상황 대처 면접이 포함된 사례입니다. 준비한 문장을 외우는 것보다 질문을 듣고 판단 기준과 행동을 짧게 설명하는 연습과 연결됩니다.
 
@@ -890,6 +949,13 @@ cases:
     job: public-sector
     company: 부천시
     company_slug: bucheon-city
+    taxonomy:
+      industry_tags:
+        - local-government
+        - public-administration
+      region_tags:
+        - bucheon
+        - gyeonggi
     title: 2027년 개별주택가격조사 기간제근로자 · 면접시험 공고 사례
     summary: 부천시 공식 채용정보 게시판에서 2026년 8월 6일 서류전형 합격자와 면접시험 시행 공고가 확인된 지역 공공채용 사례입니다. 공공기관 면접을 앞두고 지원 동기, 업무 이해, 민원·협업 상황에 대한 답변을 실제 목소리로 정리하는 연습과 연결할 수 있습니다.
 
@@ -972,6 +1038,12 @@ cases:
     job: general-corporate
     company: KT&G
     company_slug: ktng
+    taxonomy:
+      industry_tags:
+        - consumer-goods
+        - manufacturing
+      region_tags:
+        - nationwide
     title: 2026 하반기 신입채용 · AI 영상면접 포함
     summary: KT&G의 2026년 하반기 신입·경력 공개채용으로, 사무 신입은 지원서 접수 후 AI 역량검사를 완료해야 최종지원 처리되며, 전체 채용 절차에는 AI 영상면접과 실무면접, 임원면접이 포함됩니다. 카메라 앞 답변과 독립된 응시 환경을 함께 준비해야 하는 사례로 바른자리의 면접·AI 응시 수요와 직접 연결됩니다.
 
