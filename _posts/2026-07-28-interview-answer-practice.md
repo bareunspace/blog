@@ -21,7 +21,7 @@ og_image_height: 941
 preload_image: images/interview-answer-practice.webp
 css_version: 20260728-1
 extra_css: /styles/interview-answer-practice.css
-extra_css_version: 20260920-1
+extra_css_version: 20260920-2
 script_version: 20260711-4
 ---
 
