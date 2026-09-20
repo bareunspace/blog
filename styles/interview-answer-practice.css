@@ -401,18 +401,23 @@
 
 .interview-answer-guide #practice-method .about-principle-item::before {
   content: attr(data-step);
+  position: static;
+  inset: auto;
+  transform: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 34px;
+  width: auto;
   height: 28px;
-  margin-bottom: .72rem;
+  margin: 0 0 .72rem;
   padding: 0 .56rem;
   border-radius: 999px;
   background: #e4f1e8;
   color: #2d6a4f;
   font-size: .67rem;
   font-weight: 900;
+  line-height: 1;
 }
 
 /* Answer structure */
