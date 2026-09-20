@@ -20,10 +20,12 @@ og_image_width: 1672
 og_image_height: 941
 preload_image: images/interview-answer-practice.webp
 css_version: 20260728-1
+extra_css: /styles/interview-answer-practice.css
+extra_css_version: 20260920-1
 script_version: 20260711-4
 ---
 
-<main class="about-page">
+<main class="about-page interview-answer-guide">
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Interview Answer Practice Guide</p>
@@ -141,7 +143,7 @@ script_version: 20260711-4
           <p>결론이 앞에 보이는지, 같은 표현을 반복하지 않는지, 전체 길이가 너무 길지 않은지 살핍니다.</p>
         </article>
       </div>
-      <div class="section-desc" aria-label="참고 연구">
+      <div class="section-desc research-sources" aria-label="참고 연구">
         <p><strong>참고 연구</strong></p>
         <ol>
           <li id="ref-1">Grimaldi L, Hu C, Kang P, Kaib S. (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/38074581/" target="_blank" rel="noopener noreferrer"><em>Mock interviews with video-stimulated recall to prepare medical students for residency interviews</em> ↗</a></li>
