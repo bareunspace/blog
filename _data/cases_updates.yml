@@ -8,6 +8,16 @@ cases:
     job: public-sector
     company: KOTRA
     company_slug: kotra
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - trade
+        - trade-promotion
+      region_tags:
+        - nationwide
+        - seoul
+        - incheon
+        - gyeonggi
     title: 2026년 통상직 신입사원 채용 · 외국어회화·역량·최종면접
     summary: KOTRA의 2026년 통상직 신입사원 54명 공개채용으로, 필기 이후 외국어회화 테스트와 역량면접, 최종면접이 이어집니다. 원어민과의 외국어 답변과 직무·경험 설명을 실제 목소리로 반복해야 해 바른자리의 외국어·면접 리허설 수요와 직접 연결되는 사례입니다.
 
@@ -111,6 +121,13 @@ cases:
     job: general-corporate
     company: 강원랜드
     company_slug: kangwonland
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - leisure
+        - hospitality
+      region_tags:
+        - gangwon
     title: 2026년 동계 1차 기간제 근로자 채용 · AI면접·영상면접
     summary: 강원랜드의 2026년 동계 1차 기간제 근로자 357명 채용으로, 서류 적격자 전원이 AI면접과 영상면접을 진행합니다. 대규모 지원자가 온라인으로 카메라 앞 답변을 수행하는 구조라 조용한 독립 공간과 안정적인 응시 환경 수요가 매우 직접적인 사례입니다.
 
@@ -208,6 +225,13 @@ cases:
     job: public-sector
     company: 한국공항공사
     company_slug: kac
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - airport
+        - aviation
+      region_tags:
+        - nationwide
     title: 2026년도 하반기 신입사원 공개채용 · 외국어 포함 직무역량·심층종합면접
     summary: 한국공항공사의 2026년도 하반기 신입사원 공개채용으로, 5급갑 전형은 필기와 인성검사 이후 외국어를 포함한 직무역량 평가와 심층종합면접을 진행합니다. 직무 경험 설명과 외국어 답변을 실제 목소리로 반복해야 해 바른자리의 면접 리허설 수요와 직접 연결되는 사례입니다.
 
@@ -305,6 +329,14 @@ cases:
     job: public-sector
     company: 한국토지주택공사
     company_slug: lh
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - housing
+        - real-estate
+        - urban-development
+      region_tags:
+        - nationwide
     title: 2026년 하반기 5급 채용형인턴 · 집단발표·개별역량면접
     summary: 한국토지주택공사의 2026년 하반기 5급 채용형인턴 204명 공채로, 필기전형 이후 사전 온라인검사를 거쳐 직무별 상황과 업무자료를 분석해 발표하는 집단발표면접과 자기소개서·인성검사 기반 개별역량면접을 진행합니다. 자료 분석 후 발표와 개인 답변 리허설을 함께 준비해야 하는 사례입니다.
 
@@ -408,6 +440,14 @@ cases:
     job: public-sector
     company: 한국남부발전
     company_slug: kospo
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - energy
+        - power-generation
+      region_tags:
+        - nationwide
+        - incheon
     title: 2026년 하반기 신입사원 및 별정직 채용 · PT·GD·실무역량면접
     summary: 한국남부발전의 2026년 하반기 신입사원 및 별정직 76명 채용으로, 대졸수준 신입 면접은 PT, GD, 실무역량, 인성 및 조직적합성 평가로 진행됩니다. 발표와 집단토론, 직무 경험 설명을 실제처럼 반복할 필요가 커 바른자리의 발표·토론 리허설 수요와 직접 연결됩니다.
 
@@ -506,6 +546,15 @@ cases:
     job: public-sector
     company: 한국어촌어항공단
     company_slug: fipa
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - marine
+        - fisheries
+      region_tags:
+        - nationwide
+        - seoul
+        - incheon
     title: 2026년 하반기 직원 공개채용 · PT발표·토의·개별면접
     summary: 한국어촌어항공단의 2026년 하반기 직원 50명 공개채용으로, 일반직 경력은 개별 PT발표와 인성면접을, 일반직·공무직 신입은 토의면접 및 인성면접을 포함한 집단면접 또는 개별면접을 진행합니다. 발표와 토론을 실제 목소리로 연습할 수요가 분명한 사례입니다.
 
@@ -605,6 +654,13 @@ cases:
     job: public-sector
     company: 한국발명진흥회
     company_slug: kipa
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - intellectual-property
+        - business-support
+      region_tags:
+        - unspecified
     title: 2026년 제4차 임시계약직 채용 · 온라인 AI 역량면접
     summary: 한국발명진흥회의 2026년 제4차 임시계약직 채용으로, 서류전형에서 5배수를 선발한 뒤 온라인 AI 역량면접을 실시해 최종 1배수를 선발합니다. 실제 전형 자체가 온라인 AI 면접으로 진행돼 방해받지 않는 독립 공간에서 응시 환경을 점검하고 말하기를 준비하려는 수요와 직접 연결되는 사례입니다.
 
@@ -701,6 +757,14 @@ cases:
     job: public-sector
     company: 국민건강보험공단
     company_slug: nhis
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - healthcare
+        - social-insurance
+      region_tags:
+        - nationwide
+        - gangwon
     title: 2026년도 하반기 신규직원 채용 · 경험행동·상황·토론면접
     summary: 국민건강보험공단의 2026년도 하반기 신규직원 374명 채용으로, 일반·강원인재 모집은 필기와 인성검사 이후 경험행동면접·상황면접·토론면접을 진행합니다. 지원 경험을 구조적으로 설명하고 처음 보는 상황에 대응하며 다른 지원자와 토론하는 연습이 모두 필요해 바른자리의 말하기·면접 리허설 수요와 직접 연결됩니다.
 
@@ -804,6 +868,12 @@ cases:
     job: general-corporate
     company: 신한은행
     company_slug: shinhan-bank
+    taxonomy:
+      industry_tags:
+        - finance
+        - banking
+      region_tags:
+        - nationwide
     title: 2026년 하반기 일반직 신입행원 채용 · 영상인터뷰·AI 협업면접
     summary: 신한은행의 2026년 하반기 일반직 신입행원 채용으로, 자기소개서 대신 영상인터뷰를 통해 지원자의 이야기를 확인하고 이후 SLT 필기시험과 심층·그룹·AI 협업 통합면접을 진행하는 사례입니다. 카메라 앞 답변 녹화와 그룹면접·협업 상황 리허설을 모두 준비해야 해 바른자리의 독립 공간 수요와 직접 연결됩니다.
 
@@ -902,6 +972,13 @@ cases:
     job: general-corporate
     company: NH농협은행
     company_slug: nh-bank
+    taxonomy:
+      industry_tags:
+        - finance
+        - banking
+      region_tags:
+        - nationwide
+        - capital-region
     title: 2026년도 금융 5급 신규직원 채용 · PT·직무역량·조직적합성면접
     summary: NH농협은행의 2026년도 금융 5급 신규직원 채용으로, 온라인 인·적성평가와 필기전형 이후 PT면접·직무역량면접·조직적합성면접이 이어집니다. PT면접은 다대일, 직무역량·조직적합성면접은 다대다 방식으로 공식 안내되어 발표 리허설과 면접관 앞 답변 연습 수요가 분명한 사례입니다.
 
@@ -996,6 +1073,13 @@ cases:
     job: general-corporate
     company: 코스맥스그룹
     company_slug: cosmax-group
+    taxonomy:
+      industry_tags:
+        - beauty
+        - cosmetics
+        - manufacturing
+      region_tags:
+        - unspecified
     title: 2026년 하반기 신입사원 공개채용 · AI 역량검사·실무면접
     summary: 코스맥스그룹의 2026년 하반기 신입사원 공개채용으로, 서류전형 뒤 온라인 AI 역량검사와 실무면접을 거쳐 최종면접으로 이어지는 사례입니다. AI 평가를 위한 독립된 응시 환경과 실무·최종면접 답변 리허설을 단계적으로 준비할 수 있어 바른자리 이용 수요와 연결됩니다.
 
