@@ -141,6 +141,13 @@ script_version: 20260711-4
           <p>결론이 앞에 보이는지, 같은 표현을 반복하지 않는지, 전체 길이가 너무 길지 않은지 살핍니다.</p>
         </article>
       </div>
+      <div class="section-desc" aria-label="참고 연구">
+        <p><strong>참고 연구</strong></p>
+        <ol>
+          <li id="ref-1">Grimaldi L, Hu C, Kang P, Kaib S. (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/38074581/" target="_blank" rel="noopener noreferrer"><em>Mock interviews with video-stimulated recall to prepare medical students for residency interviews</em> ↗</a></li>
+          <li id="ref-2">Fukkink RG, Trienekens N, Kramer LJC. (2011). <a href="https://link.springer.com/article/10.1007/s10648-010-9144-5" target="_blank" rel="noopener noreferrer"><em>Video Feedback in Education and Training: Putting Learning in the Picture</em> ↗</a></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -347,13 +354,6 @@ script_version: 20260711-4
       <blockquote class="example-quote">
         <p><strong>바른자리</strong><br />나만의 시간을 예약하세요.<br />부천 신중동역 도보 1분<br />1시간 10,000원</p>
       </blockquote>
-      <div class="section-desc" aria-label="참고 연구">
-        <p><strong>참고 연구</strong></p>
-        <ol>
-          <li id="ref-1">Grimaldi L, Hu C, Kang P, Kaib S. (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/38074581/" target="_blank" rel="noopener noreferrer"><em>Mock interviews with video-stimulated recall to prepare medical students for residency interviews</em> ↗</a></li>
-          <li id="ref-2">Fukkink RG, Trienekens N, Kramer LJC. (2011). <a href="https://link.springer.com/article/10.1007/s10648-010-9144-5" target="_blank" rel="noopener noreferrer"><em>Video Feedback in Education and Training: Putting Learning in the Picture</em> ↗</a></li>
-        </ol>
-      </div>
       <div class="hero-btns" style="margin-top: 1.5rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
