@@ -127,6 +127,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <h2 class="section-title">녹화 연습이 필요한 이유</h2>
       <p class="section-desc">혼자 말할 때는 자신의 시선이나 표정을 객관적으로 확인하기 어렵습니다. 휴대폰으로 간단히 촬영해 보면 생각보다 많은 습관이 보입니다. 처음부터 완벽하게 고치려 하기보다, 한 번에 한 가지씩 점검하는 방식이 더 효과적입니다.</p>
+      <p class="section-desc">모의 레지던시 면접 연구에서는 자신의 면접 영상을 보며 피드백을 받은 참가자들이 영상 없이 피드백만 받은 그룹보다 면접 준비도와 자신감의 변화가 더 크게 나타났습니다.<sup><a href="#ref-1" aria-label="참고 연구 1">[1]</a></sup> 또한 33개 연구, 1,058명을 종합한 메타분석에서는 비디오 피드백이 의사소통·상호작용 기술 향상에 유의한 효과를 보였으며, 확인할 목표 행동을 정해 관찰하는 방식에서 효과가 더 컸습니다.<sup><a href="#ref-2" aria-label="참고 연구 2">[2]</a></sup></p>
       <div class="about-highlight-grid" aria-label="녹화본에서 확인할 항목">
         <article class="about-highlight-card">
           <h3>시선과 표정</h3>
@@ -347,6 +348,13 @@ script_version: 20260711-4
       <blockquote class="example-quote">
         <p><strong>바른자리</strong><br />나만의 시간을 예약하세요.<br />부천 신중동역 도보 1분<br />1시간 10,000원</p>
       </blockquote>
+      <div class="section-desc" aria-label="참고 연구">
+        <p><strong>참고 연구</strong></p>
+        <ol>
+          <li id="ref-1">Grimaldi L, Hu C, Kang P, Kaib S. (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/38074581/" target="_blank" rel="noopener noreferrer"><em>Mock interviews with video-stimulated recall to prepare medical students for residency interviews</em> ↗</a></li>
+          <li id="ref-2">Fukkink RG, Trienekens N, Kramer LJC. (2011). <a href="https://link.springer.com/article/10.1007/s10648-010-9144-5" target="_blank" rel="noopener noreferrer"><em>Video Feedback in Education and Training: Putting Learning in the Picture</em> ↗</a></li>
+        </ol>
+      </div>
       <div class="hero-btns" style="margin-top: 1.5rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
