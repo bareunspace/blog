@@ -401,9 +401,13 @@
 
 .interview-answer-guide #practice-method .about-principle-item::before {
   content: attr(data-step);
-  position: static;
-  inset: auto;
-  transform: none;
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  inset: auto !important;
+  transform: none !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
