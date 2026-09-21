@@ -2,6 +2,13 @@
   const form = document.querySelector('[data-aii-form]');
   if (!form) return;
 
+  const escapeHtml = (value) => String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+
   const practiceMode = form.querySelector('[data-aii-mode]');
   const questionCount = form.querySelector('select[name="question_count"]');
   const interviewType = form.querySelector('[data-aii-type-select]');
@@ -198,8 +205,9 @@
       prefillNote.setAttribute('data-aii-case-prefill-note', 'true');
       form.insertBefore(prefillNote, customLabel);
     }
+    const prefillLabel = escapeHtml(payload.title || `${payload.company} 사례`);
     prefillNote.innerHTML = `
-      <strong>${payload.title || `${payload.company} 사례`} 기준 질문이 자동 입력되었습니다.</strong>
+      <strong>${prefillLabel} 기준 질문이 자동 입력되었습니다.</strong>
       <p>질문 방식은 <b>내 질문 직접 입력</b>으로 맞춰 두었습니다. 답변한 뒤 카메라·마이크를 켜서 녹화하고, 영상을 현재 기기에 저장해 다시 볼 수 있습니다.</p>
     `;
 

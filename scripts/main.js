@@ -1766,9 +1766,8 @@
     };
 
     const stripHtml = (html) => {
-      const temp = document.createElement('div');
-      temp.innerHTML = html || '';
-      return (temp.textContent || temp.innerText || '').replace(/\s+/g, ' ').trim();
+      const doc = new DOMParser().parseFromString(html || '', 'text/html');
+      return (doc.body ? doc.body.textContent : '').replace(/\s+/g, ' ').trim();
     };
 
     const truncate = (text, maxLength) => {
@@ -1815,9 +1814,8 @@
         }
       };
 
-      const temp = document.createElement('div');
-      temp.innerHTML = html;
-      const images = Array.from(temp.querySelectorAll('img'));
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const images = Array.from(doc.querySelectorAll('img'));
       const candidates = [];
       const seenKeys = new Set();
 
