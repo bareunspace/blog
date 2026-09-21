@@ -210,7 +210,7 @@ script_version: 20260914-2
     .interview-journey-card-footer a, .interview-journey-completed { font-size:.69rem; }
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0" integrity="sha384-iLddHTLokph6Omwoyid4XKxHaWa6w41BnoEj0q5oOrzmYPpHIKt1wyjReA7s//pP" crossorigin="anonymous"></script>
 <script id="interviewAuthConfig" type="application/json">{"supabaseUrl":{{ site.supabase_url | jsonify }},"supabaseAnonKey":{{ site.supabase_anon_key | jsonify }},"siteUrl":{{ site.url | jsonify }},"redirectPath":{{ '/interview/' | relative_url | jsonify }}}</script>
 <script src="{{ '/scripts/interview-auth.js' | relative_url }}?v={{ page.script_version }}" defer></script>
 <script src="{{ '/scripts/interview-hub.js' | relative_url }}?v={{ page.script_version }}" defer></script>
