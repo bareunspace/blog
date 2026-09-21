@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-20
+updated_at: 2026-09-22
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1172,3 +1172,117 @@ cases:
     related:
       url: /posts/ai-competency-test-space/
       label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: kfi-2026-regular-pt-discussion-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국소방산업기술원
+    company_slug: kfi
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - fire-safety
+        - testing-certification
+        - research
+      region_tags:
+        - gyeonggi
+        - chungbuk
+        - ulsan
+    title: 2026년 정규직 채용 · 토론면접·PT발표·경험·인성면접
+    summary: 한국소방산업기술원의 2026년 정규직 17명 채용으로, 일반직 6급·연구직 주임연구원 등은 필기전형 뒤 토론면접과 경험·인성면접을 진행하고, 연구직 책임연구원은 인성검사와 PT발표 뒤 경험·인성면접을 진행합니다. 지원 분야에 따라 토론 또는 PT 발표를 실제 목소리로 반복 연습해야 해 바른자리의 발표·토론·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-16
+    verified_at: 2026-09-22
+
+    application:
+      start: "2026-09-16"
+      end: "2026-09-30"
+      period_label: "2026-09-16 ~ 2026-09-30"
+      hiring_size: 정규직 17명
+      roles: 일반직 6급 · 연구직 주임연구원 · 연구직 책임연구원 등
+      expected_join: 공고문 및 최종 합격 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형 → 직군별 필기 또는 실기전형 → 토론면접 또는 PT발표 → 경험·인성면접 → 최종합격
+      interview_focus: 일반직 6급·연구직 주임연구원 등은 토론에서 핵심 의견과 근거를 짧게 제시하고 상대 의견에 대응하는 준비, 연구직 책임연구원은 연구 내용을 제한된 시간 안에 구조화해 발표하고 후속 질문에 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-16 ~ 2026-09-30
+        - 일반경쟁 일반직 6급·연구직 주임연구원 · 필기전형 후 1차 토론면접
+        - 일반경쟁 일반직 6급·연구직 주임연구원 · 2차 경험·인성면접
+        - 제한경쟁 연구직 책임연구원 · 인성검사·PT발표
+        - 제한경쟁 연구직 책임연구원 · 경험·인성면접
+        - 제한경쟁 일반직 6급 일부 모집 · 필기전형 후 토론면접 및 경험·인성면접
+
+    pattern:
+      label: 직군별로 토론 또는 PT 발표 후 경험·인성 검증
+      insight: 같은 정규직 공개채용 안에서도 일반직·주임연구원은 토론면접, 책임연구원은 PT발표를 사용해 직무에 따라 말하기 평가 방식이 달라지는 사례입니다. 준비한 내용을 읽는 것보다 주장과 근거를 짧게 말하고, 발표 뒤 질문까지 이어서 대응하는 리허설 수요가 큽니다.
+      practice_shift: 토론 지원자는 30~60초 기조발언과 동의·보완·반대 발언을 반복하고, PT 지원자는 핵심 문제 → 근거 → 제안 또는 연구 목적 → 방법 → 결과 → 의미 순서로 발표한 뒤 꼬리질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 정규직 17명 공개채용이며 공식 공공기관 채용정보에 토론면접과 PT발표가 모두 명시되어 있습니다. 발표·토론처럼 소리 내어 반복 연습해야 하는 전형이 분명하고 근무지에 경기도가 포함되어 바른자리의 프라이빗한 말하기·리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - group-discussion
+        - pt-presentation
+        - task-explanation
+        - follow-up-response
+      practice_points:
+        - 토론 주제를 받고 결론 → 근거 → 제안 순서로 30~60초 기조발언을 말해보기
+        - 상대 의견을 요약한 뒤 동의·보완·반대 중 하나의 방식으로 20~30초 안에 이어 말하기
+        - PT 지원자는 발표 시간을 정해 핵심 메시지와 근거를 소리 내어 반복하고 서론이 길어지지 않는지 확인하기
+        - 발표나 토론 뒤 선택 이유·근거·대안을 묻는 꼬리질문까지 이어서 답해보기
+        - 휴대폰으로 녹화해 목소리 크기, 말의 속도, 시선과 반복 표현을 확인하기
+      excluded:
+        - 실제 한국소방산업기술원 토론 주제나 PT 주제를 보유하거나 제공한다는 표현
+        - 모든 지원자가 토론면접과 PT발표를 모두 진행한다고 단정하는 표현
+        - 특정 답변이나 발표 방식이 합격에 유리하다고 단정하는 표현
+        - 한국소방산업기술원과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공공기관 채용정보시스템 기준 공고 등록일은 2026년 9월 16일이며 공고기간은 9월 16일부터 9월 30일까지입니다.
+      - 채용인원은 정규직 17명이며 근무지는 울산, 경기, 충북으로 공시되어 있습니다.
+      - 일반경쟁 일반직 6급·연구직 주임연구원은 필기전형 뒤 토론면접과 경험·인성면접으로 안내되어 있습니다.
+      - 제한경쟁 연구직 책임연구원은 인성검사와 PT발표 뒤 경험·인성면접으로 안내되어 있습니다.
+      - 간호사 면허·사회형평 등 일부 제한경쟁 일반직 6급은 필기전형 뒤 토론면접과 경험·인성면접으로 안내되어 있습니다.
+      - 지원 분야별 전형이 다르므로 실제 지원자는 한국소방산업기술원 공식 공고와 개별 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 한국소방산업기술원
+      title: 2026년 한국소방산업기술원 정규직 채용
+      url: https://www.kfi.or.kr/portal/bbs/B0000037/view.do?nttId=57279&menuNo=500065&pageIndex=1
+      published_at: "2026-09-16"
+      checked_at: 2026-09-22
+
+    references:
+      - publisher: ALIO 공공기관 채용정보
+        title: 2026년 한국소방산업기술원 정규직 채용
+        url: https://job.alio.go.kr/recruitview.do?idx=305031
+        checked_at: 2026-09-22
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
