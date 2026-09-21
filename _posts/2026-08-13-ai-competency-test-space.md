@@ -58,7 +58,7 @@ preload_image: images/ai-competency-test-space.webp
   <div class="section-inner">
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">집에서 봐도 됩니다.<br />다만 검사시간 동안 환경이 유지돼야 합니다.</h2>
-    <p class="section-desc">온라인 역량검사는 집에서도 응시할 수 있는 경우가 있습니다. 중요한 건 장소 이름보다 <strong>카메라와 마이크가 안정적으로 작동하고, 필요한 만큼 말할 수 있고, 다른 사람이 들어오지 않으며, 인터넷 연결이 유지되는가</strong>입니다. 실제 응시 규정은 기업 또는 검사 플랫폼의 안내를 먼저 확인하세요.</p>
+    <p class="section-desc">온라인 역량검사는 집에서도 응시할 수 있는 경우가 있습니다. 중요한 건 장소 이름보다 <strong>카메라와 마이크가 안정적으로 작동하고, 필요한 만큼 말할 수 있고, 다른 사람이 들어오지 않으며, 인터넷 연결이 유지되는가</strong>입니다. 바른자리의 장점은 AI 역량검사를 더 잘 보게 해주는 것이 아니라, 응시 중 소음·출입·말하기·카메라 환경처럼 결과와 무관한 변수를 줄일 수 있다는 점입니다. 실제 응시 규정은 기업 또는 검사 플랫폼의 안내를 먼저 확인하세요.</p>
     <div class="guide-summary-grid">
       <article class="guide-summary-card"><span>01</span><h3>웹캠·마이크</h3><p>웹캠이 없다고 바로 응시 불가라고 단정하지 말고, 노트북 내장 카메라 유무와 기업·검사 플랫폼의 장비 요구사항을 먼저 확인합니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h3>말할 수 있는 환경</h3><p>영상면접이나 질의응답이 포함된다면 주변을 의식하지 않고 답변할 수 있는지가 중요합니다.</p></article>
