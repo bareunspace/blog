@@ -72,6 +72,7 @@ preload_image: images/ai-competency-test-space.webp
     <p class="section-label">Private Test Space</p>
     <h2 class="section-title">집에서 검사시간을<br />온전히 확보하기 어렵다면</h2>
     <p class="section-desc">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용 · 1시간 10,000원부터. 집에서 가족·생활소음·말하기 환경이 불안하다면 검사에 필요한 시간만 프라이빗 공간을 예약할 수 있습니다.</p>
+    <p class="section-desc" style="margin-top:10px;"><strong>시간 선택 예시:</strong> 말하기·카메라 점검 위주라면 1시간부터, 실제 검사 응시까지 포함한다면 안내된 검사시간에 입실·세팅·종료 확인 시간을 더해 2시간 이상을 검토하세요. 검사별 소요시간이 다르므로 초대받은 안내가 우선입니다.</p>
     <div class="hero-btns">
       <a href="/booking/?purpose=exam&amp;source=ai-competency-test-space" class="btn-primary" data-cta="ai_competency_mid_booking">필요한 시간 빈 자리 확인하기</a>
       <a href="{{ '/ai-ready-check/' | relative_url }}" class="btn-outline" data-cta="ai_competency_mid_ready_check">카메라·마이크·인터넷 5분 점검</a>
