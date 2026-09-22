@@ -59,6 +59,10 @@ preload_image: images/online-aptitude-test-space.webp
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">집에서 볼 수 있다면 집도 괜찮습니다.<br />다만 ‘독립된 응시 환경’이 되는지 먼저 확인하세요.</h2>
     <p class="section-desc">온라인 인적성검사 장소를 고를 때는 장소 이름보다 <strong>검사 안내를 충족하는지, 다른 사람이 들어오지 않는지, PC와 스마트폰을 안정적으로 사용할 수 있는지, 인터넷이 끊기지 않는지</strong>가 더 중요합니다.</p>
+    <p class="section-desc" style="margin-top:10px;">집에서 응시하기 불안해지는 대표적인 상황은 가족·룸메이트 출입, TV·통화·초인종 같은 생활소음, 감독용 스마트폰과 PC를 함께 둘 공간 부족, 장시간 응시 중 전원·인터넷 문제입니다. 이런 조건을 시험시간 동안 통제하기 어렵다면 외부 독립 공간을 비교해보는 편이 낫습니다.</p>
+    <div class="hero-btns" style="margin-top:14px;">
+      <a href="/booking/?purpose=exam&amp;source=online-aptitude-test-space" class="btn-primary" data-cta="online_aptitude_quick_booking">시험시간에 맞춰 빈 시간 확인하기</a>
+    </div>
     <div class="guide-summary-grid">
       <article class="guide-summary-card"><span>01</span><h3>독립된 공간</h3><p>검사 도중 다른 사람이 들어오거나 주변을 계속 의식해야 하는 환경인지 확인합니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h3>PC·스마트폰</h3><p>기업 안내에 필요한 장비와 프로그램을 사전에 준비하고 실제 작동 여부를 확인합니다.</p></article>
