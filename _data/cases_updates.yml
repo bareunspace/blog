@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-22
+updated_at: 2026-09-25
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1285,4 +1285,129 @@ cases:
     related:
       url: /posts/study-space-for-presentation-discussion-project/
       label: 발표·토론 연습 공간 가이드 보기
+
+  - id: hoban-group-2027-ai-open-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 호반그룹
+    company_slug: hoban-group
+    taxonomy:
+      industry_tags:
+        - construction
+        - manufacturing
+        - retail
+        - leisure
+        - services
+      region_tags:
+        - seoul
+        - capital-region
+        - nationwide
+    title: 2027년도 신입사원 공개채용 · AI Open 인터뷰 도입
+    summary: 호반그룹의 2027년도 신입사원 공개채용으로, 공식 채용페이지에서 서류전형·인성검사·1차 면접·2차 면접 절차가 확인되며 호반그룹 발표를 인용한 보도자료에서 새로운 'AI Open 인터뷰' 도입이 확인됩니다. AI를 활용해 정보를 탐색하고 문제를 스스로 정의해 논리적으로 해결하는 과정을 평가한다고 안내되어 있어, 지원 직무에 맞는 문제 정의·판단 근거·해결 과정 설명을 실제 목소리로 반복 연습하는 수요와 연결됩니다.
+
+    published_at: 2026-09-21
+    verified_at: 2026-09-25
+
+    application:
+      start: "2026-09-24"
+      end: "2026-10-11"
+      period_label: "2026-09-24 ~ 2026-10-11"
+      hiring_size: 세 자릿수 규모
+      roles: 호반건설·호반산업·호반TBM 등 건설계열 · 대한전선 · 호반호텔앤리조트·호반골프 · 호반프라퍼티 · 대아청과 등 주요 계열사 직무
+      expected_join: 2027년 1월 예정
+
+    selection:
+      process_label: 서류전형 → 인성검사 → 1차 면접 → 2차 면접 → 채용검진 → 최종합격
+      interview_focus: AI를 활용해 정보를 탐색하더라도 문제를 스스로 정의하고 선택한 근거와 해결 과정을 논리적으로 설명하는 준비, 그리고 지원 직무와 경험을 실제 목소리로 구조화해 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-24 ~ 2026-10-11
+        - 서류전형
+        - 인성검사
+        - 1차 면접
+        - 2차 면접
+        - AI Open 인터뷰 · 도입 확인, 적용 단계·진행 방식·온라인 여부는 공개 범위에서 미확인
+        - 채용검진
+        - 최종합격 · 수습 3개월
+
+    pattern:
+      label: 정답 암기보다 AI 활용 과정·문제 정의·논리적 해결 과정 평가
+      insight: 호반그룹은 이번 공개채용에서 AI Open 인터뷰를 새롭게 도입한다고 밝혔습니다. 공개된 설명은 AI 활용 자체보다 지원자가 문제를 스스로 정의하고 논리적으로 해결해 나가는 과정을 평가한다는 점을 강조합니다. 따라서 특정 정답을 외우는 준비보다 문제를 어떻게 바라봤는지, 어떤 정보를 선택했는지, 왜 그 해결책을 택했는지를 말로 설명하는 리허설과 연결됩니다.
+      practice_shift: 지원 직무와 관련된 문제를 하나 정해 문제 정의 → 확인할 정보 → 판단 기준 → 해결안 → 선택 이유 순서로 60~120초 안에 설명하고, 다른 대안이나 판단 근거를 묻는 후속 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 세 자릿수 규모의 그룹 공개채용이고 서울 본사 근무 직무를 포함하며, AI Open 인터뷰라는 새로운 면접 방식이 공식 발표를 인용한 복수 보도에서 확인됩니다. 문제 정의와 해결 과정을 소리 내어 설명하고 반복 리허설하는 수요가 바른자리의 프라이빗 면접 연습과 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+        - ai-interview
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-interview-practice
+        - speaking
+        - recording
+        - problem-definition
+        - reasoning-explanation
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 지원 직무와 관련된 문제를 하나 정하고 문제를 왜 그렇게 정의했는지 먼저 말해보기
+        - AI나 검색을 활용했다고 가정해 어떤 정보를 확인했고 어떤 정보는 제외했는지 판단 근거를 설명하기
+        - 해결안을 결론 → 근거 → 대안 비교 → 기대 결과 순서로 60~120초 안에 답해보기
+        - 첫 답변 뒤에 '왜 이 방법인가', '다른 대안은 무엇인가', '정보가 부족하면 어떻게 할 것인가' 같은 후속 질문까지 이어서 답해보기
+        - 바른자리 AI 모의면접에서 회사·직무를 설정하고 답변을 실제 목소리로 녹화·반복해보기
+      excluded:
+        - 바른자리 AI 모의면접이 호반그룹의 실제 AI Open 인터뷰를 재현한다는 표현
+        - AI Open 인터뷰가 영상면접 또는 온라인면접이라고 단정하는 표현
+        - AI Open 인터뷰가 1차 또는 2차 면접 중 특정 단계에 진행된다고 단정하는 표현
+        - 실제 호반그룹 AI Open 인터뷰 문제나 평가 알고리즘을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 호반그룹과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 호반그룹 공식 2027 채용페이지 기준 모집기간은 2026년 9월 24일부터 10월 11일까지입니다.
+      - 공식 채용페이지의 신입전형 절차는 서류전형, 인성검사, 1차 면접, 2차 면접, 채용검진, 최종합격 순으로 안내되어 있습니다.
+      - 호반그룹 발표를 인용한 2026년 9월 21일 보도에서 주요 계열사 세 자릿수 규모 채용과 AI Open 인터뷰 신규 도입이 확인됩니다.
+      - AI Open 인터뷰는 AI를 활용한 정보 탐색뿐 아니라 문제를 스스로 정의하고 논리적으로 해결하는 과정을 평가한다고 안내되어 있습니다.
+      - AI Open 인터뷰가 1차·2차 면접 중 어느 단계에 포함되는지, 온라인·영상 방식인지, 별도 플랫폼을 사용하는지는 공개된 범위에서 확인되지 않아 추정하지 않습니다.
+      - 직무별 세부 전형과 일정은 달라질 수 있으므로 지원자는 호반그룹 공식 채용페이지의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 호반그룹 채용
+      title: 2027 호반그룹 신입사원 채용
+      url: https://hobanrecruit.com/
+      checked_at: 2026-09-25
+
+    references:
+      - publisher: 이데일리
+        title: 호반그룹, 24일부터 신입사원 공채…AI 인터뷰 도입
+        url: https://www1.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02289446645582416
+        published_at: "2026-09-21"
+        checked_at: 2026-09-25
+      - publisher: 뉴스핌
+        title: 호반그룹, 2027년 신입사원 세 자릿수 공채…맞춤형 채용 도입
+        url: https://www.newspim.com/news/view/20260921000207
+        published_at: "2026-09-21"
+        checked_at: 2026-09-25
+
+    related:
+      url: /ai-interview/
+      label: 회사·직무별 AI 모의면접 연습하기
 
