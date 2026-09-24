@@ -27,25 +27,40 @@
   `;
   document.head.appendChild(style);
 
+  const title = hero.querySelector('.section-title');
+  if (title) title.textContent = 'AI 모의면접 연습실';
+
   const subtitle = hero.querySelector('.hero-subtitle');
-  if (subtitle) subtitle.textContent = 'AI로 답변을 정리한 뒤, 실제 목소리·표정·시선까지 확인하며 반복해 보세요. 온라인 연습은 준비 단계이고, 실전 리허설은 직접 말해보는 과정에서 완성됩니다.';
+  if (subtitle) {
+    subtitle.textContent = '회사와 직무를 설정하고 실제 질문을 받아 소리 내어 답한 뒤, 녹화로 확인하며 같은 질문을 반복 연습해 보세요.';
+  }
 
   const heroBtns = hero.querySelector('.hero-btns');
-  if (heroBtns && !heroBtns.querySelector('.aii-space-booking')) {
-    const booking = document.createElement('a');
-    booking.href = BOOKING_URL;
-    booking.target = '_blank';
-    booking.rel = 'noopener noreferrer';
-    booking.className = 'btn btn-outline aii-space-booking';
+  if (heroBtns) {
+    const demoButton = heroBtns.querySelector('a[href="#aiDemoSetup"]');
+    if (demoButton) demoButton.textContent = 'AI 모의면접 시작';
+
+    let booking = Array.from(heroBtns.querySelectorAll('a')).find((link) =>
+      (link.getAttribute('href') || '').includes('m.place.naver.com/place/2041312316/ticket')
+    );
+
+    if (!booking) {
+      booking = document.createElement('a');
+      booking.href = BOOKING_URL;
+      booking.target = '_blank';
+      booking.rel = 'noopener noreferrer';
+      heroBtns.appendChild(booking);
+    }
+
+    booking.className = 'btn-outline aii-space-booking';
     booking.dataset.cta = 'ai_interview_hero_booking';
     booking.textContent = '실전 연습 공간 예약';
-    heroBtns.appendChild(booking);
   }
 
   if (!demo.querySelector('.aii-practice-bridge')) {
     const bridge = document.createElement('div');
     bridge.className = 'aii-practice-bridge';
-    bridge.innerHTML = '<strong>AI 연습은 답변 준비를 위한 도구입니다.</strong><p>실제 면접에서는 답변 내용뿐 아니라 목소리 크기, 말의 속도, 표정과 시선도 함께 확인해야 합니다. 답변을 정리했다면 카메라를 켜고 실제 면접처럼 소리 내어 반복해 보세요.</p>';
+    bridge.innerHTML = '<strong>AI 연습은 답변 준비를 위한 도구입니다.</strong><p>점수보다 중요한 것은 실제 질문을 듣고 소리 내어 답한 뒤, 녹화로 확인하고 같은 질문에 다시 답해보는 반복입니다.</p>';
     const shell = demo.querySelector('.aii-flow-shell-demo');
     if (shell) shell.insertAdjacentElement('afterend', bridge);
   }
@@ -55,7 +70,7 @@
     const conversion = document.createElement('aside');
     conversion.className = 'aii-booking-conversion';
     conversion.setAttribute('aria-label', '실전 면접 연습 공간 안내');
-    conversion.innerHTML = `<p class="eyebrow">NEXT STEP · 실전 리허설</p><h3>답변을 준비했다면, 이제 실제 면접처럼 말해보세요.</h3><p>집에서 정리한 답변을 바른자리에서 소리 내어 말하고 휴대폰으로 녹화하며 반복해 보세요. 프라이빗한 공간에서 실제 면접에 가까운 흐름으로 연습할 수 있습니다.</p><a class="btn btn-primary" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer" data-cta="ai_interview_result_booking">면접 연습 공간 예약 · 1시간 1만원</a>`;
+    conversion.innerHTML = `<p class="eyebrow">NEXT STEP · 실제처럼 다시 연습</p><h3>AI 연습을 마쳤다면, 이제 소리 내어 실제처럼 연습해보세요.</h3><p>신중동역 1분 · 한 팀 단독 프라이빗룸 · 카메라·마이크 사용 가능. 방해 없이 답변을 반복하고 녹화해 확인할 수 있습니다.</p><a class="btn btn-primary" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer" data-cta="ai_interview_result_booking">빈 시간 확인하기</a>`;
     card.appendChild(conversion);
 
     const sync = () => {
@@ -70,7 +85,7 @@
 
   const sticky = document.querySelector('#mobileStickyCta');
   if (sticky) {
-    sticky.textContent = '실전 면접 연습 예약 · 1시간 1만원';
+    sticky.textContent = '실전 면접 연습 예약';
     sticky.dataset.cta = 'ai_interview_mobile_booking';
   }
 })();
