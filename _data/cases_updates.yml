@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-25
+updated_at: 2026-09-27
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1410,4 +1410,121 @@ cases:
     related:
       url: /ai-interview/
       label: 회사·직무별 AI 모의면접 연습하기
+
+  - id: kwater-2026-fall-pt-experience-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국수자원공사
+    company_slug: kwater
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - water
+        - infrastructure
+        - environment
+        - engineering
+      region_tags:
+        - incheon
+        - gyeonggi
+        - nationwide
+    title: 2026년 하반기 일반직 신입사원 공채 · 직무PT·경험역량면접
+    summary: 한국수자원공사(K-water)의 2026년 하반기 일반직 신입사원 66명 공개채용으로, 서류전형과 자기·경험기술서 제출 및 직업성격검사 이후 직무PT면접 40점과 경험역량면접 60점으로 최종 면접을 진행합니다. PT 구성과 발표, 직무 경험 설명을 실제 목소리로 반복 연습해야 해 바른자리의 발표·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-23
+    verified_at: 2026-09-27
+
+    application:
+      start: "2026-09-23"
+      end: "2026-10-07"
+      period_label: "2026-09-23 ~ 2026-10-07"
+      hiring_size: 일반직 신입사원 66명
+      roles: 보훈 52명 · 장애 14명 · 일반직 직무
+      expected_join: 2026년 11월 30일
+
+    selection:
+      process_label: 지원서 접수 → 1차 전형(서류) → 자기·경험기술서 제출 및 직업성격검사 → 2차 전형(직무PT면접 40점 + 경험역량면접 60점) → 자격요건 적부심사 → 최종합격
+      interview_focus: 직무PT에서 핵심 내용을 구조화해 짧고 명확하게 발표하고, 경험역량면접에서 지원 직무와 본인의 경험·판단·행동을 일관되게 설명하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-23 ~ 2026-10-07
+        - 1차 전형 · 서류심사
+        - 자기소개서·경험기술서 제출 및 직업성격검사
+        - 2차 전형 · 직무PT면접 40점
+        - 2차 전형 · 경험역량면접 60점
+        - 자격요건 적부심사
+        - 최종합격 및 입사 · 2026-11-30 예정
+
+    pattern:
+      label: 직무PT 발표와 경험 기반 역량면접을 한 전형에서 결합
+      insight: 최종 면접 점수를 직무PT 40점과 경험역량면접 60점으로 구성해, 직무 내용을 발표하는 능력과 본인의 경험을 질문에 맞춰 설명하는 능력을 함께 평가하는 사례입니다. 자료를 읽는 준비보다 실제로 시간을 재며 발표하고 질문에 답하는 리허설 수요가 큽니다.
+      practice_shift: 지원 직무와 관련된 주제를 정해 핵심 문제 → 근거 → 제안 → 결론 순서로 짧은 PT를 연습한 뒤, 본인 경험을 상황 → 역할 → 행동 → 판단 이유 → 결과 순서로 설명하고 후속 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 66명 규모의 공공기관 공개채용이며 직무PT면접 40점과 경험역량면접 60점이 공식 공고에 명시되어 있습니다. 근무지에 인천·경기가 포함되고 발표·경험 답변을 실제 목소리로 반복 연습해야 해 바른자리의 PT·면접 리허설 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - job-explanation
+        - behavioral-interview
+        - follow-up-response
+      practice_points:
+        - 지원 직무와 관련된 임의의 주제를 정해 핵심 문제 → 근거 → 제안 → 결론 순서로 짧은 PT를 구성하기
+        - 발표 시간을 재고 첫 30초 안에 핵심 결론이 드러나는지 확인하기
+        - 자기소개서·경험기술서의 주요 경험을 상황 → 역할 → 행동 → 판단 이유 → 결과 순서로 60~90초 안에 설명하기
+        - 첫 답변 뒤에 선택 이유·다른 대안·본인 역할을 묻는 꼬리질문까지 이어서 답하기
+        - 휴대폰으로 녹화해 시선·말의 속도·반복 표현·발표 길이를 확인하기
+      excluded:
+        - 실제 한국수자원공사 직무PT 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 이번 공고의 면접 인원 구성이나 면접시간을 확인 없이 단정하는 표현
+        - 특정 발표 방식이나 답변이 합격에 유리하다고 단정하는 표현
+        - 한국수자원공사와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공공기관 채용정보시스템 기준 공고 등록일은 2026년 9월 23일이며 공고기간은 9월 23일부터 10월 7일까지입니다.
+      - 채용인원은 총 66명이며 보훈 52명, 장애 14명으로 공시되어 있습니다.
+      - 근무지는 인천, 경기 등을 포함한 전국 지역으로 안내되어 있습니다.
+      - 2차 전형은 직무PT면접 40점과 경험역량면접 60점으로 구성됩니다.
+      - 자기소개서·경험기술서와 직업성격검사 결과는 면접 준비 단계에서 활용됩니다.
+      - 이번 공고의 세부 면접시간, 면접위원 수, 실제 PT 주제는 공개 확인 범위를 넘어 추정하지 않습니다.
+      - 세부 일정과 전형 방식은 변경될 수 있으므로 지원자는 K-water 공식 채용사이트와 JOB-ALIO 공고를 다시 확인해야 합니다.
+
+    source:
+      publisher: 한국수자원공사(K-water)
+      title: 2026년 하반기 일반직 신입사원 공채
+      url: https://www.kwater.or.kr
+      published_at: "2026-09-23"
+      checked_at: 2026-09-27
+
+    references:
+      - publisher: JOB-ALIO 공공기관 채용정보
+        title: 한국수자원공사 2026년 하반기 일반직 신입사원 공채
+        url: https://job.alio.go.kr/recruitview.do?idx=305290
+        published_at: "2026-09-23"
+        checked_at: 2026-09-27
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
 
