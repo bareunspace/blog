@@ -3,7 +3,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.95.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-learning-cron-token",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
@@ -83,7 +83,6 @@ Deno.serve(async (req: Request) => {
 
   const authorization = req.headers.get("Authorization") ?? "";
   const token = authorization.replace(/^Bearer\s+/i, "");
-  if (!token) return Response.json({ error: "unauthorized" }, { status: 401, headers: corsHeaders });
 
   const url = Deno.env.get("SUPABASE_URL") ?? "";
   const publicKey = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
@@ -92,22 +91,37 @@ Deno.serve(async (req: Request) => {
     return Response.json({ error: "server_configuration_error" }, { status: 500, headers: corsHeaders });
   }
 
-  const userClient = createClient(url, publicKey, { global: { headers: { Authorization: authorization } } });
-  const { data: userData, error: userError } = await userClient.auth.getUser(token);
-  const email = userData.user?.email?.toLowerCase();
-  if (userError || !email) return Response.json({ error: "unauthorized" }, { status: 401, headers: corsHeaders });
-
   const admin = createClient(url, secretKey, { auth: { persistSession: false, autoRefreshToken: false } });
-  const { data: adminRow, error: adminError } = await admin
-    .from("admin_users")
-    .select("email")
-    .eq("email", email)
-    .maybeSingle();
-  if (adminError) return Response.json({ error: "admin_check_failed" }, { status: 500, headers: corsHeaders });
-  if (!adminRow) return Response.json({ error: "forbidden" }, { status: 403, headers: corsHeaders });
-
   const body = await req.json().catch(() => ({}));
   const action = typeof body?.action === "string" ? body.action : "run";
+
+  const cronToken = req.headers.get("x-learning-cron-token") ?? "";
+  const { data: cronAuthorized, error: cronAuthError } = cronToken
+    ? await admin.rpc("verify_learning_cron_token", { p_token: cronToken })
+    : { data: false, error: null };
+  if (cronAuthError) {
+    return Response.json({ error: "cron_auth_check_failed" }, { status: 500, headers: corsHeaders });
+  }
+  const isCronRun = cronAuthorized === true && action === "run";
+
+  let userData: any = { user: null };
+  let email = "";
+  if (!isCronRun) {
+    if (!token) return Response.json({ error: "unauthorized" }, { status: 401, headers: corsHeaders });
+    const userClient = createClient(url, publicKey, { global: { headers: { Authorization: authorization } } });
+    const authResult = await userClient.auth.getUser(token);
+    userData = authResult.data;
+    email = userData.user?.email?.toLowerCase() ?? "";
+    if (authResult.error || !email) return Response.json({ error: "unauthorized" }, { status: 401, headers: corsHeaders });
+
+    const { data: adminRow, error: adminError } = await admin
+      .from("admin_users")
+      .select("email")
+      .eq("email", email)
+      .maybeSingle();
+    if (adminError) return Response.json({ error: "admin_check_failed" }, { status: 500, headers: corsHeaders });
+    if (!adminRow) return Response.json({ error: "forbidden" }, { status: 403, headers: corsHeaders });
+  }
 
   if (action === "list") {
     const { data: candidates, error: candidatesError } = await admin
