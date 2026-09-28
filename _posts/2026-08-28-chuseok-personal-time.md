@@ -26,7 +26,7 @@ tags:
 canonical: https://bareunjari.com/posts/chuseok-personal-time/
 permalink: /posts/chuseok-personal-time/
 date: 2026-08-23 18:47:00 +0900
-editor_pick: true
+editor_pick: false
 editor_pick_order: -1
 published: true
 og_image: https://bareunjari.com/images/chuseok-personal-time.webp
