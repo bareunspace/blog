@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-28
+updated_at: 2026-09-29
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1740,6 +1740,317 @@ cases:
       url: https://kogas-tech.saramin.co.kr/service/kogas-tech/3985/applicant/apply/recruit_default.asp
       published_at: "2026-09-21"
       checked_at: 2026-09-28
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
+  - id: nile-2026-regular-ai-presentation-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 국가평생교육진흥원
+    company_slug: nile
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - education
+        - lifelong-learning
+      region_tags:
+        - seoul
+    title: 2026년 정규직 채용 · 온라인 AI 역량검사·주제발표·심층면접
+    summary: 국가평생교육진흥원의 2026년 정규직 9명 채용으로, 서류전형 이후 온라인 AI 역량검사를 거쳐 주제발표와 심층면접을 진행합니다. 온라인 검사에 필요한 조용한 독립 환경과 발표 구성·질의응답 리허설 수요가 모두 있어 바른자리의 AI 응시·발표 연습 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-22
+    verified_at: 2026-09-29
+
+    application:
+      start: "2026-09-29"
+      end: "2026-10-06 18:00"
+      period_label: "2026-09-29 ~ 2026-10-06 18:00"
+      hiring_size: 정규직 9명
+      roles: 직무별 정규직 채용
+      expected_join: 공식 공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형 → 온라인 AI 역량검사 → 주제발표·심층면접 → 최종합격
+      interview_focus: 온라인 AI 역량검사 환경을 안정적으로 준비하고, 주제발표에서는 핵심 내용을 구조화해 설명한 뒤 심층면접에서 경험과 판단 근거를 일관되게 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-29 ~ 2026-10-06 18:00
+        - 서류전형
+        - 온라인 AI 역량검사 · 2026-10-30 예정
+        - 주제발표 및 심층면접 · 2026-11-02 ~ 2026-11-06 예정
+        - 최종합격
+
+    pattern:
+      label: 온라인 AI 평가 후 주제발표·심층면접으로 연결
+      insight: 온라인 AI 역량검사와 주제발표·심층면접이 연속으로 이어져 독립 응시환경 점검과 실제 말하기·발표 연습을 단계적으로 준비해야 하는 사례입니다.
+      practice_shift: AI 검사 전 장비와 주변 방해 요소를 점검하고, 임의의 교육·정책 주제를 핵심 문제 → 근거 → 제안 → 결론 순서로 발표한 뒤 후속 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 온라인 AI 역량검사와 주제발표·심층면접이 공식 채용정보에 명시되어 있어 프라이빗 응시공간과 발표 리허설 수요가 직접적이며, 근무지가 서울이라 바른자리 접근권과도 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - pt-presentation
+        - follow-up-response
+      practice_points:
+        - AI 역량검사 전 노트북·카메라·마이크·인터넷과 주변 방해 여부를 확인하기
+        - 임의의 주제를 핵심 문제 → 근거 → 제안 → 결론 순서로 짧게 구조화해 발표하기
+        - 발표 시간을 재고 첫 30초 안에 핵심 메시지가 드러나는지 확인하기
+        - 발표 뒤 선택 이유·근거·대안을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - AI 역량검사를 영상면접이라고 단정하는 표현
+        - 실제 국가평생교육진흥원 AI 검사 문항이나 발표 주제를 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 국가평생교육진흥원과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 게시일은 2026년 9월 22일이며 지원기간은 9월 29일부터 10월 6일 18:00까지입니다.
+      - 온라인 AI 역량검사는 2026년 10월 30일 예정으로 안내되어 있습니다.
+      - 주제발표 및 심층면접은 2026년 11월 2일부터 11월 6일까지 예정입니다.
+      - AI 역량검사의 구체적인 영상 응답 방식은 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: JOB-ALIO 공공기관 채용정보
+      title: 국가평생교육진흥원 2026년 정규직 채용
+      url: https://job.alio.go.kr/recruitview.do?idx=305222
+      published_at: "2026-09-22"
+      checked_at: 2026-09-29
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
+
+  - id: at-2026-new-hire-discussion-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국농수산식품유통공사
+    company_slug: at
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - agriculture
+        - food
+        - distribution
+        - trade
+      region_tags:
+        - seoul
+        - incheon
+        - gyeonggi
+        - nationwide
+    title: 2026년 신입직원 채용 · 역량·토론·경영진 종합면접
+    summary: 한국농수산식품유통공사(aT)의 2026년 신입직원 66명 채용으로, 서류·필기 이후 역량면접과 토론면접을 거쳐 경영진 종합면접으로 이어집니다. 토론 발언과 직무 경험 설명을 실제 목소리로 반복 준비해야 해 바른자리의 토론·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-28
+    verified_at: 2026-09-29
+
+    application:
+      start: "2026-09-28"
+      end: "2026-10-13"
+      period_label: "2026-09-28 ~ 2026-10-13"
+      hiring_size: 신입직원 66명
+      roles: 신입직원 직무별 채용
+      expected_join: 공식 공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형 → 필기전형 → 역량면접·토론면접 → 경영진 종합면접 → 최종합격
+      interview_focus: 토론에서 핵심 의견과 근거를 짧게 제시하고 다른 지원자의 발언에 반응하며, 역량·경영진 면접에서는 본인의 경험과 직무 판단을 일관되게 설명하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-28 ~ 2026-10-13
+        - 서류전형
+        - 필기전형
+        - 역량면접
+        - 토론면접
+        - 경영진 종합면접
+        - 최종합격
+
+    pattern:
+      label: 역량면접과 토론을 거쳐 경영진 종합면접으로 연결
+      insight: 개인 경험을 확인하는 역량면접과 다른 지원자와 상호작용하는 토론면접을 함께 거친 뒤 경영진 면접까지 이어져, 단순 암기보다 실제 말하기와 상호작용 연습이 필요한 사례입니다.
+      practice_shift: 직무·유통·식품 관련 주제를 정해 30~60초 기조발언을 연습하고, 상대 의견을 요약해 동의·보완·반대 의견을 이어 말한 뒤 본인의 경험 질문까지 연결해 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 66명 규모의 공개채용이며 역량면접·토론면접·경영진 종합면접이 공식 채용공고에 명시되어 있습니다. 근무지역에 서울·인천·경기가 포함되어 토론·면접 리허설 수요와 지역 접근성이 모두 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - group-discussion
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 토론 주제를 받고 결론 → 근거 → 제안 순서로 30~60초 기조발언을 말해보기
+        - 상대 의견을 요약한 뒤 동의·보완·반대 중 하나의 방식으로 이어 말하기
+        - 지원 동기와 주요 경험을 60~90초 안에 구조화해 설명하기
+        - 경영진 면접을 가정해 선택 이유·본인 역할·대안을 묻는 꼬리질문까지 답하기
+      excluded:
+        - 실제 aT 토론 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 구체적인 면접 일정이 공개 확인되지 않은 상태에서 임의로 날짜를 단정하는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 한국농수산식품유통공사와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 및 접수 시작일은 2026년 9월 28일이며 지원 마감은 10월 13일입니다.
+      - 채용인원은 신입직원 66명으로 안내되어 있습니다.
+      - 공개된 전형에는 역량면접, 토론면접, 경영진 종합면접이 포함됩니다.
+      - 세부 면접 날짜는 이번에 확인한 공식 공개범위에서 확인되지 않아 추정하지 않습니다.
+
+    source:
+      publisher: 한국농수산식품유통공사(aT)
+      title: 2026년 신입직원 채용 공고
+      url: https://www.at.or.kr/article/apko364000/view.action?articleId=53289
+      published_at: "2026-09-28"
+      checked_at: 2026-09-29
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
+
+  - id: icpa-2026-fall-intern-discussion-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 인천항만공사
+    company_slug: icpa
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - port
+        - logistics
+        - infrastructure
+      region_tags:
+        - incheon
+    title: 2026년 하반기 채용형 인턴 · 토론·역량면접
+    summary: 인천항만공사의 2026년 하반기 채용형 인턴 10명 채용으로, 일반행정·기술직은 토론면접 30%와 역량면접 70%를 진행합니다. 근무지가 인천이고 토론 비중이 명시돼 있어 부천·인천권 지원자의 토론 발언·면접 답변 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-23
+    verified_at: 2026-09-29
+
+    application:
+      start: "2026-09-30"
+      end: "2026-10-08 18:00"
+      period_label: "2026-09-30 ~ 2026-10-08 18:00"
+      hiring_size: 채용형 인턴 10명
+      roles: 일반행정 · 기술직 · 고졸 일반행정 등
+      expected_join: 공식 공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류·필기 등 전형 → 면접전형(일반행정·기술직 토론 30% + 역량 70%, 고졸 일반행정 역량면접) → 최종합격
+      interview_focus: 일반행정·기술직은 토론에서 핵심 의견과 근거를 짧게 제시하고, 역량면접에서는 직무 경험과 판단 근거를 일관되게 설명하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-30 ~ 2026-10-08 18:00
+        - 서류·필기 등 사전 전형
+        - 일반행정·기술직 · 토론면접 30%
+        - 일반행정·기술직 · 역량면접 70%
+        - 고졸 일반행정 · 역량면접
+        - 면접전형 · 2026-11-26 예정
+        - 최종합격
+
+    pattern:
+      label: 인천 근무 채용에서 토론과 역량면접을 결합
+      insight: 일반행정·기술직 면접에서 토론 비중을 30%, 역량면접을 70%로 명시해 상호작용형 말하기와 개인 경험 답변을 모두 준비해야 하는 사례입니다. 인천 근무라는 지역적 특성도 바른자리 실제 이용 가능성과 직접 연결됩니다.
+      practice_shift: 항만·물류·공공서비스 관련 주제로 30~60초 기조발언을 연습하고, 상대 의견에 짧게 반응한 뒤 본인의 직무 경험을 역할·행동·판단·결과 순서로 이어서 설명하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 인천 근무 채용이고 일반행정·기술직의 토론면접 30%와 역량면접 70%가 공식 공고에 명시되어 있어 부천·인천권 지원자의 말하기·토론 리허설 수요와 지역 적합성이 매우 높습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - group-discussion
+        - behavioral-interview
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 토론 주제를 받고 결론 → 근거 → 제안 순서로 30~60초 기조발언을 말해보기
+        - 다른 지원자의 의견을 요약한 뒤 동의·보완·반대 의견을 짧게 이어 말하기
+        - 지원 직무와 본인의 경험을 역할·행동·판단·결과 순서로 60~90초 안에 설명하기
+        - 면접 질문에 답한 뒤 선택 이유·본인 역할·대안을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 고졸 일반행정에도 토론면접이 있다고 단정하는 표현
+        - 실제 인천항만공사 토론 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 인천항만공사와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 게시일은 2026년 9월 23일이며 지원기간은 9월 30일부터 10월 8일 18:00까지입니다.
+      - 채용인원은 채용형 인턴 10명으로 안내되어 있습니다.
+      - 일반행정·기술직은 토론면접 30%와 역량면접 70%로 평가합니다.
+      - 고졸 일반행정은 역량면접만 실시하는 것으로 안내되어 있습니다.
+      - 면접전형은 2026년 11월 26일 예정입니다.
+
+    source:
+      publisher: 인천항만공사
+      title: 2026년 하반기 채용형 인턴 채용 공고
+      url: https://www.icpa.or.kr/article/view.do?articleKey=32885&boardKey=209&currentPageNo=1&menuKey=3544&searchValue=2026
+      published_at: "2026-09-23"
+      checked_at: 2026-09-29
 
     related:
       url: /posts/study-space-for-presentation-discussion-project/
