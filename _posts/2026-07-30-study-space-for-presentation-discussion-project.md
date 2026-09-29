@@ -26,6 +26,8 @@ tags:
 canonical: https://bareunjari.com/posts/study-space-for-presentation-discussion-project/
 permalink: /posts/study-space-for-presentation-discussion-project/
 date: 2026-07-30 09:00:00 +0900
+editor_pick: true
+editor_pick_order: -1
 og_image: https://bareunjari.com/images/study-space-for-presentation-discussion-project.webp
 og_image_alt: 발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간
 og_image_width: 1672
