@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -2055,4 +2055,109 @@ cases:
     related:
       url: /posts/study-space-for-presentation-discussion-project/
       label: 발표·토론 연습 공간 가이드 보기
+
+  - id: kvic-2026-third-new-hire-pt-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국벤처투자
+    company_slug: kvic
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - venture-capital
+        - finance
+        - investment
+        - startups
+      region_tags:
+        - seoul
+    title: 2026년 3차 신입직원 채용 · 직무역량·PT·2차 면접
+    summary: 한국벤처투자의 2026년 3차 채용 중 신입직원 13명 채용으로, 필기 등 사전전형 이후 직무역량면접과 PT면접을 진행하고 이후 2차 면접으로 이어집니다. 투자·벤처 관련 주제를 구조화해 발표하고 후속 질문에 답하는 연습 수요가 있어 바른자리의 PT·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-10-01
+    verified_at: 2026-10-01
+
+    application:
+      start: "2026-10-02"
+      end: "2026-10-16 15:00"
+      period_label: "2026-10-02 ~ 2026-10-16 15:00"
+      hiring_size: 신입직원 13명 · 전체 채용 15명(경력 2명 포함)
+      roles: 신입직원 직무별 채용
+      expected_join: 공식 공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류·필기 등 사전전형 → 1차 면접(직무역량·PT) → 2차 면접 → 최종합격
+      interview_focus: PT면접에서 핵심 문제와 근거를 짧게 구조화해 설명하고, 직무역량면접에서 본인의 경험·판단·직무 이해를 일관되게 답한 뒤 2차 면접의 후속 질문까지 연결해 준비
+      stages:
+        - 지원서 접수 · 2026-10-02 ~ 2026-10-16 15:00
+        - 서류·필기 등 사전전형
+        - 1차 면접 · 직무역량면접
+        - 1차 면접 · PT면접 · 2026-11-24 ~ 2026-11-27 예정
+        - 2차 면접 · 2026-12-08 ~ 2026-12-09 예정
+        - 최종합격
+
+    pattern:
+      label: 직무역량 검증과 PT 발표를 한 면접 단계에서 결합
+      insight: 1차 면접에서 직무역량면접과 PT면접을 함께 진행하고 이후 2차 면접까지 이어지는 구조로, 발표 내용뿐 아니라 발표 뒤 직무·판단 관련 후속 질문까지 연속해서 준비해야 하는 사례입니다.
+      practice_shift: 벤처·투자·스타트업 관련 임의의 주제를 정해 문제 → 근거 → 대안 → 결론 순서로 짧은 PT를 구성하고, 발표 뒤 판단 근거·대안·직무 경험을 묻는 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 신입 13명 채용에서 직무역량면접과 PT면접이 공식 채용정보에 명시되어 있고, 근무지가 서울이라 부천·서울 서남권의 발표·면접 연습 수요와 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - job-explanation
+        - reasoning-explanation
+        - follow-up-response
+      practice_points:
+        - 벤처·투자·스타트업 관련 임의의 주제를 정해 핵심 문제 → 근거 → 대안 → 결론 순서로 짧은 PT를 구성하기
+        - 발표 시간을 재고 첫 30초 안에 핵심 메시지가 드러나는지 확인하기
+        - 지원 직무와 본인의 주요 경험을 역할 → 행동 → 판단 → 결과 순서로 60~90초 안에 설명하기
+        - 발표 뒤 선택 이유·다른 대안·리스크를 묻는 후속 질문까지 이어서 답하기
+        - 휴대폰으로 녹화해 시선·말의 속도·반복 표현·발표 길이를 확인하기
+      excluded:
+        - 실제 한국벤처투자 PT 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 구체적인 PT 시간이나 면접위원 수를 공식 확인 없이 단정하는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 한국벤처투자와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 게시일은 2026년 10월 1일이며 지원기간은 10월 2일부터 10월 16일 15:00까지입니다.
+      - 이번 3차 채용은 전체 15명 규모이며 이 중 신입직원은 13명, 경력직은 2명입니다.
+      - 1차 면접은 직무역량면접과 PT면접으로 안내되어 있으며 2026년 11월 24일부터 11월 27일까지 예정입니다.
+      - 2차 면접은 2026년 12월 8일부터 12월 9일까지 예정입니다.
+      - 실제 PT 주제와 세부 면접 방식은 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: JOB-ALIO 공공기관 채용정보
+      title: 한국벤처투자 2026년 3차 직원 채용
+      url: https://job.alio.go.kr/recruitview.do?idx=305568
+      published_at: "2026-10-01"
+      checked_at: 2026-10-01
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
 
