@@ -13,7 +13,7 @@ tags:
 canonical: https://bareunjari.com/posts/date-your-own-time/
 permalink: /posts/date-your-own-time/
 date: 2026-08-06 09:00:00 +0900
-editor_pick: true
+editor_pick: false
 editor_pick_order: 5
 og_image: https://bareunjari.com/images/date-your-own-time.webp
 og_image_alt: 부천 신중동에서 둘만의 시간을 편하게 보내는 프라이빗 데이트 공간 이미지
