@@ -3,8 +3,8 @@
 # Only the first 3-4 cards per section are prioritized; remaining cards keep their existing order.
 # Editor's Pick is intentionally managed separately.
 "면접준비":
-  - /posts/sk-hynix-ask-video-interview/
   - /posts/naver-webtoon-ai-animator-internship-interview-prep/
+  - /posts/sk-hynix-ask-video-interview/
   - /posts/cj-ai-competency-interview-practice/
   - /posts/hiring-manager-interview-red-flags-and-good-signals/
 "시험·응시":
