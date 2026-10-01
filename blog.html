@@ -86,23 +86,38 @@ extra_css_version: 20260820-1
                 <div class="blog-guide-category-header"><div class="blog-guide-category-title-row"><h3>{{ display_category }}</h3>{% if category_name == '면접준비' %}<a class="blog-guide-demo-link" href="{{ '/ai-interview/' | relative_url }}">AI 모의면접 데모</a>{% endif %}<a class="blog-guide-category-link" href="{{ category_url | relative_url }}" aria-label="{{ display_category }} 허브 보기">→</a></div><div class="blog-guide-category-controls" aria-label="{{ display_category }} 가이드 넘기기"><button type="button" class="blog-guide-category-nav blog-guide-category-prev" data-blog-guide-prev aria-label="{{ display_category }} 이전 가이드">‹</button><button type="button" class="blog-guide-category-nav blog-guide-category-next" data-blog-guide-next aria-label="{{ display_category }} 다음 가이드">›</button></div></div>
                 {% if category_name == '면접준비' %}<p class="section-desc">자기소개와 답변 구성, 화상면접, AI면접과 당일 리허설까지 면접 준비 흐름을 확인합니다.</p>{% elsif category_name == '시험·응시' %}<p class="section-desc">AI 역량검사, 온라인 인적성·코딩테스트, 듀오링고·TOEFL과 원격감독 시험의 응시 환경을 점검합니다.</p>{% endif %}
                 <div class="blog-guide-category-list" data-blog-guide-track tabindex="0" aria-label="{{ display_category }} 가이드 목록">
+                  {% assign priority_urls = site.data.blog_guide_priority[category_name] %}
+                  {% assign rendered_urls = '|' %}
+                  {% if priority_urls %}
+                    {% for priority_url in priority_urls %}
+                      {% assign priority_post = onsite_posts | where: "url", priority_url | first %}
+                      {% if priority_post %}
+                        {% assign show_priority_post = true %}
+                        {% if category_name == '시험·응시' %}
+                          {% unless exam_post_urls contains priority_post.url %}{% assign show_priority_post = false %}{% endunless %}
+                        {% elsif exam_post_urls contains priority_post.url %}
+                          {% assign show_priority_post = false %}
+                        {% endif %}
+                        {% if show_priority_post %}
+                          {% include blog-guide-card.html post=priority_post %}
+                          {% capture rendered_urls %}{{ rendered_urls }}{{ priority_post.url }}|{% endcapture %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
                   {% for post in matching_posts %}
-                    {% assign show_post = true %}
-                    {% if category_name == '시험·응시' %}
-                      {% unless exam_post_urls contains post.url %}{% assign show_post = false %}{% endunless %}
-                    {% elsif exam_post_urls contains post.url %}
-                      {% assign show_post = false %}
-                    {% endif %}
-                    {% if show_post %}
-                    {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
-                    {% assign post_card_video_id = post.youtube_id | default: '' %}{% assign post_card_has_video = false %}{% if post_card_video_id != '' %}{% assign post_card_has_video = true %}{% endif %}
-                    <article class="blog-guide-card" data-category="{{ post.category | default: '시간 활용 가이드' }}">
-                      <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-                        {% if post_card_has_video %}<div class="blog-guide-media-carousel" data-blog-guide-media-carousel><div class="blog-guide-media-track" data-blog-guide-media-track><div class="blog-guide-media-slide"><img src="https://img.youtube.com/vi/{{ post_card_video_id }}/hqdefault.jpg" alt="" loading="lazy" /></div><div class="blog-guide-media-slide">{% if post_card_image contains '://' %}<img src="{{ post_card_image }}" alt="" loading="lazy" />{% else %}<img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />{% endif %}</div></div><div class="blog-guide-media-controls" aria-label="미디어 탐색"><button type="button" class="blog-guide-media-btn blog-guide-media-btn-prev" data-blog-guide-media-prev aria-label="이전 이미지">‹</button><button type="button" class="blog-guide-media-btn blog-guide-media-btn-next" data-blog-guide-media-next aria-label="다음 이미지">›</button></div><div class="blog-guide-media-dots" aria-label="미디어 이미지 선택" role="tablist"><button type="button" class="blog-guide-media-dot is-active" data-blog-guide-media-dot="0" aria-label="1번째 이미지"></button><button type="button" class="blog-guide-media-dot" data-blog-guide-media-dot="1" aria-label="2번째 이미지"></button></div></div>{% else %}{% if post_card_image contains '://' %}<img src="{{ post_card_image }}" alt="" loading="lazy" />{% else %}<img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />{% endif %}{% endif %}
-                      </a>
-                      <div class="blog-guide-content"><h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3><div class="blog-card-footer"><span>{{ post.date | date: "%Y-%m-%d" }}</span></div><p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p></div>
-                    </article>
-                    {% endif %}
+                    {% assign post_marker = '|' | append: post.url | append: '|' %}
+                    {% unless rendered_urls contains post_marker %}
+                      {% assign show_post = true %}
+                      {% if category_name == '시험·응시' %}
+                        {% unless exam_post_urls contains post.url %}{% assign show_post = false %}{% endunless %}
+                      {% elsif exam_post_urls contains post.url %}
+                        {% assign show_post = false %}
+                      {% endif %}
+                      {% if show_post %}
+                        {% include blog-guide-card.html post=post %}
+                      {% endif %}
+                    {% endunless %}
                   {% endfor %}
                 </div>
               </section>
