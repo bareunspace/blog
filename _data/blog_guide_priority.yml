@@ -1,0 +1,38 @@
+# Monthly priority order for the Practical Guides section.
+# Rule: previous full-month GSC clicks desc, impressions desc as tiebreaker.
+# Only the first 3-4 cards per section are prioritized; remaining cards keep their existing order.
+# Editor's Pick is intentionally managed separately.
+"면접준비":
+  - /posts/sk-hynix-ask-video-interview/
+  - /posts/naver-webtoon-ai-animator-internship-interview-prep/
+  - /posts/cj-ai-competency-interview-practice/
+  - /posts/hiring-manager-interview-red-flags-and-good-signals/
+"시험·응시":
+  - /posts/online-aptitude-test-space/
+  - /posts/ai-competency-test-space/
+  - /posts/online-coding-test-place/
+  - /posts/online-exam-home-setup/
+"연습·리허설":
+  - /posts/audition-self-tape-checklist/
+  - /posts/pt-presentation-rehearsal/
+  - /posts/acting-practice-space/
+"스터디룸":
+  - /posts/study-space-guide/
+  - /posts/one-person-study-room/
+  - /posts/practice-speaking-space/
+  - /posts/english-speaking-test-recording-practice/
+"미팅·상담":
+  - /posts/recurring-space-booking-for-freelance-counselors/
+  - /posts/short-term-office-rental/
+  - /posts/bucheon-small-group-space/
+  - /posts/bucheon-meeting-room/
+"프라이빗시간":
+  - /posts/date-your-own-time/
+  - /posts/chuseok-personal-time/
+  - /posts/sinjungdong-evening-date/
+  - /posts/one-hour-before-appointment/
+"시간·공간":
+  - /posts/one-hour-to-let-go/
+  - /posts/bucheon-product-shooting-space/
+  - /posts/living-day-by-day/
+  - /posts/all-night-private-workspace/
