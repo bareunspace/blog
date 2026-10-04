@@ -1,20 +1,20 @@
-# Monthly priority order for the Practical Guides section.
-# Rule: previous full-month GSC clicks desc, impressions desc as tiebreaker.
+# Priority order for the Practical Guides section.
+# Rule: prioritize booking intent and observed reservation demand, then recent GSC/GA4 traffic.
 # Only the first 3-4 cards per section are prioritized; remaining cards keep their existing order.
 # Editor's Pick is intentionally managed separately.
 "면접준비":
-  - /posts/naver-webtoon-ai-animator-internship-interview-prep/
-  - /posts/sk-hynix-ask-video-interview/
-  - /posts/cj-ai-competency-interview-practice/
-  - /posts/hiring-manager-interview-red-flags-and-good-signals/
+  - /posts/interview-answer-practice/
+  - /posts/bucheon-video-interview-place-guide/
+  - /posts/1-minute-self-introduction-guide/
+  - /posts/interview-30-minutes-before/
 "시험·응시":
   - /posts/online-aptitude-test-space/
   - /posts/ai-competency-test-space/
   - /posts/online-coding-test-place/
   - /posts/online-exam-home-setup/
 "연습·리허설":
-  - /posts/audition-self-tape-checklist/
   - /posts/pt-presentation-rehearsal/
+  - /posts/audition-self-tape-checklist/
   - /posts/acting-practice-space/
 "스터디룸":
   - /posts/study-space-guide/
@@ -22,10 +22,10 @@
   - /posts/practice-speaking-space/
   - /posts/english-speaking-test-recording-practice/
 "미팅·상담":
+  - /posts/bucheon-meeting-room/
   - /posts/recurring-space-booking-for-freelance-counselors/
   - /posts/short-term-office-rental/
   - /posts/bucheon-small-group-space/
-  - /posts/bucheon-meeting-room/
 "프라이빗시간":
   - /posts/date-your-own-time/
   - /posts/chuseok-personal-time/
