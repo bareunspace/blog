@@ -1,0 +1,41 @@
+name: Guide Ranking Weekly Refresh
+
+on:
+  schedule:
+    - cron: '30 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Refresh practical-guides performance ranking
+        run: python3 scripts/automation/refresh_guide_ranking.py
+
+      - name: Commit changes if needed
+        run: |
+          if git diff --quiet -- _data/blog_guide_priority.yml; then
+            echo "No changes in _data/blog_guide_priority.yml"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add _data/blog_guide_priority.yml
+          git commit -m "chore: refresh practical-guides ranking from GSC"
+          git push

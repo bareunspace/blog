@@ -37,22 +37,20 @@
   - /posts/living-day-by-day/
   - /posts/all-night-private-workspace/
 
-# Full ranking by cumulative Google Search Console clicks (ties broken by
-# impressions), across every post site-wide, sourced from Supabase
-# public.gsc_page_daily over the full synced history (2026-06-28 ~ 2026-10-05).
-# Used only by index.html's single combined "실전 가이드" grid on the homepage,
-# which (unlike blog.html's per-category carousels above) isn't split by
-# category and shows every post in one list. Auto-generated -- regenerate by
-# re-running the aggregate query against gsc_page_daily and replacing this
-# list; don't hand-edit.
+# Full ranking by cumulative Google Search Console clicks
+# (ties broken by impressions), across every post site-wide, sourced from
+# Supabase public.gsc_page_daily over a rolling 90-day window
+# (2026-07-07 ~ present as of the last refresh). Used only by index.html's
+# single combined "실전 가이드" grid on the homepage, which (unlike blog.html's
+# per-category carousels above) isn't split by category and shows every post
+# in one list.
 #
-# Before regenerating: check posts/*/index.html for <meta http-equiv="refresh">
-# redirect stubs (grep for 'http-equiv="refresh"'). Their URLs still accrue
-# GSC clicks/impressions under the old path but never match a site.posts
-# entry, so a naive per-URL query silently drops that traffic instead of
-# crediting the canonical destination. Merge each stub's totals into its
-# redirect target before sorting (e.g. bucheon-indoor-date's 24 clicks / 219
-# impressions belong to date-your-own-time, not a separate row).
+# Auto-generated weekly by scripts/automation/refresh_guide_ranking.py via
+# .github/workflows/guide-ranking-refresh.yml -- don't hand-edit, it will be
+# overwritten on the next run. Redirect stubs under posts/*/ are detected and
+# folded into their canonical target automatically (see find_redirect_stubs()
+# in that script).
+# Last refreshed: 2026-10-05
 "_global_by_performance":
   - url: /posts/ai-competency-test-space/
     clicks: 77
@@ -195,10 +193,10 @@
   - url: /posts/video-interview-setup/
     clicks: 0
     impressions: 22
-  - url: /posts/living-day-by-day/
+  - url: /posts/pt-presentation-rehearsal/
     clicks: 0
     impressions: 21
-  - url: /posts/pt-presentation-rehearsal/
+  - url: /posts/living-day-by-day/
     clicks: 0
     impressions: 21
   - url: /posts/cabin-crew-interview-practice/
