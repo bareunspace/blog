@@ -23,8 +23,16 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
       - name: Refresh practical-guides performance ranking
         run: python3 scripts/automation/refresh_guide_ranking.py
+
+      - name: Run predeploy checks
+        run: bash scripts/predeploy-check.sh
 
       - name: Commit changes if needed
         run: |

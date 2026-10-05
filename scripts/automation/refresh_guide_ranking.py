@@ -73,8 +73,27 @@ def merge_redirect_stubs(rows: list[dict], stubs: dict[str, str]) -> list[dict]:
         entry["clicks"] += row["clicks"]
         entry["impressions"] += row["impressions"]
     merged = list(totals.values())
-    merged.sort(key=lambda r: (-r["clicks"], -r["impressions"]))
+    # Stable tie-breaker (url asc) so equal clicks/impressions don't produce a
+    # nondeterministic order across runs -- dict insertion order here depends
+    # on the Edge Function's own row order, which isn't guaranteed either.
+    merged.sort(key=lambda r: (-r["clicks"], -r["impressions"], r["url"]))
     return merged
+
+
+def parse_existing_rows(full_text: str) -> list[dict]:
+    """Parse the currently-committed "_global_by_performance" block so a new
+    refresh can be compared against it and skipped if nothing changed."""
+    block_match = re.search(r'"_global_by_performance":\n((?:  - url: .+\n    clicks: \d+\n    impressions: \d+\n)*)', full_text)
+    if not block_match:
+        return []
+    rows = []
+    for row_match in re.finditer(r'  - url: (\S+)\n    clicks: (\d+)\n    impressions: (\d+)\n', block_match.group(1)):
+        rows.append({
+            "url": row_match.group(1),
+            "clicks": int(row_match.group(2)),
+            "impressions": int(row_match.group(3)),
+        })
+    return rows
 
 
 def render_block(rows: list[dict], window_days: int, from_date: str, generated_at: str) -> str:
@@ -110,12 +129,20 @@ def main() -> int:
     stubs = find_redirect_stubs()
     ranked = merge_redirect_stubs(rows, stubs)
 
+    if not ranked:
+        print("error: guide-post-performance returned zero rows; keeping existing ranking as-is", file=sys.stderr)
+        return 1
+
     full_text = DATA_PATH.read_text(encoding="utf-8")
     marker_index = full_text.find(MARKER)
     if marker_index == -1:
         print(f"error: marker {MARKER!r} not found in {DATA_PATH}", file=sys.stderr)
         return 1
     header = full_text[:marker_index]
+
+    if ranked == parse_existing_rows(full_text):
+        print(f"Ranking unchanged ({len(ranked)} posts); leaving {DATA_PATH} untouched.")
+        return 0
 
     now = datetime.now(timezone.utc)
     from_date = (now.date() - timedelta(days=WINDOW_DAYS)).isoformat()
