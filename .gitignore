@@ -13,6 +13,8 @@ node_modules/
 .jekyll-metadata
 .sass-cache/
 _site/
+__pycache__/
+*.pyc
 vendor/
 
 # Supabase local project state
