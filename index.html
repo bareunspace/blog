@@ -286,6 +286,12 @@ script_version: 20260719-1
         <p>중요한 일정을 준비할 때 바로 적용할 수 있도록 체크리스트와 실행 방법을 정리했습니다.</p>
       </div>
       {% assign onsite_posts = site.posts | where_exp: "item", "item.draft != true" %}
+      {% assign ranked_guide_posts = "" | split: "," %}
+      {% for entry in site.data.blog_guide_priority["_global_by_performance"] %}
+        {% assign matched_guide_post = onsite_posts | where: "url", entry.url %}
+        {% assign ranked_guide_posts = ranked_guide_posts | concat: matched_guide_post %}
+      {% endfor %}
+      {% assign onsite_posts = ranked_guide_posts | concat: onsite_posts | uniq %}
       {% if onsite_posts.size > 0 %}
       <div class="blog-guide-filters" id="homeGuideFilters" aria-label="실전 가이드 카테고리 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
@@ -298,54 +304,7 @@ script_version: 20260719-1
       </div>
       <div class="blog-guide-grid" id="homeGuideGrid" aria-label="바른자리 실전 가이드 목록">
         {% for post in onsite_posts %}
-          {% assign post_card_image = post.preload_image | default: post.og_image | default: '/images/main.jpeg' %}
-          {% assign post_card_video_id = post.youtube_id | default: '' %}
-          {% assign post_card_has_video = false %}
-          {% if post_card_video_id != '' %}
-            {% assign post_card_has_video = true %}
-          {% endif %}
-          <article class="blog-guide-card" data-home-guide-item data-category="{{ post.category | default: '시간 활용 가이드' }}">
-            <span class="blog-card-image-badge">{{ post.category | default: "시간 활용 가이드" }}</span>
-            <a class="blog-guide-image{% if post.url == '/posts/interview-questions-to-ask/' %} blog-guide-image-contain{% endif %}{% if post_card_has_video %} blog-guide-image-has-video{% endif %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-              {% if post_card_has_video %}
-                <div class="blog-guide-media-carousel" data-blog-guide-media-carousel>
-                  <div class="blog-guide-media-track" data-blog-guide-media-track>
-                    <div class="blog-guide-media-slide">
-                      <img src="https://img.youtube.com/vi/{{ post_card_video_id }}/hqdefault.jpg" alt="" loading="lazy" />
-                    </div>
-                    <div class="blog-guide-media-slide">
-                      {% if post_card_image contains '://' %}
-                        <img src="{{ post_card_image }}" alt="" loading="lazy" />
-                      {% else %}
-                        <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
-                      {% endif %}
-                    </div>
-                  </div>
-                  <div class="blog-guide-media-controls" aria-label="미디어 탐색">
-                    <button type="button" class="blog-guide-media-btn blog-guide-media-btn-prev" data-blog-guide-media-prev aria-label="이전 이미지">‹</button>
-                    <button type="button" class="blog-guide-media-btn blog-guide-media-btn-next" data-blog-guide-media-next aria-label="다음 이미지">›</button>
-                  </div>
-                  <div class="blog-guide-media-dots" aria-label="미디어 이미지 선택" role="tablist">
-                    <button type="button" class="blog-guide-media-dot is-active" data-blog-guide-media-dot="0" aria-label="1번째 이미지"></button>
-                    <button type="button" class="blog-guide-media-dot" data-blog-guide-media-dot="1" aria-label="2번째 이미지"></button>
-                  </div>
-                </div>
-              {% else %}
-                {% if post_card_image contains '://' %}
-                  <img src="{{ post_card_image }}" alt="" loading="lazy" />
-                {% else %}
-                  <img src="{{ '/' | append: post_card_image | relative_url }}" alt="" loading="lazy" />
-                {% endif %}
-              {% endif %}
-            </a>
-            <div class="blog-guide-content">
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <div class="blog-card-footer">
-                <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-              </div>
-              <p>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
-            </div>
-          </article>
+          {% include blog-guide-card.html post=post home_guide_item=true show_badge=true %}
         {% endfor %}
       </div>
       <div class="blog-guide-more-wrap">
