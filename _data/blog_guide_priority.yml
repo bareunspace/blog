@@ -45,6 +45,14 @@
 # category and shows every post in one list. Auto-generated -- regenerate by
 # re-running the aggregate query against gsc_page_daily and replacing this
 # list; don't hand-edit.
+#
+# Before regenerating: check posts/*/index.html for <meta http-equiv="refresh">
+# redirect stubs (grep for 'http-equiv="refresh"'). Their URLs still accrue
+# GSC clicks/impressions under the old path but never match a site.posts
+# entry, so a naive per-URL query silently drops that traffic instead of
+# crediting the canonical destination. Merge each stub's totals into its
+# redirect target before sorting (e.g. bucheon-indoor-date's 24 clicks / 219
+# impressions belong to date-your-own-time, not a separate row).
 "_global_by_performance":
   - url: /posts/ai-competency-test-space/
     clicks: 77
@@ -58,9 +66,9 @@
   - url: /posts/cafe-video-meeting-space/
     clicks: 27
     impressions: 283
-  - url: /posts/bucheon-indoor-date/
-    clicks: 24
-    impressions: 219
+  - url: /posts/date-your-own-time/
+    clicks: 25
+    impressions: 274
   - url: /posts/online-coding-test-place/
     clicks: 23
     impressions: 196
@@ -148,9 +156,6 @@
   - url: /posts/alone-time-is-recovery/
     clicks: 1
     impressions: 67
-  - url: /posts/date-your-own-time/
-    clicks: 1
-    impressions: 55
   - url: /posts/one-hour-before-appointment/
     clicks: 1
     impressions: 36
