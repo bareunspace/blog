@@ -352,22 +352,13 @@ script_version: 20260711-4
   <section id="closing-note">
     <div class="section-inner">
       <h2 class="section-title">답변을 정리했다면, 이제 말해 보세요</h2>
-      <p class="section-desc">면접 답변을 정리하는 것은 준비의 시작입니다. 실제 면접에서도 자연스럽게 나오게 하려면, 읽는 단계를 넘어 입으로 말하고 촬영하고 다시 고치는 과정이 필요합니다. 완벽하게 외우려 하기보다 질문을 들었을 때 자신의 말로 설명하는 연습을 반복해 보세요. 집이나 카페에서 집중이 어렵다면, 조용한 공간에서 1시간만 실전처럼 연습해도 훨씬 안정감이 생길 수 있습니다.</p>
+      <p class="section-desc">면접 답변을 정리하는 것은 준비의 시작입니다. 실제 면접에서도 자연스럽게 나오게 하려면, 읽는 단계를 넘어 입으로 말하고 촬영하고 다시 고치는 과정이 필요합니다. 완벽하게 외우려 하기보다 질문을 들었을 때 자신의 말로 설명하는 연습을 반복해 보세요. 집이나 카페에서 집중이 어렵다면, 부천 신중동역에서 소리 내서 연습할 개인 공간을 1시간만 예약해도 훨씬 안정감이 생길 수 있습니다.</p>
       <blockquote class="example-quote">
         <p><strong>바른자리</strong><br />나만의 시간을 예약하세요.<br />부천 신중동역 도보 1분<br />1시간 10,000원</p>
       </blockquote>
       <div class="hero-btns" style="margin-top: 1.5rem;">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
-        <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="closing-space-intro">
-    <div class="section-inner">
-      <p class="section-desc">바른자리는 신중동역 도보 1분 거리에 있는 프라이빗 공간입니다. 면접 답변을 소리 내서 연습할 개인 공간이 필요하다면, 부천 신중동역에서 예약한 시간 동안 혼자 편하게 반복 연습해보세요.</p>
-      <div class="hero-btns" style="margin-top: 1rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 연습 공간 예약하기</a>
+        <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
       </div>
     </div>
   </section>
