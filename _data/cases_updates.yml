@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-01
+updated_at: 2026-10-07
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -2156,6 +2156,114 @@ cases:
       url: https://job.alio.go.kr/recruitview.do?idx=305568
       published_at: "2026-10-01"
       checked_at: 2026-10-01
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 리허설 가이드 보기
+
+  - id: kpf-2026-second-new-hire-presentation-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국언론진흥재단
+    company_slug: kpf
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - media
+        - journalism
+        - communications
+      region_tags:
+        - seoul
+    title: 2026년 2차 정규직 신입사원 채용 · 실무·발표·인성면접
+    summary: 한국언론진흥재단의 2026년 2차 정규직 신입사원 11명 채용으로, 일반행정 공개경쟁 9명은 실무면접 35%, 발표면접 30%, 인성면접 35%로 평가합니다. 발표 비중이 별도로 명시되어 있어 자료를 구조화해 설명하고 후속 질문에 답하는 연습 수요가 분명해 바른자리의 발표·면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-10-06
+    verified_at: 2026-10-07
+
+    application:
+      start: "2026-10-06"
+      end: "2026-10-20 18:00"
+      period_label: "2026-10-06 ~ 2026-10-20 18:00"
+      hiring_size: 정규직 신입사원 11명
+      roles: 일반행정 공개경쟁 9명 · 일반행정 장애전형 1명 · IT 1명
+      expected_join: 공식 공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류·필기 등 사전전형 → 면접전형(직군별 상이) → 최종합격
+      interview_focus: 일반행정 공개경쟁은 발표면접에서 핵심 내용을 구조적으로 설명하고 실무·인성면접에서 경험과 직무 판단을 일관되게 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-06 ~ 2026-10-20 18:00
+        - 서류·필기 등 사전전형
+        - 일반행정 공개경쟁 · 실무면접 35%
+        - 일반행정 공개경쟁 · 발표면접 30%
+        - 일반행정 공개경쟁 · 인성면접 35%
+        - 일반행정 공개경쟁 면접 · 2026-12-08 예정
+        - 일반행정 장애전형·IT · 실무·인성면접 · 2026-12-09 예정
+        - 최종합격
+
+    pattern:
+      label: 실무·발표·인성면접을 동일 단계에서 비중화해 평가
+      insight: 일반행정 공개경쟁은 발표면접 비중이 30%로 별도 명시되어 있어 단순 질의응답뿐 아니라 자료를 구조화해 말하고 전달하는 준비가 필요한 사례입니다. 실무와 인성면접까지 같은 면접 단계에 포함되어 발표 뒤 직무·경험 질문까지 연속적으로 대비할 수 있습니다.
+      practice_shift: 언론·미디어·공공서비스 관련 임의의 주제를 정해 핵심 문제 → 근거 → 제안 → 결론 순서로 짧은 발표를 구성하고, 발표 뒤 판단 근거·실무 경험·대안을 묻는 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 일반행정 공개경쟁 9명에게 실무면접 35%, 발표면접 30%, 인성면접 35%가 공식 공고에 명시되어 있고 근무지가 서울이라 발표·면접 리허설 수요와 부천·서울 서남권 접근성이 함께 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - job-explanation
+        - reasoning-explanation
+        - follow-up-response
+      practice_points:
+        - 언론·미디어·공공서비스 관련 임의의 주제를 정해 핵심 문제 → 근거 → 제안 → 결론 순서로 발표 구성하기
+        - 발표 시간을 재고 첫 30초 안에 핵심 메시지가 드러나는지 확인하기
+        - 실무면접을 가정해 지원 직무와 주요 경험을 역할 → 행동 → 판단 → 결과 순서로 60~90초 안에 설명하기
+        - 발표 뒤 선택 이유·다른 대안·리스크를 묻는 후속 질문까지 이어서 답하기
+        - 휴대폰으로 녹화해 시선·말의 속도·반복 표현·발표 길이를 확인하기
+      excluded:
+        - 실제 한국언론진흥재단 발표면접 주제나 면접 질문을 보유하거나 제공한다는 표현
+        - 일반행정 장애전형이나 IT 지원자에게 발표면접이 있다고 단정하는 표현
+        - 구체적인 발표시간이나 면접위원 수를 공식 확인 없이 단정하는 표현
+        - 특정 발표 방식이나 답변이 합격에 유리하다고 단정하는 표현
+        - 한국언론진흥재단과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 및 지원 시작일은 2026년 10월 6일이며 지원 마감은 10월 20일 18:00입니다.
+      - 정규직 신입사원 채용 규모는 총 11명이며 일반행정 공개경쟁 9명, 일반행정 장애전형 1명, IT 1명입니다.
+      - 일반행정 공개경쟁 면접은 실무 35%, 발표 30%, 인성 35%로 안내되어 있습니다.
+      - 일반행정 공개경쟁 면접은 2026년 12월 8일 예정입니다.
+      - 일반행정 장애전형과 IT는 2026년 12월 9일 실무·인성면접으로 안내되어 있으며 발표면접 적용 대상으로 단정하지 않습니다.
+      - 실제 발표 주제와 세부 진행시간은 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: 한국언론진흥재단
+      title: 2026년 2차 정규직 신입사원 채용
+      url: https://www.kpf.or.kr/front/board/boardContentsView.do?board_id=268&contents_id=74a9591e297944da81d66eb34493e7c5
+      published_at: "2026-10-06"
+      checked_at: 2026-10-07
 
     related:
       url: /posts/pt-presentation-rehearsal/
