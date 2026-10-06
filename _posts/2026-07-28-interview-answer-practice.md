@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 면접 답변 연습 방법 | 혼자 60분 말하기·녹화 루틴
-description: 면접 답변이 외워도 막힌다면 질문을 듣고 직접 말한 뒤 녹화본을 확인하고 다시 답하는 연습이 필요합니다. 혼자 하는 60분 면접 답변 연습 루틴과 점검 포인트를 정리했습니다.
+title: 면접 연습 방법 | 부천 신중동역, 소리 내서 연습할 개인 공간
+description: 면접 답변이 자꾸 막힌다면, 부천 신중동역에서 소리 내서 연습할 개인 공간이 필요할 수 있습니다. 혼자 60분 동안 말하고 녹화하며 점검하는 면접 연습 루틴과 점검 포인트를 정리했습니다.
 category: 면접준비
 keywords: 면접답변연습,면접답변연습방법,혼자면접연습,면접연습,화상면접연습,면접말하기,면접리허설,부천면접공간,신중동면접연습,신중동공간대여
 tags:
@@ -359,6 +359,15 @@ script_version: 20260711-4
       <div class="hero-btns" style="margin-top: 1.5rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">지금 예약하고 연습하기</a>
         <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="closing-space-intro">
+    <div class="section-inner">
+      <p class="section-desc">바른자리는 신중동역 도보 1분 거리에 있는 프라이빗 공간입니다. 면접 답변을 소리 내서 연습할 개인 공간이 필요하다면, 부천 신중동역에서 예약한 시간 동안 혼자 편하게 반복 연습해보세요.</p>
+      <div class="hero-btns" style="margin-top: 1rem;">
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 연습 공간 예약하기</a>
       </div>
     </div>
   </section>

@@ -229,6 +229,12 @@ preload_image: images/ai-competency-test-space.webp
   </div>
 </section>
 
+<section id="closing-home-test-note">
+  <div class="section-inner">
+    <p class="section-desc">집에서 응시하기 어렵다면, 신중동역 도보 1분 거리의 바른자리에서 검사에 필요한 시간만 예약해 조용히 집중할 수 있습니다. <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer">예약 가능한 시간 확인하기 →</a></p>
+  </div>
+</section>
+
 {% include post-tags.html %}
 
 </main>
