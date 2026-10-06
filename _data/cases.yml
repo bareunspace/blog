@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-14
+updated_at: 2026-10-07
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1144,3 +1144,314 @@ cases:
     related:
       url: /posts/ai-competency-test-space/
       label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: korean-air-2026-oct-cabin-crew
+    type: hiring
+    topic: interview
+    job: cabin-crew
+    company: 대한항공
+    company_slug: korean-air
+    taxonomy:
+      industry_tags:
+        - airline
+        - aviation
+      region_tags:
+        - seoul
+        - busan
+        - southwest-seoul
+    title: 2026년 신입 인턴 객실승무원 모집 · 온라인 1차면접·영어구술
+    summary: 대한항공의 2026년 신입 인턴 객실승무원 채용으로, 서류전형 이후 1차 면접이 온라인으로 진행되고 2차 면접에 영어구술 Test가 포함됩니다. 카메라 앞 답변과 영어 말하기를 조용한 독립 공간에서 반복 연습하는 사용 상황과 직접 연결됩니다.
+
+    published_at: 2026-10-02
+    verified_at: 2026-10-07
+
+    application:
+      start: "2026-10-02"
+      end: "2026-10-12"
+      period_label: "2026-10-02 ~ 2026-10-12"
+      hiring_size: 신입 인턴 객실승무원
+      roles: 객실승무원
+
+    selection:
+      process_label: 서류전형 → 1차 면접(온라인) → 2차 면접·영어구술 Test → 3차 면접·인성검사 → 건강검진·수영 Test → 최종합격
+      interview_focus: 온라인 면접에서 카메라 시선·표정·답변 전달을 점검하고, 이후 영어구술에서 짧고 명확하게 실제 목소리로 답하는 준비
+      stages:
+        - 서류전형
+        - 1차 면접 · 온라인
+        - 2차 면접 · 영어구술 Test
+        - 3차 면접 · 인성검사
+        - 건강검진 · 수영 Test
+        - 최종합격
+
+    pattern:
+      label: 온라인 영상 답변에서 영어구술·대면면접로 확장
+      insight: 온라인 1차면접과 영어구술 Test가 연속해서 이어져 카메라 앞 답변, 실제 말하기, 영어 응답을 단계별로 반복 연습할 필요가 큰 객실승무원 채용 사례입니다.
+      practice_shift: 자기소개와 지원 동기를 카메라 앞에서 30~60초로 녹화하고, 같은 경험을 영어로 짧게 설명한 뒤 후속 질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: true
+      physical_test: true
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 대규모 항공사 객실승무원 채용이며 온라인 1차면접과 영어구술 Test가 명시되어 있습니다. 부천에서 접근하기 쉬운 서울 서남권 수요와 맞고 카메라 답변·영어 말하기·면접 리허설을 위한 프라이빗 공간 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - job-page
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - video-interview
+        - english-response
+        - follow-up-response
+      practice_points:
+        - 노트북이나 휴대폰 카메라로 자기소개·지원 동기를 30초·60초 길이로 녹화해보기
+        - 카메라를 보면서 답할 때 시선, 표정, 말의 속도와 첫 문장 시작 시간을 확인하기
+        - 기본 자기소개와 지원 경험을 영어로 짧게 말해보고 같은 내용을 길이별로 바꿔보기
+        - 첫 답변 뒤에 지원 이유·서비스 경험·협업 상황에 대한 후속 질문을 붙여 이어서 답해보기
+      excluded:
+        - 실제 대한항공 면접 질문이나 영어구술 문항을 보유하거나 제공한다는 표현
+        - 특정 답변이 합격에 유리하다고 단정하는 표현
+        - 대한항공과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공식 대한항공 채용사이트에서 2026년 신입 인턴 객실승무원 모집 공고를 확인했습니다.
+      - 공개된 전형 절차에 1차 면접은 온라인, 2차 면접에는 영어구술 Test가 포함되어 있습니다.
+      - 세부 면접 일시는 공개 공고에서 확인되지 않아 임의로 기재하지 않습니다.
+      - 전형 일정은 변경될 수 있으므로 지원자는 공식 채용사이트의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 대한항공 채용
+      title: 2026년 신입 인턴 객실승무원 모집
+      url: https://koreanair.recruiter.co.kr/career/jobs/129268
+      published_at: "2026-10-02"
+      checked_at: 2026-10-07
+
+    related:
+      url: /posts/cabin-crew-video-interview-practice/
+      label: 승무원 영상면접 준비 가이드 보기
+
+  - id: wonik-2026-new-hire-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 원익그룹
+    company_slug: wonik
+    taxonomy:
+      industry_tags:
+        - semiconductor
+        - technology
+        - manufacturing
+      region_tags:
+        - unspecified
+    title: 2026 원익그룹 신입공채 · 지원 완료자 전원 AI역량검사
+    summary: 원익그룹의 2026 신입공채로, 지원서 접수 완료자 전원이 AI역량검사를 진행한 뒤 1Day 면접으로 이어지는 사례입니다. 다수 지원자가 같은 기간 온라인 역량검사를 치르는 구조라 방해 없는 독립 공간과 장비·말하기 환경을 준비하는 수요와 직접 연결됩니다.
+
+    published_at: 2026-09-22
+    verified_at: 2026-10-07
+
+    application:
+      start: "2026-09-22"
+      end: "2026-10-12 23:00"
+      period_label: "2026-09-22 ~ 2026-10-12 23:00"
+      hiring_size: 2026 원익그룹 신입공채
+      roles: 영업 · 마케팅 · 경영지원 등
+
+    selection:
+      process_label: 지원서접수 → AI역량검사(서류접수 완료자 전원) → 면접전형(1Day면접) → 합격자 발표 → 입문교육
+      interview_focus: AI역량검사 응시 전 카메라·마이크·인터넷과 주변 방해 여부를 점검하고, 이후 1Day 면접에서 지원 경험과 직무 적합성을 실제 목소리로 설명하는 준비
+      stages:
+        - 지원서접수 · 2026-09-22 ~ 2026-10-12
+        - AI역량검사 · 2026-10-14 ~ 2026-10-27
+        - 면접전형(1Day면접) · 2026-11-18 ~ 2026-11-26
+        - 합격자 발표 · 2026년 12월 중
+        - 입문교육 · 2027-01-04 이후
+
+    pattern:
+      label: 대규모 AI역량검사에서 1Day 면접으로
+      insight: 서류접수 완료자 전원이 같은 기간 AI역량검사를 진행하고 이후 1Day 면접으로 이어져, 온라인 응시 환경과 실제 말하기 면접을 단계적으로 준비할 수 있는 사례입니다.
+      practice_shift: 실제 사용할 장비와 독립 환경을 먼저 점검하고 자기소개·지원 동기·직무 경험을 30~90초로 녹화한 뒤 후속 질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 지원서 접수 완료자 전원이 AI역량검사를 진행하는 공개채용이라 단기간에 온라인 응시 수요가 집중될 가능성이 높습니다. 이후 1Day 면접까지 이어져 바른자리의 독립 응시환경과 말하기 리허설 수요에 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - follow-up-response
+      practice_points:
+        - AI역량검사 전에 사용할 노트북, 카메라, 마이크, 인터넷과 주변 방해 여부를 실제 환경에서 점검하기
+        - 자기소개·지원 동기·직무 경험을 30초·60초·90초 길이로 나눠 실제 목소리로 답해보기
+        - 녹화가 필요한 상황을 가정해 시선, 말의 속도, 반복 표현과 답변 길이를 확인하기
+        - 1Day 면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·성과를 묻는 후속 질문까지 이어서 답해보기
+      excluded:
+        - AI역량검사의 세부 문항이나 영상 녹화 방식을 공식 확인 없이 단정하는 표현
+        - 실제 원익그룹 AI역량검사 문항이나 면접 질문을 보유하거나 제공한다는 표현
+        - 원익그룹과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 22일부터 10월 12일 23:00까지입니다.
+      - 공개 공고에는 서류접수 완료자 전원이 AI역량검사를 진행한다고 명시되어 있습니다.
+      - AI역량검사 예정 기간은 10월 14일부터 10월 27일, 1Day 면접 예정 기간은 11월 18일부터 11월 26일입니다.
+      - AI역량검사의 세부 구성이나 영상면접 포함 여부는 공개 자료에서 확인되지 않아 video_interview는 null로 두었습니다.
+      - 상세 일정은 변경될 수 있으므로 공식 채용사이트의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 원익그룹 채용
+      title: 2026 원익그룹 신입공채
+      url: https://wonik.recruiter.co.kr/
+      published_at: "2026-09-22"
+      checked_at: 2026-10-07
+
+    references:
+      - publisher: 고려대학교 경영대학 경력개발센터
+        title: 원익그룹 2026 원익그룹 신입공채
+        url: https://biz.korea.ac.kr/cdc/recruitment/recruitment_view.html?cate=&key=&keyfield=&no=14724&page=2
+        checked_at: 2026-10-07
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: s-oil-2026-office-new-hire-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: S-OIL
+    company_slug: s-oil
+    taxonomy:
+      industry_tags:
+        - energy
+        - refinery
+        - manufacturing
+      region_tags:
+        - seoul
+        - ulsan
+    title: 2026 사무직 신입사원 채용 · AI 역량검사·1·2차 면접
+    summary: S-OIL의 2026 사무직 신입사원 채용으로, 인적성 검사 이후 AI 역량검사와 1차·2차 면접이 이어집니다. 온라인 역량검사를 안정적으로 치를 독립 공간을 준비하고 이후 면접 답변을 실제 목소리로 반복 연습하는 사용 상황과 직접 연결됩니다.
+
+    published_at: 2026-09-30
+    verified_at: 2026-10-07
+
+    application:
+      start: "2026-09-30"
+      end: "2026-10-14 23:59"
+      period_label: "2026-09-30 ~ 2026-10-14 23:59"
+      hiring_size: 2026 사무직 신입사원 채용
+      roles: 경영전략 · 경영지원 · 영업·마케팅 · 재무 · 수급 · 공정 · 설비기술 · 안전환경
+      expected_join: 2027년 1월 입사 예정
+
+    selection:
+      process_label: 서류전형 → 인적성 검사 → AI 역량검사 → 1차 면접 → 2차 면접 → 채용 검진 → 최종합격 → 입사
+      interview_focus: AI 역량검사 전 독립 응시 환경과 장비를 점검하고, 1·2차 면접에서 지원 동기와 직무 경험을 실제 목소리로 설명하는 준비
+      stages:
+        - 서류전형
+        - 인적성 검사 · 2026년 10월 말 예정
+        - AI 역량검사 · 2026년 11월 초 예정
+        - 1차 면접 · 2026년 11월 중 예정
+        - 2차 면접 · 2026년 12월 중 예정
+        - 채용 검진 및 최종합격 · 2026년 12월 말 예정
+        - 입사 · 2027년 1월 예정
+
+    pattern:
+      label: AI 역량검사에서 단계별 대면면접으로
+      insight: AI 역량검사 이후 1차와 2차 면접이 연속해서 이어져 온라인 응시 환경 점검과 직무 경험 말하기를 분리하지 않고 단계별로 준비할 수 있는 사례입니다.
+      practice_shift: AI 역량검사 전 장비·인터넷·독립 환경을 점검하고 지원 동기와 직무 경험을 30~90초로 실제처럼 말한 뒤 1·2차 면접 꼬리질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 대기업 사무직 신입 공개채용이며 AI 역량검사와 1·2차 면접이 채용 절차에 명시되어 있습니다. 서울 본사·마곡 근무 직무도 포함되어 부천 생활권 지원자의 실제 독립 응시공간·면접 연습 수요와 연결 가능성이 높습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - AI 역량검사 전에 사용할 노트북, 카메라, 마이크, 인터넷과 주변 방해 여부를 점검하기
+        - 지원 동기와 직무 경험을 30초·60초·90초로 나눠 실제 목소리로 말해보기
+        - 경영·영업·기술 등 지원 직무에서 본인의 역할과 판단 근거를 짧게 설명해보기
+        - 1·2차 면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·성과에 대한 후속 질문까지 이어서 답해보기
+      excluded:
+        - S-OIL AI 역량검사의 세부 구성이나 영상면접 여부를 공식 확인 없이 단정하는 표현
+        - 실제 AI 검사 문항이나 면접 질문을 보유하거나 제공한다는 표현
+        - S-OIL과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 30일부터 10월 14일 23:59까지입니다.
+      - 공개 채용안내에 AI 역량검사는 11월 초, 1차 면접은 11월 중, 2차 면접은 12월 중으로 안내되어 있습니다.
+      - AI 역량검사의 세부 구성이나 영상면접 포함 여부는 확인되지 않아 video_interview는 null로 두었습니다.
+      - 전형 일정은 변경될 수 있으며 정확한 일정은 전형별 합격자에게 별도 안내된다고 공고되어 있습니다.
+
+    source:
+      publisher: S-OIL 채용
+      title: 2026 사무직 신입사원 채용
+      url: https://s-oil.recruiter.co.kr/
+      published_at: "2026-09-30"
+      checked_at: 2026-10-07
+
+    references:
+      - publisher: 중앙대학교 AI학과 채용공고
+        title: S-OIL 2026 사무직 신입사원 채용
+        url: https://ai.cau.ac.kr/sub07/sub0704.php?category=11&keyword=&no=3644&search=title&view=detail
+        checked_at: 2026-10-07
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
