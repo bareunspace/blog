@@ -10,7 +10,7 @@ branch:
 
 promotion:
   first_booking_discount_percent: 10
-  label: "네이버 예약 첫 예약 10% 할인"
+  label: "첫 예약 10% 할인 · 토요일 제외"
 
 products:
   hourly:

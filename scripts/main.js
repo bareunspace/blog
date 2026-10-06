@@ -798,7 +798,7 @@
       const promoStart = new Date(2026, 6, 27);
       const diffDays = Math.floor((promoStart - today) / (1000 * 60 * 60 * 24));
 
-      let ddayText = '적용중';
+      let ddayText = '(토요일 제외)';
       if (diffDays > 0) {
         ddayText = `7월 27일부터 적용 · D-${diffDays}`;
       } else if (diffDays === 0) {
