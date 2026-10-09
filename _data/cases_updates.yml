@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-09
+updated_at: 2026-10-10
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1902,8 +1902,8 @@ cases:
 
     published_at: 2026-09-28
     verified_at: 2026-09-29
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-09-28"
@@ -2114,8 +2114,8 @@ cases:
 
     published_at: 2026-10-01
     verified_at: 2026-10-01
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-10-02"
@@ -2220,8 +2220,8 @@ cases:
 
     published_at: 2026-10-06
     verified_at: 2026-10-07
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-10-06"
@@ -2330,8 +2330,8 @@ cases:
 
     published_at: 2026-09-21
     verified_at: 2026-10-09
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-10-01"
@@ -2438,8 +2438,8 @@ cases:
 
     published_at: 2026-10-02
     verified_at: 2026-10-09
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-10-02"
@@ -2544,8 +2544,8 @@ cases:
 
     published_at: null
     verified_at: 2026-10-09
-    recruitment_status: interviewing
-    status_checked_at: 2026-10-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-10
 
     application:
       start: "2026-09-28"
