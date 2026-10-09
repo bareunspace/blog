@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-07
+updated_at: 2026-10-09
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -2268,4 +2268,317 @@ cases:
     related:
       url: /posts/pt-presentation-rehearsal/
       label: PT 발표 리허설 가이드 보기
+
+  - id: hanjin-2027-new-hire-ai-discussion-foreign-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 한진
+    company_slug: hanjin
+    taxonomy:
+      industry_tags:
+        - logistics
+        - transportation
+        - services
+      region_tags:
+        - seoul
+        - nationwide
+    title: 2027년 신입사원 공개채용 · AI 역량검사·토의·외국어·구조화면접
+    summary: 한진의 2027년 신입사원 공개채용으로, AI 역량검사 이후 토의면접·외국어면접·구조화 인터뷰를 거쳐 임원 인터뷰로 이어집니다. 토의에서 의견을 주고받고 외국어로 답변하며 구조화된 질문에 자신의 경험을 설명해야 해 바른자리의 말하기·토론·외국어 면접 리허설 수요와 직접 연결되는 사례입니다.
+
+    published_at: 2026-09-21
+    verified_at: 2026-10-09
+
+    application:
+      start: "2026-10-01"
+      end: "2026-10-21 14:00"
+      period_label: "2026-10-01 ~ 2026-10-21 14:00"
+      hiring_size: 신입사원 약 30명
+      roles: 직무별 신입사원 채용
+      expected_join: 공식 채용공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형 → AI 역량검사 → 토의·외국어·구조화 인터뷰 → 임원 인터뷰 → 최종합격
+      interview_focus: 토의면접에서 핵심 의견과 근거를 짧게 제시하고 상대 의견에 반응하며, 외국어면접에서는 지원동기·경험·직무 이해를 실제 목소리로 설명하고 구조화 인터뷰의 꼬리질문까지 이어서 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-01 ~ 2026-10-21 14:00
+        - 서류전형
+        - AI 역량검사 · 세부 방식과 영상응답 여부는 공개 확인 범위에서 미확인
+        - 토의면접
+        - 외국어면접
+        - 구조화 인터뷰
+        - 임원 인터뷰
+        - 최종합격
+
+    pattern:
+      label: AI 평가 이후 토의·외국어·구조화 면접을 연속 실시
+      insight: AI 평가 뒤에 토의, 외국어, 구조화 인터뷰가 이어져 독립 응시환경 준비와 실제 말하기·상호작용 리허설을 단계별로 준비해야 하는 사례입니다.
+      practice_shift: 토의 주제로 30~60초 기조발언을 연습하고, 같은 지원동기·경험을 한국어와 외국어로 각각 60초 안에 설명한 뒤 꼬리질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: true
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 약 30명 규모의 공개채용이며 AI 역량검사 이후 토의·외국어·구조화 인터뷰가 명시되어 있어 독립 응시환경과 실제 말하기 연습 수요가 모두 분명합니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+        - ai-interview
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - group-discussion
+        - english-interview
+        - follow-up-response
+      practice_points:
+        - 토의 주제를 받고 결론 → 근거 → 제안 순서로 30~60초 기조발언을 연습하기
+        - 상대 의견을 요약한 뒤 동의·보완·반대 중 하나의 방식으로 짧게 이어 말하기
+        - 지원동기와 주요 경험을 한국어와 외국어로 각각 60초 안에 답해보기
+        - 구조화 인터뷰를 가정해 본인 역할·판단 이유·결과·대안을 묻는 꼬리질문까지 이어서 답하기
+        - AI 역량검사 전 노트북·마이크·인터넷과 주변 방해 여부를 점검하기
+      excluded:
+        - 한진 AI 역량검사를 영상면접이라고 단정하는 표현
+        - 실제 한진 토의 주제·외국어 질문·구조화 질문을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 한진과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 게시일은 2026년 9월 21일이며 지원기간은 10월 1일부터 10월 21일 14:00까지입니다.
+      - AI 역량검사 이후 토의면접, 외국어면접, 구조화 인터뷰, 임원 인터뷰가 이어지는 것으로 안내되어 있습니다.
+      - AI 역량검사의 영상응답 여부와 세부 플랫폼, 전형별 세부 날짜는 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: 한진 채용
+      title: 2027년 신입사원 공개채용
+      url: https://www.hanjin.com/kor/CMS/RecruitMgr/view.do?mCode=MN052&recruit_seq=146
+      published_at: "2026-09-21"
+      checked_at: 2026-10-09
+
+    related:
+      url: /ai-interview/
+      label: 회사·직무별 AI 모의면접 연습하기
+
+
+  - id: koreaexim-2026-fall-specialist-english-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국수출입은행
+    company_slug: koreaexim
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - finance
+        - banking
+        - trade-finance
+      region_tags:
+        - seoul
+    title: 2026년 하반기 전문직행원 채용 · 직무역량·영어활용능력·조직가치적합도 면접
+    summary: 한국수출입은행의 2026년 하반기 전문직행원 68명 채용으로, 필기 이후 직무역량평가와 영어활용능력평가를 거쳐 조직가치적합도 면접으로 이어집니다. 금융·직무 경험을 구조적으로 설명하고 영어로 답하는 연습 수요가 있어 바른자리의 직무·영어 면접 리허설과 직접 연결되는 사례입니다.
+
+    published_at: 2026-10-02
+    verified_at: 2026-10-09
+
+    application:
+      start: "2026-10-02"
+      end: "2026-10-19 10:00"
+      period_label: "2026-10-02 ~ 2026-10-19 10:00"
+      hiring_size: 전문직행원 68명
+      roles: 전문직행원 직무별 채용
+      expected_join: 공식 채용공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 필기전형 → 직무역량평가·영어활용능력평가 → 조직가치적합도 면접 → 최종합격
+      interview_focus: 직무역량평가에서 지원 직무와 경험을 구조화해 설명하고, 영어활용능력평가에서 핵심 답변을 짧고 명확하게 말하며, 조직가치적합도 면접에서 경험과 판단 기준을 일관되게 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-02 ~ 2026-10-19 10:00
+        - 필기전형 · 2026-10-24 및 2026-11-07 예정
+        - 직무역량평가 · 2026년 11월 말 ~ 12월 초 예정
+        - 영어활용능력평가 · 2026년 11월 말 ~ 12월 초 예정
+        - 조직가치적합도 면접 · 2026년 12월 중하순 예정
+        - 최종합격
+
+    pattern:
+      label: 직무평가와 영어활용능력 평가 후 조직적합도 면접으로 연결
+      insight: 직무역량과 영어활용능력을 별도로 평가한 뒤 조직가치적합도 면접까지 이어져, 동일한 경험과 지원동기를 한국어와 영어로 모두 설명하는 반복 연습 수요가 큰 사례입니다.
+      practice_shift: 주요 직무 경험을 한국어 60~90초로 구조화한 뒤 같은 내용을 영어로 짧게 바꾸어 말하고, 선택 이유와 판단 근거를 묻는 후속 질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: null
+      english_interview: true
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 68명 규모의 서울 근무 금융권 채용이며 직무역량평가와 영어활용능력평가가 공식 채용안내에 명시되어 있어 실제 말하기·영어 답변 리허설 수요가 직접적입니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - english-interview
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 지원 직무와 주요 경험을 60~90초 안에 결론부터 설명하기
+        - 같은 경험을 영어로 30~60초 안에 다시 답해보기
+        - 금융·무역 관련 직무 주제를 짧게 설명한 뒤 선택 이유와 리스크를 묻는 후속 질문에 답하기
+        - 조직가치적합도 면접을 가정해 협업·갈등·판단 경험을 역할 → 행동 → 판단 → 결과 순서로 설명하기
+      excluded:
+        - 영어활용능력평가를 특정 유형의 영어면접이라고 공개 범위 이상으로 단정하는 표현
+        - 실제 한국수출입은행 영어 질문이나 면접 질문을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 한국수출입은행과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공고 및 접수 시작일은 2026년 10월 2일이며 지원 마감은 10월 19일 10:00입니다.
+      - 채용규모는 전문직행원 68명입니다.
+      - 직무역량평가와 영어활용능력평가는 2026년 11월 말부터 12월 초 사이 예정입니다.
+      - 조직가치적합도 면접은 2026년 12월 중하순 예정입니다.
+      - 영어활용능력평가의 구체적 질문 형식과 면접 형태는 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: 한국수출입은행 채용
+      title: 2026년 하반기 전문직행원 채용
+      url: https://koreaexim.incruit.com/
+      published_at: "2026-10-02"
+      checked_at: 2026-10-09
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
+
+  - id: hanmi-2026-fall-ai-assessment-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 한미그룹
+    company_slug: hanmi
+    taxonomy:
+      industry_tags:
+        - pharma
+        - healthcare
+        - manufacturing
+        - r-and-d
+      region_tags:
+        - seoul
+        - gyeonggi
+    title: 2026년 하반기 공개채용 · AI 역량검사·1차·2차 면접
+    summary: 한미그룹의 2026년 하반기 공개채용으로, 서류전형 이후 AI 역량검사를 거쳐 1차 면접과 2차 면접으로 이어집니다. AI 역량검사를 방해받지 않는 환경에서 응시하고 이후 직무·경험 답변을 실제 목소리로 반복 준비할 수 있어 바른자리의 독립 응시공간과 면접 리허설 수요에 연결되는 사례입니다.
+
+    published_at: null
+    verified_at: 2026-10-09
+
+    application:
+      start: "2026-09-28"
+      end: "2026-10-18 23:59"
+      period_label: "2026-09-28 ~ 2026-10-18 23:59"
+      hiring_size: 2026년 하반기 공개채용
+      roles: 서울·경기 소재 직무 포함
+      expected_join: 공식 채용공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 서류전형 → AI 역량검사 → 1차 면접 → 2차 면접 → 최종합격
+      interview_focus: AI 역량검사 전 응시환경을 점검하고, 이후 1·2차 면접에서 지원 직무와 본인의 경험·판단을 실제 목소리로 구조화해 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-09-28 ~ 2026-10-18 23:59
+        - 서류전형
+        - AI 역량검사 · 2026-10-21 ~ 2026-10-25 예정
+        - 1차 면접 · 2026년 11월 예정
+        - 2차 면접 · 2026년 12월 예정
+        - 최종합격
+
+    pattern:
+      label: AI 역량검사 후 두 단계 면접으로 확장
+      insight: 온라인 AI 평가와 이후 두 차례의 면접이 연속으로 이어져 응시환경 준비와 실제 말하기 연습을 단계적으로 연결할 수 있는 채용 사례입니다.
+      practice_shift: AI 검사 전 장비·인터넷·주변 방해 요소를 점검하고, 지원 직무와 경험을 60~90초 답변으로 녹화한 뒤 1·2차 면접 꼬리질문까지 이어서 연습하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: AI 역량검사와 1·2차 면접 일정이 공개되어 있고 서울·경기 소재 직무가 다수 포함되어 있어 바른자리의 독립 응시환경·면접 연습 수요와 지역 접근성이 함께 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+        - ai-interview
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - AI 역량검사 전에 노트북·카메라·마이크·인터넷과 주변 방해 여부를 확인하기
+        - 지원 직무와 본인의 경험을 60초·90초 두 버전으로 설명하기
+        - 주요 경험을 역할 → 행동 → 판단 → 결과 순서로 말하고 첫 답변 뒤 꼬리질문까지 이어서 답하기
+        - 휴대폰으로 녹화해 시선·말의 속도·답변 길이를 확인하기
+      excluded:
+        - 한미그룹 AI 역량검사를 영상면접이라고 단정하는 표현
+        - AI 역량검사의 플랫폼이나 영상답변 포함 여부를 확인 없이 단정하는 표현
+        - 실제 한미그룹 AI 검사 문항이나 면접 질문을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 한미그룹과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 9월 28일부터 10월 18일 23:59까지입니다.
+      - AI 역량검사는 2026년 10월 21일부터 10월 25일까지 예정입니다.
+      - 1차 면접은 2026년 11월, 2차 면접은 2026년 12월 예정입니다.
+      - 공고 게시일은 이번에 확인한 공식 공개범위에서 확인하지 못해 published_at을 null로 두었습니다.
+      - AI 역량검사의 영상응답 여부와 응시 플랫폼은 확인되지 않아 추정하지 않습니다.
+
+    source:
+      publisher: 한미그룹 채용
+      title: 2026년 하반기 공개채용
+      url: https://2026recruitment.hanmi.co.kr/
+      checked_at: 2026-10-09
+
+    related:
+      url: /ai-interview/
+      label: 회사·직무별 AI 모의면접 연습하기
 
