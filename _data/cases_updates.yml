@@ -23,7 +23,7 @@ cases:
 
     published_at: 2026-09-17
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -135,7 +135,7 @@ cases:
 
     published_at: 2026-09-17
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -241,7 +241,7 @@ cases:
 
     published_at: 2026-09-15
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -348,7 +348,7 @@ cases:
 
     published_at: 2026-09-15
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -461,7 +461,7 @@ cases:
 
     published_at: 2026-09-11
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -570,7 +570,7 @@ cases:
 
     published_at: 2026-09-14
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -678,7 +678,7 @@ cases:
 
     published_at: 2026-09-07
     verified_at: 2026-09-20
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -784,7 +784,7 @@ cases:
 
     published_at: 2026-09-15
     verified_at: 2026-09-16
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -895,7 +895,7 @@ cases:
 
     published_at: 2026-09-09
     verified_at: 2026-09-15
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1002,7 +1002,7 @@ cases:
 
     published_at: 2026-09-04
     verified_at: 2026-09-15
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1105,7 +1105,7 @@ cases:
 
     published_at: 2026-09-11
     verified_at: 2026-09-15
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1216,7 +1216,7 @@ cases:
 
     published_at: 2026-09-16
     verified_at: 2026-09-22
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1459,7 +1459,7 @@ cases:
 
     published_at: 2026-09-23
     verified_at: 2026-09-27
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1578,7 +1578,7 @@ cases:
 
     published_at: 2026-09-28
     verified_at: 2026-09-28
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1691,7 +1691,7 @@ cases:
 
     published_at: 2026-09-21
     verified_at: 2026-09-28
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1795,7 +1795,7 @@ cases:
 
     published_at: 2026-09-22
     verified_at: 2026-09-29
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -1902,7 +1902,7 @@ cases:
 
     published_at: 2026-09-28
     verified_at: 2026-09-29
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
@@ -2007,7 +2007,7 @@ cases:
 
     published_at: 2026-09-23
     verified_at: 2026-09-29
-    recruitment_status: interviewing
+    recruitment_status: selection_in_progress
     status_checked_at: 2026-10-09
 
     application:
@@ -2114,7 +2114,7 @@ cases:
 
     published_at: 2026-10-01
     verified_at: 2026-10-01
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
@@ -2220,7 +2220,7 @@ cases:
 
     published_at: 2026-10-06
     verified_at: 2026-10-07
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
@@ -2330,7 +2330,7 @@ cases:
 
     published_at: 2026-09-21
     verified_at: 2026-10-09
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
@@ -2438,7 +2438,7 @@ cases:
 
     published_at: 2026-10-02
     verified_at: 2026-10-09
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
@@ -2544,7 +2544,7 @@ cases:
 
     published_at: null
     verified_at: 2026-10-09
-    recruitment_status: recruiting
+    recruitment_status: interviewing
     status_checked_at: 2026-10-09
 
     application:
