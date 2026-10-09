@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /naver-blog.json
+sitemap: false
+---
+{{ site.data.naver_blog.posts | jsonify }}
