@@ -2085,81 +2085,24 @@
       }
     };
 
-    const parseXmlItems = (xmlText) => {
-      const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
-      const nodeList = Array.from(xml.querySelectorAll('item'));
-      return nodeList.map((item) => {
-        const description = item.querySelector('description')?.textContent || '';
-        const contentImage = extractImageFromHtml(description);
-        return {
-          title: item.querySelector('title')?.textContent?.trim() || '',
-          description,
-          link: item.querySelector('link')?.textContent?.trim() || '',
-          pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
-          imageUrl: contentImage
-            || item.querySelector('enclosure')?.getAttribute('url')?.trim()
-            || item.querySelector('media\\:thumbnail')?.getAttribute('url')?.trim()
-            || item.querySelector('media\\:content')?.getAttribute('url')?.trim()
-        };
-      });
-    };
-
-    const fetchRssItems = async (rssUrl) => {
-      const sources = [
-        {
-          type: 'rss2json',
-          url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
-        },
-        {
-          type: 'json-xml',
-          url: `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`
-        }
-      ];
-
-      for (const source of sources) {
-        try {
-          const response = await fetchWithTimeout(source.url);
-          if (!response.ok) {
-            continue;
-          }
-
-          if (source.type === 'json-xml') {
-            const payload = await response.json();
-            const xmlText = payload?.contents || '';
-            if (!xmlText) {
-              continue;
-            }
-            const items = parseXmlItems(xmlText);
-            if (items.length > 0) {
-              return items;
-            }
-            continue;
-          }
-
-          const payload = await response.json();
-          const items = Array.isArray(payload?.items)
-            ? payload.items.map((item) => {
-                const description = item?.description || '';
-                const contentImage = extractImageFromHtml(description);
-                return {
-                  title: item?.title || '',
-                  description,
-                  link: item?.link || '',
-                  pubDate: item?.pubDate || '',
-                  imageUrl: contentImage || item?.thumbnail || item?.enclosure?.link || ''
-                };
-              })
-            : [];
-
-          if (items.length > 0) {
-            return items;
-          }
-        } catch (error) {
-          // Try the next source.
-        }
+    // The scheduled sync publishes this same-origin snapshot along with the page.
+    // Third-party RSS proxies can return a successful but stale response.
+    const fetchPublishedUseCaseItems = async () => {
+      const response = await fetchWithTimeout('/naver-blog.json');
+      if (!response.ok) {
+        throw new Error('Published blog data unavailable');
       }
-
-      return [];
+      const payload = await response.json();
+      if (!Array.isArray(payload)) {
+        throw new Error('Invalid published blog data');
+      }
+      return payload.map((item) => ({
+        title: typeof item?.title === 'string' ? item.title : '',
+        description: typeof item?.summary === 'string' ? item.summary : '',
+        link: typeof item?.url === 'string' ? item.url : '',
+        pubDate: typeof item?.date === 'string' ? item.date : '',
+        imageUrl: typeof item?.image_url === 'string' ? item.image_url : ''
+      })).filter((item) => item.title && item.link);
     };
 
     const readEmbeddedUseCaseItems = () => {
@@ -2369,7 +2312,6 @@
         return;
       }
 
-      const rssUrl = 'https://rss.blog.naver.com/bareunjari114.xml';
       const USECASE_CACHE_KEY = 'bareunjari-usecases-cache-v6';
       const LEGACY_USECASE_CACHE_KEYS = ['bareunjari-usecases-cache-v1', 'bareunjari-usecases-cache-v2', 'bareunjari-usecases-cache-v3', 'bareunjari-usecases-cache-v4', 'bareunjari-usecases-cache-v5'];
       const USECASE_CACHE_TTL = 24 * 60 * 60 * 1000;
@@ -2453,7 +2395,7 @@
           rssStatus.hidden = false;
         }
 
-        const parsed = await fetchRssItems(rssUrl);
+        const parsed = await fetchPublishedUseCaseItems();
         if (parsed.length === 0) {
           throw new Error('RSS 데이터 없음');
         }

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.0.2] - 2026-10-09
+### Fixed
+- Publish Naver blog updates from the hourly RSS sync using the existing validated Pages deployment workflow.
+- Read a same-origin blog snapshot instead of stale third-party RSS proxies; preserve the embedded fallback.
+- Refresh the Naver blog data, including the heating guide published on October 9.
+
 ## [1.0.1] - 2026-07-29
 ### Added
 - `docs/weekly-publishing-workflow.md` with weekly cadence, publishing SOP, copy-paste article template, and weekly KPI retrospective template.

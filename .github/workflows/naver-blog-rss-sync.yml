@@ -2,21 +2,31 @@ name: Naver Blog RSS Sync
 
 on:
   schedule:
-    - cron: '15 0 * * *'
+    - cron: '15 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: naver-blog-rss-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      source_ref: ${{ steps.commit.outputs.source_ref }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -27,9 +37,11 @@ jobs:
         run: bash scripts/sync-naver-blog.sh
 
       - name: Commit changes if needed
+        id: commit
         run: |
           if git diff --quiet -- _data/naver_blog.yml; then
             echo "No changes in _data/naver_blog.yml"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -39,3 +51,12 @@ jobs:
           git add _data/naver_blog.yml
           git commit -m "chore: sync naver blog RSS"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "source_ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/pages.yml
+    with:
+      source_ref: ${{ needs.sync.outputs.source_ref }}
