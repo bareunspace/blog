@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.1] - 2026-10-10
+### Fixed
+- Synchronize the customer meeting SEO description with the updated post instead of retaining the stale override.
+- Update the meeting hub metadata to reflect its private conversation guidance.
+
 ## [1.1.0] - 2026-10-10
 ### Added
 - Add private conversation examples and booking links to the meeting hub, including customer meetings, one-to-one consultations, and personal discussions.
