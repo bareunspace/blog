@@ -36,6 +36,12 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
+  <section class="post-feature-image" aria-label="면접 좋은 신호 대표 이미지">
+    <div class="section-inner">
+      <img src="/images/posts/hiring-manager-interview-signals.webp" alt="바른자리 실제 공간에서 노트북과 노트를 보며 면접 긍정 신호와 주의 신호를 복기하는 장면" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
+    </div>
+  </section>
+
   <section id="why-this-matters">
     <div class="section-inner">
       <h2 class="section-title">면접 분위기가 좋았다고 합격 신호인 것은 아닙니다</h2>
