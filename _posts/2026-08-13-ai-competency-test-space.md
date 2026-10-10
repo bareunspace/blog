@@ -48,7 +48,7 @@ preload_image: images/ai-competency-test-space.webp
 
 {% include breadcrumb.html %}
 
-<section aria-label="AI 역량검사 대표 이미지">
+<section class="post-feature-image" aria-label="AI 역량검사 대표 이미지">
   <div class="section-inner">
     <img src="{{ '/images/ai-competency-test-space.webp' | relative_url }}" alt="실제 바른자리 공간에서 노트북으로 AI 역량검사를 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
   </div>
