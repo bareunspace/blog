@@ -48,7 +48,7 @@ preload_image: images/online-aptitude-test-space.webp
 
 {% include breadcrumb.html %}
 
-<section aria-label="온라인 인적성검사 대표 이미지">
+<section class="post-feature-image" aria-label="온라인 인적성검사 대표 이미지">
   <div class="section-inner">
     <img src="{{ '/images/online-aptitude-test-space.webp' | relative_url }}" alt="바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
   </div>
