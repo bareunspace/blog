@@ -4763,7 +4763,8 @@ main.about-page .article-hero-visual {
   isolation: isolate;
 }
 /* Blog title images need a tighter rhythm than full content sections. */
-main.about-page > #guide-visual {
+main.about-page > #guide-visual,
+main.about-page > #shooting-visual {
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
 }
