@@ -49,6 +49,10 @@ youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간
   <nav class="guide-toc" aria-label="발표 토론 팀 프로젝트 공간 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span>{% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}<a href="#why-study-is-changing">공부 방식의 변화</a><a href="#ap-ib-example">AP · IB 사례</a><a href="#why-space-matters">왜 공간이 중요한가</a><a href="#how-to-use-time">시간을 어떻게 써야 하나</a><a href="#bareunjari">바른자리 활용법</a></div></nav>
 
   <style>
+    #video-first {
+      padding-top: 2.25rem;
+      padding-bottom: 2.25rem;
+    }
     @media (min-width: 768px) {
       .guide-summary-section .guide-summary-grid,
       #why-study-is-changing .about-highlight-grid,
@@ -69,6 +73,10 @@ youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간
       #bareunjari .about-principle-grid,
       #timing-guide .about-principle-grid {
         grid-template-columns: 1fr;
+      }
+      #video-first {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
       }
     }
   </style>
