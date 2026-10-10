@@ -47,7 +47,7 @@ preload_image: images/online-coding-test-place.webp
 
 {% include breadcrumb.html %}
 
-<section aria-label="온라인 코딩테스트 대표 이미지">
+<section class="post-feature-image" aria-label="온라인 코딩테스트 대표 이미지">
   <div class="section-inner">
     <img src="{{ '/images/online-coding-test-place.webp' | relative_url }}" alt="온라인 코딩테스트 장소 선택과 응시 환경 체크리스트" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
   </div>
