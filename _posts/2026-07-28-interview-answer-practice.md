@@ -14,12 +14,12 @@ tags:
 canonical: https://bareunjari.com/posts/interview-answer-practice/
 permalink: /posts/interview-answer-practice/
 date: 2026-07-28 09:00:00 +0900
-og_image: https://bareunjari.com/images/interview-answer-practice.webp
-og_image_alt: 면접 답변을 소리 내어 연습하는 방법 가이드
+og_image: https://bareunjari.com/images/interview-answer-practice-real-20261010.webp
+og_image_alt: 실제 바른자리 공간에서 휴대폰으로 녹화하며 면접 답변을 말하는 연습 장면
 og_image_width: 1672
-og_image_height: 941
-preload_image: images/interview-answer-practice.webp
-css_version: 20260728-1
+og_image_height: 940
+preload_image: images/interview-answer-practice-real-20261010.webp
+css_version: 20261010-practice
 extra_css: /styles/interview-answer-practice.css
 extra_css_version: 20260920-2
 script_version: 20260711-4
@@ -43,9 +43,17 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/interview-answer-practice.webp" alt="면접 답변을 소리 내어 연습하는 방법 가이드" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/interview-answer-practice-real-20261010.webp" alt="실제 바른자리 공간에서 휴대폰으로 녹화하며 면접 답변을 말하는 연습 장면" loading="eager" width="1672" height="940" />
         <figcaption>면접 답변은 머릿속 정리만으로 완성되지 않습니다. 실제처럼 말하고, 촬영하고, 고쳐보는 과정이 필요합니다.</figcaption>
       </figure>
+      <div class="post-image-booking" style="margin-top:18px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">주변을 의식하지 않고, 내 답변에 집중하세요</h2>
+        <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />준비한 답변을 소리 내어 말하고, 녹화해 확인할 나만의 시간을 확보하세요.</p>
+        <div class="hero-btns" style="margin-top:14px;">
+          <a href="/booking/?purpose=interview&amp;source=interview-answer-practice-image" class="btn-primary" data-cta="interview_answer_practice_image_booking">면접 연습할 빈 시간 확인하기</a>
+        </div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;">촬영용 휴대폰·노트북 등 개인 장비는 직접 준비해 주세요. 바른자리는 면접 코칭이 아닌 공간대여 서비스입니다.</p>
+      </div>
     </div>
   </section>
 

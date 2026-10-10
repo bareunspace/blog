@@ -1641,7 +1641,7 @@ main.about-page.blog-hub #home .section-inner {
   overflow: hidden;
   background:
     linear-gradient(120deg, rgba(15,47,34,.9), rgba(45,106,79,.72)),
-    url('/images/interview-answer-practice.webp') center / cover no-repeat;
+    url('/images/interview-answer-practice-real-20261010.webp') center / cover no-repeat;
 }
 .interview-hub #home::after {
   content: "";
