@@ -12,11 +12,11 @@ tags:
   - 면접평가
 canonical: https://bareunjari.com/posts/hiring-manager-interview-red-flags-and-good-signals/
 permalink: /posts/hiring-manager-interview-red-flags-and-good-signals/
-og_image: https://bareunjari.com/images/posts/hero-bucheon-video-interview-place-guide.jpg
-og_image_alt: 바른자리 실제 공간 배경에서 면접 답변을 복기하는 장면
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/posts/hero-bucheon-video-interview-place-guide.jpg
+og_image: https://bareunjari.com/images/posts/hiring-manager-interview-signals.webp
+og_image_alt: 바른자리 실제 공간에서 노트북과 노트를 보며 면접 긍정 신호와 주의 신호를 복기하는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/posts/hiring-manager-interview-signals.webp
 css_version: 20260713-7
 script_version: 20260711-4
 ---
