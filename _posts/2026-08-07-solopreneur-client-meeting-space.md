@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?
-description: 사무실 없이 일하는 1인사업자와 프리랜서가 고객을 만나야 할 때 어디서 미팅해야 할까요? 부천 신중동에서 필요한 시간만 예약해 사용하는 프라이빗 업무공간을 소개합니다.
+description: 고객과 계약·견적·프로젝트를 이야기할 때, 카페 대신 한 팀만 사용하는 미팅 공간이 필요하다면? 신중동역 도보 1분 바른자리의 단독 이용과 시간제 예약 방법을 확인하세요.
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
@@ -9,7 +9,7 @@ hub_order: 2
 hub_label: 고객 미팅
 hub_kicker: 사무실 없이 일하는 1인사업자의 미팅 공간
 hub_title: 사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?
-hub_description: 사무실 없이 일하는 1인사업자와 프리랜서가 고객을 만나야 할 때 필요한 시간만 예약해 쓰는 프라이빗 업무공간을 정리했습니다.
+hub_description: 계약·견적·프로젝트처럼 중요한 고객 대화를 위한 공간. 카페 대신 한 팀만 사용하는 미팅룸과 필요한 시간만 예약하는 방법을 정리했습니다.
 hub_tags:
   - 1인사업자
   - 프리랜서
@@ -40,7 +40,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Private Work Meeting Guide</p>
       <h1 class="section-title">사무실 없는 1인사업자,<br />고객 미팅은 어디서 해야 할까?</h1>
-      <p class="section-desc">사무실 없이 일하는 1인사업자와 프리랜서가 고객을 만나야 할 때, 가장 현실적인 선택은 꼭 고정 사무실이 아닙니다. 부천 신중동에서 필요한 시간만 예약해 사용하는 프라이빗 업무공간을 소개합니다.</p>
+      <p class="section-desc">중요한 고객 대화를 위한 우리만의 공간. 계약 조건과 견적을 검토하고, 자료를 펼쳐 설명해야 하는 날에는 미팅에 필요한 시간만 확보하세요. 신중동역 도보 1분 바른자리에서 1~8인이 공간 전체를 단독으로 이용할 수 있습니다.</p>
       <div class="hero-btns">
         <a href="#why-space-is-needed" class="btn-primary">고객 미팅에 맞는 이유 보기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">업무공간 예약하기</a>
@@ -122,11 +122,15 @@ script_version: 20260711-4
       <h2 class="section-title">카페에서 만나면 안 될까요?</h2>
       <p class="section-desc">물론 가능합니다. 가벼운 첫 만남이나 짧은 대화라면 카페가 더 편할 수도 있습니다.</p>
       <p>하지만 계약이나 비용에 관한 이야기가 있을 때, 고객의 개인적인 이야기를 들어야 할 때, 자료나 노트북 화면을 함께 확인해야 할 때, 한 시간 이상 집중해서 이야기해야 할 때는 <strong>커피를 마실 곳보다 대화할 환경</strong>이 중요해집니다.</p>
-      <div class="about-principle-grid" aria-label="카페 미팅이 아쉬운 상황">
-        <article class="about-principle-item" data-step="01"><h3>계약과 비용을 이야기할 때</h3><p>민감한 내용을 주변 시선을 의식하지 않고 편하게 이야기하기 어렵습니다.</p></article>
-        <article class="about-principle-item" data-step="02"><h3>자료와 화면을 함께 볼 때</h3><p>노트북이나 문서를 펼치고 설명해야 하면 좁은 테이블과 주변 소음이 불편할 수 있습니다.</p></article>
-        <article class="about-principle-item" data-step="03"><h3>오래 집중해야 할 때</h3><p>한두 시간 동안 이어지는 대화에는 자리를 오래 써도 되는 환경이 훨씬 잘 맞습니다.</p></article>
-        <article class="about-principle-item" data-step="04"><h3>화상회의를 함께할 때</h3><p>온라인 참석자까지 포함한 미팅은 배경과 소음 관리가 더 중요해집니다.</p></article>
+      <div class="about-principle-grid" aria-label="프라이빗 미팅 공간을 선택하는 이유">
+        <article class="about-principle-item" data-step="01"><h3>한 팀만의 공간</h3><p>계약 조건, 견적, 고객 요청사항을 다른 팀과 공간을 공유하지 않고 함께 검토할 수 있습니다.</p></article>
+        <article class="about-principle-item" data-step="02"><h3>우리 일정에 맞춘 대화</h3><p>무인 공간에서 예약한 시간 동안 자료를 펼치고 설명하거나, 중간에 메모하며 대화를 이어가세요.</p></article>
+        <article class="about-principle-item" data-step="03"><h3>만날 장소를 미리 확보</h3><p>신중동역 도보 1분에서 만나세요. 고객과 일정이 정해졌다면 빈 시간을 확인해 공간도 함께 예약해두세요.</p></article>
+      </div>
+      <p>완전한 방음이나 전문 상담시설이 필요한 미팅은 예약 전에 이용 조건을 확인해 주세요. 바른자리는 예약자가 직접 미팅·상담을 진행할 때 사용하는 공간대여 서비스입니다.</p>
+      <div class="hero-btns" style="margin-top: 1.5rem;">
+        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="client_meeting_private_booking">고객과 만날 시간 예약하기</a>
+        <a href="/meeting/#private-conversation" class="btn-outline">중요한 대화 공간 활용 보기</a>
       </div>
     </div>
   </section>
