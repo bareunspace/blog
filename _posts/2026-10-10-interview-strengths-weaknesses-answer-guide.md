@@ -15,6 +15,8 @@ permalink: /posts/interview-strengths-weaknesses-answer-guide/
 date: 2026-10-10 14:15:00 +0900
 og_image: https://bareunjari.com/images/interview-strengths-weaknesses-bareunjari.webp
 og_image_alt: 바른자리 실제 공간에서 노트북을 보며 면접 장단점 답변을 연습하는 모습
+og_image_width: 1365
+og_image_height: 1024
 preload_image: images/interview-strengths-weaknesses-bareunjari.webp
 ---
 
@@ -335,6 +337,7 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
   }
   .interview-example-card {
     overflow: hidden;
+    scroll-margin-top: 92px;
     border: 1px solid rgba(26,54,41,.12);
     border-radius: 18px;
     background: #fff;
@@ -395,6 +398,9 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
     line-height: 1.76;
   }
   @media (max-width: 760px) {
+    .interview-example-card {
+      scroll-margin-top: 82px;
+    }
     .interview-example-strip {
       flex-wrap: nowrap;
       overflow-x: auto;
