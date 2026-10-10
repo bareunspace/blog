@@ -263,16 +263,43 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
   <section id="faq">
     <div class="section-inner">
       <p class="section-label">FAQ</p>
-      <h2 class="section-title">자주 묻는 질문</h2>
-      <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>Q. 단점은 몇 개 준비하나?</h3><p>A. 기본적으로 2~3개 정도 준비해두는 것이 좋습니다. 실제로 말하기 편한 단점 2개와 예비 단점 1개 정도면 충분합니다.</p></article>
-        <article class="about-highlight-card"><h3>Q. 성격 단점과 업무 단점 중 무엇을 말하나?</h3><p>A. 가능하면 업무 상황에서 드러나는 단점으로 말하는 것이 좋습니다. “발표할 때 긴장해서 말의 순서가 흔들린 적이 있습니다”처럼 협업이나 업무 장면과 연결하면 자연스럽습니다.</p></article>
-        <article class="about-highlight-card"><h3>Q. 완벽주의를 단점으로 써도 되나?</h3><p>A. 쓸 수는 있지만 조심해야 합니다. 구체적인 상황과 개선 행동이 없으면 장점처럼 포장한 단점으로 들릴 수 있습니다.</p></article>
-        <article class="about-highlight-card"><h3>Q. 자소서와 똑같이 말해야 하나?</h3><p>A. 완전히 똑같이 외워 말할 필요는 없습니다. 핵심 메시지는 유지하되, 표현은 자연스럽게 말하는 문장으로 바꾸는 것이 좋습니다.</p></article>
-        <article class="about-highlight-card"><h3>Q. 영어 면접에서는 어떻게 하나?</h3><p>A. 영어 면접에서도 구조는 같습니다. 장점은 “My strength is…”로 시작하고, 단점은 “One area I am working on is…”처럼 개선 중인 부분으로 표현하면 좋습니다.</p></article>
+      <h2 class="section-title">면접 장단점 답변 FAQ</h2>
+      <p class="section-desc">면접 장단점 답변을 준비할 때 자주 헷갈리는 부분을 정리했습니다.</p>
+      <div class="faq-list contact-faq" itemscope itemtype="https://schema.org/FAQPage">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">단점은 몇 개 준비하나?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">기본적으로 2~3개 정도 준비해두는 것이 좋습니다. 면접에서 단점을 하나만 묻는 경우도 있지만, 꼬리질문으로 “다른 단점은 없나요?”라고 물을 수 있기 때문입니다. 실제로 말하기 편한 단점 2개와 예비 단점 1개 정도면 충분합니다.</p>
+          </div>
+        </details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">성격 단점과 업무 단점 중 무엇을 말하나?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">가능하면 업무 상황에서 드러나는 단점으로 말하는 것이 좋습니다. “소심합니다”, “예민합니다”처럼 성격만 말하면 평가하기 어렵고 답변이 개인적인 분위기로 흐를 수 있습니다. “발표할 때 긴장해서 말의 순서가 흔들린 적이 있습니다”처럼 업무나 협업 상황과 연결하면 더 자연스럽습니다.</p>
+          </div>
+        </details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">완벽주의를 단점으로 써도 되나?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">쓸 수는 있지만 조심해야 합니다. 완벽주의는 흔한 답변이라 구체적인 상황과 개선 행동이 없으면 장점처럼 포장한 단점으로 들릴 수 있습니다. “초반에는 세부 표현을 오래 붙잡아 전체 일정이 늦어진 적이 있어, 지금은 먼저 구조와 마감 기준을 정하고 세부 수정 시간을 제한하고 있습니다”처럼 말하는 편이 좋습니다.</p>
+          </div>
+        </details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">자소서와 똑같이 말해야 하나?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">완전히 똑같이 외워 말할 필요는 없습니다. 다만 자소서에 쓴 내용과 면접 답변의 방향이 크게 다르면 일관성이 떨어져 보일 수 있습니다. 핵심 메시지는 유지하되, 표현은 자연스럽게 말하는 문장으로 바꾸는 것이 좋습니다.</p>
+          </div>
+        </details>
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <summary itemprop="name">영어 면접에서는 어떻게 하나?</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">영어 면접에서도 구조는 같습니다. 장점은 “My strength is…”로 시작해 짧은 사례와 직무 연결을 말하고, 단점은 “One area I am working on is…”처럼 개선 중인 부분으로 표현하면 좋습니다. 영어 답변도 먼저 한국어로 구조를 잡은 뒤, 짧은 문장으로 바꿔 실제로 말해보는 연습이 필요합니다.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
+
 </main>
 
 <style>
