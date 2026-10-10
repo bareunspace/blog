@@ -27,12 +27,12 @@ permalink: /posts/bucheon-meeting-room/
 date: 2026-07-26 09:00:00 +0900
 editor_pick: true
 editor_pick_order: 4
-og_image: https://bareunjari.com/images/bucheon-meeting-room.webp
-og_image_alt: 부천 신중동역 인근 1~8인 소규모 회의와 고객 미팅을 위한 바른자리 회의실
+og_image: https://bareunjari.com/images/bucheon-meeting-room-real-20261010.webp
+og_image_alt: 실제 바른자리 공간에서 두 사람이 자료를 보며 대화하는 소규모 미팅 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/bucheon-meeting-room.webp
-css_version: 20260726-1
+preload_image: images/bucheon-meeting-room-real-20261010.webp
+css_version: 20261010-meeting
 script_version: 20260711-4
 ---
 
@@ -53,9 +53,17 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/bucheon-meeting-room.webp" alt="부천 신중동역 인근 1~8인 소규모 회의와 고객 미팅을 위한 바른자리 회의실" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/bucheon-meeting-room-real-20261010.webp" alt="실제 바른자리 공간에서 두 사람이 자료를 보며 대화하는 소규모 미팅 장면" loading="eager" width="1672" height="941" />
         <figcaption>자료를 펼치고 마주 앉아 대화할 수 있는 부천 신중동의 단독 이용 미팅룸입니다.</figcaption>
       </figure>
+      <div class="post-image-booking" style="margin-top:18px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">주변을 의식하지 않고, 우리 대화에 집중하세요</h2>
+        <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />고객 미팅이나 팀 회의에 필요한 시간만 예약하세요.</p>
+        <div class="hero-btns" style="margin-top:14px;">
+          <a href="/booking/?purpose=meeting&amp;source=bucheon-meeting-room-image" class="btn-primary" data-cta="bucheon_meeting_room_image_booking">미팅 날짜의 빈 시간 확인하기</a>
+        </div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;">1인부터 최대 8인까지 이용할 수 있습니다. 노트북 등 개인 업무 장비는 직접 준비해 주세요.</p>
+      </div>
     </div>
   </section>
 

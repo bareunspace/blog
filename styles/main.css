@@ -2072,7 +2072,7 @@ main.about-page.meeting-hub #home.meeting-hero {
     linear-gradient(115deg, rgba(17, 52, 38, .72), rgba(45, 106, 79, .46)),
     radial-gradient(circle at 8% 15%, rgba(166, 207, 183, .24), transparent 28%),
     radial-gradient(circle at 88% 16%, rgba(125, 174, 148, .22), transparent 34%),
-    url('/images/bucheon-meeting-room.webp') center / cover no-repeat;
+    url('/images/bucheon-meeting-room-real-20261010.webp') center / cover no-repeat;
 }
 main.about-page.meeting-hub #home.meeting-hero::after {
   content: "";
