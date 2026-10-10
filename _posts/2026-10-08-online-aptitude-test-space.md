@@ -27,9 +27,9 @@ canonical: https://bareunjari.com/posts/online-aptitude-test-space/
 date: 2026-08-22 17:44:00 +0900
 editor_pick: true
 editor_pick_order: 2
-og_image: https://bareunjari.com/images/online-aptitude-test-space.webp
+og_image: https://bareunjari.com/images/online-aptitude-test-space-20261010.webp
 og_image_alt: 바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습
-preload_image: images/online-aptitude-test-space.webp
+preload_image: images/online-aptitude-test-space-20261010.webp
 ---
 
 <main class="about-page">
@@ -50,7 +50,7 @@ preload_image: images/online-aptitude-test-space.webp
 
 <section class="post-feature-image" aria-label="온라인 인적성검사 대표 이미지">
   <div class="section-inner">
-    <img src="{{ '/images/online-aptitude-test-space.webp' | relative_url }}" alt="바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
+    <img src="{{ '/images/online-aptitude-test-space-20261010.webp' | relative_url }}" alt="바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
   </div>
 </section>
 
