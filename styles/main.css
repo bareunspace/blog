@@ -6436,6 +6436,13 @@ main.about-page .about-checklist-item p {
   padding-top: 1.5rem !important;
   padding-bottom: 2.2rem !important;
 }
+main.about-page .post-feature-image {
+  padding-top: clamp(1.35rem, 3vw, 2rem) !important;
+  padding-bottom: clamp(1.35rem, 3vw, 2rem) !important;
+}
+main.about-page .post-feature-image + section:not(.guide-summary-section) {
+  padding-top: clamp(2.1rem, 4.5vw, 3.25rem) !important;
+}
 main.about-page .guide-summary-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
