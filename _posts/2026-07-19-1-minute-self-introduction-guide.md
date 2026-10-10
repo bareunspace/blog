@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 면접 1분 자기소개 예시 | 신입·경력직 템플릿과 예문
-description: 면접 1분 자기소개를 준비할 때 바로 참고할 수 있는 신입·경력직 예문과 60초 템플릿을 정리했습니다. 구성, 작성법, 직무전환 예시와 실제 말하기 연습법까지 확인하세요.
+title: 1분 자기소개 예시와 작성법
+description: 1분 자기소개 예시와 작성법을 정리했습니다. 신입·경력직 60초 템플릿과 구성 포인트, 외운 문장을 자연스럽게 말하는 연습법과 녹화로 점검하는 방법까지 확인하세요.
 category: 면접준비
 keywords: 면접1분자기소개,1분자기소개예시,1분자기소개예문,면접1분자기소개예시,면접자기소개,1분자기소개작성법,신입1분자기소개,경력직1분자기소개
 tags:
@@ -26,7 +26,7 @@ script_version: 20260719-1
   <section id="home">
     <div class="section-inner">
       <p class="section-label">1-Minute Self-Introduction Guide</p>
-      <h1 class="section-title">면접 1분 자기소개 예시<br />신입·경력직 60초 템플릿</h1>
+      <h1 class="section-title">1분 자기소개 예시와 작성법</h1>
       <p class="section-desc"><strong>신입·경력직 예시와 바로 쓰는 60초 템플릿부터 확인해보세요.</strong> 핵심은 강점 1개, 대표 경험 1개, 지원 직무에서의 기여 1개를 50~60초 안에 연결하는 것입니다.</p>
       <div class="hero-btns">
         <a href="#quick-examples" class="btn-primary">신입·경력직 예시 바로 보기</a>

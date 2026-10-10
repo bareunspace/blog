@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 면접 긍정적 신호 9가지 | 좋은 신호와 주의할 신호
-description: 면접이 잘 풀리고 있는지 궁금할 때 참고할 수 있는 면접 긍정적 신호와 주의할 신호 9가지를 정리했습니다. 단일 행동만으로 합격을 단정하지 않고 면접 흐름과 답변에서 확인할 포인트를 설명합니다.
+title: 면접 좋은 신호 9가지
+description: 면접 좋은 신호와 주의할 신호 9가지를 정리했습니다. 한 가지 행동만으로 합격을 단정하지 않고, 면접관이 답변의 구체성과 일관성, 태도를 어떻게 확인하는지 포인트로 설명합니다.
 category: 면접준비
 keywords: 면접긍정적신호,면접좋은신호,면접합격신호,면접관긍정신호,면접감점요소,면접평가기준,면접준비
 tags:
@@ -25,7 +25,7 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Interview Signals Guide</p>
-      <h1 class="section-title">면접 긍정적 신호 9가지</h1>
+      <h1 class="section-title">면접 좋은 신호 9가지</h1>
       <p class="section-desc">면접이 끝난 뒤 분위기가 좋았다고 바로 합격 신호라고 단정하기는 어렵습니다. 대신 면접관이 내 경험을 더 구체적으로 확인하고, 실제 직무와 입사 후 상황으로 대화를 확장하는지 살펴보면 면접 흐름을 이해하는 데 도움이 됩니다.</p>
       <div class="hero-btns">
         <a href="#good-signals" class="btn-primary">긍정적 신호 보기</a>
