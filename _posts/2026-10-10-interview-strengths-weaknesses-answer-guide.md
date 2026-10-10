@@ -13,9 +13,9 @@ tags:
 canonical: https://bareunjari.com/posts/interview-strengths-weaknesses-answer-guide/
 permalink: /posts/interview-strengths-weaknesses-answer-guide/
 date: 2026-10-10 14:15:00 +0900
-og_image: https://bareunjari.com/images/interview-answer-practice.webp
-og_image_alt: 면접 장단점 답변을 소리 내어 연습하는 모습
-preload_image: images/interview-answer-practice.webp
+og_image: https://bareunjari.com/images/interview-strengths-weaknesses-bareunjari.webp
+og_image_alt: 바른자리 실제 공간에서 노트북을 보며 면접 장단점 답변을 연습하는 모습
+preload_image: images/interview-strengths-weaknesses-bareunjari.webp
 ---
 
 <main class="about-page">
@@ -35,7 +35,7 @@ preload_image: images/interview-answer-practice.webp
 
   <section class="post-feature-image" aria-label="면접 장단점 답변법 대표 이미지">
     <div class="section-inner">
-      <img src="/images/interview-answer-practice.webp" alt="면접 답변을 녹화하며 연습하는 장면" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
+      <img src="/images/interview-strengths-weaknesses-bareunjari.webp" alt="바른자리 실제 공간에서 노트북을 보며 면접 장단점 답변을 연습하는 장면" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px;" />
     </div>
   </section>
 
