@@ -45,6 +45,10 @@ faq:
   .appointment-buffer-page #rest-options {
     background: var(--bg-alt);
   }
+  .appointment-buffer-page > #video-first {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
   .appointment-buffer-page .buffer-timeline {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -147,6 +151,10 @@ faq:
       font-size: clamp(1.85rem, 8vw, 2.2rem);
       line-height: 1.35;
       word-break: keep-all;
+    }
+    .appointment-buffer-page > #video-first {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
     }
     .appointment-buffer-page .buffer-timeline,
     .appointment-buffer-page .appointment-check-grid {
