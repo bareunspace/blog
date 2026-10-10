@@ -93,18 +93,129 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
     </div>
   </section>
 
-  <section id="examples">
+  <section id="examples" class="interview-examples-section">
     <div class="section-inner">
       <p class="section-label">Examples</p>
       <h2 class="section-title">예시 6개: 신입 2, 경력 2, 직무 전환 1, 서비스직 1</h2>
-      <p class="section-desc">아래 예시는 그대로 외우기보다 자신의 경험에 맞게 바꾸어 말하는 것이 좋습니다. 핵심은 장점은 사례와 직무 연결, 단점은 개선 행동과 현재 상태까지 포함하는 것입니다.</p>
-      <div class="about-highlight-grid">
-        <article class="about-highlight-card"><h3>신입 예시 1</h3><p><strong>장점:</strong> 제 장점은 새로운 내용을 배우면 그냥 넘기지 않고 제 방식으로 정리해두는 점입니다. 학교 팀 프로젝트에서 처음 사용하는 분석 도구가 있었는데, 초반에는 팀원들마다 이해도가 달라 진행 속도가 느렸습니다. 저는 사용 방법과 자주 헷갈리는 부분을 간단한 문서로 정리했고, 이후 팀원들이 같은 질문을 반복하지 않아 전체 진행이 빨라졌습니다.</p><p><strong>단점:</strong> 제 단점은 결정을 내릴 때 시간이 조금 걸리는 편이라는 점입니다. 여러 선택지를 비교하다 보면 더 좋은 방법이 있을 것 같아 판단을 미룬 적이 있었습니다. 이후에는 먼저 판단 기준을 정하고, 정해진 시간 안에 선택한 뒤 부족한 부분은 진행하면서 보완하는 방식으로 바꾸고 있습니다.</p></article>
-        <article class="about-highlight-card"><h3>신입 예시 2</h3><p><strong>장점:</strong> 제 장점은 맡은 일을 끝까지 확인하는 책임감입니다. 아르바이트를 하면서 마감 정산과 재고 확인을 맡은 적이 있는데, 체크리스트를 만들어 빠뜨리는 항목을 줄였습니다. 지원 직무에서도 작은 업무라도 놓치지 않고 확인하는 태도로 신뢰를 쌓고 싶습니다.</p><p><strong>단점:</strong> 제 단점은 부탁을 받으면 거절을 잘하지 못하는 편이라는 점입니다. 여러 일을 동시에 맡다 보니 제 업무 우선순위가 흐려진 적이 있었습니다. 그래서 요즘은 바로 “네”라고 답하기보다 먼저 마감 시간과 제 일정표를 확인하고 가능한 범위를 말하려고 합니다.</p></article>
-        <article class="about-highlight-card"><h3>경력 예시 1</h3><p><strong>장점:</strong> 제 장점은 업무의 흐름을 정리해서 반복되는 문제를 줄이는 점입니다. 이전 직장에서 고객 문의가 특정 시간대에 몰릴 때마다 처리 기준이 조금씩 달라지는 문제가 있었습니다. 저는 자주 들어오는 문의 유형과 답변 기준을 정리했고, 팀에서 공유한 뒤 처리 시간이 줄어드는 효과가 있었습니다.</p><p><strong>단점:</strong> 제 단점은 업무를 남에게 맡기기 어려워하는 편이었다는 점입니다. 제가 직접 처리하는 것이 더 빠르다고 생각해 혼자 끌고 가려는 경우가 있었습니다. 이후에는 업무를 넘길 때 결과물 기준, 참고 자료, 중간 확인 시점을 함께 정리해서 공유하려고 합니다.</p></article>
-        <article class="about-highlight-card"><h3>경력 예시 2</h3><p><strong>장점:</strong> 제 장점은 문제 상황에서도 감정적으로 반응하기보다 원인을 나누어 보는 점입니다. 이전 업무에서 일정이 밀렸을 때 요청 내용이 늦게 확정된 부분과 내부 확인이 지연된 부분을 나누어 정리했고, 다음 프로젝트에서는 확인 일정을 앞당길 수 있었습니다.</p><p><strong>단점:</strong> 제 단점은 중요한 발표나 보고를 앞두면 긴장을 많이 하는 편이라는 점입니다. 내용을 알고 있어도 말의 순서가 흐트러지면 전달력이 떨어진 적이 있었습니다. 그래서 발표 전에는 핵심 문장을 먼저 적고, 실제 말하는 속도로 2~3번 녹음해보는 습관을 만들었습니다.</p></article>
-        <article class="about-highlight-card"><h3>직무 전환 예시</h3><p><strong>장점:</strong> 제 장점은 새로운 분야를 배울 때 기존 경험과 연결점을 찾아 빠르게 적용해보는 점입니다. 이전 경험 중 문제 해결, 커뮤니케이션, 일정 관리처럼 연결될 수 있는 부분을 함께 정리했습니다. 새로운 직무에서도 빠르게 배우고 실제 업무에 연결하는 방식으로 적응하고 싶습니다.</p><p><strong>단점:</strong> 제 단점은 경험이 부족한 분야에서는 초반에 확신을 갖기까지 시간이 걸린다는 점입니다. 이후에는 채용공고와 직무 설명을 기준으로 필요한 역량을 나누고, 우선순위를 정해 학습하는 방식으로 바꾸었습니다.</p></article>
-        <article class="about-highlight-card"><h3>서비스직 예시</h3><p><strong>장점:</strong> 제 장점은 상대방의 불편을 먼저 파악하려고 하는 점입니다. 서비스 업무를 하면서 고객이 직접 말하지 않아도 표정이나 상황을 보고 필요한 안내를 먼저 드리려고 했습니다. 이 경험을 통해 친절한 말뿐 아니라 상황을 먼저 읽고 설명하는 태도가 중요하다는 것을 배웠습니다.</p><p><strong>단점:</strong> 제 단점은 고객이나 동료의 부탁을 거절하는 데 어려움을 느낀 적이 있다는 점입니다. 바쁜 시간대에도 요청을 모두 받아주려다 보니 제 담당 업무 확인이 늦어진 경우가 있었습니다. 이후에는 요청을 받을 때 바로 처리 가능한지, 다른 업무에 영향이 있는지 먼저 확인하고 답하려고 했습니다.</p></article>
+      <p class="section-desc">아래 예시는 그대로 외우기보다 자신의 경험에 맞게 바꾸어 말하는 것이 좋습니다. 각 사례는 <strong>장점은 직무 기여로, 단점은 개선 행동으로</strong> 끝나도록 구성했습니다.</p>
+
+      <div class="interview-example-strip" aria-label="면접 장단점 예시 유형">
+        <a href="#example-new-1">신입 1</a>
+        <a href="#example-new-2">신입 2</a>
+        <a href="#example-career-1">경력 1</a>
+        <a href="#example-career-2">경력 2</a>
+        <a href="#example-change">직무 전환</a>
+        <a href="#example-service">서비스직</a>
+      </div>
+
+      <div class="interview-example-list">
+        <article id="example-new-1" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">신입 1</span>
+            <h3>배운 내용을 정리하는 지원자</h3>
+            <p>정리 습관을 장점으로 말하고, 결정이 느린 단점은 판단 기준으로 보완합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 새로운 내용을 배우면 그냥 넘기지 않고 제 방식으로 정리해두는 점입니다. 학교 팀 프로젝트에서 처음 사용하는 분석 도구가 있었는데, 초반에는 팀원들마다 이해도가 달라 진행 속도가 느렸습니다. 저는 사용 방법과 자주 헷갈리는 부분을 간단한 문서로 정리했고, 이후 팀원들이 같은 질문을 반복하지 않아 전체 진행이 빨라졌습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 결정을 내릴 때 시간이 조금 걸리는 편이라는 점입니다. 여러 선택지를 비교하다 보면 더 좋은 방법이 있을 것 같아 판단을 미룬 적이 있었습니다. 이후에는 먼저 판단 기준을 정하고, 정해진 시간 안에 선택한 뒤 부족한 부분은 진행하면서 보완하는 방식으로 바꾸고 있습니다.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="example-new-2" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">신입 2</span>
+            <h3>책임감과 우선순위를 함께 말하는 지원자</h3>
+            <p>성실함을 체크리스트 사례로 보여주고, 거절이 어려운 단점은 일정 확인 습관으로 보완합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 맡은 일을 끝까지 확인하는 책임감입니다. 아르바이트를 하면서 마감 정산과 재고 확인을 맡은 적이 있는데, 체크리스트를 만들어 빠뜨리는 항목을 줄였습니다. 지원 직무에서도 작은 업무라도 놓치지 않고 확인하는 태도로 신뢰를 쌓고 싶습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 부탁을 받으면 거절을 잘하지 못하는 편이라는 점입니다. 여러 일을 동시에 맡다 보니 제 업무 우선순위가 흐려진 적이 있었습니다. 그래서 요즘은 바로 “네”라고 답하기보다 먼저 마감 시간과 제 일정표를 확인하고 가능한 범위를 말하려고 합니다.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="example-career-1" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">경력 1</span>
+            <h3>반복 문제를 구조화하는 경력자</h3>
+            <p>업무 개선 경험을 장점으로 잡고, 위임이 어려운 단점은 공유 기준으로 관리합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 업무의 흐름을 정리해서 반복되는 문제를 줄이는 점입니다. 이전 직장에서 고객 문의가 특정 시간대에 몰릴 때마다 처리 기준이 조금씩 달라지는 문제가 있었습니다. 저는 자주 들어오는 문의 유형과 답변 기준을 정리했고, 팀에서 공유한 뒤 처리 시간이 줄어드는 효과가 있었습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 업무를 남에게 맡기기 어려워하는 편이었다는 점입니다. 제가 직접 처리하는 것이 더 빠르다고 생각해 혼자 끌고 가려는 경우가 있었습니다. 이후에는 업무를 넘길 때 결과물 기준, 참고 자료, 중간 확인 시점을 함께 정리해서 공유하려고 합니다.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="example-career-2" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">경력 2</span>
+            <h3>문제 원인을 차분히 나누는 경력자</h3>
+            <p>문제 해결 방식을 장점으로 말하고, 발표 긴장은 녹음 연습으로 보완합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 문제 상황에서도 감정적으로 반응하기보다 원인을 나누어 보는 점입니다. 이전 업무에서 일정이 밀렸을 때 요청 내용이 늦게 확정된 부분과 내부 확인이 지연된 부분을 나누어 정리했고, 다음 프로젝트에서는 확인 일정을 앞당길 수 있었습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 중요한 발표나 보고를 앞두면 긴장을 많이 하는 편이라는 점입니다. 내용을 알고 있어도 말의 순서가 흐트러지면 전달력이 떨어진 적이 있었습니다. 그래서 발표 전에는 핵심 문장을 먼저 적고, 실제 말하는 속도로 2~3번 녹음해보는 습관을 만들었습니다.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="example-change" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">직무 전환</span>
+            <h3>기존 경험을 새 직무와 연결하는 지원자</h3>
+            <p>학습력과 연결 능력을 장점으로, 초반 확신 부족은 우선순위 학습으로 보완합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 새로운 분야를 배울 때 기존 경험과 연결점을 찾아 빠르게 적용해보는 점입니다. 이전 경험 중 문제 해결, 커뮤니케이션, 일정 관리처럼 연결될 수 있는 부분을 함께 정리했습니다. 새로운 직무에서도 빠르게 배우고 실제 업무에 연결하는 방식으로 적응하고 싶습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 경험이 부족한 분야에서는 초반에 확신을 갖기까지 시간이 걸린다는 점입니다. 이후에는 채용공고와 직무 설명을 기준으로 필요한 역량을 나누고, 우선순위를 정해 학습하는 방식으로 바꾸었습니다.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="example-service" class="interview-example-card">
+          <div class="interview-example-head">
+            <span class="interview-example-badge">서비스직</span>
+            <h3>상대방의 불편을 먼저 읽는 지원자</h3>
+            <p>응대 감각을 장점으로 말하고, 거절이 어려운 단점은 처리 가능 범위를 먼저 확인하는 방식으로 관리합니다.</p>
+          </div>
+          <div class="interview-answer-pair">
+            <div class="interview-answer-box interview-answer-strength">
+              <span>장점 답변</span>
+              <p>제 장점은 상대방의 불편을 먼저 파악하려고 하는 점입니다. 서비스 업무를 하면서 고객이 직접 말하지 않아도 표정이나 상황을 보고 필요한 안내를 먼저 드리려고 했습니다. 이 경험을 통해 친절한 말뿐 아니라 상황을 먼저 읽고 설명하는 태도가 중요하다는 것을 배웠습니다.</p>
+            </div>
+            <div class="interview-answer-box interview-answer-weakness">
+              <span>단점 답변</span>
+              <p>제 단점은 고객이나 동료의 부탁을 거절하는 데 어려움을 느낀 적이 있다는 점입니다. 바쁜 시간대에도 요청을 모두 받아주려다 보니 제 담당 업무 확인이 늦어진 경우가 있었습니다. 이후에는 요청을 받을 때 바로 처리 가능한지, 다른 업무에 영향이 있는지 먼저 확인하고 답하려고 했습니다.</p>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -163,3 +274,122 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
     </div>
   </section>
 </main>
+
+<style>
+  .interview-examples-section .section-desc { max-width: 760px; }
+  .interview-example-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 1.4rem 0 1.6rem;
+  }
+  .interview-example-strip a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: .48rem .82rem;
+    border: 1px solid rgba(40,75,57,.16);
+    border-radius: 999px;
+    background: #fff;
+    color: #284b39;
+    font-size: .88rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(26,54,41,.05);
+  }
+  .interview-example-strip a:hover,
+  .interview-example-strip a:focus-visible {
+    border-color: rgba(53,102,77,.38);
+    background: #f4f7f5;
+  }
+  .interview-example-list {
+    display: grid;
+    gap: 1rem;
+  }
+  .interview-example-card {
+    overflow: hidden;
+    border: 1px solid rgba(26,54,41,.12);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(26,54,41,.07);
+  }
+  .interview-example-head {
+    padding: 1.15rem 1.2rem .95rem;
+    background: linear-gradient(135deg, rgba(244,247,245,.96), rgba(255,255,255,.9));
+    border-bottom: 1px solid rgba(26,54,41,.09);
+  }
+  .interview-example-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: .25rem .62rem;
+    border-radius: 999px;
+    background: rgba(53,102,77,.1);
+    color: #284b39;
+    font-size: .78rem;
+    font-weight: 800;
+  }
+  .interview-example-head h3 {
+    margin: .65rem 0 .35rem;
+    font-size: 1.14rem;
+    line-height: 1.42;
+    color: #243c2f;
+  }
+  .interview-example-head p {
+    margin: 0;
+    color: #68756d;
+    font-size: .92rem;
+    line-height: 1.68;
+  }
+  .interview-answer-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .interview-answer-box {
+    padding: 1.05rem 1.15rem 1.18rem;
+    min-width: 0;
+  }
+  .interview-answer-box + .interview-answer-box {
+    border-left: 1px solid rgba(26,54,41,.09);
+  }
+  .interview-answer-box span {
+    display: inline-flex;
+    margin-bottom: .45rem;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .interview-answer-strength span { color: #2f6b4d; }
+  .interview-answer-weakness span { color: #8a5b2f; }
+  .interview-answer-box p {
+    margin: 0;
+    color: #3f4a44;
+    font-size: .94rem;
+    line-height: 1.76;
+  }
+  @media (max-width: 760px) {
+    .interview-example-strip {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: .25rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .interview-example-strip a {
+      flex: 0 0 auto;
+      font-size: .84rem;
+    }
+    .interview-answer-pair {
+      grid-template-columns: 1fr;
+    }
+    .interview-answer-box + .interview-answer-box {
+      border-left: 0;
+      border-top: 1px solid rgba(26,54,41,.09);
+    }
+    .interview-example-head,
+    .interview-answer-box {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+</style>
+
