@@ -7070,7 +7070,8 @@ main.tutoring-guide .guide-booking-panel .section-desc {
   main.about-page .article-hero-visual img {
     height: clamp(145px, 42vw, 190px);
   }
-  main.about-page > #guide-visual {
+  main.about-page > #guide-visual,
+  main.about-page > #shooting-visual {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
