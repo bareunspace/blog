@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 면접 마지막 질문 추천 | 역질문 20개와 임원면접 예시
-description: 면접 마지막 질문과 면접 역질문이 고민될 때 바로 고를 수 있는 질문 20개를 정리했습니다. 임원면접 마지막 질문 추천 5개, 피해야 할 질문, 역질문 개수와 말 꺼내는 법까지 확인하세요.
+title: 면접 역질문 추천 20개
+description: 면접 역질문, 마지막 질문에서 바로 쓸 질문 20개를 정리했습니다. 임원면접 추천 질문 5개와 피해야 할 질문까지 확인하세요.
 category: 면접준비
 keywords: 면접마지막질문,면접마지막질문추천,면접역질문,면접역질문추천,역질문,임원면접마지막질문,임원면접역질문,면접질문추천,면접준비
 tags:
@@ -26,7 +26,7 @@ script_version: 20260711-4
   <section id="home">
     <div class="section-inner">
       <p class="section-label">Interview Last Question Guide</p>
-      <h1 class="section-title">면접 마지막 질문·역질문 추천 20개</h1>
+      <h1 class="section-title">면접 역질문 추천 20개</h1>
       <p class="section-desc">면접 끝에 “궁금한 점 있으신가요?”라는 말을 들으면 무엇을 물어봐야 할지 막막할 수 있습니다. 면접 마지막 질문은 많이 하는 것보다 <strong>직무와 팀을 이해하려는 질문 1~2개</strong>를 상황에 맞게 고르는 것이 중요합니다. 실무면접과 임원면접에서 바로 활용할 수 있는 역질문 예시를 함께 정리했습니다.</p>
       <div class="hero-btns">
         <a href="#quick-picks" class="btn-primary">바로 쓸 질문 5개</a>

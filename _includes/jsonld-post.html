@@ -1,6 +1,7 @@
 {% assign seo_override = site.data.seo_posts[page.url] %}
 {% assign time_space_override = site.data.seo_time_space[page.url] %}
 {% assign article_title = time_space_override.title | default: seo_override.title | default: page.title %}
+{% assign article_headline = seo_override.headline | default: article_title %}
 {% assign article_description = time_space_override.description | default: seo_override.description | default: page.description %}
 {% assign article_keywords = time_space_override.keywords | default: seo_override.keywords | default: page.keywords %}
 {% assign interview_hub = false %}{% assign study_hub = false %}{% assign meeting_hub = false %}{% assign private_hub = false %}{% assign time_space_hub = false %}{% assign exam_hub = false %}
@@ -22,7 +23,7 @@
   "@context":"https://schema.org",
   "@type":"BlogPosting",
   "@id":{{ page.canonical | append: '#article' | jsonify }},
-  "headline":{{ article_title | jsonify }},
+  "headline":{{ article_headline | jsonify }},
   "description":{{ article_description | jsonify }},
   "url":{{ page.canonical | jsonify }},
   "image":{"@type":"ImageObject","url":{{ page.og_image | jsonify }},"caption":{{ page.og_image_alt | default: article_title | jsonify }}},
