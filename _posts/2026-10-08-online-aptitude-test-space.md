@@ -27,9 +27,9 @@ canonical: https://bareunjari.com/posts/online-aptitude-test-space/
 date: 2026-08-22 17:44:00 +0900
 editor_pick: true
 editor_pick_order: 2
-og_image: https://bareunjari.com/images/online-aptitude-test-space-real-20261010.webp
+og_image: https://bareunjari.com/images/online-aptitude-test-space-focus-20261010.webp
 og_image_alt: 바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습
-preload_image: images/online-aptitude-test-space-real-20261010.webp
+preload_image: images/online-aptitude-test-space-focus-20261010.webp
 ---
 
 <main class="about-page">
@@ -50,7 +50,15 @@ preload_image: images/online-aptitude-test-space-real-20261010.webp
 
 <section class="post-feature-image" aria-label="온라인 인적성검사 대표 이미지">
   <div class="section-inner">
-    <img src="{{ '/images/online-aptitude-test-space-real-20261010.webp' | relative_url }}" alt="바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
+    <img src="{{ '/images/online-aptitude-test-space-focus-20261010.webp' | relative_url }}" alt="바른자리 공간에서 노트북과 스마트폰으로 온라인 인적성검사 응시 환경을 준비하는 모습" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;" />
+    <div class="post-image-booking" style="margin-top:18px;">
+      <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">검사 시간 동안, 나만의 공간에서 집중하세요</h2>
+      <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />검사와 사전 준비에 필요한 시간만 예약하세요.</p>
+      <div class="hero-btns" style="margin-top:14px;">
+        <a href="/booking/?purpose=exam&amp;source=online-aptitude-image" class="btn-primary" data-cta="online_aptitude_image_booking">시험 날짜의 빈 시간 확인하기</a>
+      </div>
+      <p style="margin:10px 0 0;font-size:14px;line-height:1.6;">노트북·스마트폰 등 응시장비는 직접 준비해 주세요. 실제 응시 조건은 기업의 안내를 먼저 확인하세요.</p>
+    </div>
   </div>
 </section>
 
