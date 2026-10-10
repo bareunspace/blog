@@ -30,7 +30,7 @@ tags:
 canonical: https://bareunjari.com/posts/one-person-study-room/
 permalink: /posts/one-person-study-room/
 date: 2026-08-10 07:00:00 +0900
-editor_pick: true
+editor_pick: false
 editor_pick_order: 3
 last_modified_at: 2026-09-01 23:10:00 +0900
 og_image: https://bareunjari.com/images/one-person-study-room.webp
