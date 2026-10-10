@@ -25,6 +25,8 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-meeting-room/
 permalink: /posts/bucheon-meeting-room/
 date: 2026-07-26 09:00:00 +0900
+editor_pick: true
+editor_pick_order: 4
 og_image: https://bareunjari.com/images/bucheon-meeting-room.webp
 og_image_alt: 부천 신중동역 인근 1~8인 소규모 회의와 고객 미팅을 위한 바른자리 회의실
 og_image_width: 1672
