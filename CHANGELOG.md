@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.0] - 2026-10-10
+### Added
+- Add private conversation examples and booking links to the meeting hub, including customer meetings, one-to-one consultations, and personal discussions.
+- Clarify space rental and soundproofing expectations in the existing FAQ design.
+
+### Changed
+- Strengthen the existing customer meeting guide and its hub description around exclusive use, planned meetings, and reviewing proposals together.
+
 ## [1.0.2] - 2026-10-09
 ### Fixed
 - Publish Naver blog updates from the hourly RSS sync using the existing validated Pages deployment workflow.
