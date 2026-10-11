@@ -26,7 +26,7 @@ canonical: https://bareunjari.com/posts/boston-early-morning-video-meeting/
 permalink: /posts/boston-early-morning-video-meeting/
 date: 2026-08-18 22:00:00 +0900
 og_image: https://bareunjari.com/images/bareunjari-boston-early-morning-video-meeting.webp
-og_image_alt: 바른자리 공간에서 새벽 해외 화상회의 상황을 연출한 이미지
+og_image_alt: 바른자리 공간을 배경으로 구성한 새벽 해외 화상회의 이용 장면
 og_image_width: 1440
 og_image_height: 960
 preload_image: images/bareunjari-boston-early-morning-video-meeting.webp
@@ -60,7 +60,7 @@ faq:
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/bareunjari-boston-early-morning-video-meeting.webp" alt="바른자리 공간에서 새벽 해외 화상회의 상황을 연출한 이미지" loading="eager" width="1440" height="960" />
+        <img class="article-hero-full" src="/images/bareunjari-boston-early-morning-video-meeting.webp" alt="바른자리 공간을 배경으로 구성한 새벽 해외 화상회의 이용 장면" loading="eager" width="1440" height="960" />
         <figcaption>새벽 해외 화상회의 상황을 이해하기 위해 바른자리 공간을 바탕으로 제작한 연출 이미지입니다.</figcaption>
       </figure>
     </div>
