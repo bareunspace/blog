@@ -44,7 +44,7 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/interview-30-minutes-before-real-20261011.webp" alt="실제 바른자리 테이블에서 면접 직전 핵심 답변 메모를 확인하는 장면" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/interview-30-minutes-before-real-20261011.webp" alt="바른자리 테이블 공간을 배경으로 구성한 면접 직전 준비 장면" loading="eager" width="1672" height="941" />
         <figcaption>바른자리 공간을 바탕으로 구성한 면접 준비 장면입니다. 면접 직전에는 준비한 답변과 환경을 짧게 확인해 보세요.</figcaption>
       </figure>
       <div class="image-booking-copy" style="padding:18px 0 8px;text-align:center;">
