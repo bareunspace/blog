@@ -236,17 +236,4 @@ preload_image: images/ai-competency-test-space-20261010.webp
 </section>
 
 {% include post-tags.html %}
-
-
-  <section data-real-space-proof="true" aria-label="바른자리 실제 공간 사진">
-    <div class="section-inner">
-      <p class="section-label">Real Space</p>
-      <h2 class="section-title">예약 전에 실제 공간을 확인하세요</h2>
-      <p class="section-desc">아래 사진은 연출·합성 이미지가 아닌 바른자리 신중동점 실제 공간입니다.</p>
-      <figure style="margin:1.4rem 0 0;">
-        <img src="/images/bareunjari-sunny-private-room.webp" alt="부천 신중동 바른자리 실제 프라이빗 공간과 테이블" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:20px;" />
-        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">합성 없는 바른자리 실제 공간 사진입니다.</figcaption>
-      </figure>
-    </div>
-  </section>
 </main>
