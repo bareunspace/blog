@@ -29,11 +29,11 @@ permalink: /posts/bucheon-tutoring-class-space/
 date: 2026-08-16 09:30:00 +0900
 editor_pick: true
 editor_pick_order: 1
-og_image: https://bareunjari.com/images/bucheon-tutoring-class-space.webp
-og_image_alt: 부천 신중동 바른자리에서 선생님과 학생이 1대1 과외 수업을 진행하는 모습
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/bucheon-tutoring-class-space.webp
+og_image: https://bareunjari.com/images/bucheon-tutoring-class-space-real-20261011.webp
+og_image_alt: 실제 바른자리 공간에서 선생님과 학생이 교재를 보며 설명하고 질문하는 1대1 수업 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/bucheon-tutoring-class-space-real-20261011.webp
 script_version: 20260711-4
 ---
 
@@ -53,15 +53,22 @@ script_version: 20260711-4
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html
-    image_section_id='guide-visual'
-    image_src='/images/bucheon-tutoring-class-space.webp'
-    image_alt='부천 신중동 바른자리에서 선생님과 학생이 1대1 과외 수업을 진행하는 모습'
-    image_width='1536'
-    image_height='1024'
-    image_loading='eager'
-    image_caption='1:1 과외부터 소규모 보충수업까지, 설명하고 질문하며 함께 공부할 수 있는 실제 바른자리 공간입니다.'
-  %}
+  <section id="guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/bucheon-tutoring-class-space-real-20261011.webp" alt="실제 바른자리 공간에서 선생님과 학생이 교재를 보며 설명하고 질문하는 1대1 수업 장면" loading="eager" decoding="async" fetchpriority="high" width="1672" height="941" />
+        <figcaption>교재를 펼치고 설명하고 질문하는 시간, 실제 바른자리 공간 사진에 수업 장면을 합성했습니다.</figcaption>
+      </figure>
+      <div class="post-image-booking" style="margin-top:18px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">주변을 의식하지 않고, 설명과 질문에 집중하세요</h2>
+        <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />1:1 과외부터 소규모 보충수업까지, 수업과 준비에 필요한 시간만 예약하세요.</p>
+        <div class="hero-btns" style="margin-top:14px;">
+          <a href="/booking/?source=bucheon-tutoring-class-space-image" class="btn-primary" data-cta="bucheon_tutoring_class_image_booking">수업 날짜의 빈 시간 확인하기</a>
+        </div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;">바른자리는 수업을 제공하는 학원이 아닌 공간대여 서비스입니다. 교재·노트북 등 수업에 필요한 준비물은 직접 가져와 주세요.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="quick-answer" class="guide-summary-section" aria-label="부천 과외 장소 선택 핵심 요약"><div class="section-inner">
     <p class="section-label">Quick Answer</p>
