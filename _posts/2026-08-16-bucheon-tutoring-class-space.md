@@ -56,7 +56,7 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/bucheon-tutoring-class-space-real-20261011.webp" alt="실제 바른자리 공간에서 선생님과 학생이 교재를 보며 설명하고 질문하는 1대1 수업 장면" loading="eager" decoding="async" fetchpriority="high" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/bucheon-tutoring-class-space-real-20261011.webp" alt="바른자리 공간을 배경으로 구성한 1대1 수업 이용 장면" loading="eager" decoding="async" fetchpriority="high" width="1672" height="941" />
         <figcaption>교재를 펼치고 설명하고 질문하는 시간을 바른자리 공간을 바탕으로 구성한 이용 장면입니다.</figcaption>
       </figure>
       <div class="post-image-booking" style="margin-top:18px;">
