@@ -14,11 +14,11 @@ tags:
 canonical: https://bareunjari.com/posts/privacy-is-worth-paying-for/
 permalink: /posts/privacy-is-worth-paying-for/
 date: 2026-07-30 09:00:00 +0900
-og_image: https://bareunjari.com/images/privacy-is-worth-paying-for.webp
-og_image_alt: 방해받지 않는 개인시간의 가치를 보여주는 프라이빗 공간 이미지
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/privacy-is-worth-paying-for.webp
+og_image: https://bareunjari.com/images/privacy-is-worth-paying-for-real-20261011.webp
+og_image_alt: 실제 바른자리 소파에서 혼자 책을 읽으며 자기 시간을 보내는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/privacy-is-worth-paying-for-real-20261011.webp
 css_version: 20260730-1
 script_version: 20260711-4
 youtube_id: NVVOMUl6BJY
@@ -47,13 +47,23 @@ youtube_caption: 방해받지 않는 시간과 프라이버시가 왜 중요한�
     video_section_id='video-first'
     video_aria_label='영상과 대표 이미지 보기'
     image_section_id='guide-visual'
-    image_src='/images/privacy-is-worth-paying-for.webp'
-    image_alt='방해받지 않는 개인시간의 가치를 보여주는 프라이빗 공간 이미지'
-    image_width='1536'
-    image_height='1024'
+    image_src='/images/privacy-is-worth-paying-for-real-20261011.webp'
+    image_alt='실제 바른자리 소파에서 혼자 책을 읽으며 자기 시간을 보내는 장면'
+    image_width='1672'
+    image_height='941'
     image_loading='eager'
     image_caption='사람들이 찾는 것은 화려한 공간이 아니라, 잠시라도 온전히 자기 자신에게 집중할 수 있는 시간입니다.'
   %}
+
+  <section id="privacy-image-booking" style="padding:18px 1.5rem 24px;">
+    <div class="section-inner">
+      <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">주변을 의식하지 않고, 온전히 내 시간을 보내세요</h2>
+      <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />책을 읽고, 생각을 정리하고, 잠시 쉬어도 좋습니다. 오늘 나에게 필요한 시간만 예약하세요.</p>
+      <div class="hero-btns" style="margin-top:14px;">
+        <a href="/booking/?source=privacy-is-worth-paying-for-image" class="btn-primary" data-cta="privacy_personal_time_image_booking">나만의 시간을 보낼 빈 시간 확인하기</a>
+      </div>
+    </div>
+  </section>
 
   <nav class="guide-toc" aria-label="프라이버시와 개인시간 가이드 목차">
     <div class="guide-toc-inner">
