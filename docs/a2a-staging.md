@@ -11,14 +11,14 @@ The production site must not publish an Agent Card until the endpoint passes rea
 - No new availability API, booking endpoint, database writes, customer data or access codes.
 
 ## Proposed activation (requires deployment approval)
-1. Review the prototype's compliance with the supported A2A protocol version.
+1. Validate v0.3 JSON-RPC `message/send`, role `user` / `agent`, and `kind: text` parts against a real A2A client.
 2. Add rate limiting, abuse monitoring and ensure request payload limits.
 3. Deploy the edge function with a deliberately public, restricted read-only interface.
 4. Test valid/invalid `SendMessage` calls and client interoperability.
 5. Only after success, publish `/.well-known/agent-card.json` on bareunjari.com with the verified function URL.
 6. Roll back by removing the Agent Card and disabling the Edge Function if unexpected access or abuse appears.
 
-## Data consistency to resolve before go-live
+## Confirmed capacity policy
 - `_data/operations.yml`: maximum 8 people, recommended 6 people.
-- `_includes/jsonld-home.html`: `maximumAttendeeCapacity` is currently 6; align semantic distinction with operational policy.
+- `_includes/jsonld-home.html` on this development branch: `maximumAttendeeCapacity` corrected to 8, with recommended 6 in the description.
 - Use `_data/operations.yml` as the source of current product prices and booking links.
