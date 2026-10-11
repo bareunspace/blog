@@ -26,11 +26,11 @@ tags:
 canonical: https://bareunjari.com/posts/regular-study-space-signals/
 permalink: /posts/regular-study-space-signals/
 date: 2026-08-12 06:50:00 +0900
-og_image: https://bareunjari.com/images/regular-study-space-signals.webp
-og_image_alt: 3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습
+og_image: https://bareunjari.com/images/regular-study-space-signals-real-20261011.webp
+og_image_alt: 실제 바른자리 테이블에서 세 명이 스터디 내용을 정리하고 다음 모임을 준비하는 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/regular-study-space-signals.webp
+preload_image: images/regular-study-space-signals-real-20261011.webp
 css_version: 20260812-2
 script_version: 20260711-4
 extra_css: /styles/regular-study-space-signals.css
@@ -49,7 +49,7 @@ extra_css_version: 20260812-2
   </section>
 
   {% include breadcrumb.html %}
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/regular-study-space-signals.webp' image_alt='3~5명이 테이블에 둘러앉아 토론하고 함께 준비하는 정기 스터디 모습' image_width='1672' image_height='941' image_loading='eager' image_caption='정기 스터디는 한 번 예쁜 공간보다 매주 2~3시간 안정적으로 함께 준비할 수 있는 장소가 더 중요합니다.' %}
+  <section id="guide-visual" style="padding:20px 1.5rem 24px;"><div class="section-inner" style="max-width:1040px;"><figure style="margin:0;"><img src="/images/regular-study-space-signals-real-20261011.webp" alt="실제 바른자리 테이블에서 세 명이 스터디 내용을 정리하고 다음 모임을 준비하는 장면" width="1672" height="941" loading="eager" fetchpriority="high" style="display:block;width:100%;height:auto;border-radius:20px;" /><figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">실제 바른자리 사진에 정기 스터디 장면을 합성한 이미지입니다.</figcaption></figure><div style="padding:18px 0 0;text-align:center;"><h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">매번 자리 찾는 대신, 우리 팀의 공부에 집중하세요</h2><p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />이번 모임에서 편하게 설명하고 토론해 보세요. 우리 팀과 잘 맞으면 다음 모임도 이어갈 수 있습니다.</p><a href="/booking/?source=regular-study-space-signals-image" class="btn-primary" data-cta="regular_study_image_booking">이번 스터디의 빈 시간 확인하기</a><p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;">모임마다 예약 가능한 시간을 확인해 주세요. 교재와 개인 기기는 직접 지참해 주세요.</p></div></div></section>
 
   <nav class="guide-toc" aria-label="정기 스터디 장소 선택 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#five-signals">장소 변경 신호</a><a href="#compare">공간별 차이</a><a href="#checklist">선택 기준</a><a href="#two-three-hours">2~3시간 활용법</a><a href="#bareunjari-guide">바른자리 이용</a><a href="#faq">FAQ</a></div></nav>
 
