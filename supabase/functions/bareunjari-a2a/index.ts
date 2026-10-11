@@ -12,6 +12,35 @@ const cors = {
 const json = (value: unknown, status = 200) =>
   new Response(JSON.stringify(value), { status, headers: cors });
 
+
+// Distributed global minute budget using atomic Redis EVAL. Fails closed when
+// credentials are missing or the limiter is unavailable; no client identifiers stored.
+async function rateLimit(): Promise<Response | null> {
+  const url = Deno.env.get("UPSTASH_REDIS_REST_URL");
+  const token = Deno.env.get("UPSTASH_REDIS_REST_TOKEN");
+  if (!url || !token || !url.startsWith("https://"))
+    return json({ error: "Rate limiter unavailable" }, 503);
+  const minute = Math.floor(Date.now() / 60000);
+  const script = "local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],120) end; return n";
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify(["EVAL", script, "1", `bareunjari:a2a:${minute}`]),
+      signal: AbortSignal.timeout(1500),
+    });
+    if (!response.ok) return json({ error: "Rate limiter unavailable" }, 503);
+    const body = await response.json();
+    if (!Number.isInteger(body.result) || body.result < 1) return json({ error: "Rate limiter unavailable" }, 503);
+    if (body.result > 100) return new Response(JSON.stringify({ error: "Rate limit exceeded" }), {
+      status: 429, headers: { ...cors, "retry-after": "60" },
+    });
+    return null;
+  } catch {
+    return json({ error: "Rate limiter unavailable" }, 503);
+  }
+}
+
 function answer(question: string): string {
   if (/예약|빈.?시간|날짜|availability|available|booking|book/i.test(question)) {
     return `예약 가능한 날짜·시간과 최종 요금은 네이버 예약에서 직접 확인하세요. 이 에이전트는 실시간 네이버 달력을 조회하거나 예약을 생성하지 않습니다. 네이버 예약: ${NAVER} / 안내: ${PAGE}`;
@@ -22,6 +51,8 @@ function answer(question: string): string {
 Deno.serve(async (request: Request): Promise<Response> => {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
   if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
+  const limited = await rateLimit();
+  if (limited) return limited;
   // Bound the actual streamed body, not just Content-Length (which may be missing).
   if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json"))
     return json({ error: "Content-Type must be application/json" }, 415);
