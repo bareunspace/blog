@@ -43,7 +43,9 @@ Deno.serve(async (request: Request): Promise<Response> => {
   const input = new Uint8Array(total);
   let offset = 0;
   for (const chunk of bytes) { input.set(chunk, offset); offset += chunk.byteLength; }
-  const bodyText = new TextDecoder("utf-8", { fatal: true }).decode(input);
+  let bodyText: string;
+  try { bodyText = new TextDecoder("utf-8", { fatal: true }).decode(input); }
+  catch { return json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "Invalid UTF-8" } }, 400); }
   let rpc: Record<string, any>;
   try { rpc = JSON.parse(bodyText); }
   catch { return json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "Parse error" } }, 400); }
