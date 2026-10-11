@@ -83,6 +83,12 @@ Deno.serve(async (request: Request): Promise<Response> => {
   const id = rpc?.id ?? null;
   if (rpc?.jsonrpc !== "2.0" || !Object.hasOwn(rpc, "id") || typeof rpc.method !== "string")
     return json({ jsonrpc: "2.0", id, error: { code: -32600, message: "Invalid request" } });
+  if (rpc.method === "tasks/get" || rpc.method === "tasks/cancel") {
+    if (typeof rpc.params?.id !== "string" || !rpc.params.id.trim())
+      return json({ jsonrpc: "2.0", id, error: { code: -32602, message: "Invalid params" } });
+    // This informational agent returns synchronous messages and creates no tasks.
+    return json({ jsonrpc: "2.0", id, error: { code: -32001, message: "Task not found" } });
+  }
   if (rpc.method !== "message/send")
     return json({ jsonrpc: "2.0", id, error: { code: -32601, message: "Method not found" } });
   const incoming = rpc.params?.message;
