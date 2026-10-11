@@ -67,7 +67,6 @@ preload_image: images/online-aptitude-test-space-focus-20261010.webp
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">집에서 볼 수 있다면 집도 괜찮습니다.<br />다만 ‘독립된 응시 환경’이 되는지 먼저 확인하세요.</h2>
     <p class="section-desc">온라인 인적성검사 장소를 고를 때는 장소 이름보다 <strong>검사 안내를 충족하는지, 다른 사람이 들어오지 않는지, PC와 스마트폰을 안정적으로 사용할 수 있는지, 인터넷이 끊기지 않는지</strong>가 더 중요합니다.</p>
-    <p class="section-desc" style="margin-top:10px;">집에서 응시하기 불안해지는 대표적인 상황은 가족·룸메이트 출입, TV·통화·초인종 같은 생활소음, 감독용 스마트폰과 PC를 함께 둘 공간 부족, 장시간 응시 중 전원·인터넷 문제입니다. 이런 조건을 시험시간 동안 통제하기 어렵다면 외부 독립 공간을 비교해보는 편이 낫습니다.</p>
     <div class="hero-btns" style="margin-top:14px;">
       <a href="/booking/?purpose=exam&amp;source=online-aptitude-test-space" class="btn-primary" data-cta="online_aptitude_quick_booking">시험시간에 맞춰 빈 시간 확인하기</a>
     </div>
@@ -90,7 +89,13 @@ preload_image: images/online-aptitude-test-space-focus-20261010.webp
       <article class="about-principle-item" data-step="03"><h3>장비 배치</h3><p>PC와 감독용 스마트폰, 충전기 등을 안내된 방식으로 안정적으로 놓을 자리가 부족합니다.</p></article>
       <article class="about-principle-item" data-step="04"><h3>동일한 시험 환경</h3><p>사전점검과 본시험을 같은 장소와 같은 장비 배치로 진행하기 어렵습니다.</p></article>
     </div>
-    <p><strong>예약시간은 검사시간만 계산하지 마세요.</strong> 입실 후 로그인, 프로그램 실행, PC·스마트폰 배치와 인터넷 확인, 시험 종료 후 제출 확인까지 포함해 필요한 전체 시간을 먼저 계산하는 편이 안전합니다.</p>
+    <h3>예약시간은 준비 → 검사 → 제출 확인까지</h3>
+    <div class="guide-summary-grid">
+      <article class="guide-summary-card"><span>01 준비</span><h3>입실·장비 세팅</h3><p>로그인, 프로그램 실행, PC·스마트폰 배치와 인터넷 확인 시간을 확보하세요.</p></article>
+      <article class="guide-summary-card"><span>02 검사</span><h3>안내된 전체 응시시간</h3><p>기업이 안내한 접속·대기·검사 시간을 확인해 예약에 포함하세요.</p></article>
+      <article class="guide-summary-card"><span>03 마무리</span><h3>제출 확인·퇴실 준비</h3><p>제출 완료를 확인하고 장비와 자리를 정리할 시간까지 계산하세요.</p></article>
+    </div>
+    <p><strong>계산 예시: 준비 30분 + 검사 2시간 + 마무리 30분 = 총 3시간.</strong> 기본요금은 30,000원입니다. 시간은 계산을 돕는 예시이며, 실제 예약은 기업의 접속·응시 안내에 맞춰 조정해 주세요. 별도 날짜의 예비소집이 있다면 그날의 예약 가능 시간도 확인하세요.</p>
     <div class="hero-btns">
       <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="online_aptitude_mid_booking">시험시간에 맞춰 빈 시간 확인하기</a>
     </div>
