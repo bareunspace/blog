@@ -14,7 +14,7 @@ main.about-page #home {
   padding: clamp(4.5rem, 9vw, 6.8rem) 1.5rem;
   background:
     linear-gradient(112deg, rgba(16, 38, 55, .9) 0%, rgba(31, 69, 93, .72) 52%, rgba(18, 50, 68, .5) 100%),
-    url('/images/interview-30-minutes-before.webp') center 54% / cover no-repeat;
+    url('/images/interview-30-minutes-before-real-20261011.webp') center 54% / cover no-repeat;
 }
 main.about-page #home::before {
   background:

@@ -16,17 +16,17 @@ tags:
 canonical: https://bareunjari.com/posts/interview-30-minutes-before/
 permalink: /posts/interview-30-minutes-before/
 date: 2026-08-09 07:00:00 +0900
-og_image: https://bareunjari.com/images/interview-30-minutes-before.webp
-og_image_alt: 바른자리 면접 준비 공간과 30분 면접 직전 루틴을 보여주는 가이드 이미지
-og_image_width: 1182
-og_image_height: 788
-preload_image: images/interview-30-minutes-before.webp
-css_version: 20260809-2
+og_image: https://bareunjari.com/images/interview-30-minutes-before-real-20261011.webp
+og_image_alt: 실제 바른자리 테이블에서 면접 직전 핵심 답변 메모를 확인하는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/interview-30-minutes-before-real-20261011.webp
+css_version: 20261011-real
 script_version: 20260711-4
 ---
 
 <main class="about-page">
-  <style>main.about-page #home{background:linear-gradient(112deg,rgba(16,38,55,.90) 0%,rgba(31,69,93,.72) 52%,rgba(18,50,68,.50) 100%),url('/images/interview-30-minutes-before.webp') center 54%/cover no-repeat}</style>
+  <style>main.about-page #home{background:linear-gradient(112deg,rgba(16,38,55,.90) 0%,rgba(31,69,93,.72) 52%,rgba(18,50,68,.50) 100%),url('/images/interview-30-minutes-before-real-20261011.webp') center 54%/cover no-repeat}</style>
   <section id="home">
     <div class="section-inner">
       <p class="section-label">30 Minutes Before Interview</p>
@@ -44,9 +44,15 @@ script_version: 20260711-4
   <section id="guide-visual">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/interview-30-minutes-before.webp" alt="바른자리 면접 준비 공간과 30분 면접 직전 루틴을 보여주는 가이드 이미지" loading="eager" width="1182" height="788" />
-        <figcaption>면접 직전에는 더 많이 준비하기보다, 이미 준비한 답변과 환경을 짧게 확인하는 데 집중해 보세요.</figcaption>
+        <img class="article-hero-full" src="/images/interview-30-minutes-before-real-20261011.webp" alt="실제 바른자리 테이블에서 면접 직전 핵심 답변 메모를 확인하는 장면" loading="eager" width="1672" height="941" />
+        <figcaption>실제 바른자리 사진에 이용 장면을 합성한 이미지입니다. 면접 직전에는 준비한 답변과 환경을 짧게 확인해 보세요.</figcaption>
       </figure>
+      <div class="image-booking-copy" style="padding:18px 0 8px;text-align:center;">
+        <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">면접 전 마지막 점검, 주변을 의식하지 않고 준비하세요</h2>
+        <p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />자기소개를 소리 내어 말하고, 내 휴대폰으로 짧게 녹화하며 마지막 답변을 확인해 보세요.</p>
+        <a class="btn-primary" href="/booking/?source=interview-30-minutes-before-image" data-cta="interview_30_minutes_image_booking">면접 전 연습할 빈 시간 확인하기</a>
+        <p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;">이동과 준비 시간을 포함해 여유 있게 예약해 주세요. 개인 기기와 준비물은 직접 지참해 주세요.</p>
+      </div>
     </div>
   </section>
 
