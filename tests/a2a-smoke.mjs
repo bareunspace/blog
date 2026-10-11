@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 
 let handler;
-globalThis.Deno = { serve: fn => { handler = fn; } };
+const values = { UPSTASH_REDIS_REST_URL: "https://test-redis.invalid", UPSTASH_REDIS_REST_TOKEN: "test-token" };
+let limiterCount = 0;
+globalThis.Deno = { serve: fn => { handler = fn; }, env: { get: name => values[name] } };
+const realFetch = globalThis.fetch;
+globalThis.fetch = async () => new Response(JSON.stringify({ result: ++limiterCount }), { status: 200, headers: { "content-type": "application/json" } });
 await import("../supabase/functions/bareunjari-a2a/index.ts");
 
 const rpc = (method = "message/send", message = {
@@ -56,4 +60,23 @@ await check("malformed UTF-8 returns parse error", async () => {
   assert.equal(response.status, 400);
   assert.equal((await response.json()).error.code, -32700);
 });
-console.log(`Passed ${passed}/11`);
+await check("distributed limiter returns 429", async () => {
+  limiterCount = 100;
+  const response = await post(rpc());
+  assert.equal(response.status, 429);
+  assert.equal(response.headers.get("retry-after"), "60");
+});
+await check("missing limiter config fails closed", async () => {
+  const old = values.UPSTASH_REDIS_REST_TOKEN;
+  delete values.UPSTASH_REDIS_REST_TOKEN;
+  assert.equal((await post(rpc())).status, 503);
+  values.UPSTASH_REDIS_REST_TOKEN = old;
+});
+await check("limiter network outage fails closed", async () => {
+  const saved = globalThis.fetch;
+  globalThis.fetch = async () => { throw new Error("outage"); };
+  assert.equal((await post(rpc())).status, 503);
+  globalThis.fetch = saved;
+});
+globalThis.fetch = realFetch;
+console.log(`Passed ${passed}/14`);
