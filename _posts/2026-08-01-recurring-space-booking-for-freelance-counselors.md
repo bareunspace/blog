@@ -53,7 +53,7 @@ script_version: 20260711-4
   <section id="guide-visual" style="padding:20px 1.5rem 24px;">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp" alt="실제 바른자리 2인 테이블에서 상담가와 방문자가 마주 앉아 대화하는 이용 장면" loading="eager" width="1672" height="941" />
+        <img class="article-hero-full" src="/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp" alt="바른자리 2인 테이블 공간을 배경으로 구성한 상담·대화 이용 장면" loading="eager" width="1672" height="941" />
         <figcaption>바른자리 공간을 바탕으로 구성한 상담·코칭 이용 장면입니다.</figcaption>
       </figure>
       <div style="padding:18px 0 0;text-align:center;">
