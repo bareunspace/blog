@@ -12,11 +12,11 @@ tags:
   - 대면면접
 canonical: https://bareunjari.com/posts/interview-prep-checklist/
 permalink: /posts/interview-prep-checklist/
-og_image: https://bareunjari.com/images/interview-prep-checklist-cover.jpg
-og_image_alt: 노트북과 체크리스트, 시계가 놓인 면접 전날 준비 장면
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/interview-prep-checklist-cover.jpg
+og_image: https://bareunjari.com/images/interview-prep-checklist-real-20261011.webp
+og_image_alt: 실제 바른자리 테이블에서 면접 전날 체크리스트와 준비물을 점검하는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/interview-prep-checklist-real-20261011.webp
 css_version: 20260713-3
 script_version: 20260711-4
 ---
@@ -34,6 +34,22 @@ script_version: 20260711-4
     </div>
   </section>
   {% include breadcrumb.html %}
+
+  <section id="checklist-guide-visual" style="padding:20px 1.5rem 24px;">
+    <div class="section-inner" style="max-width:1040px;">
+      <figure style="margin:0;">
+        <img src="/images/interview-prep-checklist-real-20261011.webp" alt="실제 바른자리 테이블에서 면접 전날 체크리스트와 준비물을 점검하는 장면" loading="eager" fetchpriority="high" width="1672" height="941" style="display:block;width:100%;height:auto;border-radius:20px;" />
+        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">실제 바른자리 사진에 면접 준비 장면을 합성한 이미지입니다.</figcaption>
+      </figure>
+      <div style="padding:18px 0 0;text-align:center;">
+        <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">면접 전날, 주변을 의식하지 않고 준비를 마무리하세요</h2>
+        <p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />체크리스트를 확인한 뒤, 자기소개와 핵심 답변을 실제 목소리로 연습해 보세요.</p>
+        <a href="/booking/?source=interview-prep-checklist-image" class="btn-primary" data-cta="interview_prep_checklist_image_booking">면접 준비할 빈 시간 확인하기</a>
+        <p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;">개인 기기와 준비물은 직접 지참해 주세요. 바른자리는 연습 공간을 대여하는 서비스입니다.</p>
+      </div>
+    </div>
+  </section>
+
 
   <section id="interview-checklist">
     <div class="section-inner">
