@@ -30,7 +30,7 @@ date: 2026-08-16 09:30:00 +0900
 editor_pick: true
 editor_pick_order: 1
 og_image: https://bareunjari.com/images/bucheon-tutoring-class-space-real-20261011.webp
-og_image_alt: 실제 바른자리 공간에서 선생님과 학생이 교재를 보며 설명하고 질문하는 1대1 수업 장면
+og_image_alt: 바른자리 공간을 배경으로 구성한 1대1 수업 이용 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/bucheon-tutoring-class-space-real-20261011.webp
