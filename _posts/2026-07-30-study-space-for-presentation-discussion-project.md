@@ -28,11 +28,11 @@ permalink: /posts/study-space-for-presentation-discussion-project/
 date: 2026-07-30 09:00:00 +0900
 editor_pick: true
 editor_pick_order: -1
-og_image: https://bareunjari.com/images/study-space-for-presentation-discussion-project.webp
-og_image_alt: 발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간
+og_image: https://bareunjari.com/images/study-space-for-presentation-discussion-project-real-20261011.webp
+og_image_alt: 실제 바른자리에서 한 명이 발표를 연습하고 두 팀원이 듣고 피드백을 기록하는 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/study-space-for-presentation-discussion-project.webp
+preload_image: images/study-space-for-presentation-discussion-project-real-20261011.webp
 css_version: 20260730-1
 script_version: 20260711-4
 youtube_id: 24OwtfCx4sE
@@ -44,7 +44,10 @@ youtube_caption: 발표·토론·팀 프로젝트를 준비할 때 어떤 공간
   <section id="home"><div class="section-inner"><p class="section-label">Presentation and Project Study Space</p><h1 class="section-title">발표 · 토론 · 팀 프로젝트가 늘어나는 시대,<br />공부하는 공간도 달라져야 합니다</h1><p class="section-desc">수행평가 발표, 영어 토론, 팀 과제, 프로젝트형 학습이 늘어나면서 공부 방식도 빠르게 바뀌고 있습니다. 이제는 조용히 앉아 있는 자리보다, 실제로 말하고 질문하고 결과를 만들어낼 수 있는 공간이 더 중요해지는 경우가 많습니다.</p><p class="section-desc" style="margin-top:1rem;"><strong>이 글의 역할:</strong> 발표·토론을 포함한 프로젝트형 학습의 공간 사용법을 설명합니다. 발표 자체를 반복 연습하는 목적은 <a href="/practice/">연습·리허설 허브</a>에서 따로 다룹니다.</p><div class="hero-btns"><a href="#why-study-is-changing" class="btn-primary">왜 바뀌는지 보기</a><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">스터디룸 예약하기</a></div></div></section>
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html youtube_id=page.youtube_id youtube_title=page.youtube_title youtube_caption=page.youtube_caption video_section_id='video-first' video_aria_label='영상과 대표 이미지 보기' image_section_id='guide-visual' image_src='/images/study-space-for-presentation-discussion-project.webp' image_alt='발표, 토론, 팀 프로젝트 준비에 어울리는 프라이빗 스터디 공간' image_width='1672' image_height='941' image_loading='eager' image_caption='이제 공부는 혼자 조용히 이해하는 시간을 넘어, 함께 설명하고 질문하고 완성하는 시간까지 포함합니다.' %}
+  {% include post-media-carousel.html youtube_id=page.youtube_id youtube_title=page.youtube_title youtube_caption=page.youtube_caption video_section_id='video-first' video_aria_label='영상과 대표 이미지 보기' image_section_id='guide-visual' image_src='/images/study-space-for-presentation-discussion-project-real-20261011.webp' image_alt='실제 바른자리에서 한 명이 발표를 연습하고 두 팀원이 듣고 피드백을 기록하는 장면' image_width='1672' image_height='941' image_loading='eager' image_caption='실제 바른자리 사진에 발표와 팀 프로젝트 준비 장면을 합성한 이미지입니다.' %}
+
+  <section id="project-image-booking" style="padding:18px 1.5rem 24px;"><div class="section-inner" style="max-width:1040px;text-align:center;"><h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">자료를 만드는 데서 끝내지 말고, 함께 발표해 보세요</h2><p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />주변을 의식하지 않고 발표하고, 질문하고, 피드백하며 우리 팀의 결과물을 다듬어 보세요.</p><a href="/booking/?source=study-presentation-discussion-project-image" class="btn-primary" data-cta="study_project_image_booking">우리 팀이 준비할 빈 시간 확인하기</a><p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;">개인 기기와 자료는 직접 지참해 주세요. 바른자리는 발표·협업을 위한 공간을 대여하는 서비스입니다.</p></div></section>
+
 
   <nav class="guide-toc" aria-label="발표 토론 팀 프로젝트 공간 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span>{% if page.youtube_id %}<a href="#video-first">영상 먼저 보기</a>{% endif %}<a href="#why-study-is-changing">공부 방식의 변화</a><a href="#ap-ib-example">AP · IB 사례</a><a href="#why-space-matters">왜 공간이 중요한가</a><a href="#how-to-use-time">시간을 어떻게 써야 하나</a><a href="#bareunjari">바른자리 활용법</a></div></nav>
 
