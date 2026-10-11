@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.2] - 2026-10-12
+### Added
+- Add the new sofa lounge photograph to the homepage gallery as an optimized WebP, preserving the full portrait image in the lightbox.
+- Update gallery labels from eight to nine photos.
+
 ## [1.1.1] - 2026-10-10
 ### Fixed
 - Synchronize the customer meeting SEO description with the updated post instead of retaining the stale override.
