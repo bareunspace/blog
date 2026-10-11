@@ -173,16 +173,4 @@ script_version: 20260711-4
     </div>
   </section>
   {% include post-tags.html %}
-
-  <section data-real-space-proof="true" aria-label="바른자리 실제 공간 사진">
-    <div class="section-inner">
-      <p class="section-label">Real Space</p>
-      <h2 class="section-title">예약 전에 실제 공간을 확인하세요</h2>
-      <p class="section-desc">아래 사진은 연출·합성 이미지가 아닌 바른자리 신중동점 실제 공간입니다.</p>
-      <figure style="margin:1.4rem 0 0;">
-        <img src="/images/14.webp" alt="면접 직전 말하기와 화면 점검에 사용할 수 있는 바른자리 실제 공간" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:20px;" />
-        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">합성 없는 바른자리 실제 공간 사진입니다.</figcaption>
-      </figure>
-    </div>
-  </section>
 </main>
