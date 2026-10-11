@@ -28,7 +28,7 @@ canonical: https://bareunjari.com/posts/recurring-space-booking-for-freelance-co
 permalink: /posts/recurring-space-booking-for-freelance-counselors/
 date: 2026-07-30 09:00:00 +0900
 og_image: https://bareunjari.com/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp
-og_image_alt: 실제 바른자리 2인 테이블에서 상담가와 방문자가 마주 앉아 대화하는 이용 장면
+og_image_alt: 바른자리 2인 테이블 공간을 배경으로 구성한 상담·대화 이용 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/recurring-space-booking-for-freelance-counselors-real-20261011.webp
