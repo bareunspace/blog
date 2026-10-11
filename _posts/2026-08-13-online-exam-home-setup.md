@@ -53,7 +53,7 @@ preload_image: images/online-exam-home-setup-real-20261011.webp
 <section id="guide-visual" style="padding:20px 1.5rem 24px;">
   <div class="section-inner">
     <figure class="article-hero-visual">
-      <img class="article-hero-full" src="/images/online-exam-home-setup-real-20261011.webp" alt="실제 바른자리의 정리된 테이블에서 개인 노트북으로 온라인 시험 전 환경을 점검하는 장면" loading="eager" fetchpriority="high" width="1672" height="941" />
+      <img class="article-hero-full" src="/images/online-exam-home-setup-real-20261011.webp" alt="바른자리의 정리된 테이블 공간을 배경으로 구성한 온라인 시험 전 환경점검 장면" loading="eager" fetchpriority="high" width="1672" height="941" />
       <figcaption>바른자리 공간을 바탕으로 구성한 시험 전 환경점검 장면입니다. 시험별 규정에 맞춰 책상과 주변 환경을 준비해 주세요.</figcaption>
     </figure>
     <div style="padding:18px 0 0;text-align:center;">
