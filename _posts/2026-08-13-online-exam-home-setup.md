@@ -28,7 +28,7 @@ permalink: /posts/online-exam-home-setup/
 canonical: https://bareunjari.com/posts/online-exam-home-setup/
 date: 2026-08-13 07:45:00 +0900
 og_image: https://bareunjari.com/images/online-exam-home-setup-real-20261011.webp
-og_image_alt: 실제 바른자리의 정리된 테이블에서 개인 노트북으로 온라인 시험 전 환경을 점검하는 장면
+og_image_alt: 바른자리의 정리된 테이블 공간을 배경으로 구성한 온라인 시험 전 환경점검 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/online-exam-home-setup-real-20261011.webp
