@@ -39,7 +39,7 @@ script_version: 20260711-4
     <div class="section-inner" style="max-width:1040px;">
       <figure style="margin:0;">
         <img src="/images/interview-prep-checklist-real-20261011.webp" alt="실제 바른자리 테이블에서 면접 전날 체크리스트와 준비물을 점검하는 장면" loading="eager" fetchpriority="high" width="1672" height="941" style="display:block;width:100%;height:auto;border-radius:20px;" />
-        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">실제 바른자리 사진에 면접 준비 장면을 합성한 이미지입니다.</figcaption>
+        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">바른자리 공간을 바탕으로 구성한 면접 준비 장면입니다.</figcaption>
       </figure>
       <div style="padding:18px 0 0;text-align:center;">
         <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">면접 전날, 주변을 의식하지 않고 준비를 마무리하세요</h2>
