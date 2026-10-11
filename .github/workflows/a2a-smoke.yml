@@ -7,6 +7,13 @@ on:
       - 'supabase/functions/bareunjari-a2a/**'
       - 'tests/a2a-smoke.mjs'
       - '.github/workflows/a2a-smoke.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'supabase/functions/bareunjari-a2a/**'
+      - 'tests/a2a-smoke.mjs'
+      - '.github/workflows/a2a-smoke.yml'
   workflow_dispatch:
 permissions:
   contents: read
