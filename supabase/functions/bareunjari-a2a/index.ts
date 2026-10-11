@@ -22,8 +22,28 @@ function answer(question: string): string {
 Deno.serve(async (request: Request): Promise<Response> => {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
   if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
-  const bodyText = await request.text();
-  if (bodyText.length > 4096) return json({ error: "Payload too large" }, 413);
+  // Bound the actual streamed body, not just Content-Length (which may be missing).
+  if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json"))
+    return json({ error: "Content-Type must be application/json" }, 415);
+  const maxBytes = 4096;
+  const bytes: Uint8Array[] = [];
+  let total = 0;
+  const reader = request.body?.getReader();
+  if (!reader) return json({ error: "Missing request body" }, 400);
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) {
+      await reader.cancel().catch(() => {});
+      return json({ error: "Payload too large" }, 413);
+    }
+    bytes.push(value);
+  }
+  const input = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of bytes) { input.set(chunk, offset); offset += chunk.byteLength; }
+  const bodyText = new TextDecoder("utf-8", { fatal: true }).decode(input);
   let rpc: Record<string, any>;
   try { rpc = JSON.parse(bodyText); }
   catch { return json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "Parse error" } }, 400); }
@@ -33,7 +53,7 @@ Deno.serve(async (request: Request): Promise<Response> => {
   if (rpc.method !== "message/send")
     return json({ jsonrpc: "2.0", id, error: { code: -32601, message: "Method not found" } });
   const incoming = rpc.params?.message;
-  if (incoming?.role !== "user" || !Array.isArray(incoming.parts) || !incoming.parts.length || typeof incoming.messageId !== "string" || !incoming.parts.some((p: any) => p?.kind === "text" && typeof p?.text === "string"))
+  if (incoming?.kind !== "message" || incoming?.role !== "user" || !Array.isArray(incoming.parts) || !incoming.parts.length || incoming.parts.length > 10 || typeof incoming.messageId !== "string" || incoming.messageId.length > 128 || !incoming.parts.every((p: any) => p?.kind === "text" && typeof p?.text === "string"))
     return json({ jsonrpc: "2.0", id, error: { code: -32602, message: "Invalid params" } });
   const question = incoming.parts.filter((p: any) => p?.kind === "text" && typeof p?.text === "string").map((p: any) => p.text).join(" ").slice(0,500);
   return json({
