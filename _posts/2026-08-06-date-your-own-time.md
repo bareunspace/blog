@@ -15,11 +15,11 @@ permalink: /posts/date-your-own-time/
 date: 2026-08-06 09:00:00 +0900
 editor_pick: false
 editor_pick_order: 5
-og_image: https://bareunjari.com/images/date-your-own-time.webp
-og_image_alt: 부천 신중동에서 둘만의 시간을 편하게 보내는 프라이빗 데이트 공간 이미지
+og_image: https://bareunjari.com/images/date-your-own-time-real-20261011.webp
+og_image_alt: 실제 바른자리 소파에서 두 사람이 사진을 보며 편하게 대화하는 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/date-your-own-time.webp
+preload_image: images/date-your-own-time-real-20261011.webp
 css_version: 20260806-1
 script_version: 20260711-4
 ---
@@ -29,7 +29,21 @@ script_version: 20260711-4
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/date-your-own-time.webp' image_alt='부천 신중동에서 둘만의 시간을 편하게 보내는 프라이빗 데이트 공간 이미지' image_width='1672' image_height='941' image_loading='eager' image_caption='카페를 옮겨 다니는 데이트보다, 둘이 편하게 머물 수 있는 시간 자체가 더 기억에 남을 때가 있습니다.' %}
+  <section id="guide-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/date-your-own-time-real-20261011.webp" alt="실제 바른자리 소파에서 두 사람이 사진을 보며 편하게 대화하는 장면" loading="eager" decoding="async" fetchpriority="high" width="1672" height="941" />
+        <figcaption>여러 곳을 옮겨 다니지 않아도, 둘이 편하게 웃고 머무는 시간이 데이트가 됩니다.</figcaption>
+      </figure>
+      <div class="post-image-booking" style="margin-top:18px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">주변을 의식하지 않고, 둘만의 시간을 보내세요</h2>
+        <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />천천히 이야기하고, 함께 쉬고, 원하는 방식으로 필요한 시간만 머무르세요.</p>
+        <div class="hero-btns" style="margin-top:14px;">
+          <a href="/booking/?source=date-your-own-time-image" class="btn-primary" data-cta="date_your_own_time_image_booking">둘만의 시간을 보낼 빈 시간 확인하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <nav class="guide-toc" aria-label="부천 실내데이트 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#why-good-dates-dont-have-to-be-busy">좋은 데이트는 꼭 바쁘지 않아도 되는 이유</a><a href="#when-it-doesnt-feel-private">함께 있어도 둘만의 시간 같지 않을 때</a><a href="#use-time-your-way">주변을 신경 쓰지 않고, 하고 싶은 대로</a><a href="#ways-to-spend-time">둘만의 시간을 이렇게 보낼 수 있습니다</a><a href="#reserve-time-not-place">공간이 아니라 시간을 예약하는 것</a><a href="#privacy-has-value">프라이버시는 이제 돈으로 사는 가치</a><a href="#why-bareunjari">부천 신중동에서 편한 실내데이트가 필요하다면</a><a href="#when-private-space-fits">이런 날에는 카페보다 프라이빗 공간이 더 편할 수 있습니다</a><a href="#how-an-hour-can-go">1시간을 이렇게 보내도 좋습니다</a><a href="#faq">자주 묻는 질문</a></div></nav>
 
