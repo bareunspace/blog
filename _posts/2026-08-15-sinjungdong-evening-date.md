@@ -15,11 +15,11 @@ hubs:
 canonical: https://bareunjari.com/posts/sinjungdong-evening-date/
 permalink: /posts/sinjungdong-evening-date/
 date: 2026-08-15 14:00:00 +0900
-og_image: https://bareunjari.com/images/sinjungdong-evening-date.webp
-og_image_alt: 신중동 저녁 데이트를 위한 바른자리의 차분한 공간
-og_image_width: 1536
-og_image_height: 1024
-preload_image: images/sinjungdong-evening-date.webp
+og_image: https://bareunjari.com/images/sinjungdong-evening-date-real-20261011.webp
+og_image_alt: 실제 바른자리 2인 소파에서 저녁 식사 뒤 둘이 편하게 이야기하는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/sinjungdong-evening-date-real-20261011.webp
 ---
 
 <main class="about-page">
@@ -34,7 +34,7 @@ preload_image: images/sinjungdong-evening-date.webp
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='guide-visual' image_src='/images/sinjungdong-evening-date.webp' image_alt='신중동 저녁 데이트를 위한 바른자리의 차분한 공간' image_width='1536' image_height='1024' image_loading='eager' image_caption='밖에서 충분히 즐긴 뒤, 집에 가기 전 마지막은 조금 차분하게.' %}
+  <section id="guide-visual" style="padding:20px 1.5rem 24px;"><div class="section-inner" style="max-width:1040px;"><figure style="margin:0;"><img src="/images/sinjungdong-evening-date-real-20261011.webp" alt="실제 바른자리 2인 소파에서 저녁 식사 뒤 둘이 편하게 이야기하는 장면" width="1672" height="941" loading="eager" fetchpriority="high" style="display:block;width:100%;height:auto;border-radius:20px;" /><figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">실제 바른자리 사진에 저녁 데이트 장면을 합성한 이미지입니다.</figcaption></figure><div style="padding:18px 0 0;text-align:center;"><h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">집에 가기 전, 둘만의 이야기를 조금 더 이어가세요</h2><p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />저녁 식사 뒤 북적이는 곳을 다시 찾는 대신, 둘이 편하게 머물 시간을 정해 보세요.</p><a href="/booking/?source=sinjungdong-evening-date-image" class="btn-primary" data-cta="sinjungdong_evening_date_image_booking">오늘 저녁 둘이 머물 빈 시간 확인하기</a></div></div></section>
 
   <nav class="guide-toc" aria-label="신중동 저녁 데이트 가이드 목차"><div class="guide-toc-inner"><span class="guide-toc-label">이 글에서 확인할 내용</span><a href="#after-dinner">저녁 식사 뒤가 애매할 때</a><a href="#last-two-hours">마지막 2시간 동선</a><a href="#near-station">신중동역 1분의 장점</a><a href="#what-to-do">둘이 2시간 보내는 법</a><a href="#calm-evening">차분한 저녁이 맞는 날</a><a href="#time-choice">2시간·3시간 고르기</a><a href="#before-booking">이용 전 확인</a><a href="#faq">FAQ</a></div></nav>
 
