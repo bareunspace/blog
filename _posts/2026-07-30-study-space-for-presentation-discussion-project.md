@@ -29,7 +29,7 @@ date: 2026-07-30 09:00:00 +0900
 editor_pick: true
 editor_pick_order: -1
 og_image: https://bareunjari.com/images/study-space-for-presentation-discussion-project-real-20261011.webp
-og_image_alt: 실제 바른자리에서 한 명이 발표를 연습하고 두 팀원이 듣고 피드백을 기록하는 장면
+og_image_alt: 바른자리 공간을 배경으로 구성한 발표·팀 프로젝트 준비 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/study-space-for-presentation-discussion-project-real-20261011.webp
