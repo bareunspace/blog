@@ -13,7 +13,7 @@ tags:
 canonical: https://bareunjari.com/posts/interview-prep-checklist/
 permalink: /posts/interview-prep-checklist/
 og_image: https://bareunjari.com/images/interview-prep-checklist-real-20261011.webp
-og_image_alt: 실제 바른자리 테이블에서 면접 전날 체크리스트와 준비물을 점검하는 장면
+og_image_alt: 바른자리 테이블 공간을 배경으로 구성한 면접 전날 준비 장면
 og_image_width: 1672
 og_image_height: 941
 preload_image: images/interview-prep-checklist-real-20261011.webp
