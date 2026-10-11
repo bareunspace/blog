@@ -54,7 +54,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <figure class="article-hero-visual">
         <img class="article-hero-full" src="/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp" alt="실제 바른자리 2인 테이블에서 상담가와 방문자가 마주 앉아 대화하는 이용 장면" loading="eager" width="1672" height="941" />
-        <figcaption>실제 바른자리 사진에 상담·코칭 이용 장면을 합성한 이미지입니다.</figcaption>
+        <figcaption>바른자리 공간을 바탕으로 구성한 상담·코칭 이용 장면입니다.</figcaption>
       </figure>
       <div style="padding:18px 0 0;text-align:center;">
         <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">고정 사무실 없이, 대면 상담이 있는 시간만 예약하세요</h2>
