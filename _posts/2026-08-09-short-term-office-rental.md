@@ -155,14 +155,14 @@ script_version: 20260711-4
 
   {% include post-tags.html %}
 
-  <section data-real-space-proof="true" aria-label="바른자리 실제 공간 사진">
+  <section data-real-space-proof="true" aria-label="바른자리 공간 활용 이미지">
     <div class="section-inner">
       <p class="section-label">Real Space</p>
-      <h2 class="section-title">예약 전에 실제 공간을 확인하세요</h2>
-      <p class="section-desc">아래 사진은 연출·합성 이미지가 아닌 바른자리 신중동점 실제 공간입니다.</p>
+      <h2 class="section-title">이 공간을 업무에 활용하는 모습을 확인하세요</h2>
+      <p class="section-desc">아래 이미지는 바른자리 실제 공간 사진을 바탕으로 집중 업무 장면을 합성한 예시 이미지입니다.</p>
       <figure style="margin:1.4rem 0 0;">
-        <img src="/images/bareunjari-cozy-private-room.webp" alt="집중 업무와 화상회의에 사용할 수 있는 바른자리 실제 프라이빗 공간" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:20px;" />
-        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">합성 없는 바른자리 실제 공간 사진입니다.</figcaption>
+        <img src="/images/bareunjari-cozy-private-room.webp" alt="바른자리 실제 공간 사진을 바탕으로 집중 업무 장면을 합성한 이미지" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:20px;" />
+        <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">바른자리 실제 공간 사진을 바탕으로 업무 이용 장면을 합성했습니다.</figcaption>
       </figure>
     </div>
   </section>
