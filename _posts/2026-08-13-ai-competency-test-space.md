@@ -72,7 +72,10 @@ preload_image: images/ai-competency-test-space-20261010.webp
     <p class="section-label">Private Test Space</p>
     <h2 class="section-title">집에서 검사시간을<br />온전히 확보하기 어렵다면</h2>
     <p class="section-desc">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용 · 1시간 10,000원부터. 집에서 가족·생활소음·말하기 환경이 불안하다면 검사에 필요한 시간만 프라이빗 공간을 예약할 수 있습니다.</p>
-    <p class="section-desc" style="margin-top:10px;"><strong>시간 선택 예시:</strong> 말하기·카메라 점검 위주라면 1시간부터, 실제 검사 응시까지 포함한다면 안내된 검사시간에 입실·세팅·종료 확인 시간을 더해 2시간 이상을 검토하세요. 검사별 소요시간이 다르므로 초대받은 안내가 우선입니다.</p>
+    <div class="guide-summary-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));" aria-label="목적별 예약시간 선택">
+      <article class="guide-summary-card"><span>사전 연습</span><h3>말하기·카메라 점검은 1시간부터</h3><p>짧은 영상답변 연습과 장비 점검을 위한 예시입니다. 전체 모의검사를 진행한다면 안내된 소요시간에 준비·정리 시간을 더해 주세요.</p></article>
+      <article class="guide-summary-card"><span>실제 응시</span><h3>검사시간 + 준비·마무리 시간</h3><p>기업이 안내한 접속·검사 시간에 입실 후 장비 세팅과 제출 확인·퇴실 준비 시간을 더해 예약하세요. 검사마다 소요시간이 다르므로 받은 안내를 기준으로 계산합니다.</p></article>
+    </div>
     <div class="hero-btns">
       <a href="/booking/?purpose=exam&amp;source=ai-competency-test-space" class="btn-primary" data-cta="ai_competency_mid_booking">필요한 시간 빈 자리 확인하기</a>
       <a href="{{ '/ai-ready-check/' | relative_url }}" class="btn-outline" data-cta="ai_competency_mid_ready_check">카메라·마이크·인터넷 5분 점검</a>

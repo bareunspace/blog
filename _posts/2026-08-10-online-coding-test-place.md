@@ -177,7 +177,13 @@ preload_image: images/online-coding-test-place.webp
       <article class="guide-summary-card"><span>중</span><h3>장비 점검</h3><p>와이파이, 카메라, 마이크, 충전기, 브라우저 권한까지 실제 노트북에서 점검합니다.</p></article>
       <article class="guide-summary-card"><span>후</span><h3>대체 수단 준비</h3><p>휴대폰 테더링처럼 예상치 못한 연결 문제에 대비한 플랜 B를 준비해둡니다.</p></article>
     </div>
-    <p>예를 들어 코딩테스트가 오후 2시에 시작한다고 해서 예약도 오후 2시부터 잡는 방식은 추천하기 어렵습니다. 로그인과 환경 확인 시간을 포함해 <strong>시험 시작 전에 이미 세팅이 끝나 있는 상태</strong>를 목표로 잡는 편이 좋습니다.</p>
+    <h3>14~16시 코딩테스트라면, 예약시간은 이렇게 계산하세요</h3>
+    <div class="guide-summary-grid" aria-label="코딩테스트 예약시간 계산 예시">
+      <article class="guide-summary-card"><span>13:30~14:00</span><h3>입실·접속 준비</h3><p>노트북을 세팅하고 로그인, 인터넷, 필요한 프로그램을 확인합니다.</p></article>
+      <article class="guide-summary-card"><span>14:00~16:00</span><h3>코딩테스트 응시</h3><p>기업과 시험 플랫폼이 안내한 절차에 따라 응시합니다.</p></article>
+      <article class="guide-summary-card"><span>16:00~16:30</span><h3>제출 확인·퇴실 준비</h3><p>제출 완료를 확인하고 장비와 자리를 정리합니다. 답안 제출은 시험 마감 시각 안에 완료해야 합니다.</p></article>
+    </div>
+    <p><strong>이 예시의 예약시간은 13:30~16:30, 총 3시간이며 기본요금은 30,000원입니다.</strong> 준비·마무리 각 30분은 계산 예시입니다. 실제 접속 시각, 감독 절차와 시험 종료 안내에 맞춰 필요한 시간을 조정해 주세요.</p>
   </div>
 </section>
 
