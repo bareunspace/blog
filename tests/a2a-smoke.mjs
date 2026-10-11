@@ -78,7 +78,6 @@ await check("limiter network outage fails closed", async () => {
   assert.equal((await post(rpc())).status, 503);
   globalThis.fetch = saved;
 });
-globalThis.fetch = realFetch;
 limiterCount = 0;
 await check("tasks/get returns task not found", async () => {
   const result = await (await post({ jsonrpc: "2.0", id: "task-1", method: "tasks/get", params: { id: "missing-task" } })).json();
@@ -88,4 +87,5 @@ await check("tasks/cancel returns task not found", async () => {
   const result = await (await post({ jsonrpc: "2.0", id: "task-2", method: "tasks/cancel", params: { id: "missing-task" } })).json();
   assert.equal(result.error.code, -32001);
 });
+globalThis.fetch = realFetch;
 console.log(`Passed ${passed}/16`);
