@@ -27,9 +27,11 @@ hubs:
 permalink: /posts/online-exam-home-setup/
 canonical: https://bareunjari.com/posts/online-exam-home-setup/
 date: 2026-08-13 07:45:00 +0900
-og_image: https://bareunjari.com/images/online-exam-home-setup.webp
-og_image_alt: 온라인 감독 시험을 앞두고 책상과 주변을 정리하며 노트북과 스마트폰을 준비하는 모습
-preload_image: images/online-exam-home-setup.webp
+og_image: https://bareunjari.com/images/online-exam-home-setup-real-20261011.webp
+og_image_alt: 실제 바른자리의 정리된 테이블에서 개인 노트북으로 온라인 시험 전 환경을 점검하는 장면
+og_image_width: 1672
+og_image_height: 941
+preload_image: images/online-exam-home-setup-real-20261011.webp
 ---
 
 <main class="about-page">
@@ -48,12 +50,18 @@ preload_image: images/online-exam-home-setup.webp
 
 {% include breadcrumb.html %}
 
-<section id="guide-visual">
+<section id="guide-visual" style="padding:20px 1.5rem 24px;">
   <div class="section-inner">
     <figure class="article-hero-visual">
-      <img class="article-hero-full" src="/images/online-exam-home-setup.webp" alt="온라인 감독 시험을 앞두고 책상과 주변을 정리하며 노트북과 스마트폰을 준비하는 모습" loading="eager" />
-      <figcaption>온라인 시험은 집에서 볼 수 있어도 평소 생활하던 방을 그대로 사용할 수 있는지는 별개의 문제입니다. 시험 규정에 따라 책상과 주변 환경을 다시 준비해야 할 수 있습니다.</figcaption>
+      <img class="article-hero-full" src="/images/online-exam-home-setup-real-20261011.webp" alt="실제 바른자리의 정리된 테이블에서 개인 노트북으로 온라인 시험 전 환경을 점검하는 장면" loading="eager" fetchpriority="high" width="1672" height="941" />
+      <figcaption>실제 바른자리 사진에 시험 전 환경점검 장면을 합성한 이미지입니다. 시험별 규정에 맞춰 책상과 주변 환경을 준비해 주세요.</figcaption>
     </figure>
+    <div style="padding:18px 0 0;text-align:center;">
+      <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">집에서 준비가 어렵다면, 시험 조건부터 확인해 보세요</h2>
+      <p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />시험 규정과 실제 시설이 맞는지 확인한 뒤, 장비 점검과 본시험에 필요한 시간을 여유 있게 확보하세요.</p>
+      <a href="/booking/?source=online-exam-home-setup-image" class="btn-primary" data-cta="online_exam_setup_image_booking">준비 시간까지 포함해 빈 시간 확인하기</a>
+      <p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;line-height:1.6;">노트북과 필요한 기기는 직접 지참해 주세요. 시험별 공간·네트워크 허용 조건과 사전 시스템 테스트를 먼저 확인해 주세요.</p>
+    </div>
   </div>
 </section>
 
