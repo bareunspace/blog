@@ -1,7 +1,10 @@
 # Priority order for the Practical Guides section.
-# Rule: prioritize booking intent and observed reservation demand, then recent GSC/GA4 traffic.
-# Only the first 3-4 cards per section are prioritized; remaining cards keep their existing order.
+# Rule: prioritize recent booking clicks first, then observed reservation demand,
+# then recent GSC/GA4 traffic. Avoid reordering from a single weak signal alone.
+# Category order is managed in blog.html and remains interview -> exam -> practice
+# -> study -> meeting -> private -> journal.
 # Editor's Pick is intentionally managed separately.
+# Manual priority refreshed: 2026-10-11
 "면접준비":
   - /posts/interview-answer-practice/
   - /posts/bucheon-video-interview-place-guide/
@@ -11,16 +14,18 @@
   - /posts/online-aptitude-test-space/
   - /posts/ai-competency-test-space/
   - /posts/online-coding-test-place/
+  - /posts/duolingo-english-test-space/
+  - /posts/toefl-home-edition-space/
   - /posts/online-exam-home-setup/
 "연습·리허설":
   - /posts/pt-presentation-rehearsal/
   - /posts/audition-self-tape-checklist/
   - /posts/acting-practice-space/
 "스터디룸":
-  - /posts/study-space-guide/
   - /posts/one-person-study-room/
   - /posts/practice-speaking-space/
-  - /posts/english-speaking-test-recording-practice/
+  - /posts/study-space-guide/
+  - /posts/college-team-project-space/
 "미팅·상담":
   - /posts/bucheon-meeting-room/
   - /posts/recurring-space-booking-for-freelance-counselors/
