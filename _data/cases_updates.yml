@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-11
+updated_at: 2026-10-12
 
 cases:
   - id: kotra-2026-trade-new-hire-interview
@@ -1332,8 +1332,8 @@ cases:
 
     published_at: 2026-09-21
     verified_at: 2026-09-25
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-09
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-12
 
     application:
       start: "2026-09-24"
