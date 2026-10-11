@@ -47,4 +47,13 @@ await check("non-text part rejected", async () => {
   const response = await post(rpc("message/send", { kind: "message", messageId: "test-4", role: "user", parts: [{ kind: "file", file: {} }] }));
   assert.equal((await response.json()).error.code, -32602);
 });
-console.log(`Passed ${passed}/10`);
+await check("malformed UTF-8 returns parse error", async () => {
+  const response = await handler(new Request("http://localhost", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: new Uint8Array([0xff, 0xfe]),
+  }));
+  assert.equal(response.status, 400);
+  assert.equal((await response.json()).error.code, -32700);
+});
+console.log(`Passed ${passed}/11`);
