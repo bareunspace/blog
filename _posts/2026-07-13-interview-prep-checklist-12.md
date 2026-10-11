@@ -38,7 +38,7 @@ script_version: 20260711-4
   <section id="checklist-guide-visual" style="padding:20px 1.5rem 24px;">
     <div class="section-inner" style="max-width:1040px;">
       <figure style="margin:0;">
-        <img src="/images/interview-prep-checklist-real-20261011.webp" alt="실제 바른자리 테이블에서 면접 전날 체크리스트와 준비물을 점검하는 장면" loading="eager" fetchpriority="high" width="1672" height="941" style="display:block;width:100%;height:auto;border-radius:20px;" />
+        <img src="/images/interview-prep-checklist-real-20261011.webp" alt="바른자리 테이블 공간을 배경으로 구성한 면접 전날 준비 장면" loading="eager" fetchpriority="high" width="1672" height="941" style="display:block;width:100%;height:auto;border-radius:20px;" />
         <figcaption style="margin:10px 0 0;font-size:.82rem;color:#6c7880;text-align:center;line-height:1.6;">바른자리 공간을 바탕으로 구성한 면접 준비 장면입니다.</figcaption>
       </figure>
       <div style="padding:18px 0 0;text-align:center;">
