@@ -33,12 +33,13 @@ Deno.serve(async (request: Request): Promise<Response> => {
   if (rpc.method !== "message/send")
     return json({ jsonrpc: "2.0", id, error: { code: -32601, message: "Method not found" } });
   const incoming = rpc.params?.message;
-  if (incoming?.role !== "user" || !Array.isArray(incoming.parts) || !incoming.parts.length || typeof incoming.messageId !== "string")
+  if (incoming?.role !== "user" || !Array.isArray(incoming.parts) || !incoming.parts.length || typeof incoming.messageId !== "string" || !incoming.parts.some((p: any) => p?.kind === "text" && typeof p?.text === "string"))
     return json({ jsonrpc: "2.0", id, error: { code: -32602, message: "Invalid params" } });
   const question = incoming.parts.filter((p: any) => p?.kind === "text" && typeof p?.text === "string").map((p: any) => p.text).join(" ").slice(0,500);
   return json({
     jsonrpc: "2.0", id,
     result: {
+        kind: "message",
         role: "agent",
         messageId: crypto.randomUUID(),
         contextId: incoming.contextId || crypto.randomUUID(),
