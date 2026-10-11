@@ -39,4 +39,12 @@ await check("invalid message", async () => assert.equal((await (await post(rpc("
 await check("large request rejected", async () => assert.equal((await post("x".repeat(4097))).status, 413));
 await check("GET rejected", async () => assert.equal((await handler(new Request("http://localhost"))).status, 405));
 await check("OPTIONS accepted", async () => assert.equal((await handler(new Request("http://localhost", { method: "OPTIONS" }))).status, 204));
-console.log(`Passed ${passed}/8`);
+await check("non-JSON request rejected", async () => {
+  const response = await handler(new Request("http://localhost", { method: "POST", headers: { "Content-Type": "text/plain" }, body: "{}" }));
+  assert.equal(response.status, 415);
+});
+await check("non-text part rejected", async () => {
+  const response = await post(rpc("message/send", { kind: "message", messageId: "test-4", role: "user", parts: [{ kind: "file", file: {} }] }));
+  assert.equal((await response.json()).error.code, -32602);
+});
+console.log(`Passed ${passed}/10`);
