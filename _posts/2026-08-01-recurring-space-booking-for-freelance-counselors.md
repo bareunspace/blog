@@ -27,11 +27,11 @@ tags:
 canonical: https://bareunjari.com/posts/recurring-space-booking-for-freelance-counselors/
 permalink: /posts/recurring-space-booking-for-freelance-counselors/
 date: 2026-07-30 09:00:00 +0900
-og_image: https://bareunjari.com/images/recurring-space-booking-for-freelance-counselors.webp
-og_image_alt: 프리랜서 상담사가 매주 같은 시간대에 프라이빗 공간을 반복 예약해 상담하는 모습
+og_image: https://bareunjari.com/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp
+og_image_alt: 실제 바른자리 2인 테이블에서 상담가와 방문자가 마주 앉아 대화하는 이용 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/recurring-space-booking-for-freelance-counselors.webp
+preload_image: images/recurring-space-booking-for-freelance-counselors-real-20261011.webp
 css_version: 20260801-1
 script_version: 20260711-4
 ---
@@ -50,12 +50,18 @@ script_version: 20260711-4
   </section>
   {% include breadcrumb.html %}
 
-  <section id="guide-visual">
+  <section id="guide-visual" style="padding:20px 1.5rem 24px;">
     <div class="section-inner">
       <figure class="article-hero-visual">
-        <img class="article-hero-full" src="/images/recurring-space-booking-for-freelance-counselors.webp" alt="프리랜서 상담사가 매주 같은 시간대에 프라이빗 공간을 반복 예약해 상담하는 모습" loading="eager" width="1672" height="941" />
-        <figcaption>같은 공간과 시간대를 반복해 사용하면 상담자와 내담자 모두에게 더 안정적인 상담 리듬이 만들어집니다.</figcaption>
+        <img class="article-hero-full" src="/images/recurring-space-booking-for-freelance-counselors-real-20261011.webp" alt="실제 바른자리 2인 테이블에서 상담가와 방문자가 마주 앉아 대화하는 이용 장면" loading="eager" width="1672" height="941" />
+        <figcaption>실제 바른자리 사진에 상담·코칭 이용 장면을 합성한 이미지입니다.</figcaption>
       </figure>
+      <div style="padding:18px 0 0;text-align:center;">
+        <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">고정 사무실 없이, 대면 상담이 있는 시간만 예약하세요</h2>
+        <p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />다른 팀과 내부 공간을 공유하지 않고, 상담·코칭·컨설팅 대화에 집중해 보세요.</p>
+        <a href="/booking/?purpose=meeting&amp;source=freelance-counselors-image" class="btn-primary" data-cta="freelance_counselors_image_booking">상담 일정의 빈 시간 확인하기</a>
+        <p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;line-height:1.6;">준비·정리 시간을 포함해 예약해 주세요. 특정 시간대가 자동으로 확보되는 상품은 아닙니다.</p>
+      </div>
     </div>
   </section>
 
