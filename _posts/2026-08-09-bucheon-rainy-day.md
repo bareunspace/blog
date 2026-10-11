@@ -14,9 +14,9 @@ tags:
 canonical: https://bareunjari.com/posts/bucheon-rainy-day/
 permalink: /posts/bucheon-rainy-day/
 date: 2026-08-09 06:30:00 +0900
-og_image: https://bareunjari.com/images/bucheon-rainy-day.webp
-og_image_alt: 부천 비 오는 날 갈만한 곳, 바른자리 실내 하루 가이드
-preload_image: images/bucheon-rainy-day.webp
+og_image: https://bareunjari.com/images/bucheon-rainy-day-real-20261011.webp
+og_image_alt: 실제 바른자리 공간에서 비 오는 날 두 친구가 편하게 대화하며 머무는 장면
+preload_image: images/bucheon-rainy-day-real-20261011.webp
 css_version: 20260815-2
 script_version: 20260719-1
 ---
@@ -36,7 +36,21 @@ script_version: 20260719-1
 
   {% include breadcrumb.html %}
 
-  {% include post-media-carousel.html image_section_id='rainy-visual' image_src='/images/bucheon-rainy-day.webp' image_alt='부천 비 오는 날 갈만한 곳, 바른자리 실내 하루 가이드' image_loading='eager' image_caption='비 오는 날에는 많은 장소보다, 오래 머물 수 있는 한곳이 더 편할 때가 있습니다.' %}
+  <section id="rainy-visual">
+    <div class="section-inner">
+      <figure class="article-hero-visual">
+        <img class="article-hero-full" src="/images/bucheon-rainy-day-real-20261011.webp" alt="실제 바른자리 공간에서 비 오는 날 두 친구가 편하게 대화하며 머무는 장면" loading="eager" decoding="async" fetchpriority="high" width="1672" height="941" />
+        <figcaption>비 오는 날에는 여러 곳을 옮겨 다니기보다, 한곳에서 편하게 머무는 시간이 더 좋을 수 있습니다.</figcaption>
+      </figure>
+      <div class="post-image-booking" style="margin-top:18px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.45;">비 오는 날, 이동은 줄이고 내 시간에 집중하세요</h2>
+        <p class="section-desc" style="margin:0;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />혼자 쉬어도, 친구나 연인과 이야기해도 좋습니다. 오늘 필요한 시간만 머무르세요.</p>
+        <div class="hero-btns" style="margin-top:14px;">
+          <a href="/booking/?source=bucheon-rainy-day-image" class="btn-primary" data-cta="bucheon_rainy_day_image_booking">오늘 편하게 머물 빈 시간 확인하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <nav class="guide-toc" aria-label="비 오는 날 부천 실내 가이드 목차">
     <div class="guide-toc-inner">
