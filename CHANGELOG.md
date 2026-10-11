@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.3] - 2026-10-12
+### Changed
+- Balance the nine gallery photographs with deterministic color and tonal adjustments, retaining original objects and lettering.
+- Trim excess margin on three detail/night photos and serve versioned WebP files up to 1920px; keep original assets unchanged.
+
 ## [1.1.2] - 2026-10-12
 ### Added
 - Add the new sofa lounge photograph to the homepage gallery as an optimized WebP, preserving the full portrait image in the lightbox.

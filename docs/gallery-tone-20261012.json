@@ -1,0 +1,209 @@
+[
+  {
+    "source": "images/bareunjari-sunny-private-room.webp",
+    "output": "images/gallery-01-tone-20261012.webp",
+    "size": [
+      1448,
+      1086
+    ],
+    "bytes": 174490,
+    "gains": [
+      1,
+      1,
+      1
+    ],
+    "midtone_lift": 0,
+    "highlight_adjustment": -0.022,
+    "saturation": 0.98,
+    "crop_box": [
+      0,
+      0,
+      1448,
+      1086
+    ]
+  },
+  {
+    "source": "images/bareunjari-sofa-lounge-20261012.webp",
+    "output": "images/gallery-02-tone-20261012.webp",
+    "size": [
+      1013,
+      1536
+    ],
+    "bytes": 168106,
+    "gains": [
+      0.995,
+      1,
+      1.035
+    ],
+    "midtone_lift": 0.014,
+    "highlight_adjustment": -0.012,
+    "saturation": 0.98,
+    "crop_box": [
+      0,
+      0,
+      1013,
+      1536
+    ]
+  },
+  {
+    "source": "images/bareunjari-cozy-private-room.webp",
+    "output": "images/gallery-03-tone-20261012.webp",
+    "size": [
+      1536,
+      864
+    ],
+    "bytes": 95446,
+    "gains": [
+      0.997,
+      1,
+      1.045
+    ],
+    "midtone_lift": 0.014,
+    "highlight_adjustment": -0.01,
+    "saturation": 1,
+    "crop_box": [
+      0,
+      0,
+      1536,
+      864
+    ]
+  },
+  {
+    "source": "images/bareunjari-study-meeting-room-wide.webp",
+    "output": "images/gallery-04-tone-20261012.webp",
+    "size": [
+      1448,
+      1086
+    ],
+    "bytes": 150540,
+    "gains": [
+      1,
+      1,
+      1
+    ],
+    "midtone_lift": 0,
+    "highlight_adjustment": -0.025,
+    "saturation": 0.99,
+    "crop_box": [
+      0,
+      0,
+      1448,
+      1086
+    ]
+  },
+  {
+    "source": "images/06.webp",
+    "output": "images/gallery-05-tone-20261012.webp",
+    "size": [
+      1448,
+      1037
+    ],
+    "bytes": 251352,
+    "gains": [
+      1.01,
+      1,
+      1
+    ],
+    "midtone_lift": 0.005,
+    "highlight_adjustment": -0.03,
+    "saturation": 0.98,
+    "crop_box": [
+      0,
+      49,
+      1448,
+      1086
+    ]
+  },
+  {
+    "source": "images/12.webp",
+    "output": "images/gallery-06-tone-20261012.webp",
+    "size": [
+      1920,
+      1440
+    ],
+    "bytes": 152626,
+    "gains": [
+      1.095,
+      1,
+      0.945
+    ],
+    "midtone_lift": 0.037,
+    "highlight_adjustment": -0.015,
+    "saturation": 1,
+    "crop_box": [
+      0,
+      0,
+      2200,
+      1650
+    ]
+  },
+  {
+    "source": "images/14.webp",
+    "output": "images/gallery-07-tone-20261012.webp",
+    "size": [
+      1448,
+      1086
+    ],
+    "bytes": 146252,
+    "gains": [
+      1,
+      1,
+      1
+    ],
+    "midtone_lift": 0,
+    "highlight_adjustment": -0.028,
+    "saturation": 0.96,
+    "crop_box": [
+      0,
+      0,
+      1448,
+      1086
+    ]
+  },
+  {
+    "source": "images/15.webp",
+    "output": "images/gallery-08-tone-20261012.webp",
+    "size": [
+      898,
+      1463
+    ],
+    "bytes": 91514,
+    "gains": [
+      1,
+      1,
+      1
+    ],
+    "midtone_lift": 0,
+    "highlight_adjustment": -0.038,
+    "saturation": 0.95,
+    "crop_box": [
+      0,
+      131,
+      898,
+      1594
+    ]
+  },
+  {
+    "source": "images/04.webp",
+    "output": "images/gallery-09-tone-20261012.webp",
+    "size": [
+      1429,
+      1920
+    ],
+    "bytes": 137188,
+    "gains": [
+      1.01,
+      1,
+      1.015
+    ],
+    "midtone_lift": 0.042,
+    "highlight_adjustment": -0.012,
+    "saturation": 0.98,
+    "crop_box": [
+      0,
+      336,
+      2252,
+      3362
+    ]
+  }
+]
