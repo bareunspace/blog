@@ -28,8 +28,8 @@
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "06:00",
-        "closes": "24:00"
+        "opens": "00:00",
+        "closes": "23:59"
       },
       "amenityFeature": [
         {"@type":"LocationFeatureSpecification","name":"Wi-Fi","value":true},
@@ -41,7 +41,7 @@
         "name": "시간제 프라이빗 공간대여",
         "price": "10000",
         "priceCurrency": "KRW",
-        "url": "https://m.place.naver.com/place/2041312316/ticket",
+        "url": "{{ site.data.operations.products.hourly.booking_url }}",
         "itemOffered": {
           "@type": "Service",
           "name": "바른자리 시간제 공간대여",
@@ -50,7 +50,7 @@
       },
       "potentialAction": {
         "@type": "ReserveAction",
-        "target": "https://m.place.naver.com/place/2041312316/ticket"
+        "target": "{{ site.data.operations.products.hourly.booking_url }}"
       },
       "sameAs": [
         "https://m.place.naver.com/place/2041312316/ticket",
