@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 카페에서 화상회의 해도 될까? | 중요한 통화가 있는 날 몇 시간만 일할 곳 찾는 법
-description: 카페에서 노트북 업무는 가능하지만 화상회의와 중요한 업무전화는 이야기가 달라집니다. 카페·스터디카페·공유오피스·시간제 단독공간을 비교하고 부천 신중동에서 몇 시간만 일할 곳을 찾는 기준을 정리했습니다.
+description: 카페에서 중요한 화상회의를 해도 될까요? 주변 소음·통화 프라이버시·인터넷을 비교하고, 부천 신중동역 인근에서 몇 시간만 단독 이용할 회의 공간과 예약 방법을 안내합니다.
 category: 미팅·업무
 hub_series: meeting
 hub_section: problem
@@ -101,7 +101,7 @@ faq:
 
   <section id="faq"><div class="section-inner"><h2 class="section-title">자주 묻는 질문</h2><div class="contact-faq" itemscope itemtype="https://schema.org/FAQPage">{% for item in page.faq %}<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">{{ item.question }}</summary><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">{{ item.answer }}</p></div></details>{% endfor %}</div></div></section>
 
-  <section class="blog-conversion-section"><div class="section-inner"><div class="blog-conversion-panel"><div><p class="section-label soft">Need a Room for the Call?</p><h2>오늘 회의 때문에<br />몇 시간만 혼자 쓸 공간이 필요하다면</h2><p>카페에서 계속 주변을 의식하기보다, 필요한 시간만 예약하고 회의와 후속 업무에 사용해 보세요.</p></div><div class="blog-conversion-actions"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="video_meeting_bottom_booking">필요한 시간 예약하기</a><a href="/meeting/" class="btn-outline">미팅·업무 가이드 더 보기</a></div></div></div></section>
+  <section class="blog-conversion-section"><div class="section-inner"><div class="blog-conversion-panel"><div><p class="section-label soft">Need a Room for the Call?</p><h2>오늘 회의 때문에<br />몇 시간만 혼자 쓸 공간이 필요하다면</h2><p>카페에서 계속 주변을 의식하기보다, 필요한 시간만 예약하고 회의와 후속 업무에 사용해 보세요.</p></div><div class="blog-conversion-actions"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="video_meeting_bottom_booking">필요한 시간 예약하기</a><a href="/posts/bucheon-meeting-room/" class="btn-outline">부천 회의실·위치·요금 확인하기</a></div></div></div></section>
 
   {% include post-tags.html %}
 </main>
