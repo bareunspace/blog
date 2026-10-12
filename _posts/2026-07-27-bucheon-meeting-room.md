@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 부천 회의실·신중동 미팅룸 | 신중동역 1분 바른자리
-description: 부천·신중동에서 1~8인이 단독으로 이용할 소규모 회의실을 찾는다면 확인하세요. 신중동역 1분, 1시간 10,000원부터 이용하는 바른자리의 위치·시설·예약 기준을 정리했습니다.
+description: 부천 회의실·신중동 미팅룸을 찾는다면? 신중동역 도보 1분, 최대 8명(권장 6명) 단독 이용. 1시간 10,000원부터 이용 가능한 바른자리 시설·예약 방법을 확인하세요.
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
@@ -172,6 +172,7 @@ script_version: 20260711-4
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/?purpose=meeting&amp;source=bucheon-meeting-room" class="btn-primary" data-cta="bucheon_meeting_room_bottom">부천 신중동 회의실 예약하기</a>
         <a href="/meeting/" class="btn-outline">미팅·업무 허브 보기</a>
+        <a href="/posts/recurring-space-booking-for-freelance-counselors/" class="btn-outline">반복 상담·정기 이용 가이드</a>
       </div>
     </div>
   </section>
