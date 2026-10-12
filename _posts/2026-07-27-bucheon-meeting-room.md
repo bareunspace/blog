@@ -171,8 +171,7 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/?purpose=meeting&amp;source=bucheon-meeting-room" class="btn-primary" data-cta="bucheon_meeting_room_bottom">부천 신중동 회의실 예약하기</a>
-        <a href="/meeting/" class="btn-outline">미팅·업무 허브 보기</a>
-        <a href="/posts/recurring-space-booking-for-freelance-counselors/" class="btn-outline">반복 상담·정기 이용 가이드</a>
+        <a href="/meeting/" class="btn-outline">미팅·업무 가이드</a>
       </div>
     </div>
   </section>
