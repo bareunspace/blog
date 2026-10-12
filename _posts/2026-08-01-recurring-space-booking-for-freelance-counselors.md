@@ -227,8 +227,6 @@ script_version: 20260711-4
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/?purpose=meeting&amp;source=recurring-space-booking-for-freelance-counselors" class="btn-primary">상담공간 예약 가능 시간 확인하기</a>
         <a href="/posts/bucheon-meeting-room/" class="btn-outline">부천 미팅 공간·요금 보기</a>
-        <a href="/meeting/" class="btn-outline">미팅·상담 활용 가이드</a>
-        <a href="/posts/freelance-counselor-office/" class="btn-outline">이전 글: 상담 운영 기본 보기</a>
       </div>
     </div>
   </section>
