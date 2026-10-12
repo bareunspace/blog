@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.4] - 2026-10-12
+### Changed
+- Restore the original regular study guide image across article, card and social previews; align alt text and caption.
+
 ## [1.1.3] - 2026-10-12
 ### Changed
 - Balance the nine gallery photographs with deterministic color and tonal adjustments, retaining original objects and lettering.
