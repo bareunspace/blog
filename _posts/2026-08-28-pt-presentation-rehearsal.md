@@ -237,6 +237,8 @@ script_version: 20260711-4
       </div>
       <div class="hero-btns pt-next-guides-actions">
         <a href="{{ '/practice/' | relative_url }}" class="btn-outline">연습·리허설 허브</a>
+        <a href="/interview/" class="btn-outline">PT 면접준비 가이드</a>
+        <a href="/posts/interview-answer-practice/" class="btn-outline">면접 답변 말하기 연습</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">PT 리허설 시간 확인하기</a>
       </div>
     </div>
