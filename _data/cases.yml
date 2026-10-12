@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-09
+updated_at: 2026-10-13
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1186,8 +1186,8 @@ cases:
 
     published_at: 2026-10-02
     verified_at: 2026-10-07
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-09
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-13
 
     application:
       start: "2026-10-02"
@@ -1287,8 +1287,8 @@ cases:
 
     published_at: 2026-09-22
     verified_at: 2026-10-07
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-09
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-13
 
     application:
       start: "2026-09-22"
