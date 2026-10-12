@@ -192,6 +192,7 @@ script_version: 20260711-4
       <div class="about-quote"><p><strong>글로 읽는 것과 실제로 입 밖으로 질문하는 것은 다릅니다. 면접 전에는 질문 문장을 한 번 소리 내어 말해보세요.</strong></p></div>
       <div class="hero-btns" style="margin-top:2rem;">
         <a href="/interview/" class="btn-primary">면접 전체 가이드</a>
+        <a href="/posts/interview-answer-practice/" class="btn-outline">면접 답변·역질문 말하기 연습</a>
         <a href="/posts/1-minute-self-introduction-guide/" class="btn-outline">1분 자기소개 준비</a>
         <a href="/posts/hiring-manager-interview-red-flags-and-good-signals/" class="btn-outline">면접관 신호 가이드</a>
         <a href="/booking/" class="btn-outline">면접 연습할 시간 확인하기</a>
