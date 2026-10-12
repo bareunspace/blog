@@ -40,7 +40,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">Short-Term Office Guide</p>
       <h1 class="section-title">초단기 사무실 임대부터 Day Office까지,<br />필요한 만큼 사무실을 빌리는 방법</h1>
-      <p class="section-desc">사무실이 필요한 것과 사무실을 임대해야 하는 것은 다릅니다. 화상회의 1시간, 집중 업무 3시간부터 프리랜서의 하루 업무 8시간까지, 오늘 필요한 업무시간만 따로 확보하는 방법을 정리했습니다.</p>
+      <p class="section-desc">부천에서 외근 중 다음 약속 전 제안서를 수정해야 하거나, 고객 미팅 뒤 견적과 회의 메모를 정리해야 하는 날이 있습니다. 신중동역 도보 1분에서 노트북을 펼치고 필요한 시간만 단독으로 일하는 방법을 정리했습니다. 짧은 화상회의부터 하루 집중 업무까지 일정에 맞춰 선택하세요.</p>
       <div class="hero-btns">
         <a href="#what-is-short-term-office" class="btn-primary">초단기 사무실이란?</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">필요한 시간 예약하기</a>

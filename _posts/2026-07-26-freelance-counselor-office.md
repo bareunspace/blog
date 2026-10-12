@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
-description: 월세 부담 없이 시간제 상담실을 활용해 고객 신뢰를 높이고 비용을 효율적으로 관리하는 방법을 정리했습니다. 부천 신중동역 프리랜서 상담사 맞춤 공간 가이드.
+description: 부천 신중동에서 진로·커리어 상담과 코칭을 진행할 공간이 필요하다면? 상담 전 준비, 고객 안내, 소음·프라이버시 확인과 시간제 공간 비용 계산 방법을 정리했습니다.
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
@@ -9,7 +9,7 @@ hub_order: 1
 hub_label: 대표 가이드
 hub_kicker: 사무실 없이 일하는 사람들 · 운영편
 hub_title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
-hub_description: 월세 부담을 줄이면서도 조용하고 안정적인 상담 환경을 유지하는 시간제 공간 운영 방식을 가장 구체적으로 정리한 핵심 가이드입니다.
+hub_description: 진로·커리어 상담과 코칭에 필요한 준비 시간, 고객 안내, 소음·프라이버시와 이용 비용을 확인하는 시간제 상담 공간 운영 가이드입니다.
 hub_tags:
   - 상담사
   - 코치
@@ -39,7 +39,7 @@ script_version: 20260711-4
     <div class="section-inner">
       <p class="section-label">사무실 없이 일하는 사람들 · 운영편</p>
       <h1 class="section-title">프리랜서 상담사가 고정 사무실 없이<br />전문적으로 운영하는 법</h1>
-      <p class="section-desc">상담 건수는 아직 많지 않은데 매달 고정 임대료가 부담스럽다면, 공간 운영 방식부터 다시 볼 필요가 있습니다. 이 글은 ‘사무실 없이 일하는 사람들’ 시리즈의 운영편으로, 프리랜서 상담사가 시간제 상담 공간을 활용해 고정비 부담은 낮추고 필요한 상담 환경은 유지하는 방법을 정리했습니다.</p>
+      <p class="section-desc">진로·커리어 상담이나 1:1 코칭 일정은 잡혔지만 만날 공간이 없다면, 상담에 필요한 시간부터 계산해 보세요. 신중동역 도보 1분 바른자리에서 한 팀이 공간 전체를 단독으로 사용하며, 상담 전 준비와 종료 후 정리까지 포함해 예약할 수 있습니다. 상담은 예약자가 직접 진행하고 바른자리는 공간을 제공합니다.</p>
       <div class="hero-btns">
         <a href="#cost-structure" class="btn-primary">운영 방식 비교하기</a>
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-outline">상담 공간 예약하기</a>
@@ -170,19 +170,19 @@ script_version: 20260711-4
   <section id="usage-scenarios">
     <div class="section-inner">
       <h2 class="section-title">상담 분야별로는 이렇게 활용할 수 있습니다</h2>
-      <p class="section-desc">아래는 실제 상담 현장에서 자주 나오는 패턴을 바탕으로 정리한 예시입니다. 상담 분야와 고객층에 따라 예약 방식은 달라질 수 있습니다.</p>
+      <p class="section-desc">아래는 공간 활용을 이해하기 위한 예시입니다. 상담 분야와 고객층에 따라 필요한 환경과 시간은 달라집니다.</p>
       <div class="about-highlight-grid" aria-label="상담 분야별 시간제 공간 활용 예시">
         <article class="about-highlight-card">
-          <h3>진로 상담</h3>
-          <p>학생과 학부모 상담이 주말이나 저녁에 몰린다면, 해당 시간대만 집중 예약하는 방식이 효율적입니다.</p>
+          <h3>진로·커리어 상담</h3>
+          <p>학생·학부모와 진로 자료를 보거나, 직장인과 이력서·경력 계획을 검토할 때 활용할 수 있습니다. 노트북과 상담 자료는 직접 준비하세요.</p>
         </article>
         <article class="about-highlight-card">
           <h3>유학 상담</h3>
-          <p>상담 건수가 주마다 달라진다면 고정비보다 변동비 구조가 훨씬 편합니다. 예약이 있는 주에만 비용을 쓰는 방식이 안정적입니다.</p>
+          <p>지원 일정과 학교별 자료를 함께 확인해야 할 때, 상담자가 준비한 문서와 노트북을 테이블에 펼쳐 설명하는 방식으로 활용할 수 있습니다.</p>
         </article>
         <article class="about-highlight-card">
           <h3>코칭과 컨설팅</h3>
-          <p>1:1 세션과 소규모 세션을 병행하는 경우, 시간대별로 공간을 나눠 쓰면 필요에 맞게 운영하기 좋습니다.</p>
+          <p>1:1 목표 점검이나 프로젝트 피드백처럼 대화와 메모가 함께 필요한 일정에 활용할 수 있습니다. 준비·세션·정리 시간을 합쳐 예약하세요.</p>
         </article>
       </div>
       <div class="about-principle-grid" aria-label="프리랜서 상담사 운영 예시">
@@ -196,7 +196,7 @@ script_version: 20260711-4
         </article>
         <article class="about-principle-item" data-step="03">
           <h3>정기 고객이 늘어나는 단계라면</h3>
-          <p>같은 요일과 시간대를 반복 예약해 고객에게 안정적인 상담 리듬을 제공할 수 있습니다.</p>
+          <p>다음 상담 날짜의 예약 가능 시간을 먼저 확인한 뒤 고객과 확정하세요. 반복 이용 시에도 각 날짜의 공간 예약을 확보해두는 것이 좋습니다.</p>
         </article>
       </div>
     </div>
@@ -219,7 +219,7 @@ script_version: 20260711-4
       <div class="about-principle-grid" aria-label="상담 공간 선택 체크리스트">
         <article class="about-principle-item" data-step="01">
           <h3>음성 프라이버시</h3>
-          <p>옆 공간에 대화가 그대로 들리지 않는지 확인하세요. 상담은 내용만큼 안전한 분위기가 중요합니다.</p>
+          <p>단독 이용과 방음 수준은 별도로 확인하세요. 민감한 상담이라면 외부에 소리가 전달되는지와 현장 환경을 먼저 점검하는 것이 좋습니다.</p>
         </article>
         <article class="about-principle-item" data-step="02">
           <h3>배경 소음</h3>
