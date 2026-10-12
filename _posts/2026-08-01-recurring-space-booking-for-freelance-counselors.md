@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 프리랜서 상담공간 대여 | 고정 사무실 없이 대면 상담하는 방법
-description: 프리랜서 상담사·코치·컨설턴트가 고정 사무실 없이 필요한 시간만 상담공간을 예약해 운영하는 방법을 정리했습니다.
+description: 부천·신중동에서 시간제 상담 공간을 찾는 프리랜서 상담사·코치·컨설턴트를 위한 안내. 고정 사무실 계약 없이 필요한 날짜와 시간에 단독 공간을 예약하고 반복 이용하는 방법을 소개합니다.
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
@@ -226,7 +226,8 @@ script_version: 20260711-4
       <p>빈 시간이 있으면 다음 30분 단위부터 바로 예약할 수 있으며, 예약 후 출입정보가 자동으로 안내됩니다.</p>
       <div class="hero-btns" style="margin-top: 2rem;">
         <a href="/booking/?purpose=meeting&amp;source=recurring-space-booking-for-freelance-counselors" class="btn-primary">상담공간 예약 가능 시간 확인하기</a>
-        <a href="/posts/bucheon-meeting-room/" class="btn-outline">다음 글: 고객 미팅 공간 보기</a>
+        <a href="/posts/bucheon-meeting-room/" class="btn-outline">부천 미팅 공간·요금 보기</a>
+        <a href="/meeting/" class="btn-outline">미팅·상담 활용 가이드</a>
         <a href="/posts/freelance-counselor-office/" class="btn-outline">이전 글: 상담 운영 기본 보기</a>
       </div>
     </div>
