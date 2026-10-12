@@ -41,7 +41,7 @@ preload_image: images/ai-competency-test-space-20261010.webp
     <p class="section-desc"><strong>집에서 볼 수 있다고 해서 아무 장소에서나 보기 좋은 검사는 아닙니다.</strong> 질의응답, 게임, 영상면접처럼 서로 다른 과제가 이어질 수 있어 카메라와 마이크, 인터넷, 말하기, 그리고 검사시간 동안 방해받지 않는 환경까지 함께 봐야 합니다.</p>
     <div class="hero-btns">
       <a href="#quick-answer" class="btn-primary">응시 환경 먼저 확인하기</a>
-      <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 가이드 보기</a>
+      <a href="/booking/?purpose=exam&amp;source=ai-competency-hero" class="btn-outline" data-cta="ai_competency_hero_booking">시험 날짜 빈 시간 확인하기</a>
     </div>
   </div>
 </section>
