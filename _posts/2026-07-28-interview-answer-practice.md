@@ -366,9 +366,7 @@ script_version: 20260711-4
       </blockquote>
       <div class="hero-btns" style="margin-top: 1.5rem;">
         <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">부천 면접 연습 공간 예약하기</a>
-        <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 마지막 역질문 연습하기</a>
-        <a href="/interview/" class="btn-outline">면접준비 전체 가이드</a>
-        <a href="/index.html#space" class="btn-outline">공간 사진 먼저 보기</a>
+        <a href="/posts/interview-questions-to-ask/" class="btn-outline">면접 마지막 질문 연습하기</a>
       </div>
     </div>
   </section>
