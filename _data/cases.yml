@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-13
+updated_at: 2026-10-14
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1482,4 +1482,105 @@ cases:
     related:
       url: /posts/ai-competency-test-space/
       label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: klid-2026-fall-new-hire-pt-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국지역정보개발원
+    company_slug: klid
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - information-technology
+        - public-digital
+      region_tags:
+        - seoul
+        - mapo
+    title: 2026년 하반기 정규직 신입 채용 · 직무 PT면접
+    summary: 한국지역정보개발원의 2026년 하반기 정규직 신입 채용으로, 필기시험 이후 직무 관련 과제를 바탕으로 한 PT 발표면접과 최종 종합면접이 이어집니다. 발표 구성과 시간 배분, 질의응답을 실제 목소리로 반복 리허설하는 사용 상황과 직접 연결됩니다.
+
+    published_at: 2026-10-13
+    verified_at: 2026-10-14
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-14
+
+    application:
+      start: "2026-10-13 11:00"
+      end: "2026-10-27 23:59"
+      period_label: "2026-10-13 11:00 ~ 2026-10-27 23:59"
+      hiring_size: 정규직 신입 정보시스템 6명
+      roles: 정보시스템
+      expected_join: 최종합격 후 임용 예정
+
+    selection:
+      process_label: 서류전형 → 필기시험 → 직무 PT면접 → 최종 종합면접 → 최종합격
+      interview_focus: 직무 관련 과제를 구조화해 제한된 시간 안에 발표하고, 발표 내용에 대한 질문에 논리적으로 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-13 11:00 ~ 2026-10-27 23:59
+        - 필기시험 · 2026-11-14 예정
+        - 직무 PT면접 · 2026-11-26 ~ 2026-11-27 예정
+        - 최종 종합면접 · 2026-12-07 예정
+
+    pattern:
+      label: 직무 과제 분석에서 PT 발표·질의응답으로
+      insight: 직무 관련 과제를 바탕으로 발표하는 PT면접이 별도 단계로 명시되어 있어, 답변 암기보다 문제를 구조화하고 핵심 결론과 근거를 제한된 시간 안에 전달한 뒤 질의응답까지 이어가는 리허설이 필요한 사례입니다.
+      practice_shift: 과제를 가정해 결론 → 근거 → 실행안 순서로 발표한 뒤 시간을 재고, 발표 직후 예상 질문을 받아 짧게 답하는 방식으로 반복 연습하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: true
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 채용공고에 직무 관련 과제를 기반으로 한 PT 발표면접이 별도 전형으로 명시되어 있습니다. 서울 마포 근무의 공공기관 IT 채용으로 발표 구성·시간 배분·질의응답을 소리 내어 반복 연습하는 바른자리 수요와 직접 연결됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - task-explanation
+        - follow-up-response
+      practice_points:
+        - 직무 과제를 가정해 문제 정의 → 핵심 결론 → 근거 → 실행안 순서로 발표해보기
+        - 3분·5분 등 시간을 정해 발표 길이를 맞추고 반복 표현과 불필요한 설명을 줄이기
+        - 발표 직후 왜 그렇게 판단했는지, 대안은 무엇인지 묻는 후속 질문에 짧게 답해보기
+        - 휴대폰으로 발표를 녹화해 시선, 말의 속도, 목소리 크기와 자료 설명 흐름을 확인하기
+      excluded:
+        - 실제 한국지역정보개발원 PT 과제나 면접 질문을 보유하거나 제공한다는 표현
+        - PT면접의 정답이나 평가 기준을 알고 있다는 표현
+        - 한국지역정보개발원과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 10월 13일 11:00부터 10월 27일 23:59까지입니다.
+      - 모집은 정규직 신입 정보시스템 분야 6명으로 안내되어 있습니다.
+      - 직무 PT면접은 2026년 11월 26일부터 27일까지, 최종 종합면접은 12월 7일 예정입니다.
+      - 공개 공고에서 PT 발표면접이 확인되며 실제 과제 주제나 질문은 공개되지 않아 임의로 추정하지 않습니다.
+      - 세부 일정은 기관 사정에 따라 변경될 수 있으므로 지원자는 공식 채용사이트의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: 한국지역정보개발원 채용
+      title: 2026년 하반기 정규직 신입 채용
+      url: https://klid.incruit.com/
+      published_at: "2026-10-13"
+      checked_at: 2026-10-14
+
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 연습·리허설 가이드 보기
 
