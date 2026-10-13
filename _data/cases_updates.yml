@@ -2850,3 +2850,106 @@ cases:
       url: /posts/interview-answer-practice/
       label: 면접 답변 60분 연습법 보기
 
+  - id: krafton-2027-intern-ai-assessment-interview
+    type: hiring
+    topic: interview
+    job: it
+    company: 크래프톤
+    company_slug: krafton
+    taxonomy:
+      industry_tags:
+        - it
+        - gaming
+        - software
+        - ai
+      region_tags:
+        - seoul
+    title: 2027 채용연계형 인턴십 · AI 역량평가·면접
+    summary: 크래프톤의 2027 채용연계형 인턴십으로, 인적성검사 이후 AI 역량평가와 면접전형이 이어집니다. 역대 최대 규모인 100명 이상 채용으로 지원자 풀이 크고 서울 근무라 바른자리의 면접 답변 연습 수요와 연결성이 높습니다. 다만 AI 역량평가의 영상·음성 응답 포함 여부와 세부 면접 형식은 공식 공개범위에서 확인되지 않아 추정하지 않습니다.
+
+    published_at: 2026-10-13
+    verified_at: 2026-10-14
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-14
+
+    application:
+      start: "2026-10-13"
+      end: "2026-10-23"
+      period_label: "2026-10-13 ~ 2026-10-23"
+      hiring_size: 채용연계형 인턴 100명 이상
+      roles: 직무별 채용연계형 인턴
+      expected_join: 공식 채용공고 최종 안내 확인
+
+    selection:
+      process_label: 지원서 접수 → 인적성검사 → AI 역량평가 → 면접전형 → 채용연계형 인턴 선발
+      interview_focus: 지원 직무와 주요 경험을 구조화해 설명하고, AI 역량평가 이후 면접에서 본인의 판단·문제해결 과정과 직무 적합성을 실제 목소리로 답하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-13 ~ 2026-10-23
+        - 인적성검사
+        - AI 역량평가 · 세부 응시 방식은 공개 확인 범위에서 미확인
+        - 면접전형 · 세부 방식 미확인
+        - 채용연계형 인턴 선발
+
+    pattern:
+      label: 대규모 AI 평가 이후 면접으로 연결
+      insight: 100명 이상 규모의 채용연계형 인턴십에서 AI 역량평가와 면접이 연속으로 진행되어, 지원 직무에 대한 설명과 경험 기반 답변을 반복 연습할 수 있는 수요가 큰 사례입니다.
+      practice_shift: 주요 프로젝트와 문제해결 경험을 60~90초 안에 정리하고, 선택 이유·대안·협업 방식에 대한 꼬리질문까지 이어서 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 100명 이상 역대 최대 규모의 공개채용이며 AI 역량평가와 면접이 공식 발표에 포함되어 있습니다. 서울 근무권역과 대규모 지원자 풀을 고려하면 실제 면접 리허설 수요가 높을 가능성이 큽니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - job-explanation
+        - reasoning-explanation
+        - follow-up-response
+      practice_points:
+        - 지원 직무와 주요 프로젝트를 60초·90초 두 버전으로 설명하기
+        - 문제를 어떻게 정의했고 어떤 기준으로 선택했는지 판단 과정을 말로 설명하기
+        - 프로젝트에서 본인의 역할과 협업 방식을 역할 → 행동 → 판단 → 결과 순서로 답하기
+        - 첫 답변 뒤 다른 대안·실패 가능성·개선점을 묻는 꼬리질문까지 이어서 답하기
+      excluded:
+        - 크래프톤 AI 역량평가를 영상면접이라고 단정하는 표현
+        - AI 역량평가에 음성·영상 응답이 포함된다고 확인 없이 단정하는 표현
+        - 실제 크래프톤 AI 평가 문항이나 면접 질문을 보유하거나 제공한다는 표현
+        - 특정 답변 방식이 합격에 유리하다고 단정하는 표현
+        - 크래프톤과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 공식 발표 기준 지원기간은 2026년 10월 13일부터 10월 23일까지입니다.
+      - 채용규모는 100명 이상으로, 크래프톤 역대 최대 규모의 신입 채용으로 안내되었습니다.
+      - 전형에는 인적성검사, AI 역량평가, 면접이 포함됩니다.
+      - AI 역량평가의 영상·음성 응답 포함 여부와 플랫폼, 면접의 세부 유형은 공개 확인 범위를 넘어 추정하지 않습니다.
+
+    source:
+      publisher: 크래프톤
+      title: 크래프톤, 역대 최대 규모 AI Native 신입채용 실시
+      url: https://www.krafton.com/news/press/%ED%81%AC%EB%9E%98%ED%94%84%ED%86%A4-%EC%97%AD%EB%8C%80-%EC%B5%9C%EB%8C%80-%EA%B7%9C%EB%AA%A8-ai-native-%EC%8B%A0%EC%9E%85%EC%B1%84%EC%9A%A9-%EC%8B%A4%EC%8B%9C/
+      published_at: "2026-10-13"
+      checked_at: 2026-10-14
+
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 60분 연습법 보기
+
