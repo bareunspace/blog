@@ -4,7 +4,7 @@
 
 .blog-hub-entry-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1.25rem;
 }
@@ -39,6 +39,12 @@
 
 .blog-hub-journal {
   background: #f7faf8;
+}
+
+@media (min-width: 821px) and (max-width: 1100px) {
+  .blog-hub-entry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 820px) {
