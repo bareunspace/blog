@@ -1,7 +1,121 @@
 version: 1
-updated_at: 2026-10-12
+updated_at: 2026-10-14
 
 cases:
+  - id: bnk-securities-2026-challenge-2-intern-ai-interview
+    type: hiring
+    topic: interview
+    job: finance-sales
+    company: BNK투자증권
+    company_slug: bnk-securities
+    taxonomy:
+      industry_tags:
+        - finance
+        - securities
+        - banking-group
+      region_tags:
+        - seoul
+        - busan
+        - gyeongnam
+        - ulsan
+        - capital-region
+    title: BNK Securities Challenge 2기 채용연계형 인턴 · AI역량검사·AI면접
+    summary: BNK투자증권의 Securities Challenge 2기 채용연계형 인턴 모집으로, 서류전형 이후 AI역량검사·AI면접과 블라인드 면접전형이 이어지는 사례입니다. 온라인 AI면접을 위한 조용한 독립 공간과 카메라 앞 답변 연습, 이후 대면면접 리허설 수요가 직접 연결됩니다.
+
+    published_at: 2026-10-12
+    verified_at: 2026-10-14
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-14
+
+    application:
+      start: "2026-10-12"
+      end: "2026-10-25 23:59"
+      period_label: "2026-10-12 ~ 2026-10-25 23:59"
+      hiring_size: 미확인
+      roles: 리테일 PB · 서울 · 부산 · 경남 · 울산
+      expected_join: 인턴십 및 최종평가 후 정규직 신입 입사 연계
+
+    selection:
+      process_label: 서류전형 → AI역량검사·AI면접 → 블라인드 면접전형 → 채용검진 → 인턴 선발 → 인턴십 → 최종평가 → 정규직 신입 입사
+      interview_focus: AI면접 응시 환경을 점검하고 지원 동기와 고객 응대·금융 영업 경험을 카메라 앞에서 짧고 명확하게 답한 뒤, 블라인드 면접의 경험·상황 질문까지 이어서 연습하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-12 ~ 2026-10-25 23:59
+        - 서류전형
+        - AI역량검사 · AI면접
+        - 블라인드 면접전형
+        - 채용검진 · 인턴 선발
+        - 인턴십 · 최종평가 · 정규직 신입 입사 연계
+
+    pattern:
+      label: 온라인 AI평가에서 블라인드 면접과 인턴십 평가로 확장
+      insight: 서류전형 이후 AI역량검사와 AI면접을 거쳐 블라인드 면접으로 이어지므로, 온라인 응시환경뿐 아니라 금융 영업·고객 대응 경험을 실제 목소리로 설명하는 준비가 필요합니다.
+      practice_shift: 회사·직무별 예상 질문에 카메라를 보며 30~60초로 답하고, 같은 경험을 블라인드 면접의 후속 질문까지 확장해 말하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: false
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 공고에 AI역량검사·AI면접과 블라인드 면접전형이 명시되어 있어 독립된 온라인 응시공간, 카메라 앞 답변, 대면면접 리허설 수요가 직접적입니다. 서울 모집이 포함돼 부천·서울 서남권 이용 가능성도 있습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - ai-interview
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-interview
+        - speaking
+        - recording
+        - private-space
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 회사와 PB 직무를 설정해 지원 동기·고객 응대·영업 경험 질문에 30~60초로 답하기
+        - 카메라·마이크·인터넷과 주변 소음을 미리 확인하고 실제 응시 자세로 말하기
+        - 답변을 녹화해 시선·속도·표정·결론 전달 시점을 확인하기
+        - 같은 경험을 블라인드 면접의 꼬리질문까지 이어서 설명하기
+      excluded:
+        - BNK투자증권이 사용하는 AI면접 플랫폼을 특정하는 표현
+        - AI면접에 반드시 영상답변이나 특정 문항이 포함된다고 단정하는 표현
+        - 실제 BNK투자증권 면접 질문을 보유하거나 제공한다는 표현
+        - BNK투자증권과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 금융투자협회 채용안내 등록일과 지원 시작일은 2026년 10월 12일입니다.
+      - 지원 마감은 2026년 10월 25일 23:59로 안내되어 있습니다.
+      - 공식 공개범위에서 AI역량검사·AI면접과 블라인드 면접전형이 확인됩니다.
+      - AI면접의 플랫폼, 영상 문항 구성, 전형별 세부 날짜는 확인되지 않았습니다.
+      - 실제 응시 방식과 일정은 서류 합격 후 BNK투자증권의 개별 안내를 확인해야 합니다.
+
+    source:
+      publisher: BNK투자증권 채용
+      title: BNK Securities Challenge 2기 채용연계형 인턴 모집
+      url: https://careers.bnkfn.co.kr/ko/o/239772
+      published_at: "2026-10-12"
+      checked_at: 2026-10-14
+
+    references:
+      - publisher: 금융투자협회 채용안내
+        title: BNK투자증권 2026년 채용연계형 인턴 모집
+        url: https://m.kofia.or.kr/brd/m_33/view.do?seq=42627
+        checked_at: 2026-10-14
+
+    related:
+      url: /ai-interview/?focus=1&source=case-practice
+      label: BNK투자증권 면접 질문으로 AI 모의면접 연습하기
+
   - id: kotra-2026-trade-new-hire-interview
     type: hiring
     topic: interview
