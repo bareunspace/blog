@@ -1,7 +1,121 @@
 version: 1
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 
 cases:
+  - id: sh-2026-fall-pt-group-discussion-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 서울주택도시개발공사
+    company_slug: sh
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - housing
+        - urban-development
+      region_tags:
+        - seoul
+        - capital-region
+    title: 2026년 하반기 신입사원 채용 · PT발표·그룹토론 융합면접
+    summary: 서울주택도시개발공사(SH)의 2026년 하반기 사무·기술직 및 주거복지직 신입사원 채용입니다. 필기전형 이후 지원자별 PT 발표, 6인 이내 그룹토론과 질의응답, 인성면접이 예정되어 있어 혼자 발표를 녹화하거나 팀과 토론을 리허설하는 준비 수요와 직접 연결됩니다.
+
+    published_at: 2026-09-28
+    verified_at: 2026-10-15
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-15
+
+    application:
+      start: "2026-09-28"
+      end: "2026-10-19 18:00"
+      period_label: "2026-09-28 ~ 2026-10-19 18:00"
+      hiring_size: 신입사원 총 40명(사무·기술직 29명, 주거복지직 11명)
+      roles: 사무·기술직 신입사원 · 주거복지직 신입사원
+      expected_join: 2026-12-14 임용 예정
+
+    selection:
+      process_label: 원서접수 → 서류전형 → 필기시험·인성검사 → 직무수행능력면접(PT·그룹토론 융합)·인성면접 → 최종합격
+      interview_focus: 직무 관련 주제를 지원자별로 발표하고 6인 이내 그룹토론에서 의견을 설명·보완한 뒤 질의응답과 인성면접에 대응하는 말하기 연습
+      stages:
+        - 원서접수 · 2026-09-28 ~ 2026-10-19 18:00
+        - 서류전형 합격자 발표 · 2026-11-03 예정
+        - 필기시험 및 인성검사 · 2026-11-07 예정
+        - 필기시험 합격자 발표 · 2026-11-17 예정
+        - 직무수행능력·인성면접 · 2026-11-23 ~ 2026-11-25 중 1일 예정
+        - 최종합격자 발표 · 2026-12-01 예정
+
+    pattern:
+      label: 개인 PT발표 후 그룹토론·질의응답을 연속 평가
+      insight: 직무 관련 주제를 먼저 개인별로 발표한 뒤 여러 지원자가 토론하고 질의응답을 진행하는 융합형 전형입니다. 암기한 답변보다 발표의 구조·시간 배분과 타인의 의견을 받아 즉시 대응하는 리허설이 중요합니다.
+      practice_shift: 60~90초 발표를 녹화한 다음 동의·보완·반론 발언을 각각 짧게 연습하고, 발표 내용에 대한 후속 질문까지 연결해 답하기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: false
+      task_interview: null
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 공고에 지원자별 PT발표, 6인 이내 그룹토론, 질의응답과 인성면접이 명시돼 발표와 토론을 소리 내어 반복 연습할 필요가 큽니다. 서울권역 공개채용으로 부천·인천·서울 서남권의 실제 공간 이용 가능성도 있습니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - pt-presentation
+        - group-discussion
+        - follow-up-response
+      practice_points:
+        - 직무 관련 가상 주제를 정해 핵심 결론 → 근거 → 제안 순서로 짧게 발표해보기
+        - 휴대폰으로 발표를 녹화하고 시선·목소리·시간 배분 점검하기
+        - 그룹토론을 가정해 동의·보완·반론 발언을 각 30초 이내로 연습하기
+        - 발표와 토론 내용을 바탕으로 질의응답과 인성면접의 꼬리질문에 답하기
+      excluded:
+        - 실제 SH 면접 주제나 질문을 보유하거나 제공한다는 표현
+        - 모든 지원 직무가 동일한 세부 과제로 면접을 본다고 단정하는 표현
+        - 서울주택도시개발공사와 제휴된 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 서울특별시 공식 채용시험 공고 게시일은 2026년 9월 28일입니다.
+      - 사무·기술직과 주거복지직 모집은 별도 공고문으로 게시되어 있으며 합계 채용인원은 40명입니다.
+      - 지원 마감은 2026년 10월 19일 18:00입니다.
+      - 공개 공고에 직무수행능력면접(PT·그룹토론 융합), 지원자별 발표, 6인 이내 토론조와 인성면접이 안내되어 있습니다.
+      - 면접 날짜는 11월 23일부터 25일까지 중 1일이며 개인별 시간·장소는 추후 안내됩니다.
+      - 시험 일정은 기관 사정에 따라 변경될 수 있으므로 SH 공식 채용사이트의 최신 안내를 확인해야 합니다.
+
+    source:
+      publisher: 서울특별시 · 서울주택도시개발공사
+      title: 2026년 하반기 신입사원(사무기술직, 주거복지직) 채용 공고
+      url: https://www.seoul.go.kr/news/news_employ.do?nttNo=467228
+      published_at: "2026-09-28"
+      checked_at: 2026-10-15
+
+    references:
+      - publisher: SH 공식 채용사이트
+        title: 2026년 하반기 신입사원 채용
+        url: https://sh.ai-recruit.kr/
+        checked_at: 2026-10-15
+      - publisher: 고용24 공채정보
+        title: 2026년 하반기 사무·기술직 신입사원 직무중심 채용
+        url: https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=OEW&infoTypeGroup=tb_workinfoopen&wantedAuthNo=180648
+        checked_at: 2026-10-15
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: PT 발표·그룹토론 연습 공간 가이드 보기
+
   - id: bnk-securities-2026-challenge-2-intern-ai-interview
     type: hiring
     topic: interview
