@@ -1,7 +1,107 @@
 version: 1
-updated_at: 2026-10-15
+updated_at: 2026-10-16
 
 cases:
+  - id: kofac-2026-fall-research-group-discussion-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국과학창의재단
+    company_slug: kofac
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - science-education
+        - research
+      region_tags:
+        - seoul
+    title: 2026년 하반기 연구직 신입 채용 · 그룹토의형 직무역량면접
+    summary: 한국과학창의재단의 2026년 하반기 연구직 신입사원 6명 채용입니다. 필기·인성검사 이후 그룹토의형 직무역량면접과 종합면접이 예정되어 있어 의견 제시와 타인 발언에 대한 대응을 실제 목소리로 반복 연습하는 수요와 연결됩니다. 개별 면접 날짜와 세부 진행 방식은 공개 확인 범위에서 미확인입니다.
+
+    published_at: 2026-10-15
+    verified_at: 2026-10-15
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-15
+
+    application:
+      start: "2026-10-15"
+      end: "2026-10-30"
+      period_label: "2026-10-15 ~ 2026-10-30 (마감 시각 미확인)"
+      hiring_size: 연구직 신입 6명
+      roles: 연구직 신입사원
+      expected_join: 미확인
+
+    selection:
+      process_label: 서류전형 → 필기·인성검사 → 그룹토의형 직무역량면접 → 종합면접
+      interview_focus: 주어진 문제에 대한 의견과 근거를 간결하게 제시하고, 그룹 구성원의 다른 의견을 듣고 보완·반론하면서 공동의 결론을 정리하는 토의 연습
+      stages:
+        - 지원서 접수 · 2026-10-15 ~ 2026-10-30
+        - 필기·인성검사 · 세부 일정 미확인
+        - 그룹토의형 직무역량면접 · 세부 일정 미확인
+        - 종합면접 · 세부 일정 및 방식 미확인
+
+    pattern:
+      label: 개인 답변을 넘어 그룹토의에서 협업과 문제해결 과정 설명
+      insight: 그룹토의형 직무역량면접이 명시된 사례입니다. 대화 상대의 의견을 듣고 자신의 논리를 분명히 하며 여러 대안을 비교하는 준비가 중요하다는 점을 보여줍니다.
+      practice_shift: 30~60초 기조발언을 한 뒤 동의·보완·반론의 세 방식으로 의견을 이어 말하고, 마지막에 토의 결과를 간결하게 정리해보기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: null
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: null
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 공공기관 채용공고에 그룹토의형 직무역량면접이 명시되어 있습니다. 여러 사람의 의견을 듣고 말하는 토의 리허설은 바른자리의 독립 공간 및 소그룹 연습 수요와 직접 연결되며 근무지는 서울로 안내됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - group-discussion
+        - situational-response
+        - follow-up-response
+      practice_points:
+        - 공공기관 연구·교육 관련 가상 주제를 골라 핵심 주장과 두 가지 근거를 60초 안에 말해보기
+        - 상대 의견을 먼저 요약한 다음 동의·보완·반론 중 하나로 의견을 이어 말하기
+        - 토의 중 여러 선택지가 있을 때 장단점과 판단 기준을 소리 내어 비교해보기
+        - 연습 마지막에 논의 결과와 다음 행동을 30초로 정리해보기
+      excluded:
+        - 실제 한국과학창의재단 토의 주제나 면접 문항을 보유한다는 표현
+        - 그룹토의 방식의 세부 인원·시간·평가 기준을 임의로 확정하는 표현
+        - 확인되지 않은 PT·AI·영상면접이 포함된다고 단정하는 표현
+        - 한국과학창의재단과 제휴되었다는 표현
+        - 채용 결과 또는 합격 가능성을 보장한다는 표현
+
+    notes:
+      - 2026년 10월 15일 공고 및 접수 시작, 10월 30일 지원 마감으로 안내되었습니다.
+      - 연구직 신입 채용 규모는 6명입니다.
+      - 서류전형, 필기·인성검사, 그룹토의형 직무역량면접, 종합면접이 안내되었습니다.
+      - 그룹토의 외 세부 면접 방식과 전형 날짜, 지원 마감 시각은 미확인입니다.
+      - 최신 일정·응시 방식은 채용기관의 공식 공고문과 별도 안내를 우선 확인해야 합니다.
+
+    source:
+      publisher: 공공기관 채용정보시스템 JOB-ALIO
+      title: 한국과학창의재단 2026년 하반기 연구직 신입사원 채용
+      url: https://job.alio.go.kr/recruitview.do?idx=306084
+      published_at: "2026-10-15"
+      checked_at: 2026-10-15
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
   - id: sh-2026-fall-pt-group-discussion-interview
     type: hiring
     topic: interview
