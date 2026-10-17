@@ -230,4 +230,84 @@
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
   }
+}
+  // Make feedback actionable without changing existing AI scoring or its source.
+  const feedback = document.querySelector('[data-aii-feedback]');
+  const result = document.querySelector('[data-aii-result]');
+  if (feedback && result) {
+    const feedbackTitle = feedback.querySelector('.aii-feedback-title');
+    if (feedbackTitle) feedbackTitle.textContent = '이번 연습 피드백';
+    const summary = feedback.querySelector('[data-aii-feedback-summary]');
+    const strengths = feedback.querySelector('[data-aii-feedback-strengths]');
+    const improvements = feedback.querySelector('[data-aii-feedback-improvements]');
+    const nextQuestions = feedback.querySelector('[data-aii-feedback-next-questions]');
+    const reviews = feedback.querySelector('[data-aii-feedback-question-reviews]');
+    const scoreGrid = feedback.querySelector('[data-aii-score-grid]');
+    if (scoreGrid && !scoreGrid.nextElementSibling?.matches('.aii-score-note')) {
+      const note = document.createElement('p');
+      note.className = 'aii-score-note';
+      note.textContent = '점수는 답변 텍스트 기반 연습 참고 지표입니다. 실제 면접 합격 가능성이나 발음 점수를 뜻하지 않습니다.';
+      scoreGrid.insertAdjacentElement('afterend', note);
+    }
+    const groupSection = (node, title, className) => {
+      if (!node) return;
+      const label = node.previousElementSibling;
+      if (!label || !label.classList.contains('aii-feedback-label')) return;
+      const wrapper = document.createElement('section');
+      wrapper.className = 'aii-feedback-panel ' + className;
+      wrapper.setAttribute('aria-label', title);
+      label.parentNode.insertBefore(wrapper, label);
+      label.textContent = title;
+      wrapper.appendChild(label);
+      wrapper.appendChild(node);
+    };
+    groupSection(strengths, '잘한 점', 'is-strength');
+    groupSection(improvements, '다음에 바꿀 점', 'is-improvement');
+    groupSection(nextQuestions, '추천 재연습 질문', 'is-next');
+    if (reviews && reviews.previousElementSibling?.classList.contains('aii-feedback-label')) {
+      const label = reviews.previousElementSibling;
+      const details = document.createElement('details');
+      details.className = 'aii-feedback-details';
+      const heading = document.createElement('summary');
+      heading.textContent = '질문별 상세 분석 보기';
+      label.parentNode.insertBefore(details, label);
+      details.appendChild(heading);
+      label.remove();
+      details.appendChild(reviews);
+    }
+    if (summary) summary.classList.add('aii-feedback-highlight');
+    const status = feedback.querySelector('[data-aii-feedback-status]');
+    if (status) status.setAttribute('role', 'status');
+    const actions = result.querySelector(':scope > .aii-actions');
+    const restart = actions?.querySelector('[data-aii-restart]');
+    if (restart) {
+      restart.textContent = '새 연습 시작';
+      restart.setAttribute('aria-label', '새로운 면접 연습 시작');
+    }
+    const feedbackStyles = document.createElement('style');
+    feedbackStyles.id = 'aiiFeedbackUx20261017';
+    feedbackStyles.textContent = `
+      .aii-ux-v2 .aii-result{border-top:2px solid #dcebe1!important}
+      .aii-ux-v2 .aii-feedback{gap:1rem!important;padding:1rem!important;background:#fcfdfc!important;border-radius:16px!important}
+      .aii-ux-v2 .aii-feedback-title{font-size:1.22rem!important;letter-spacing:-.025em}
+      .aii-ux-v2 .aii-feedback-highlight{padding:.9rem 1rem!important;background:#eef7f1;border-left:3px solid #2d6a4f;border-radius:10px;line-height:1.7!important}
+      .aii-ux-v2 .aii-score-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
+      .aii-ux-v2 .aii-score-grid p{display:flex;flex-direction:column;gap:.35rem;align-items:center;justify-content:center;padding:.85rem .4rem!important;border:1px solid #e1ebe4;border-radius:12px;background:#f7faf8!important}
+      .aii-ux-v2 .aii-score-grid strong{font-variant-numeric:tabular-nums;font-size:1.38rem!important}
+      .aii-ux-v2 .aii-score-note{margin:-.35rem 0 0;color:#6b786f;font-size:.74rem;line-height:1.55}
+      .aii-ux-v2 .aii-feedback-panel{padding:.9rem 1rem;border:1px solid #e1e9e4;border-radius:13px;background:#fff}
+      .aii-ux-v2 .aii-feedback-panel.is-strength{border-left:3px solid #4e9870}
+      .aii-ux-v2 .aii-feedback-panel.is-improvement{border-left:3px solid #c38c50}
+      .aii-ux-v2 .aii-feedback-panel.is-next{border-left:3px solid #6489a2}
+      .aii-ux-v2 .aii-feedback-panel .aii-feedback-label{margin:0 0 .5rem!important;font-size:.94rem!important}
+      .aii-ux-v2 .aii-feedback-panel li{margin:.4rem 0;line-height:1.6}
+      .aii-ux-v2 .aii-feedback-details{border:1px solid #e1e9e4;border-radius:12px;padding:.8rem 1rem;background:#fff}
+      .aii-ux-v2 .aii-feedback-details summary{cursor:pointer;color:#2d6a4f;font-size:.9rem;font-weight:750}
+      .aii-ux-v2 .aii-feedback-details ul{margin:.8rem 0 0}
+      .aii-ux-v2 .aii-result>.aii-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:.65rem}
+      .aii-ux-v2 .aii-result>.aii-actions>*{min-height:46px;display:flex;align-items:center;justify-content:center}
+      @media(max-width:600px){.aii-ux-v2 .aii-score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aii-ux-v2 .aii-feedback{padding:.75rem!important}.aii-ux-v2 .aii-feedback-panel{padding:.75rem}.aii-ux-v2 .aii-result>.aii-actions{grid-template-columns:1fr}}
+    `;
+    document.head.appendChild(feedbackStyles);
+  }
 })();
