@@ -16,8 +16,6 @@
     .aii-booking-conversion h3{margin:0 0 .45rem;color:#1f382b;font-size:1.2rem;letter-spacing:-.025em}
     .aii-booking-conversion p{margin:0 0 .85rem;color:#5d6962;font-size:.88rem;line-height:1.65}
     .aii-booking-conversion .btn-primary{display:inline-flex;justify-content:center;min-height:48px;align-items:center;padding:.65rem 1rem;text-decoration:none}
-    .aii-ux-v2 .mobile-sticky-cta{display:flex!important}
-    .aii-ux-v2 .aii-hero .hero-btns .aii-space-booking{display:inline-flex!important}
     @media(max-width:820px){
       .aii-ux-v2 .mobile-sticky-cta{display:flex!important}
       .aii-ux-v2 .aii-hero .hero-btns .aii-space-booking{display:inline-flex!important}

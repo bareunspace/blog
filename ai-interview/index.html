@@ -302,11 +302,11 @@ script_version: 20260828-26
   .aii-answer-count.is-good { color: #1f6a46; }
   .aii-answer-count.is-short { color: #9a6700; }
   .aii-answer-count.is-long { color: #9f1239; }
-  .aii-result { border-top: 1px solid #dce8e1; padding-top: .8rem; display: grid; gap: .65rem; }
+  .aii-result:not([hidden]) { border-top: 1px solid #dce8e1; padding-top: .8rem; display: grid; gap: .65rem; }
   .aii-result-title { margin: 0; color: #173726; }
   .aii-result-copy { margin: 0; color: #4b5e54; }
   .aii-result-list { margin: 0; padding-left: 1.1rem; color: #2a3d33; display: grid; gap: .35rem; }
-  .aii-feedback { border: 1px solid #dce8e1; border-radius: 12px; padding: .75rem .85rem; background: #f8fcfa; display: grid; gap: .45rem; }
+  .aii-feedback:not([hidden]) { border: 1px solid #dce8e1; border-radius: 12px; padding: .75rem .85rem; background: #f8fcfa; display: grid; gap: .45rem; }
   .aii-feedback-title { margin: 0; color: #173726; }
   .aii-feedback-status { margin: 0; color: #355745; font-size: .9rem; font-weight: 700; }
   .aii-score-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; }
@@ -819,6 +819,7 @@ script_version: 20260828-26
     let mediaRecorder = null;
     let recordingChunks = [];
     let recordedBlob = null;
+    let recordingQuestionIndex = -1;
     let audioContext = null;
     let analyserNode = null;
     let meterAnimation = null;
@@ -938,6 +939,7 @@ script_version: 20260828-26
       try {
         recordedBlob = null;
         recordingChunks = [];
+        recordingQuestionIndex = state.index;
         const mimeType = getRecordingMimeType();
         mediaRecorder = mimeType
           ? new MediaRecorder(mediaStream, { mimeType })
@@ -956,9 +958,9 @@ script_version: 20260828-26
           if (recordedBlob) {
             document.dispatchEvent(new CustomEvent('aii:recording-complete', { detail: {
               blob: recordedBlob,
-              question: String(state.questions[state.index] || ''),
-              questionIndex: state.index,
-              answer: String(answerNode.value || '').trim()
+              question: String(state.questions[recordingQuestionIndex] || ''),
+              questionIndex: recordingQuestionIndex,
+              answer: String(state.answers[recordingQuestionIndex] || answerNode.value || '').trim()
             } }));
           }
           setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 아래에서 즉시 재생하고 다시 연습할 수 있습니다.' : '녹화 데이터가 없어 저장할 수 없습니다.');
@@ -2668,6 +2670,7 @@ script_version: 20260828-26
         return;
       }
       stopAnswerListening();
+      stopRecording();
       persistAnswer();
       if (state.index >= state.questions.length - 1) {
         completeInterview();
@@ -2703,6 +2706,7 @@ script_version: 20260828-26
 
     prevButton.addEventListener('click', () => {
       stopAnswerListening();
+      stopRecording();
       persistAnswer();
       if (state.index > 0) {
         state.index -= 1;
