@@ -294,6 +294,9 @@
       restart.textContent = '새 연습 시작';
       restart.setAttribute('aria-label', '새로운 면접 연습 시작');
     }
+    const disclosureStyles = document.createElement('style');
+    disclosureStyles.textContent = '.aii-score-disclosure{margin:.4rem 0 1rem;padding:.75rem .9rem;border-radius:10px;background:#f2f6f3;color:#4d6154;font-size:.8rem;line-height:1.6}.aii-score-grid .is-unavailable strong{font-size:.93rem!important;color:#68786e}';
+    document.head.appendChild(disclosureStyles);
     const feedbackStyles = document.createElement('style');
     feedbackStyles.id = 'aiiFeedbackUx20261017';
     feedbackStyles.textContent = `
