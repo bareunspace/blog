@@ -196,6 +196,7 @@ fi
 
 echo "Step 2/5: required output files"
 check_file_exists "_site/index.html"
+check_file_exists "_site/posts/interview-preparation-roadmap/index.html"
 if [[ -n "$ABOUT_OUTPUT" ]]; then
   pass "File exists: $ABOUT_OUTPUT"
 else
