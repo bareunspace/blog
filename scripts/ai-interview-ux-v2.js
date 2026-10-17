@@ -232,7 +232,6 @@
     const nextObserver = new MutationObserver(syncResultState);
     nextObserver.observe(nextButton, { childList: true, characterData: true, subtree: true });
   }
-}
   // Progressive disclosure: show the essentials first without removing existing inputs.
   const modeSelect = form.querySelector('[data-aii-mode]');
   const questionCount = form.querySelector('[name="question_count"]');
