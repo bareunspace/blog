@@ -106,6 +106,16 @@
   const videoUrls = [];
   let recordingQuestion = '';
   const recordedAnswers = [];
+  const compareContent = (first, second) => {
+    const signals = [
+      ['구체적인 수치', /\\d/],
+      ['행동·실행', /행동|실행|담당|시도|해결|조치|action|implemented|resolved/i],
+      ['성과·결과', /결과|성과|개선|달성|result|outcome|improved|achieved/i]
+    ];
+    const added = signals.filter(([, pattern]) => !pattern.test(first) && pattern.test(second)).map(([label]) => label);
+    const removed = signals.filter(([, pattern]) => pattern.test(first) && !pattern.test(second)).map(([label]) => label);
+    return [added.length ? '2차에서 새로 나타난 표현: ' + added.join(', ') : '', removed.length ? '2차에서 빠진 표현: ' + removed.join(', ') : ''].filter(Boolean).join(' / ');
+  };
   const clearLocalVideos = () => {
     videoSlots.forEach((slot) => {
       const video = slot.querySelector('video');
@@ -155,6 +165,10 @@
         comparison.textContent = before && after
           ? `답변 길이: 1차 ${before.length}자 → 2차 ${after.length}자 (차이 ${after.length - before.length > 0 ? '+' : ''}${after.length - before.length}자). 길이 변화는 답변의 질을 뜻하지 않습니다.`
           : '두 영상을 직접 비교해 첫 문장, 속도, 시선을 점검하세요.';
+        if (before && after) {
+          const changes = compareContent(before, after);
+          if (changes) comparison.textContent += ' ' + changes + ' (표현 포함 여부 비교이며 AI 품질 평가가 아닙니다.)';
+        }
       } else comparison.textContent = '두 번째 녹화를 완료하면 비교 안내가 표시됩니다.';
     }
     videoSlots[index].hidden = false;
