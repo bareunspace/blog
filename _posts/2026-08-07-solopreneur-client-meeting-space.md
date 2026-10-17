@@ -5,7 +5,7 @@ description: 고객과 계약·견적·프로젝트를 이야기할 때, 카페 
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 2
+hub_order: 1
 hub_label: 고객 미팅
 hub_kicker: 사무실 없이 일하는 1인사업자의 미팅 공간
 hub_title: 사무실 없는 1인사업자, 고객 미팅은 어디서 해야 할까?
