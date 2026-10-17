@@ -320,4 +320,73 @@
     @media(prefers-reduced-motion:reduce){.aii-ux-v2 *{scroll-behavior:auto!important;transition:none!important}}
   `;
   document.head.appendChild(uxExtra);
+
+  // Focused app-like progression. The source form, recorder, and feedback stay intact.
+  const appResult = document.querySelector('[data-aii-result]');
+  const appFeedback = document.querySelector('[data-aii-feedback]');
+  const appQuestion = document.querySelector('[data-aii-question]');
+  const appProgress = document.querySelector('[data-aii-progress]');
+  const appRecording = document.querySelector('[data-aii-record-stop]');
+  const appDownload = document.querySelector('[data-aii-record-download]');
+  const focusStages = ['준비','연습','분석','재연습'];
+  const stageNav = document.createElement('nav');
+  stageNav.className = 'aii-focus-stages';
+  stageNav.setAttribute('aria-label','연습 진행 단계');
+  const stageChips = focusStages.map((name, index) => {
+    const chip = document.createElement('span');
+    chip.textContent = (index + 1) + '  ' + name;
+    stageNav.appendChild(chip);
+    return chip;
+  });
+  const stepper = setupSection.querySelector('.aii-ux-stepper');
+  if (stepper) stepper.hidden = true;
+  setupSection.querySelector('.aii-flow-shell-setup')?.prepend(stageNav);
+  const demoStage = stageNav.cloneNode(true);
+  demoSection.querySelector('.aii-flow-shell-demo')?.prepend(demoStage);
+  const demoChips = [...demoStage.children];
+  const hasQuestion = () => /질문\s*[1-9]\d*\s*\/\s*\d+/.test(appProgress?.textContent || '');
+  const updateStages = () => {
+    const complete = Boolean(appResult && !appResult.hidden);
+    const feedbackReady = Boolean(appFeedback && !appFeedback.hidden);
+    const videoReady = Boolean(appDownload && !appDownload.disabled);
+    const step = complete ? (feedbackReady ? 2 : 2) : hasQuestion() ? (videoReady ? 3 : 1) : 0;
+    [stageChips,demoChips].forEach(chips => chips.forEach((chip,i) => {
+      chip.classList.toggle('is-current',i===step);
+      if(i===step) chip.setAttribute('aria-current','step'); else chip.removeAttribute('aria-current');
+    }));
+    document.body.classList.toggle('aii-focus-practicing',hasQuestion() && !complete);
+    document.body.classList.toggle('aii-focus-reviewing',complete);
+  };
+  if (appProgress) new MutationObserver(updateStages).observe(appProgress,{childList:true,characterData:true,subtree:true});
+  if (appResult) new MutationObserver(updateStages).observe(appResult,{attributes:true,attributeFilter:['hidden']});
+  if (appFeedback) new MutationObserver(updateStages).observe(appFeedback,{attributes:true,attributeFilter:['hidden']});
+  if (appDownload) new MutationObserver(updateStages).observe(appDownload,{attributes:true,attributeFilter:['disabled']});
+  form.addEventListener('submit', () => window.setTimeout(updateStages,150));
+  updateStages();
+
+  const focusCss = document.createElement('style');
+  focusCss.id = 'aiiFocusedExperience';
+  focusCss.textContent = `
+    .aii-ux-v2 .aii-focus-stages{display:flex;gap:.35rem;flex-wrap:wrap;margin:0 0 1rem}
+    .aii-ux-v2 .aii-focus-stages span{flex:1 1 auto;text-align:center;padding:.65rem .35rem;border-radius:10px;background:#f1f4f2;color:#77847b;font-weight:700;font-size:.78rem}
+    .aii-ux-v2 .aii-focus-stages .is-current{background:#dff0e5;color:#1d5638;box-shadow:inset 0 0 0 1px #9dceb1}
+    .aii-ux-v2 .aii-ux-stepper[hidden]{display:none!important}
+    .aii-ux-v2 .aii-flow-shell-demo{background:#f9fbfa!important}
+    .aii-ux-v2 .aii-question{font-size:clamp(1.35rem,2.6vw,2rem)!important;line-height:1.45!important}
+    .aii-ux-v2 .aii-card,.aii-ux-v2 .aii-device-card{box-shadow:0 6px 22px rgba(30,65,43,.05)!important}
+    .aii-ux-v2 .aii-device-card [data-aii-record-start]:not(:disabled){min-height:50px}
+    .aii-ux-v2 .aii-result:not([hidden]){scroll-margin-top:90px}
+    .aii-ux-v2 .aii-result:not([hidden]) .aii-feedback:not([hidden]){margin-top:.85rem}
+    @media(max-width:820px){
+      .aii-ux-v2 .aii-focus-stages{gap:.2rem}
+      .aii-ux-v2 .aii-focus-stages span{font-size:.72rem;padding:.6rem .12rem}
+      .aii-ux-v2 .aii-live-layout{display:flex!important;flex-direction:column!important}
+      .aii-ux-v2 .aii-card,.aii-ux-v2 .aii-device-card{width:100%}
+      .aii-ux-v2.aii-focus-practicing .aii-device-card{order:1!important}
+      .aii-ux-v2.aii-focus-practicing .aii-card{order:2!important}
+      .aii-ux-v2.aii-focus-reviewing .aii-card{order:1!important}
+      .aii-ux-v2.aii-focus-reviewing .aii-device-card{order:2!important}
+    }
+  `;
+  document.head.appendChild(focusCss);
 })();
