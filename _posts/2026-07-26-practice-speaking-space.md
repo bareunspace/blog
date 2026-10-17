@@ -25,6 +25,7 @@ tags:
 canonical: https://bareunjari.com/posts/practice-speaking-space/
 permalink: /posts/practice-speaking-space/
 date: 2026-07-26 09:00:00 +0900
+last_modified_at: 2026-10-17 18:00:00 +0900
 editor_pick: true
 editor_pick_order: -2
 og_image: https://bareunjari.com/images/practice-speaking-space.webp
@@ -160,6 +161,8 @@ script_version: 20260711-4
       <p class="section-label">Speak · Record · Review · Repeat</p>
       <h2 class="section-title">실전에서 덜 막히려면<br />말하고, 녹화하고, 다시 말해보세요</h2>
       <p class="section-desc speaking-intro">읽어서 아는 답변도 실제로 입 밖에 꺼내면 막힐 수 있습니다. 첫 영상을 저장하고, 어디서 멈추는지 확인한 뒤, 한 가지를 고쳐 다시 녹화해 보세요. 반복할수록 자신에게 맞는 말하기 흐름을 찾는 데 도움이 됩니다.</p>
+
+      <p class="section-desc speaking-intro"><strong>면접 답변을 영상으로 녹화해 연습하면 무엇이 좋을까요?</strong> 자신이 실제로 말할 때 어디서 멈추는지, 말의 속도와 시선이 어떤지 직접 확인할 수 있습니다. 확인한 부분을 한 가지씩 수정하고 재녹화하면 처음과 달라진 점을 비교하며 실전 답변에 익숙해지는 데 도움이 됩니다.</p>
 
       <div class="speaking-flow" aria-label="영상으로 확인하는 말하기 반복 연습 4단계">
         <article class="speaking-step"><div class="speaking-step-top"><span class="speaking-step-number">01</span><span class="speaking-step-en">Speak</span></div><h3>실제처럼 말하기</h3><p>원고를 읽지 말고 질문을 듣고 답해보세요. 중간에 막혀도 끝까지 이어가며 현재 실력을 확인합니다.</p></article>
