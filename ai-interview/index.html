@@ -817,9 +817,8 @@ script_version: 20261019-2
     };
     let mediaStream = null;
     let mediaRecorder = null;
-    let recordingChunks = [];
     let recordedBlob = null;
-    let recordingQuestionIndex = -1;
+    let isRecordingBusy = false;
     let audioContext = null;
     let analyserNode = null;
     let meterAnimation = null;
@@ -896,7 +895,7 @@ script_version: 20261019-2
     const updateRecordingButtons = () => {
       const hasStream = Boolean(mediaStream);
       const isRecording = Boolean(mediaRecorder && mediaRecorder.state === 'recording');
-      recordStartButton.disabled = !hasStream || isRecording;
+      recordStartButton.disabled = !hasStream || isRecording || isRecordingBusy;
       recordStopButton.disabled = !hasStream || !isRecording;
       recordDownloadButton.disabled = !(recordedBlob instanceof Blob);
     };
@@ -928,7 +927,7 @@ script_version: 20261019-2
     };
 
     const startRecording = () => {
-      if (!mediaStream || (mediaRecorder && mediaRecorder.state === 'recording')) {
+      if (!mediaStream || isRecordingBusy) {
         return;
       }
       if (typeof MediaRecorder === 'undefined') {
@@ -937,46 +936,55 @@ script_version: 20261019-2
       }
 
       try {
+        // Each recording's chunks/question/answer are captured in this call's own closure
+        // (not shared outer variables) so a late-arriving onstop from a previous recording can
+        // never be corrupted or overwritten by a recording started on a later question before
+        // it fires. isRecordingBusy additionally blocks starting a new recording until the
+        // previous one's onstop has actually completed, closing the race at its source.
+        const sessionChunks = [];
+        const sessionQuestionIndex = state.index;
+        const sessionAnswerSnapshot = String(answerNode.value || '').trim();
         recordedBlob = null;
-        recordingChunks = [];
-        recordingQuestionIndex = state.index;
+        isRecordingBusy = true;
         const mimeType = getRecordingMimeType();
-        mediaRecorder = mimeType
+        const recorder = mimeType
           ? new MediaRecorder(mediaStream, { mimeType })
           : new MediaRecorder(mediaStream);
+        mediaRecorder = recorder;
 
-        mediaRecorder.ondataavailable = (event) => {
+        recorder.ondataavailable = (event) => {
           if (event.data && event.data.size > 0) {
-            recordingChunks.push(event.data);
+            sessionChunks.push(event.data);
           }
         };
-        mediaRecorder.onstop = () => {
-          recordedBlob = recordingChunks.length > 0
-            ? new Blob(recordingChunks, { type: mediaRecorder?.mimeType || 'video/webm' })
+        recorder.onstop = () => {
+          const sessionBlob = sessionChunks.length > 0
+            ? new Blob(sessionChunks, { type: recorder.mimeType || 'video/webm' })
             : null;
-          recordingChunks = [];
-          if (recordedBlob) {
+          recordedBlob = sessionBlob;
+          isRecordingBusy = false;
+          if (sessionBlob) {
             document.dispatchEvent(new CustomEvent('aii:recording-complete', { detail: {
-              blob: recordedBlob,
-              question: String(state.questions[recordingQuestionIndex] || ''),
-              questionIndex: recordingQuestionIndex,
-              answer: String(state.answers[recordingQuestionIndex] ?? (recordingQuestionIndex === state.index ? answerNode.value : '')).trim()
+              blob: sessionBlob,
+              question: String(state.questions[sessionQuestionIndex] || ''),
+              questionIndex: sessionQuestionIndex,
+              answer: String(state.answers[sessionQuestionIndex] ?? sessionAnswerSnapshot).trim()
             } }));
           }
-          setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 아래에서 즉시 재생하고 다시 연습할 수 있습니다.' : '녹화 데이터가 없어 저장할 수 없습니다.');
+          setDeviceStatus(sessionBlob ? '녹화가 완료되었습니다. 아래에서 즉시 재생하고 다시 연습할 수 있습니다.' : '녹화 데이터가 없어 저장할 수 없습니다.');
           updateRecordingButtons();
-          if (recordedBlob && recordAutoSaveNode.checked) {
+          if (sessionBlob && recordAutoSaveNode.checked) {
             downloadRecordedVideo();
           }
         };
 
-        mediaRecorder.start(200);
+        recorder.start(200);
         setDeviceStatus('녹화 중... 면접 화면이 로컬 영상으로 저장됩니다.');
         updateRecordingButtons();
       } catch (_error) {
+        isRecordingBusy = false;
         setDeviceStatus('녹화를 시작하지 못했습니다. 브라우저 권한/코덱을 확인해 주세요.');
         mediaRecorder = null;
-        recordingChunks = [];
         updateRecordingButtons();
       }
     };
@@ -2324,7 +2332,6 @@ script_version: 20261019-2
       }
 
       mediaRecorder = null;
-      recordingChunks = [];
       finalizeDeviceShutdown();
     };
 
