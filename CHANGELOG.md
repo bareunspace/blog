@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.5] - 2026-10-18
+### Changed
+- Use the approved Bareunjari interview practice composite for the preparation roadmap hero, Editor’s Pick card and social previews; align dimensions, alt text and caption.
+
 ## [1.1.4] - 2026-10-12
 ### Changed
 - Restore the original regular study guide image across article, card and social previews; align alt text and caption.
