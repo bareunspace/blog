@@ -30,11 +30,11 @@ permalink: /posts/interview-preparation-roadmap/
 date: 2026-10-18 00:00:00 +0900
 editor_pick: true
 editor_pick_order: -3
-og_image: https://bareunjari.com/images/interview-answer-practice-real-20261010.webp
-og_image_alt: 실제 바른자리 공간을 배경으로 휴대폰 녹화와 면접 답변 연습을 준비하는 장면
-og_image_width: 1672
-og_image_height: 940
-preload_image: images/interview-answer-practice-real-20261010.webp
+og_image: https://bareunjari.com/images/gallery-03-tone-20261012.webp
+og_image_alt: 실제 바른자리의 밝고 넓은 프라이빗 공간과 면접 연습용 테이블 전경
+og_image_width: 1536
+og_image_height: 864
+preload_image: images/gallery-03-tone-20261012.webp
 extra_css: /styles/interview-preparation-roadmap.css
 extra_css_version: 20261018-1
 script_version: 20260711-4
@@ -59,8 +59,8 @@ script_version: 20260711-4
   <section class="ir-image-section" aria-label="면접 연습 공간">
     <div class="section-inner">
       <figure class="ir-photo ir-photo-hero">
-        <img src="/images/interview-answer-practice-real-20261010.webp" alt="바른자리의 실제 테이블 공간을 배경으로 스마트폰 녹화와 면접 답변 리허설을 준비하는 장면" width="1672" height="940" loading="eager" fetchpriority="high" />
-        <figcaption>읽고 외우는 준비에서 한 걸음 더 나아가 직접 말하고, 녹화하고, 다시 답해보세요. 기존 바른자리 공간 사진을 활용했습니다.</figcaption>
+        <img src="/images/gallery-03-tone-20261012.webp" alt="바른자리 실제 내부 전경으로 밝은 테이블 공간과 소파, 조명이 함께 보이는 모습" width="1536" height="864" loading="eager" fetchpriority="high" />
+        <figcaption>읽고 외우는 준비에서 한 걸음 더 나아가 직접 말하고, 녹화하고, 다시 답해보세요. 기존 글과 다른 바른자리 실제 공간 전경을 대표 이미지로 선택했습니다.</figcaption>
       </figure>
     </div>
   </section>
