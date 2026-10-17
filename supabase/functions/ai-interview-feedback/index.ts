@@ -136,13 +136,18 @@ const jsonResponse = (status: number, body: unknown) => {
 // Without this, a hung AI provider call has no server-side bound and relies entirely on the
 // platform's own function timeout, which skips the clean `{fallback:true, reason}` response
 // path below and surfaces as an opaque error instead.
-const fetchWithTimeout = async (url: string, init: RequestInit, timeoutMs: number): Promise<Response> => {
+const fetchWithTimeout = async (url: string, init: RequestInit, timeoutMs: number): Promise<{ ok: boolean; status: number; result: unknown }> => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    return await fetch(url, { ...init, signal: controller.signal });
+    const response = await fetch(url, { ...init, signal: controller.signal });
+    const result = await response.json().catch((error) => {
+      if (controller.signal.aborted) throw error;
+      return {};
+    });
+    return { ok: response.ok, status: response.status, result };
   } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
+    if (controller.signal.aborted || (error instanceof Error && error.name === 'AbortError')) {
       throw new Error('provider_timeout');
     }
     throw error;
@@ -578,7 +583,7 @@ const callAiProvider = async (
     })
   }, 20000);
 
-  const result = await response.json().catch(() => ({}));
+  const result = response.result;
   if (!response.ok) {
     const errorField = (result as Record<string, unknown>)?.error;
     const nestedMessage = errorField && typeof errorField === 'object'
@@ -650,7 +655,7 @@ const callAiProviderForQuestions = async (
     })
   }, 15000);
 
-  const result = await response.json().catch(() => ({}));
+  const result = response.result;
   if (!response.ok) {
     const errorField = (result as Record<string, unknown>)?.error;
     const nestedMessage = errorField && typeof errorField === 'object'
