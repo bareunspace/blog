@@ -1,0 +1,74 @@
+/* Interview preparation roadmap · site-wide components + scoped editorial layout */
+.interview-roadmap-page{--ir-green:#23573d;--ir-ink:#1a3026;--ir-muted:#586a60;--ir-line:#dbe7de;--ir-surface:#f4f8f5;color:var(--ir-ink)}
+.interview-roadmap-page .ir-hero{background:linear-gradient(135deg,#183d30,#2b6047);padding:clamp(4.25rem,8vw,6rem) 1.25rem clamp(3rem,6vw,4.5rem);color:#fff}
+.interview-roadmap-page .ir-hero .section-inner{max-width:1050px}
+.interview-roadmap-page .ir-hero .section-label{color:#bce7c6;letter-spacing:.12em}
+.interview-roadmap-page .ir-hero .section-title{color:#fff;font-size:clamp(2.1rem,5vw,3.55rem);line-height:1.2;letter-spacing:-.045em;word-break:keep-all;max-width:19ch}
+.interview-roadmap-page .ir-hero .hero-subtitle{color:#f0f8f2;font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:700;max-width:730px;line-height:1.5;word-break:keep-all}
+.interview-roadmap-page .ir-hero .section-desc{color:#e0ebe3;max-width:800px;line-height:1.85;word-break:keep-all}
+.interview-roadmap-page .ir-hero .btn-primary{background:#fff;color:#19432e;border-color:#fff}
+.interview-roadmap-page .ir-hero .btn-outline{border-color:rgba(255,255,255,.7);color:#fff}
+.interview-roadmap-page .ir-hero .btn-outline:hover{background:rgba(255,255,255,.13)}
+.interview-roadmap-page .ir-image-section{padding:clamp(1.2rem,3vw,2rem) 1.25rem 0}
+.interview-roadmap-page .ir-image-section .section-inner,.interview-roadmap-page .ir-section .section-inner{max-width:1060px}
+.interview-roadmap-page .ir-photo{margin:0}
+.interview-roadmap-page .ir-photo img{display:block;width:100%;height:auto;object-fit:cover;border-radius:20px}
+.interview-roadmap-page .ir-photo-hero img{aspect-ratio:16/9}
+.interview-roadmap-page .ir-photo figcaption{padding:.7rem .25rem 0;color:#64756a;font-size:.84rem;line-height:1.7;text-align:center;word-break:keep-all}
+.interview-roadmap-page .guide-toc{margin-top:clamp(1.2rem,2.6vw,2rem)}
+.interview-roadmap-page .ir-section{padding:clamp(3rem,6vw,5rem) 1.25rem;scroll-margin-top:6.2rem}
+.interview-roadmap-page .ir-section-soft{background:var(--ir-surface)}
+.interview-roadmap-page .ir-section .section-title{font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.35;letter-spacing:-.035em;word-break:keep-all}
+.interview-roadmap-page .ir-section p{line-height:1.82;word-break:keep-all}
+.interview-roadmap-page .ir-step-label{color:#27704b;font-weight:800;letter-spacing:.045em;font-size:.8rem;margin:0 0 .65rem}
+.interview-roadmap-page .ir-route{padding:0;margin:1.9rem 0 0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.interview-roadmap-page .ir-route li{display:flex;align-items:center;gap:.72rem;background:#fff;border:1px solid var(--ir-line);border-radius:16px;padding:1rem;min-height:94px;box-shadow:0 5px 19px rgba(17,60,34,.03)}
+.interview-roadmap-page .ir-route li>span{font-weight:900;color:#2d694b;font-size:1.15rem;align-self:flex-start}
+.interview-roadmap-page .ir-route li>div{flex:1;min-width:0}
+.interview-roadmap-page .ir-route strong,.interview-roadmap-page .ir-route small{display:block}
+.interview-roadmap-page .ir-route strong{font-size:.96rem}
+.interview-roadmap-page .ir-route small{font-size:.76rem;line-height:1.5;color:var(--ir-muted);margin-top:.22rem}
+.interview-roadmap-page .ir-route a{color:#276a49;font-weight:800;font-size:.75rem;white-space:nowrap}
+.interview-roadmap-page .ir-split{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);align-items:center;gap:clamp(1.4rem,5vw,3.8rem)}
+.interview-roadmap-page .ir-copy{min-width:0}
+.interview-roadmap-page .ir-copy p{margin:.78rem 0 0}
+.interview-roadmap-page .ir-copy .section-title{margin-bottom:.6rem}
+.interview-roadmap-page .ir-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.interview-roadmap-page .ir-actions a{max-width:100%;white-space:normal;text-align:center}
+.interview-roadmap-page .ir-ui-guide{min-width:0;background:#fff;border:1px solid #cfe0d2;border-radius:20px;padding:clamp(1rem,3vw,1.6rem);box-shadow:0 15px 35px rgba(16,60,39,.07)}
+.interview-roadmap-page .ir-ui-eyebrow{font-size:.7rem!important;font-weight:900;color:#2e6e4e;margin:0 0 .7rem!important;letter-spacing:.09em}
+.interview-roadmap-page .ir-ui-top{display:flex;justify-content:space-between;gap:.65rem;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--ir-line);font-weight:900;font-size:1.05rem}
+.interview-roadmap-page .ir-ui-top-sub{font-size:.72rem;font-weight:700;color:#5d7566}
+.interview-roadmap-page .ir-ui-label{font-size:.75rem;font-weight:800;color:#4d6757;margin:.8rem 0 .45rem!important}
+.interview-roadmap-page .ir-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.interview-roadmap-page .ir-pills span{font-size:.75rem;font-weight:750;padding:.38rem .65rem;border-radius:100px;color:#23583c;border:1px solid #badbc5;background:#ecf7ef}
+.interview-roadmap-page .ir-pills-muted span{background:#f8faf8;border-color:#d8e4da;color:#627566}
+.interview-roadmap-page .ir-ui-note{margin-top:1.1rem;background:#f0f7f2;padding:.85rem 1rem;border-radius:12px;display:grid;gap:.35rem;font-size:.82rem;line-height:1.5}
+.interview-roadmap-page .ir-ui-note strong{color:#245a3f}
+.interview-roadmap-page .ir-ui-link{display:inline-block;margin-top:1.15rem;color:#246a43;font-weight:850;border-bottom:1px solid currentColor;font-size:.87rem}
+.interview-roadmap-page .ir-ui-disclaimer{font-size:.72rem!important;color:#78887d;line-height:1.55!important;margin:.7rem 0 0!important}
+.interview-roadmap-page .ir-form-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin-top:1rem}
+.interview-roadmap-page .ir-form-preview>*{display:flex;align-items:center;min-height:44px;border-radius:9px;border:1px solid #dce5de;background:#fbfdfb;padding:.6rem .72rem;color:#546a5b;font-size:.8rem;font-weight:700}
+.interview-roadmap-page .ir-form-preview>span{grid-column:1/-1;background:#eaf6ee;border-color:#c6e1cf;color:#255b3e}
+.interview-roadmap-page .ir-photo-inline img{aspect-ratio:4/3}
+.interview-roadmap-page .ir-link-list{display:grid;gap:.5rem;margin-top:1.25rem}
+.interview-roadmap-page .ir-link-list a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem .95rem;border:1px solid var(--ir-line);border-radius:11px;background:#fff;color:#225b3c;font-weight:800}
+.interview-roadmap-page .ir-link-list a:hover{border-color:#89b59a;background:#f6fbf7}
+.interview-roadmap-page .ir-checklist{padding-left:1.2rem;margin:1rem 0;display:grid;gap:.45rem;line-height:1.65}
+.interview-roadmap-page .ir-checklist li::marker{color:#2d7551}
+.interview-roadmap-page .ir-session{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1.6rem 0}
+.interview-roadmap-page .ir-session>div{background:#fff;border:1px solid var(--ir-line);border-radius:14px;padding:1.1rem .85rem;display:grid;gap:.55rem;min-height:130px}
+.interview-roadmap-page .ir-session span{font-size:1.35rem;line-height:1.1;color:#2c6d49;font-weight:900}
+.interview-roadmap-page .ir-session strong{font-size:.88rem;line-height:1.55}
+.interview-roadmap-page .ir-quiet-note{padding:1rem 1.2rem;border-left:3px solid #3b8059;background:#e9f2ec;border-radius:0 10px 10px 0;color:#375643}
+.interview-roadmap-page .ir-last-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center;margin-top:2rem;padding:1.5rem;border-radius:19px;background:#204a36;color:#fff}
+.interview-roadmap-page .ir-last-cta .section-label{color:#b4e7c6}
+.interview-roadmap-page .ir-last-cta h3{color:#fff;font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.45;letter-spacing:-.03em;word-break:keep-all}
+.interview-roadmap-page .ir-last-cta p{margin:.45rem 0;color:#e1f0e5}
+.interview-roadmap-page .ir-last-links{display:grid;gap:.65rem;min-width:225px}
+.interview-roadmap-page .ir-last-links .btn-primary{background:#fff;color:#17492d;border-color:#fff}
+.interview-roadmap-page .ir-last-links .btn-outline{color:#fff;border-color:rgba(255,255,255,.65)}
+.interview-roadmap-page .faq-list{margin-top:1.35rem}
+@media (max-width:900px){.interview-roadmap-page .ir-route{grid-template-columns:repeat(2,minmax(0,1fr))}.interview-roadmap-page .ir-session{grid-template-columns:repeat(2,minmax(0,1fr))}.interview-roadmap-page .ir-last-cta{grid-template-columns:1fr}.interview-roadmap-page .ir-last-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:690px){.interview-roadmap-page .ir-hero{padding-top:4.3rem}.interview-roadmap-page .ir-hero .section-title{font-size:clamp(2rem,8vw,2.65rem)}.interview-roadmap-page .ir-split{grid-template-columns:1fr;gap:1.4rem}.interview-roadmap-page .ir-split-media .ir-photo{order:2}.interview-roadmap-page .ir-section{padding:2.8rem 1rem}.interview-roadmap-page .ir-image-section{padding-left:1rem;padding-right:1rem}.interview-roadmap-page .ir-route{grid-template-columns:1fr;gap:.55rem}.interview-roadmap-page .ir-route li{min-height:68px;padding:.85rem}.interview-roadmap-page .ir-photo img{border-radius:14px}.interview-roadmap-page .ir-last-links{grid-template-columns:1fr}.interview-roadmap-page .ir-last-cta{padding:1.2rem}.interview-roadmap-page .ir-ui-top{flex-wrap:wrap}.interview-roadmap-page .ir-photo figcaption{text-align:left}.interview-roadmap-page .ir-session{gap:.5rem}.interview-roadmap-page .ir-session>div{min-height:120px}}
+@media (prefers-reduced-motion:reduce){.interview-roadmap-page *{scroll-behavior:auto!important}}
