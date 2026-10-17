@@ -5,7 +5,7 @@ description: 집에서는 일이 자꾸 끊기고 카페에서는 주변이 신�
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 2
+hub_order: 5
 hub_label: 집중 업무
 hub_kicker: 집중이 안 되는 날을 위한 시간제 업무공간 가이드
 hub_title: 집중이 안 되는 날, 업무 공간을 바꾸는 2시간 루틴
