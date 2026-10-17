@@ -236,11 +236,9 @@
     window.setTimeout(syncPracticeModeCopy, 0);
   }
 
-  if (String(practiceMode?.value || '') !== 'pt_presentation') {
-    document.title = 'AI 모의면접 연습 | 질문 받고 답하고 녹화하기 | 바른자리';
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute('content', '질문을 받고 실제로 말하고 녹화해 다시 확인하는 바른자리 AI 모의면접 연습 도구입니다. 면접 답변을 반복 연습하고 필요하면 프라이빗 공간 예약으로 이어가세요.');
-  }
+  // The default (non-PT) <title>/meta description are left untouched here: they already come
+  // from _data/seo_pages.yml via _includes/head.html, and overwriting them client-side made the
+  // rendered title diverge from what that single source of truth defines.
   // Make feedback actionable without changing existing AI scoring or its source.
   const feedback = document.querySelector('[data-aii-feedback]');
   const result = document.querySelector('[data-aii-result]');

@@ -344,9 +344,15 @@
   observer.observe(questionNode, { childList: true, subtree: true, characterData: true });
   if (resultListNode) observer.observe(resultListNode, { childList: true, subtree: true, characterData: true });
 
+  const isInternalPlaceholderQuestion = (text) =>
+    /^(사용자 직접 입력 질문 \d+입니다\.|Custom interview question \d+\.)/.test(String(text || ''));
+
   if (NativeUtterance) {
+    // Only swap the spoken text when it's one of our own internally-generated placeholder
+    // questions (see makeInternalQuestions), so this never affects unrelated TTS calls that
+    // happen to run elsewhere on the page while custom mode is active.
     window.SpeechSynthesisUtterance = function(text) {
-      if (customModeActive && activeCustomQuestions.length) {
+      if (customModeActive && activeCustomQuestions.length && isInternalPlaceholderQuestion(text)) {
         const custom = activeCustomQuestions[getCurrentIndex()];
         return new NativeUtterance(custom || text);
       }

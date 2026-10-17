@@ -127,11 +127,14 @@
     videoUrls.splice(0).forEach((url) => URL.revokeObjectURL(url));
     recordedAnswers.length = 0;
     videoPanel.hidden = true;
+    const comparison = panel.querySelector('[data-aii-repeat-comparison]');
+    if (comparison) comparison.textContent = '';
   };
   document.addEventListener('aii:recording-complete', (event) => {
     const blob = event.detail?.blob;
     const question = String(event.detail?.question || '');
     if (!(blob instanceof Blob) || !question) return;
+    if (!Number.isInteger(event.detail?.questionIndex) || event.detail.questionIndex !== getQuestionNumber() - 1) return;
     if (recordingQuestion !== question) {
       clearLocalVideos();
       recordingQuestion = question;
