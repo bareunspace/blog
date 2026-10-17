@@ -1624,24 +1624,26 @@ script_version: 20260828-26
           .map((item) => {
             const q = String(item?.question || '').trim();
             const c = String(item?.comment || '').trim();
-            const s = normalizeScore(item?.score, 0);
+            const s = Number.isFinite(Number(item?.score)) && item?.score !== null ? normalizeScore(item.score, 0) : null;
             if (!q || !c) {
               return '';
             }
-            return `${q} (${s}점): ${c}`;
+            return `${q}${s === null ? ' (점수 미제공)' : ` (${s}점)`}: ${c}`;
           })
           .filter(Boolean)
         : [];
       const scoreCard = feedback?.scoreCard || {};
-      const clarity = normalizeScore(scoreCard.clarity, 72);
-      const specificity = normalizeScore(scoreCard.specificity, 70);
-      const structure = normalizeScore(scoreCard.structure, 73);
-      const overall = normalizeScore(scoreCard.overall, Math.round((clarity + specificity + structure) / 3));
-
-      scoreClarityNode.textContent = String(clarity);
-      scoreSpecificityNode.textContent = String(specificity);
-      scoreStructureNode.textContent = String(structure);
-      scoreOverallNode.textContent = String(overall);
+      const validScore = (value) => value !== null && value !== undefined && String(value).trim() !== '' && Number.isFinite(Number(value));
+      const clarity = validScore(scoreCard.clarity) ? normalizeScore(scoreCard.clarity, 0) : null;
+      const specificity = validScore(scoreCard.specificity) ? normalizeScore(scoreCard.specificity, 0) : null;
+      const structure = validScore(scoreCard.structure) ? normalizeScore(scoreCard.structure, 0) : null;
+      const overall = validScore(scoreCard.overall) ? normalizeScore(scoreCard.overall, 0) : null;
+      const isLocalEstimate = /로컬 피드백/.test(statusText);
+      [scoreClarityNode, scoreSpecificityNode, scoreStructureNode, scoreOverallNode].forEach((node, index) => {
+        const score = [clarity, specificity, structure, overall][index];
+        node.textContent = score === null ? '평가 불가' : String(score);
+        node.closest('p')?.classList.toggle('is-unavailable', score === null);
+      });
       feedbackSummaryNode.textContent = summary;
       appendListItems(feedbackStrengthsNode, strengths.length ? strengths : ['핵심 메시지를 문장 첫 부분에 잘 배치했습니다.']);
       appendListItems(feedbackImprovementsNode, improvements.length ? improvements : ['답변마다 수치/기간 같은 근거를 1개씩 추가해 보세요.']);
@@ -1652,15 +1654,12 @@ script_version: 20260828-26
       const answerScore = qualityAudit && Number.isFinite(Number(qualityAudit?.answerQualityScore))
         ? clampScore(Number(qualityAudit.answerQualityScore))
         : evaluateAnswerQuality(state.answers, state.questions.length);
-      const feedbackScore = qualityAudit && Number.isFinite(Number(qualityAudit?.feedbackScore))
+      const feedbackScore = qualityAudit && validScore(qualityAudit.feedbackScore)
         ? clampScore(Number(qualityAudit.feedbackScore))
-        : normalizeScore(scoreCard.overall, Math.round((clarity + specificity + structure) / 3));
-      const totalScore = clampScore(Math.round((setupScore * 0.15) + (questionScore * 0.3) + (voiceScore * 0.1) + (answerScore * 0.2) + (feedbackScore * 0.25)));
-      const previous = readPreviousQualityScore();
-      const deltaText = previous === null
-        ? '첫 측정입니다.'
-        : `${totalScore - previous >= 0 ? '+' : ''}${totalScore - previous}점`;
-      writeCurrentQualityScore(totalScore);
+        : overall;
+      // Setup, question, and browser capability scores are diagnostics, not candidate ability.
+      // Preserve diagnostics without presenting their weighted total as interview performance.
+      const totalScore = null;
 
       const reasons = Array.isArray(qualityAudit?.reasons) && qualityAudit.reasons.length > 0
         ? qualityAudit.reasons.map((item) => String(item || '').trim()).filter(Boolean).slice(0, 3)
@@ -1669,7 +1668,14 @@ script_version: 20260828-26
         ? questionReviews
         : ['질문별 코멘트가 없어 전체 피드백을 우선 참고해 주세요.'];
 
-      feedbackStatusNode.textContent = `${statusText} | 단계점수: 설정 ${setupScore} · 질문 ${questionScore} · 음성 ${voiceScore} · 답변 ${answerScore} · 피드백 ${feedbackScore} | 종합 ${totalScore}점 (${deltaText})`;
+      feedbackStatusNode.textContent = `${statusText} | ${isLocalEstimate ? '규칙 기반 참고 피드백' : 'AI 텍스트 답변 평가'} · 장비/설정 상태는 면접 실력 점수에 포함하지 않습니다.`;
+      const scoreNotice = feedbackNode.querySelector('[data-aii-score-disclosure]') || document.createElement('p');
+      scoreNotice.dataset.aiiScoreDisclosure = 'true';
+      scoreNotice.className = 'aii-score-disclosure';
+      scoreNotice.textContent = isLocalEstimate
+        ? 'AI 응답 없이 답변 길이·표현 등의 규칙으로 만든 참고 점수입니다. 실제 면접 실력의 객관적 측정이 아닙니다.'
+        : '답변 텍스트에 대한 AI 평가입니다. 발음·침묵·시선·말하기 속도는 이 점수에서 직접 측정하지 않았습니다.';
+      if (!scoreNotice.isConnected) feedbackStatusNode.insertAdjacentElement('afterend', scoreNotice);
       appendListItems(feedbackQuestionReviewsNode, [
         ...reviewLines,
         ...reasons.map((reason, index) => `개선 근거 ${index + 1}: ${reason}`)
