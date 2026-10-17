@@ -27,7 +27,7 @@ tags:
   - 부천
 canonical: https://bareunjari.com/posts/interview-preparation-roadmap/
 permalink: /posts/interview-preparation-roadmap/
-date: 2026-10-18 08:20:00 +0900
+date: 2026-10-18 00:00:00 +0900
 og_image: https://bareunjari.com/images/interview-answer-practice-real-20261010.webp
 og_image_alt: 실제 바른자리 공간을 배경으로 휴대폰 녹화와 면접 답변 연습을 준비하는 장면
 og_image_width: 1672
