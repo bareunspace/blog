@@ -232,4 +232,93 @@
     const nextObserver = new MutationObserver(syncResultState);
     nextObserver.observe(nextButton, { childList: true, characterData: true, subtree: true });
   }
+}
+  // Progressive disclosure: show the essentials first without removing existing inputs.
+  const modeSelect = form.querySelector('[data-aii-mode]');
+  const questionCount = form.querySelector('[name="question_count"]');
+  const advancedFields = Array.from(form.querySelectorAll(':scope > label')).filter(label =>
+    label.contains(questionCount)
+  );
+  if (modeSelect && !form.querySelector('.aii-mode-shortcuts')) {
+    const shortcuts = document.createElement('div');
+    shortcuts.className = 'aii-mode-shortcuts';
+    shortcuts.setAttribute('role', 'group');
+    shortcuts.setAttribute('aria-label', '연습 모드 빠른 선택');
+    [['interview','모의면접'],['daily_english','영어 말하기'],['pt_presentation','PT 발표']].forEach(([value,label]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = label;
+      button.dataset.mode = value;
+      button.addEventListener('click', () => {
+        modeSelect.value = value;
+        modeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        updateModeButtons();
+      });
+      shortcuts.appendChild(button);
+    });
+    const updateModeButtons = () => {
+      shortcuts.querySelectorAll('button').forEach(button => {
+        const selected = button.dataset.mode === modeSelect.value;
+        button.classList.toggle('is-selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    };
+    modeSelect.addEventListener('change', updateModeButtons);
+    form.insertBefore(shortcuts, form.firstChild);
+    updateModeButtons();
+  }
+  if (advancedFields.length && !form.querySelector('.aii-advanced-toggle')) {
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'aii-advanced-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = '질문 수 등 상세 설정 보기';
+    const syncAdvanced = (expanded) => {
+      advancedFields.forEach(field => { field.hidden = !expanded; });
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = expanded ? '상세 설정 접기' : '질문 수 등 상세 설정 보기';
+    };
+    const action = form.querySelector(':scope > .aii-actions');
+    if (action) form.insertBefore(toggle, action);
+    toggle.addEventListener('click', () => syncAdvanced(toggle.getAttribute('aria-expanded') !== 'true'));
+    syncAdvanced(false);
+  }
+
+  // A compact, clear recording workflow that never uploads the recorded video.
+  const recordBar = deviceCard.querySelector('[data-aii-record-start]')?.closest('.aii-actions');
+  const deviceStatus = deviceCard.querySelector('[data-aii-device-status]');
+  if (recordBar && !deviceCard.querySelector('.aii-record-guide')) {
+    const guide = document.createElement('p');
+    guide.className = 'aii-record-guide';
+    guide.setAttribute('aria-live', 'polite');
+    recordBar.insertAdjacentElement('beforebegin', guide);
+    const updateGuide = () => {
+      const isRecording = recordStop && !recordStop.disabled;
+      if (isRecording) guide.textContent = '● 녹화 중 · 답변 후 녹화 종료를 누르세요.';
+      else if (recordDownload && !recordDownload.disabled) guide.textContent = '✓ 녹화 완료 · 아래에서 재생하고 같은 질문을 다시 연습하세요.';
+      else if (recordStart && !recordStart.disabled) guide.textContent = '준비 완료 · 연습 녹화를 눌러 시작하세요.';
+      else guide.textContent = '카메라·마이크 연결 후 녹화를 시작할 수 있습니다.';
+    };
+    new MutationObserver(updateGuide).observe(recordBar, { attributes: true, attributeFilter: ['disabled'], subtree: true });
+    if (deviceStatus) new MutationObserver(updateGuide).observe(deviceStatus, { childList: true });
+    updateGuide();
+  }
+  const uxExtra = document.createElement('style');
+  uxExtra.id = 'aiiUxGuidedPractice';
+  uxExtra.textContent = `
+    .aii-ux-v2 .aii-mode-shortcuts{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+    .aii-ux-v2 .aii-mode-shortcuts button{min-height:50px;border:1px solid #cadbd0;border-radius:12px;background:#fff;color:#345544;font:inherit;font-size:.9rem;font-weight:750;cursor:pointer}
+    .aii-ux-v2 .aii-mode-shortcuts button.is-selected{background:#eaf5ee;border-color:#34845b;box-shadow:inset 0 0 0 1px #34845b;color:#174e33}
+    .aii-ux-v2 .aii-form>label[hidden]{display:none!important}
+    .aii-ux-v2 .aii-advanced-toggle{grid-column:1/-1;justify-self:start;border:0;background:transparent;color:#2d6a4f;text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;padding:.4rem .2rem}
+    .aii-ux-v2 .aii-record-guide{margin:.5rem 0;padding:.65rem .8rem;border-radius:10px;background:#edf7f0;color:#22583b;font-weight:700;font-size:.82rem;line-height:1.5}
+    .aii-ux-v2 .aii-device-card [data-aii-record-start]{background:#2d6a4f!important;color:#fff!important;border-color:#2d6a4f!important;font-weight:750}
+    .aii-ux-v2 .aii-device-card [data-aii-record-start]:disabled{opacity:.45}
+    .aii-ux-v2 .aii-device-card [data-aii-record-stop]:not(:disabled){background:#fff2f2!important;border-color:#bb4545!important;color:#9a2929!important}
+    .aii-ux-v2 .aii-device-card button:focus-visible,.aii-ux-v2 .aii-mode-shortcuts button:focus-visible{outline:3px solid #76b995;outline-offset:3px}
+    @media(max-width:820px){.aii-ux-v2.is-session-active .aii-device-card{order:1}.aii-ux-v2.is-session-active .aii-card{order:2}}
+    @media(max-width:520px){.aii-ux-v2 .aii-mode-shortcuts{gap:.35rem}.aii-ux-v2 .aii-mode-shortcuts button{font-size:.78rem;padding:.45rem .25rem;min-height:46px}.aii-ux-v2 .aii-device-card .aii-actions button{min-height:44px}}
+    @media(prefers-reduced-motion:reduce){.aii-ux-v2 *{scroll-behavior:auto!important;transition:none!important}}
+  `;
+  document.head.appendChild(uxExtra);
 })();
