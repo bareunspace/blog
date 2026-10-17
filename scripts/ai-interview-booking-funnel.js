@@ -25,13 +25,8 @@
   `;
   document.head.appendChild(style);
 
-  const title = hero.querySelector('.section-title');
-  if (title) title.textContent = 'AI 모의면접 연습실';
-
-  const subtitle = hero.querySelector('.hero-subtitle');
-  if (subtitle) {
-    subtitle.textContent = '회사와 직무를 설정하고 실제 질문을 받아 소리 내어 답한 뒤, 녹화로 확인하며 같은 질문을 반복 연습해 보세요.';
-  }
+  // Hero title/subtitle are set once, by ai-interview-ui-polish.js (loaded last), to avoid
+  // multiple scripts racing to overwrite the same text.
 
   const heroBtns = hero.querySelector('.hero-btns');
   if (heroBtns) {

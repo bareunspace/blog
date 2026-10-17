@@ -108,7 +108,7 @@
   const recordedAnswers = [];
   const compareContent = (first, second) => {
     const signals = [
-      ['구체적인 수치', /\\d/],
+      ['구체적인 수치', /\d/],
       ['행동·실행', /행동|실행|담당|시도|해결|조치|action|implemented|resolved/i],
       ['성과·결과', /결과|성과|개선|달성|result|outcome|improved|achieved/i]
     ];
@@ -291,7 +291,9 @@
   const resetForNextQuestion = () => {
     selectedFocus = '';
     retryPending = false;
+    recordingQuestion = '';
     focusButtons.forEach((button) => button.classList.remove('is-selected'));
+    clearLocalVideos();
     syncRetryButton();
   };
 
