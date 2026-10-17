@@ -5,7 +5,7 @@ description: 사무실이 매일 필요한 것은 아닙니다. 프리랜서·1�
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 1
+hub_order: 4
 hub_label: 초단기 사무실
 hub_kicker: 1시간부터 하루까지 빌리는 시간제 업무공간
 hub_title: 초단기 사무실 임대부터 Day Office까지, 필요한 만큼 빌리는 방법
