@@ -116,7 +116,16 @@
 
     event.preventDefault();
     event.stopImmediatePropagation();
-    window.alert('답변이 입력되지 않았습니다.\n답변을 말하거나 입력한 뒤 다음으로 진행해 주세요.');
+    let inlineError = document.querySelector('[data-aii-answer-inline-error]');
+    if (!inlineError && answerField) {
+      inlineError = document.createElement('p');
+      inlineError.dataset.aiiAnswerInlineError = 'true';
+      inlineError.id = 'aiiAnswerInlineError';
+      inlineError.setAttribute('role', 'alert');
+      inlineError.className = 'aii-answer-inline-error';
+      answerField.insertAdjacentElement('afterend', inlineError);
+    }
+    if (inlineError) inlineError.textContent = '답변을 말하거나 입력한 뒤 다음으로 진행해 주세요.';
     if (answerField) {
       answerField.classList.add('is-empty-warning');
       answerField.setAttribute('aria-invalid', 'true');
@@ -133,6 +142,8 @@
       if (String(answer.value || '').trim()) {
         answer.classList.remove('is-empty-warning');
         answer.removeAttribute('aria-invalid');
+        const inlineError = document.querySelector('[data-aii-answer-inline-error]');
+        if (inlineError) inlineError.textContent = '';
       }
     });
   }
@@ -308,5 +319,81 @@
       @media(max-width:600px){.aii-ux-v2 .aii-score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aii-ux-v2 .aii-feedback{padding:.75rem!important}.aii-ux-v2 .aii-feedback-panel{padding:.75rem}.aii-ux-v2 .aii-result>.aii-actions{grid-template-columns:1fr}}
     `;
     document.head.appendChild(feedbackStyles);
+  }
+
+  // Final guided flow: a lightweight next-action cue, no new backend or storage.
+  const journeyDemo = document.querySelector('.aii-block-demo');
+  const journeyResult = document.querySelector('[data-aii-result]');
+  const journeyFeedback = document.querySelector('[data-aii-feedback]');
+  const journeyQuestion = document.querySelector('[data-aii-question]');
+  const journeyCard = document.querySelector('[data-aii-card]');
+  const journeyDevice = document.querySelector('.aii-device-card');
+  const journeyProgress = document.querySelector('[data-aii-progress]');
+  if (journeyDemo && journeyCard && journeyDevice && journeyProgress) {
+    const cue = document.createElement('div');
+    cue.className = 'aii-journey-cue';
+    cue.setAttribute('role', 'status');
+    cue.setAttribute('aria-live', 'polite');
+    cue.innerHTML = '<span class="aii-journey-dot" aria-hidden="true"></span><span data-aii-journey-copy>연습 유형을 정하고 시작하세요.</span>';
+    const toolbar = journeyDemo.querySelector('.aii-live-toolbar');
+    if (toolbar) toolbar.insertAdjacentElement('afterend', cue);
+    else journeyCard.insertAdjacentElement('beforebegin', cue);
+    const copy = cue.querySelector('[data-aii-journey-copy]');
+    const recorder = document.querySelector('[data-aii-record-stop]');
+    const download = document.querySelector('[data-aii-record-download]');
+    const setCue = () => {
+      const complete = Boolean(journeyResult && !journeyResult.hidden);
+      const recording = Boolean(recorder && !recorder.disabled);
+      const hasRecording = Boolean(download && !download.disabled);
+      const active = /질문\s*[1-9]\d*\s*\/\s*\d+/.test(journeyProgress.textContent || '');
+      if (complete) {
+        cue.dataset.stage = 'complete';
+        copy.textContent = journeyFeedback && !journeyFeedback.hidden ? '피드백을 확인하고 다음 연습 목표를 정하세요.' : '답변이 완료되었습니다. 결과를 확인하세요.';
+      } else if (recording) {
+        cue.dataset.stage = 'recording';
+        copy.textContent = '녹화 중입니다. 답변을 마치면 녹화를 종료하세요.';
+      } else if (hasRecording) {
+        cue.dataset.stage = 'review';
+        copy.textContent = '녹화 완료! 영상을 확인하고 같은 질문을 다시 연습해 보세요.';
+      } else if (active) {
+        cue.dataset.stage = 'practice';
+        copy.textContent = '질문을 확인하고 소리 내어 답변하세요. 영상 녹화는 선택 사항입니다.';
+      } else {
+        cue.dataset.stage = 'setup';
+        copy.textContent = '위에서 연습 모드와 질문을 설정한 뒤 시작하세요.';
+      }
+    };
+    new MutationObserver(setCue).observe(journeyProgress, {childList:true,subtree:true,characterData:true});
+    if (journeyResult) new MutationObserver(setCue).observe(journeyResult, {attributes:true,attributeFilter:['hidden']});
+    if (journeyFeedback) new MutationObserver(setCue).observe(journeyFeedback, {attributes:true,attributeFilter:['hidden']});
+    if (recorder) new MutationObserver(setCue).observe(recorder, {attributes:true,attributeFilter:['disabled']});
+    if (download) new MutationObserver(setCue).observe(download, {attributes:true,attributeFilter:['disabled']});
+    setCue();
+
+    // A direct return to the current question on narrow viewports, avoiding repeated long scrolling.
+    const backToQuestion = document.createElement('button');
+    backToQuestion.type = 'button';
+    backToQuestion.className = 'aii-back-to-question';
+    backToQuestion.textContent = '현재 질문으로 이동 ↑';
+    backToQuestion.addEventListener('click', () => {
+      journeyQuestion?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    });
+    journeyDevice.insertAdjacentElement('beforeend', backToQuestion);
+
+    const flowStyle = document.createElement('style');
+    flowStyle.id = 'aiiGuidedFlowFinal';
+    flowStyle.textContent = `
+      .aii-ux-v2 .aii-journey-cue{display:flex;align-items:center;gap:.6rem;margin:.45rem 0 .9rem;padding:.82rem 1rem;background:#edf6f0;border:1px solid #d6e9dd;border-radius:12px;color:#28553b;font-size:.86rem;font-weight:700;line-height:1.5}
+      .aii-ux-v2 .aii-journey-dot{width:9px;height:9px;flex:0 0 9px;background:#438760;border-radius:50%}
+      .aii-ux-v2 .aii-journey-cue[data-stage="recording"]{background:#fff4f3;border-color:#f0cfcb;color:#933b36}
+      .aii-ux-v2 .aii-journey-cue[data-stage="recording"] .aii-journey-dot{background:#c14d45}
+      .aii-ux-v2 .aii-answer-inline-error{margin:.4rem 0 .6rem;color:#a33838;font-size:.83rem;font-weight:700}
+      .aii-ux-v2 .aii-answer-inline-error:empty{display:none}
+      .aii-ux-v2 .aii-back-to-question{display:none;margin-top:.65rem;width:100%;min-height:44px;padding:.55rem;border:1px solid #bbd3c5;border-radius:11px;background:#f4faf6;color:#25573c;font:inherit;font-size:.84rem;font-weight:750;cursor:pointer}
+      .aii-ux-v2 [data-aii-question]{scroll-margin-top:85px}
+      .aii-ux-v2 .aii-feedback-details:focus-within,.aii-ux-v2 .aii-feedback-panel:focus-within{outline:2px solid #80b79a;outline-offset:2px}
+      @media(max-width:820px){.aii-ux-v2 .aii-back-to-question{display:block}.aii-ux-v2 .aii-journey-cue{font-size:.81rem;padding:.68rem .78rem}}
+    `;
+    document.head.appendChild(flowStyle);
   }
 })();
