@@ -5,7 +5,7 @@ description: 부천 신중동에서 진로·커리어 상담과 코칭을 진행
 category: 미팅·상담
 hub_series: meeting
 hub_section: core
-hub_order: 1
+hub_order: 2
 hub_label: 대표 가이드
 hub_kicker: 사무실 없이 일하는 사람들 · 운영편
 hub_title: 프리랜서 상담사가 고정 사무실 없이 전문적으로 운영하는 법
