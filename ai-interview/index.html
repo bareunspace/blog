@@ -960,7 +960,7 @@ script_version: 20261019-2
               blob: recordedBlob,
               question: String(state.questions[recordingQuestionIndex] || ''),
               questionIndex: recordingQuestionIndex,
-              answer: String(state.answers[recordingQuestionIndex] || answerNode.value || '').trim()
+              answer: String(state.answers[recordingQuestionIndex] ?? (recordingQuestionIndex === state.index ? answerNode.value : '')).trim()
             } }));
           }
           setDeviceStatus(recordedBlob ? '녹화가 완료되었습니다. 아래에서 즉시 재생하고 다시 연습할 수 있습니다.' : '녹화 데이터가 없어 저장할 수 없습니다.');
@@ -1683,7 +1683,7 @@ script_version: 20261019-2
       if (!scoreNotice.isConnected) feedbackStatusNode.insertAdjacentElement('afterend', scoreNotice);
       appendListItems(feedbackQuestionReviewsNode, [
         ...reviewLines,
-        ...(reasons.length ? [`— 아래는 설정·환경 진단에 기반한 참고 항목이며, ${isLocalEstimate ? '로컬 규칙 기반' : 'AI'} 질문별 분석과는 별개입니다 —`] : []),
+        ...(reasons.length ? [`— 아래는 답변 충실도·길이·구체성 및 설정·환경에 관한 규칙 기반 진단이며, ${isLocalEstimate ? '로컬 참고 피드백' : 'AI 질문별 분석'}과는 별개입니다 —`] : []),
         ...reasons.map((reason, index) => `개선 근거 ${index + 1}: ${reason}`)
       ]);
       feedbackNode.hidden = false;
