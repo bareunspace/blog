@@ -111,33 +111,76 @@ script_version: 20260711-4
     </div>
   </section>
 
-  <section id="speaking-rehearsal">
+  <section id="speaking-rehearsal" class="speaking-workflow">
+    <style>
+      /* Scoped to this guide only; existing site typography and colors remain authoritative. */
+      .speaking-workflow .speaking-intro{max-width:780px}
+      .speaking-workflow .speaking-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:32px 0 22px}
+      .speaking-workflow .speaking-step{position:relative;min-width:0;padding:26px;border:1px solid #deded9;border-radius:18px;background:#fff}
+      .speaking-workflow .speaking-step-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+      .speaking-workflow .speaking-step-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:#edf1ed;color:#365244;font-weight:800;font-size:14px}
+      .speaking-workflow .speaking-step-en{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#718078;font-weight:700}
+      .speaking-workflow .speaking-step h3{font-size:clamp(19px,2vw,24px);line-height:1.4;margin:0 0 12px;word-break:keep-all}
+      .speaking-workflow .speaking-step p{font-size:15px;line-height:1.8;margin:0;color:#555f58;word-break:keep-all}
+      .speaking-workflow .speaking-step:nth-child(4){background:#f4f6f3;border-color:#cbd6ce}
+      .speaking-workflow .speaking-tip{display:flex;gap:16px;align-items:flex-start;border-left:3px solid #718c77;background:#f6f7f4;border-radius:0 12px 12px 0;padding:20px 22px;margin:24px 0 38px}
+      .speaking-workflow .speaking-tip strong{flex:0 0 140px;color:#344d3d}
+      .speaking-workflow .speaking-tip p{margin:0;line-height:1.8;font-size:14px;word-break:keep-all}
+      .speaking-workflow .speaking-timer{border:1px solid #deded9;border-radius:18px;overflow:hidden;background:#fff;margin:20px 0}
+      .speaking-workflow .speaking-timer-header{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:22px 24px 8px}
+      .speaking-workflow .speaking-timer-header h3{font-size:22px;margin:0}
+      .speaking-workflow .speaking-timer-header span{font-size:13px;color:#607267}
+      .speaking-workflow .speaking-timebar{display:flex;gap:4px;padding:12px 24px}
+      .speaking-workflow .speaking-timebar span{height:12px;border-radius:4px;background:#b5c7b8}
+      .speaking-workflow .speaking-timebar span:nth-child(2){background:#547961}
+      .speaking-workflow .speaking-timebar span:nth-child(3){background:#88a58d}
+      .speaking-workflow .speaking-timebar span:nth-child(4){background:#365d44}
+      .speaking-workflow .speaking-timeitems{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:8px 12px 24px}
+      .speaking-workflow .speaking-timeitem{padding:8px 12px;border-right:1px solid #e6e8e4}
+      .speaking-workflow .speaking-timeitem:last-child{border-right:0}
+      .speaking-workflow .speaking-timeitem strong{display:block;font-size:22px;color:#344e3e;margin-bottom:6px}
+      .speaking-workflow .speaking-timeitem b{display:block;font-size:14px;margin-bottom:5px}
+      .speaking-workflow .speaking-timeitem p{font-size:12px;color:#606b62;line-height:1.6;margin:0;word-break:keep-all}
+      .speaking-workflow .speaking-next{font-size:14px;line-height:1.8;margin:18px 0 0;color:#526056}
+      .speaking-workflow .speaking-next a{text-decoration:underline;text-underline-offset:3px}
+      @media(max-width:700px){
+        .speaking-workflow .speaking-flow{grid-template-columns:1fr;gap:12px;margin:24px 0 18px}
+        .speaking-workflow .speaking-step{padding:20px}
+        .speaking-workflow .speaking-step-top{margin-bottom:12px}
+        .speaking-workflow .speaking-tip{display:block;padding:17px;margin:20px 0 28px}
+        .speaking-workflow .speaking-tip strong{display:block;margin-bottom:6px}
+        .speaking-workflow .speaking-timer-header{padding:20px 18px 4px}
+        .speaking-workflow .speaking-timebar{padding:12px 18px}
+        .speaking-workflow .speaking-timeitems{grid-template-columns:repeat(2,minmax(0,1fr));padding:4px 10px 14px}
+        .speaking-workflow .speaking-timeitem:nth-child(2){border-right:0}
+        .speaking-workflow .speaking-timeitem:nth-child(-n+2){border-bottom:1px solid #e6e8e4}
+      }
+    </style>
     <div class="section-inner">
       <p class="section-label">Speak · Record · Review · Repeat</p>
-      <h2 class="section-title">실전에서 덜 막히려면, 말하고 녹화하고 다시 말해보세요</h2>
-      <p class="section-desc">답변을 읽고 이해하는 것만으로는 실제 질문 앞에서 자연스럽게 말하기 어렵습니다. 실제 상황처럼 질문을 듣고, 목소리를 내어 답변하고, 휴대폰으로 영상을 저장해 확인해 보세요. 말이 끊기는 부분과 시선·속도·표정은 영상을 다시 볼 때 더 구체적으로 드러납니다. 한 번에 한 가지만 수정하고 다시 촬영하면 첫 영상과 변화도 비교할 수 있습니다.</p>
-      <div class="about-principle-grid" aria-label="말하기 촬영 반복 연습 4단계">
-        <article class="about-principle-item" data-step="01">
-          <h3>원고 없이 실제로 말하기</h3>
-          <p>질문 또는 발표 주제를 보고 답변을 시작합니다. 문장을 읽기보다 핵심 키워드만 떠올리고, 중간에 막혀도 끝까지 이어가 보세요.</p>
-        </article>
-        <article class="about-principle-item" data-step="02">
-          <h3>휴대폰으로 영상 녹화하기</h3>
-          <p>휴대폰을 눈높이에 두고 실제 시험·면접처럼 말하는 모습을 촬영합니다. 목소리뿐 아니라 시선, 표정, 자세와 답변 시간을 확인할 수 있습니다.</p>
-        </article>
-        <article class="about-principle-item" data-step="03">
-          <h3>저장한 영상을 다시 확인하기</h3>
-          <p>첫 문장이 늦게 나오는지, 같은 말을 반복하는지, 속도가 빨라지는지 확인합니다. 부족한 부분을 여러 개 찾더라도 이번에는 가장 중요한 한 가지를 고르세요.</p>
-        </article>
-        <article class="about-principle-item" data-step="04">
-          <h3>한 가지 수정하고 다시 녹화하기</h3>
-          <p>첫 문장을 간결하게 바꾸거나 호흡을 조절한 뒤 같은 질문을 다시 촬영합니다. 이전 영상과 비교하며, 익숙해질 때까지 반복해 보세요.</p>
-        </article>
+      <h2 class="section-title">실전에서 덜 막히려면<br />말하고, 녹화하고, 다시 말해보세요</h2>
+      <p class="section-desc speaking-intro">읽어서 아는 답변도 실제로 입 밖에 꺼내면 막힐 수 있습니다. 첫 영상을 저장하고, 어디서 멈추는지 확인한 뒤, 한 가지를 고쳐 다시 녹화해 보세요. 반복할수록 자신에게 맞는 말하기 흐름을 찾는 데 도움이 됩니다.</p>
+
+      <div class="speaking-flow" aria-label="영상으로 확인하는 말하기 반복 연습 4단계">
+        <article class="speaking-step"><div class="speaking-step-top"><span class="speaking-step-number">01</span><span class="speaking-step-en">Speak</span></div><h3>실제처럼 말하기</h3><p>원고를 읽지 말고 질문을 듣고 답해보세요. 중간에 막혀도 끝까지 이어가며 현재 실력을 확인합니다.</p></article>
+        <article class="speaking-step"><div class="speaking-step-top"><span class="speaking-step-number">02</span><span class="speaking-step-en">Record</span></div><h3>영상으로 남기기</h3><p>휴대폰을 눈높이에 놓고 녹화합니다. 시선과 표정, 말의 속도와 답변 시간을 함께 기록합니다.</p></article>
+        <article class="speaking-step"><div class="speaking-step-top"><span class="speaking-step-number">03</span><span class="speaking-step-en">Review</span></div><h3>다시 보고 확인하기</h3><p>첫 문장이 늦거나 표현이 반복되는 부분을 찾아보세요. 이번에 고칠 문제는 한 가지면 충분합니다.</p></article>
+        <article class="speaking-step"><div class="speaking-step-top"><span class="speaking-step-number">04</span><span class="speaking-step-en">Repeat ↺</span></div><h3>수정해서 재녹화</h3><p>첫 답변과 비교하며 다시 촬영합니다. 같은 질문이 익숙해지면 다른 질문에도 적용해 보세요.</p></article>
       </div>
-      <div class="about-quote"><p><strong>목표는 대본을 완벽히 암기하는 것이 아닙니다.</strong> 질문이나 순서가 조금 달라져도 핵심 내용을 자기 말로 이어갈 수 있도록 익숙해지는 것입니다. 반복 연습은 긴장을 줄이고 답변 흐름을 안정시키는 데 도움이 될 수 있지만, 실전에서 막힘이 전혀 없어진다고 보장할 수는 없습니다.</p></div>
-      <h3>60분이라면 이렇게 연습해 보세요</h3>
-      <p class="section-desc"><strong>10분</strong> 핵심 질문 3개와 키워드 정리 → <strong>20분</strong> 첫 답변을 실제처럼 말하며 영상 촬영 → <strong>15분</strong> 영상을 다시 보며 멈춤·속도·시선 점검 → <strong>15분</strong> 한 가지 수정 후 같은 질문 재녹화. 영어 스피킹은 음성 녹음만으로도 발음과 답변 흐름을 비교할 수 있습니다.</p>
-      <p class="section-desc">면접 답변을 집중적으로 연습한다면 <a href="/posts/interview-answer-practice/">혼자 하는 면접 답변 60분 연습법</a>, OPIc·토익스피킹이라면 <a href="/posts/english-speaking-test-recording-practice/">녹음·재녹음 영어 말하기 연습법</a>을 이어서 확인해 보세요. 촬영과 저장은 이용자 개인 기기로 직접 진행하며, 바른자리가 촬영이나 피드백 서비스를 제공하는 것은 아닙니다.</p>
+
+      <div class="speaking-tip"><strong>연습의 목표</strong><p>대본을 완벽하게 외우는 것이 아니라, 질문이 조금 달라져도 <strong>자기 말로 자연스럽게 이어가는 것</strong>입니다. 반복이 실전의 모든 긴장을 없애주지는 않지만 답변 흐름을 다듬는 데 도움이 됩니다.</p></div>
+
+      <div class="speaking-timer" aria-label="60분 말하기 연습 시간표">
+        <div class="speaking-timer-header"><h3>60분 실전 연습 루틴</h3><span>개인 연습 예시</span></div>
+        <div class="speaking-timebar" aria-hidden="true"><span style="flex:10"></span><span style="flex:20"></span><span style="flex:15"></span><span style="flex:15"></span></div>
+        <div class="speaking-timeitems">
+          <div class="speaking-timeitem"><strong>10분</strong><b>질문 정리</b><p>질문 3개와 핵심 키워드 준비</p></div>
+          <div class="speaking-timeitem"><strong>20분</strong><b>첫 촬영</b><p>실제처럼 말하며 영상 저장</p></div>
+          <div class="speaking-timeitem"><strong>15분</strong><b>영상 리뷰</b><p>멈춤·속도·시선 점검</p></div>
+          <div class="speaking-timeitem"><strong>15분</strong><b>재녹화</b><p>한 가지 수정하고 비교</p></div>
+        </div>
+      </div>
+      <p class="speaking-next">OPIc·토익스피킹은 <a href="/posts/english-speaking-test-recording-practice/">음성 녹음·재녹음 연습법</a>도 활용할 수 있습니다. 면접 준비에는 <a href="/posts/interview-answer-practice/">면접 답변 60분 연습법</a>을 참고하세요. 촬영·저장은 이용자 개인 기기로 직접 진행하며 바른자리는 촬영이나 코칭 서비스를 제공하지 않습니다.</p>
     </div>
   </section>
 
