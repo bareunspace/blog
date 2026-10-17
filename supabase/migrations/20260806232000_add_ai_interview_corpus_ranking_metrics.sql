@@ -27,3 +27,6 @@ select
     2
   ) as rank_score
 from public.ai_interview_question_corpus c;
+
+alter view public.ai_interview_question_corpus_ranked set (security_invoker = true);
+revoke all on public.ai_interview_question_corpus_ranked from anon, authenticated;

@@ -35,3 +35,12 @@ create table if not exists public.ai_interview_qa_corpus (
 
 create index if not exists idx_ai_interview_qa_corpus_lookup
   on public.ai_interview_qa_corpus (interview_type_key, company_key, role_key, created_at desc);
+
+-- Both tables are written and read only by the ai-interview-feedback edge function using the
+-- service role key, which bypasses RLS. No anon/authenticated access is needed or intended,
+-- since ai_interview_qa_corpus holds applicants' raw interview answer text.
+alter table public.ai_interview_question_corpus enable row level security;
+revoke all on public.ai_interview_question_corpus from anon, authenticated;
+
+alter table public.ai_interview_qa_corpus enable row level security;
+revoke all on public.ai_interview_qa_corpus from anon, authenticated;

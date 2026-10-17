@@ -111,13 +111,11 @@
 
   const hero = document.querySelector('.aii-hero');
   const heroLabel = hero?.querySelector('.section-label');
-  const heroTitle = hero?.querySelector('.section-title');
-  const heroSubtitle = hero?.querySelector('.hero-subtitle');
   const heroPrimary = hero?.querySelector('.btn-primary');
   if (heroLabel) heroLabel.textContent = 'AI INTERVIEW PRACTICE';
-  if (heroTitle) heroTitle.textContent = '질문을 듣고, 소리 내어 답하고, 바로 개선하세요.';
-  if (heroSubtitle) heroSubtitle.textContent = 'AI 추천 질문이나 내가 준비한 질문으로 실제 면접처럼 말해보고, 답변을 기록해 피드백까지 이어가는 연습 공간입니다.';
   if (heroPrimary) heroPrimary.textContent = '바로 연습 시작';
+  // heroTitle/heroSubtitle are set once, by ai-interview-ui-polish.js (loaded last), to avoid
+  // multiple scripts racing to overwrite the same text.
 
   const setupShell = setupSection.querySelector('.aii-flow-shell-setup');
   const setupTitle = setupShell?.querySelector('.section-title');
@@ -345,11 +343,12 @@
   demoSection.querySelector('.aii-flow-shell-demo')?.prepend(demoStage);
   const demoChips = [...demoStage.children];
   const hasQuestion = () => /질문\s*[1-9]\d*\s*\/\s*\d+/.test(appProgress?.textContent || '');
+  const currentQuestionText = () => String(appQuestion?.textContent || '').trim();
+  const questionRecordingCounts = new Map();
   const updateStages = () => {
     const complete = Boolean(appResult && !appResult.hidden);
-    const feedbackReady = Boolean(appFeedback && !appFeedback.hidden);
-    const videoReady = Boolean(appDownload && !appDownload.disabled);
-    const step = complete ? (feedbackReady ? 2 : 2) : hasQuestion() ? (videoReady ? 3 : 1) : 0;
+    const isRepeatPractice = (questionRecordingCounts.get(currentQuestionText()) || 0) >= 2;
+    const step = complete ? 2 : hasQuestion() ? (isRepeatPractice ? 3 : 1) : 0;
     [stageChips,demoChips].forEach(chips => chips.forEach((chip,i) => {
       chip.classList.toggle('is-current',i===step);
       if(i===step) chip.setAttribute('aria-current','step'); else chip.removeAttribute('aria-current');
@@ -357,6 +356,12 @@
     document.body.classList.toggle('aii-focus-practicing',hasQuestion() && !complete);
     document.body.classList.toggle('aii-focus-reviewing',complete);
   };
+  document.addEventListener('aii:recording-complete', (event) => {
+    const question = String(event.detail?.question || '');
+    if (!question) return;
+    questionRecordingCounts.set(question, (questionRecordingCounts.get(question) || 0) + 1);
+    updateStages();
+  });
   if (appProgress) new MutationObserver(updateStages).observe(appProgress,{childList:true,characterData:true,subtree:true});
   if (appResult) new MutationObserver(updateStages).observe(appResult,{attributes:true,attributeFilter:['hidden']});
   if (appFeedback) new MutationObserver(updateStages).observe(appFeedback,{attributes:true,attributeFilter:['hidden']});

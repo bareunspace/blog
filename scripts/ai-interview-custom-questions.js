@@ -363,7 +363,7 @@
       if (customModeActive && activeCustomQuestions.length && url.includes('/functions/v1/ai-interview-feedback')) {
         if (body?.action === 'generate_questions') {
           const questions = makeInternalQuestions(activeCustomQuestions.length, String(interviewType.value || ''));
-          return new Response(JSON.stringify({ questions, source: 'ai' }), {
+          return new Response(JSON.stringify({ questions, source: 'user_custom' }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
           });
