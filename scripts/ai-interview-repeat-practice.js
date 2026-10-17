@@ -62,6 +62,8 @@
     .aii-repeat-video strong{display:block;font-size:.78rem;margin-bottom:.4rem;color:#294c39}
     .aii-repeat-video video{width:100%;display:block;border-radius:8px;background:#15221b;max-height:240px}
     .aii-repeat-video p{font-size:.74rem;color:#617468;overflow-wrap:anywhere}
+    .aii-repeat-compare-note{margin:.55rem 0 0;color:#315741;font-size:.78rem;font-weight:650;line-height:1.6}
+    .aii-repeat-compare-note:empty{display:none}
     @media(max-width:600px){.aii-repeat-videos{grid-template-columns:1fr}}
     @media(max-width:600px){.aii-repeat-focus{display:grid;grid-template-columns:1fr 1fr}.aii-repeat-focus button{width:100%}.aii-repeat-action{display:grid}.aii-repeat-action button{width:100%}}
   `;
@@ -89,6 +91,7 @@
       <div class="aii-repeat-video" data-aii-repeat-first><strong>첫 번째 녹화</strong><video controls playsinline preload="metadata"></video><p data-aii-repeat-first-answer></p></div>
       <div class="aii-repeat-video" data-aii-repeat-second hidden><strong>다시 녹화</strong><video controls playsinline preload="metadata"></video><p data-aii-repeat-second-answer></p></div>
     </div>
+    <p class="aii-repeat-compare-note" data-aii-repeat-comparison aria-live="polite"></p>
   `;
 
   const answerMeta = card.querySelector('.aii-answer-meta');
@@ -102,6 +105,7 @@
   const videoSlots = [panel.querySelector('[data-aii-repeat-first]'), panel.querySelector('[data-aii-repeat-second]')];
   const videoUrls = [];
   let recordingQuestion = '';
+  const recordedAnswers = [];
   const clearLocalVideos = () => {
     videoSlots.forEach((slot) => {
       const video = slot.querySelector('video');
@@ -111,6 +115,7 @@
       slot.hidden = true;
     });
     videoUrls.splice(0).forEach((url) => URL.revokeObjectURL(url));
+    recordedAnswers.length = 0;
     videoPanel.hidden = true;
   };
   document.addEventListener('aii:recording-complete', (event) => {
@@ -133,13 +138,25 @@
       videoUrls.push(lastUrl);
       videoSlots[0].querySelector('video').src = lastUrl;
       videoSlots[0].querySelector('p').textContent = videoSlots[1].querySelector('p').textContent;
+      recordedAnswers.splice(0, recordedAnswers.length, recordedAnswers[recordedAnswers.length - 1] || '');
     }
     const index = videoUrls.length;
     const url = URL.createObjectURL(blob);
     videoUrls.push(url);
     videoSlots[index].querySelector('video').src = url;
     const answer = String(event.detail?.answer || '').trim();
+    recordedAnswers[index] = answer;
     videoSlots[index].querySelector('p').textContent = answer ? `답변 ${answer.length}자` : '답변 텍스트 없음';
+    const comparison = panel.querySelector('[data-aii-repeat-comparison]');
+    if (comparison) {
+      if (videoUrls.length === 2) {
+        const before = recordedAnswers[0] || '';
+        const after = recordedAnswers[1] || '';
+        comparison.textContent = before && after
+          ? `답변 길이: 1차 ${before.length}자 → 2차 ${after.length}자 (차이 ${after.length - before.length > 0 ? '+' : ''}${after.length - before.length}자). 길이 변화는 답변의 질을 뜻하지 않습니다.`
+          : '두 영상을 직접 비교해 첫 문장, 속도, 시선을 점검하세요.';
+      } else comparison.textContent = '두 번째 녹화를 완료하면 비교 안내가 표시됩니다.';
+    }
     videoSlots[index].hidden = false;
     videoPanel.hidden = false;
   });
