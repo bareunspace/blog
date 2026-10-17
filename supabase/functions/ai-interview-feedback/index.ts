@@ -40,14 +40,14 @@ type FeedbackResult = {
   improvements: string[];
   nextQuestions: string[];
   scoreCard: {
-    clarity: number;
-    specificity: number;
-    structure: number;
-    overall: number;
+    clarity: number | null;
+    specificity: number | null;
+    structure: number | null;
+    overall: number | null;
   };
   questionReviews: Array<{
     question: string;
-    score: number;
+    score: number | null;
     comment: string;
   }>;
 };
@@ -278,7 +278,7 @@ const buildFeedbackQualityAudit = (payload: FeedbackPayload, feedback: FeedbackR
   const answerQualityScore = clampScore(avgLength >= 170 ? 92 : avgLength >= 120 ? 80 : avgLength >= 80 ? 68 : 52);
   const evidenceHits = answers.filter((item) => /\d|결과|성과|개선|impact|result|metric|data/i.test(item)).length;
   const evidenceScore = clampScore((evidenceHits / total) * 100);
-  const feedbackScore = clampScore(feedback.scoreCard?.overall ?? Math.round((feedback.scoreCard.clarity + feedback.scoreCard.specificity + feedback.scoreCard.structure) / 3));
+  const feedbackScore = feedback.scoreCard?.overall === null ? 0 : clampScore(feedback.scoreCard.overall);
   const overall = clampScore(Math.round((completionScore * 0.35) + (answerQualityScore * 0.25) + (evidenceScore * 0.2) + (feedbackScore * 0.2)));
 
   const reasons: string[] = [];
@@ -369,18 +369,16 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
   const scoreCardRaw = (record.scoreCard && typeof record.scoreCard === 'object')
     ? record.scoreCard as Record<string, unknown>
     : {};
-  const toScore = (score: unknown, fallbackValue: number) => {
+  const toScore = (score: unknown): number | null => {
+    if (score === null || score === undefined || String(score).trim() === '') return null;
     const numeric = Number(score);
-    if (!Number.isFinite(numeric)) {
-      return fallbackValue;
-    }
-    return Math.max(0, Math.min(100, Math.round(numeric)));
+    return Number.isFinite(numeric) ? Math.max(0, Math.min(100, Math.round(numeric))) : null;
   };
   const scoreCard = {
-    clarity: toScore(scoreCardRaw.clarity, 72),
-    specificity: toScore(scoreCardRaw.specificity, 70),
-    structure: toScore(scoreCardRaw.structure, 73),
-    overall: toScore(scoreCardRaw.overall, 72)
+    clarity: toScore(scoreCardRaw.clarity),
+    specificity: toScore(scoreCardRaw.specificity),
+    structure: toScore(scoreCardRaw.structure),
+    overall: toScore(scoreCardRaw.overall)
   };
   const questionReviewsRaw = Array.isArray(record.questionReviews) ? record.questionReviews : [];
   const questionReviews = questionReviewsRaw
@@ -397,10 +395,10 @@ const normalizeFeedback = (value: unknown): FeedbackResult | null => {
       return {
         question,
         comment,
-        score: toScore(row.score, 70)
+        score: toScore(row.score)
       };
     })
-    .filter((item): item is { question: string; score: number; comment: string } => Boolean(item))
+    .filter((item): item is { question: string; score: number | null; comment: string } => Boolean(item))
     .slice(0, 7);
 
   if (!summary || strengths.length === 0 || improvements.length === 0 || nextQuestions.length === 0) {
@@ -453,7 +451,11 @@ const buildPrompt = (payload: FeedbackPayload) => {
     '- strengths: 3개 배열',
     '- improvements: 3개 배열',
     '- nextQuestions: 2개 배열',
-    '- scoreCard: { clarity, specificity, structure, overall } (0~100 정수)',
+    '- scoreCard: { clarity, specificity, structure, overall } (각 항목은 평가 근거가 충분하면 0~100 정수, 부족하면 null)',
+    '- 점수는 텍스트 근거에 한정하며 발음·시선·속도 등 관측하지 않은 능력을 평가하지 마세요.',
+    '- improvements는 각 항목에 원문에 나타난 부족한 점, 그 이유, 다음 답변에서 할 구체적인 행동을 포함하세요.',
+    '- 존재하지 않는 경험이나 성과·수치를 만들어 내지 마세요.',
+    '- questionReviews.comment는 답변에서 실제 확인한 근거와 하나의 개선 행동을 구체적으로 설명하세요.',
     '- questionReviews: 각 질문에 대해 { question, score, comment } 배열 (최대 7개)',
     '- 모든 문장은 한국어 존댓말',
     '- 마크다운 금지, 코드블록 금지, 설명문 금지',
