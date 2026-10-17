@@ -293,6 +293,14 @@ script_version: 20260711-4
     </div>
   </section>
 
+      <aside data-two-hour-rehearsal style="margin:26px 0;padding:24px;border:1px solid #d9e3da;border-radius:16px;background:#f5f8f5;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:.08em;color:#54725b;margin:0 0 8px;">2-HOUR REHEARSAL · 이용 시간 제안</p>
+        <h3 style="font-size:clamp(19px,2.3vw,24px);line-height:1.45;margin:0 0 12px;">중요한 면접·발표 전, 2시간 실전 리허설</h3>
+        <p style="line-height:1.8;margin:0 0 12px;">답변 준비 20분 → 실제 답변 녹화 40분 → 영상 확인·수정 30분 → 재녹화와 최종 점검 30분. 충분히 반복하고 싶은 날에 활용할 수 있는 예시입니다.</p>
+        <p style="font-size:14px;line-height:1.75;color:#5d695f;margin:0 0 16px;">별도 패키지나 코칭 상품이 아닙니다. 기존 공간대여 예약에서 목적에 맞게 1시간 또는 2시간 이상을 선택하세요.</p>
+        <a href="/booking/?purpose=interview&amp;source=two-hour-rehearsal" class="btn-primary" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">2시간 연습할 시간 확인하기</a>
+      </aside>
+
   <section id="checklist">
     <div class="section-inner">
       <h2 class="section-title">면접 연습 체크리스트</h2>
