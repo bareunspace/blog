@@ -343,12 +343,15 @@
   demoSection.querySelector('.aii-flow-shell-demo')?.prepend(demoStage);
   const demoChips = [...demoStage.children];
   const hasQuestion = () => /질문\s*[1-9]\d*\s*\/\s*\d+/.test(appProgress?.textContent || '');
-  const currentQuestionText = () => String(appQuestion?.textContent || '').trim();
+  const currentQuestionIndex = () => { const match = String(appProgress?.textContent || '').match(/(\d+)\s*\/\s*\d+/); return match ? Number(match[1]) - 1 : -1; };
   const questionRecordingCounts = new Map();
+  let retryAfterResults = false;
+  let repeatedAfterResults = false;
+  const clearRecordingProgress = () => { questionRecordingCounts.clear(); retryAfterResults = false; repeatedAfterResults = false; updateStages(); };
   const updateStages = () => {
     const complete = Boolean(appResult && !appResult.hidden);
-    const isRepeatPractice = (questionRecordingCounts.get(currentQuestionText()) || 0) >= 2;
-    const step = complete ? 2 : hasQuestion() ? (isRepeatPractice ? 3 : 1) : 0;
+    const isRepeatPractice = (questionRecordingCounts.get(currentQuestionIndex()) || 0) >= 2;
+    const step = repeatedAfterResults || (!complete && isRepeatPractice) ? 3 : complete ? 2 : hasQuestion() ? 1 : 0;
     [stageChips,demoChips].forEach(chips => chips.forEach((chip,i) => {
       chip.classList.toggle('is-current',i===step);
       if(i===step) chip.setAttribute('aria-current','step'); else chip.removeAttribute('aria-current');
@@ -357,16 +360,20 @@
     document.body.classList.toggle('aii-focus-reviewing',complete);
   };
   document.addEventListener('aii:recording-complete', (event) => {
-    const question = String(event.detail?.question || '');
-    if (!question) return;
-    questionRecordingCounts.set(question, (questionRecordingCounts.get(question) || 0) + 1);
+    const index = Number(event.detail?.questionIndex);
+    if (!Number.isInteger(index) || index < 0) return;
+    questionRecordingCounts.set(index, (questionRecordingCounts.get(index) || 0) + 1);
+    if (retryAfterResults && index === currentQuestionIndex()) { repeatedAfterResults = true; retryAfterResults = false; }
     updateStages();
   });
   if (appProgress) new MutationObserver(updateStages).observe(appProgress,{childList:true,characterData:true,subtree:true});
   if (appResult) new MutationObserver(updateStages).observe(appResult,{attributes:true,attributeFilter:['hidden']});
   if (appFeedback) new MutationObserver(updateStages).observe(appFeedback,{attributes:true,attributeFilter:['hidden']});
   if (appDownload) new MutationObserver(updateStages).observe(appDownload,{attributes:true,attributeFilter:['disabled']});
-  form.addEventListener('submit', () => window.setTimeout(updateStages,150));
+  form.addEventListener('submit', () => { clearRecordingProgress(); window.setTimeout(updateStages,150); });
+  resetButton?.addEventListener('click', clearRecordingProgress);
+  restartButton?.addEventListener('click', clearRecordingProgress);
+  document.querySelector('[data-aii-repeat-same]')?.addEventListener('click', () => { if (appResult && !appResult.hidden) retryAfterResults = true; });
   updateStages();
 
   const focusCss = document.createElement('style');
