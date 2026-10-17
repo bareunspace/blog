@@ -7246,6 +7246,7 @@ main.tutoring-guide .guide-booking-panel .section-desc {
 /* ── Mobile ── */
 @media (max-width: 640px) {
   body { padding-bottom: 78px; }
+  main.about-page #home .post-inline-community-note { margin-top: 2rem; }
   nav { padding: .9rem 1rem; }
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .nav-cta { display: none; }
