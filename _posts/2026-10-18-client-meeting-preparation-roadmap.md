@@ -15,11 +15,11 @@ tags:
 canonical: https://bareunjari.com/posts/client-meeting-preparation-roadmap/
 permalink: /posts/client-meeting-preparation-roadmap/
 date: 2026-10-18 00:00:00 +0900
-og_image: https://bareunjari.com/images/bucheon-meeting-room-real-20261010.webp
-og_image_alt: 바른자리 공간에서 노트북과 자료를 두고 고객과 마주 앉아 미팅을 준비하는 장면
+og_image: https://bareunjari.com/images/short-term-office-rental-real-20261011.webp
+og_image_alt: 바른자리 테이블에서 노트북을 펴고 미팅 자료를 준비하는 장면
 og_image_width: 1672
 og_image_height: 941
-preload_image: images/bucheon-meeting-room-real-20261010.webp
+preload_image: images/short-term-office-rental-real-20261011.webp
 extra_css: /styles/client-meeting-preparation-roadmap.css
 extra_css_version: 20261018-1
 ---
@@ -43,8 +43,8 @@ extra_css_version: 20261018-1
   <section class="cm-image-section" aria-label="고객 미팅 준비 장면">
     <div class="section-inner">
       <figure class="cm-photo cm-photo-hero">
-        <img src="/images/bucheon-meeting-room-real-20261010.webp" alt="바른자리 공간에서 노트북과 자료를 두고 고객과 마주 앉아 이야기를 나누는 미팅 장면" width="1672" height="941" loading="eager" fetchpriority="high" />
-        <figcaption>이미 장소를 정했거나 미팅이 내일이라면 필요한 단계부터 보셔도 됩니다. 실제 바른자리 공간에서 촬영한 미팅 장면입니다.</figcaption>
+        <img src="/images/short-term-office-rental-real-20261011.webp" alt="바른자리 테이블에서 노트북을 펴고 미팅 자료를 준비하는 장면" width="1672" height="941" loading="eager" fetchpriority="high" />
+        <figcaption>이미 장소를 정했거나 미팅이 내일이라면 필요한 단계부터 보셔도 됩니다. 실제 바른자리 공간에서 촬영한 장면입니다.</figcaption>
       </figure>
     </div>
   </section>
@@ -104,7 +104,7 @@ extra_css_version: 20261018-1
   <section id="step-place" class="cm-section">
     <div class="section-inner cm-split cm-split-media">
       <figure class="cm-photo cm-photo-inline">
-        <img src="/images/short-term-office-rental-real-20261011.webp" alt="바른자리 공간을 배경으로 노트북을 펴고 혼자 자료를 준비하는 장면" width="1672" height="941" loading="lazy" />
+        <img src="/images/bucheon-meeting-room-real-20261010.webp" alt="바른자리 공간에서 노트북과 자료를 두고 고객과 마주 앉아 이야기를 나누는 미팅 장면" width="1672" height="941" loading="lazy" />
         <figcaption>짧은 인사는 카페로 충분하지만, 계약·상담처럼 집중이 필요한 미팅이라면 단독으로 쓰는 공간이 편합니다. 기존 바른자리 공간 이미지입니다.</figcaption>
       </figure>
       <div class="cm-copy">
