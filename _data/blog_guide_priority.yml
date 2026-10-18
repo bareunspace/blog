@@ -1,3 +1,17 @@
+# GA4 direct Naver booking button clicks attributed to post source_path.
+# 90-day window checked 2026-10-18; counts are click intents, NOT confirmed bookings.
+# Pages with at least 2 observed clicks, descending. Manually review periodically.
+# Homepage only: the interview roadmap is pinned independently in index.html.
+"_booking_click_priority":
+  - /posts/one-person-study-room/ # 7
+  - /posts/online-aptitude-test-space/ # 3
+  - /posts/ai-competency-test-space/ # 2
+  - /posts/online-exam-home-setup/ # 2
+  - /posts/online-coding-test-place/ # 2
+  - /posts/duolingo-english-test-space/ # 2
+  - /posts/bucheon-tutoring-class-space/ # 2
+  - /posts/practice-speaking-space/ # 2
+
 # Priority order for the Practical Guides section.
 # Rule: prioritize recent booking clicks first, then observed reservation demand,
 # then recent GSC/GA4 traffic. Avoid reordering from a single weak signal alone.
