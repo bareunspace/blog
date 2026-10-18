@@ -75,7 +75,7 @@ extra_css_version: 20261018-1
         <li><span>04</span><div><strong>고객 안내</strong><small>위치·입장 방법을 미리 보내기</small></div><a href="#step-notice" aria-label="고객 안내 단계로 이동">보기 →</a></li>
         <li><span>05</span><div><strong>30분 전 준비</strong><small>자료·화면·좌석 배치 점검</small></div><a href="#step-ready" aria-label="30분 전 준비 단계로 이동">보기 →</a></li>
         <li><span>06</span><div><strong>후속 업무</strong><small>미팅 직후 메모·견적·다음 일정</small></div><a href="#step-followup" aria-label="후속 업무 단계로 이동">보기 →</a></li>
-        <li><span>07</span><div><strong>정기 이용</strong><small>반복 미팅이면 고정 시간 확보</small></div><a href="#step-followup" aria-label="정기 이용 단계로 이동">보기 →</a></li>
+        <li><span>07</span><div><strong>정기 이용</strong><small>반복 미팅이면 고정 시간 확보</small></div><a href="#step-recurring" aria-label="정기 이용 단계로 이동">보기 →</a></li>
       </ol>
     </div>
   </section>
@@ -167,7 +167,7 @@ extra_css_version: 20261018-1
   </section>
 
   <section id="step-ready" class="cm-section cm-section-soft">
-    <div class="section-inner cm-split">
+    <div class="section-inner">
       <div class="cm-copy">
         <p class="cm-step-label">STEP 05 · 미팅 전 30분 준비</p>
         <h2 class="section-title">고객이 들어오면 바로 본론을 시작할 수 있도록</h2>
@@ -202,7 +202,7 @@ extra_css_version: 20261018-1
       </ul>
       <p>상담이라면 상담 기록 정리 후 다음 회기 준비까지 이 시간에 처리합니다. 운영 루틴은 <a href="/posts/freelance-counselor-office/">프리랜서 상담사 공간 운영</a>을 참고하세요.</p>
 
-      <p class="cm-step-label" style="margin-top:2.2rem">STEP 07 · 반복 일정이면 정기 이용으로</p>
+      <p id="step-recurring" class="cm-step-label" style="margin-top:2.2rem;scroll-margin-top:6.2rem">STEP 07 · 반복 일정이면 정기 이용으로</p>
       <h2 class="section-title">매번 장소를 찾는 대신 고정 시간을 미리 확보하세요</h2>
       <p>매주 같은 요일에 상담·레슨·정기 미팅이 있다면 매번 장소를 찾는 대신 <strong>고정 시간을 미리 확보</strong>하세요. 고객도 같은 장소에 익숙해져 안내가 필요 없어집니다.</p>
       <ul class="cm-checklist">
