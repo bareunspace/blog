@@ -297,7 +297,12 @@ script_version: 20260719-1
         {% assign ranked_guide_posts = ranked_guide_posts | concat: matched_guide_post %}
       {% endfor %}
       {% assign roadmap_first = onsite_posts | where: "url", "/posts/interview-preparation-roadmap/" %}
-      {% assign onsite_posts = roadmap_first | concat: ranked_guide_posts | concat: onsite_posts | uniq %}
+      {% assign booking_ranked_posts = "" | split: "," %}
+      {% for booking_url in site.data.blog_guide_priority["_booking_click_priority"] %}
+        {% assign booking_match = onsite_posts | where: "url", booking_url %}
+        {% assign booking_ranked_posts = booking_ranked_posts | concat: booking_match %}
+      {% endfor %}
+      {% assign onsite_posts = roadmap_first | concat: booking_ranked_posts | concat: ranked_guide_posts | concat: onsite_posts | uniq %}
       {% if onsite_posts.size > 0 %}
       <div class="blog-guide-filters" id="homeGuideFilters" aria-label="실전 가이드 카테고리 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
