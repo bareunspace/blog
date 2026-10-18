@@ -202,7 +202,7 @@ extra_css_version: 20261018-1
       </ul>
       <p>상담이라면 상담 기록 정리 후 다음 회기 준비까지 이 시간에 처리합니다. 운영 루틴은 <a href="/posts/freelance-counselor-office/">프리랜서 상담사 공간 운영</a>을 참고하세요.</p>
 
-      <p id="step-recurring" class="cm-step-label" style="margin-top:2.2rem;scroll-margin-top:6.2rem">STEP 07 · 반복 일정이면 정기 이용으로</p>
+      <p id="step-recurring" class="cm-step-label" style="margin-top:2.2rem;scroll-margin-top:9rem">STEP 07 · 반복 일정이면 정기 이용으로</p>
       <h2 class="section-title">매번 장소를 찾는 대신 고정 시간을 미리 확보하세요</h2>
       <p>매주 같은 요일에 상담·레슨·정기 미팅이 있다면 매번 장소를 찾는 대신 <strong>고정 시간을 미리 확보</strong>하세요. 고객도 같은 장소에 익숙해져 안내가 필요 없어집니다.</p>
       <ul class="cm-checklist">
