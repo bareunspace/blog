@@ -57,7 +57,7 @@ preload_image: images/experienced-hire-interview-experience-guide.webp
   <section id="choose">
     <div class="section-inner">
       <h2 class="section-title">경력 전체를 외우기보다 대표 경험 3~5개를 고르세요</h2>
-      <p class="section-desc">경력이 길어질수록 말할 수 있는 프로젝트와 업무가 많아집니다. 하지만 면접에서 모든 경험을 같은 깊이로 준비할 필요는 없습니다. 지원 공고와 제출한 이력서·CV·경력기술서를 나란히 놓고, 아래에 해당하는 경험을 우선 골라보세요.</p>
+      <p class="section-desc">경력이 길어질수록 말할 수 있는 프로젝트와 업무가 많아집니다. 하지만 면접에서 모든 경험을 같은 깊이로 준비할 필요는 없습니다. 지원 공고와 제출한 이력서·CV(Curriculum Vitae)·경력기술서를 나란히 놓고, 아래에 해당하는 경험을 우선 골라보세요.</p>
       <div class="about-highlight-grid">
         <article class="about-highlight-card"><h3>지원 직무와 가장 가까운 경험</h3><p>이번 회사에서 바로 활용할 수 있는 업무나 문제 해결 경험을 먼저 고릅니다.</p></article>
         <article class="about-highlight-card"><h3>성과를 설명할 수 있는 경험</h3><p>매출, 비용, 기간, 고객 반응, 처리시간 등 전후 변화를 설명할 수 있는 경험이 좋습니다.</p></article>
