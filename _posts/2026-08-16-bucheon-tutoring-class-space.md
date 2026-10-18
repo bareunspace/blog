@@ -146,4 +146,6 @@ script_version: 20260711-4
   </div></div></section>
 
   <section id="bareunjari"><div class="section-inner"><p class="section-label">Bareunjari</p><h2 class="section-title">과외 장소가 애매한 날, 수업할 시간을 예약하세요</h2><p class="section-desc">학생 집도, 카페도, 고정 강의실도 상황에 따라 좋은 선택지입니다. 다만 설명하고 질문을 주고받으며 수업에 집중해야 하는 날에는 필요한 시간만 확보하는 독립 공간이 더 맞을 수 있습니다.</p><div class="about-quote"><p><strong>선생님과 학생이 설명하고, 질문하고, 문제를 풀 수 있는 시간을 예약하세요.</strong></p></div><div class="hero-btns"><a href="/study/" class="btn-outline">스터디·소모임 더 알아보기</a><a href="/booking/" class="btn-primary">현재 이용시간·요금 확인하기</a></div></div></section>
+
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">수업 전 준비 순서 보기 →</a></p></div></section>
 </main>

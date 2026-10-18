@@ -1,0 +1,64 @@
+/* Client meeting preparation roadmap · site-wide components + scoped editorial layout */
+.client-meeting-roadmap-page{--cm-green:#23573d;--cm-ink:#1a3026;--cm-muted:#586a60;--cm-line:#dbe7de;--cm-surface:#f4f8f5;color:var(--cm-ink)}
+.client-meeting-roadmap-page .cm-hero{background:linear-gradient(135deg,#183d30,#2b6047);padding:clamp(4.25rem,8vw,6rem) 1.25rem clamp(3rem,6vw,4.5rem);color:#fff}
+.client-meeting-roadmap-page .cm-hero .section-inner{max-width:1050px}
+.client-meeting-roadmap-page .cm-hero .section-label{color:#bce7c6;letter-spacing:.12em}
+.client-meeting-roadmap-page .cm-hero .section-title{color:#fff;font-size:clamp(2.1rem,5vw,3.55rem);line-height:1.2;letter-spacing:-.045em;word-break:keep-all;max-width:19ch}
+.client-meeting-roadmap-page .cm-hero .hero-subtitle{color:#f0f8f2;font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:700;max-width:730px;line-height:1.5;word-break:keep-all}
+.client-meeting-roadmap-page .cm-hero .section-desc{color:#e0ebe3;max-width:800px;line-height:1.85;word-break:keep-all}
+.client-meeting-roadmap-page .cm-hero .btn-primary{background:#fff;color:#19432e;border-color:#fff}
+.client-meeting-roadmap-page .cm-hero .btn-outline{border-color:rgba(255,255,255,.7);color:#fff}
+.client-meeting-roadmap-page .cm-hero .btn-outline:hover{background:rgba(255,255,255,.13)}
+.client-meeting-roadmap-page .cm-image-section{padding:clamp(1.2rem,3vw,2rem) 1.25rem 0}
+.client-meeting-roadmap-page .cm-image-section .section-inner,.client-meeting-roadmap-page .cm-section .section-inner{max-width:1060px}
+.client-meeting-roadmap-page .cm-photo{margin:0}
+.client-meeting-roadmap-page .cm-photo img{display:block;width:100%;height:auto;object-fit:cover;border-radius:20px}
+.client-meeting-roadmap-page .cm-photo-hero img{aspect-ratio:16/9}
+.client-meeting-roadmap-page .cm-photo figcaption{padding:.7rem .25rem 0;color:#64756a;font-size:.84rem;line-height:1.7;text-align:center;word-break:keep-all}
+.client-meeting-roadmap-page .guide-toc{margin-top:clamp(1.2rem,2.6vw,2rem)}
+.client-meeting-roadmap-page .cm-section{padding:clamp(3rem,6vw,5rem) 1.25rem;scroll-margin-top:6.2rem}
+.client-meeting-roadmap-page .cm-section-soft{background:var(--cm-surface)}
+.client-meeting-roadmap-page .cm-section .section-title{font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.35;letter-spacing:-.035em;word-break:keep-all}
+.client-meeting-roadmap-page .cm-section p{line-height:1.82;word-break:keep-all}
+.client-meeting-roadmap-page .cm-step-label{color:#27704b;font-weight:800;letter-spacing:.045em;font-size:.8rem;margin:0 0 .65rem}
+.client-meeting-roadmap-page .cm-route{padding:0;margin:1.9rem 0 0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.client-meeting-roadmap-page .cm-route li{display:flex;align-items:center;gap:.72rem;background:#fff;border:1px solid var(--cm-line);border-radius:16px;padding:1rem;min-height:94px;box-shadow:0 5px 19px rgba(17,60,34,.03)}
+.client-meeting-roadmap-page .cm-route li>span{font-weight:900;color:#2d694b;font-size:1.15rem;align-self:flex-start}
+.client-meeting-roadmap-page .cm-route li>div{flex:1;min-width:0}
+.client-meeting-roadmap-page .cm-route strong,.client-meeting-roadmap-page .cm-route small{display:block}
+.client-meeting-roadmap-page .cm-route strong{font-size:.96rem}
+.client-meeting-roadmap-page .cm-route small{font-size:.76rem;line-height:1.5;color:var(--cm-muted);margin-top:.22rem}
+.client-meeting-roadmap-page .cm-route a{color:#276a49;font-weight:800;font-size:.75rem;white-space:nowrap}
+.client-meeting-roadmap-page .cm-split{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);align-items:center;gap:clamp(1.4rem,5vw,3.8rem)}
+.client-meeting-roadmap-page .cm-copy{min-width:0}
+.client-meeting-roadmap-page .cm-copy p{margin:.78rem 0 0}
+.client-meeting-roadmap-page .cm-copy .section-title{margin-bottom:.6rem}
+.client-meeting-roadmap-page .cm-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.client-meeting-roadmap-page .cm-actions a{max-width:100%;white-space:normal;text-align:center}
+.client-meeting-roadmap-page .cm-photo-inline img{aspect-ratio:4/3}
+.client-meeting-roadmap-page .cm-table-wrap{overflow-x:auto;margin-top:1.3rem;border:1px solid var(--cm-line);border-radius:14px}
+.client-meeting-roadmap-page .cm-table{width:100%;border-collapse:collapse;font-size:.88rem;background:#fff}
+.client-meeting-roadmap-page .cm-table th,.client-meeting-roadmap-page .cm-table td{padding:.75rem .9rem;text-align:left;border-bottom:1px solid var(--cm-line);line-height:1.6;word-break:keep-all}
+.client-meeting-roadmap-page .cm-table th{background:#eef6f0;color:#245a3f;font-weight:800;white-space:nowrap}
+.client-meeting-roadmap-page .cm-table tr:last-child td{border-bottom:0}
+.client-meeting-roadmap-page .cm-table td a{color:#1f6a46;font-weight:700}
+.client-meeting-roadmap-page .cm-note{margin-top:.9rem;font-size:.84rem;color:var(--cm-muted);line-height:1.7}
+.client-meeting-roadmap-page .cm-template{margin:1.3rem 0 0;background:#152e23;color:#eaf5ee;border-radius:14px;padding:1.2rem 1.35rem;font-size:.86rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
+.client-meeting-roadmap-page .cm-checklist{padding-left:1.2rem;margin:1rem 0;display:grid;gap:.45rem;line-height:1.65}
+.client-meeting-roadmap-page .cm-checklist li::marker{color:#2d7551}
+.client-meeting-roadmap-page .cm-session{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1.6rem 0}
+.client-meeting-roadmap-page .cm-session>div{background:#fff;border:1px solid var(--cm-line);border-radius:14px;padding:1.1rem .85rem;display:grid;gap:.55rem;min-height:130px}
+.client-meeting-roadmap-page .cm-session span{font-size:1.35rem;line-height:1.1;color:#2c6d49;font-weight:900}
+.client-meeting-roadmap-page .cm-session strong{font-size:.88rem;line-height:1.55}
+.client-meeting-roadmap-page .cm-quiet-note{padding:1rem 1.2rem;border-left:3px solid #3b8059;background:#e9f2ec;border-radius:0 10px 10px 0;color:#375643}
+.client-meeting-roadmap-page .cm-last-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center;margin-top:2rem;padding:1.5rem;border-radius:19px;background:#204a36;color:#fff}
+.client-meeting-roadmap-page .cm-last-cta .section-label{color:#b4e7c6}
+.client-meeting-roadmap-page .cm-last-cta h3{color:#fff;font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.45;letter-spacing:-.03em;word-break:keep-all}
+.client-meeting-roadmap-page .cm-last-cta p{margin:.45rem 0;color:#e1f0e5}
+.client-meeting-roadmap-page .cm-last-links{display:grid;gap:.65rem;min-width:225px}
+.client-meeting-roadmap-page .cm-last-links .btn-primary{background:#fff;color:#17492d;border-color:#fff}
+.client-meeting-roadmap-page .cm-last-links .btn-outline{color:#fff;border-color:rgba(255,255,255,.65)}
+.client-meeting-roadmap-page .faq-list{margin-top:1.35rem}
+@media (max-width:900px){.client-meeting-roadmap-page .cm-route{grid-template-columns:repeat(2,minmax(0,1fr))}.client-meeting-roadmap-page .cm-session{grid-template-columns:repeat(2,minmax(0,1fr))}.client-meeting-roadmap-page .cm-last-cta{grid-template-columns:1fr}.client-meeting-roadmap-page .cm-last-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:690px){.client-meeting-roadmap-page .cm-hero{padding-top:4.3rem}.client-meeting-roadmap-page .cm-hero .section-title{font-size:clamp(2rem,8vw,2.65rem)}.client-meeting-roadmap-page .cm-split{grid-template-columns:1fr;gap:1.4rem}.client-meeting-roadmap-page .cm-split-media .cm-photo{order:2}.client-meeting-roadmap-page .cm-section{padding:2.8rem 1rem}.client-meeting-roadmap-page .cm-image-section{padding-left:1rem;padding-right:1rem}.client-meeting-roadmap-page .cm-route{grid-template-columns:1fr;gap:.55rem}.client-meeting-roadmap-page .cm-route li{min-height:68px;padding:.85rem}.client-meeting-roadmap-page .cm-photo img{border-radius:14px}.client-meeting-roadmap-page .cm-last-links{grid-template-columns:1fr}.client-meeting-roadmap-page .cm-last-cta{padding:1.2rem}.client-meeting-roadmap-page .cm-photo figcaption{text-align:left}.client-meeting-roadmap-page .cm-session{gap:.5rem}.client-meeting-roadmap-page .cm-session>div{min-height:120px}.client-meeting-roadmap-page .cm-table{font-size:.82rem}.client-meeting-roadmap-page .cm-template{font-size:.8rem;padding:1rem}}
+@media (prefers-reduced-motion:reduce){.client-meeting-roadmap-page *{scroll-behavior:auto!important}}
