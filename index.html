@@ -296,7 +296,8 @@ script_version: 20260719-1
         {% assign matched_guide_post = onsite_posts | where: "url", entry.url %}
         {% assign ranked_guide_posts = ranked_guide_posts | concat: matched_guide_post %}
       {% endfor %}
-      {% assign onsite_posts = ranked_guide_posts | concat: onsite_posts | uniq %}
+      {% assign roadmap_first = onsite_posts | where: "url", "/posts/interview-preparation-roadmap/" %}
+      {% assign onsite_posts = roadmap_first | concat: ranked_guide_posts | concat: onsite_posts | uniq %}
       {% if onsite_posts.size > 0 %}
       <div class="blog-guide-filters" id="homeGuideFilters" aria-label="실전 가이드 카테고리 필터">
         <button type="button" class="blog-guide-filter is-active" data-category="all" aria-pressed="true">전체</button>
