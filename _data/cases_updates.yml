@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-17
+updated_at: 2026-10-19
 
 cases:
   - id: kofac-2026-fall-research-group-discussion-interview
@@ -2872,8 +2872,8 @@ cases:
 
     published_at: null
     verified_at: 2026-10-09
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-10
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-19
 
     application:
       start: "2026-09-28"
@@ -2978,8 +2978,8 @@ cases:
 
     published_at: null
     verified_at: 2026-10-11
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-11
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-19
 
     application:
       start: "2026-10-09 09:00"
