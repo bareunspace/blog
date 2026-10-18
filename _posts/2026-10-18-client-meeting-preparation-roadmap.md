@@ -216,9 +216,8 @@ extra_css_version: 20261018-1
 
   <section id="final-cta" class="cm-section cm-section-soft">
     <div class="section-inner">
-      <p class="section-label">READY TO MEET?</p>
-      <h2 class="section-title">이번 미팅 두 시간, 제대로 준비해보세요</h2>
-      <p class="section-desc">월 사무실은 필요 없지만, 이번 미팅만큼은 제대로 준비하고 싶다면. 목적을 정했다면 필요한 시간만 예약하세요.</p>
+      <p class="cm-step-label">PREVIEW · 2시간 미팅 준비 예시</p>
+      <h2 class="section-title">목적부터 후속 업무까지, 이렇게 흘러갑니다</h2>
       <div class="cm-session" aria-label="2시간 미팅 준비 예시">
         <div><span>30분</span><strong>도착·좌석·자료 준비</strong></div>
         <div><span>60분</span><strong>실제 미팅 진행</strong></div>
