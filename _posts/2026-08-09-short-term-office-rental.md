@@ -153,5 +153,7 @@ script_version: 20260711-4
 
   <section id="booking" class="guide-summary-section"><div class="section-inner"><p class="section-label">Reserve Your Work Time</p><h2 class="section-title">오늘 필요한 사무실 시간만 예약하세요</h2><p>사무실이 매일 필요한 것이 아니라면 매일 사무실을 가질 필요도 없습니다.</p><p><strong>화상회의가 필요한 1시간.<br />집중해서 일하는 오전 3시간.<br />사무실 없이 온전히 일하는 하루 8시간.</strong></p><p>필요한 순간에 필요한 만큼. 바른자리는 공간을 오래 점유하기 위한 곳보다 <strong>당신이 해야 할 일에 필요한 시간을 확보하기 위한 공간</strong>에 가깝습니다.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">필요한 시간 예약하기</a><a href="/meeting/" class="btn-outline">미팅·업무 허브 보기</a></div></div></section>
 
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">미팅 준비 순서 7단계 보기 →</a></p></div></section>
+
   {% include post-tags.html %}
 </main>

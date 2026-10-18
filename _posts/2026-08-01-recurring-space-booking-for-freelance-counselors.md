@@ -239,5 +239,7 @@ script_version: 20260711-4
     </div>
   </section>
 
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">처음 미팅을 준비한다면 7단계부터 →</a></p></div></section>
+
   {% include post-tags.html %}
 </main>

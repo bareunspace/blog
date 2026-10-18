@@ -195,4 +195,6 @@ faq:
   <section class="blog-conversion-section">
     <div class="section-inner"><div class="blog-conversion-panel"><div><p class="section-label soft">Need a Room Before Sunrise?</p><h2>가족이 자는 새벽이라면<br />말할 수 있는 공간을 따로 예약하세요</h2><p>집에서 목소리를 낮추거나 가족을 깨울까 신경 쓰기보다, 필요한 시간만 예약해 해외 화상회의에 집중해 보세요.</p></div><div class="blog-conversion-actions"><a href="/booking/" class="btn-primary" data-cta="early_global_meeting_bottom_booking">새벽 화상회의 예약하기</a><a href="/meeting/" class="btn-outline">미팅·업무 가이드 더 보기</a></div></div></div>
   </section>
+
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">미팅 준비 순서 7단계 보기 →</a></p></div></section>
 </main>

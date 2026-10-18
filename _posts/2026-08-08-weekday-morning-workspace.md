@@ -105,6 +105,8 @@ script_version: 20260711-4
 
   <section id="booking"><div class="section-inner"><div class="about-quote"><p>사무실이 없어도 일은 할 수 있습니다.<br />하지만 가끔은 <strong>문을 닫고 내 일만 할 수 있는 시간</strong>이 필요합니다.</p></div><h2 class="section-title">사무실을 예약하는 것이 아니라,<br />오늘 일을 끝낼 시간을 예약하세요.</h2><p class="section-desc">오늘 오전 한두 시간이 필요하다면, 필요한 시간만 바른자리에서 확보해보세요.</p><div class="hero-btns"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">나만의 업무시간 예약하기</a><a href="/meeting/" class="btn-outline">미팅·업무 허브에서 더 보기</a></div></div></section>
 
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">오후에 고객 미팅이 있다면 준비 순서 보기 →</a></p></div></section>
+
   {% include post-tags.html %}
   {% include related-posts.html %}
 </main>

@@ -103,5 +103,7 @@ faq:
 
   <section class="blog-conversion-section"><div class="section-inner"><div class="blog-conversion-panel"><div><p class="section-label soft">Need a Room for the Call?</p><h2>오늘 회의 때문에<br />몇 시간만 혼자 쓸 공간이 필요하다면</h2><p>카페에서 계속 주변을 의식하기보다, 필요한 시간만 예약하고 회의와 후속 업무에 사용해 보세요.</p></div><div class="blog-conversion-actions"><a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="video_meeting_bottom_booking">필요한 시간 예약하기</a><a href="/posts/bucheon-meeting-room/" class="btn-outline">부천 회의실·위치·요금 확인하기</a></div></div></div></section>
 
+  <section id="client-meeting-roadmap-link"><div class="section-inner" style="padding:1.1rem 0"><p style="margin:0;padding:.85rem 1rem;border:1px solid #cde3d3;border-radius:12px;background:#f4faf6;color:#274a35;font-size:.91rem;line-height:1.65"><a href="/posts/client-meeting-preparation-roadmap/" data-cta="client_meeting_roadmap_backlink" style="color:#155b38;font-weight:800;text-decoration:underline">회의 전 30분 점검표 보기 →</a></p></div></section>
+
   {% include post-tags.html %}
 </main>
