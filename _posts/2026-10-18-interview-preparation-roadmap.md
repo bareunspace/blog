@@ -146,14 +146,14 @@ script_version: 20260711-4
         <h2 class="section-title">이제 질문을 받고 실제 목소리로 답해봅니다</h2>
         <p><strong>AI 면접·발표 연습실</strong>에서 연습 모드, 지원 회사·직무, 면접 유형을 설정한 다음 질문에 답해보세요. Cases의 <strong>AI 모의면접 연습</strong> 링크로 진입하면 해당 사례 정보를 활용해 시작할 수도 있습니다.</p>
         <p>이 서비스는 <strong>연습용 모의면접</strong>입니다. 채용기관이 사용하는 실제 AI 역량검사나 실제 면접 질문과 동일하다는 의미가 아닙니다. 현재 기본 무료 연습은 2문항이며, 이후 이용은 화면의 안내를 따르세요.</p>
-        <div class="ir-actions"><a class="btn-primary" href="/ai-interview/?focus=1&amp;source=interview-roadmap" data-cta="ir_step4_ai">AI 모의면접 시작하기 →</a></div>
+        <div class="ir-actions"><a class="btn-primary" href="/ai-interview/?source=interview-roadmap" data-cta="ir_step4_ai">AI 모의면접 시작하기 →</a></div>
       </div>
       <div class="ir-ui-guide">
         <p class="ir-ui-eyebrow">AI INTERVIEW · 화면 이용 안내</p>
         <div class="ir-ui-top"><span>바른자리 AI 면접·발표 연습실</span><span class="ir-ui-top-sub">데모 설정</span></div>
         <div class="ir-form-preview"><span>연습 모드</span><strong>지원 회사</strong><strong>지원 직무</strong><strong>면접 유형</strong><strong>질문 수</strong></div>
         <div class="ir-ui-note"><strong>연습 순서</strong><span>모드 선택 → 회사·직무 입력 → 질문 듣기 → 답변</span></div>
-        <a href="/ai-interview/" class="ir-ui-link">실제 AI 연습실 화면 열기 ↗</a>
+        <a href="/ai-interview/?source=interview-roadmap" class="ir-ui-link">실제 AI 연습실 화면 열기 ↗</a>
         <p class="ir-ui-disclaimer">실제 기능 항목을 요약한 안내입니다. 화면 캡처가 아니며, 세부 구성은 업데이트될 수 있습니다.</p>
       </div>
     </div>
@@ -197,7 +197,7 @@ script_version: 20260711-4
         <div><p class="section-label">READY TO PRACTICE?</p><h3>지원 기업 확인은 Cases에서, 첫 질문 연습은 AI 면접실에서 시작해보세요.</h3><p>집이나 카페에서 소리 내어 반복하기 어렵다면 필요한 시간을 예약해 집중해서 연습하세요.</p></div>
         <div class="ir-last-links">
           <a class="btn-primary" href="/booking/?purpose=interview&amp;source=interview-preparation-roadmap" data-cta="ir_final_booking">면접 연습 예약하기 →</a>
-          <a class="btn-outline" href="/ai-interview/?focus=1&amp;source=interview-roadmap" data-cta="ir_final_ai">먼저 AI 모의면접 해보기</a>
+          <a class="btn-outline" href="/ai-interview/?source=interview-roadmap" data-cta="ir_final_ai">먼저 AI 모의면접 해보기</a>
         </div>
       </div>
     </div>
