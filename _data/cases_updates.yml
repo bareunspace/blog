@@ -2890,7 +2890,6 @@ cases:
       expected_join: 공식 채용공고 최종 안내 확인
 
     selection:
-      interview_end: "2026-12-31"
       process_label: 지원서 접수 → 서류전형 → AI 역량검사 → 1차 면접 → 2차 면접 → 최종합격
       interview_focus: AI 역량검사 전 응시환경을 점검하고, 이후 1·2차 면접에서 지원 직무와 본인의 경험·판단을 실제 목소리로 구조화해 답하는 준비
       stages:
@@ -2997,7 +2996,6 @@ cases:
       expected_join: 공식 채용공고 최종 안내 확인
 
     selection:
-      interview_end: "2026-11-30"
       process_label: 지원서 접수 → 서류전형 → 1차 면접 → 2차 면접 → 처우협상·신체검사 → 최종합격
       interview_focus: 지원 직무와 주요 경험을 구조화해 설명하고, 영어가 요구되는 일부 직무는 자기소개·지원동기·직무 경험을 영어로 짧고 명확하게 답하는 준비
       stages:
