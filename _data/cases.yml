@@ -32,6 +32,7 @@ cases:
       expected_join: 2026년 12월 14일 임용 예정
 
     selection:
+      interview_end: "2026-11-18"
       process_label: 서류전형 → 인성검사 및 필기시험 → 면접전형(토론·상황·직무수행능력) → 최종합격
       interview_focus: 토론에서 자신의 의견을 짧고 논리적으로 제시하고, 상황면접에서 판단 기준과 대응을 즉시 설명하며, 직무수행능력면접에서 지원 경험과 직무 이해를 구체적으로 말하는 준비
       stages:
@@ -144,6 +145,7 @@ cases:
       expected_join: 2026년 12월 말 입사 예정
 
     selection:
+      interview_end: "2026-11-27"
       process_label: 입사지원 → 서류전형 → 필기전형 → 면접전형(과제수행·실무·심층) → 신체검사·결격사유조회 → 최종합격
       interview_focus: 조별 과제에서 문제 해결과 협업 과정을 설명하고, 실무면접에서 업무수행계획과 직무역량을 말하며, 심층면접에서 자기소개서와 경력 기반 질문에 논리적으로 대응하는 준비
       stages:
@@ -372,6 +374,7 @@ cases:
       expected_join: 2026년 12월 말 입사 예정
 
     selection:
+      interview_end: "2026-11-30"
       process_label: 서류전형 → AI역량검사/HMAT(10월 초) → 1차 면접(10월 말~11월 초) → 최종 면접(11월 말) → 최종 입사
       interview_focus: AI 역량검사의 영상면접에서 카메라 앞 시선·표정·말하기를 점검하고, 이후 1차·최종면접에 맞춰 지원 경험과 직무 적합성을 실제 목소리로 설명하는 준비
       stages:
@@ -1298,6 +1301,7 @@ cases:
       roles: 영업 · 마케팅 · 경영지원 등
 
     selection:
+      interview_end: "2026-11-26"
       process_label: 지원서접수 → AI역량검사(서류접수 완료자 전원) → 면접전형(1Day면접) → 합격자 발표 → 입문교육
       interview_focus: AI역량검사 응시 전 카메라·마이크·인터넷과 주변 방해 여부를 점검하고, 이후 1Day 면접에서 지원 경험과 직무 적합성을 실제 목소리로 설명하는 준비
       stages:
@@ -1405,6 +1409,7 @@ cases:
       expected_join: 2027년 1월 입사 예정
 
     selection:
+      interview_end: "2026-12-31"
       process_label: 서류전형 → 인적성 검사 → AI 역량검사 → 1차 면접 → 2차 면접 → 채용 검진 → 최종합격 → 입사
       interview_focus: AI 역량검사 전 독립 응시 환경과 장비를 점검하고, 1·2차 면접에서 지원 동기와 직무 경험을 실제 목소리로 설명하는 준비
       stages:
