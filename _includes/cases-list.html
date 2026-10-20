@@ -32,6 +32,8 @@
         data-job="{{ case.job }}"
         data-company="{{ case.company_slug }}"
         data-application-end="{% if case.application.end %}{{ case.application.end | escape }}{% endif %}"
+        data-recruitment-status="{{ case.recruitment_status | escape }}"
+        data-interview-end="{% if case.selection.interview_end %}{{ case.selection.interview_end | escape }}{% endif %}"
         data-published-at="{{ case.published_at }}"
         data-ai="{% if case.signals.ai_interview == true %}true{% else %}false{% endif %}"
         data-video="{% if case.signals.video_interview == true %}true{% else %}false{% endif %}"
