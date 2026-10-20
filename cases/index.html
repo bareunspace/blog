@@ -126,12 +126,18 @@ breadcrumbs:
     };
 
     const statusFor = (card) => {
+      const declared = String(card.dataset.recruitmentStatus || '').trim();
+      if (declared === 'closed' || declared === 'past') return 'past';
+
       const end = normalizeDate(card.dataset.applicationEnd);
-      const published = normalizeDate(card.dataset.publishedAt);
+      const interviewEnd = normalizeDate(card.dataset.interviewEnd);
+
+      // Application closing is not the end of the interview preparation period.
       if (end && today <= end) return 'open';
-      if (end && today > end && ageInDays(end) <= 75) return 'prep';
-      if (!end && published && ageInDays(published) <= 75) return 'prep';
-      return 'past';
+      // Only a documented final interview date can automatically move a case to past.
+      if (interviewEnd && today > interviewEnd) return 'past';
+      // Missing/uncertain interview dates require manual verification, not a 75-day guess.
+      return 'prep';
     };
 
     const statusMatches = (card) => activeStatus === 'all' || statusFor(card) === activeStatus;
