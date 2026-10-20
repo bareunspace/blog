@@ -22,14 +22,18 @@ sitemap: false
     h1{margin:0;font-size:clamp(48px,10vw,116px);line-height:.98;letter-spacing:-.055em}
     .detail{margin:24px 0 0;font-size:clamp(22px,4.2vw,48px);font-weight:750;letter-spacing:-.035em}
     .sub{margin:12px 0 0;color:#66746c;font-size:clamp(15px,2vw,22px);line-height:1.5}
-    .actions{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center}
-    .book{display:flex;align-items:center;justify-content:center;min-height:86px;padding:0 26px;border-radius:22px;background:#173f2c;color:#fff;text-decoration:none;font-size:clamp(20px,2.7vw,30px);font-weight:900}
-    .qr{display:flex;align-items:center;gap:12px;background:#fff;border-radius:22px;padding:10px 16px;text-decoration:none;color:#173f2c;font-size:14px;font-weight:800}\n    .qr img{width:84px;height:84px;display:block;image-rendering:pixelated}\n    .meta{min-width:210px;padding:16px 20px;border-radius:22px;background:#fff;text-align:right}
+    .actions{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center}
+    .book{display:flex;align-items:center;justify-content:center;min-height:96px;padding:16px 22px;text-align:center;line-height:1.3;border-radius:22px;background:#173f2c;color:#fff;text-decoration:none;font-size:clamp(20px,2.7vw,30px);font-weight:900}
+    .qr{display:flex;align-items:center;gap:12px;background:#fff;border-radius:22px;padding:10px 14px;text-decoration:none;color:#173f2c;font-size:13px;font-weight:800;white-space:nowrap}
+    .qr img{width:84px;height:84px;display:block;image-rendering:pixelated}
+    .meta{min-width:210px;padding:16px 20px;border-radius:22px;background:#fff;text-align:right}
     .clock{font-size:24px;font-weight:900}.updated{margin-top:3px;color:#748178;font-size:12px}
     body.occupied{background:#f5eeee}.occupied .dot{background:#b94a48;box-shadow:0 0 0 12px rgba(185,74,72,.10)}.occupied .book{background:#7d3432}
     body.soon{background:#f7f3e8}.soon .dot{background:#c58a28;box-shadow:0 0 0 12px rgba(197,138,40,.12)}.soon .book{background:#8a611f}
+    .book:focus-visible,.qr:focus-visible{outline:3px solid #2d6a4f;outline-offset:3px}
     body.offline{background:#f0f0f0}.offline .dot{background:#777;box-shadow:0 0 0 12px rgba(90,90,90,.10)}
-    @media(max-width:900px){.actions{grid-template-columns:minmax(0,1fr) auto}.qr{padding:8px}.qr span{display:none}.meta{grid-column:1/-1;text-align:center}}\n    @media(max-width:700px){main{padding:14px}.board{border-radius:24px}.actions{grid-template-columns:1fr}.qr{display:none}.meta{grid-column:auto;text-align:center}.book{min-height:72px}}
+    @media(max-width:900px){.actions{grid-template-columns:minmax(0,1fr) auto}.qr{padding:8px}.qr span{display:none}.meta{grid-column:1/-1;text-align:center}}
+    @media(max-width:700px){main{padding:14px}.board{border-radius:24px}.actions{grid-template-columns:1fr}.qr{display:none}.meta{grid-column:auto;text-align:center}.book{min-height:72px}}
   </style>
 </head>
 <body>
@@ -42,7 +46,8 @@ sitemap: false
     <p class="sub" id="statusSub">예약자 정보는 표시하지 않습니다.</p>
   </section>
   <section class="actions">
-    <a class="book" href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer">네이버에서 빈 시간 확인 · 예약</a>\n    <a class="qr" href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240" target="_blank" rel="noopener noreferrer" aria-label="네이버예약 QR코드 또는 예약 페이지 열기"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&data=https%3A%2F%2Fbooking.naver.com%2Fbooking%2F10%2Fbizes%2F1663159%2Fitems%2F7861240" width="84" height="84" alt="네이버예약으로 연결되는 QR코드" loading="eager"><span>QR 스캔하여 예약</span></a>
+    <a class="book" href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240?lang=ko?lang=ko" target="_blank" rel="noopener noreferrer">네이버에서 빈 시간 확인 · 예약</a>
+    <a class="qr" href="https://booking.naver.com/booking/10/bizes/1663159/items/7861240?lang=ko?lang=ko" target="_blank" rel="noopener noreferrer" aria-label="네이버예약 QR코드 또는 예약 페이지 열기"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&data=https%3A%2F%2Fbooking.naver.com%2Fbooking%2F10%2Fbizes%2F1663159%2Fitems%2F7861240%3Flang%3Dko" width="84" height="84" alt="네이버예약으로 연결되는 QR코드" loading="eager"><span>QR 스캔하여 예약</span></a>
     <div class="meta"><div class="clock" id="clock">--:--</div><div class="updated" id="updated">상태 갱신 중</div></div>
   </section>
 </main>
