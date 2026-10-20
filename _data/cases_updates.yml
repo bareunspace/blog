@@ -133,6 +133,7 @@ cases:
       expected_join: 2026-12-14 임용 예정
 
     selection:
+      interview_end: "2026-11-25"
       process_label: 원서접수 → 서류전형 → 필기시험·인성검사 → 직무수행능력면접(PT·그룹토론 융합)·인성면접 → 최종합격
       interview_focus: 직무 관련 주제를 지원자별로 발표하고 6인 이내 그룹토론에서 의견을 설명·보완한 뒤 질의응답과 인성면접에 대응하는 말하기 연습
       stages:
@@ -2031,6 +2032,7 @@ cases:
       expected_join: 공식 공고 최종합격 및 임용 일정 확인
 
     selection:
+      interview_end: "2026-11-27"
       process_label: 지원서 접수 → 서류전형 → 필기전형 → 면접전형(일반직 토론 및 인터뷰, 특정직 인터뷰) → 최종합격
       interview_focus: 일반직은 토론에서 자신의 의견과 근거를 짧고 논리적으로 제시하고 다른 지원자의 발언에 반응하며, 인터뷰에서는 직무 경험과 지원 동기를 일관되게 설명하는 준비
       stages:
@@ -2135,6 +2137,7 @@ cases:
       expected_join: 공식 공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-11-06"
       process_label: 지원서 접수 → 서류전형 → 온라인 AI 역량검사 → 주제발표·심층면접 → 최종합격
       interview_focus: 온라인 AI 역량검사 환경을 안정적으로 준비하고, 주제발표에서는 핵심 내용을 구조화해 설명한 뒤 심층면접에서 경험과 판단 근거를 일관되게 답하는 준비
       stages:
@@ -2347,6 +2350,7 @@ cases:
       expected_join: 공식 공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-11-26"
       process_label: 지원서 접수 → 서류·필기 등 전형 → 면접전형(일반행정·기술직 토론 30% + 역량 70%, 고졸 일반행정 역량면접) → 최종합격
       interview_focus: 일반행정·기술직은 토론에서 핵심 의견과 근거를 짧게 제시하고, 역량면접에서는 직무 경험과 판단 근거를 일관되게 설명하는 준비
       stages:
@@ -2454,6 +2458,7 @@ cases:
       expected_join: 공식 공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-12-09"
       process_label: 지원서 접수 → 서류·필기 등 사전전형 → 1차 면접(직무역량·PT) → 2차 면접 → 최종합격
       interview_focus: PT면접에서 핵심 문제와 근거를 짧게 구조화해 설명하고, 직무역량면접에서 본인의 경험·판단·직무 이해를 일관되게 답한 뒤 2차 면접의 후속 질문까지 연결해 준비
       stages:
@@ -2560,6 +2565,7 @@ cases:
       expected_join: 공식 공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-12-09"
       process_label: 지원서 접수 → 서류·필기 등 사전전형 → 면접전형(직군별 상이) → 최종합격
       interview_focus: 일반행정 공개경쟁은 발표면접에서 핵심 내용을 구조적으로 설명하고 실무·인성면접에서 경험과 직무 판단을 일관되게 답하는 준비
       stages:
@@ -2884,6 +2890,7 @@ cases:
       expected_join: 공식 채용공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-12-31"
       process_label: 지원서 접수 → 서류전형 → AI 역량검사 → 1차 면접 → 2차 면접 → 최종합격
       interview_focus: AI 역량검사 전 응시환경을 점검하고, 이후 1·2차 면접에서 지원 직무와 본인의 경험·판단을 실제 목소리로 구조화해 답하는 준비
       stages:
@@ -2990,6 +2997,7 @@ cases:
       expected_join: 공식 채용공고 최종 안내 확인
 
     selection:
+      interview_end: "2026-11-30"
       process_label: 지원서 접수 → 서류전형 → 1차 면접 → 2차 면접 → 처우협상·신체검사 → 최종합격
       interview_focus: 지원 직무와 주요 경험을 구조화해 설명하고, 영어가 요구되는 일부 직무는 자기소개·지원동기·직무 경험을 영어로 짧고 명확하게 답하는 준비
       stages:
