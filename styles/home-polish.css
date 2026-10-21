@@ -251,14 +251,6 @@ main#mainContent #contact .contact-submit-status { color:#55675d !important; }
   main#mainContent #contact .contact-faq details p { padding-left:.9rem; padding-right:.9rem; }
 }
 
-/* Match the new room photos to the gallery's bright, warm tone without altering the originals. */
-#galleryTrack img[src$="gallery-front-20261022.webp"],
-#galleryTrack img[src$="gallery-side-20261022.webp"],
-#lightboxImage[src$="gallery-front-20261022.webp"],
-#lightboxImage[src$="gallery-side-20261022.webp"] {
-  filter: brightness(1.28) contrast(0.96) sepia(0.22) saturate(1.12);
-}
-
 /* Approved learning actions */
 .home-learning-actions { padding:1.5rem 0 0; }
 .home-learning-action-card { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding:1.35rem 1.5rem; border:1px solid #b7d3c2; border-radius:20px; background:linear-gradient(135deg,#f4fbf7,#fff); box-shadow:0 12px 30px rgba(30,77,52,.08); }
