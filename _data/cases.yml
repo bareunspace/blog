@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1689,3 +1689,84 @@ cases:
       url: /posts/ai-competency-test-space/
       label: AI 역량검사 응시 환경 가이드 보기
 
+
+  - id: hnl-advanced-2026-fall-new-hire-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: H&L Advanced
+    company_slug: hnl-advanced
+    taxonomy:
+      industry_tags:
+        - manufacturing
+        - chemicals
+      region_tags:
+        - seoul
+        - chungnam
+    title: 2026년 하반기 경영관리직 신입 공개채용 · AI 역량검사·다단계 면접
+    summary: H&L Advanced의 신입 공개채용으로 AI 역량검사와 1~3차 면접이 안내된 사례입니다. 독립된 검사 환경과 직무 경험을 소리 내어 연습하는 수요에 연결됩니다.
+    published_at: 2026-10-21
+    verified_at: 2026-10-22
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-22
+    application:
+      start: "2026-10-21"
+      end: "2026-11-10 23:59"
+      period_label: "2026-10-21 ~ 2026-11-10 23:59"
+      hiring_size: 경영관리직 신입 공개채용
+      roles: 기획 · 인사 · 재무회계 · 영업 · 생산관리 · 안전환경
+    selection:
+      process_label: AI 역량검사 → 1~3차 면접
+      interview_focus: AI 검사 응시 환경 점검 및 지원 직무와 경험 설명 연습
+      stages:
+        - AI 역량검사 · 일정 미확인
+        - 1~3차 면접 · 일정 미확인
+    pattern:
+      label: AI 검사에서 다단계 직무면접으로
+      insight: 온라인 검사 환경 준비와 반복 말하기 연습이 모두 필요한 채용 사례입니다.
+      practice_shift: 장비와 주변 방해 여부를 확인하고 지원 동기와 직무 경험을 짧게 말한 뒤 후속 질문까지 연습하기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: AI 역량검사와 다단계 면접이 안내된 신입 공개채용으로 독립 응시공간과 말하기 연습 수요가 있습니다. 서울과 서산 근무지가 포함되어 지역 연계성은 혼재합니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - follow-up-response
+      practice_points:
+        - 검사 전 노트북과 인터넷, 주변 방해 여부 점검하기
+        - 지원 동기와 직무 경험을 실제 목소리로 설명하기
+        - 예상 후속 질문에 답하며 녹화 후 개선하기
+      excluded:
+        - 영상면접 포함 여부나 실제 문항을 확인 없이 단정하는 표현
+        - 회사와 제휴되었거나 합격을 보장한다는 표현
+    notes:
+      - AI 역량검사의 영상 녹화 여부는 미확인입니다.
+      - 검사와 면접의 세부 일정은 미확인입니다.
+      - 지원자는 공식 채용사이트에서 최신 공고를 확인해야 합니다.
+    source:
+      publisher: HD현대 채용
+      title: H&L Advanced 2026년 하반기 신입사원 공개채용
+      url: https://recruit.hd.com/kr
+      published_at: "2026-10-21"
+      checked_at: 2026-10-22
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
