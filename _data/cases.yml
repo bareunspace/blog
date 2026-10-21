@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-15
+updated_at: 2026-10-21
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1586,4 +1586,106 @@ cases:
     related:
       url: /posts/pt-presentation-rehearsal/
       label: PT 발표 연습·리허설 가이드 보기
+
+  - id: kt-is-2026-new-hire-ai-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: KT is
+    company_slug: kt-is
+    taxonomy:
+      industry_tags:
+        - telecommunications
+        - service
+        - information-technology
+      region_tags:
+        - seoul
+        - yeongdeungpo
+        - southwest-seoul
+    title: 2026년 신입사원 공개채용 · AI면접·1·2차 면접
+    summary: KT is의 2026년 신입사원 공개채용으로, 서류전형 이후 AI면접과 1·2차 면접이 이어집니다. 서울 영등포구 기반 채용으로 부천·인천 생활권 지원자와의 접근성이 높고, AI면접 응시 환경과 실제 면접 답변 리허설 수요와 직접 연결됩니다.
+
+    published_at: 2026-10-16
+    verified_at: 2026-10-21
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-21
+
+    application:
+      start: "2026-10-16"
+      end: "2026-10-25 23:59"
+      period_label: "2026-10-16 ~ 2026-10-25 23:59"
+      hiring_size: 2026년 신입사원 공개채용
+      roles: 경영 · 사업운영 · 영업·마케팅 · IT
+
+    selection:
+      process_label: 서류전형 → AI면접 → 1차 면접 → 2차 면접 → 최종합격
+      interview_focus: AI면접 응시 전 노트북·마이크·카메라·인터넷과 주변 방해 여부를 점검하고, 이후 1·2차 면접에서 지원 동기와 직무 경험을 실제 목소리로 설명하는 준비
+      stages:
+        - 지원서 접수 · 2026-10-16 ~ 2026-10-25 23:59
+        - AI면접 · 세부 일정 미확인
+        - 1차 면접 · 세부 일정 미확인
+        - 2차 면접 · 세부 일정 미확인
+        - 최종합격
+
+    pattern:
+      label: AI면접에서 단계별 대면면접으로
+      insight: AI면접 이후 1·2차 면접이 이어지는 구조라 온라인 응시 환경 점검과 실제 말하기 면접 준비를 단계적으로 연결할 수 있는 사례입니다.
+      practice_shift: AI면접 전에 장비와 독립 환경을 점검하고 자기소개·지원 동기·직무 경험을 30~90초로 실제처럼 말한 뒤, 같은 경험을 후속 질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: AI면접이 채용 절차에 명시된 신입 공개채용이며 서울 영등포구 기반이라 부천·인천 생활권 지원자와의 실제 이용 가능성이 높습니다. 독립 응시공간과 면접 말하기 리허설 수요가 모두 명확합니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - AI면접 전에 사용할 노트북, 카메라, 마이크, 인터넷과 주변 방해 여부를 실제 환경에서 점검하기
+        - 자기소개·지원 동기·직무 경험을 30초·60초·90초 길이로 나눠 실제 목소리로 답해보기
+        - 영업·마케팅·사업운영·IT 등 지원 직무에서 본인의 역할과 판단 근거를 짧게 설명해보기
+        - 1·2차 면접을 가정해 첫 답변 뒤에 선택 이유·본인 역할·성과에 대한 후속 질문까지 이어서 답해보기
+      excluded:
+        - AI면접의 영상 녹화 여부나 세부 질문 형식을 공식 확인 없이 단정하는 표현
+        - 실제 KT is AI면접 문항이나 면접 질문을 보유하거나 제공한다는 표현
+        - KT is와 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 지원기간은 2026년 10월 16일부터 10월 25일 23:59까지입니다.
+      - 공개 채용안내에 AI면접과 1·2차 면접이 포함되어 있습니다.
+      - AI면접의 영상 녹화 여부와 구체적인 질문 형식은 공개 자료에서 확인되지 않아 video_interview는 null로 두었습니다.
+      - AI면접과 1·2차 면접의 세부 시행일은 공개 자료에서 확인되지 않아 미확인으로 표시했습니다.
+      - 전형 일정은 변경될 수 있으므로 지원자는 공식 채용사이트의 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: KT그룹 채용
+      title: KT is 2026년 신입사원 공개채용
+      url: https://kt.recruiter.co.kr/career/jobs/131221
+      published_at: "2026-10-16"
+      checked_at: 2026-10-21
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
 
