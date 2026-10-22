@@ -1,7 +1,113 @@
 version: 1
-updated_at: 2026-10-22
+updated_at: 2026-10-23
 
 cases:
+  - id: keiti-2026-third-ai-pt-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 한국환경산업기술원
+    company_slug: keiti
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - environment
+        - r-and-d
+      region_tags:
+        - seoul
+        - incheon
+        - capital-region
+    title: 2026년도 제3차 신규직원·기간제직원 채용 · AI 사전면접·PPT 발표
+    summary: 한국환경산업기술원의 2026년도 제3차 직원 22명 채용입니다. 공무직 전문직 1명은 온라인 AI 사전면접 뒤 직무전문성 PPT 발표와 경험역량면접을 진행하며, 기간제직 21명은 경험역량면접을 진행합니다. AI 응시와 발표 리허설 수요가 명확하고 근무지가 서울·인천이라 바른자리와 직접 연결됩니다.
+
+    published_at: 2026-10-19
+    verified_at: 2026-10-23
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-23
+
+    application:
+      start: "2026-10-19"
+      end: "2026-11-02 13:00"
+      period_label: "2026-10-19 ~ 2026-11-02 13:00"
+      hiring_size: 총 22명 (공무직 전문직 1명·기간제직 21명)
+      roles: 공무직 전문직 R&D 사업관리, 기간제 행정·지원·미화
+      expected_join: 기간제직 2026-12-07, 공무직 전문직 2026-12-14 예정
+
+    selection:
+      process_label: 공무직 전문직 서류심사 → 온라인 AI 사전면접 → 직무전문성 PPT 발표·경험역량면접 / 기간제직 서류심사 → 경험역량면접
+      interview_focus: 공무직 전문직은 온라인 AI 사전면접 응시환경 점검과 직무전문성 PPT 발표·질의응답 리허설, 기간제직은 경험을 근거로 문제해결·의사소통·조직이해 역량을 설명하는 답변 연습
+      interview_end: "2026-11-20"
+      stages:
+        - 지원서 접수 · 2026-10-19 ~ 2026-11-02 13:00
+        - 서류심사 합격자 발표 · 2026-11-06
+        - 발표자료 등록 · 2026-11-06 ~ 2026-11-12 (공무직 전문직)
+        - AI 사전면접 · 2026-11-13 ~ 2026-11-15 (공무직 전문직)
+        - 면접심사 · 2026-11-19 ~ 2026-11-20
+        - 최종 합격자 발표 · 2026-11-27
+
+    pattern:
+      label: 온라인 AI 사전면접 뒤 직무전문성 PPT 발표와 경험역량면접
+      insight: 공무직 전문직 지원자는 온라인 AI 사전면접과 PPT 발표를 연속해 준비해야 합니다. 기간제직 지원자에게는 AI·PPT 전형이 적용되지 않고 경험역량면접만 적용된다는 직군별 차이를 구분해야 합니다.
+      practice_shift: AI 사전면접 응시환경을 점검한 뒤 직무 발표를 실제 화면에 띄워 시간 안에 설명하고, 발표 근거와 경험을 묻는 후속 질문까지 이어서 답해보기
+
+    signals:
+      situation_interview: null
+      video_interview: false
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: true
+      english_interview: false
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 공식 채용공고에 공무직 전문직 대상 온라인 AI 사전면접과 직무전문성 PPT 발표가 명시되어 있습니다. 독립된 응시공간과 발표 리허설 수요가 직접 발생하며 근무지가 서울·인천으로 안내됩니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-interview
+        - speaking
+        - presentation
+        - follow-up-response
+        - recording-review
+      practice_points:
+        - AI 사전면접 전 카메라·마이크·네트워크와 주변 소음을 점검하고 실제 응시 자세로 답변해보기
+        - PPT를 실제 화면에 띄워 직무 전문성과 제안의 핵심을 정해진 시간 안에 설명해보기
+        - 발표 내용을 녹화해 시선·속도·불필요한 반복어와 화면 전환 타이밍을 확인하기
+        - 발표 근거와 과거 경험을 묻는 꼬리질문에 결론부터 답하고 구체적 사례로 보완하기
+      excluded:
+        - 기간제직 지원자에게도 AI 사전면접이나 PPT 발표가 적용된다는 표현
+        - AI 사전면접이 영상답변을 포함한다고 확인 없이 단정하는 표현
+        - 실제 한국환경산업기술원 AI 문항이나 발표 주제를 보유한다는 표현
+        - 한국환경산업기술원과 제휴된 채용·코칭 서비스라는 표현
+        - 채용 결과 또는 합격 가능성을 보장하는 표현
+
+    notes:
+      - 2026년 10월 19일 공고 및 접수가 시작되었고 11월 2일 13시에 마감됩니다.
+      - 전체 채용 22명 중 온라인 AI 사전면접과 PPT 발표는 공무직 전문직 R&D 사업관리 1명에게만 적용됩니다.
+      - 기간제직 21명은 서류심사 후 경험역량면접을 진행합니다.
+      - AI 사전면접은 인·적성검사로 안내되며 영상·음성 응답 포함 여부와 사용 플랫폼은 미확인입니다.
+      - 면접심사 장소와 시간은 추후 안내 예정입니다.
+
+    source:
+      publisher: 한국환경산업기술원
+      title: 2026년도 제3차 한국환경산업기술원 신규직원 및 기간제직원 채용 공고
+      url: https://keiti2026.career.co.kr/jobs/jobs_view.asp?ID=1004
+      published_at: "2026-10-19"
+      checked_at: 2026-10-23
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시환경 가이드 보기
+
   - id: kofac-2026-fall-research-group-discussion-interview
     type: hiring
     topic: interview
