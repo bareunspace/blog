@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20261022-2" />
+<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20261022-3" />
 {% assign cases = site.data.cases.cases %}
 {% if site.data.cases_updates and site.data.cases_updates.cases %}
   {% assign cases = site.data.cases_updates.cases | concat: cases %}
@@ -104,8 +104,11 @@
                   <ul>{% for item in case.barunjari.practice_points %}<li>{{ item }}</li>{% endfor %}</ul>
                 </div>
               </div>
-              <div class="case-archive-actions case-archive-record-cta">
-                <a
+              <div class="case-archive-source-card case-archive-record-card">
+                <div class="case-archive-source-icon" aria-hidden="true">🎙</div>
+                <div class="case-archive-source-copy">
+                  <span class="case-archive-source-label">PRACTICE · 답변·녹화 연습</span>
+                  <a
                   href="{{ '/ai-interview/?focus=1&source=case-practice' | relative_url }}"
                   data-case-ai-interview-link
                   data-case-company="{{ case.company | escape }}"
@@ -114,7 +117,8 @@
                   data-case-role="{% if case.application.roles %}{{ case.application.roles | escape }}{% endif %}"
                   data-case-interview-type="{% if case.job == 'cabin-crew' %}승무원면접{% elsif case.job == 'public-sector' %}일반 모의면접{% elsif case.topic == 'interview' %}직무면접{% else %}일반 모의면접{% endif %}"
                   data-case-practice-points="{% for item in case.barunjari.practice_points %}{{ item | strip | escape }}{% unless forloop.last %}||{% endunless %}{% endfor %}"
-                ><span class="case-archive-record-icon" aria-hidden="true">🎙️</span><span class="case-archive-record-label">이 연습 포인트로 답변하고 녹화 저장해보기</span><span class="case-archive-record-arrow" aria-hidden="true">→</span></a>
+                  >이 연습 포인트로 답변하고 녹화 저장해보기 <span aria-hidden="true">→</span></a>
+                </div>
               </div>
               {% endif %}
 
