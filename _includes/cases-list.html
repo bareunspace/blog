@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20261022-3" />
+<link rel="stylesheet" href="{{ '/styles/case-archive.css' | relative_url }}?v=20261022-4" />
 {% assign cases = site.data.cases.cases %}
 {% if site.data.cases_updates and site.data.cases_updates.cases %}
   {% assign cases = site.data.cases_updates.cases | concat: cases %}
@@ -67,8 +67,12 @@
           <div class="case-archive-body">
             <div class="case-archive-body-inner">
               {% if case.related.url %}
-              <div class="case-archive-actions case-archive-related-top" aria-label="이 채용에 맞는 연습 가이드">
-                <a href="{{ case.related.url | relative_url }}"><strong>이 채용에 맞는 연습 가이드</strong> · {{ case.related.label | default: '관련 준비 가이드 보기' }} <span aria-hidden="true">→</span></a>
+              <div class="case-archive-source-card case-archive-related-card" aria-label="이 채용에 맞는 연습 가이드">
+                <div class="case-archive-source-icon" aria-hidden="true">↗</div>
+                <div class="case-archive-source-copy">
+                  <span class="case-archive-source-label">GUIDE · 이 채용에 맞는 연습 가이드</span>
+                  <a href="{{ case.related.url | relative_url }}">{{ case.related.label | default: '관련 준비 가이드 보기' }} <span aria-hidden="true">→</span></a>
+                </div>
               </div>
               {% endif %}
               {% if case.pattern.insight %}
