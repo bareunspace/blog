@@ -11,3 +11,8 @@
 .case-archive-record-label{min-width:0}
 .case-archive-record-arrow{flex:0 0 auto;font-size:1rem}
 @media(max-width:720px){.case-archive-record-cta{margin-bottom:18px}.case-archive-record-cta a{width:100%;min-height:48px;padding:10px 12px;gap:8px}.case-archive-record-icon{width:25px;height:25px}}
+/* Practice action uses the same restrained card treatment as SOURCE. */
+.case-archive-record-card{margin:8px 0 22px}
+.case-archive-record-card .case-archive-source-icon{font-size:1.05rem}
+.case-archive-record-card .case-archive-source-copy a{display:inline-block;color:#1f2a24}
+@media(max-width:720px){.case-archive-record-card{margin-bottom:18px}}
