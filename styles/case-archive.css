@@ -16,3 +16,7 @@
 .case-archive-record-card .case-archive-source-icon{font-size:1.05rem}
 .case-archive-record-card .case-archive-source-copy a{display:inline-block;color:#1f2a24}
 @media(max-width:720px){.case-archive-record-card{margin-bottom:18px}}
+
+/* Related guide matches the source and practice cards. */
+.case-archive-related-card{margin:0 0 20px}
+@media(max-width:720px){.case-archive-related-card{margin-bottom:18px}}
