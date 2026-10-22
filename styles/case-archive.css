@@ -5,9 +5,9 @@
 @media(max-width:720px){.case-archive-related-top a{padding:12px 16px;line-height:1.6}}
 /* Secondary action: visible but quieter than the booking journey. */
 .case-archive-record-cta{margin:8px 0 20px}
-.case-archive-record-cta a{display:inline-flex;width:auto;max-width:100%;min-height:46px;justify-content:flex-start;gap:9px;padding:9px 14px;background:#f3f8f5;border:1px solid #cfe2d6;border-radius:11px;color:#245d40;box-shadow:none;font-size:.86rem;line-height:1.5}
-.case-archive-record-cta a:hover{background:#eaf4ee;border-color:#bad8c6;color:#194a32}
-.case-archive-record-icon{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;width:25px;height:25px;border-radius:7px;background:#e3f0e8;font-size:.95rem}
+.case-archive-record-cta a{display:inline-flex;width:auto;max-width:100%;min-height:46px;justify-content:flex-start;gap:9px;padding:9px 14px;background:#fff;border:1px solid #d6dfd9;border-radius:11px;color:#245d40;box-shadow:none;font-size:.86rem;line-height:1.5}
+.case-archive-record-cta a:hover{background:#f8faf9;border-color:#bad8c6;color:#194a32}
+.case-archive-record-icon{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;width:25px;height:25px;border-radius:7px;background:transparent;font-size:.95rem}
 .case-archive-record-label{min-width:0}
 .case-archive-record-arrow{flex:0 0 auto;font-size:1rem}
 @media(max-width:720px){.case-archive-record-cta{margin-bottom:18px}.case-archive-record-cta a{width:100%;min-height:48px;padding:10px 12px;gap:8px}.case-archive-record-icon{width:25px;height:25px}}
