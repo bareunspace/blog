@@ -104,7 +104,7 @@
                   <ul>{% for item in case.barunjari.practice_points %}<li>{{ item }}</li>{% endfor %}</ul>
                 </div>
               </div>
-              <div class="case-archive-actions">
+              <div class="case-archive-actions case-archive-record-cta">
                 <a
                   href="{{ '/ai-interview/?focus=1&source=case-practice' | relative_url }}"
                   data-case-ai-interview-link
@@ -114,7 +114,7 @@
                   data-case-role="{% if case.application.roles %}{{ case.application.roles | escape }}{% endif %}"
                   data-case-interview-type="{% if case.job == 'cabin-crew' %}승무원면접{% elsif case.job == 'public-sector' %}일반 모의면접{% elsif case.topic == 'interview' %}직무면접{% else %}일반 모의면접{% endif %}"
                   data-case-practice-points="{% for item in case.barunjari.practice_points %}{{ item | strip | escape }}{% unless forloop.last %}||{% endunless %}{% endfor %}"
-                >이 연습 포인트로 답변하고 녹화 저장해보기 <span aria-hidden="true">→</span></a>
+                ><span class="case-archive-record-icon" aria-hidden="true">🎙️</span><span class="case-archive-record-label">이 연습 포인트로 답변하고 녹화 저장해보기</span><span class="case-archive-record-arrow" aria-hidden="true">→</span></a>
               </div>
               {% endif %}
 
