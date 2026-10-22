@@ -3,11 +3,11 @@
 .case-archive-related-top{margin-top:0;margin-bottom:20px}
 .case-archive-related-top a{padding-top:10px;padding-bottom:10px;line-height:1.55}
 @media(max-width:720px){.case-archive-related-top a{padding:12px 16px;line-height:1.6}}
-/* Primary action: start speaking and recording from the selected case. */
-.case-archive-record-cta{margin:8px 0 24px}
-.case-archive-record-cta a{display:flex;width:100%;min-height:62px;justify-content:flex-start;gap:12px;padding:13px 18px;background:#176b48;border:1px solid #176b48;border-radius:14px;color:#fff;box-shadow:0 6px 16px rgba(23,107,72,.16);line-height:1.5}
-.case-archive-record-cta a:hover{background:#12563a;border-color:#12563a;color:#fff}
-.case-archive-record-icon{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.15);font-size:1.15rem}
-.case-archive-record-label{flex:1;min-width:0}
-.case-archive-record-arrow{flex:0 0 auto;font-size:1.2rem}
-@media(max-width:720px){.case-archive-record-cta{margin-bottom:20px}.case-archive-record-cta a{min-height:64px;padding:12px 14px;gap:10px}.case-archive-record-icon{width:34px;height:34px}}
+/* Secondary action: visible but quieter than the booking journey. */
+.case-archive-record-cta{margin:8px 0 20px}
+.case-archive-record-cta a{display:inline-flex;width:auto;max-width:100%;min-height:46px;justify-content:flex-start;gap:9px;padding:9px 14px;background:#f3f8f5;border:1px solid #cfe2d6;border-radius:11px;color:#245d40;box-shadow:none;font-size:.86rem;line-height:1.5}
+.case-archive-record-cta a:hover{background:#eaf4ee;border-color:#bad8c6;color:#194a32}
+.case-archive-record-icon{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;width:25px;height:25px;border-radius:7px;background:#e3f0e8;font-size:.95rem}
+.case-archive-record-label{min-width:0}
+.case-archive-record-arrow{flex:0 0 auto;font-size:1rem}
+@media(max-width:720px){.case-archive-record-cta{margin-bottom:18px}.case-archive-record-cta a{width:100%;min-height:48px;padding:10px 12px;gap:8px}.case-archive-record-icon{width:25px;height:25px}}
