@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-23
+updated_at: 2026-10-24
 
 cases:
   - id: keiti-2026-third-ai-pt-interview
@@ -3195,8 +3195,8 @@ cases:
 
     published_at: 2026-10-13
     verified_at: 2026-10-14
-    recruitment_status: recruiting
-    status_checked_at: 2026-10-14
+    recruitment_status: selection_in_progress
+    status_checked_at: 2026-10-24
 
     application:
       start: "2026-10-13"
