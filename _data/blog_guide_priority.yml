@@ -59,7 +59,7 @@
 # Full ranking by cumulative Google Search Console clicks
 # (ties broken by impressions), across every post site-wide, sourced from
 # Supabase public.gsc_page_daily over a rolling 90-day window
-# (2026-07-21 ~ present as of the last refresh). Used only by index.html's
+# (2026-07-28 ~ present as of the last refresh). Used only by index.html's
 # single combined "실전 가이드" grid on the homepage, which (unlike blog.html's
 # per-category carousels above) isn't split by category and shows every post
 # in one list.
@@ -69,176 +69,182 @@
 # overwritten on the next run. Redirect stubs under posts/*/ are detected and
 # folded into their canonical target automatically (see find_redirect_stubs()
 # in that script).
-# Last refreshed: 2026-10-19
+# Last refreshed: 2026-10-26
 "_global_by_performance":
   - url: /posts/online-aptitude-test-space/
-    clicks: 93
-    impressions: 1895
+    clicks: 111
+    impressions: 2207
   - url: /posts/ai-competency-test-space/
-    clicks: 88
-    impressions: 3295
+    clicks: 95
+    impressions: 3611
   - url: /posts/online-exam-home-setup/
-    clicks: 46
-    impressions: 497
+    clicks: 50
+    impressions: 602
   - url: /posts/study-space-guide/
-    clicks: 33
-    impressions: 1023
-  - url: /posts/one-person-study-room/
-    clicks: 32
-    impressions: 1121
-  - url: /posts/cafe-video-meeting-space/
-    clicks: 32
-    impressions: 375
+    clicks: 39
+    impressions: 1190
   - url: /posts/online-coding-test-place/
-    clicks: 32
-    impressions: 286
+    clicks: 39
+    impressions: 354
+  - url: /posts/cafe-video-meeting-space/
+    clicks: 34
+    impressions: 412
+  - url: /posts/one-person-study-room/
+    clicks: 33
+    impressions: 1215
   - url: /posts/date-your-own-time/
     clicks: 25
-    impressions: 292
+    impressions: 294
   - url: /posts/naver-webtoon-ai-animator-internship-interview-prep/
-    clicks: 20
-    impressions: 278
+    clicks: 21
+    impressions: 302
   - url: /posts/interview-questions-to-ask/
     clicks: 19
-    impressions: 545
+    impressions: 550
   - url: /posts/cj-ai-competency-interview-practice/
     clicks: 19
-    impressions: 432
+    impressions: 489
   - url: /posts/practice-speaking-space/
-    clicks: 16
-    impressions: 154
-  - url: /posts/hiring-manager-interview-red-flags-and-good-signals/
-    clicks: 14
-    impressions: 207
+    clicks: 18
+    impressions: 166
   - url: /posts/toefl-home-edition-space/
-    clicks: 12
-    impressions: 250
-  - url: /posts/duolingo-english-test-space/
-    clicks: 12
-    impressions: 197
+    clicks: 16
+    impressions: 345
+  - url: /posts/hiring-manager-interview-red-flags-and-good-signals/
+    clicks: 16
+    impressions: 238
+  - url: /posts/interview-answer-practice/
+    clicks: 14
+    impressions: 806
   - url: /posts/sk-hynix-ask-video-interview/
-    clicks: 11
-    impressions: 411
+    clicks: 13
+    impressions: 424
+  - url: /posts/duolingo-english-test-space/
+    clicks: 13
+    impressions: 247
   - url: /posts/summer-hotday-date-at-bareunjari/
     clicks: 11
-    impressions: 151
-  - url: /posts/interview-answer-practice/
-    clicks: 10
-    impressions: 574
+    impressions: 147
   - url: /posts/college-team-project-space/
     clicks: 8
-    impressions: 115
+    impressions: 133
   - url: /posts/bucheon-video-interview-place-guide/
     clicks: 7
-    impressions: 148
+    impressions: 155
   - url: /posts/bucheon-meeting-room/
     clicks: 6
-    impressions: 86
+    impressions: 89
+  - url: /posts/cabin-crew-english-interview-practice/
+    clicks: 5
+    impressions: 204
   - url: /posts/bucheon-small-group-space/
     clicks: 5
-    impressions: 92
+    impressions: 95
+  - url: /posts/recurring-space-booking-for-freelance-counselors/
+    clicks: 5
+    impressions: 75
   - url: /posts/1-minute-self-introduction-guide/
     clicks: 4
-    impressions: 268
-  - url: /posts/cabin-crew-english-interview-practice/
-    clicks: 4
-    impressions: 182
+    impressions: 349
   - url: /posts/english-speaking-test-recording-practice/
     clicks: 4
-    impressions: 156
-  - url: /posts/recurring-space-booking-for-freelance-counselors/
+    impressions: 159
+  - url: /posts/experienced-hire-interview-experience-guide/
     clicks: 4
     impressions: 67
   - url: /posts/sinjungdong-evening-date/
     clicks: 4
-    impressions: 48
+    impressions: 55
   - url: /posts/audition-self-tape-checklist/
     clicks: 3
-    impressions: 71
-  - url: /posts/experienced-hire-interview-experience-guide/
+    impressions: 75
+  - url: /posts/one-hour-before-appointment/
     clicks: 3
-    impressions: 64
+    impressions: 54
+  - url: /posts/interview-strengths-weaknesses-answer-guide/
+    clicks: 3
+    impressions: 36
   - url: /posts/bucheon-tutoring-class-space/
     clicks: 2
-    impressions: 170
-  - url: /posts/one-hour-before-appointment/
+    impressions: 176
+  - url: /posts/client-meeting-preparation-roadmap/
     clicks: 2
-    impressions: 45
+    impressions: 24
   - url: /posts/after-interview-thank-you-email-guide/
     clicks: 1
-    impressions: 238
+    impressions: 268
   - url: /posts/interview-motivation-job-analysis-guide/
     clicks: 1
-    impressions: 117
+    impressions: 137
   - url: /posts/interview-experience-star-guide/
     clicks: 1
-    impressions: 91
+    impressions: 98
   - url: /posts/alone-time-is-recovery/
     clicks: 1
-    impressions: 71
+    impressions: 91
   - url: /posts/short-term-office-rental/
     clicks: 1
-    impressions: 49
+    impressions: 51
   - url: /posts/group-study-3-hours/
     clicks: 1
-    impressions: 20
-  - url: /posts/interview-strengths-weaknesses-answer-guide/
-    clicks: 1
-    impressions: 15
+    impressions: 26
   - url: /posts/regular-study-space-signals/
     clicks: 1
     impressions: 15
   - url: /posts/weekday-morning-workspace/
     clicks: 1
-    impressions: 13
-  - url: /posts/interview-30-minutes-before/
-    clicks: 0
-    impressions: 137
+    impressions: 14
   - url: /posts/boston-early-morning-video-meeting/
     clicks: 0
-    impressions: 131
+    impressions: 189
+  - url: /posts/interview-30-minutes-before/
+    clicks: 0
+    impressions: 149
   - url: /posts/cabin-crew-interview-practice/
     clicks: 0
-    impressions: 68
-  - url: /posts/study-space-for-presentation-discussion-project/
-    clicks: 0
-    impressions: 55
-  - url: /posts/one-hour-to-let-go/
-    clicks: 0
-    impressions: 48
+    impressions: 100
   - url: /posts/video-interview-setup/
     clicks: 0
-    impressions: 45
-  - url: /posts/solopreneur-client-meeting-space/
+    impressions: 93
+  - url: /posts/study-space-for-presentation-discussion-project/
     clicks: 0
-    impressions: 38
+    impressions: 57
+  - url: /posts/one-hour-to-let-go/
+    clicks: 0
+    impressions: 54
   - url: /posts/acting-practice-space/
     clicks: 0
-    impressions: 37
+    impressions: 44
   - url: /posts/pt-presentation-rehearsal/
     clicks: 0
-    impressions: 36
+    impressions: 43
+  - url: /posts/solopreneur-client-meeting-space/
+    clicks: 0
+    impressions: 40
+  - url: /posts/privacy-is-worth-paying-for/
+    clicks: 0
+    impressions: 34
   - url: /posts/chuseok-personal-time/
     clicks: 0
     impressions: 28
   - url: /posts/living-day-by-day/
     clicks: 0
-    impressions: 23
-  - url: /posts/privacy-is-worth-paying-for/
+    impressions: 24
+  - url: /posts/bucheon-product-shooting-space/
     clicks: 0
-    impressions: 22
+    impressions: 18
   - url: /posts/all-night-private-workspace/
     clicks: 0
     impressions: 17
-  - url: /posts/bucheon-product-shooting-space/
-    clicks: 0
-    impressions: 14
   - url: /posts/focus-workspace-reset/
     clicks: 0
-    impressions: 11
+    impressions: 15
   - url: /posts/august-two-hour-focus-time/
     clicks: 0
     impressions: 3
+  - url: /posts/interview-preparation-roadmap/
+    clicks: 0
+    impressions: 2
   - url: /posts/bareunjari-space/
     clicks: 0
     impressions: 1
