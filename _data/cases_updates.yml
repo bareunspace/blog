@@ -1,7 +1,198 @@
 version: 1
-updated_at: 2026-10-26
+updated_at: 2026-10-27
 
 cases:
+  - id: im-securities-2026-new-hire-ai-discussion
+    type: hiring
+    topic: interview
+    job: finance
+    company: iM증권
+    company_slug: im-securities
+    taxonomy:
+      industry_tags:
+        - finance
+      region_tags:
+        - seoul
+        - capital-region
+    title: 2026년 신입사원 채용 · AI 역량검사·토론면접
+    summary: AI 역량검사와 토론면접이 함께 안내되어 독립 응시환경 및 토론 리허설 수요가 직접적입니다. 세부 영상·음성 응답 여부와 확정 면접 날짜는 공식 공고 또는 개별 안내로 재확인이 필요합니다.
+
+    published_at: 2026-10-26
+    verified_at: 2026-10-27
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-27
+
+    application:
+      start: "2026-10-26"
+      end: "2026-11-08 23:59"
+      period_label: "2026-10-26 ~ 2026-11-08 23:59"
+      hiring_size: 미확인
+      roles: 신입사원
+      expected_join: 미확인
+
+    selection:
+      process_label: 서류전형 → AI 역량검사 → 1차 실무자·토론면접 → 2차 부서장면접 → 최종 임원면접
+      interview_focus: 온라인 AI 검사 응시환경 점검과 토론 발언·반론, 직무 경험 답변을 소리 내어 반복 연습
+      stages:
+        - 지원서 접수 · 2026-10-26 ~ 2026-11-08 23:59
+        - AI 역량검사 · 2026년 11월 하순 예정
+        - 실무자·토론면접 · 세부 일정 미확인
+        - 부서장·임원면접 · 2026년 12월 예정 (세부 일정 미확인)
+
+    pattern:
+      label: AI 검사 후 직무·역량 면접 준비
+      insight: AI 역량검사와 토론면접이 함께 안내되어 독립 응시환경 및 토론 리허설 수요가 직접적입니다.
+      practice_shift: 온라인 AI 검사 응시환경 점검과 토론 발언·반론, 직무 경험 답변을 소리 내어 반복 연습
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: AI 역량검사와 토론면접이 함께 안내되어 독립 응시환경 및 토론 리허설 수요가 직접적입니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - group-discussion
+        - follow-up-response
+      practice_points:
+        - 온라인 AI 역량검사 전 카메라·마이크·인터넷·소음 등 응시환경 점검하기
+        - 직무 경험과 지원 동기를 30초·60초 버전으로 소리 내어 설명하기
+        - 질문에 답하고 근거와 대안을 묻는 후속 질문에도 답해보기
+        - 토론 주제에 대한 기조 발언과 동의·보완·반론을 반복 연습하기
+      excluded:
+        - AI 역량검사의 영상·음성 녹화 여부를 확인 없이 단정하는 표현
+        - 실제 기업 면접 질문이나 AI 평가 문항을 보유한다는 표현
+        - 기업과 바른자리가 제휴했다는 표현
+        - 합격 가능성을 보장하는 표현
+
+    notes:
+        - 2026년 10월 27일 등록 당시 공식 채용 원문 상세 페이지는 자동 열람에 제한이 있어, 이전 조사에서 확인한 공고 정보를 바탕으로 작성했습니다.
+        - 실제 전형 날짜와 세부 응시 방식은 공식 채용사이트에서 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: iM증권 공식 채용사이트
+      title: 2026년 신입사원 채용 · AI 역량검사·토론면접
+      url: https://imfnsec.recruiter.co.kr/career/jobs/132000
+      published_at: "2026-10-26"
+      checked_at: 2026-10-27
+
+    related:
+      url: /posts/study-space-for-presentation-discussion-project/
+      label: 발표·토론 연습 공간 가이드 보기
+
+  - id: kb-insurance-2026-fall-grade4-ai-interview
+    type: hiring
+    topic: interview
+    job: finance
+    company: KB손해보험
+    company_slug: kb-insurance
+    taxonomy:
+      industry_tags:
+        - finance
+      region_tags:
+        - seoul
+        - capital-region
+    title: 2026년 하반기 4급 신입사원 공개채용 · AI 역량검사·실무면접
+    summary: AI 역량검사와 2단계 면접이 안내되어 조용한 응시환경과 답변 연습에 연결됩니다. 검사에 영상응답이 포함되는지는 미확인입니다. 세부 영상·음성 응답 여부와 확정 면접 날짜는 공식 공고 또는 개별 안내로 재확인이 필요합니다.
+
+    published_at: 2026-10-23
+    verified_at: 2026-10-27
+    recruitment_status: recruiting
+    status_checked_at: 2026-10-27
+
+    application:
+      start: "2026-10-23"
+      end: "2026-11-01 23:00"
+      period_label: "2026-10-23 ~ 2026-11-01 23:00"
+      hiring_size: 미확인
+      roles: 신입사원
+      expected_join: 미확인
+
+    selection:
+      process_label: 서류전형 → AI 역량검사 → 실무면접 → 임원면접
+      interview_focus: AI 검사 응시환경을 점검하고 지원 동기·직무 경험을 반복하여 말하기
+      stages:
+        - 지원서 접수 · 2026-10-23 ~ 2026-11-01 23:00
+        - AI 역량검사 · 세부 일정 미확인
+        - 실무면접 · 세부 일정 미확인
+        - 임원면접 · 세부 일정 미확인
+
+    pattern:
+      label: AI 검사 후 직무·역량 면접 준비
+      insight: AI 역량검사와 2단계 면접이 안내되어 조용한 응시환경과 답변 연습에 연결됩니다. 검사에 영상응답이 포함되는지는 미확인입니다.
+      practice_shift: AI 검사 응시환경을 점검하고 지원 동기·직무 경험을 반복하여 말하기
+
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: AI 역량검사와 2단계 면접이 안내되어 조용한 응시환경과 답변 연습에 연결됩니다. 검사에 영상응답이 포함되는지는 미확인입니다.
+      reuse_targets:
+        - cases
+        - interview-hub
+        - related-post
+
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+
+        - follow-up-response
+      practice_points:
+        - 온라인 AI 역량검사 전 카메라·마이크·인터넷·소음 등 응시환경 점검하기
+        - 직무 경험과 지원 동기를 30초·60초 버전으로 소리 내어 설명하기
+        - 질문에 답하고 근거와 대안을 묻는 후속 질문에도 답해보기
+      excluded:
+        - AI 역량검사의 영상·음성 녹화 여부를 확인 없이 단정하는 표현
+        - 실제 기업 면접 질문이나 AI 평가 문항을 보유한다는 표현
+        - 기업과 바른자리가 제휴했다는 표현
+        - 합격 가능성을 보장하는 표현
+
+    notes:
+        - 2026년 10월 27일 등록 당시 공식 채용 원문 상세 페이지는 자동 열람에 제한이 있어, 이전 조사에서 확인한 공고 정보를 바탕으로 작성했습니다.
+        - 실제 전형 날짜와 세부 응시 방식은 공식 채용사이트에서 최신 안내를 다시 확인해야 합니다.
+
+    source:
+      publisher: KB손해보험 공식 채용사이트
+      title: 2026년 하반기 4급 신입사원 공개채용 · AI 역량검사·실무면접
+      url: https://kbinsure.recruiter.co.kr/career/jobs/132043
+      published_at: "2026-10-23"
+      checked_at: 2026-10-27
+
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
   - id: keiti-2026-third-ai-pt-interview
     type: hiring
     topic: interview
