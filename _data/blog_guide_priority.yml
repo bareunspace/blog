@@ -13,8 +13,10 @@
   - /posts/practice-speaking-space/ # 2
 
 # Priority order for the Practical Guides section.
-# Rule: prioritize recent booking clicks first, then observed reservation demand,
-# then recent GSC/GA4 traffic. Avoid reordering from a single weak signal alone.
+# Rule: prioritize booking clicks first, then observed reservation demand,
+# then recent 28-day search/traffic performance. Use the recent 7-day trend only
+# as a supporting signal. Compare posts only within the same category and avoid
+# reordering from a single weak signal or a small short-term difference.
 # Category order is managed in blog.html and remains interview -> exam -> practice
 # -> study -> meeting -> private -> journal.
 # Editor's Pick is intentionally managed separately.
@@ -27,10 +29,10 @@
 "시험·응시":
   - /posts/online-aptitude-test-space/
   - /posts/ai-competency-test-space/
+  - /posts/online-exam-home-setup/
   - /posts/online-coding-test-place/
   - /posts/duolingo-english-test-space/
   - /posts/toefl-home-edition-space/
-  - /posts/online-exam-home-setup/
 "연습·리허설":
   - /posts/pt-presentation-rehearsal/
   - /posts/audition-self-tape-checklist/
@@ -38,13 +40,14 @@
 "스터디룸":
   - /posts/one-person-study-room/
   - /posts/practice-speaking-space/
+  - /posts/bucheon-tutoring-class-space/
   - /posts/study-space-guide/
   - /posts/college-team-project-space/
 "미팅·상담":
   - /posts/bucheon-meeting-room/
   - /posts/recurring-space-booking-for-freelance-counselors/
-  - /posts/short-term-office-rental/
   - /posts/bucheon-small-group-space/
+  - /posts/short-term-office-rental/
 "프라이빗시간":
   - /posts/date-your-own-time/
   - /posts/sinjungdong-evening-date/
