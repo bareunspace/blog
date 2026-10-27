@@ -86,15 +86,19 @@ def should_pass(challenger,incumbent,snapshot):
     return False
 
 def rank_category(current,universe,snapshot):
-    ordered=[u for u in current if u in universe]
-    ordered+=sorted(set(universe)-set(ordered))
-    changed=True
-    while changed:
-        changed=False
-        for n in range(1,len(ordered)):
-            if should_pass(ordered[n],ordered[n-1],snapshot):
-                ordered[n-1],ordered[n]=ordered[n],ordered[n-1]
-                changed=True
+    # Stable insertion ranking: start from the existing order and allow each
+    # post to move upward only while it has materially stronger evidence than
+    # the item immediately above it. This guarantees termination and avoids
+    # oscillation when different signals disagree.
+    seed=[u for u in current if u in universe]
+    seed+=sorted(set(universe)-set(seed))
+    ordered=[]
+    for url in seed:
+        ordered.append(url)
+        n=len(ordered)-1
+        while n>0 and should_pass(ordered[n],ordered[n-1],snapshot):
+            ordered[n-1],ordered[n]=ordered[n],ordered[n-1]
+            n-=1
     return ordered
 
 def replace_category(text,cat,rows):
