@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-10-28
+updated_at: 2026-11-03
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -1770,3 +1770,319 @@ cases:
     related:
       url: /posts/ai-competency-test-space/
       label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: hmglobal-2026-fall-ai-pt
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 한미글로벌
+    company_slug: hmglobal
+    taxonomy:
+      industry_tags:
+        - recruitment
+      region_tags:
+        - seoul
+        - nationwide
+    title: 2026년 하반기 대졸 신입사원 공개채용 · AI역량검사·PT면접
+    summary: AI역량검사 후 실무·PT면접과 경영진면접을 진행하는 채용으로, 독립 검사 환경과 발표 리허설 수요에 연결됩니다.
+    published_at: 2026-10-26
+    verified_at: 2026-11-03
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-03
+    application:
+      start: "2026-10-26"
+      end: "2026-11-08"
+      period_label: "2026-10-26 ~ 2026-11-08"
+      hiring_size: 대졸 신입사원 공개채용
+      roles: 건축 · 기계 · 전기
+    selection:
+      process_label: 서류전형 → AI역량검사 → 1차 실무/PT면접 → 2차 경영진면접 → 건강검진
+      interview_focus: AI 검사 응시환경 점검과 PT 발표 구성·시간 관리·질의응답 연습
+      stages:
+        - 세부 면접 일시 및 장소는 공식 채용사이트에서 확인
+    pattern:
+      label: AI검사와 실무 PT면접 연계
+      insight: AI역량검사 후 실무·PT면접과 경영진면접을 진행하는 채용으로, 독립 검사 환경과 발표 리허설 수요에 연결됩니다.
+      practice_shift: 실제로 말하고 녹화하며 독립 공간에서 리허설하기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: true
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: AI 검사 응시환경 점검과 PT 발표 구성·시간 관리·질의응답 연습
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - follow-up-response
+        - ai-assessment-environment
+        - pt-presentation
+      practice_points:
+        - 노트북·마이크·카메라·인터넷과 주변 방해 요소 점검하기
+        - 프로젝트 관리 주제를 가정해 3분 발표를 녹화하고 다시 연습하기
+        - 발표 후 판단 근거·대안에 대한 후속 질문에 답해보기
+      excluded:
+        - 실제 기업 면접 문항이나 AI 검사 내용을 알고 있다는 표현
+        - 기업과 제휴된 면접 서비스라는 표현
+        - 합격 가능성을 보장하는 표현
+    notes:
+      - AI검사 영상 녹화 여부는 공식 확인 전까지 미확인입니다.
+      - 세부 전형 일정은 공식 채용사이트의 최신 공고를 확인해야 합니다.
+    source:
+      publisher: 한미글로벌 채용
+      title: 2026년 하반기 대졸 신입사원 공개채용 · AI역량검사·PT면접
+      url: https://hmglobal.recruiter.co.kr/
+      published_at: "2026-10-26"
+      checked_at: 2026-11-03
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표 연습·리허설 가이드 보기
+
+  - id: envision-2026-fall-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 앤비젼
+    company_slug: envision
+    taxonomy:
+      industry_tags:
+        - recruitment
+      region_tags:
+        - seoul
+        - geumcheon
+        - southwest-seoul
+    title: 2026년 하반기 공개채용 · 온라인 AI역량검사·실무면접
+    summary: 온라인 AI역량검사와 실무·인사·CEO 면접을 진행합니다. 서울 금천구 생활권의 검사 환경과 직무 답변 연습 수요에 연결됩니다.
+    published_at: 2026-10-26
+    verified_at: 2026-11-03
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-03
+    application:
+      start: "2026-10-26"
+      end: "2026-11-08"
+      period_label: "2026-10-26 ~ 2026-11-08"
+      hiring_size: 2026년 하반기 공개채용
+      roles: 모집 직무별 상이
+    selection:
+      process_label: 서류전형 → 온라인 AI역량검사 → 1차 실무면접 → 2차 인사·CEO면접
+      interview_focus: 조용한 AI검사 응시 환경과 직무 경험 설명·후속 질문 답변 연습
+      stages:
+        - 세부 면접 일시 및 장소는 공식 채용사이트에서 확인
+    pattern:
+      label: 온라인 AI검사 후 다단계 면접
+      insight: 온라인 AI역량검사와 실무·인사·CEO 면접을 진행합니다. 서울 금천구 생활권의 검사 환경과 직무 답변 연습 수요에 연결됩니다.
+      practice_shift: 실제로 말하고 녹화하며 독립 공간에서 리허설하기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 조용한 AI검사 응시 환경과 직무 경험 설명·후속 질문 답변 연습
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - follow-up-response
+        - ai-assessment-environment
+      practice_points:
+        - 온라인 검사 전 장비·네트워크·주변 소음 점검하기
+        - 지원 직무 관련 문제 해결 경험을 60~90초로 설명하기
+        - 후속 질문을 가정해 답변을 녹화하고 개선하기
+      excluded:
+        - 실제 기업 면접 문항이나 AI 검사 내용을 알고 있다는 표현
+        - 기업과 제휴된 면접 서비스라는 표현
+        - 합격 가능성을 보장하는 표현
+    notes:
+      - AI검사 영상 녹화 여부는 공식 확인 전까지 미확인입니다.
+      - 세부 전형 일정은 공식 채용사이트의 최신 공고를 확인해야 합니다.
+    source:
+      publisher: 앤비젼 채용
+      title: 2026년 하반기 공개채용 · 온라인 AI역량검사·실무면접
+      url: https://envision.recruiter.co.kr/
+      published_at: "2026-10-26"
+      checked_at: 2026-11-03
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: im-securities-2026-new-hire-ai-discussion
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: iM증권
+    company_slug: im-securities
+    taxonomy:
+      industry_tags:
+        - recruitment
+      region_tags:
+        - seoul
+        - yeouido
+        - metropolitan-area
+    title: 2026년 신입사원 공개채용 · AI역량검사·토론면접
+    summary: 리테일 영업과 IT 신입채용으로 AI역량검사 및 실무자·토론면접이 포함됩니다. 수도권 지원자의 독립 검사 환경과 토론·직무 설명 연습 수요에 연결됩니다.
+    published_at: 2026-10-26
+    verified_at: 2026-11-03
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-03
+    application:
+      start: "2026-10-26"
+      end: "2026-11-08 23:59"
+      period_label: "2026-10-26 ~ 2026-11-08 23:59"
+      hiring_size: 2026년 신입사원 공개채용
+      roles: Retail 영업 · IT
+    selection:
+      process_label: 서류전형 → AI역량검사 → 1차 실무자·토론면접 → 2차 부서장면접 → 최종 임원면접
+      interview_focus: AI검사 환경 점검과 토론 발언·직무 경험·금융업 지원 동기 답변 연습
+      stages:
+        - 세부 면접 일시 및 장소는 공식 채용사이트에서 확인
+    pattern:
+      label: AI역량검사와 토론면접 병행
+      insight: 리테일 영업과 IT 신입채용으로 AI역량검사 및 실무자·토론면접이 포함됩니다. 수도권 지원자의 독립 검사 환경과 토론·직무 설명 연습 수요에 연결됩니다.
+      practice_shift: 실제로 말하고 녹화하며 독립 공간에서 리허설하기
+    signals:
+      situation_interview: true
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: AI검사 환경 점검과 토론 발언·직무 경험·금융업 지원 동기 답변 연습
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - follow-up-response
+        - ai-assessment-environment
+        - group-discussion
+      practice_points:
+        - AI역량검사 전 장비·인터넷·주변 소음 점검하기
+        - 금융 서비스 주제를 가정해 자신의 의견과 근거를 1분으로 설명하기
+        - 실무자 질문을 가정해 지원 동기·직무 경험을 소리 내어 답하기
+      excluded:
+        - 실제 기업 면접 문항이나 AI 검사 내용을 알고 있다는 표현
+        - 기업과 제휴된 면접 서비스라는 표현
+        - 합격 가능성을 보장하는 표현
+    notes:
+      - AI검사 영상 녹화 여부는 공식 확인 전까지 미확인입니다.
+      - 세부 전형 일정은 공식 채용사이트의 최신 공고를 확인해야 합니다.
+    source:
+      publisher: iM증권 채용
+      title: 2026년 신입사원 공개채용 · AI역량검사·토론면접
+      url: https://imfnsec.recruiter.co.kr/
+      published_at: "2026-10-26"
+      checked_at: 2026-11-03
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시 환경 가이드 보기
+
+  - id: seoul-metro-2026-fall-482-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 서울교통공사
+    company_slug: seoul-metro
+    taxonomy:
+      industry_tags:
+        - recruitment
+      region_tags:
+        - seoul
+        - metropolitan-area
+    title: 2026년 하반기 신입사원 채용형 인턴 482명 · 상황·집단면접
+    summary: 482명 규모의 서울교통공사 공개채용으로, 개별 상황면접과 집단면접을 대비해 실제 목소리로 상황 판단·토론 답변을 연습하는 수요와 연결됩니다.
+    published_at: 2026-10-26
+    verified_at: 2026-11-03
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-03
+    application:
+      start: "2026-11-03 10:00"
+      end: "2026-11-09 18:00"
+      period_label: "2026-11-03 10:00 ~ 2026-11-09 18:00"
+      hiring_size: 채용형 인턴 482명
+      roles: 사무 · 차량 · 전기 · 정보통신 등
+    selection:
+      process_label: 지원서 접수 → 필기시험 → 개별 상황면접·집단면접 → 최종합격
+      interview_focus: 상황별 판단 근거 설명과 집단면접에서 간결한 발언·경청·후속 질문 연습
+      stages:
+        - 세부 면접 일시 및 장소는 공식 채용사이트에서 확인
+    pattern:
+      label: 대규모 채용의 상황·집단면접
+      insight: 482명 규모의 서울교통공사 공개채용으로, 개별 상황면접과 집단면접을 대비해 실제 목소리로 상황 판단·토론 답변을 연습하는 수요와 연결됩니다.
+      practice_shift: 실제로 말하고 녹화하며 독립 공간에서 리허설하기
+    signals:
+      situation_interview: true
+      video_interview: null
+      ai_interview: null
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 5
+      why_selected: 상황별 판단 근거 설명과 집단면접에서 간결한 발언·경청·후속 질문 연습
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - follow-up-response
+        - group-discussion
+      practice_points:
+        - 업무 상황을 가정해 대응 순서와 판단 근거를 60초로 답해보기
+        - 집단면접을 가정해 상대 의견을 요약하고 자신의 견해를 간결히 설명하기
+        - 답변을 녹화해 말의 속도·시선·논리적 흐름 점검하기
+      excluded:
+        - 실제 기업 면접 문항이나 AI 검사 내용을 알고 있다는 표현
+        - 기업과 제휴된 면접 서비스라는 표현
+        - 합격 가능성을 보장하는 표현
+    notes:
+      - AI검사 영상 녹화 여부는 공식 확인 전까지 미확인입니다.
+      - 세부 전형 일정은 공식 채용사이트의 최신 공고를 확인해야 합니다.
+    source:
+      publisher: 서울교통공사 채용
+      title: 2026년 하반기 신입사원 채용형 인턴 482명 · 상황·집단면접
+      url: https://www.seoulmetro.co.kr/
+      published_at: "2026-10-26"
+      checked_at: 2026-11-03
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 연습 가이드 보기
