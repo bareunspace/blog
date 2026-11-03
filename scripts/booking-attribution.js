@@ -88,12 +88,13 @@
     }
   }
 
-  function attributionParams(fallbackLastTouch) {
+  function attributionParams(fallbackLastTouch, queryTouch) {
+    queryTouch = queryTouch || {};
     var fallback = cleanAttributionValue(fallbackLastTouch);
     return {
-      first_touch_path: attributionSessionGet(ATTR_KEYS.first) || fallback || '',
-      assist_path: attributionSessionGet(ATTR_KEYS.assist) || '',
-      last_touch_path: attributionSessionGet(ATTR_KEYS.last) || fallback || ''
+      first_touch_path: attributionSessionGet(ATTR_KEYS.first) || cleanAttributionValue(queryTouch.first) || fallback || '',
+      assist_path: attributionSessionGet(ATTR_KEYS.assist) || cleanAttributionValue(queryTouch.assist) || '',
+      last_touch_path: attributionSessionGet(ATTR_KEYS.last) || cleanAttributionValue(queryTouch.last) || fallback || ''
     };
   }
 
@@ -270,11 +271,12 @@
         var bookingMeta = getNaverBookingMeta(href);
         if (!bookingMeta) return;
 
-        link.addEventListener('click', function (event) {
-          if (event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        function handleNaverClick(event) {
+          if (event.type === 'auxclick' && event.button !== 1) return;
+          var nativeNavigation = event.button === 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
           var target = link.href;
-          var attribution = attributionParams(bookingSource);
-          event.preventDefault();
+          var attribution = attributionParams(bookingSource, { first: queryFirst, assist: queryAssist, last: queryLast });
+          if (!nativeNavigation) event.preventDefault();
           track('naver_booking_click', {
             purpose: bookingPurpose,
             source_path: bookingSource,
@@ -288,10 +290,12 @@
             item_id: bookingMeta.item_id,
             booking_destination: bookingMeta.destination,
             ...interviewAuthParams()
-          }, function () {
+          }, nativeNavigation ? null : function () {
             window.location.href = target;
           });
-        });
+        }
+        link.addEventListener('click', handleNaverClick);
+        link.addEventListener('auxclick', handleNaverClick);
       });
       return;
     }
@@ -309,15 +313,16 @@
       link.setAttribute('href', bookingUrl(linkPurpose, href, ctaPosition));
       link.removeAttribute('target');
       link.removeAttribute('rel');
-      link.addEventListener('click', function (event) {
-        if (event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      function handleBookingClick(event) {
+        if (event.type === 'auxclick' && event.button !== 1) return;
+        var nativeNavigation = event.button === 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
         var attribution;
         var target;
         sessionSet(ATTR_KEYS.last, path);
         attribution = attributionParams(path);
         target = bookingUrl(linkPurpose, href, ctaPosition);
         link.setAttribute('href', target);
-        event.preventDefault();
+        if (!nativeNavigation) event.preventDefault();
         track('booking_intent', {
           purpose: linkPurpose,
           source_path: path,
@@ -329,10 +334,12 @@
           last_touch_path: attribution.last_touch_path,
           link_text: (link.textContent || '').trim().slice(0, 80),
           ...interviewAuthParams()
-        }, function () {
+        }, nativeNavigation ? null : function () {
           window.location.href = target;
         });
-      });
+      }
+      link.addEventListener('click', handleBookingClick);
+      link.addEventListener('auxclick', handleBookingClick);
     });
   });
 })();
