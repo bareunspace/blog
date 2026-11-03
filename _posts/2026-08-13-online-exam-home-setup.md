@@ -59,7 +59,7 @@ preload_image: images/online-exam-home-setup-real-20261011.webp
     <div style="padding:18px 0 0;text-align:center;">
       <h2 style="margin:0 0 10px;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.4;word-break:keep-all;">집에서 준비가 어렵다면, 시험 조건부터 확인해 보세요</h2>
       <p style="margin:0 0 16px;line-height:1.7;word-break:keep-all;">신중동역 도보 1분 · 예약 시간 동안 공간 전체 단독 이용.<br />시험 규정과 실제 시설이 맞는지 확인한 뒤, 장비 점검과 본시험에 필요한 시간을 여유 있게 확보하세요.</p>
-      <a href="/booking/?source=online-exam-home-setup-image" class="btn-primary" data-cta="online_exam_setup_image_booking">준비 시간까지 포함해 빈 시간 확인하기</a>
+      <a href="/booking/?purpose=exam&amp;source=online-exam-home-setup-image" class="btn-primary" data-cta="online_exam_setup_image_booking">준비 시간까지 포함해 빈 시간 확인하기</a>
       <p style="margin:10px 0 0;font-size:.82rem;color:#6c7880;line-height:1.6;">노트북과 필요한 기기는 직접 지참해 주세요. 시험별 공간·네트워크 허용 조건과 사전 시스템 테스트를 먼저 확인해 주세요.</p>
     </div>
   </div>
@@ -226,7 +226,7 @@ preload_image: images/online-exam-home-setup-real-20261011.webp
     <p>현재 안내 요금은 <strong>1시간 10,000원</strong>입니다.</p>
     <p>바른자리는 시험 운영기관이나 공식 고사장이 아니며, 시험 응시용 노트북·웹캠·스마트폰 등의 장비를 제공하는 서비스도 아닙니다.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+      <a href="/booking/?purpose=exam&amp;source=online-exam-home-setup" class="btn-primary" data-cta="online_exam_setup_mid_booking">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
       <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
     </div>
   </div>
@@ -259,7 +259,7 @@ preload_image: images/online-exam-home-setup-real-20261011.webp
         <p>대청소부터 시작하지 말고 먼저 시험 규정을 확인하세요. 집에서 준비하기 어렵다면 시험에 필요한 몇 시간만 독립된 공간을 확보하는 방법도 비교해볼 수 있습니다.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
+        <a href="/booking/?purpose=exam&amp;source=online-exam-home-setup" class="btn-primary" data-cta="online_exam_setup_bottom_booking">온라인 시험 전 세팅 시간까지 예약 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}#online-hiring" class="btn-outline">온라인 채용 전형 글 더 보기</a>
       </div>
     </div>

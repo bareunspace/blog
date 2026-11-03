@@ -175,15 +175,24 @@
     if (callback) window.setTimeout(done, 900);
   }
 
-  function bookingUrl(purpose) {
+  function bookingUrl(purpose, href, ctaPosition) {
     var currentPath = cleanAttributionValue(window.location.pathname || '/') || '/';
     var attribution = attributionParams(currentPath);
-    var params = new URLSearchParams();
+    // Preserve existing campaign/source parameters on internal booking links.
+    var url = new URL(href || '/booking/', window.location.origin);
+    var params = url.origin === window.location.origin && url.pathname.replace(/\/+$/, '') === '/booking'
+      ? url.searchParams : new URLSearchParams();
     params.set('purpose', purpose || 'unspecified');
+    // The ranking importer reads source from the URL as a page path.
+    // Keep the original CTA source label separately without breaking that contract.
+    if (params.get('source') && params.get('source') !== currentPath && !params.get('entry_source')) {
+      params.set('entry_source', params.get('source'));
+    }
     params.set('source', currentPath);
+    if (ctaPosition) params.set('cta', ctaPosition);
     if (attribution.first_touch_path) params.set('first', attribution.first_touch_path);
     if (attribution.assist_path) params.set('assist', attribution.assist_path);
-    if (attribution.last_touch_path) params.set('last', attribution.last_touch_path);
+    params.set('last', currentPath);
     return '/booking/?' + params.toString();
   }
 
@@ -243,6 +252,7 @@
     if (path.indexOf('/booking') === 0) {
       var query = new URLSearchParams(window.location.search);
       var bookingPurpose = query.get('purpose') || 'unspecified';
+      var entryCtaPosition = query.get('cta') || 'unknown';
       var bookingSource = cleanAttributionValue(query.get('source') || document.referrer || '') || 'direct';
       var queryFirst = cleanAttributionValue(query.get('first') || '');
       var queryAssist = cleanAttributionValue(query.get('assist') || '');
@@ -261,12 +271,15 @@
         if (!bookingMeta) return;
 
         link.addEventListener('click', function (event) {
+          if (event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           var target = link.href;
           var attribution = attributionParams(bookingSource);
           event.preventDefault();
           track('naver_booking_click', {
             purpose: bookingPurpose,
             source_path: bookingSource,
+            entry_cta_position: entryCtaPosition,
+            entry_source: query.get('entry_source') || '',
             first_touch_path: attribution.first_touch_path,
             assist_path: attribution.assist_path,
             last_touch_path: attribution.last_touch_path,
@@ -292,19 +305,25 @@
 
       var linkPurpose = (bookingPageMeta && bookingPageMeta.purpose) || inferPurposeFromLink(link) || pagePurpose;
 
+      var ctaPosition = link.getAttribute('data-cta') || '';
+      link.setAttribute('href', bookingUrl(linkPurpose, href, ctaPosition));
       link.removeAttribute('target');
       link.removeAttribute('rel');
       link.addEventListener('click', function (event) {
+        if (event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var attribution;
         var target;
         sessionSet(ATTR_KEYS.last, path);
         attribution = attributionParams(path);
-        target = bookingUrl(linkPurpose);
+        target = bookingUrl(linkPurpose, href, ctaPosition);
         link.setAttribute('href', target);
         event.preventDefault();
         track('booking_intent', {
           purpose: linkPurpose,
           source_path: path,
+          booking_source: new URL(target, window.location.origin).searchParams.get('source'),
+          entry_source: new URL(target, window.location.origin).searchParams.get('entry_source') || '',
+          cta_position: ctaPosition || 'unknown',
           first_touch_path: attribution.first_touch_path,
           assist_path: attribution.assist_path,
           last_touch_path: attribution.last_touch_path,

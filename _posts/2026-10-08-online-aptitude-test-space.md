@@ -97,7 +97,7 @@ preload_image: images/online-aptitude-test-space-warm-20261018.webp
     </div>
     <p><strong>계산 예시: 준비 30분 + 검사 2시간 + 마무리 30분 = 총 3시간.</strong> 기본요금은 30,000원입니다. 시간은 계산을 돕는 예시이며, 실제 예약은 기업의 접속·응시 안내에 맞춰 조정해 주세요. 별도 날짜의 예비소집이 있다면 그날의 예약 가능 시간도 확인하세요.</p>
     <div class="hero-btns">
-      <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="online_aptitude_mid_booking">시험시간에 맞춰 빈 시간 확인하기</a>
+      <a href="/booking/?purpose=exam&amp;source=online-aptitude-test-space" class="btn-primary" data-cta="online_aptitude_mid_booking">시험시간에 맞춰 빈 시간 확인하기</a>
     </div>
   </div>
 </section>
@@ -216,7 +216,7 @@ preload_image: images/online-aptitude-test-space-warm-20261018.webp
         <p>검사시간에 로그인·프로그램 실행·장비 배치와 제출 확인 시간을 더해 필요한 전체 시간을 계산한 뒤, 독립성·인터넷·전원 조건을 실제 응시 안내와 비교해보세요.</p>
       </div>
       <div class="blog-conversion-actions">
-        <a href="https://m.place.naver.com/place/2041312316/ticket" target="_blank" rel="noopener noreferrer" class="btn-primary" data-cta="online_aptitude_bottom_booking">시험시간에 맞춰 빈 시간 확인하기</a>
+        <a href="/booking/?purpose=exam&amp;source=online-aptitude-test-space" class="btn-primary" data-cta="online_aptitude_bottom_booking">시험시간에 맞춰 빈 시간 확인하기</a>
         <a href="{{ '/interview/' | relative_url }}" class="btn-outline">면접준비 글 더 보기</a>
       </div>
     </div>
