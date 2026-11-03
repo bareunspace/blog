@@ -183,7 +183,12 @@
     var params = url.origin === window.location.origin && url.pathname.replace(/\/+$/, '') === '/booking'
       ? url.searchParams : new URLSearchParams();
     params.set('purpose', purpose || 'unspecified');
-    if (!params.get('source')) params.set('source', currentPath);
+    // The ranking importer reads source from the URL as a page path.
+    // Keep the original CTA source label separately without breaking that contract.
+    if (params.get('source') && params.get('source') !== currentPath && !params.get('entry_source')) {
+      params.set('entry_source', params.get('source'));
+    }
+    params.set('source', currentPath);
     if (ctaPosition) params.set('cta', ctaPosition);
     if (attribution.first_touch_path) params.set('first', attribution.first_touch_path);
     if (attribution.assist_path) params.set('assist', attribution.assist_path);
@@ -274,6 +279,7 @@
             purpose: bookingPurpose,
             source_path: bookingSource,
             entry_cta_position: entryCtaPosition,
+            entry_source: query.get('entry_source') || '',
             first_touch_path: attribution.first_touch_path,
             assist_path: attribution.assist_path,
             last_touch_path: attribution.last_touch_path,
@@ -316,6 +322,7 @@
           purpose: linkPurpose,
           source_path: path,
           booking_source: new URL(target, window.location.origin).searchParams.get('source'),
+          entry_source: new URL(target, window.location.origin).searchParams.get('entry_source') || '',
           cta_position: ctaPosition || 'unknown',
           first_touch_path: attribution.first_touch_path,
           assist_path: attribution.assist_path,

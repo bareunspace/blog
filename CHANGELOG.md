@@ -6,7 +6,7 @@ This project follows Semantic Versioning.
 
 ## [1.1.7] - 2026-11-03
 ### Fixed
-- Preserve booking source and existing query parameters through the booking hub, with article CTA position carried to the Naver outbound event.
+- Preserve CTA source labels as entry_source and existing query parameters through the booking hub, while keeping source as a page path for automatic ranking; carry article CTA position to the Naver outbound event.
 - Use explicit exam-purpose booking links in the online aptitude and home exam guides; retain existing content and automatic guide ranking.
 - Prepare attributed booking URLs before clicks so opening in a new tab preserves context.
 
