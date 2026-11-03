@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.8] - 2026-11-03
+### Fixed
+- Use sanitized first/assist/last query paths as outbound attribution fallbacks when session storage is blocked.
+- Record modified and middle-click article/booking actions without blocking native navigation or redirecting the original tab.
+
 ## [1.1.7] - 2026-11-03
 ### Fixed
 - Preserve CTA source labels as entry_source and existing query parameters through the booking hub, while keeping source as a page path for automatic ranking; carry article CTA position to the Naver outbound event.
