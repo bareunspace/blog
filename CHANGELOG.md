@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project follows Semantic Versioning.
 
+## [1.1.7] - 2026-11-03
+### Fixed
+- Preserve booking source and existing query parameters through the booking hub, with article CTA position carried to the Naver outbound event.
+- Use explicit exam-purpose booking links in the online aptitude and home exam guides; retain existing content and automatic guide ranking.
+- Prepare attributed booking URLs before clicks so opening in a new tab preserves context.
+
 ## [1.1.6] - 2026-10-18
 ### Changed
 - Restore the previous homepage flow by removing the added plain-text space information section between use cases and contact.
