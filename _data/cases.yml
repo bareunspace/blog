@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-11-03
+updated_at: 2026-11-07
 
 cases:
   - id: nps-2026-fall-new-hire-interview
@@ -2083,6 +2083,169 @@ cases:
       url: https://www.seoulmetro.co.kr/
       published_at: "2026-10-26"
       checked_at: 2026-11-03
+    related:
+      url: /posts/interview-answer-practice/
+      label: 면접 답변 연습 가이드 보기
+
+
+  - id: kangwon-land-2026-winter-third-ai-video
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 강원랜드
+    company_slug: kangwon-land
+    taxonomy:
+      industry_tags:
+        - hospitality
+        - public-sector
+      region_tags:
+        - gangwon
+    title: 2026년 동계 3차 기간제 근로자 채용 · AI영상면접
+    summary: 강원랜드 동계 3차 기간제 76명 채용으로 AI영상면접 녹화영상을 AI와 면접위원이 평가합니다. 카메라·마이크가 있는 PC로 독립된 장소에서 응시하는 수요와 직접 연결되지만 강원도 근무라 부천 생활권 지원자 규모는 미확인입니다.
+    published_at: 2026-11-05
+    verified_at: 2026-11-07
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-07
+    application:
+      start: "2026-11-05"
+      end: "2026-11-12 09:00"
+      period_label: "2026-11-05 ~ 2026-11-12 09:00"
+      hiring_size: 동계 3차 기간제 근로자 76명
+      roles: 기간제 근로자 · 모집 분야별 상이
+    selection:
+      process_label: 서류 적격 심사 → AI영상면접(40%) 및 면접위원 녹화영상 평가(60%)
+      interview_focus: 노트북·카메라·마이크와 주변 소음·조명을 점검하고 영상 답변을 실제로 연습하기
+      stages:
+        - 지원서 접수 · 2026-11-05 ~ 2026-11-12 09:00
+        - 서류 합격 발표 · 2026-11-13 예정
+        - AI영상면접 응시 · 2026-11-13 ~ 2026-11-15 24:00
+        - 녹화영상 면접위원 평가 · 2026-11-16 ~ 2026-11-18
+    pattern:
+      label: PC 기반 AI영상면접과 녹화영상 평가
+      insight: 카메라·마이크를 갖춘 PC에서 영상 답변을 제출하고 면접위원이 녹화영상을 평가하는 방식입니다.
+      practice_shift: 실제 응시 환경에서 자기소개와 직무 관련 답변을 말하고 녹화해 소리·시선·화면 구도를 확인하기
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 실제 PC 영상면접 응시와 녹화영상 평가가 명시되어 프라이빗 공간 수요가 분명하나 근무지가 강원도로 지역 유입은 불확실합니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - follow-up-response
+      practice_points:
+        - PC 카메라와 마이크·인터넷·조명·주변 소음 점검하기
+        - 자기소개와 지원 동기를 60초 내외로 답하고 녹화해보기
+        - 영상에서 시선과 목소리 크기·말의 속도를 확인하고 반복하기
+      excluded:
+        - 실제 강원랜드 AI면접 문항을 알고 있다는 표현
+        - 강원랜드와 제휴된 면접 서비스라는 표현
+        - 합격을 보장한다는 표현
+    notes:
+      - 태블릿과 휴대전화로는 응시할 수 없다는 공고 안내를 확인해야 합니다.
+      - 본 채용은 동계 1차와 별개의 동계 3차 공고입니다.
+    source:
+      publisher: 강원랜드 채용
+      title: 2026년 동계 3차 기간제 근로자 모집
+      url: https://kangwon.cairos.co.kr/kangwon
+      published_at: "2026-11-05"
+      checked_at: 2026-11-07
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사·영상면접 응시 환경 가이드 보기
+
+  - id: kinfa-2026-fourth-minsaeng-experience-interview
+    type: hiring
+    topic: interview
+    job: public-sector
+    company: 서민금융진흥원
+    company_slug: kinfa
+    taxonomy:
+      industry_tags:
+        - public-sector
+        - finance
+      region_tags:
+        - seoul
+        - incheon
+        - gyeonggi
+        - nationwide
+    title: 2026년 제4차 민생지킴대출 기간제 134명 · 경험면접
+    summary: 서민금융진흥원의 기간제 134명 채용으로 서울·인천·경기 근무지를 포함하며 소통·공감·문제해결 경험을 설명하는 경험면접을 준비하는 수요와 연결됩니다. AI·영상·PT면접 여부는 미확인입니다.
+    published_at: 2026-10-29
+    verified_at: 2026-11-07
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-07
+    application:
+      start: "2026-10-29"
+      end: "2026-11-12 15:00"
+      period_label: "2026-10-29 ~ 2026-11-12 15:00"
+      hiring_size: 민생지킴대출 기간제 직원 134명
+      roles: 금융 상담·지원 등 공고상 모집 직무
+    selection:
+      process_label: 직무적합성 평가 → 경험면접 → 최종합격
+      interview_focus: 소통·공감·책임감과 문제 해결 경험을 구조화해 소리 내어 답변하는 연습
+      stages:
+        - 지원서 접수 · 2026-10-29 ~ 2026-11-12 15:00
+        - 면접전형 · 2026-12-09 ~ 2026-12-11 예정
+    pattern:
+      label: 금융 상담 직무의 경험면접
+      insight: 지원자의 경험을 바탕으로 소통·공감·책임감 등 직무 역량을 평가하는 면접입니다.
+      practice_shift: 구체적인 경험을 상황·행동·결과 순서로 말하고 녹화하여 설명력을 높이기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: null
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 서울·인천·경기 근무지를 포함한 134명 채용이며 경험면접 답변 리허설에 적합하나 실제 온라인 응시 수요는 확인되지 않았습니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: medium
+      hub: interview
+      practice_types:
+        - speaking
+        - recording
+        - follow-up-response
+      practice_points:
+        - 고객의 어려움을 듣고 해결한 경험을 상황·행동·결과로 설명하기
+        - 공감과 책임감을 보여준 사례를 60~90초로 말해보기
+        - 후속 질문을 가정해 녹화하고 답변 흐름을 점검하기
+      excluded:
+        - AI·영상·PT면접이 실시된다고 확인 없이 단정하는 표현
+        - 실제 서민금융진흥원 면접 문항을 보유한다는 표현
+        - 서민금융진흥원과 제휴되었다는 표현
+    notes:
+      - AI면접·영상면접·PT면접은 공식 확인 전까지 미확인입니다.
+      - 면접 일정은 2026년 12월 9일부터 11일까지 예정이며 변경될 수 있습니다.
+    source:
+      publisher: JOB-ALIO 서민금융진흥원 채용
+      title: 2026년 제4차 기간제(민생지킴대출) 직원 채용
+      url: https://job.alio.go.kr/mobile2021/recruit/recruitView.do?idx=306648
+      published_at: "2026-10-29"
+      checked_at: 2026-11-07
     related:
       url: /posts/interview-answer-practice/
       label: 면접 답변 연습 가이드 보기
