@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 온라인 인적성검사 어디서 볼까? | 독립 공간·PC·스마트폰 응시 체크리스트
+title: 온라인 인적성검사 장소 어디서 볼까? | GSAT·온라인 인적성 응시 공간 체크
 description: 온라인 인적성검사는 집에서 볼 수 있어도 독립된 응시 공간, PC, 스마트폰, 안정적인 인터넷과 방해 없는 시간이 필요할 수 있습니다. 집에서 응시하기 불안할 때 무엇을 확인해야 하는지 정리했습니다.
 category: 면접준비
 hub_series: interview
@@ -37,7 +37,7 @@ preload_image: images/online-aptitude-test-space-warm-20261018.webp
 <section id="home">
   <div class="section-inner">
     <p class="section-label">Online Aptitude Test Space Guide</p>
-    <h1 class="section-title">온라인 인적성검사,<br />어디서 볼까?</h1>
+    <h1 class="section-title">온라인 인적성검사 장소,<br />어디서 볼까?</h1>
     <p class="section-desc"><strong>온라인 시험이라고 해서 아무 자리에서나 응시해도 되는 것은 아닙니다.</strong> 기업에 따라 독립된 응시 장소, PC와 스마트폰, 사전 환경점검이 필요할 수 있습니다. 집이 가장 편한 선택일 수 있지만 검사시간 동안 방해받지 않을 수 있는지도 함께 봐야 합니다.</p>
     <div class="hero-btns">
       <a href="#quick-answer" class="btn-primary">응시 장소 체크하기</a>
@@ -66,7 +66,7 @@ preload_image: images/online-aptitude-test-space-warm-20261018.webp
   <div class="section-inner">
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">집에서 볼 수 있다면 집도 괜찮습니다.<br />다만 ‘독립된 응시 환경’이 되는지 먼저 확인하세요.</h2>
-    <p class="section-desc">온라인 인적성검사 장소를 고를 때는 장소 이름보다 <strong>검사 안내를 충족하는지, 다른 사람이 들어오지 않는지, PC와 스마트폰을 안정적으로 사용할 수 있는지, 인터넷이 끊기지 않는지</strong>가 더 중요합니다.</p>
+    <p class="section-desc">온라인 인적성검사 장소를 고를 때는 장소 이름보다 <strong>검사 안내를 충족하는지, 다른 사람이 들어오지 않는지, PC와 스마트폰을 안정적으로 사용할 수 있는지, 인터넷이 끊기지 않는지</strong>가 더 중요합니다. 부천에서 독립된 응시 공간이 필요하다면 바른자리는 <strong>신중동역 도보 1분 · 한 팀 단독 이용 · 1시간 10,000원부터</strong> 이용할 수 있습니다.</p>
     <div class="hero-btns" style="margin-top:14px;">
       <a href="/booking/?purpose=exam&amp;source=online-aptitude-test-space" class="btn-primary" data-cta="online_aptitude_quick_booking">시험시간에 맞춰 빈 시간 확인하기</a>
     </div>
