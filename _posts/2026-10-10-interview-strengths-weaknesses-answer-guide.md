@@ -3,7 +3,7 @@ layout: default
 title: 면접 장단점 답변법 | 단점 말하는 법과 신입·경력 예시
 description: 면접 장단점 답변은 자기 인식과 개선 노력을 보여주는 질문입니다. 단점 말하는 법과 신입·경력 예시를 정리했습니다.
 category: 면접준비
-keywords: 면접장단점,면접 단점 말하는 법,면접 단점 예시,면접장점예시,면접단점예시,면접답변,면접연습,부천면접연습,신중동면접연습
+keywords: 면접장단점,면접단점말하는법,면접장점예시,면접단점예시,면접답변,면접연습,부천면접연습,신중동면접연습
 tags:
   - 면접준비
   - 면접장단점
@@ -335,6 +335,9 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
     display: grid;
     gap: 1rem;
   }
+  #practice .guide-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .interview-example-card {
     overflow: hidden;
     scroll-margin-top: 92px;
@@ -400,6 +403,9 @@ preload_image: images/interview-strengths-weaknesses-bareunjari.webp
   @media (max-width: 760px) {
     .interview-example-card {
       scroll-margin-top: 82px;
+    }
+    #practice .guide-summary-grid {
+      grid-template-columns: 1fr;
     }
     .interview-example-strip {
       flex-wrap: nowrap;
