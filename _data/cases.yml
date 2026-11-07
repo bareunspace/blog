@@ -2333,3 +2333,85 @@ cases:
     related:
       url: /posts/ai-competency-test-space/
       label: AI 역량면접·영상 촬영 준비 가이드 보기
+
+
+  - id: smartro-2026-fall-sales-finance-ai-video
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 스마트로
+    company_slug: smartro
+    taxonomy:
+      industry_tags:
+        - finance
+        - it
+        - payment
+      region_tags:
+        - seoul
+    title: 2026년 하반기 영업·재무 신입·경력 채용 · AI영상면접
+    summary: 스마트로의 2026년 하반기 영업·재무 신입 및 경력 채용으로 AI영상면접 이후 실무진·임원면접을 안내한 채용입니다. 서울 중구 근무로 AI영상면접을 위한 조용한 응시 환경과 답변 연습 수요가 있으나 모집 규모와 응시 일정은 미확인입니다.
+    published_at: 2026-11-06
+    verified_at: 2026-11-08
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-08
+    application:
+      start: "2026-11-06"
+      end: "2026-11-12"
+      period_label: "2026-11-06 ~ 2026-11-12"
+      hiring_size: 미확인
+      roles: 영업 · 재무 (신입·경력)
+    selection:
+      process_label: 서류전형 → AI영상면접 → 실무진면접 → 임원면접
+      interview_focus: AI영상면접 응시 환경 점검과 영업·재무 직무 관련 경험 설명·후속 질문 연습
+      stages:
+        - 지원서 접수 · 2026-11-06 ~ 2026-11-12
+        - AI영상면접 · 일정 미확인
+        - 실무진·임원면접 · 일정 미확인
+    pattern:
+      label: AI영상면접 후 실무진·임원면접
+      insight: AI영상면접 단계는 보조 채용공고에서 확인됐으며 공식 채용 목록에서는 접수기간을 확인했습니다.
+      practice_shift: 조용한 공간에서 카메라·마이크를 점검하고 직무 답변을 녹화해 개선하기
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: null
+      deep_interview: true
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 서울 근무와 AI영상면접으로 독립 응시 공간 수요가 있지만 모집 규모 및 응시 일정은 미확인입니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - follow-up-response
+      practice_points:
+        - 영상면접 전 카메라·마이크·인터넷·조명·주변 소음 점검하기
+        - 영업·재무 직무 지원 동기와 관련 경험을 실제 목소리로 설명하기
+        - 답변을 녹화하고 시선·말의 속도·논리적 흐름을 점검하기
+      excluded:
+        - 실제 스마트로 AI면접 문항을 알고 있다는 표현
+        - 면접 일정과 모집 규모를 확인 없이 단정하는 표현
+        - 스마트로와 제휴되었다는 표현
+    notes:
+      - 공식 채용 목록에서 접수기간을 확인했고 AI영상면접 단계는 보조 공고를 참고한 내용입니다.
+      - AI영상면접의 응시 일정과 방식은 공식 채용사이트의 개별 안내를 확인해야 합니다.
+    source:
+      publisher: KT그룹 공식 채용
+      title: 스마트로 2026년 하반기 영업·재무 신입·경력 채용
+      url: https://recruit.kt.com/
+      published_at: "2026-11-06"
+      checked_at: 2026-11-08
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사·영상면접 준비 가이드 보기
