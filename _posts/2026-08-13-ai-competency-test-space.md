@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AI 역량검사 어디서 봐야 할까? | 카메라·말하기·게임까지 응시 환경 체크리스트
+title: AI 역량검사 장소 어디서 볼까? | 카메라·마이크·말하기 환경 체크
 description: AI 역량검사는 온라인으로 진행되지만 웹캠·마이크·인터넷·방해 없는 환경이 필요할 수 있습니다. 웹캠이 없을 때 무엇을 먼저 확인해야 하는지와 집에서 응시하기 어려울 때의 장소 선택 기준을 정리했습니다.
 category: 면접준비
 hub_series: interview
@@ -37,7 +37,7 @@ preload_image: images/ai-competency-test-space-20261010.webp
 <section id="home">
   <div class="section-inner">
     <p class="section-label">AI Competency Test Space Guide</p>
-    <h1 class="section-title">AI 역량검사,<br />어디서 봐야 할까?</h1>
+    <h1 class="section-title">AI 역량검사 장소,<br />어디서 볼까?</h1>
     <p class="section-desc"><strong>집에서 볼 수 있다고 해서 아무 장소에서나 보기 좋은 검사는 아닙니다.</strong> 질의응답, 게임, 영상면접처럼 서로 다른 과제가 이어질 수 있어 카메라와 마이크, 인터넷, 말하기, 그리고 검사시간 동안 방해받지 않는 환경까지 함께 봐야 합니다.</p>
     <div class="hero-btns">
       <a href="#quick-answer" class="btn-primary">응시 환경 먼저 확인하기</a>
@@ -58,7 +58,7 @@ preload_image: images/ai-competency-test-space-20261010.webp
   <div class="section-inner">
     <p class="section-label">Quick Answer</p>
     <h2 class="section-title">집에서 봐도 됩니다.<br />다만 검사시간 동안 환경이 유지돼야 합니다.</h2>
-    <p class="section-desc">온라인 역량검사는 집에서도 응시할 수 있는 경우가 있습니다. 중요한 건 장소 이름보다 <strong>카메라와 마이크가 안정적으로 작동하고, 필요한 만큼 말할 수 있고, 다른 사람이 들어오지 않으며, 인터넷 연결이 유지되는가</strong>입니다. 바른자리의 장점은 AI 역량검사를 더 잘 보게 해주는 것이 아니라, 응시 중 소음·출입·말하기·카메라 환경처럼 결과와 무관한 변수를 줄일 수 있다는 점입니다. 실제 응시 규정은 기업 또는 검사 플랫폼의 안내를 먼저 확인하세요.</p>
+    <p class="section-desc"><strong>집에서 가능하면 집이 가장 편합니다.</strong> 다만 영상답변·게임·카메라·마이크를 사용하는 동안 다른 사람의 출입이나 생활소음이 걱정된다면 독립된 공간이 더 안정적일 수 있습니다. 장소를 고를 때는 <strong>혼자 있는 공간 · 안정적인 인터넷 · 말할 수 있는 환경 · 카메라·마이크</strong>를 먼저 확인하세요. 실제 응시 규정은 기업 또는 검사 플랫폼의 안내가 우선입니다.</p>
     <div class="guide-summary-grid">
       <article class="guide-summary-card"><span>01</span><h3>웹캠·마이크</h3><p>웹캠이 없다고 바로 응시 불가라고 단정하지 말고, 노트북 내장 카메라 유무와 기업·검사 플랫폼의 장비 요구사항을 먼저 확인합니다.</p></article>
       <article class="guide-summary-card"><span>02</span><h3>말할 수 있는 환경</h3><p>영상면접이나 질의응답이 포함된다면 주변을 의식하지 않고 답변할 수 있는지가 중요합니다.</p></article>
