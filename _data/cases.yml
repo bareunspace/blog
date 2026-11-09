@@ -1,7 +1,201 @@
 version: 1
-updated_at: 2026-11-08
+updated_at: 2026-11-09
 
 cases:
+
+  - id: cosmecca-2026-nov-ai-video-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 코스메카코리아
+    company_slug: cosmecca
+    taxonomy:
+      industry_tags:
+        - cosmetics
+        - manufacturing
+        - research
+      region_tags:
+        - gyeonggi
+        - chungbuk
+    title: 2026년 11월 신입·경력 채용 · AI영상면접(색조 제형 연구원 등)
+    summary: 2026년 11월 색조 화장품 제형 연구원과 회계 담당자 채용에서 서류전형 다음 AI영상면접이 안내된 사례입니다. 직무별 접수 시작일은 다르며 11월 15일 마감입니다. 카메라 앞에서 말하고 녹화해보는 준비와 연결되지만 실제 AI영상면접 문항·응시 일정은 미확인입니다.
+    published_at: 2026-11-03
+    verified_at: 2026-11-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-09
+    application:
+      start: "직무별 상이(색조 제형 2026-11-03, 회계 2026-10-30)"
+      end: "2026-11-15 23:59"
+      period_label: "색조 제형 11/03 ~ 11/15, 회계 10/30 ~ 11/15 (세부 마감 시각은 공고별 확인)"
+      hiring_size: 미확인
+      roles: 색조 화장품 제형 연구원(신입) · 회계 담당자(주니어) 등
+    selection:
+      process_label: 서류전형 → AI영상면접 → 1차면접 → 2차면접 → (경력직 레퍼런스 조회) → 최종합격
+      interview_focus: AI영상면접 응시 전 조명·마이크·카메라와 배경 소음을 점검하고, 연구·회계 직무 경험을 카메라 앞에서 실제로 설명하는 연습
+      stages:
+        - 색조 제형 연구원 지원서 접수 · 2026-11-03 ~ 2026-11-15
+        - 회계 담당자 지원서 접수 · 2026-10-30 ~ 2026-11-15
+        - AI영상면접 · 세부 응시 일정 미확인
+        - 1차·2차면접 · 세부 일정 및 방식 미확인
+    pattern:
+      label: 서류 이후 AI영상면접을 거쳐 대면면접으로 연결
+      insight: 확인된 색조 제형 연구원·회계 채용에 모두 AI영상면접 단계가 제시돼 있습니다. 상세 평가 문항을 추정하기보다 카메라 앞 답변과 응시 환경 점검에 집중할 수 있는 사례입니다.
+      practice_shift: 직무 지원 동기와 관련 경험을 60초·90초로 각각 촬영하고 시선·음성·말의 속도·주변 소음을 점검하기
+    signals:
+      situation_interview: null
+      video_interview: true
+      ai_interview: true
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: AI영상면접이 명시되어 영상답변 연습과 조용한 공간 수요가 직접적입니다. 경기 근무 직무가 확인되지만 모집 규모와 실제 지역별 응시 수요는 미확인입니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+      practice_points:
+        - 카메라·마이크·인터넷 연결·조명·주변 소음을 확인하고 실제 응시 자세로 앉아보기
+        - 지원 동기와 직무 경험을 60초·90초 두 버전으로 녹화하며 답변 속도와 시선을 확인하기
+        - 연구 또는 회계 직무에서 본인의 역할과 문제 해결 경험을 구체적으로 말해보기
+      excluded:
+        - 실제 코스메카코리아 AI영상면접 질문이나 평가 기준을 알고 있다는 표현
+        - 모든 채용 직무에 동일한 AI영상면접이 적용된다는 표현
+        - 면접 일정이나 모집 인원을 확인 없이 확정하는 표현
+        - 코스메카코리아와 제휴되어 있다는 표현
+    notes:
+      - 색조 제형 연구원 공고의 11월 3일 시작·11월 15일 23시 59분 마감과 AI영상면접 단계는 정부 고용24 채용정보에서도 확인했습니다.
+      - 회계 담당자 공고의 10월 30일 시작·11월 15일 마감 및 동일한 전형 단계는 대학 채용정보에서 보조 확인했습니다.
+      - 게시일은 대표 공고인 색조 제형 연구원 모집의 접수 시작일 기준입니다.
+      - 직무별 정확한 마감 시각·AI영상면접 응시 일정과 방식은 기업의 공식 채용사이트에서 다시 확인해야 합니다.
+    source:
+      publisher: 코스메카코리아 공식 채용
+      title: "[신입] 색조 화장품 제형 연구원 모집(파운데이션/쿠션류)"
+      url: https://cosmecca-k.recruiter.co.kr/career/jobs/133240
+      published_at: "2026-11-03"
+      checked_at: 2026-11-09
+    references:
+      - publisher: 고용24
+        title: 색조 제형 연구원 모집 · 접수기간 및 AI영상면접
+        url: https://m.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=OEW&infoTypeGroup=tb_workinfoopen&wantedAuthNo=184208
+        checked_at: 2026-11-09
+      - publisher: 경상국립대학교 대학일자리플러스센터
+        title: 코스메카코리아 회계 담당자 모집(주니어)
+        url: https://career.gnu.ac.kr/recruitment-internship/open/?kv=0991b4c8982e714174b6b18c0af8e7affb179216dea2e176db8c5b88ea401810&mode=view&seq=183945
+        checked_at: 2026-11-09
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI영상면접 응시환경·녹화 연습 가이드 보기
+
+  - id: wins-tech-2026-nov-security-consulting-pt
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 윈스테크넷
+    company_slug: wins-tech
+    taxonomy:
+      industry_tags:
+        - it
+        - cybersecurity
+        - cloud
+      region_tags:
+        - seoul
+        - gyeonggi
+        - nationwide
+    title: 2026년 11월 정보보안·클라우드 채용 · 정보보호 컨설팅 직군 PT발표
+    summary: 2026년 11월 신입·경력 월간채용으로 서류전형, 1차면접, 역량검사, 2차면접이 안내됩니다. PT발표는 정보보호 컨설팅 직군에만 해당하며 다른 모집 직무의 PT 여부는 확인되지 않았습니다. 발표 연습 및 기술 설명 리허설에 적합하고 서울 마곡·경기권 근무지가 포함됩니다.
+    published_at: 2026-11-02
+    verified_at: 2026-11-09
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-09
+    application:
+      start: "2026-11-02"
+      end: "2026-11-16 23:59"
+      period_label: "2026-11-02 ~ 2026-11-16 23:59 (일부 안내에 11/01 시작 표기)"
+      hiring_size: 미확인
+      roles: 정보보호 컨설팅(PT 대상) · 보안관제 · 클라우드 등 신입·경력
+    selection:
+      process_label: 서류전형 → 1차면접(PT는 정보보호 컨설팅 직군에 한함) → 역량검사 → 2차면접 → 입사
+      interview_focus: 정보보호 컨설팅 지원자는 기술적 문제와 해결안을 발표 형식으로 설명하고 질의응답을 연습하기. 다른 직군의 면접 세부 방식은 미확인
+      stages:
+        - 지원서 접수 · 2026-11-02 ~ 2026-11-16 23:59
+        - 1차면접 · 컨설팅 직군 PT발표 포함, 직무별 날짜 미확인
+        - 역량검사 · 상세 응시 방식 미확인
+        - 2차면접 · 직무별 날짜 및 상세 방식 미확인
+    pattern:
+      label: 정보보호 컨설팅 지원자에게 PT발표로 기술 설명 요구
+      insight: 1차면접에 PT발표가 포함되지만 정보보호 컨설팅 직군으로 대상이 제한됩니다. 역량검사는 별도 단계로 제시되며 AI·영상 방식이라고 확인되지는 않았습니다.
+      practice_shift: 본인의 기술 프로젝트나 보안 위험 분석 경험을 문제 → 근거 → 대응안 순서로 발표하고, 녹화 뒤 질문을 받는 상황을 연습하기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: null
+      task_interview: null
+      deep_interview: null
+      pt_interview: true
+      english_interview: null
+      physical_test: false
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 정보보호 컨설팅 직군의 PT발표라는 구체적인 연습 행동이 확인되고 서울 마곡 및 경기권 근무지가 포함됩니다. 직군별 채용 규모와 실제 발표 시점은 미확인입니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - presentation
+        - speaking
+        - recording-review
+        - technical-explanation
+        - follow-up-response
+      practice_points:
+        - 본인이 수행한 정보보안 프로젝트를 문제 정의 → 분석 근거 → 해결안 순서로 3분 내 발표해보기
+        - 화면에 자료를 띄워 발표를 녹화하고 화면 전환과 설명 속도를 확인하기
+        - 보안 대책의 선택 이유·제약·대안을 묻는 연습용 꼬리질문에 답하기
+      excluded:
+        - 모든 윈스테크넷 모집 직군이 PT발표를 본다는 표현
+        - 역량검사를 AI영상면접이나 영상녹화 전형으로 단정하는 표현
+        - 실제 윈스테크넷 PT 주제·평가 기준·면접 일정이 확인됐다는 표현
+        - 윈스테크넷과 제휴되어 있다는 표현
+    notes:
+      - 대표 월간채용 공고의 접수 마감은 2026년 11월 16일 23시 59분으로 안내됩니다.
+      - 접수 시작일은 채용 플랫폼에서 11월 2일, 일부 공고문 전재에서 11월 1일로 달리 표기돼 재확인이 필요합니다.
+      - PT발표는 정보보호 컨설팅 직군에 한정된다는 조건이 보조 채용공고에 명시돼 있습니다.
+      - 회사 공식 채용페이지의 해당 공고 링크는 확인했으나 상세 내용의 텍스트 열람은 제한되어 PT 조건과 일정은 보조 공고로 대조했습니다.
+      - 직무별 실제 면접 날짜·발표 과제와 역량검사의 진행 방식은 미확인입니다.
+    source:
+      publisher: 윈스테크넷 공식 채용
+      title: 2026년 11월 월간채용(신입·경력) · 정보보안 및 클라우드
+      url: https://wins21.recruiter.co.kr/career/jobs/133090
+      published_at: "2026-11-02"
+      checked_at: 2026-11-09
+    references:
+      - publisher: Pathsdog 채용공고
+        title: 윈스테크넷 11월 월간채용 · PT발표 대상 직군과 전형 순서
+        url: https://jobs.pathsdog.com/jobs/4922-%EC%9C%88%EC%8A%A4%ED%85%8C%ED%81%AC%EB%84%B7-2026%EB%85%84-11%EC%9B%94-%EC%9B%94%EA%B0%84%EC%B1%84%EC%9A%A9-%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C-%EC%8B%A0%EC%9E%85-%EA%B2%BD%EB%A0%A5
+        checked_at: 2026-11-09
+      - publisher: 사람인
+        title: 윈스테크넷 11월 월간채용 접수 및 온라인 역량검사 안내
+        url: https://m.saramin.co.kr/job-search/view?rec_idx=55459904
+        checked_at: 2026-11-09
+    related:
+      url: /posts/pt-presentation-rehearsal/
+      label: PT 발표·질의응답 리허설 가이드 보기
+
   - id: nps-2026-fall-new-hire-interview
     type: hiring
     topic: interview
