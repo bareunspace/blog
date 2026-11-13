@@ -1,7 +1,116 @@
 version: 1
-updated_at: 2026-11-13
+updated_at: 2026-11-14
 
 cases:
+
+  - id: genesis-bbq-2026-fall-open-hiring-ai-assessment
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 제너시스BBQ그룹
+    company_slug: genesis-bbq
+    taxonomy:
+      industry_tags:
+        - food-service
+        - franchise
+        - retail
+        - it
+      region_tags:
+        - seoul
+        - gyeonggi
+        - incheon
+        - nationwide
+    title: 2026년 하반기 신입·경력 그룹 공개채용 · AI 역량검사·실무면접
+    summary: 제너시스BBQ그룹의 2026년 하반기 9개 부문 신입·경력 공채로, AI 역량검사 다음 실무면접과 임원면접을 진행하는 사례입니다. AI 검사의 실제 영상·음성 답변 여부와 면접 세부 유형은 미확인입니다. 가맹점 슈퍼바이저와 점포개발 등에서 경기·인천 근무권역이 포함되어, 응시환경 점검과 지원 직무 답변의 반복 연습 수요를 관찰할 가치가 있습니다.
+    published_at: 2026-11-09
+    verified_at: 2026-11-14
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-14
+    application:
+      start: "2026-11-09"
+      end: "2026-11-22"
+      period_label: "2026-11-09 ~ 2026-11-22 (마감 시각은 공식 채용사이트에서 재확인)"
+      hiring_size: 미확인
+      roles: 가맹점 슈퍼바이저·점포개발·R&D·구매·AI/IT개발(신입·경력), 전략기획·사업지원·직영 슈퍼바이저·직영 매장 점장(경력)
+    selection:
+      process_label: 서류전형 → AI 역량검사 → 실무면접 → 임원면접 → 치킨대학 교육 → 최종합격
+      interview_focus: 공식 응시 안내에 맞춘 온라인 AI 역량검사 환경 점검 및 실무·임원면접에서 지원 직무와 관련 경험을 실제 목소리로 설명하는 연습
+      stages:
+        - 지원서 접수 · 2026-11-09 ~ 2026-11-22
+        - AI 역량검사 · 세부 응시 날짜 및 영상·음성 답변 여부 미확인
+        - 실무면접 · 세부 날짜 및 방식 미확인
+        - 임원면접 · 세부 날짜 및 방식 미확인
+        - 치킨대학 교육 · 세부 일정 미확인
+    pattern:
+      label: 그룹 공채의 AI 역량검사 이후 직무·조직 적합성 면접
+      insight: AI 역량검사와 실무·임원면접이 순차적으로 명시되어 있지만 AI 검사가 반드시 영상 녹화나 말하기 응답을 요구하는지는 확인되지 않았습니다. PT발표 역시 공식 전형상 필수 여부가 확인되지 않아 해당 면접을 단정하지 않습니다.
+      practice_shift: 지원 직무의 성과·문제해결 경험을 60~90초로 설명하고 질문을 바꿔 반복 답변한 뒤, 공식 AI 검사 응시 안내에 맞춰 필요한 기기와 환경을 점검해보기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: null
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 9개 부문 그룹 공개채용으로 AI 역량검사 및 후속 면접이 공식 안내되었고, 경기·인천을 포함한 채용 권역이 확인됩니다. 다만 검사에서 실제 말하기·영상 녹화가 필요한지 및 지역별 응시 수요·채용 규모는 미확인입니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 공식 AI 역량검사 응시 안내를 확인한 뒤 필요한 인터넷·기기 및 소음 환경을 점검하기
+        - 지원 직무의 핵심 역할과 성과를 60초·90초 버전으로 말해보고 본인 목소리로 녹음하기
+        - 가맹 운영·점포개발·구매·IT 개발 등 자신의 지원 직무에 맞춰 문제 → 판단 → 결과를 설명하기
+        - 이유·대안·개선점을 묻는 연습용 꼬리질문을 받고 다시 답변하며 전달력 점검하기
+      excluded:
+        - AI 역량검사에 영상 녹화나 음성 답변이 필수라고 단정하는 표현
+        - PT면접이 공식 확정됐거나 모든 모집 직무에서 실시된다는 표현
+        - 모든 지원자의 온라인 검사 장비 요구사항을 임의로 확정하는 표현
+        - 기업의 실제 면접 문항·평가 기준을 제공하거나 알고 있다는 표현
+        - 제너시스BBQ그룹과의 제휴 또는 합격 가능성 보장 표현
+    notes:
+      - 2026년 11월 9일 그룹 공채 개시가 공식 발표되었습니다. 공식 모집공고 자체의 최초 게시일은 별도 미확인입니다.
+      - 모집은 11월 9일부터 22일까지이며, 23시 59분 마감 시각은 사람인 보조 자료 기준으로 공식 공고에서는 미확인입니다.
+      - 공식 채용 URL이 확인됐으나 자동화된 상세 본문 열람은 제한되어 보도 및 대학 취업지원센터에 게재된 전형 개요와 대조했습니다.
+      - AI 역량검사 후 실무면접, 임원면접을 거친다는 절차는 보도 및 대학 채용안내에서 일치합니다.
+      - 임원면접의 PT면접 포함 여부는 공식 절차에서 명시되지 않아 미확인으로 표시합니다.
+      - 가맹점 슈퍼바이저 및 점포개발은 경기·인천 채용 권역이 포함되지만 실제 지역별 지원·예약 수요는 미확인입니다.
+      - 모집인원과 각 면접의 정확한 날짜, AI 역량검사의 음성·영상 응답 포함 여부는 미확인입니다.
+    source:
+      publisher: 제너시스BBQ그룹 공식 채용
+      title: 2026년 하반기 제너시스BBQ그룹 신입 및 경력직 공개채용
+      url: https://bbq.recruiter.co.kr/career/jobs/133641
+      checked_at: 2026-11-14
+    references:
+      - publisher: 연합뉴스
+        title: BBQ 하반기 신입·경력 공채…22일까지 9개 부문 모집
+        url: https://www.yna.co.kr/amp/view/AKR20261109030300030
+        checked_at: 2026-11-14
+      - publisher: 건양대학교 취업정보
+        title: 제너시스BBQ그룹 2026년 신입 및 경력사원 그룹 공채
+        url: https://tourism.konyang.ac.kr/cop/bbs/BBSMSTR_000000002226/selectBoardArticle.do?kind=&mno=sitemap_02&nttId=296023&pageIndex=1&searchCnd=&searchWrd=
+        checked_at: 2026-11-14
+      - publisher: 사람인 채용정보
+        title: 제너시스BBQ그룹 2026년 하반기 그룹공채 접수기간
+        url: https://m.saramin.co.kr/job-search/view?rec_idx=55482000
+        checked_at: 2026-11-14
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI 역량검사 응시환경·면접 답변 연습 가이드 보기
+
 
   - id: hyundai-department-store-2026-nov-safety-manager-ai-interview
     type: hiring
