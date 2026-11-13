@@ -1,7 +1,104 @@
 version: 1
-updated_at: 2026-11-10
+updated_at: 2026-11-13
 
 cases:
+
+  - id: hyundai-department-store-2026-nov-safety-manager-ai-interview
+    type: hiring
+    topic: interview
+    job: general-corporate
+    company: 현대백화점
+    company_slug: hyundai-department-store
+    taxonomy:
+      industry_tags:
+        - retail
+        - service
+        - safety-management
+      region_tags:
+        - gyeonggi
+        - incheon
+        - capital-region
+    title: 2026년 하반기 안전관리자 신입사원 채용 · AI역량면접·실무면접
+    summary: 현대백화점의 안전관리 정규직 신입사원 채용입니다. 2026년 11월 AI역량면접(공고 내 'AI역량검사'로도 표기), 12월 실무면접, 5주 인턴실습과 2027년 2월 임원면접이 안내되어 있습니다. 경인권 최초 배치 예정이며 온라인 전형의 응시환경 점검과 안전관리 경험·판단 근거를 소리 내어 연습하는 수요와 연결됩니다. AI 전형의 영상·음성 녹화 여부는 미확인입니다.
+    published_at: 2026-11-03
+    verified_at: 2026-11-13
+    recruitment_status: recruiting
+    status_checked_at: 2026-11-13
+    application:
+      start: "2026-11-03 09:00"
+      end: "2026-11-18 23:59"
+      period_label: "2026-11-03 09:00 ~ 2026-11-18 23:59"
+      hiring_size: 미확인
+      roles: 안전관리(정규직 신입)
+      expected_join: 2027년 2월 4주차 최종입사 예정
+    selection:
+      process_label: 서류전형(11월) → 온라인 AI역량면접·검사(11월) → 실무면접(12월) → 인턴실습(5주, 12~1월) → 임원면접(2027년 2월) → 최종입사
+      interview_focus: 온라인 AI역량전형의 응시 환경을 안내에 맞춰 확인하고, 실무·임원면접에 대비해 안전관리 직무 경험과 위험요인 판단 과정을 실제 목소리로 설명하는 연습
+      stages:
+        - "지원서 접수 · 2026-11-03 09:00 ~ 2026-11-18 23:59"
+        - "서류전형 · 2026년 11월 예정"
+        - "온라인 AI역량면접·검사 · 2026년 11월 예정 (영상·음성 응답 여부 및 날짜 미확인)"
+        - "실무면접 · 2026년 12월 예정 (세부 면접 형태·날짜 미확인)"
+        - "인턴실습 · 2026년 12월 ~ 2027년 1월, 5주 예정"
+        - "임원면접 · 2027년 2월 예정 (세부 날짜 미확인)"
+        - "최종입사 · 2027년 2월 4주차 예정"
+    pattern:
+      label: 온라인 AI역량평가 이후 직무역량과 조직적합성 면접으로 연결
+      insight: 현대백화점의 안전관리 단일 직무 채용에서 온라인 AI역량전형 후 실무면접, 인턴실습, 임원면접을 거치는 구조가 공식 안내되어 있습니다. AI역량검사가 반드시 카메라·마이크 답변 또는 녹화를 포함한다는 근거는 없어 단정하지 않습니다.
+      practice_shift: 공식 응시 안내에 맞춰 조용한 환경과 필요한 장비를 점검하고, 직무 경험·위험성평가 경험·현장 대응 판단을 60~90초로 말한 뒤 판단 근거를 묻는 연습용 후속 질문에 답해보기
+    signals:
+      situation_interview: null
+      video_interview: null
+      ai_interview: true
+      task_interview: null
+      deep_interview: null
+      pt_interview: null
+      english_interview: null
+      physical_test: null
+    curation:
+      status: selected
+      fit_score: 4
+      why_selected: 온라인 AI역량전형과 실무·임원면접이 공식 명시되어 응시환경 점검 및 직무 답변 리허설 수요와 연결됩니다. 경인권 최초 배치 예정으로 지역 연관성이 있지만 실제 응시 장소 필요 여부·모집 규모는 미확인입니다. 현대백화점그룹 오픈PR 전형과는 별개 채용입니다.
+      reuse_targets:
+        - cases
+        - related-post
+    barunjari:
+      relevance: high
+      hub: interview
+      practice_types:
+        - ai-assessment-environment
+        - speaking
+        - recording
+        - job-explanation
+        - follow-up-response
+      practice_points:
+        - 공식 AI역량전형 응시 안내를 확인하고 인터넷 연결·조용한 환경 및 필요 장비를 점검해보기
+        - 본인의 안전 관련 학습·자격·현장 경험을 역할 → 판단 → 실행 → 결과 순서로 60~90초 안에 설명하기
+        - 위험요인 파악과 개선 조치 경험을 근거 중심으로 말하고 대안을 묻는 연습용 질문에 답해보기
+        - 면접 답변을 녹음하거나 녹화해 말의 속도·논리적 흐름·불필요한 반복어를 스스로 점검하기
+      excluded:
+        - 온라인 AI역량전형에서 영상녹화 또는 음성 답변이 필수라고 단정하는 표현
+        - 실무면접에 PT·영어·토론·상황면접이 포함된다고 확인 없이 주장하는 표현
+        - 공식 공개되지 않은 실제 면접 문항·평가 기준을 알고 있다는 표현
+        - 모든 현대백화점그룹 대졸 신입 채용에 이 전형이 동일하게 적용된다는 표현
+        - 현대백화점과 바른자리가 제휴했거나 합격을 보장한다는 표현
+    notes:
+      - "공식 채용페이지의 접수기간은 11월 3일 09:00부터 11월 18일 23:59입니다. 공고 자체의 최초 게시일은 미확인이며 사례 날짜 11월 3일은 접수 시작일을 사용했습니다."
+      - "모집 분야는 안전관리 단일 직무이며 공식 공고의 모집 인원은 '0명'으로 표기돼 정확한 인원은 미확인입니다."
+      - "공식 공고는 AI역량면접 및 AI역량검사라는 표현을 함께 사용합니다. 온라인 전형임은 확인되지만 영상·음성 답변·녹화 요구 여부는 미확인입니다."
+      - "실무면접은 2026년 12월, 임원면접은 2027년 2월 예정이며 개인별 응시일과 상세 면접 방식은 미확인입니다."
+      - "입사 시 최초 근무지는 경인권이며 향후 충청·영남 등 타 권역 사업소로 전환배치될 수 있습니다."
+      - "기존 2026년 하반기 현대백화점그룹 대졸 신입 오픈PR 채용과는 다른 안전관리자 전용 공고입니다."
+      - "일정은 회사 사정에 따라 달라질 수 있으므로 지원자는 공식 채용 공고의 최신 안내를 확인해야 합니다."
+    source:
+      publisher: 현대백화점그룹 공식 채용
+      title: 2026년 하반기 현대백화점 안전관리자 신입사원 채용
+      url: https://recruit.ehyundai.com/recruit-info/announcement/view.nhd?hireId=2026640&regCoCd=HDEHR
+      checked_at: 2026-11-13
+    related:
+      url: /posts/ai-competency-test-space/
+      label: AI역량검사 응시환경·면접 답변 준비 가이드 보기
+
 
   - id: nhabgroup-2026-fall-livestock-group-deep-interview
     type: hiring
