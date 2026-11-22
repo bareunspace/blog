@@ -2,7 +2,7 @@
 """Refresh Bareunjari guide rankings from recent performance data.
 
 Weekly automation:
-- category carousels: booking clicks -> booking rate -> 28d GSC/GA4 -> 7d trend
+- category carousels: 28d booking attempts -> GSC clicks -> GA4 visits -> impressions
 - global homepage block: existing GSC performance endpoint
 - conservative category reordering prevents churn from weak short-term signals
 """
@@ -16,6 +16,7 @@ DATA_PATH=ROOT/"_data"/"blog_guide_priority.yml"
 MARKER="# Full ranking by cumulative Google Search Console clicks"
 GLOBAL_DAYS=90
 CATEGORIES=["면접준비","시험·응시","연습·리허설","스터디룸","미팅·상담","프라이빗시간","시간·공간"]
+CATEGORY_ALIASES={"스터디·소모임":"스터디룸","미팅·업무":"미팅·상담"}
 EXAM_URLS={
 "/posts/online-aptitude-test-space/","/posts/online-coding-test-place/",
 "/posts/ai-competency-test-space/","/posts/toefl-home-edition-space/",
@@ -49,11 +50,12 @@ def post_groups():
         parts=s.split("---",2)
         if len(parts)<3: continue
         h=parts[1]
+        if re.search(r"^(?:published:\s*false|draft:\s*true)\s*$",h,re.M|re.I): continue
         cm=re.search(r'^category:\s*["\']?([^"\'\n]+)',h,re.M)
         pm=re.search(r'^permalink:\s*(\S+)',h,re.M)
         slug=re.sub(r'^\d{4}-\d{2}-\d{2}-',"",p.stem)
         url=pm.group(1).strip() if pm else f"/posts/{slug}/"
-        cat=cm.group(1).strip() if cm else ""
+        cat=CATEGORY_ALIASES.get(cm.group(1).strip(),cm.group(1).strip()) if cm else ""
         if url in EXAM_URLS: out["시험·응시"].append(url)
         elif cat in out and cat!="시험·응시": out[cat].append(url)
     return out
@@ -64,24 +66,25 @@ def current_category(text,cat):
 
 def metrics(snapshot,url):
     r=snapshot.get(url,{})
-    sessions=max(int(r.get("ga4_sessions_28",0)),0)
-    clicks=int(r.get("booking_clicks_28",0))
     return {
-      "b":clicks,"br":clicks/sessions if sessions>=5 else 0,
-      "g":int(r.get("gsc_clicks_28",0)),"s":sessions,
-      "i":int(r.get("gsc_impressions_28",0)),
-      "g7":int(r.get("gsc_clicks_7",0)),
-      "b7":int(r.get("booking_clicks_7",0)),
-      "s7":int(r.get("ga4_sessions_7",0)),
+      "a":max(int(r.get("booking_intents_28",0)),0),
+      "a7":max(int(r.get("booking_intents_7",0)),0),
+      "b":max(int(r.get("booking_clicks_28",0)),0),
+      "g":max(int(r.get("gsc_clicks_28",0)),0),
+      "g7":max(int(r.get("gsc_clicks_7",0)),0),
+      "s":max(int(r.get("ga4_sessions_28",0)),0),
+      "i":max(int(r.get("gsc_impressions_28",0)),0),
     }
 
 def should_pass(challenger,incumbent,snapshot):
     c,i=metrics(snapshot,challenger),metrics(snapshot,incumbent)
-    if c["b"]!=i["b"]: return c["b"]>i["b"]
-    if c["br"] and i["br"] and c["br"]>=i["br"]+0.05: return True
+    # A CTA into /booking/ is an attempt, not a completed paid reservation.
+    # Use a rolling 28-day window, and keep 7-day trend as a secondary signal.
+    if c["a"]!=i["a"]: return c["a"]>i["a"]
     if c["g"]>=i["g"]+2 and (i["g"]==0 or c["g"]>=i["g"]*1.25): return True
-    if c["g"]>=i["g"] and c["g7"]>=i["g7"]+2 and c["b7"]>=i["b7"]: return True
+    if c["g"]>=i["g"] and c["g7"]>=i["g7"]+2 and c["a7"]>=i["a7"]: return True
     if c["g"]==i["g"] and c["s"]>=i["s"]+3 and (i["s"]==0 or c["s"]>=i["s"]*1.25): return True
+    if c["g"]==i["g"] and c["s"]==i["s"] and c["b"]>i["b"]: return True
     if c["g"]==i["g"] and c["s"]==i["s"] and c["i"]>=i["i"]+20 and c["i"]>=i["i"]*1.5: return True
     return False
 
