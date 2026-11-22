@@ -76,7 +76,18 @@ extra_css_version: 20260820-1
         {% assign guide_categories = "면접준비,시험·응시,스터디룸,미팅·상담,연습·리허설,프라이빗시간,시간·공간" | split: "," %}
         <div class="blog-guide-groups" aria-label="바른자리 실전 가이드 카테고리별 목록">
           {% for category_name in guide_categories %}
-            {% if category_name == '시험·응시' %}{% assign matching_posts = onsite_posts %}{% else %}{% assign matching_posts = onsite_posts | where: "category", category_name %}{% endif %}
+            {% if category_name == '시험·응시' %}
+              {% assign matching_posts = onsite_posts %}
+            {% else %}
+              {% assign matching_posts = onsite_posts | where: "category", category_name %}
+              {% if category_name == '스터디룸' %}
+                {% assign alias_posts = onsite_posts | where: "category", "스터디·소모임" %}
+                {% assign matching_posts = matching_posts | concat: alias_posts %}
+              {% elsif category_name == '미팅·상담' %}
+                {% assign alias_posts = onsite_posts | where: "category", "미팅·업무" %}
+                {% assign matching_posts = matching_posts | concat: alias_posts %}
+              {% endif %}
+            {% endif %}
             {% if matching_posts.size > 0 %}
               {% assign display_category = category_name %}
               {% case category_name %}{% when '면접준비' %}{% assign display_category = '면접' %}{% when '시험·응시' %}{% assign display_category = '시험·응시' %}{% when '스터디룸' %}{% assign display_category = '스터디·소모임' %}{% when '미팅·상담' %}{% assign display_category = '미팅·업무' %}{% when '시간·공간' %}{% assign display_category = '시간·공간 저널' %}{% endcase %}
