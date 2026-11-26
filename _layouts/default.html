@@ -84,9 +84,20 @@
         heroPrimary.textContent = label;
         heroPrimary.setAttribute('data-ai-ready-entry', 'hero');
         heroPrimary.addEventListener('click', function () { send('hero'); });
+        var heroButtons = heroPrimary.closest('.hero-btns');
+        var examBooking = heroButtons && heroButtons.querySelector('[data-cta="ai_competency_hero_booking"]');
+        if (examBooking) {
+          // Keep the existing tracked booking URL and make availability the primary action.
+          heroPrimary.classList.remove('btn-primary');
+          heroPrimary.classList.add('btn-outline');
+          examBooking.classList.remove('btn-outline');
+          examBooking.classList.add('btn-primary');
+          examBooking.textContent = '시험 당일 이용 가능한 시간 확인하기';
+          heroButtons.insertBefore(examBooking, heroPrimary);
+        }
         var note = document.createElement('p');
         note.className = 'post-inline-community-note';
-        note.textContent = '예약 전 5분 동안 카메라·마이크·인터넷·응시 환경을 먼저 점검합니다.';
+        note.textContent = 'Ready Room에서는 예약 전 5분 동안 카메라·마이크·인터넷·응시 환경을 점검할 수 있습니다.';
         heroPrimary.closest('.hero-btns')?.insertAdjacentElement('afterend', note);
       }
       [
